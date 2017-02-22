@@ -1,0 +1,14 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'Zimu' do
+
+pod 'MBProgressHUD'
+pod 'AFNetworking'
+pod 'ReactiveCocoa', '~> 2.1.8'
+pod 'Masonry'
+pod 'PYSearch'
+pod 'SDWebImage'
+
+
+end

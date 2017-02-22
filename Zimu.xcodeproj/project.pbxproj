@@ -1,0 +1,618 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5BCE89FC72DFB00B50889F0A /* Pods_Zimu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481634BDD47E6138955329BC /* Pods_Zimu.framework */; };
+		5FC698F41E5D786200B8574D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC698F31E5D786200B8574D /* main.m */; };
+		5FC698F71E5D786200B8574D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC698F61E5D786200B8574D /* AppDelegate.m */; };
+		5FC698FA1E5D786200B8574D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC698F91E5D786200B8574D /* ViewController.m */; };
+		5FC698FD1E5D786200B8574D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC698FB1E5D786200B8574D /* Main.storyboard */; };
+		5FC698FF1E5D786200B8574D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FC698FE1E5D786200B8574D /* Assets.xcassets */; };
+		5FC699021E5D786200B8574D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC699001E5D786200B8574D /* LaunchScreen.storyboard */; };
+		5FC6990D1E5D786200B8574D /* ZimuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC6990C1E5D786200B8574D /* ZimuTests.m */; };
+		5FC699181E5D786200B8574D /* ZimuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC699171E5D786200B8574D /* ZimuUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5FC699091E5D786200B8574D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FC698E71E5D786200B8574D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FC698EE1E5D786200B8574D;
+			remoteInfo = Zimu;
+		};
+		5FC699141E5D786200B8574D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FC698E71E5D786200B8574D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FC698EE1E5D786200B8574D;
+			remoteInfo = Zimu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
+		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
+		481634BDD47E6138955329BC /* Pods_Zimu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zimu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC698EF1E5D786200B8574D /* Zimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC698F31E5D786200B8574D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5FC698F51E5D786200B8574D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5FC698F61E5D786200B8574D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5FC698F81E5D786200B8574D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5FC698F91E5D786200B8574D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5FC698FC1E5D786200B8574D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5FC698FE1E5D786200B8574D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FC699011E5D786200B8574D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5FC699031E5D786200B8574D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FC699081E5D786200B8574D /* ZimuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZimuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC6990C1E5D786200B8574D /* ZimuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZimuTests.m; sourceTree = "<group>"; };
+		5FC6990E1E5D786200B8574D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FC699131E5D786200B8574D /* ZimuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZimuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC699171E5D786200B8574D /* ZimuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZimuUITests.m; sourceTree = "<group>"; };
+		5FC699191E5D786200B8574D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FC698EC1E5D786200B8574D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BCE89FC72DFB00B50889F0A /* Pods_Zimu.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC699051E5D786200B8574D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC699101E5D786200B8574D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49EDFC34B92567266CE5ABA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */,
+				1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5FC698E61E5D786200B8574D = {
+			isa = PBXGroup;
+			children = (
+				5FC698F11E5D786200B8574D /* Zimu */,
+				5FC6990B1E5D786200B8574D /* ZimuTests */,
+				5FC699161E5D786200B8574D /* ZimuUITests */,
+				5FC698F01E5D786200B8574D /* Products */,
+				49EDFC34B92567266CE5ABA9 /* Pods */,
+				A408D73709D2BEB81BB564F0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5FC698F01E5D786200B8574D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FC698EF1E5D786200B8574D /* Zimu.app */,
+				5FC699081E5D786200B8574D /* ZimuTests.xctest */,
+				5FC699131E5D786200B8574D /* ZimuUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FC698F11E5D786200B8574D /* Zimu */ = {
+			isa = PBXGroup;
+			children = (
+				5FC698F51E5D786200B8574D /* AppDelegate.h */,
+				5FC698F61E5D786200B8574D /* AppDelegate.m */,
+				5FC698F81E5D786200B8574D /* ViewController.h */,
+				5FC698F91E5D786200B8574D /* ViewController.m */,
+				5FC698FB1E5D786200B8574D /* Main.storyboard */,
+				5FC698FE1E5D786200B8574D /* Assets.xcassets */,
+				5FC699001E5D786200B8574D /* LaunchScreen.storyboard */,
+				5FC699031E5D786200B8574D /* Info.plist */,
+				5FC698F21E5D786200B8574D /* Supporting Files */,
+			);
+			path = Zimu;
+			sourceTree = "<group>";
+		};
+		5FC698F21E5D786200B8574D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5FC698F31E5D786200B8574D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5FC6990B1E5D786200B8574D /* ZimuTests */ = {
+			isa = PBXGroup;
+			children = (
+				5FC6990C1E5D786200B8574D /* ZimuTests.m */,
+				5FC6990E1E5D786200B8574D /* Info.plist */,
+			);
+			path = ZimuTests;
+			sourceTree = "<group>";
+		};
+		5FC699161E5D786200B8574D /* ZimuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5FC699171E5D786200B8574D /* ZimuUITests.m */,
+				5FC699191E5D786200B8574D /* Info.plist */,
+			);
+			path = ZimuUITests;
+			sourceTree = "<group>";
+		};
+		A408D73709D2BEB81BB564F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				481634BDD47E6138955329BC /* Pods_Zimu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FC698EE1E5D786200B8574D /* Zimu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FC6991C1E5D786200B8574D /* Build configuration list for PBXNativeTarget "Zimu" */;
+			buildPhases = (
+				1CE6E7B1B7068E3FF90FDB7C /* [CP] Check Pods Manifest.lock */,
+				5FC698EB1E5D786200B8574D /* Sources */,
+				5FC698EC1E5D786200B8574D /* Frameworks */,
+				5FC698ED1E5D786200B8574D /* Resources */,
+				D734DE4920A56CF237F82354 /* [CP] Embed Pods Frameworks */,
+				ED0086385F7615949E8C33ED /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Zimu;
+			productName = Zimu;
+			productReference = 5FC698EF1E5D786200B8574D /* Zimu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5FC699071E5D786200B8574D /* ZimuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FC6991F1E5D786200B8574D /* Build configuration list for PBXNativeTarget "ZimuTests" */;
+			buildPhases = (
+				5FC699041E5D786200B8574D /* Sources */,
+				5FC699051E5D786200B8574D /* Frameworks */,
+				5FC699061E5D786200B8574D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FC6990A1E5D786200B8574D /* PBXTargetDependency */,
+			);
+			name = ZimuTests;
+			productName = ZimuTests;
+			productReference = 5FC699081E5D786200B8574D /* ZimuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5FC699121E5D786200B8574D /* ZimuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FC699221E5D786200B8574D /* Build configuration list for PBXNativeTarget "ZimuUITests" */;
+			buildPhases = (
+				5FC6990F1E5D786200B8574D /* Sources */,
+				5FC699101E5D786200B8574D /* Frameworks */,
+				5FC699111E5D786200B8574D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FC699151E5D786200B8574D /* PBXTargetDependency */,
+			);
+			name = ZimuUITests;
+			productName = ZimuUITests;
+			productReference = 5FC699131E5D786200B8574D /* ZimuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FC698E71E5D786200B8574D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Zimu;
+				TargetAttributes = {
+					5FC698EE1E5D786200B8574D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5QXRFWHY2A;
+						ProvisioningStyle = Automatic;
+					};
+					5FC699071E5D786200B8574D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5QXRFWHY2A;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5FC698EE1E5D786200B8574D;
+					};
+					5FC699121E5D786200B8574D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5QXRFWHY2A;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5FC698EE1E5D786200B8574D;
+					};
+				};
+			};
+			buildConfigurationList = 5FC698EA1E5D786200B8574D /* Build configuration list for PBXProject "Zimu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5FC698E61E5D786200B8574D;
+			productRefGroup = 5FC698F01E5D786200B8574D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FC698EE1E5D786200B8574D /* Zimu */,
+				5FC699071E5D786200B8574D /* ZimuTests */,
+				5FC699121E5D786200B8574D /* ZimuUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FC698ED1E5D786200B8574D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FC699021E5D786200B8574D /* LaunchScreen.storyboard in Resources */,
+				5FC698FF1E5D786200B8574D /* Assets.xcassets in Resources */,
+				5FC698FD1E5D786200B8574D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC699061E5D786200B8574D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC699111E5D786200B8574D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CE6E7B1B7068E3FF90FDB7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D734DE4920A56CF237F82354 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zimu/Pods-Zimu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED0086385F7615949E8C33ED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zimu/Pods-Zimu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FC698EB1E5D786200B8574D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FC698FA1E5D786200B8574D /* ViewController.m in Sources */,
+				5FC698F71E5D786200B8574D /* AppDelegate.m in Sources */,
+				5FC698F41E5D786200B8574D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC699041E5D786200B8574D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FC6990D1E5D786200B8574D /* ZimuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC6990F1E5D786200B8574D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FC699181E5D786200B8574D /* ZimuUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5FC6990A1E5D786200B8574D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FC698EE1E5D786200B8574D /* Zimu */;
+			targetProxy = 5FC699091E5D786200B8574D /* PBXContainerItemProxy */;
+		};
+		5FC699151E5D786200B8574D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FC698EE1E5D786200B8574D /* Zimu */;
+			targetProxy = 5FC699141E5D786200B8574D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5FC698FB1E5D786200B8574D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FC698FC1E5D786200B8574D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5FC699001E5D786200B8574D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FC699011E5D786200B8574D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5FC6991A1E5D786200B8574D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5FC6991B1E5D786200B8574D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5FC6991D1E5D786200B8574D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				INFOPLIST_FILE = Zimu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.Zimu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5FC6991E1E5D786200B8574D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				INFOPLIST_FILE = Zimu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.Zimu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5FC699201E5D786200B8574D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				INFOPLIST_FILE = ZimuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.ZimuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zimu.app/Zimu";
+			};
+			name = Debug;
+		};
+		5FC699211E5D786200B8574D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				INFOPLIST_FILE = ZimuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.ZimuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zimu.app/Zimu";
+			};
+			name = Release;
+		};
+		5FC699231E5D786200B8574D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				INFOPLIST_FILE = ZimuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.ZimuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Zimu;
+			};
+			name = Debug;
+		};
+		5FC699241E5D786200B8574D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				INFOPLIST_FILE = ZimuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.ZimuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Zimu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FC698EA1E5D786200B8574D /* Build configuration list for PBXProject "Zimu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FC6991A1E5D786200B8574D /* Debug */,
+				5FC6991B1E5D786200B8574D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FC6991C1E5D786200B8574D /* Build configuration list for PBXNativeTarget "Zimu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FC6991D1E5D786200B8574D /* Debug */,
+				5FC6991E1E5D786200B8574D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5FC6991F1E5D786200B8574D /* Build configuration list for PBXNativeTarget "ZimuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FC699201E5D786200B8574D /* Debug */,
+				5FC699211E5D786200B8574D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5FC699221E5D786200B8574D /* Build configuration list for PBXNativeTarget "ZimuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FC699231E5D786200B8574D /* Debug */,
+				5FC699241E5D786200B8574D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5FC698E71E5D786200B8574D /* Project object */;
+}
