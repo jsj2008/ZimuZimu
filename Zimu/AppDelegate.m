@@ -7,11 +7,8 @@
 //
 
 #import "AppDelegate.h"
-<<<<<<< HEAD
 #import "UMMobClick/MobClick.h"
-=======
 #import "BaseTabBarController.h"
->>>>>>> origin/master
 
 @interface AppDelegate ()
 
@@ -21,17 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-<<<<<<< HEAD
     // Override point for customization after application launch.
     [self setUMMobClick];
-=======
     
     //设置BaseTabBarController为根控制器
     self.window = [[UIWindow alloc]init];
     BaseTabBarController *baseTabBarController = [[BaseTabBarController alloc]init];
     [self.window setRootViewController:baseTabBarController];
     [self.window makeKeyAndVisible];
->>>>>>> origin/master
     
     return YES;
 }
