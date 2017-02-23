@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
+<<<<<<< HEAD
 #import "UMMobClick/MobClick.h"
+=======
+#import "BaseTabBarController.h"
+>>>>>>> origin/master
 
 @interface AppDelegate ()
 
@@ -17,8 +21,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+<<<<<<< HEAD
     // Override point for customization after application launch.
     [self setUMMobClick];
+=======
+    
+    //设置BaseTabBarController为根控制器
+    self.window = [[UIWindow alloc]init];
+    BaseTabBarController *baseTabBarController = [[BaseTabBarController alloc]init];
+    [self.window setRootViewController:baseTabBarController];
+    [self.window makeKeyAndVisible];
+>>>>>>> origin/master
     
     return YES;
 }
@@ -32,6 +45,7 @@
     
     [MobClick startWithConfigure:UMConfigInstance];
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

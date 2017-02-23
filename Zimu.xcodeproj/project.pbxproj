@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5BCE89FC72DFB00B50889F0A /* Pods_Zimu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481634BDD47E6138955329BC /* Pods_Zimu.framework */; };
+		5F9C3C631E5DE7EF009659E4 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3C621E5DE7EF009659E4 /* BaseTabBarController.m */; };
 		5FC698F41E5D786200B8574D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC698F31E5D786200B8574D /* main.m */; };
 		5FC698F71E5D786200B8574D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC698F61E5D786200B8574D /* AppDelegate.m */; };
-		5FC698FA1E5D786200B8574D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC698F91E5D786200B8574D /* ViewController.m */; };
-		5FC698FD1E5D786200B8574D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC698FB1E5D786200B8574D /* Main.storyboard */; };
 		5FC698FF1E5D786200B8574D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FC698FE1E5D786200B8574D /* Assets.xcassets */; };
-		5FC699021E5D786200B8574D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC699001E5D786200B8574D /* LaunchScreen.storyboard */; };
 		5FC6990D1E5D786200B8574D /* ZimuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC6990C1E5D786200B8574D /* ZimuTests.m */; };
 		5FC699181E5D786200B8574D /* ZimuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC699171E5D786200B8574D /* ZimuUITests.m */; };
 /* End PBXBuildFile section */
@@ -39,15 +37,13 @@
 		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
 		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
 		481634BDD47E6138955329BC /* Pods_Zimu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zimu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F9C3C611E5DE7EF009659E4 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
+		5F9C3C621E5DE7EF009659E4 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
 		5FC698EF1E5D786200B8574D /* Zimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC698F31E5D786200B8574D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5FC698F51E5D786200B8574D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FC698F61E5D786200B8574D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5FC698F81E5D786200B8574D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5FC698F91E5D786200B8574D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5FC698FC1E5D786200B8574D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FC698FE1E5D786200B8574D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5FC699011E5D786200B8574D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FC699031E5D786200B8574D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FC699081E5D786200B8574D /* ZimuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZimuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC6990C1E5D786200B8574D /* ZimuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZimuTests.m; sourceTree = "<group>"; };
@@ -119,11 +115,9 @@
 			children = (
 				5FC698F51E5D786200B8574D /* AppDelegate.h */,
 				5FC698F61E5D786200B8574D /* AppDelegate.m */,
-				5FC698F81E5D786200B8574D /* ViewController.h */,
-				5FC698F91E5D786200B8574D /* ViewController.m */,
-				5FC698FB1E5D786200B8574D /* Main.storyboard */,
+				5F9C3C611E5DE7EF009659E4 /* BaseTabBarController.h */,
+				5F9C3C621E5DE7EF009659E4 /* BaseTabBarController.m */,
 				5FC698FE1E5D786200B8574D /* Assets.xcassets */,
-				5FC699001E5D786200B8574D /* LaunchScreen.storyboard */,
 				5FC699031E5D786200B8574D /* Info.plist */,
 				5FC698F21E5D786200B8574D /* Supporting Files */,
 			);
@@ -276,9 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FC699021E5D786200B8574D /* LaunchScreen.storyboard in Resources */,
 				5FC698FF1E5D786200B8574D /* Assets.xcassets in Resources */,
-				5FC698FD1E5D786200B8574D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,8 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FC698FA1E5D786200B8574D /* ViewController.m in Sources */,
 				5FC698F71E5D786200B8574D /* AppDelegate.m in Sources */,
+				5F9C3C631E5DE7EF009659E4 /* BaseTabBarController.m in Sources */,
 				5FC698F41E5D786200B8574D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,25 +379,6 @@
 			targetProxy = 5FC699141E5D786200B8574D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		5FC698FB1E5D786200B8574D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FC698FC1E5D786200B8574D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5FC699001E5D786200B8574D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FC699011E5D786200B8574D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5FC6991A1E5D786200B8574D /* Debug */ = {
@@ -503,6 +476,7 @@
 			baseConfigurationReference = 3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				DEVELOPMENT_TEAM = 5QXRFWHY2A;
 				INFOPLIST_FILE = Zimu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -517,6 +491,7 @@
 			baseConfigurationReference = 1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				DEVELOPMENT_TEAM = 5QXRFWHY2A;
 				INFOPLIST_FILE = Zimu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -595,6 +570,7 @@
 				5FC6991E1E5D786200B8574D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FC6991F1E5D786200B8574D /* Build configuration list for PBXNativeTarget "ZimuTests" */ = {
 			isa = XCConfigurationList;
@@ -603,6 +579,7 @@
 				5FC699211E5D786200B8574D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FC699221E5D786200B8574D /* Build configuration list for PBXNativeTarget "ZimuUITests" */ = {
 			isa = XCConfigurationList;
@@ -611,6 +588,7 @@
 				5FC699241E5D786200B8574D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
