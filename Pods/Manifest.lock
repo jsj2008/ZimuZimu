@@ -26,6 +26,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - UMengAnalytics (4.2.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - PYSearch
   - ReactiveCocoa (~> 2.1.8)
   - SDWebImage
+  - UMengAnalytics
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -42,7 +44,8 @@ SPEC CHECKSUMS:
   PYSearch: d6cce1f5a2f9390d1f2636d9dc0544cad0607ea8
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
 
-PODFILE CHECKSUM: 933479ccbc2b70dc28fc2ff08c06f3fd8002ba71
+PODFILE CHECKSUM: de47a00838317e4da2dfe374435cef7af4e6ada8
 
 COCOAPODS: 1.2.0

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UMMobClick/MobClick.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +18,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setUMMobClick];
+    
     return YES;
 }
-
+//设置友盟统计参数
+- (void)setUMMobClick{
+    UMConfigInstance.appKey = @"58ad5e6a75ca355b62000766";
+    UMConfigInstance.channelId = @"App Store";
+//    UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    
+    [MobClick startWithConfigure:UMConfigInstance];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

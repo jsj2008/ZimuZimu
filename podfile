@@ -9,6 +9,6 @@ pod 'ReactiveCocoa', '~> 2.1.8'
 pod 'Masonry'
 pod 'PYSearch'
 pod 'SDWebImage'
-
+pod 'UMengAnalytics'
 
 end
