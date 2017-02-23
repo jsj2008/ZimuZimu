@@ -37,7 +37,11 @@
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
     
+    [MobClick profileSignInWithPUID:@"playerID"];
+    [MobClick setEncryptEnabled:YES];              //设置日志加密模式为YES
+
     [MobClick startWithConfigure:UMConfigInstance];
+    
 }
 
 

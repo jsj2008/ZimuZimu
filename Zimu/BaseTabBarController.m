@@ -7,6 +7,7 @@
 //
 
 #import "BaseTabBarController.h"
+#import "UMMobClick/MobClick.h"
 
 @interface BaseTabBarController ()
 
@@ -21,8 +22,15 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"PageOne123"];//("PageOne"为页面名称，可自定义)
+}
 
-
+- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"PageOne123"];
+}
 /*
 *  添加子控制器
 *
