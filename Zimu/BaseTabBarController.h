@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseTabBarController.h
 //  Zimu
 //
 //  Created by Redpower on 2017/2/22.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BaseTabBarController : UITabBarController
 
 @end
-
