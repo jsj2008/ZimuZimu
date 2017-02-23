@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UMMobClick/MobClick.h"
-#import "BaseTabBarController.h"
+#import "RootTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -23,8 +23,8 @@
     
     //设置BaseTabBarController为根控制器
     self.window = [[UIWindow alloc]init];
-    BaseTabBarController *baseTabBarController = [[BaseTabBarController alloc]init];
-    [self.window setRootViewController:baseTabBarController];
+    RootTabBarController *rootTabBarController = [[RootTabBarController alloc]init];
+    [self.window setRootViewController:rootTabBarController];
     [self.window makeKeyAndVisible];
     
     return YES;
