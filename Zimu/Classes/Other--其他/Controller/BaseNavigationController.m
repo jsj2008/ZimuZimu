@@ -35,9 +35,11 @@
     
     //判断是否为栈底控制器，若为栈底则不设置
     if (self.childViewControllers.count > 0) {
+        //push的时候隐藏tabBar
+        viewController.hidesBottomBarWhenPushed = YES;
         
         //自定义左上角pop返回按钮
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backBarButtonItemWithImageName:@"navigationButtonReturn" title:@"返回" target:self action:@selector(back)];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backBarButtonItemWithImageName:@"navigationButtonReturn" title:@"" target:self action:@selector(back)];
     }
     
     [super pushViewController:viewController animated:animated];
