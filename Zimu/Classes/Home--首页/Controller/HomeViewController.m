@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "UIBarButtonItem+ZMExtension.h"
 #import "TestViewController.h"
+#import "UMMobClick/MobClick.h"
 
 @interface HomeViewController ()
 
@@ -24,8 +25,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    [MobClick beginLogPageView:@"Home"];//("PageOne"为页面名称，可自定义)
     self.hidesBottomBarWhenPushed = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+     [MobClick endLogPageView:@"Home"];
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
