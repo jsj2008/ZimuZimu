@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
   - PYSearch (0.5.8)
   - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core (= 2.1.8)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - AFNetworking
   - Masonry
   - MBProgressHUD
+  - MJRefresh
   - PYSearch
   - ReactiveCocoa (~> 2.1.8)
   - SDWebImage
@@ -41,11 +43,12 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   PYSearch: d6cce1f5a2f9390d1f2636d9dc0544cad0607ea8
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
 
-PODFILE CHECKSUM: de47a00838317e4da2dfe374435cef7af4e6ada8
+PODFILE CHECKSUM: de89042e803c53eddb4e22b483ab02d32fde9b6c
 
 COCOAPODS: 1.2.0

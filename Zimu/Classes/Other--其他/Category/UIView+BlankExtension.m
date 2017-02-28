@@ -32,9 +32,7 @@ static const void *blankPageViewKey = &blankPageViewKey;
     [self.blankPageView configWithType:XMBlankPageTypeNoData hasData:hasData hasError:hasError relodButtonBlock:block];
     
     [self.blankPageContainerView insertSubview:self.blankPageView atIndex:0];
-    
-//    [self addSubview:self.blankPageView];
-    
+
 }
 
 - (UIView *)blankPageContainerView{

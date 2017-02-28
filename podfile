@@ -10,5 +10,6 @@ pod 'Masonry'
 pod 'PYSearch'
 pod 'SDWebImage'
 pod 'UMengAnalytics'
+pod 'MJRefresh'
 
 end

@@ -11,10 +11,18 @@
 @interface UIImage (ZMExtension)
 
 
-/*
-    取消图片渲染效果
+/**
+ *   取消图片渲染效果
  */
 + (UIImage *)originalImageWithImageName:(NSString *)imageName;
 
+
+/**
+ *   颜色图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+
+
+- (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size;
 
 @end
