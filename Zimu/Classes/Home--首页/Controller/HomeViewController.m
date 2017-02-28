@@ -9,6 +9,11 @@
 #import "HomeViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIBarButtonItem+ZMExtension.h"
+<<<<<<< HEAD
+=======
+#import "TestViewController.h"
+#import "UMMobClick/MobClick.h"
+>>>>>>> origin/master
 
 #import "HomeArrayDataSource.h"
 #import "HomeTableView.h"
@@ -36,6 +41,7 @@ static NSString *identifier = @"homeCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+<<<<<<< HEAD
     self.view.backgroundColor = themeWhite;
     
     //设置系统导航栏为透明
@@ -48,11 +54,24 @@ static NSString *identifier = @"homeCell";
     
     [self setupHeaderView];
 
+=======
+>>>>>>> origin/master
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+<<<<<<< HEAD
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+=======
+
+    [MobClick beginLogPageView:@"Home"];//("PageOne"为页面名称，可自定义)
+    self.hidesBottomBarWhenPushed = YES;
+
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+     [MobClick endLogPageView:@"Home"];
+>>>>>>> origin/master
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
