@@ -21,19 +21,14 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-<<<<<<< HEAD
+
     [MobClick beginLogPageView:@"Home"];//("PageOne"为页面名称，可自定义)
     self.hidesBottomBarWhenPushed = YES;
-=======
-    
->>>>>>> origin/master
+
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
