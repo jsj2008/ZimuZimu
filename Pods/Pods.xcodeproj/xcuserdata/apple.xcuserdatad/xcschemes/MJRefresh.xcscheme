@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0ADF82D14D9B1E55BF646BB4CC849CE9'
-               BlueprintName = 'PYSearch'
+               BlueprintIdentifier = 'E14A62900910444707A5504D25EC98DC'
+               BlueprintName = 'MJRefresh'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PYSearch.framework'>
+               BuildableName = 'MJRefresh.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

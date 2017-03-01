@@ -7,6 +7,7 @@
 //
 
 #import "CourseViewController.h"
+#import "HomeVideoViewController.h"
 
 @interface CourseViewController ()
 
@@ -25,6 +26,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    HomeVideoViewController *dVC = [[HomeVideoViewController alloc] init];
+    [self.navigationController pushViewController:dVC animated:YES];
+    
+}
 /*
 #pragma mark - Navigation
 

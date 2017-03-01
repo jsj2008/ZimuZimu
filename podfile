@@ -11,5 +11,5 @@ pod 'PYSearch'
 pod 'SDWebImage'
 pod 'UMengAnalytics'
 pod 'MJRefresh'
-
+pod 'YYModel'
 end
