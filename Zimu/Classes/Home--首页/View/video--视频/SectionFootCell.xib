@@ -23,9 +23,6 @@
                         <state key="normal" title="查看更多&gt;&gt;">
                             <color key="titleColor" red="0.12549019610000001" green="0.58823529409999997" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
-                        <connections>
-                            <action selector="readMore:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uC4-yM-4sz"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ti4-bV-OSe">
                         <rect key="frame" x="162.5" y="0.0" width="161.5" height="58"/>
@@ -33,9 +30,6 @@
                         <state key="normal" title="换一批" image="change">
                             <color key="titleColor" red="0.12549019607843137" green="0.58823529411764708" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
-                        <connections>
-                            <action selector="changeList:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ORo-1p-XEK"/>
-                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cu9-FE-k39">
                         <rect key="frame" x="161.5" y="2" width="1" height="54"/>

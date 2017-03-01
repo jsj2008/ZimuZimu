@@ -134,8 +134,10 @@ static NSString *videoCell = @"VideoListCell";
             return cell;
         }else if (indexPath.row == 5){                  //尾
             SectionFootCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:sectionFootCell forIndexPath:indexPath];
-            cell.changeListBtn.tag = indexPath.section * 100 + indexPath.row;
-            cell.seeMoreBtn.tag = indexPath.section * 100 + indexPath.row;;
+            cell.changeListBtn.tag = indexPath.section;
+            cell.seeMoreBtn.tag = indexPath.section;
+            [cell.changeListBtn addTarget:self action:@selector(changeList:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.seeMoreBtn addTarget:self action:@selector(seemORE:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }else{                                          //视频内容
             NSArray *arr = videoDic[@"seectionData"];
@@ -189,5 +191,32 @@ static NSString *videoCell = @"VideoListCell";
     return CGSizeMake(cellWidth, cellWidth + 65);
 }
 #pragma mark - delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section != 0) {
+        if (indexPath.section == 1) {
+            if (indexPath.row != 0) {
+                NSLog(@"专题------%li", indexPath.row);
+            }
+        }else{
+            if (indexPath.row != 0 && indexPath.row != 5) {
+                NSLog(@"视频------%li-%li", indexPath.section - 2, indexPath.row - 1);
+            }
+        }
+    }
+//    NSLog(@"%li", indexPath.row);
+}
+
+#pragma mark - SDCycleScrollViewDelegate
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    NSLog(@"%li", index);
+}
+#pragma mark - 更多和换一批
+- (void)seemORE:(UIButton *)btn{
+    NSLog(@"查看更多------%li",btn.tag);
+}
+
+- (void)changeList:(UIButton *)btn{
+    NSLog(@"换一批-------%li",btn.tag);
+}
 
 @end

@@ -72,4 +72,7 @@ static NSString *subjectCell = @"SubjectListCell";
     return CGSizeMake(cellWidth, cellWidth * 1.25 + 56);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+     NSLog(@"专题------%li", indexPath.row);
+}
 @end
