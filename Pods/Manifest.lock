@@ -28,7 +28,11 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - UMengAnalytics (4.2.4)
+<<<<<<< HEAD
   - YMCitySelect (1.2.2)
+=======
+  - YYModel (1.0.4)
+>>>>>>> origin/master
 
 DEPENDENCIES:
   - AFNetworking
@@ -39,7 +43,11 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.1.8)
   - SDWebImage
   - UMengAnalytics
+<<<<<<< HEAD
   - YMCitySelect
+=======
+  - YYModel
+>>>>>>> origin/master
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -50,8 +58,14 @@ SPEC CHECKSUMS:
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
+<<<<<<< HEAD
   YMCitySelect: 1b415b7d8c1cc5ba8efac4327ed944c918244a81
 
 PODFILE CHECKSUM: a3043a6095575626a41b2a8a89e608d7b68dd248
+=======
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 22e351e10e2da04f512211f85547ce73d13dd149
+>>>>>>> origin/master
 
 COCOAPODS: 1.2.0

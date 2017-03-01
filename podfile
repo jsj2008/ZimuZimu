@@ -11,7 +11,11 @@ pod 'PYSearch'
 pod 'SDWebImage'
 pod 'UMengAnalytics'
 pod 'MJRefresh'
+<<<<<<< HEAD
 pod 'YMCitySelect'
 
 
+=======
+pod 'YYModel'
+>>>>>>> origin/master
 end
