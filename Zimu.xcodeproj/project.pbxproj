@@ -896,11 +896,8 @@
 				5F9C3C9D1E5EB6A4009659E4 /* ZMTabBar.m in Sources */,
 				5F9C3CC11E5EBB96009659E4 /* UIBarButtonItem+ZMExtension.m in Sources */,
 				5F9C3CAC1E5EB825009659E4 /* UIView+BlankExtension.m in Sources */,
-<<<<<<< HEAD
 				5FE200601E6508E90021DD27 /* HomeTableViewCell.m in Sources */,
-=======
 				18C7E6F01E6512A200E62757 /* SubjectListCell.m in Sources */,
->>>>>>> origin/master
 				5F9C3C911E5E80AC009659E4 /* main.m in Sources */,
 				5F9C3CA31E5EB7B5009659E4 /* BaseNavigationController.m in Sources */,
 				5F9C3CA01E5EB6C8009659E4 /* RootTabBarController.m in Sources */,
