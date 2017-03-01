@@ -1,0 +1,6 @@
+framework module YMCitySelect {
+  umbrella header "YMCitySelect-umbrella.h"
+
+  export *
+  module * { export * }
+}

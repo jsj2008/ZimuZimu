@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "HomeTableViewCell.h"
 
 typedef void(^HomeTableViewCellBlock)(id cell, id text);
 

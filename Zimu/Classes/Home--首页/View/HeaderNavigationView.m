@@ -12,10 +12,12 @@
 #import "TestViewController.h"
 #import "UIView+ViewController.h"
 #import "BaseNavigationController.h"
+#import "YMCitySelect.h"
+#import "PYSearch.h"
 
 #define homeHeaderHeight 136
 
-@interface HeaderNavigationView ()<UISearchBarDelegate>
+@interface HeaderNavigationView ()<UISearchBarDelegate, YMCitySelectDelegate, PYSearchViewControllerDelegate>
 
 @property (nonatomic, strong) UIVisualEffectView *backGroundView;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -59,7 +61,7 @@
 
 //搜索框
 - (UISearchBar *)searchBar{
-    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(-self.bounds.size.width + 80, (self.bounds.size.height - 20 - 30)/2.0 + 20, self.bounds.size.width - 100, 30)];
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(-self.bounds.size.width + 90, (self.bounds.size.height - 20 - 30)/2.0 + 20, self.bounds.size.width - 105, 30)];
     _searchBar.placeholder = @"请输入咨询问题或专家名字";
     _searchBar.layer.cornerRadius = 15;
     _searchBar.layer.masksToBounds = YES;
@@ -68,8 +70,8 @@
     [_searchBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:_searchBar.bounds.size]];
     
     UITextField *searchField = [_searchBar valueForKey:@"_searchField"];
-    searchField.textColor = [UIColor darkTextColor];
-    [searchField setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    searchField.font = [UIFont systemFontOfSize:12];
+    [searchField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     
     return _searchBar;
 }
@@ -82,11 +84,14 @@
     [_searchButton addTarget:self action:@selector(searchButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     return _searchButton;
+    
+    
 }
 
 //地址按钮
 - (ListSelectButton *)addressButton{
-    _addressButton = [[ListSelectButton alloc]initWithFrame:CGRectMake(10, (self.bounds.size.height - 20 - 30)/2.0 + 20, 60, 30) title:@"地址" imageName:@"icon_arrow" target:self action:@selector(selectAddress)];
+    _addressButton = [[ListSelectButton alloc]initWithFrame:CGRectMake(10, (self.bounds.size.height - 20 - 30)/2.0 + 20, 70, 30) title:@"地址" imageName:@"icon_arrow" target:self action:@selector(selectAddress)];
+    
     _addressButton.backgroundColor = [UIColor clearColor];
     _addressButton.ZMImageSite = ZMImageSiteRight;
     
@@ -139,7 +144,7 @@
         if (contentOffsetY < homeHeaderHeight) {
             //
             [UIView animateWithDuration:0.25 animations:^{
-                _searchBar.frame = CGRectMake(-self.bounds.size.width + 80, (self.bounds.size.height - 20 - 30)/2.0 + 20, self.bounds.size.width - 100, 30);
+                _searchBar.frame = CGRectMake(-self.bounds.size.width + 90, (self.bounds.size.height - 20 - 30)/2.0 + 20, self.bounds.size.width - 105, 30);
                 _searchButton.alpha = 1;
                 _scanButton.alpha = 1;
                 
@@ -149,7 +154,7 @@
         }else if (contentOffsetY >= homeHeaderHeight){
             //
             [UIView animateWithDuration:0.25 animations:^{
-                _searchBar.frame = CGRectMake(80, (self.bounds.size.height - 20 - 30)/2.0 + 20, self.bounds.size.width - 100, 30);
+                _searchBar.frame = CGRectMake(90, (self.bounds.size.height - 20 - 30)/2.0 + 20, self.bounds.size.width - 105, 30);
                 _searchButton.alpha = 1 - alphaValue;
                 _scanButton.alpha  =1 - alphaValue;
             }completion:^(BOOL finished) {
@@ -159,31 +164,79 @@
     }
 }
 
+#pragma mark - 搜索search
 - (void)searchButtonAction{
-    NSLog(@"search");
-    TestViewController *testVC = [[TestViewController alloc]init];
-    [self.viewController.navigationController pushViewController:testVC animated:YES];
+    NSArray *hotArray = @[@"沙克斯军",@"都是大幅度",@"ds ",@"手动",@"多岁的",@"额外若翁如",@"让我"];
+    PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:hotArray searchBarPlaceholder:@"请输入搜索内容"];
+    //搜索代理方法
+    searchVC.delegate = self;
+    //搜索结果展示样式
+    searchVC.searchResultShowMode = PYSearchResultShowModeEmbed;
+    //设置搜索结果视图控制器
+    searchVC.searchResultController = [[TestViewController alloc]init];
+
+    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:searchVC];
+    [self.viewController presentViewController:navi animated:YES completion:nil];
+
+}
+// UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    [self searchButtonAction];
+    return NO;
+}
+// - PYSearchViewControllerDelegate
+- (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)searchBar searchText:(NSString *)searchText{
+    if (searchText.length) {
+        //设置搜索建议数据
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            searchViewController.searchSuggestions = @[@"sdsd",@"fdf",@"dsds",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs"];
+            
+        });
+    }
+}
+//选择热门搜索
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText{
+    NSLog(@"热门搜索 : %@",searchText);
+}
+//选择搜索历史
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText{
+    NSLog(@"搜索历史 : %@",searchText);
+    
+}
+//选择搜索结果
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText{
+    NSLog(@"搜索结果 : %@",searchText);
+    
+}
+//选择搜索建议
+- (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchSuggestionAtIndex:(NSInteger)index searchText:(NSString *)searchText{
+    NSLog(@"搜索建议 : %@",searchText);
+    
 }
 
+
+
+#pragma mark - 扫一扫
 - (void)scanButtonAction{
     NSLog(@"scan");
     
     TestViewController *testVC = [[TestViewController alloc]init];
-    [self.viewController.navigationController presentViewController:testVC animated:YES completion:nil];
+    [self.viewController.navigationController pushViewController:testVC animated:YES];
 }
 
+#pragma mark - 切换地址
 - (void)selectAddress{
-    NSLog(@"selectAddress");
-    UIViewController *vc = [[UIViewController alloc]init];
-    vc.view.backgroundColor = themeGray;
-    [self.viewController.navigationController pushViewController:vc animated:YES];
+    YMCitySelect *YMCitySelectVC = [[YMCitySelect alloc]init];
+    YMCitySelectVC.ymDelegate = self;
+    [self.viewController presentViewController:YMCitySelectVC animated:YES completion:nil];
+}
+//YMCitySelectDelegate
+- (void)ym_ymCitySelectCityName:(NSString *)cityName{
+    [_addressButton setTitle:cityName forState:UIControlStateNormal];
 }
 
-#pragma mark - UISearchBarDelegate
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    NSLog(@"去搜索");
-    return NO;
-}
+
 
 
 

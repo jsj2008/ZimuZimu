@@ -44,20 +44,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YMCitySelect.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1A69987FF8EB23E4B4556A6BFC799540</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>41FA54D12162DAD51D02FC58A2CD5034</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF10645753865EFEDFAF7E313F7FD257</key>
+		<key>9C58920B1E6B3176D0AB2DA20A9743C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2762A4742B75FD9ABA04C7238068826</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A34C58318C5FAC884E91F0FBD2597E93</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A90352F7CC68F1B3447B0C19F91C3836</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F839DF81A4113C0F57DD18BA1FE81880</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FCA317129F0FE6D003C0AAD9D7496ECD</key>
+		<key>F9B84606407EA8BB8C4B528E73434DEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

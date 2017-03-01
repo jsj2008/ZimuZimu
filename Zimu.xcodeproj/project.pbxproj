@@ -56,6 +56,8 @@
 		5F9C3D241E642638009659E4 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3D231E642638009659E4 /* HomeHeaderView.m */; };
 		5FC6990D1E5D786200B8574D /* ZimuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC6990C1E5D786200B8574D /* ZimuTests.m */; };
 		5FC699181E5D786200B8574D /* ZimuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC699171E5D786200B8574D /* ZimuUITests.m */; };
+		5FE200601E6508E90021DD27 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2005E1E6508E90021DD27 /* HomeTableViewCell.m */; };
+		5FE200611E6508E90021DD27 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2005F1E6508E90021DD27 /* HomeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +170,9 @@
 		5FC699131E5D786200B8574D /* ZimuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZimuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC699171E5D786200B8574D /* ZimuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZimuUITests.m; sourceTree = "<group>"; };
 		5FC699191E5D786200B8574D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FE2005D1E6508E90021DD27 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		5FE2005E1E6508E90021DD27 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		5FE2005F1E6508E90021DD27 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,6 +540,9 @@
 				5F9C3CC71E5F32C7009659E4 /* HomeTableView.m */,
 				5F9C3CC91E5F3348009659E4 /* HomeArrayDataSource.h */,
 				5F9C3CCA1E5F3348009659E4 /* HomeArrayDataSource.m */,
+				5FE2005D1E6508E90021DD27 /* HomeTableViewCell.h */,
+				5FE2005E1E6508E90021DD27 /* HomeTableViewCell.m */,
+				5FE2005F1E6508E90021DD27 /* HomeTableViewCell.xib */,
 			);
 			name = HomeTableView;
 			sourceTree = "<group>";
@@ -728,6 +736,7 @@
 				5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */,
 				5F9C3D131E63C669009659E4 /* cycle_05.jpg in Resources */,
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
+				5FE200611E6508E90021DD27 /* HomeTableViewCell.xib in Resources */,
 				5F9C3D0F1E63C669009659E4 /* cycle_01.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,6 +824,7 @@
 				5F9C3C9D1E5EB6A4009659E4 /* ZMTabBar.m in Sources */,
 				5F9C3CC11E5EBB96009659E4 /* UIBarButtonItem+ZMExtension.m in Sources */,
 				5F9C3CAC1E5EB825009659E4 /* UIView+BlankExtension.m in Sources */,
+				5FE200601E6508E90021DD27 /* HomeTableViewCell.m in Sources */,
 				5F9C3C911E5E80AC009659E4 /* main.m in Sources */,
 				5F9C3CA31E5EB7B5009659E4 /* BaseNavigationController.m in Sources */,
 				5F9C3CA01E5EB6C8009659E4 /* RootTabBarController.m in Sources */,

@@ -30,6 +30,7 @@
         self.dataSource = homeArrayDataSource;
         self.delegate = self;
         
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self sethiddenExtraLine];
     }
     return self;
@@ -37,15 +38,16 @@
 
 //UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 200;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"cellText : %@",cell.textLabel.text);
-    
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    NSLog(@"cellText : %@",cell.textLabel.text);
+    NSLog(@"section : %li  row : %li",indexPath.section,indexPath.row);
     
     TestViewController *testVC = [[TestViewController alloc]init];
     [self.viewController.navigationController pushViewController:testVC animated:YES];
+    NSLog(@"viewc : %@",self.viewController);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

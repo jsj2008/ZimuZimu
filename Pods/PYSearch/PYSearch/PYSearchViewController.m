@@ -199,10 +199,10 @@
     return self.navigationItem.rightBarButtonItem;
 }
 
-/** 视图完全显示 */
-- (void)viewDidAppear:(BOOL)animated
+/** 视图将要显示 */
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     // 弹出键盘
     [self.searchBar becomeFirstResponder];
@@ -224,7 +224,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-/** 初始化 */
+#pragma mark - /** 初始化 */
 - (void)setup
 {
     // 设置背景颜色为白色
@@ -237,7 +237,7 @@
      * 设置一些默认设置
      */
     // 热门搜索风格设置
-    self.hotSearchStyle = PYHotSearchStyleDefault;
+    self.hotSearchStyle = PYHotSearchStyleBorderTag;
     // 设置搜索历史风格
     self.searchHistoryStyle = PYHotSearchStyleDefault;
     // 设置搜索结果显示模式
@@ -247,7 +247,7 @@
     // 搜索历史缓存路径
     self.searchHistoriesCachePath = PYSEARCH_SEARCH_HISTORY_CACHE_PATH;
     // 搜索历史缓存最多条数
-    self.searchHistoriesCount = 20;
+    self.searchHistoriesCount = 15;
     // 显示搜索历史
     self.showSearchHistory = YES;
     // 显示热门搜索

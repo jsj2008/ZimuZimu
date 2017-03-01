@@ -17,7 +17,12 @@ typedef enum ZMImageSite{
 
 @property (nonatomic, assign) ZMImageSite ZMImageSite;
 
+@property (nonatomic, assign) CGRect titleRect;     //标题frame
+@property (nonatomic, assign) CGRect imageRect;     //图片frame
+
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title imageName:(NSString *)imageName target:(id)target action:(SEL)action;
+
+- (CGRect)titleRect;
 
 
 

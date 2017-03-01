@@ -9,7 +9,7 @@
 #import "ListSelectButton.h"
 
 /*标题文字常态颜色*/
-#define itemTextColor [UIColor blackColor]
+#define itemTextColor themeBlack
 /*标题文字选中颜色*/
 #define itemTextSelectedColor [UIColor greenColor]
 /*标题背景色*/
@@ -21,7 +21,7 @@
 #define KAnimationTime (0.3f)
 
 /*title和image的间隙*/
-#define KTapping (2)
+#define KTapping (3)
 
 
 @implementation ListSelectButton
@@ -51,15 +51,9 @@
 
 /*文字和图片的左右关系*/
 - (void)setZMImageSite:(ZMImageSite)ZMImageSite{
-    switch (ZMImageSite) {
-        case ZMImageSiteRight:
-            
-            [self fitImageSiteWithTitle];
-            
-            break;
-            
-        default:
-            break;
+    if (_ZMImageSite != ZMImageSite) {
+        _ZMImageSite = ZMImageSite;
+        [self fitImageSiteWithTitle];
     }
 }
 
@@ -70,19 +64,33 @@
     CGFloat titleHeight = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}].height;
     CGFloat imageWidth = self.currentImage.size.width;
     CGFloat imageHeight = self.currentImage.size.height;
-    CGFloat titleTapping = (self.frame.size.height - titleHeight)/2.0;
-    CGFloat imageTapping = (self.frame.size.height - imageHeight)/2.0;
+    CGFloat titleTapping = (self.height - titleHeight)/2.0;
+    CGFloat imageTapping = (self.height - imageHeight)/2.0;
     
+    //判断 文字宽度+图片宽度 与 按钮宽度 的大小
     if (titleWidth + imageWidth + KTapping*2 >= self.frame.size.width) {
-        titleWidth = self.frame.size.width - imageWidth - KTapping*2;
-        [self setImageEdgeInsets:UIEdgeInsetsMake(imageTapping, titleWidth + KTapping, imageTapping, -titleWidth + 5)];//5为微调数值
-        [self setTitleEdgeInsets:UIEdgeInsetsMake(titleTapping, -imageWidth - KTapping, titleTapping, imageWidth + KTapping)];
-    }else{
-        [self setTitleEdgeInsets:UIEdgeInsetsMake(titleTapping, -imageWidth - KTapping, titleTapping, imageWidth + KTapping)];
-        [self setImageEdgeInsets:UIEdgeInsetsMake(imageTapping, titleWidth + KTapping, imageTapping, -titleWidth - KTapping)];
+        //大于
+        titleWidth = self.width - imageWidth - KTapping;
+    }
+    CGFloat x = (self.width - titleWidth - imageWidth - KTapping)/2.0;
+    switch (self.ZMImageSite) {
+        case ZMImageSiteRight:      //图片在右，文字在左
+            
+            self.titleRect = CGRectMake(x, titleTapping, titleWidth, titleHeight);
+            self.imageRect = CGRectMake(x + titleWidth + KTapping, imageTapping, imageWidth, imageHeight);
+            
+            break;
+            
+        default:                //图片在左，文字在右
+            
+            self.imageRect = CGRectMake(x, imageTapping, imageWidth, imageHeight);
+            self.titleRect = CGRectMake(x + imageWidth + KTapping, titleTapping, titleWidth, titleHeight);
+            
+            break;
     }
     
 }
+
 
 #pragma mark -
 //旋转图片动画
@@ -96,6 +104,28 @@
     }];
 }
 
+
+#pragma mark - 重写设置图片、标题frame方法
+- (CGRect)titleRectForContentRect:(CGRect)contentRect{
+    if (!CGRectIsEmpty(self.titleRect) && !CGRectEqualToRect(self.titleRect, CGRectZero)) {
+        return self.titleRect;
+    }
+    return [super titleRectForContentRect:contentRect];
+}
+
+- (CGRect)imageRectForContentRect:(CGRect)contentRect{
+    if (!CGRectIsEmpty(self.imageRect) && !CGRectEqualToRect(self.imageRect, CGRectZero)) {
+        return self.imageRect;
+    }
+    return [super titleRectForContentRect:contentRect];
+}
+
+- (void)setTitle:(NSString *)title forState:(UIControlState)state{
+    [super setTitle:title forState:state];
+    
+    //标题改变时，重新计算frame
+    [self fitImageSiteWithTitle];
+}
 
 
 @end

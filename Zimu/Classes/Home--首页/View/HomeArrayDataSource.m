@@ -45,17 +45,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:self.identifier];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
+    UINib *nib = [UINib nibWithNibName:@"HomeTableViewCell" bundle:[NSBundle mainBundle]];
+    [tableView registerNib:nib forCellReuseIdentifier:_identifier];
+    
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_identifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.identifier];
+        cell = [[HomeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     self.homeTableViewCellBlock(cell, self.dataArray[indexPath.row]);
     
     return cell;
 }
-
-
 
 
 #pragma mark - <##>
