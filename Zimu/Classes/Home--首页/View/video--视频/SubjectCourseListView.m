@@ -64,12 +64,12 @@ static NSString *subjectCell = @"SubjectListCell";
 
 //delegateFlowLayout
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 0, 1, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 1);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
        
-    CGFloat cellWidth = (kScreenWidth) / 3;
-    return CGSizeMake(cellWidth, cellWidth * 1.25 + 56);
+    CGFloat cellWidth = (kScreenWidth - 3) / 3;
+    return CGSizeMake(cellWidth, cellWidth * 1.25 + 59);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

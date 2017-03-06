@@ -12,6 +12,9 @@
 #import "VideoListCell.h"
 #import "SectionTitleCell.h"
 #import "SDCycleScrollView.h"
+#import "HomeVideoDetailViewController.h"
+#import "UIView+ViewController.h"
+#import "MJRefresh.h"
 
 static NSString *sectionHeadCell = @"SectionTitleCell";
 static NSString *sectionFootCell = @"SectionFootCell";
@@ -22,7 +25,7 @@ static NSString *videoCell = @"VideoListCell";
 #define CYCLECELL_HEIGHT kScreenWidth * 0.67
 #define SUBJECT_HEIGHT (kScreenWidth / 3) * 1.25
 #define VIDEO_HEIGHT kScreenWidth / 2 * 0.90
-#define HEADFOOT_HEIGHT 60
+#define HEADFOOT_HEIGHT 40
 
 @interface HomeVideoListCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SDCycleScrollViewDelegate>
 
@@ -100,6 +103,12 @@ static NSString *videoCell = @"VideoListCell";
         SDCycleScrollView *cycleScrollView3 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, CYCLECELL_HEIGHT) delegate:self placeholderImage:[UIImage imageNamed:@"bfx-logo"]];
         cycleScrollView3.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
         cycleScrollView3.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
+        cycleScrollView3.pageControlDotSize = CGSizeMake(5, 5);
+        cycleScrollView3.currentPageDotColor = themeBlue;
+        cycleScrollView3.pageControlRightOffset = 20;
+        cycleScrollView3.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+        cycleScrollView3.titleLabelBackgroundColor = [UIColor clearColor];
+        cycleScrollView3.titleLabelTextColor = themeBlue;
         NSArray *imgAry = @[@"http://www.yixian8.com/dingnai/1.png", @"http://www.yixian8.com/dingnai/2.png", @"http://www.yixian8.com/dingnai/3.png"];
         cycleScrollView3.imageURLStringsGroup = imgAry;
         cycleScrollView3.titlesGroup = @[@"啊速度快解放", @"胃康灵", @"早教课目无"];
@@ -120,8 +129,9 @@ static NSString *videoCell = @"VideoListCell";
             flowLayout.minimumLineSpacing = 1;
             flowLayout.minimumInteritemSpacing = 1;
             flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-            SubjectCourseListView *sclView = [[SubjectCourseListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SUBJECT_HEIGHT + 58) collectionViewLayout:flowLayout ];
+            SubjectCourseListView *sclView = [[SubjectCourseListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SUBJECT_HEIGHT + 59) collectionViewLayout:flowLayout ];
             [sclView setCourseListData:_subjectCourseListData[@"seectionData"]];
+            
             [cell addSubview:sclView];
             
             return cell;
@@ -161,12 +171,10 @@ static NSString *videoCell = @"VideoListCell";
     if (section == 0) {        //滚动图
         return UIEdgeInsetsMake(0, 0, 1, 0);
     }else if (section == 1){  //专题课程列表
-        return UIEdgeInsetsMake(0, 0, 1, 1);
+        return UIEdgeInsetsMake(0, 0, 1, 0);
     }else{
-        return UIEdgeInsetsMake(0, 0, 1, 1);
+        return UIEdgeInsetsMake(0, 1, 1, 1);
     }
-    
-    return UIEdgeInsetsZero;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {        //滚动图
@@ -175,7 +183,7 @@ static NSString *videoCell = @"VideoListCell";
         if (indexPath.row == 0) {
             return CGSizeMake(kScreenWidth, HEADFOOT_HEIGHT);
         }else{
-            return CGSizeMake(kScreenWidth, SUBJECT_HEIGHT + 58);
+            return CGSizeMake(kScreenWidth, SUBJECT_HEIGHT + 59);
         }
     }else{
         if (indexPath.row == 0) {       //在视频列表，如果是第一或者最后一栏返回一样的大小
@@ -183,12 +191,9 @@ static NSString *videoCell = @"VideoListCell";
         }else if (indexPath.row == 5){
             return CGSizeMake(kScreenWidth, HEADFOOT_HEIGHT);
         }else{                           //视频列表
-            return CGSizeMake((kScreenWidth - 2)/ 2, VIDEO_HEIGHT);
+            return CGSizeMake((kScreenWidth - 3)/ 2, VIDEO_HEIGHT);
         }
     }
-    
-    CGFloat cellWidth = (kScreenWidth - 3) / 2;
-    return CGSizeMake(cellWidth, cellWidth + 65);
 }
 #pragma mark - delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -200,6 +205,8 @@ static NSString *videoCell = @"VideoListCell";
         }else{
             if (indexPath.row != 0 && indexPath.row != 5) {
                 NSLog(@"视频------%li-%li", indexPath.section - 2, indexPath.row - 1);
+                HomeVideoDetailViewController *detailVC = [[HomeVideoDetailViewController alloc] init];
+                [self.viewController.navigationController pushViewController:detailVC animated:YES];
             }
         }
     }

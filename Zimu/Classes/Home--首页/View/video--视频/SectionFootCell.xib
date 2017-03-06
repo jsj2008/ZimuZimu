@@ -12,55 +12,55 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SectionFootCell">
-            <rect key="frame" x="0.0" y="0.0" width="324" height="58"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="324" height="58"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nn1-hn-xXY">
-                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="58"/>
+                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="46"/>
                         <state key="normal" title="查看更多&gt;&gt;">
                             <color key="titleColor" red="0.12549019610000001" green="0.58823529409999997" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ti4-bV-OSe">
-                        <rect key="frame" x="162.5" y="0.0" width="161.5" height="58"/>
+                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="46"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="换一批" image="change">
                             <color key="titleColor" red="0.12549019607843137" green="0.58823529411764708" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cu9-FE-k39">
-                        <rect key="frame" x="161.5" y="2" width="1" height="54"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="186.5" y="0.0" width="1" height="46"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="0.5" id="Upx-UB-Pcy"/>
+                            <constraint firstAttribute="width" constant="1" id="Zdd-M4-GCc"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="nn1-hn-xXY" secondAttribute="bottom" id="Ak1-Kq-Zm5"/>
-                <constraint firstAttribute="trailing" secondItem="ti4-bV-OSe" secondAttribute="trailing" id="Fj9-qU-Rma"/>
-                <constraint firstItem="cu9-FE-k39" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="HW1-3Q-bLD"/>
-                <constraint firstItem="nn1-hn-xXY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NKQ-XG-iwd"/>
-                <constraint firstAttribute="bottom" secondItem="cu9-FE-k39" secondAttribute="bottom" constant="2" id="aDC-QE-p2a"/>
-                <constraint firstItem="nn1-hn-xXY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gQ7-cw-7hT"/>
-                <constraint firstItem="ti4-bV-OSe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="myL-zh-fpY"/>
-                <constraint firstItem="ti4-bV-OSe" firstAttribute="leading" secondItem="cu9-FE-k39" secondAttribute="trailing" id="rT9-6W-Vnj"/>
-                <constraint firstItem="cu9-FE-k39" firstAttribute="leading" secondItem="nn1-hn-xXY" secondAttribute="trailing" id="spl-hs-ffJ"/>
-                <constraint firstAttribute="bottom" secondItem="ti4-bV-OSe" secondAttribute="bottom" id="xUd-4a-phL"/>
-                <constraint firstItem="cu9-FE-k39" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zVK-r7-Gbz"/>
+                <constraint firstItem="nn1-hn-xXY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7Ni-Hx-NeO"/>
+                <constraint firstAttribute="bottom" secondItem="ti4-bV-OSe" secondAttribute="bottom" id="95c-Np-wvv"/>
+                <constraint firstItem="ti4-bV-OSe" firstAttribute="leading" secondItem="cu9-FE-k39" secondAttribute="trailing" id="Htn-WN-HcL"/>
+                <constraint firstAttribute="bottom" secondItem="nn1-hn-xXY" secondAttribute="bottom" id="PN6-AR-c43"/>
+                <constraint firstItem="nn1-hn-xXY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RzR-4S-C8H"/>
+                <constraint firstAttribute="trailing" secondItem="ti4-bV-OSe" secondAttribute="trailing" id="TSd-Po-AJW"/>
+                <constraint firstItem="cu9-FE-k39" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Wm8-Nu-N6w"/>
+                <constraint firstItem="ti4-bV-OSe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZyQ-3i-msT"/>
+                <constraint firstItem="cu9-FE-k39" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="-1" id="doA-tS-9em"/>
+                <constraint firstItem="cu9-FE-k39" firstAttribute="leading" secondItem="nn1-hn-xXY" secondAttribute="trailing" id="la7-8i-hEt"/>
+                <constraint firstAttribute="bottom" secondItem="cu9-FE-k39" secondAttribute="bottom" id="y9k-Vb-bbc"/>
             </constraints>
-            <size key="customSize" width="324" height="58"/>
+            <size key="customSize" width="375" height="46"/>
             <connections>
                 <outlet property="changeListBtn" destination="ti4-bV-OSe" id="920-JO-9ub"/>
                 <outlet property="seeMoreBtn" destination="nn1-hn-xXY" id="i47-DQ-Cch"/>
             </connections>
-            <point key="canvasLocation" x="69" y="11"/>
+            <point key="canvasLocation" x="94.5" y="5"/>
         </collectionViewCell>
     </objects>
     <resources>

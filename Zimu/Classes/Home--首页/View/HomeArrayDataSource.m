@@ -21,7 +21,8 @@
 @implementation HomeArrayDataSource
 
 - (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block{
-    if (self == [super init]) {
+    self = [super init];
+    if (self) {
         
         _titleArray = @[@"热门推荐",@"暖心读物",@"精彩问答",@"完美鸡汤"];
 

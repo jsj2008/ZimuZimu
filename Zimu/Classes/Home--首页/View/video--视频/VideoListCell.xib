@@ -20,19 +20,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孩子不爱学习是谁的原因？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3q-46-ufU">
-                        <rect key="frame" x="5" y="155" width="239" height="18"/>
+                        <rect key="frame" x="5" y="150" width="239" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孩子不爱学习是谁的原因？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VC7-Z3-Cgk">
-                        <rect key="frame" x="5" y="178" width="239" height="16"/>
+                        <rect key="frame" x="5" y="173" width="239" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gL8-I6-aKT">
-                        <rect key="frame" x="0.0" y="5" width="249" height="140"/>
+                        <rect key="frame" x="0.0" y="0.0" width="249" height="140"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gL8-I6-aKT" secondAttribute="height" multiplier="155:87" id="kSq-h3-LBj"/>
                         </constraints>
@@ -41,7 +41,7 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="gL8-I6-aKT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="5T2-5Z-9cV"/>
+                <constraint firstItem="gL8-I6-aKT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5T2-5Z-9cV"/>
                 <constraint firstItem="VC7-Z3-Cgk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="8o4-JH-2Su"/>
                 <constraint firstAttribute="trailing" secondItem="VC7-Z3-Cgk" secondAttribute="trailing" constant="5" id="Dzf-RN-5xI"/>
                 <constraint firstAttribute="trailing" secondItem="gL8-I6-aKT" secondAttribute="trailing" id="Eu4-Yq-Wm9"/>
