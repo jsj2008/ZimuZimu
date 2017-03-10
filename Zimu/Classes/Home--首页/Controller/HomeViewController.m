@@ -19,7 +19,7 @@
 #import "HeaderNavigationView.h"
 #import "HomeHeaderView.h"
 
-#define kHeaderViewHeight 380
+#define kHeaderViewHeight 250
 
 @interface HomeViewController ()
 
@@ -96,10 +96,8 @@
  */
 - (void)setupTableView{
     self.automaticallyAdjustsScrollViewInsets = NO;     //为YES，tableView会往下偏移64
-    self.homeArrayDataSource = [[HomeArrayDataSource alloc]initWithDataArray:@[@"cycle_01.jpg",@"cycle_02.jpg",@"cycle_03.jpg",@"cycle_04.jpg",@"cycle_05.jpg",@"cycle_06.jpg",@"cycle_07.jpg"] cellIdentifier:@"homeTableViewCell" homeTableViewCellBlock:^(HomeTableViewCell *cell, NSString *text) {
-        cell.imageString = text;
-    }];
-    self.tableView = [[HomeTableView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain homeArrayDataSource:self.homeArrayDataSource];
+//    self.homeArrayDataSource = [[HomeArrayDataSource alloc]initWithDataArray:@[@"cycle_01.jpg",@"cycle_02.jpg",@"cycle_03.jpg",@"cycle_04.jpg",@"cycle_05.jpg",@"cycle_06.jpg",@"cycle_07.jpg"] cellIdentifier:@"homeTableViewCell"];
+    self.tableView = [[HomeTableView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(kHeaderViewHeight, 0, 0, 0);
     

@@ -23,6 +23,9 @@
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 
 
+/**
+ *   图片圆角
+ */
 - (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size;
 
 @end

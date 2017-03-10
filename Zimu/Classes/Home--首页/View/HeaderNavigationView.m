@@ -10,6 +10,7 @@
 #import "ListSelectButton.h"
 #import "UIImage+ZMExtension.h"
 #import "TestViewController.h"
+#import "SearchResultViewController.h"
 #import "UIView+ViewController.h"
 #import "BaseNavigationController.h"
 #import "YMCitySelect.h"
@@ -173,7 +174,7 @@
     //搜索结果展示样式
     searchVC.searchResultShowMode = PYSearchResultShowModeEmbed;
     //设置搜索结果视图控制器
-    searchVC.searchResultController = [[TestViewController alloc]init];
+    searchVC.searchResultController = [[SearchResultViewController alloc]init];
 
     UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:searchVC];
     [self.viewController presentViewController:navi animated:YES completion:nil];
