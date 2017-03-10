@@ -13,6 +13,13 @@
 #import "UIColor+HexString.h"
 #import "UIView+ZMExtension.h"
 
+#ifdef DEBUG     //如果是debug模式则打印信息，也可以在下面做一些其他处理
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
+
+#else
+#define NSLog(FORMAT, ...) nil
+
+#endif
 
 #endif /* ZimuPrefixHeader_pch */
