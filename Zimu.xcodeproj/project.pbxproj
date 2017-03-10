@@ -1104,11 +1104,8 @@
 				5F8EDD691E6FD2AE000FC3E0 /* HeaderTitleCell.m in Sources */,
 				5F8EDD2D1E6E5CA7000FC3E0 /* QuestionCellLayout.m in Sources */,
 				5F9C3CDA1E627937009659E4 /* HeaderNavigationView.m in Sources */,
-<<<<<<< HEAD
 				5FE200701E66C8B70021DD27 /* SearchResultViewController.m in Sources */,
-=======
 				18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */,
->>>>>>> origin/master
 				5F9C3CB81E5EBA38009659E4 /* CourseViewController.m in Sources */,
 				5F9C3CD41E60081E009659E4 /* ListSelectButton.m in Sources */,
 				5F9C3CC81E5F32C7009659E4 /* HomeTableView.m in Sources */,
