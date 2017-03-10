@@ -9,26 +9,37 @@
 #import "HomeArrayDataSource.h"
 #import "TestViewController.h"
 #import "UIView+ViewController.h"
+#import "HomeTableViewCell.h"
+#import "HeaderTitleCell.h"
+#import "VideoCourseCell.h"
+
+static NSString *headerTitleIdentifier = @"headerTitleCell";
+static NSString *videoCourseIdentifier = @"videoCourseCell";
 
 @interface HomeArrayDataSource ()
 
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, copy) NSString *identifier;
-@property (nonatomic, copy) HomeTableViewCellBlock homeTableViewCellBlock;
+//@property (nonatomic, copy) HomeTableViewCellBlock homeTableViewCellBlock;
 
 @end
 
 @implementation HomeArrayDataSource
 
+<<<<<<< HEAD
+- (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier{
+    if (self == [super init]) {
+=======
 - (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block{
     self = [super init];
     if (self) {
+>>>>>>> origin/master
         
         _titleArray = @[@"热门推荐",@"暖心读物",@"精彩问答",@"完美鸡汤"];
 
         _dataArray = dataArray;
         _identifier = cellIdentifier;
-        _homeTableViewCellBlock = block;
+//        _homeTableViewCellBlock = block;
         
     }
     return self;
@@ -42,21 +53,33 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArray.count;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UINib *nib = [UINib nibWithNibName:@"HomeTableViewCell" bundle:[NSBundle mainBundle]];
-    [tableView registerNib:nib forCellReuseIdentifier:_identifier];
+    UINib *nib = [UINib nibWithNibName:@"HeaderTitleCell" bundle:[NSBundle mainBundle]];
+    [tableView registerNib:nib forCellReuseIdentifier:headerTitleIdentifier];
+    UINib *nib2 = [UINib nibWithNibName:@"VideoCourseCell" bundle:[NSBundle mainBundle]];
+    [tableView registerNib:nib2 forCellReuseIdentifier:videoCourseIdentifier];
     
-    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_identifier];
-    if (cell == nil) {
-        cell = [[HomeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier];
+    
+    if (indexPath.row == 0) {
+        HeaderTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:headerTitleIdentifier];
+        
+        return cell;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.homeTableViewCellBlock(cell, self.dataArray[indexPath.row]);
+    VideoCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:videoCourseIdentifier];
+    
+    
     
     return cell;
+//    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_identifier];
+//    if (cell == nil) {
+//        cell = [[HomeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier];
+//    }
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    self.homeTableViewCellBlock(cell, self.dataArray[indexPath.row]);
+    
 }
 
 

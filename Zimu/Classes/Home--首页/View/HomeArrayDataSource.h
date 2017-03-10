@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "HomeTableViewCell.h"
 
 typedef void(^HomeTableViewCellBlock)(id cell, id text);
 
@@ -17,8 +16,8 @@ typedef void(^HomeTableViewCellBlock)(id cell, id text);
 
 @property (nonatomic, strong) NSArray *titleArray;
 
-
-- (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block;
+- (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier;
+//- (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block;
 
 
 @end

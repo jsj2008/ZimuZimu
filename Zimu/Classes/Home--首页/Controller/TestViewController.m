@@ -7,14 +7,14 @@
 //
 
 #import "TestViewController.h"
-#import "HomeArrayDataSource.h"
+//#import "HomeArrayDataSource.h"
 #import "HomeTableView.h"
 
 static NSString *identifier = @"homeCell";
 @interface TestViewController ()
 
 @property (nonatomic, strong) HomeTableView *tableView;
-@property (nonatomic, strong) HomeArrayDataSource *homeArrayDataSource;
+//@property (nonatomic, strong) HomeArrayDataSource *homeArrayDataSource;
 
 @end
 
@@ -36,10 +36,10 @@ static NSString *identifier = @"homeCell";
 //创建tableView
 - (void)setupTableView{
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.homeArrayDataSource = [[HomeArrayDataSource alloc]initWithDataArray:@[@"cycle_01.jpg",@"cycle_02.jpg",@"cycle_03.jpg",@"cycle_04.jpg",@"cycle_05.jpg",@"cycle_06.jpg",@"cycle_07.jpg"] cellIdentifier:@"homeTableViewCell" homeTableViewCellBlock:^(HomeTableViewCell *cell, NSString *text) {
-        cell.imageString = text;
-    }];
-    self.tableView = [[HomeTableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64) style:UITableViewStylePlain homeArrayDataSource:self.homeArrayDataSource];
+//    self.homeArrayDataSource = [[HomeArrayDataSource alloc]initWithDataArray:@[@"cycle_01.jpg",@"cycle_02.jpg",@"cycle_03.jpg",@"cycle_04.jpg",@"cycle_05.jpg",@"cycle_06.jpg",@"cycle_07.jpg"] cellIdentifier:@"homeTableViewCell" homeTableViewCellBlock:^(HomeTableViewCell *cell, NSString *text) {
+////        cell.imageString = text;
+//    }];
+    self.tableView = [[HomeTableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64) style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 300)];

@@ -237,7 +237,7 @@
      * 设置一些默认设置
      */
     // 热门搜索风格设置
-    self.hotSearchStyle = PYHotSearchStyleBorderTag;
+    self.hotSearchStyle = PYHotSearchStyleColorfulTag;
     // 设置搜索历史风格
     self.searchHistoryStyle = PYHotSearchStyleDefault;
     // 设置搜索结果显示模式
@@ -786,6 +786,8 @@
                 tag.layer.borderColor = nil;
                 tag.layer.borderWidth = 0.0;
                 tag.backgroundColor = PYSEARCH_COLORPolRandomColor;
+                // 设置边框弧度为圆弧
+                tag.layer.cornerRadius = tag.py_height * 0.5;
             }
             break;
         case PYHotSearchStyleBorderTag: // 边框标签

@@ -12,7 +12,7 @@
 
 static NSString *identifier = @"circleCollectionViewCell";
 
-@interface CircleCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CircleCollectionView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
@@ -73,7 +73,7 @@ static NSString *identifier = @"circleCollectionViewCell";
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat width = (kScreenWidth - 10 * 5)/4.0;
     return CGSizeMake(width, 80);
 }

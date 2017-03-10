@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseCell" rowHeight="112" id="KGk-i7-Jjw" customClass="CourseTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4y8-pn-6Om">
+                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="9vt-tI-oB4"/>
+                            <constraint firstAttribute="height" constant="70" id="Ziq-68-J3q"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝喜爱的儿童故事" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8s-Qm-cqK">
+                        <rect key="frame" x="90" y="10" width="147" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放：21.5万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esp-pp-kxf">
+                        <rect key="frame" x="90" y="37" width="78" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传：吴老师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vh-gO-lZn">
+                        <rect key="frame" x="198" y="37" width="80" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于孩子的故事，每天将给你听" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-X0-TEm">
+                        <rect key="frame" x="90" y="64" width="186" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-2X-odt">
+                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Esp-pp-kxf" firstAttribute="leading" secondItem="U8s-Qm-cqK" secondAttribute="leading" id="2ZN-TV-AYE"/>
+                    <constraint firstItem="BsK-X0-TEm" firstAttribute="bottom" secondItem="4y8-pn-6Om" secondAttribute="bottom" id="6Do-CP-iDe"/>
+                    <constraint firstItem="uWH-2X-odt" firstAttribute="trailing" secondItem="4y8-pn-6Om" secondAttribute="trailing" id="6bQ-lV-nx2"/>
+                    <constraint firstItem="U8s-Qm-cqK" firstAttribute="leading" secondItem="4y8-pn-6Om" secondAttribute="trailing" constant="10" id="6sD-4O-Rb5"/>
+                    <constraint firstItem="BsK-X0-TEm" firstAttribute="leading" secondItem="U8s-Qm-cqK" secondAttribute="leading" id="F0M-ih-ws6"/>
+                    <constraint firstItem="uWH-2X-odt" firstAttribute="leading" secondItem="4y8-pn-6Om" secondAttribute="leading" id="HCJ-Da-yM1"/>
+                    <constraint firstItem="uWH-2X-odt" firstAttribute="bottom" secondItem="4y8-pn-6Om" secondAttribute="bottom" id="OkX-KI-07I"/>
+                    <constraint firstItem="4y8-pn-6Om" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OqS-Mz-f5n"/>
+                    <constraint firstItem="U8s-Qm-cqK" firstAttribute="top" secondItem="4y8-pn-6Om" secondAttribute="top" id="fhO-Fk-PWf"/>
+                    <constraint firstItem="4y8-pn-6Om" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="hfp-rc-wJq"/>
+                    <constraint firstItem="uWH-2X-odt" firstAttribute="top" secondItem="4y8-pn-6Om" secondAttribute="top" id="ory-vZ-HCG"/>
+                    <constraint firstItem="5vh-gO-lZn" firstAttribute="leading" secondItem="Esp-pp-kxf" secondAttribute="trailing" constant="30" id="rNC-RQ-egJ"/>
+                    <constraint firstItem="5vh-gO-lZn" firstAttribute="top" secondItem="Esp-pp-kxf" secondAttribute="top" id="uJh-pm-FSD"/>
+                    <constraint firstItem="Esp-pp-kxf" firstAttribute="top" secondItem="U8s-Qm-cqK" secondAttribute="bottom" constant="8" id="vHm-U5-q0l"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="5vh-gO-lZn" id="zMO-HH-hgy"/>
+                <outlet property="courseImageView" destination="4y8-pn-6Om" id="Grb-BQ-6Qj"/>
+                <outlet property="introLabel" destination="BsK-X0-TEm" id="4Xq-bx-WVj"/>
+                <outlet property="maskImageView" destination="uWH-2X-odt" id="lNQ-1z-cEV"/>
+                <outlet property="playTimeLabel" destination="Esp-pp-kxf" id="mgp-IX-gd3"/>
+                <outlet property="titleLabel" destination="U8s-Qm-cqK" id="llv-ri-Myo"/>
+            </connections>
+            <point key="canvasLocation" x="6.5" y="131"/>
+        </tableViewCell>
+    </objects>
+</document>

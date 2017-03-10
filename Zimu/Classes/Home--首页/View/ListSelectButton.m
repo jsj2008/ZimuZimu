@@ -26,16 +26,23 @@
 
 @implementation ListSelectButton
 
-
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title imageName:(NSString *)imageName target:(id)target action:(SEL)action{
     self = [super initWithFrame:frame];
     if (self) {
-        [self MWJTabControlItemWithTitle:title imageName:imageName target:target action:action];
+        [self setItemWithTitle:title imageName:imageName target:target action:action];
     }
     return self;
 }
 
-- (void)MWJTabControlItemWithTitle:(NSString *)title imageName:(NSString *)imageName target:(id)target action:(SEL)action{
+- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title imageName:(NSString *)imageName{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setItemWithTitle:title imageName:imageName target:nil action:nil];
+    }
+    return self;
+}
+
+- (void)setItemWithTitle:(NSString *)title imageName:(NSString *)imageName target:(id)target action:(SEL)action{
     [self setTitle:title forState:UIControlStateNormal];
     [self setTitleColor:itemTextColor forState:UIControlStateNormal];
     [self setTitleColor:itemTextSelectedColor forState:UIControlStateSelected];

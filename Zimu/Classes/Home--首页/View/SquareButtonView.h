@@ -10,11 +10,17 @@
 
 @protocol SquareButtonViewDelegate <NSObject>
 
-/*在线咨询*/
-- (void)consult;
+/*考试报名*/
+- (void)examApply;
 
-/*预约专家*/
-- (void)appoint;
+/*试题解答*/
+- (void)questionAnswer;
+
+/*公开课程*/
+- (void)openCourse;
+
+/*公益众筹*/
+- (void)publicBenefit;
 
 @end
 
