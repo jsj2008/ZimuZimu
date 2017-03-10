@@ -9,6 +9,26 @@
 /* Begin PBXBuildFile section */
 		18AC3AF61E67E72D007EE823 /* HomeVideoDeatilView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */; };
 		18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF81E67EAAE007EE823 /* ZM_VideoPlayer.m */; };
+		18AC3B2B1E6D3EF8007EE823 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */; };
+		18AC3B2D1E6D62F8007EE823 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC3B2C1E6D62F8007EE823 /* SystemConfiguration.framework */; };
+		18AC3B4E1E6FA075007EE823 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 18AC3B2F1E6FA075007EE823 /* LICENSE */; };
+		18AC3B4F1E6FA075007EE823 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B301E6FA075007EE823 /* README.md */; };
+		18AC3B501E6FA075007EE823 /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B331E6FA075007EE823 /* ASValuePopUpView.m */; };
+		18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B351E6FA075007EE823 /* ASValueTrackingSlider.m */; };
+		18AC3B521E6FA075007EE823 /* UIImageView+ZFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B381E6FA075007EE823 /* UIImageView+ZFCache.m */; };
+		18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B3A1E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m */; };
+		18AC3B541E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B3C1E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m */; };
+		18AC3B551E6FA075007EE823 /* UIView+CustomControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B3E1E6FA075007EE823 /* UIView+CustomControlView.m */; };
+		18AC3B561E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B401E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m */; };
+		18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B421E6FA075007EE823 /* MMMaterialDesignSpinner.m */; };
+		18AC3B581E6FA075007EE823 /* ZFBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B441E6FA075007EE823 /* ZFBrightnessView.m */; };
+		18AC3B591E6FA075007EE823 /* ZFPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18AC3B451E6FA075007EE823 /* ZFPlayer.bundle */; };
+		18AC3B5A1E6FA075007EE823 /* ZFPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B481E6FA075007EE823 /* ZFPlayerControlView.m */; };
+		18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B4B1E6FA075007EE823 /* ZFPlayerModel.m */; };
+		18AC3B5C1E6FA075007EE823 /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B4D1E6FA075007EE823 /* ZFPlayerView.m */; };
+		18AC3B5F1E6FA114007EE823 /* TrySeeEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B5E1E6FA114007EE823 /* TrySeeEndView.m */; };
+		18AC3B631E6FA8BD007EE823 /* TrySeeEndView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AC3B621E6FA8BD007EE823 /* TrySeeEndView.xib */; };
+		18AC3B6D1E71279A007EE823 /* NetWorkStatuesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B6C1E71279A007EE823 /* NetWorkStatuesManager.m */; };
 		18C7E6E21E6508FA00E62757 /* HomeVideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E6E11E6508FA00E62757 /* HomeVideoListModel.m */; };
 		18C7E6E61E65094F00E62757 /* HomeVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E6E51E65094F00E62757 /* HomeVideoViewController.m */; };
 		18C7E6F01E6512A200E62757 /* SubjectListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E6EE1E6512A200E62757 /* SubjectListCell.m */; };
@@ -22,7 +42,7 @@
 		18C7E7031E6528AF00E62757 /* HomeVideoListCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E7021E6528AF00E62757 /* HomeVideoListCollectionView.m */; };
 		18C7E7061E655A1500E62757 /* SubjectCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E7051E655A1500E62757 /* SubjectCourseListView.m */; };
 		18C7E7111E67AF4100E62757 /* HomeVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E7101E67AF4100E62757 /* HomeVideoDetailViewController.m */; };
-		5BCE89FC72DFB00B50889F0A /* Pods_Zimu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481634BDD47E6138955329BC /* Pods_Zimu.framework */; };
+		2C4E717388543C295928CC4F /* libPods-Zimu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E2EC2D1F7BB23977D341E0 /* libPods-Zimu.a */; };
 		5F9C3C891E5E802C009659E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3C811E5E802C009659E4 /* AppDelegate.m */; };
 		5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3C8C1E5E80AC009659E4 /* Assets.xcassets */; };
 		5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3C8D1E5E80AC009659E4 /* Info.plist */; };
@@ -93,11 +113,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05E2EC2D1F7BB23977D341E0 /* libPods-Zimu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zimu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
 		18AC3AF41E67E72D007EE823 /* HomeVideoDeatilView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoDeatilView.h; sourceTree = "<group>"; };
 		18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoDeatilView.m; sourceTree = "<group>"; };
 		18AC3AF71E67EAAE007EE823 /* ZM_VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZM_VideoPlayer.h; sourceTree = "<group>"; };
 		18AC3AF81E67EAAE007EE823 /* ZM_VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZM_VideoPlayer.m; sourceTree = "<group>"; };
+		18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		18AC3B2C1E6D62F8007EE823 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18AC3B2F1E6FA075007EE823 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		18AC3B301E6FA075007EE823 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18AC3B321E6FA075007EE823 /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
+		18AC3B331E6FA075007EE823 /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
+		18AC3B341E6FA075007EE823 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
+		18AC3B351E6FA075007EE823 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
+		18AC3B371E6FA075007EE823 /* UIImageView+ZFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ZFCache.h"; sourceTree = "<group>"; };
+		18AC3B381E6FA075007EE823 /* UIImageView+ZFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZFCache.m"; sourceTree = "<group>"; };
+		18AC3B391E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		18AC3B3A1E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		18AC3B3B1E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		18AC3B3C1E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		18AC3B3D1E6FA075007EE823 /* UIView+CustomControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomControlView.h"; sourceTree = "<group>"; };
+		18AC3B3E1E6FA075007EE823 /* UIView+CustomControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomControlView.m"; sourceTree = "<group>"; };
+		18AC3B3F1E6FA075007EE823 /* UIViewController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		18AC3B401E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		18AC3B411E6FA075007EE823 /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
+		18AC3B421E6FA075007EE823 /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
+		18AC3B431E6FA075007EE823 /* ZFBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBrightnessView.h; sourceTree = "<group>"; };
+		18AC3B441E6FA075007EE823 /* ZFBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBrightnessView.m; sourceTree = "<group>"; };
+		18AC3B451E6FA075007EE823 /* ZFPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZFPlayer.bundle; sourceTree = "<group>"; };
+		18AC3B461E6FA075007EE823 /* ZFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayer.h; sourceTree = "<group>"; };
+		18AC3B471E6FA075007EE823 /* ZFPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerControlView.h; sourceTree = "<group>"; };
+		18AC3B481E6FA075007EE823 /* ZFPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerControlView.m; sourceTree = "<group>"; };
+		18AC3B491E6FA075007EE823 /* ZFPlayerControlViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerControlViewDelegate.h; sourceTree = "<group>"; };
+		18AC3B4A1E6FA075007EE823 /* ZFPlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerModel.h; sourceTree = "<group>"; };
+		18AC3B4B1E6FA075007EE823 /* ZFPlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerModel.m; sourceTree = "<group>"; };
+		18AC3B4C1E6FA075007EE823 /* ZFPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerView.h; sourceTree = "<group>"; };
+		18AC3B4D1E6FA075007EE823 /* ZFPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerView.m; sourceTree = "<group>"; };
+		18AC3B5D1E6FA114007EE823 /* TrySeeEndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrySeeEndView.h; sourceTree = "<group>"; };
+		18AC3B5E1E6FA114007EE823 /* TrySeeEndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrySeeEndView.m; sourceTree = "<group>"; };
+		18AC3B621E6FA8BD007EE823 /* TrySeeEndView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrySeeEndView.xib; sourceTree = "<group>"; };
+		18AC3B6B1E71279A007EE823 /* NetWorkStatuesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkStatuesManager.h; sourceTree = "<group>"; };
+		18AC3B6C1E71279A007EE823 /* NetWorkStatuesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkStatuesManager.m; sourceTree = "<group>"; };
 		18C7E6E01E6508FA00E62757 /* HomeVideoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoListModel.h; sourceTree = "<group>"; };
 		18C7E6E11E6508FA00E62757 /* HomeVideoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoListModel.m; sourceTree = "<group>"; };
 		18C7E6E41E65094F00E62757 /* HomeVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoViewController.h; sourceTree = "<group>"; };
@@ -121,7 +178,6 @@
 		18C7E70F1E67AF4100E62757 /* HomeVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoDetailViewController.h; sourceTree = "<group>"; };
 		18C7E7101E67AF4100E62757 /* HomeVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoDetailViewController.m; sourceTree = "<group>"; };
 		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
-		481634BDD47E6138955329BC /* Pods_Zimu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zimu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F9C3C801E5E802C009659E4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5F9C3C811E5E802C009659E4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5F9C3C8C1E5E80AC009659E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,7 +277,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCE89FC72DFB00B50889F0A /* Pods_Zimu.framework in Frameworks */,
+				18AC3B2D1E6D62F8007EE823 /* SystemConfiguration.framework in Frameworks */,
+				18AC3B2B1E6D3EF8007EE823 /* MediaPlayer.framework in Frameworks */,
+				2C4E717388543C295928CC4F /* libPods-Zimu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +300,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18AC3B2E1E6FA075007EE823 /* ZFPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				18AC3B2F1E6FA075007EE823 /* LICENSE */,
+				18AC3B301E6FA075007EE823 /* README.md */,
+				18AC3B311E6FA075007EE823 /* ZFPlayer */,
+			);
+			path = ZFPlayer;
+			sourceTree = "<group>";
+		};
+		18AC3B311E6FA075007EE823 /* ZFPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				18AC3B321E6FA075007EE823 /* ASValuePopUpView.h */,
+				18AC3B331E6FA075007EE823 /* ASValuePopUpView.m */,
+				18AC3B341E6FA075007EE823 /* ASValueTrackingSlider.h */,
+				18AC3B351E6FA075007EE823 /* ASValueTrackingSlider.m */,
+				18AC3B361E6FA075007EE823 /* Category */,
+				18AC3B411E6FA075007EE823 /* MMMaterialDesignSpinner.h */,
+				18AC3B421E6FA075007EE823 /* MMMaterialDesignSpinner.m */,
+				18AC3B431E6FA075007EE823 /* ZFBrightnessView.h */,
+				18AC3B441E6FA075007EE823 /* ZFBrightnessView.m */,
+				18AC3B451E6FA075007EE823 /* ZFPlayer.bundle */,
+				18AC3B461E6FA075007EE823 /* ZFPlayer.h */,
+				18AC3B471E6FA075007EE823 /* ZFPlayerControlView.h */,
+				18AC3B481E6FA075007EE823 /* ZFPlayerControlView.m */,
+				18AC3B491E6FA075007EE823 /* ZFPlayerControlViewDelegate.h */,
+				18AC3B4A1E6FA075007EE823 /* ZFPlayerModel.h */,
+				18AC3B4B1E6FA075007EE823 /* ZFPlayerModel.m */,
+				18AC3B4C1E6FA075007EE823 /* ZFPlayerView.h */,
+				18AC3B4D1E6FA075007EE823 /* ZFPlayerView.m */,
+				18AC3B5D1E6FA114007EE823 /* TrySeeEndView.h */,
+				18AC3B5E1E6FA114007EE823 /* TrySeeEndView.m */,
+				18AC3B621E6FA8BD007EE823 /* TrySeeEndView.xib */,
+			);
+			path = ZFPlayer;
+			sourceTree = "<group>";
+		};
+		18AC3B361E6FA075007EE823 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				18AC3B371E6FA075007EE823 /* UIImageView+ZFCache.h */,
+				18AC3B381E6FA075007EE823 /* UIImageView+ZFCache.m */,
+				18AC3B391E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.h */,
+				18AC3B3A1E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m */,
+				18AC3B3B1E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.h */,
+				18AC3B3C1E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m */,
+				18AC3B3D1E6FA075007EE823 /* UIView+CustomControlView.h */,
+				18AC3B3E1E6FA075007EE823 /* UIView+CustomControlView.m */,
+				18AC3B3F1E6FA075007EE823 /* UIViewController+ZFPlayerRotation.h */,
+				18AC3B401E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		18C7E6DF1E6508DD00E62757 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,12 +648,15 @@
 		5F9C3CE01E62CC6C009659E4 /* Tool--工具 */ = {
 			isa = PBXGroup;
 			children = (
+				18AC3B2E1E6FA075007EE823 /* ZFPlayer */,
 				5F9C3D061E63C669009659E4 /* Cycle */,
 				5F9C3CEF1E63C0CB009659E4 /* SDCycleScrollView */,
 				5F9C3CEC1E63209B009659E4 /* ODRefreshControl.h */,
 				5F9C3CED1E63209B009659E4 /* ODRefreshControl.m */,
 				5F9C3CE11E62CC6C009659E4 /* Common.h */,
 				5F9C3CE21E62CD02009659E4 /* ZimuPrefixHeader.pch */,
+				18AC3B6B1E71279A007EE823 /* NetWorkStatuesManager.h */,
+				18AC3B6C1E71279A007EE823 /* NetWorkStatuesManager.m */,
 			);
 			path = "Tool--工具";
 			sourceTree = "<group>";
@@ -692,7 +808,9 @@
 		A408D73709D2BEB81BB564F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				481634BDD47E6138955329BC /* Pods_Zimu.framework */,
+				18AC3B2C1E6D62F8007EE823 /* SystemConfiguration.framework */,
+				18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */,
+				05E2EC2D1F7BB23977D341E0 /* libPods-Zimu.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -813,15 +931,18 @@
 				18C7E6FB1E6512F900E62757 /* VideoListCell.xib in Resources */,
 				5F9C3D101E63C669009659E4 /* cycle_02.jpg in Resources */,
 				5F9C3D111E63C669009659E4 /* cycle_03.jpg in Resources */,
+				18AC3B591E6FA075007EE823 /* ZFPlayer.bundle in Resources */,
 				5F9C3D211E6413EA009659E4 /* CircleCollectionViewCell.xib in Resources */,
 				18C7E6F61E6512C200E62757 /* SectionTitleCell.xib in Resources */,
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
+				18AC3B4E1E6FA075007EE823 /* LICENSE in Resources */,
 				5F9C3D151E63C669009659E4 /* cycle_07.jpg in Resources */,
 				18C7E6F11E6512A200E62757 /* SubjectListCell.xib in Resources */,
 				5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */,
 				5F9C3D131E63C669009659E4 /* cycle_05.jpg in Resources */,
 				18C7E7001E65135500E62757 /* SectionFootCell.xib in Resources */,
+				18AC3B631E6FA8BD007EE823 /* TrySeeEndView.xib in Resources */,
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
 				5FE200611E6508E90021DD27 /* HomeTableViewCell.xib in Resources */,
 				5F9C3D0F1E63C669009659E4 /* cycle_01.jpg in Resources */,
@@ -900,9 +1021,11 @@
 				5F9C3D1C1E6413D7009659E4 /* CircleCollectionView.m in Sources */,
 				5F9C3CDA1E627937009659E4 /* HeaderNavigationView.m in Sources */,
 				18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */,
+				18AC3B581E6FA075007EE823 /* ZFBrightnessView.m in Sources */,
 				5F9C3CB81E5EBA38009659E4 /* CourseViewController.m in Sources */,
 				5F9C3CD41E60081E009659E4 /* ListSelectButton.m in Sources */,
 				5F9C3CC81E5F32C7009659E4 /* HomeTableView.m in Sources */,
+				18AC3B4F1E6FA075007EE823 /* README.md in Sources */,
 				5F9C3CA61E5EB7D8009659E4 /* BlankPageView.m in Sources */,
 				5F9C3CDF1E62CBA0009659E4 /* UIView+ViewController.m in Sources */,
 				5F9C3CFF1E63C0CB009659E4 /* TAAbstractDotView.m in Sources */,
@@ -920,27 +1043,40 @@
 				18C7E7061E655A1500E62757 /* SubjectCourseListView.m in Sources */,
 				18C7E6FF1E65135500E62757 /* SectionFootCell.m in Sources */,
 				5F9C3C9C1E5EB6A4009659E4 /* UIImage+ZMExtension.m in Sources */,
+				18AC3B5F1E6FA114007EE823 /* TrySeeEndView.m in Sources */,
 				5F9C3C891E5E802C009659E4 /* AppDelegate.m in Sources */,
 				5F9C3CEE1E63209B009659E4 /* ODRefreshControl.m in Sources */,
 				5F9C3CCB1E5F3348009659E4 /* HomeArrayDataSource.m in Sources */,
+				18AC3B541E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m in Sources */,
+				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
 				18C7E6F51E6512C200E62757 /* SectionTitleCell.m in Sources */,
+				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
 				5F9C3D011E63C0CB009659E4 /* TADotView.m in Sources */,
 				5F9C3D191E63CBC6009659E4 /* SquareButtonView.m in Sources */,
 				5F9C3CE51E62CFF2009659E4 /* UIColor+HexString.m in Sources */,
+				18AC3B501E6FA075007EE823 /* ASValuePopUpView.m in Sources */,
+				18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				5F9C3D021E63C0CB009659E4 /* TAPageControl.m in Sources */,
 				18C7E7031E6528AF00E62757 /* HomeVideoListCollectionView.m in Sources */,
+				18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */,
 				5F9C3CEB1E62D17C009659E4 /* UIView+ZMExtension.m in Sources */,
+				18AC3B561E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m in Sources */,
+				18AC3B6D1E71279A007EE823 /* NetWorkStatuesManager.m in Sources */,
 				18C7E7111E67AF4100E62757 /* HomeVideoDetailViewController.m in Sources */,
 				5F9C3CBE1E5EBA52009659E4 /* MineViewController.m in Sources */,
 				5F9C3D001E63C0CB009659E4 /* TAAnimatedDotView.m in Sources */,
 				5F9C3D031E63C0CB009659E4 /* SDCollectionViewCell.m in Sources */,
 				18C7E6E61E65094F00E62757 /* HomeVideoViewController.m in Sources */,
+				18AC3B551E6FA075007EE823 /* UIView+CustomControlView.m in Sources */,
 				18AC3AF61E67E72D007EE823 /* HomeVideoDeatilView.m in Sources */,
 				5F9C3CB51E5EBA2D009659E4 /* HomeViewController.m in Sources */,
 				5F9C3D201E6413EA009659E4 /* CircleCollectionViewCell.m in Sources */,
+				18AC3B5A1E6FA075007EE823 /* ZFPlayerControlView.m in Sources */,
+				18AC3B5C1E6FA075007EE823 /* ZFPlayerView.m in Sources */,
 				18C7E6E21E6508FA00E62757 /* HomeVideoListModel.m in Sources */,
 				5F9C3CC41E5EBEC9009659E4 /* TestViewController.m in Sources */,
+				18AC3B521E6FA075007EE823 /* UIImageView+ZFCache.m in Sources */,
 				18C7E6FA1E6512F900E62757 /* VideoListCell.m in Sources */,
 				5F9C3CBB1E5EBA49009659E4 /* FindViewController.m in Sources */,
 				5F9C3D051E63C0CB009659E4 /* UIView+SDExtension.m in Sources */,

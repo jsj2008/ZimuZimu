@@ -10,4 +10,13 @@
 
 @interface BaseViewController : UIViewController
 
+/*网络状态变化处理*/
+//使用wifi
+- (void)wifi;
+//使用移动数据
+- (void)mobileData;
+//没有网络
+- (void)noNet;
+
+
 @end

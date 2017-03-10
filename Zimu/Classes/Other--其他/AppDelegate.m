@@ -10,6 +10,7 @@
 #import "UMMobClick/MobClick.h"
 #import "RootTabBarController.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -26,9 +27,10 @@
     RootTabBarController *rootTabBarController = [[RootTabBarController alloc]init];
     [self.window setRootViewController:rootTabBarController];
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
+
 //设置友盟统计参数
 - (void)setUMMobClick{
     UMConfigInstance.appKey = @"58ad5e6a75ca355b62000766";
@@ -43,8 +45,6 @@
     [MobClick startWithConfigure:UMConfigInstance];
     
 }
-
-
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
