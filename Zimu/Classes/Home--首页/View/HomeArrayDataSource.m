@@ -26,14 +26,12 @@ static NSString *videoCourseIdentifier = @"videoCourseCell";
 
 @implementation HomeArrayDataSource
 
-<<<<<<< HEAD
-- (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier{
-    if (self == [super init]) {
-=======
+
+
 - (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block{
     self = [super init];
     if (self) {
->>>>>>> origin/master
+
         
         _titleArray = @[@"热门推荐",@"暖心读物",@"精彩问答",@"完美鸡汤"];
 
