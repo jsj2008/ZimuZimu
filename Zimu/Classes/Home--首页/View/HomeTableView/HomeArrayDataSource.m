@@ -26,9 +26,18 @@ static NSString *videoCourseIdentifier = @"videoCourseCell";
 
 @implementation HomeArrayDataSource
 
+<<<<<<< HEAD:Zimu/Classes/Home--首页/View/HomeTableView/HomeArrayDataSource.m
 - (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block{
     self = [super init];
     if (self) {
+=======
+
+
+- (instancetype)initWithDataArray:(NSArray *)dataArray cellIdentifier:(NSString *)cellIdentifier homeTableViewCellBlock:(HomeTableViewCellBlock)block{
+    self = [super init];
+    if (self) {
+
+>>>>>>> origin/master:Zimu/Classes/Home--首页/View/HomeArrayDataSource.m
         
         _titleArray = @[@"热门推荐",@"暖心读物",@"精彩问答",@"完美鸡汤"];
 

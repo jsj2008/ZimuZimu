@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "NetWorkStatuesManager.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<AppRechabilityDelegate>
 
 @end
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self obseverNet];
     // Do any additional setup after loading the view.
 }
 
@@ -24,14 +26,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)obseverNet{
+    NetWorkStatuesManager *netManager = [[NetWorkStatuesManager alloc] init];
+    netManager.appRechabilituDelegate = self;
 }
-*/
-
+- (void)connectToWIFI{
+    [self wifi];
+}
+- (void)connectToWan{
+    [self mobileData];
+}
+- (void)lostConnect{
+    [self noNet];
+}
+- (void)wifi{
+    
+}
+- (void)mobileData{
+    
+}
+- (void)noNet{
+    
+}
 @end

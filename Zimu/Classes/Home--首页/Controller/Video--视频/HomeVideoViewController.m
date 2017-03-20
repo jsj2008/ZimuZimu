@@ -18,6 +18,11 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = themeWhite;
@@ -105,7 +110,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark - 监听网络状态
+- (void)wifi{
+    NSLog(@"wifi");
+}
+- (void)mobileData{
+    NSLog(@"4G");
+}
+- (void)noNet{
+    NSLog(@"断网了");
+}
+// 必须支持转屏，但只是只支持竖屏，否则横屏启动起来页面是横的
+- (BOOL)shouldAutorotate {
+    return YES;
+}
 #pragma mark - makeUI
 - (void)makeUI{
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];

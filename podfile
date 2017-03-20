@@ -1,5 +1,4 @@
 platform :ios, '8.0'
-use_frameworks!
 
 target 'Zimu' do
 
@@ -13,5 +12,6 @@ pod 'UMengAnalytics'
 pod 'MJRefresh'
 pod 'YMCitySelect'
 pod 'YYModel'
+pod 'ZFDownload'
 
 end
