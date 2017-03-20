@@ -9,6 +9,9 @@
 #import "CourseViewController.h"
 #import "HomeVideoViewController.h"
 #import "UIBarButtonItem+ZMExtension.h"
+#import "CourseVideoListTableView.h"
+#import "CourseBookTableView.h"
+#import "CourseFMTableView.h"
 
 @interface CourseViewController ()
 

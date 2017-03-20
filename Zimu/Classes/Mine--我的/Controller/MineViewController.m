@@ -41,8 +41,11 @@
 - (void)makeUI{
     if (!_tableView) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _tableView = [[ZM_MineTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49) style:UITableViewStylePlain];
+        _tableView = [[ZM_MineTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
         _tableView.tableFooterView = [[UIView alloc] init];
+        UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 49)];
+        footView.backgroundColor = themeWhite;
+        _tableView.tableFooterView = footView;
         [self.view addSubview:_tableView];
     }
 }

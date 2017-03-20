@@ -56,35 +56,36 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 2;
+        return 1;
     }else if (section == 1){
+        return 1;
+    }else if (section == 2){
         return 4;
     }else{
         return 2;
     }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            return MINE_HEADCELL_HEIGHT;
-        }else{
-            return MINE_MAINFUN_HEIGHT;
-        }
+        return MINE_HEADCELL_HEIGHT;
+    }else if (indexPath.section == 1){
+        return MINE_MAINFUN_HEIGHT;
     }else{
         return MINE_LISTCELL_HEIGHT;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
+    if (section == 0 || section == 1) {
         return CGFLOAT_MIN;
-    }else if (section == 1){
+    }else if (section == 2){
         return 10;
     }else{
         return 10;
@@ -93,27 +94,26 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            MineHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:mineHeadCellId];
-            cell.nameLabel.text = @"ffff";
-            return cell;
-        }else{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myNor"];
-            if (!_mainFunView) {
-                UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-                flowLayout.minimumLineSpacing = 0;
-                flowLayout.minimumInteritemSpacing = 0;
-                flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-                
-                _mainFunView = [[MineMainFunctionCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, MINE_MAINFUN_HEIGHT) collectionViewLayout:flowLayout];
-            }
-            [cell addSubview:_mainFunView];
-            return cell;
+        MineHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:mineHeadCellId];
+        cell.nameLabel.text = @"ffff";
+        return cell;
+    }else if (indexPath.section == 1){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myNor"];
+        if (!_mainFunView) {
+            UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+            flowLayout.minimumLineSpacing = 0;
+            flowLayout.minimumInteritemSpacing = 0;
+            flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+            
+            _mainFunView = [[MineMainFunctionCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, MINE_MAINFUN_HEIGHT) collectionViewLayout:flowLayout];
         }
-    }else{
+        [cell addSubview:_mainFunView];
+        return cell;
+    }
+    else{
         MineNormalCell *cell = [tableView dequeueReusableCellWithIdentifier:mineNormalCellId];
-        cell.markImgView.image = [UIImage imageNamed:_imgDataArray[indexPath.section - 1][indexPath.row]];
-        cell.titleLbel.text =_textDataArray[indexPath.section - 1][indexPath.row];
+        cell.markImgView.image = [UIImage imageNamed:_imgDataArray[indexPath.section - 2][indexPath.row]];
+        cell.titleLbel.text =_textDataArray[indexPath.section - 2][indexPath.row];
         return cell;
     }
 }

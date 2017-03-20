@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1827C1B11E7F722D0040B9AD /* SectionTitleCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 18C7E6F21E6512C200E62757 /* SectionTitleCell.h */; };
+		1827C1B21E7F72730040B9AD /* SectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E6F31E6512C200E62757 /* SectionTitleCell.m */; };
+		1827C1B51E7F77D10040B9AD /* CourseVideoListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1B41E7F77D10040B9AD /* CourseVideoListTableView.m */; };
+		1827C1B81E7F77E50040B9AD /* CourseBookTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1B71E7F77E50040B9AD /* CourseBookTableView.m */; };
+		1827C1BB1E7F77F60040B9AD /* CourseFMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1BA1E7F77F60040B9AD /* CourseFMTableView.m */; };
 		18AC3AF61E67E72D007EE823 /* HomeVideoDeatilView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */; };
 		18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF81E67EAAE007EE823 /* ZM_VideoPlayer.m */; };
 		18AC3B2B1E6D3EF8007EE823 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */; };
@@ -242,6 +247,12 @@
 
 /* Begin PBXFileReference section */
 		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
+		1827C1B31E7F77D10040B9AD /* CourseVideoListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseVideoListTableView.h; sourceTree = "<group>"; };
+		1827C1B41E7F77D10040B9AD /* CourseVideoListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseVideoListTableView.m; sourceTree = "<group>"; };
+		1827C1B61E7F77E50040B9AD /* CourseBookTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseBookTableView.h; sourceTree = "<group>"; };
+		1827C1B71E7F77E50040B9AD /* CourseBookTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseBookTableView.m; sourceTree = "<group>"; };
+		1827C1B91E7F77F60040B9AD /* CourseFMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseFMTableView.h; sourceTree = "<group>"; };
+		1827C1BA1E7F77F60040B9AD /* CourseFMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseFMTableView.m; sourceTree = "<group>"; };
 		18AC3AF41E67E72D007EE823 /* HomeVideoDeatilView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoDeatilView.h; sourceTree = "<group>"; };
 		18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoDeatilView.m; sourceTree = "<group>"; };
 		18AC3AF71E67EAAE007EE823 /* ZM_VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZM_VideoPlayer.h; sourceTree = "<group>"; };
@@ -630,6 +641,12 @@
 		1827C1B01E7BDA700040B9AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1827C1B31E7F77D10040B9AD /* CourseVideoListTableView.h */,
+				1827C1B41E7F77D10040B9AD /* CourseVideoListTableView.m */,
+				1827C1B61E7F77E50040B9AD /* CourseBookTableView.h */,
+				1827C1B71E7F77E50040B9AD /* CourseBookTableView.m */,
+				1827C1B91E7F77F60040B9AD /* CourseFMTableView.h */,
+				1827C1BA1E7F77F60040B9AD /* CourseFMTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1044,8 +1061,8 @@
 		5F9C3C7C1E5E802C009659E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5F9C3CBD1E5EBA52009659E4 /* MineViewController.m */,
 				5F9C3CBC1E5EBA52009659E4 /* MineViewController.h */,
+				5F9C3CBD1E5EBA52009659E4 /* MineViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1570,6 +1587,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1827C1B11E7F722D0040B9AD /* SectionTitleCell.h in Resources */,
 				5FDCB4801E7F688F003914D1 /* SectionTitleCell.m in Resources */,
 				5FEB307B1E7A35EE00B34CC7 /* OpenCourseVideoCell.xib in Resources */,
 				5F9C3D141E63C669009659E4 /* cycle_06.jpg in Resources */,
@@ -1692,6 +1710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1827C1B21E7F72730040B9AD /* SectionTitleCell.m in Sources */,
 				5FDCB47F1E7F6874003914D1 /* CourseSearchTableViewController.m in Sources */,
 				5F2D620F1E77BAF700B038A5 /* ListenView.m in Sources */,
 				18AC3B971E729CFD007EE823 /* HomeVideoListCollectionView.h in Sources */,
@@ -1753,6 +1772,7 @@
 				5F2D62111E77BAF700B038A5 /* BookHomeCell.m in Sources */,
 				5FDCB4421E7A6B56003914D1 /* QuestionAnswerTableView.m in Sources */,
 				18C7E7061E655A1500E62757 /* SubjectCourseListView.m in Sources */,
+				1827C1B81E7F77E50040B9AD /* CourseBookTableView.m in Sources */,
 				18C7E6FF1E65135500E62757 /* SectionFootCell.m in Sources */,
 				5F9C3C9C1E5EB6A4009659E4 /* UIImage+ZMExtension.m in Sources */,
 				5FEB304A1E79088000B34CC7 /* DanmakuView.m in Sources */,
@@ -1769,11 +1789,13 @@
 				5F2D621E1E77BAF700B038A5 /* SubscibeCell.m in Sources */,
 				5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */,
 				5FDCB4491E7A6C5D003914D1 /* QAPreviousQACell.m in Sources */,
+				1827C1B51E7F77D10040B9AD /* CourseVideoListTableView.m in Sources */,
 				5F2D62321E77C1A300B038A5 /* ExamApplyTableView.m in Sources */,
 				18AC3B541E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
 				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
+				1827C1BB1E7F77F60040B9AD /* CourseFMTableView.m in Sources */,
 				5F9C3D011E63C0CB009659E4 /* TADotView.m in Sources */,
 				5F8EDD491E6EA01C000FC3E0 /* CourseTableViewCell.m in Sources */,
 				5F2D62151E77BAF700B038A5 /* FMCollectionView.m in Sources */,
