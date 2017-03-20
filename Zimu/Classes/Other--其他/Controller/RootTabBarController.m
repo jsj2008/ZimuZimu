@@ -9,7 +9,7 @@
 #import "RootTabBarController.h"
 #import "BaseNavigationController.h"
 #import "HomeViewController.h"
-#import "ConsultViewController.h"
+#import "SubscribeViewController.h"
 #import "CourseViewController.h"
 #import "FindViewController.h"
 #import "MineViewController.h"
@@ -28,8 +28,7 @@
     [self addChildVCs];
     
     //设置tabbar背景图
-    
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar-light"]];
+//    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar-light"]];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]} forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateSelected];
@@ -57,19 +56,19 @@
 
 - (void)addChildVCs{
     HomeViewController *homeVC = [[HomeViewController alloc]init];
-    [self setupChildViewController:homeVC Title:@"首页" imageName:@"tabBar_essence_icon"];
+    [self setupChildViewController:homeVC Title:@"首页" imageName:@"tabbar_home"];
     
-    ConsultViewController *consultVC = [[ConsultViewController alloc]init];
-    [self setupChildViewController:consultVC Title:@"咨询" imageName:@"tabBar_new_icon"];
+    SubscribeViewController *subscribeVC = [[SubscribeViewController alloc]init];
+    [self setupChildViewController:subscribeVC Title:@"订阅" imageName:@"tabbar_subscribe"];
     
     CourseViewController *courseVC = [[CourseViewController alloc]init];
-    [self setupChildViewController:courseVC Title:@"课程" imageName:@"tabBar_me_icon"];
+    [self setupChildViewController:courseVC Title:@"课程" imageName:@"tabbar_course"];
     
     FindViewController *findVC = [[FindViewController alloc]init];
-    [self setupChildViewController:findVC Title:@"发现" imageName:@"tabBar_find_icon"];
+    [self setupChildViewController:findVC Title:@"发现" imageName:@"tabbar_find"];
     
     MineViewController *mineVC = [[MineViewController alloc]init];
-    [self setupChildViewController:mineVC Title:@"我的" imageName:@"tabBar_friendTrends_icon"];
+    [self setupChildViewController:mineVC Title:@"我的" imageName:@"tabbar_mine"];
 }
 
 

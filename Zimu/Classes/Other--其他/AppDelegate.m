@@ -23,6 +23,7 @@
     
     //设置BaseTabBarController为根控制器
     self.window = [[UIWindow alloc]init];
+    self.window.backgroundColor = themeWhite;
     RootTabBarController *rootTabBarController = [[RootTabBarController alloc]init];
     [self.window setRootViewController:rootTabBarController];
     [self.window makeKeyAndVisible];

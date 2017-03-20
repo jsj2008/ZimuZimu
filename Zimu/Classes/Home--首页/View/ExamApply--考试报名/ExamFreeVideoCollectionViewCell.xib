@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="examFreeVideoCollectionViewCell" id="gTV-IL-0wX" customClass="ExamFreeVideoCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="264" height="182"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="264" height="182"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2T-Fh-sY6">
+                        <rect key="frame" x="0.0" y="0.0" width="264" height="142"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孩子不爱学习的原因是什么？源头可能在你" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBa-0P-W75">
+                        <rect key="frame" x="0.0" y="148" width="264" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="a2T-Fh-sY6" secondAttribute="bottom" constant="40" id="0Qw-Bk-oGj"/>
+                <constraint firstItem="OBa-0P-W75" firstAttribute="top" secondItem="a2T-Fh-sY6" secondAttribute="bottom" constant="6" id="0v2-hS-dvD"/>
+                <constraint firstAttribute="trailing" secondItem="a2T-Fh-sY6" secondAttribute="trailing" id="8GM-UE-ZMg"/>
+                <constraint firstItem="OBa-0P-W75" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AAh-Rn-bb2"/>
+                <constraint firstAttribute="trailing" secondItem="OBa-0P-W75" secondAttribute="trailing" id="WAt-7J-ipt"/>
+                <constraint firstItem="a2T-Fh-sY6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k1d-c3-xCj"/>
+                <constraint firstItem="a2T-Fh-sY6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nBE-yL-Ppn"/>
+            </constraints>
+            <size key="customSize" width="264" height="182"/>
+            <connections>
+                <outlet property="titleLabel" destination="OBa-0P-W75" id="EeN-fk-6gh"/>
+                <outlet property="videoImageView" destination="a2T-Fh-sY6" id="eFe-48-JRS"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="62"/>
+        </collectionViewCell>
+    </objects>
+</document>

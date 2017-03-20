@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookHomeCell" rowHeight="118" id="KGk-i7-Jjw" customClass="BookHomeCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1qO-Yo-vSe">
+                        <rect key="frame" x="10" y="10" width="137.5" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="faH-8F-DSW"/>
+                            <constraint firstAttribute="width" constant="137.5" id="gWv-U8-vRW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重现6000年前古巴比伦的财富智慧" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8R-Ep-LJ2">
+                        <rect key="frame" x="157.5" y="10" width="204.5" height="38.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何从第一笔收入开始就进行有效的理财？如何投资才会得到合理回报？当机遇降临时应该怎样抓住他？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bs3-6K-mDA">
+                        <rect key="frame" x="157.5" y="53.5" width="204.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量：100万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6P-fU-7vC">
+                        <rect key="frame" x="157.5" y="84" width="75.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：于浩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxS-fj-38c">
+                        <rect key="frame" x="295.5" y="84" width="66.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zxS-fj-38c" firstAttribute="trailing" secondItem="S8R-Ep-LJ2" secondAttribute="trailing" id="0ty-fd-uLL"/>
+                    <constraint firstItem="o6P-fU-7vC" firstAttribute="leading" secondItem="S8R-Ep-LJ2" secondAttribute="leading" id="5Ht-nd-v2u"/>
+                    <constraint firstItem="bs3-6K-mDA" firstAttribute="trailing" secondItem="S8R-Ep-LJ2" secondAttribute="trailing" id="Aoh-PX-sO5"/>
+                    <constraint firstItem="1qO-Yo-vSe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OqJ-km-ZPX"/>
+                    <constraint firstItem="S8R-Ep-LJ2" firstAttribute="top" secondItem="1qO-Yo-vSe" secondAttribute="top" id="PnP-hT-qpJ"/>
+                    <constraint firstItem="1qO-Yo-vSe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="S1o-c6-KSc"/>
+                    <constraint firstItem="o6P-fU-7vC" firstAttribute="bottom" secondItem="1qO-Yo-vSe" secondAttribute="bottom" id="XmO-Rd-qAT"/>
+                    <constraint firstItem="bs3-6K-mDA" firstAttribute="leading" secondItem="S8R-Ep-LJ2" secondAttribute="leading" id="bTk-hS-8l9"/>
+                    <constraint firstItem="bs3-6K-mDA" firstAttribute="top" secondItem="S8R-Ep-LJ2" secondAttribute="bottom" constant="5" id="iXv-0E-Kyh"/>
+                    <constraint firstItem="zxS-fj-38c" firstAttribute="bottom" secondItem="1qO-Yo-vSe" secondAttribute="bottom" id="r6G-cz-1mY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="S8R-Ep-LJ2" secondAttribute="trailing" constant="5" id="rNE-UY-BwA"/>
+                    <constraint firstItem="S8R-Ep-LJ2" firstAttribute="leading" secondItem="1qO-Yo-vSe" secondAttribute="trailing" constant="10" id="wsH-pZ-dww"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="zxS-fj-38c" id="WBe-yz-0Uk"/>
+                <outlet property="bookImageView" destination="1qO-Yo-vSe" id="2Rd-FP-ZsA"/>
+                <outlet property="contentLabel" destination="bs3-6K-mDA" id="9WM-Lh-tYT"/>
+                <outlet property="saleCountLabel" destination="o6P-fU-7vC" id="n17-Mr-WrS"/>
+                <outlet property="titleLabel" destination="S8R-Ep-LJ2" id="P25-Vd-1Re"/>
+            </connections>
+            <point key="canvasLocation" x="31.5" y="113"/>
+        </tableViewCell>
+    </objects>
+</document>

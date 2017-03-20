@@ -9,17 +9,17 @@
 #import "HomeViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIBarButtonItem+ZMExtension.h"
-#import "TestViewController.h"
 #import "UMMobClick/MobClick.h"
-
-#import "HomeArrayDataSource.h"
-#import "HomeTableView.h"
 #import "MJRefresh.h"
+#import "UIImage+ZMExtension.h"
+
+#import "TestViewController.h"
 
 #import "HeaderNavigationView.h"
+#import "HomeTableView.h"
 #import "HomeHeaderView.h"
 
-#define kHeaderViewHeight 250
+#define kHeaderViewHeight 195           //即轮播图高度
 
 @interface HomeViewController ()
 
@@ -27,7 +27,6 @@
 @property (nonatomic, strong) HomeHeaderView *headView;     //做为tableView的headerView
 
 @property (nonatomic, strong) HomeTableView *tableView;
-@property (nonatomic, strong) HomeArrayDataSource *homeArrayDataSource;     //tableView数据源方法
 
 @end
 
@@ -42,8 +41,6 @@
     //设置系统导航栏为透明
     self.title = @"";
     self.tabBarItem.title = @"首页";
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     
     [self setupTableView];
     
@@ -54,22 +51,18 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
     [super viewDidDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 0)] forBarMetrics:UIBarMetricsDefault];
+
 }
-//- (void)viewDidAppear:(BOOL)animated{
-//    [super viewDidAppear:animated];
-//    self.navigationController.navigationBarHidden = YES;
-//
-//}
-//- (void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBarHidden = NO;
-//}
 
 #pragma mark - observe
 - (void)dealloc{
@@ -85,11 +78,7 @@
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
     }
-    
-    
-//    CGFloat contentOffsetY = homeTableview.contentOffset.y;
-//    NSLog(@"offsetY : %lf",contentOffsetY);
-    
+
 }
 
 /**
@@ -97,7 +86,6 @@
  */
 - (void)setupTableView{
     self.automaticallyAdjustsScrollViewInsets = NO;     //为YES，tableView会往下偏移64
-//    self.homeArrayDataSource = [[HomeArrayDataSource alloc]initWithDataArray:@[@"cycle_01.jpg",@"cycle_02.jpg",@"cycle_03.jpg",@"cycle_04.jpg",@"cycle_05.jpg",@"cycle_06.jpg",@"cycle_07.jpg"] cellIdentifier:@"homeTableViewCell"];
     self.tableView = [[HomeTableView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(kHeaderViewHeight, 0, 0, 0);
@@ -125,22 +113,14 @@
     self.tableView.tableHeaderView = self.headView;
     
     //设置footerView
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40 + 49)];
-    [button setTitle:@"点击查看更多" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(10, 0, 10 + 49, 0)];
-    [button setBackgroundColor:themeGray];
-    button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button.titleLabel.font = [UIFont systemFontOfSize:14];
-    self.tableView.tableFooterView = button;
-    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"点击查看更多");
-    }];
+    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 49)];
+    footerView.backgroundColor = themeGray;
+    self.tableView.tableFooterView = footerView;
     
 }
 
 
-//刷新
+//下拉刷新
 - (void)refresh{
     [NSTimer scheduledTimerWithTimeInterval:3.5f repeats:NO block:^(NSTimer * _Nonnull timer) {
         [self.tableView.mj_header endRefreshing];

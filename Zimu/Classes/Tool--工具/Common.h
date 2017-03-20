@@ -16,9 +16,9 @@
 #define themeFont [UIFont systemFontOfSize:13]                      //界面中的主字体大小
 
 //颜色
-#define themeYellow [UIColor colorWithHexString:@"fadb07"]          //黄
+#define themeYellow [UIColor colorWithHexString:@"fedb18"]          //黄
 #define themeBlue [UIColor colorWithHexString:@"007aff"]            //蓝
-#define themeGray [UIColor colorWithHexString:@"efeff4"]            //背景灰
+#define themeGray [UIColor colorWithHexString:@"f1f1f1"]            //背景灰
 #define themeBlack [UIColor colorWithHexString:@"4a4a4a"]           //黑
 #define themeGreen [UIColor colorWithHexString:@"4cd964"]           //绿
 #define themeGold [UIColor colorWithHexString:@"dabd85"]            //金
