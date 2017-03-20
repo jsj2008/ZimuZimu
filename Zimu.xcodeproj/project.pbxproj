@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		1827C1B11E7F722D0040B9AD /* SectionTitleCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 18C7E6F21E6512C200E62757 /* SectionTitleCell.h */; };
 		1827C1B21E7F72730040B9AD /* SectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E6F31E6512C200E62757 /* SectionTitleCell.m */; };
-		1827C1B51E7F77D10040B9AD /* CourseVideoListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1B41E7F77D10040B9AD /* CourseVideoListTableView.m */; };
-		1827C1B81E7F77E50040B9AD /* CourseBookTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1B71E7F77E50040B9AD /* CourseBookTableView.m */; };
-		1827C1BB1E7F77F60040B9AD /* CourseFMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1BA1E7F77F60040B9AD /* CourseFMTableView.m */; };
+		1827C1BE1E7F9E740040B9AD /* CourseVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1BD1E7F9E740040B9AD /* CourseVideoController.m */; };
+		1827C1C11E7F9E8A0040B9AD /* CourseBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1C01E7F9E8A0040B9AD /* CourseBookController.m */; };
+		1827C1C41E7F9E980040B9AD /* CourseFMController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1C31E7F9E980040B9AD /* CourseFMController.m */; };
 		18AC3AF61E67E72D007EE823 /* HomeVideoDeatilView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */; };
 		18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF81E67EAAE007EE823 /* ZM_VideoPlayer.m */; };
 		18AC3B2B1E6D3EF8007EE823 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */; };
@@ -247,12 +247,12 @@
 
 /* Begin PBXFileReference section */
 		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
-		1827C1B31E7F77D10040B9AD /* CourseVideoListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseVideoListTableView.h; sourceTree = "<group>"; };
-		1827C1B41E7F77D10040B9AD /* CourseVideoListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseVideoListTableView.m; sourceTree = "<group>"; };
-		1827C1B61E7F77E50040B9AD /* CourseBookTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseBookTableView.h; sourceTree = "<group>"; };
-		1827C1B71E7F77E50040B9AD /* CourseBookTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseBookTableView.m; sourceTree = "<group>"; };
-		1827C1B91E7F77F60040B9AD /* CourseFMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseFMTableView.h; sourceTree = "<group>"; };
-		1827C1BA1E7F77F60040B9AD /* CourseFMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseFMTableView.m; sourceTree = "<group>"; };
+		1827C1BC1E7F9E740040B9AD /* CourseVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseVideoController.h; sourceTree = "<group>"; };
+		1827C1BD1E7F9E740040B9AD /* CourseVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseVideoController.m; sourceTree = "<group>"; };
+		1827C1BF1E7F9E8A0040B9AD /* CourseBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseBookController.h; sourceTree = "<group>"; };
+		1827C1C01E7F9E8A0040B9AD /* CourseBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseBookController.m; sourceTree = "<group>"; };
+		1827C1C21E7F9E980040B9AD /* CourseFMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseFMController.h; sourceTree = "<group>"; };
+		1827C1C31E7F9E980040B9AD /* CourseFMController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseFMController.m; sourceTree = "<group>"; };
 		18AC3AF41E67E72D007EE823 /* HomeVideoDeatilView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoDeatilView.h; sourceTree = "<group>"; };
 		18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoDeatilView.m; sourceTree = "<group>"; };
 		18AC3AF71E67EAAE007EE823 /* ZM_VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZM_VideoPlayer.h; sourceTree = "<group>"; };
@@ -475,8 +475,8 @@
 		5F9C3CAE1E5EB9FA009659E4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		5F9C3CB31E5EBA2D009659E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		5F9C3CB41E5EBA2D009659E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		5F9C3CB61E5EBA38009659E4 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseViewController.h; path = Controller/CourseViewController.h; sourceTree = "<group>"; };
-		5F9C3CB71E5EBA38009659E4 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseViewController.m; path = Controller/CourseViewController.m; sourceTree = "<group>"; };
+		5F9C3CB61E5EBA38009659E4 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
+		5F9C3CB71E5EBA38009659E4 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		5F9C3CB91E5EBA49009659E4 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
 		5F9C3CBA1E5EBA49009659E4 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		5F9C3CBC1E5EBA52009659E4 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -641,12 +641,6 @@
 		1827C1B01E7BDA700040B9AD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1827C1B31E7F77D10040B9AD /* CourseVideoListTableView.h */,
-				1827C1B41E7F77D10040B9AD /* CourseVideoListTableView.m */,
-				1827C1B61E7F77E50040B9AD /* CourseBookTableView.h */,
-				1827C1B71E7F77E50040B9AD /* CourseBookTableView.m */,
-				1827C1B91E7F77F60040B9AD /* CourseFMTableView.h */,
-				1827C1BA1E7F77F60040B9AD /* CourseFMTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -950,8 +944,6 @@
 			isa = PBXGroup;
 			children = (
 				5F9C3C6E1E5E802C009659E4 /* Controller */,
-				5F9C3CB61E5EBA38009659E4 /* CourseViewController.h */,
-				5F9C3CB71E5EBA38009659E4 /* CourseViewController.m */,
 				5F9C3C6F1E5E802C009659E4 /* Model */,
 				1827C1B01E7BDA700040B9AD /* View */,
 			);
@@ -961,6 +953,14 @@
 		5F9C3C6E1E5E802C009659E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5F9C3CB61E5EBA38009659E4 /* CourseViewController.h */,
+				5F9C3CB71E5EBA38009659E4 /* CourseViewController.m */,
+				1827C1BC1E7F9E740040B9AD /* CourseVideoController.h */,
+				1827C1BD1E7F9E740040B9AD /* CourseVideoController.m */,
+				1827C1BF1E7F9E8A0040B9AD /* CourseBookController.h */,
+				1827C1C01E7F9E8A0040B9AD /* CourseBookController.m */,
+				1827C1C21E7F9E980040B9AD /* CourseFMController.h */,
+				1827C1C31E7F9E980040B9AD /* CourseFMController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1733,6 +1733,7 @@
 				18AC3B891E729CBA007EE823 /* TAPageControl.m in Sources */,
 				5F8EDD2D1E6E5CA7000FC3E0 /* QuestionCellLayout.m in Sources */,
 				5F2D62631E77FD2600B038A5 /* DynamicTextTableView.m in Sources */,
+				1827C1C41E7F9E980040B9AD /* CourseFMController.m in Sources */,
 				5F2D62281E77BAF700B038A5 /* HomeTableView.m in Sources */,
 				5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */,
 				5FDCB4621E7B848D003914D1 /* SubscribeNavigationView.m in Sources */,
@@ -1772,7 +1773,6 @@
 				5F2D62111E77BAF700B038A5 /* BookHomeCell.m in Sources */,
 				5FDCB4421E7A6B56003914D1 /* QuestionAnswerTableView.m in Sources */,
 				18C7E7061E655A1500E62757 /* SubjectCourseListView.m in Sources */,
-				1827C1B81E7F77E50040B9AD /* CourseBookTableView.m in Sources */,
 				18C7E6FF1E65135500E62757 /* SectionFootCell.m in Sources */,
 				5F9C3C9C1E5EB6A4009659E4 /* UIImage+ZMExtension.m in Sources */,
 				5FEB304A1E79088000B34CC7 /* DanmakuView.m in Sources */,
@@ -1788,14 +1788,13 @@
 				5FDCB4521E7A8638003914D1 /* QANiceQuestionCellLayout.m in Sources */,
 				5F2D621E1E77BAF700B038A5 /* SubscibeCell.m in Sources */,
 				5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */,
+				1827C1C11E7F9E8A0040B9AD /* CourseBookController.m in Sources */,
 				5FDCB4491E7A6C5D003914D1 /* QAPreviousQACell.m in Sources */,
-				1827C1B51E7F77D10040B9AD /* CourseVideoListTableView.m in Sources */,
 				5F2D62321E77C1A300B038A5 /* ExamApplyTableView.m in Sources */,
 				18AC3B541E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
 				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
-				1827C1BB1E7F77F60040B9AD /* CourseFMTableView.m in Sources */,
 				5F9C3D011E63C0CB009659E4 /* TADotView.m in Sources */,
 				5F8EDD491E6EA01C000FC3E0 /* CourseTableViewCell.m in Sources */,
 				5F2D62151E77BAF700B038A5 /* FMCollectionView.m in Sources */,
@@ -1811,6 +1810,7 @@
 				18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */,
 				5FE200881E66D0560021DD27 /* ArticleSearchTableViewController.m in Sources */,
+				1827C1BE1E7F9E740040B9AD /* CourseVideoController.m in Sources */,
 				5FE200821E66D0100021DD27 /* BooksSearchTableViewController.m in Sources */,
 				5FDCB4651E7BB396003914D1 /* SubscribedExpertTableViewController.m in Sources */,
 				5F2D621C1E77BAF700B038A5 /* RecommendCell.m in Sources */,

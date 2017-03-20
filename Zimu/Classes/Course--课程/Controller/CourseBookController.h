@@ -1,5 +1,5 @@
 //
-//  CourseVideoListTableView.h
+//  CourseBookController.h
 //  Zimu
 //
 //  Created by apple on 2017/3/20.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseVideoListTableView : UITableView
+@interface CourseBookController : UITableViewController
 
 @end

@@ -1,5 +1,5 @@
 //
-//  CourseFMTableView.h
+//  CourseFMController.h
 //  Zimu
 //
 //  Created by apple on 2017/3/20.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseFMTableView : UITableView
+@interface CourseFMController : UITableViewController
 
 @end
