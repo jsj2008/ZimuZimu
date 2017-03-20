@@ -1131,6 +1131,9 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         
         [self.trySeeEndView removeFromSuperview];
         [self.delegate zf_buySuccess];
+        self.trySeeLabel.text = @"";
+        self.isTrySee = NO;
+        
     });
 }
 #pragma mark - 拖动进度条

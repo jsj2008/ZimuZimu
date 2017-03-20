@@ -87,8 +87,9 @@
         
         // 打开下载功能（默认没有这个功能）
         _player.hasDownload    = YES;
-        _player.trySeeTime = 0;
-        _player.isTrysee = NO;
+        //设置试看时间，如果没有试看则设置试看时间为0 isTrySee设为NO
+        _player.trySeeTime = 10;
+        _player.isTrysee = YES;
         // 打开预览图
         self.player.hasPreviewView = YES;
         //    ZFPlayerControlView
@@ -108,30 +109,7 @@
     }
     return _playerModel;
 }
-//- (ZFPlayerView *)player{
-//    if (!_player) {
-//        
-//        _playerFatherView  = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 210)];
-//        _playerFatherView.backgroundColor = [UIColor blackColor];
-//        [self.view addSubview:_playerFatherView];
-//        
-//        _player = [[ZFPlayerView alloc] init];
-//        [_player playerControlView:nil playerModel:self.playerModel];
-//        
-//        // 设置代理
-//        _player.delegate = self;
-//        
-//        // 打开下载功能（默认没有这个功能）
-//        _player.hasDownload    = YES;
-//        _player.trySeeTime = 180;
-//        _player.isTrysee = YES;
-//        // 打开预览图
-//        self.player.hasPreviewView = YES;
-//        //    ZFPlayerControlView
-//
-//    }
-//    return _player;
-//}
+
 // 视频详情页不支持系统转屏
 - (BOOL)shouldAutorotate {
     return NO;

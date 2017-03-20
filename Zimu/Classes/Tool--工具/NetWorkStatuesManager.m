@@ -40,20 +40,21 @@ static NetWorkStatuesManager *_instance = nil;
 - (void)obeseverNet{
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     //网络连接上了，判断是wifi还是移动数据
+    NetWorkStatuesManager __weak *weakSelf = self;
     reach.reachableBlock = ^(Reachability*reach){
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([reach currentReachabilityStatus] == ReachableViaWiFi) {
-                [self connectWifi];
+                [weakSelf connectWifi];
             } else if ([reach currentReachabilityStatus] == ReachableViaWWAN){
-                [self connectWan];
+                [weakSelf connectWan];
             }
         });
     };
     //网络没连接上
     reach.unreachableBlock = ^(Reachability*reach)
     {
-        [self lostNetConnect];
+        [weakSelf lostNetConnect];
     };
     
     // Start the notifier, which will cause the reachability object to retain itself!

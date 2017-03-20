@@ -1605,6 +1605,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)zf_buySuccess{
     self.canUserAct = YES;
     self.isTrysee = NO;
+    [self play];
 }
 
 #pragma clang diagnostic pop

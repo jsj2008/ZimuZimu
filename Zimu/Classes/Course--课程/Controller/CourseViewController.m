@@ -8,6 +8,7 @@
 
 #import "CourseViewController.h"
 #import "HomeVideoViewController.h"
+#import "UIBarButtonItem+ZMExtension.h"
 
 @interface CourseViewController ()
 
@@ -17,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self makeNavRightBtn];
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor cyanColor];
 }
@@ -31,14 +35,12 @@
     [self.navigationController pushViewController:dVC animated:YES];
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)makeNavRightBtn{
+    UIBarButtonItem *searchBtn = [UIBarButtonItem barButtonItemWithImageName:@"course_search" title:@"" target:self action:@selector(search)];
+    self.navigationItem.rightBarButtonItem = searchBtn;
 }
-*/
-
+- (void)search{
+    NSLog(@"234");
+    
+}
 @end

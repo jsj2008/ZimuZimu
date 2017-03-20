@@ -7,15 +7,20 @@
 //
 
 #import "MineViewController.h"
+#import "ZM_MineTableView.h"
 
 @interface MineViewController ()
 
+/** 我的界面列表 **/
+@property (nonatomic, strong)ZM_MineTableView *tableView;
 @end
 
 @implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self makeUI];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor yellowColor];
 }
@@ -25,14 +30,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
-*/
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+#pragma mark - UI
+- (void)makeUI{
+    if (!_tableView) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        _tableView = [[ZM_MineTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49) style:UITableViewStylePlain];
+        _tableView.tableFooterView = [[UIView alloc] init];
+        [self.view addSubview:_tableView];
+    }
+}
 
 @end
