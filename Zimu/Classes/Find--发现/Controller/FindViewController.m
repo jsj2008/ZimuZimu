@@ -7,6 +7,7 @@
 //
 
 #import "FindViewController.h"
+#import "FindListTableView.h"
 
 @interface FindViewController ()
 
@@ -16,23 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self makeTableView];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor greenColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)makeTableView{
+    FindListTableView *tableView = [[FindListTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 0) style:UITableViewStylePlain];
+    
+    [self.view addSubview:tableView];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -9,9 +9,22 @@
 /* Begin PBXBuildFile section */
 		1827C1B11E7F722D0040B9AD /* SectionTitleCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 18C7E6F21E6512C200E62757 /* SectionTitleCell.h */; };
 		1827C1B21E7F72730040B9AD /* SectionTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E6F31E6512C200E62757 /* SectionTitleCell.m */; };
-		1827C1BE1E7F9E740040B9AD /* CourseVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1BD1E7F9E740040B9AD /* CourseVideoController.m */; };
-		1827C1C11E7F9E8A0040B9AD /* CourseBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1C01E7F9E8A0040B9AD /* CourseBookController.m */; };
-		1827C1C41E7F9E980040B9AD /* CourseFMController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1C31E7F9E980040B9AD /* CourseFMController.m */; };
+		1827C1E11E80D3E90040B9AD /* FindListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1E01E80D3E90040B9AD /* FindListTableView.m */; };
+		1827C1E51E80EE520040B9AD /* FindHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1E31E80EE520040B9AD /* FindHeadCell.m */; };
+		1827C1E61E80EE520040B9AD /* FindHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C1E41E80EE520040B9AD /* FindHeadCell.xib */; };
+		1827C1EF1E8102E10040B9AD /* FindListActCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1ED1E8102E10040B9AD /* FindListActCell.m */; };
+		1827C1F01E8102E10040B9AD /* FindListActCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C1EE1E8102E10040B9AD /* FindListActCell.xib */; };
+		1827C1F41E810FB20040B9AD /* FindAskTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1F21E810FB20040B9AD /* FindAskTextCell.m */; };
+		1827C1F51E810FB20040B9AD /* FindAskTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C1F31E810FB20040B9AD /* FindAskTextCell.xib */; };
+		1827C1F91E8217B80040B9AD /* FindArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1F71E8217B80040B9AD /* FindArticleCell.m */; };
+		1827C1FA1E8217B80040B9AD /* FindArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C1F81E8217B80040B9AD /* FindArticleCell.xib */; };
+		1827C1FE1E821E490040B9AD /* FindFunctionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1FC1E821E480040B9AD /* FindFunctionsCell.m */; };
+		1827C1FF1E821E490040B9AD /* FindFunctionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C1FD1E821E490040B9AD /* FindFunctionsCell.xib */; };
+		1827C2021E8221C10040B9AD /* FindFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2011E8221C10040B9AD /* FindFunctionView.m */; };
+		1827C2061E8227460040B9AD /* FindCenterTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2041E8227460040B9AD /* FindCenterTitleCell.m */; };
+		1827C2071E8227460040B9AD /* FindCenterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C2051E8227460040B9AD /* FindCenterTitleCell.xib */; };
+		1827C20B1E8240BC0040B9AD /* FindTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2091E8240BC0040B9AD /* FindTopicCell.m */; };
+		1827C20C1E8240BC0040B9AD /* FindTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827C20A1E8240BC0040B9AD /* FindTopicCell.xib */; };
 		18AC3AF61E67E72D007EE823 /* HomeVideoDeatilView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */; };
 		18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3AF81E67EAAE007EE823 /* ZM_VideoPlayer.m */; };
 		18AC3B2B1E6D3EF8007EE823 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */; };
@@ -76,6 +89,9 @@
 		18C7E7001E65135500E62757 /* SectionFootCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C7E6FE1E65135500E62757 /* SectionFootCell.xib */; };
 		18C7E7061E655A1500E62757 /* SubjectCourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E7051E655A1500E62757 /* SubjectCourseListView.m */; };
 		18C7E7111E67AF4100E62757 /* HomeVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C7E7101E67AF4100E62757 /* HomeVideoDetailViewController.m */; };
+		18F7F2B41E825D7700DE6218 /* FindHotTopicListCollectiomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7F2B31E825D7700DE6218 /* FindHotTopicListCollectiomView.m */; };
+		18F7F2B81E825DA400DE6218 /* FindHotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7F2B61E825DA400DE6218 /* FindHotTopicCell.m */; };
+		18F7F2B91E825DA400DE6218 /* FindHotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F7F2B71E825DA400DE6218 /* FindHotTopicCell.xib */; };
 		5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61CF1E77BAF700B038A5 /* HeaderNavigationView.m */; };
 		5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */; };
 		5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D41E77BAF700B038A5 /* CircleCollectionView.m */; };
@@ -247,12 +263,31 @@
 
 /* Begin PBXFileReference section */
 		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
-		1827C1BC1E7F9E740040B9AD /* CourseVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseVideoController.h; sourceTree = "<group>"; };
-		1827C1BD1E7F9E740040B9AD /* CourseVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseVideoController.m; sourceTree = "<group>"; };
-		1827C1BF1E7F9E8A0040B9AD /* CourseBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseBookController.h; sourceTree = "<group>"; };
-		1827C1C01E7F9E8A0040B9AD /* CourseBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseBookController.m; sourceTree = "<group>"; };
-		1827C1C21E7F9E980040B9AD /* CourseFMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseFMController.h; sourceTree = "<group>"; };
-		1827C1C31E7F9E980040B9AD /* CourseFMController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseFMController.m; sourceTree = "<group>"; };
+		1827C1DF1E80D3E90040B9AD /* FindListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindListTableView.h; sourceTree = "<group>"; };
+		1827C1E01E80D3E90040B9AD /* FindListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindListTableView.m; sourceTree = "<group>"; };
+		1827C1E21E80EE520040B9AD /* FindHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindHeadCell.h; sourceTree = "<group>"; };
+		1827C1E31E80EE520040B9AD /* FindHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindHeadCell.m; sourceTree = "<group>"; };
+		1827C1E41E80EE520040B9AD /* FindHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindHeadCell.xib; sourceTree = "<group>"; };
+		1827C1EC1E8102E10040B9AD /* FindListActCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindListActCell.h; sourceTree = "<group>"; };
+		1827C1ED1E8102E10040B9AD /* FindListActCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindListActCell.m; sourceTree = "<group>"; };
+		1827C1EE1E8102E10040B9AD /* FindListActCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindListActCell.xib; sourceTree = "<group>"; };
+		1827C1F11E810FB20040B9AD /* FindAskTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindAskTextCell.h; sourceTree = "<group>"; };
+		1827C1F21E810FB20040B9AD /* FindAskTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindAskTextCell.m; sourceTree = "<group>"; };
+		1827C1F31E810FB20040B9AD /* FindAskTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindAskTextCell.xib; sourceTree = "<group>"; };
+		1827C1F61E8217B80040B9AD /* FindArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindArticleCell.h; sourceTree = "<group>"; };
+		1827C1F71E8217B80040B9AD /* FindArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindArticleCell.m; sourceTree = "<group>"; };
+		1827C1F81E8217B80040B9AD /* FindArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindArticleCell.xib; sourceTree = "<group>"; };
+		1827C1FB1E821E480040B9AD /* FindFunctionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFunctionsCell.h; sourceTree = "<group>"; };
+		1827C1FC1E821E480040B9AD /* FindFunctionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFunctionsCell.m; sourceTree = "<group>"; };
+		1827C1FD1E821E490040B9AD /* FindFunctionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindFunctionsCell.xib; sourceTree = "<group>"; };
+		1827C2001E8221C10040B9AD /* FindFunctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFunctionView.h; sourceTree = "<group>"; };
+		1827C2011E8221C10040B9AD /* FindFunctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFunctionView.m; sourceTree = "<group>"; };
+		1827C2031E8227460040B9AD /* FindCenterTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindCenterTitleCell.h; sourceTree = "<group>"; };
+		1827C2041E8227460040B9AD /* FindCenterTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCenterTitleCell.m; sourceTree = "<group>"; };
+		1827C2051E8227460040B9AD /* FindCenterTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindCenterTitleCell.xib; sourceTree = "<group>"; };
+		1827C2081E8240BC0040B9AD /* FindTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTopicCell.h; sourceTree = "<group>"; };
+		1827C2091E8240BC0040B9AD /* FindTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTopicCell.m; sourceTree = "<group>"; };
+		1827C20A1E8240BC0040B9AD /* FindTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindTopicCell.xib; sourceTree = "<group>"; };
 		18AC3AF41E67E72D007EE823 /* HomeVideoDeatilView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoDeatilView.h; sourceTree = "<group>"; };
 		18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoDeatilView.m; sourceTree = "<group>"; };
 		18AC3AF71E67EAAE007EE823 /* ZM_VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZM_VideoPlayer.h; sourceTree = "<group>"; };
@@ -335,6 +370,11 @@
 		18C7E7051E655A1500E62757 /* SubjectCourseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCourseListView.m; sourceTree = "<group>"; };
 		18C7E70F1E67AF4100E62757 /* HomeVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVideoDetailViewController.h; sourceTree = "<group>"; };
 		18C7E7101E67AF4100E62757 /* HomeVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVideoDetailViewController.m; sourceTree = "<group>"; };
+		18F7F2B21E825D7700DE6218 /* FindHotTopicListCollectiomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindHotTopicListCollectiomView.h; sourceTree = "<group>"; };
+		18F7F2B31E825D7700DE6218 /* FindHotTopicListCollectiomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindHotTopicListCollectiomView.m; sourceTree = "<group>"; };
+		18F7F2B51E825DA400DE6218 /* FindHotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindHotTopicCell.h; sourceTree = "<group>"; };
+		18F7F2B61E825DA400DE6218 /* FindHotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindHotTopicCell.m; sourceTree = "<group>"; };
+		18F7F2B71E825DA400DE6218 /* FindHotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindHotTopicCell.xib; sourceTree = "<group>"; };
 		24C58225F6A6D44E756F28AE /* libPods-Zimu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zimu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
 		5F2D61CE1E77BAF700B038A5 /* HeaderNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderNavigationView.h; sourceTree = "<group>"; };
@@ -641,6 +681,43 @@
 		1827C1B01E7BDA700040B9AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1827C1DE1E80D3C10040B9AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1827C1DF1E80D3E90040B9AD /* FindListTableView.h */,
+				1827C1E01E80D3E90040B9AD /* FindListTableView.m */,
+				18F7F2B21E825D7700DE6218 /* FindHotTopicListCollectiomView.h */,
+				18F7F2B31E825D7700DE6218 /* FindHotTopicListCollectiomView.m */,
+				1827C2001E8221C10040B9AD /* FindFunctionView.h */,
+				1827C2011E8221C10040B9AD /* FindFunctionView.m */,
+				1827C1E21E80EE520040B9AD /* FindHeadCell.h */,
+				1827C1E31E80EE520040B9AD /* FindHeadCell.m */,
+				1827C1E41E80EE520040B9AD /* FindHeadCell.xib */,
+				1827C2081E8240BC0040B9AD /* FindTopicCell.h */,
+				1827C2091E8240BC0040B9AD /* FindTopicCell.m */,
+				1827C20A1E8240BC0040B9AD /* FindTopicCell.xib */,
+				1827C1EC1E8102E10040B9AD /* FindListActCell.h */,
+				1827C1ED1E8102E10040B9AD /* FindListActCell.m */,
+				1827C1EE1E8102E10040B9AD /* FindListActCell.xib */,
+				1827C1F11E810FB20040B9AD /* FindAskTextCell.h */,
+				1827C1F21E810FB20040B9AD /* FindAskTextCell.m */,
+				1827C1F31E810FB20040B9AD /* FindAskTextCell.xib */,
+				1827C1F61E8217B80040B9AD /* FindArticleCell.h */,
+				1827C1F71E8217B80040B9AD /* FindArticleCell.m */,
+				1827C1F81E8217B80040B9AD /* FindArticleCell.xib */,
+				1827C2031E8227460040B9AD /* FindCenterTitleCell.h */,
+				1827C2041E8227460040B9AD /* FindCenterTitleCell.m */,
+				1827C2051E8227460040B9AD /* FindCenterTitleCell.xib */,
+				18F7F2B51E825DA400DE6218 /* FindHotTopicCell.h */,
+				18F7F2B61E825DA400DE6218 /* FindHotTopicCell.m */,
+				18F7F2B71E825DA400DE6218 /* FindHotTopicCell.xib */,
+				1827C1FB1E821E480040B9AD /* FindFunctionsCell.h */,
+				1827C1FC1E821E480040B9AD /* FindFunctionsCell.m */,
+				1827C1FD1E821E490040B9AD /* FindFunctionsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -955,12 +1032,6 @@
 			children = (
 				5F9C3CB61E5EBA38009659E4 /* CourseViewController.h */,
 				5F9C3CB71E5EBA38009659E4 /* CourseViewController.m */,
-				1827C1BC1E7F9E740040B9AD /* CourseVideoController.h */,
-				1827C1BD1E7F9E740040B9AD /* CourseVideoController.m */,
-				1827C1BF1E7F9E8A0040B9AD /* CourseBookController.h */,
-				1827C1C01E7F9E8A0040B9AD /* CourseBookController.m */,
-				1827C1C21E7F9E980040B9AD /* CourseFMController.h */,
-				1827C1C31E7F9E980040B9AD /* CourseFMController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -977,7 +1048,7 @@
 			children = (
 				5F9C3C721E5E802C009659E4 /* Controller */,
 				5F9C3C731E5E802C009659E4 /* Model */,
-				5F9C3C741E5E802C009659E4 /* View */,
+				1827C1DE1E80D3C10040B9AD /* View */,
 			);
 			path = "Find--发现";
 			sourceTree = "<group>";
@@ -996,13 +1067,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5F9C3C741E5E802C009659E4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		5F9C3C751E5E802C009659E4 /* Home--首页 */ = {
@@ -1587,6 +1651,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1827C1FF1E821E490040B9AD /* FindFunctionsCell.xib in Resources */,
 				1827C1B11E7F722D0040B9AD /* SectionTitleCell.h in Resources */,
 				5FDCB4801E7F688F003914D1 /* SectionTitleCell.m in Resources */,
 				5FEB307B1E7A35EE00B34CC7 /* OpenCourseVideoCell.xib in Resources */,
@@ -1599,12 +1664,15 @@
 				5F2D62681E77FD7800B038A5 /* DynamicTextCell.xib in Resources */,
 				5F9C3D111E63C669009659E4 /* cycle_03.jpg in Resources */,
 				5F2D62371E77C36500B038A5 /* EntranceCell.xib in Resources */,
+				18F7F2B91E825DA400DE6218 /* FindHotTopicCell.xib in Resources */,
 				5F2D62191E77BAF700B038A5 /* FourSquareCell.xib in Resources */,
 				5F2D62121E77BAF700B038A5 /* BookHomeCell.xib in Resources */,
 				18AC3B591E6FA075007EE823 /* ZFPlayer.bundle in Resources */,
 				18C7E6F61E6512C200E62757 /* SectionTitleCell.xib in Resources */,
 				5FDCB44A1E7A6C5D003914D1 /* QAPreviousQACell.xib in Resources */,
 				5F2D62461E77D47400B038A5 /* ExamFreeVideoCell.xib in Resources */,
+				1827C1FA1E8217B80040B9AD /* FindArticleCell.xib in Resources */,
+				1827C20C1E8240BC0040B9AD /* FindTopicCell.xib in Resources */,
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5F2D622A1E77BAF700B038A5 /* HomeTableViewCell.xib in Resources */,
@@ -1612,9 +1680,11 @@
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
 				5F2D620D1E77BAF700B038A5 /* CircleCollectionViewCell.xib in Resources */,
 				5F2D62241E77BAF700B038A5 /* VideoCourseCollectionViewCell.xib in Resources */,
+				1827C1F51E810FB20040B9AD /* FindAskTextCell.xib in Resources */,
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
 				5F9C3D151E63C669009659E4 /* cycle_07.jpg in Resources */,
+				1827C1E61E80EE520040B9AD /* FindHeadCell.xib in Resources */,
 				5F2D621D1E77BAF700B038A5 /* RecommendCell.xib in Resources */,
 				18C7E6F11E6512A200E62757 /* SubjectListCell.xib in Resources */,
 				5FDCB46E1E7BBC20003914D1 /* SubscribedExpertCell.xib in Resources */,
@@ -1626,6 +1696,7 @@
 				5F2D62171E77BAF700B038A5 /* FMCollectionViewCell.xib in Resources */,
 				5F9C3D131E63C669009659E4 /* cycle_05.jpg in Resources */,
 				18AC3C521E7BBCE6007EE823 /* MineHeadCell.xib in Resources */,
+				1827C1F01E8102E10040B9AD /* FindListActCell.xib in Resources */,
 				5F8EDD4F1E6EA5B2000FC3E0 /* FMTableViewCell.xib in Resources */,
 				5F2D621B1E77BAF700B038A5 /* HeaderTitleCell.xib in Resources */,
 				5F8EDD4A1E6EA01C000FC3E0 /* CourseTableViewCell.xib in Resources */,
@@ -1635,6 +1706,7 @@
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
 				5F8EDD541E6EA8FE000FC3E0 /* BooksTableViewCell.xib in Resources */,
 				5F2D62211E77BAF700B038A5 /* VideoCourseCell.xib in Resources */,
+				1827C2071E8227460040B9AD /* FindCenterTitleCell.xib in Resources */,
 				5F2D62411E77D12700B038A5 /* ExamAnswerCell.xib in Resources */,
 				5F9C3D0F1E63C669009659E4 /* cycle_01.jpg in Resources */,
 				18AC3C4D1E7B843F007EE823 /* MineBigFunctionCell.xib in Resources */,
@@ -1715,6 +1787,7 @@
 				5F2D620F1E77BAF700B038A5 /* ListenView.m in Sources */,
 				18AC3B971E729CFD007EE823 /* HomeVideoListCollectionView.h in Sources */,
 				18AC3B981E729CFD007EE823 /* HomeVideoListCollectionView.m in Sources */,
+				1827C1F41E810FB20040B9AD /* FindAskTextCell.m in Sources */,
 				18AC3C3B1E7B74D3007EE823 /* ZM_MineTableView.m in Sources */,
 				18AC3B8A1E729CD2007EE823 /* TAAbstractDotView.h in Sources */,
 				18AC3B8B1E729CD2007EE823 /* TAAnimatedDotView.h in Sources */,
@@ -1729,20 +1802,25 @@
 				18AC3C441E7B82F8007EE823 /* MineNormalCell.m in Sources */,
 				18AC3B941E729CD3007EE823 /* Common.h in Sources */,
 				18AC3B951E729CD3007EE823 /* ZimuPrefixHeader.pch in Sources */,
+				1827C20B1E8240BC0040B9AD /* FindTopicCell.m in Sources */,
 				18AC3B961E729CD3007EE823 /* NetWorkStatuesManager.h in Sources */,
 				18AC3B891E729CBA007EE823 /* TAPageControl.m in Sources */,
 				5F8EDD2D1E6E5CA7000FC3E0 /* QuestionCellLayout.m in Sources */,
+				18F7F2B81E825DA400DE6218 /* FindHotTopicCell.m in Sources */,
 				5F2D62631E77FD2600B038A5 /* DynamicTextTableView.m in Sources */,
-				1827C1C41E7F9E980040B9AD /* CourseFMController.m in Sources */,
 				5F2D62281E77BAF700B038A5 /* HomeTableView.m in Sources */,
 				5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */,
+				1827C1FE1E821E490040B9AD /* FindFunctionsCell.m in Sources */,
 				5FDCB4621E7B848D003914D1 /* SubscribeNavigationView.m in Sources */,
 				5FE200701E66C8B70021DD27 /* SearchResultViewController.m in Sources */,
 				18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */,
 				5F2D62201E77BAF700B038A5 /* VideoCourseCell.m in Sources */,
 				5FEB30361E78DDA600B34CC7 /* ListenHeartTutorCell.m in Sources */,
 				18AC3B581E6FA075007EE823 /* ZFBrightnessView.m in Sources */,
+				1827C1E51E80EE520040B9AD /* FindHeadCell.m in Sources */,
 				5F9C3CB81E5EBA38009659E4 /* CourseViewController.m in Sources */,
+				1827C1EF1E8102E10040B9AD /* FindListActCell.m in Sources */,
+				1827C1E11E80D3E90040B9AD /* FindListTableView.m in Sources */,
 				5F8EDD451E6E9A6D000FC3E0 /* EvaluationCellLayout.m in Sources */,
 				5F9C3CA61E5EB7D8009659E4 /* BlankPageView.m in Sources */,
 				5F9C3CDF1E62CBA0009659E4 /* UIView+ViewController.m in Sources */,
@@ -1766,6 +1844,7 @@
 				5FEB304B1E79088000B34CC7 /* DanmakuBaseModel.m in Sources */,
 				5F2D620E1E77BAF700B038A5 /* HomeHeaderView.m in Sources */,
 				5F9C3C911E5E80AC009659E4 /* main.m in Sources */,
+				1827C1F91E8217B80040B9AD /* FindArticleCell.m in Sources */,
 				5F9C3CA31E5EB7B5009659E4 /* BaseNavigationController.m in Sources */,
 				5FE200851E66D02F0021DD27 /* RecommendSearchTableViewController.m in Sources */,
 				5FEB30501E79088000B34CC7 /* DanmakuFilter.m in Sources */,
@@ -1788,17 +1867,18 @@
 				5FDCB4521E7A8638003914D1 /* QANiceQuestionCellLayout.m in Sources */,
 				5F2D621E1E77BAF700B038A5 /* SubscibeCell.m in Sources */,
 				5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */,
-				1827C1C11E7F9E8A0040B9AD /* CourseBookController.m in Sources */,
 				5FDCB4491E7A6C5D003914D1 /* QAPreviousQACell.m in Sources */,
 				5F2D62321E77C1A300B038A5 /* ExamApplyTableView.m in Sources */,
 				18AC3B541E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
+				1827C2061E8227460040B9AD /* FindCenterTitleCell.m in Sources */,
 				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
 				5F9C3D011E63C0CB009659E4 /* TADotView.m in Sources */,
 				5F8EDD491E6EA01C000FC3E0 /* CourseTableViewCell.m in Sources */,
 				5F2D62151E77BAF700B038A5 /* FMCollectionView.m in Sources */,
 				5FDCB4681E7BB409003914D1 /* RecommendExpertViewController.m in Sources */,
+				18F7F2B41E825D7700DE6218 /* FindHotTopicListCollectiomView.m in Sources */,
 				5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */,
 				5F2D62361E77C36500B038A5 /* EntranceCell.m in Sources */,
 				5FEB30731E7A31CE00B34CC7 /* OpenCourseViewController.m in Sources */,
@@ -1810,7 +1890,6 @@
 				18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */,
 				5FE200881E66D0560021DD27 /* ArticleSearchTableViewController.m in Sources */,
-				1827C1BE1E7F9E740040B9AD /* CourseVideoController.m in Sources */,
 				5FE200821E66D0100021DD27 /* BooksSearchTableViewController.m in Sources */,
 				5FDCB4651E7BB396003914D1 /* SubscribedExpertTableViewController.m in Sources */,
 				5F2D621C1E77BAF700B038A5 /* RecommendCell.m in Sources */,
@@ -1862,6 +1941,7 @@
 				5FDCB46D1E7BBC20003914D1 /* SubscribedExpertCell.m in Sources */,
 				5F2D62401E77D12700B038A5 /* ExamAnswerCell.m in Sources */,
 				5F9C3D051E63C0CB009659E4 /* UIView+SDExtension.m in Sources */,
+				1827C2021E8221C10040B9AD /* FindFunctionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

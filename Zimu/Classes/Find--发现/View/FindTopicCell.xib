@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="FindTopicCell">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="102"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="101"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哪一刻你觉得自己快要抑郁死掉了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75m-RJ-0id">
+                        <rect key="frame" x="139" y="10" width="200" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="find_topic_4" translatesAutoresizingMaskIntoConstraints="NO" id="itx-9B-2Ly">
+                        <rect key="frame" x="10" y="10" width="119" height="81.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="itx-9B-2Ly" secondAttribute="height" multiplier="19:13" id="oG0-ac-pkE"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6666人参与" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbE-Cs-tGv">
+                        <rect key="frame" x="139" y="33" width="78" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="75m-RJ-0id" firstAttribute="top" secondItem="itx-9B-2Ly" secondAttribute="top" id="5cd-pt-GjP"/>
+                    <constraint firstItem="IbE-Cs-tGv" firstAttribute="leading" secondItem="75m-RJ-0id" secondAttribute="leading" id="Jr4-Sq-OZv"/>
+                    <constraint firstItem="75m-RJ-0id" firstAttribute="leading" secondItem="itx-9B-2Ly" secondAttribute="trailing" constant="10" id="NKA-vC-RWC"/>
+                    <constraint firstItem="IbE-Cs-tGv" firstAttribute="top" secondItem="75m-RJ-0id" secondAttribute="bottom" constant="5" id="RSv-ig-fNN"/>
+                    <constraint firstAttribute="bottom" secondItem="itx-9B-2Ly" secondAttribute="bottom" constant="10" id="X81-dc-h5o"/>
+                    <constraint firstItem="itx-9B-2Ly" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zci-ob-drW"/>
+                    <constraint firstItem="itx-9B-2Ly" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="n0Y-jY-v48"/>
+                    <constraint firstAttribute="trailing" secondItem="75m-RJ-0id" secondAttribute="trailing" constant="10" id="pNX-Lb-lmY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="img" destination="itx-9B-2Ly" id="DaH-X0-pEY"/>
+                <outlet property="parNum" destination="IbE-Cs-tGv" id="Bid-Oq-EyD"/>
+                <outlet property="titleLabel" destination="75m-RJ-0id" id="msy-ch-nWM"/>
+            </connections>
+            <point key="canvasLocation" x="48.5" y="83"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="find_topic_4" width="95" height="65"/>
+    </resources>
+</document>

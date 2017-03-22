@@ -9,8 +9,13 @@
 #import "CourseViewController.h"
 #import "HomeVideoViewController.h"
 #import "UIBarButtonItem+ZMExtension.h"
+#import "SDCycleScrollView.h"
 
+
+#define TITLE_HEIGHT 45
 @interface CourseViewController ()
+
+
 
 @end
 
@@ -21,18 +26,11 @@
     
     [self makeNavRightBtn];
     
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor cyanColor];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    HomeVideoViewController *dVC = [[HomeVideoViewController alloc] init];
-    [self.navigationController pushViewController:dVC animated:YES];
+//    HomeVideoViewController *dVC = [[HomeVideoViewController alloc] init];
+//    [self.navigationController pushViewController:dVC animated:YES];
     
 }
 - (void)makeNavRightBtn{
@@ -43,4 +41,5 @@
     NSLog(@"234");
     
 }
+
 @end
