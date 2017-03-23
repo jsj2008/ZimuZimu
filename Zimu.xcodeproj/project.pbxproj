@@ -1843,11 +1843,8 @@
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
 				5F2D620D1E77BAF700B038A5 /* CircleCollectionViewCell.xib in Resources */,
 				5F2D62241E77BAF700B038A5 /* VideoCourseCollectionViewCell.xib in Resources */,
-<<<<<<< HEAD
 				5F9CE2C31E82CFBE00424352 /* TagCollectionViewCell.xib in Resources */,
-=======
 				1827C1F51E810FB20040B9AD /* FindAskTextCell.xib in Resources */,
->>>>>>> origin/master
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
 				5F9CE2B61E825AA200424352 /* DailyLookCell.xib in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
@@ -1981,11 +1978,8 @@
 				5F2D62281E77BAF700B038A5 /* HomeTableView.m in Sources */,
 				5FDCB49D1E7FAF85003914D1 /* DefaultDirectionInterpretor.m in Sources */,
 				5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */,
-<<<<<<< HEAD
 				5FFB000F1E80C9590025D809 /* SubscribeDetailViewController.m in Sources */,
-=======
 				1827C1FE1E821E490040B9AD /* FindFunctionsCell.m in Sources */,
->>>>>>> origin/master
 				5FDCB4621E7B848D003914D1 /* SubscribeNavigationView.m in Sources */,
 				5FE200701E66C8B70021DD27 /* SearchResultViewController.m in Sources */,
 				18AC3AF91E67EAAE007EE823 /* ZM_VideoPlayer.m in Sources */,
