@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyLookCell" rowHeight="255" id="KGk-i7-Jjw" customClass="DailyLookCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lNy-5Q-taf">
+                        <rect key="frame" x="10" y="59" width="300" height="140"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="140" id="EXN-xC-XEV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摘要：如何培养孩子的独立性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGj-RR-9mh">
+                        <rect key="frame" x="10" y="209" width="292" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读全文&gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVX-lO-Bar">
+                        <rect key="frame" x="250" y="230" width="60" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="5b3-hP-kBr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5小时前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qZ-ey-JaN">
+                        <rect key="frame" x="10" y="40" width="41" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5万人读过" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fG-aT-2GC">
+                        <rect key="frame" x="81" y="40" width="60" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqO-l3-oSc">
+                        <rect key="frame" x="250" y="35" width="60" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="3xz-rU-DZQ"/>
+                            <constraint firstAttribute="height" constant="24" id="z2U-xs-Gcl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title=" 1020" image="yiding_dianzan">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第100期|如何培养孩子的独立性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7H-IW-IW9">
+                        <rect key="frame" x="10" y="10" width="300" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="OqO-l3-oSc" secondAttribute="trailing" constant="10" id="17D-Gs-AVK"/>
+                    <constraint firstItem="lNy-5Q-taf" firstAttribute="leading" secondItem="f7H-IW-IW9" secondAttribute="leading" id="6kK-Ci-J6R"/>
+                    <constraint firstItem="2fG-aT-2GC" firstAttribute="leading" secondItem="4qZ-ey-JaN" secondAttribute="trailing" constant="30" id="6rn-rB-Myu"/>
+                    <constraint firstItem="eVX-lO-Bar" firstAttribute="top" secondItem="IGj-RR-9mh" secondAttribute="bottom" constant="5" id="8Bz-NB-IJS"/>
+                    <constraint firstItem="OqO-l3-oSc" firstAttribute="centerY" secondItem="2fG-aT-2GC" secondAttribute="centerY" id="8Nf-XF-e9Z"/>
+                    <constraint firstItem="2fG-aT-2GC" firstAttribute="top" secondItem="4qZ-ey-JaN" secondAttribute="top" id="JhL-90-inJ"/>
+                    <constraint firstItem="4qZ-ey-JaN" firstAttribute="leading" secondItem="f7H-IW-IW9" secondAttribute="leading" id="LGW-Ae-qbP"/>
+                    <constraint firstItem="IGj-RR-9mh" firstAttribute="top" secondItem="lNy-5Q-taf" secondAttribute="bottom" constant="10" id="On6-oZ-8Ys"/>
+                    <constraint firstItem="lNy-5Q-taf" firstAttribute="trailing" secondItem="f7H-IW-IW9" secondAttribute="trailing" id="R0w-LC-NWx"/>
+                    <constraint firstItem="f7H-IW-IW9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="W18-Yc-YwZ"/>
+                    <constraint firstItem="4qZ-ey-JaN" firstAttribute="top" secondItem="f7H-IW-IW9" secondAttribute="bottom" constant="10" id="cHE-62-tYK"/>
+                    <constraint firstItem="lNy-5Q-taf" firstAttribute="top" secondItem="4qZ-ey-JaN" secondAttribute="bottom" constant="5" id="cWa-Ud-RLX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="IGj-RR-9mh" secondAttribute="trailing" constant="10" id="d8U-bA-SQg"/>
+                    <constraint firstItem="f7H-IW-IW9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="d98-Qf-RS1"/>
+                    <constraint firstItem="IGj-RR-9mh" firstAttribute="leading" secondItem="f7H-IW-IW9" secondAttribute="leading" id="g78-i6-XUa"/>
+                    <constraint firstAttribute="trailing" secondItem="f7H-IW-IW9" secondAttribute="trailing" constant="10" id="gcl-oO-CcH"/>
+                    <constraint firstItem="eVX-lO-Bar" firstAttribute="trailing" secondItem="lNy-5Q-taf" secondAttribute="trailing" id="kSj-Mh-FOA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bannerImageView" destination="lNy-5Q-taf" id="DYM-BJ-cV7"/>
+                <outlet property="introLabel" destination="IGj-RR-9mh" id="psB-pu-80x"/>
+                <outlet property="likeButton" destination="OqO-l3-oSc" id="GY1-BZ-LZf"/>
+                <outlet property="lookMoreLabel" destination="eVX-lO-Bar" id="Rjr-Dc-34l"/>
+                <outlet property="readCountLabel" destination="2fG-aT-2GC" id="6BN-FM-kck"/>
+                <outlet property="timeLabel" destination="4qZ-ey-JaN" id="fCG-Q9-Ong"/>
+                <outlet property="titleLabel" destination="f7H-IW-IW9" id="6Tf-0J-XWQ"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="151.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="yiding_dianzan" width="15" height="14"/>
+    </resources>
+</document>

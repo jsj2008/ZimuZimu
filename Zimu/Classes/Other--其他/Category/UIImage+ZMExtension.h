@@ -28,4 +28,7 @@
  */
 - (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size;
 
+//给指定角绘制圆角
+- (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size byRoundingCorners:(UIRectCorner)corners;
+
 @end

@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UIButton *searchButton;
 @property (nonatomic, strong) ListSelectButton *addressButton;
 @property (nonatomic, strong) UIButton *scanButton;
+@property (nonatomic, strong) NSMutableArray *resultArray;
 
 @end
 
@@ -40,6 +41,7 @@
         
         self.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
         
+        _resultArray = [NSMutableArray array];
         [self addSubview:self.backGroundView];
         [self addSubview:self.searchBar];
         [self addSubview:self.searchButton];
@@ -183,13 +185,16 @@
     [self searchButtonAction];
     return NO;
 }
+
 // - PYSearchViewControllerDelegate
 - (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)searchBar searchText:(NSString *)searchText{
     if (searchText.length) {
         //设置搜索建议数据
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            searchViewController.searchSuggestions = @[@"sdsd",@"fdf",@"dsds",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs",@"ewr",@"vfvd",@"rwrwe",@"dsffshskhhs"];
+            NSLog(@"%@",searchText);
+            [_resultArray addObject:searchText];
+            searchViewController.searchSuggestions = _resultArray;
             
         });
     }

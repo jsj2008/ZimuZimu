@@ -19,4 +19,9 @@
 
 @property (nonatomic, assign) id<SubscribeNavigationViewDelegate> delegate;
 
+@property (nonatomic, strong) UIButton *searchButton;       //搜索按钮
+@property (nonatomic, strong) UIView *titleView;            //标题栏
+@property (nonatomic, strong) UIButton *selectButton;
+@property (nonatomic, strong) UIView *indicatorView;
+
 @end

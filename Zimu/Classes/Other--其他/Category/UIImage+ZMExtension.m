@@ -29,11 +29,13 @@
     return image;
 }
 
+
 - (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size{
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadious];
+    
     CGContextAddPath(context, bezierPath.CGPath);
     CGContextClip(context);
     
@@ -41,6 +43,33 @@
     CGContextDrawPath(context, kCGPathFillStroke);
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    return newImage;
+}
+
+- (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size byRoundingCorners:(UIRectCorner)corners{
+//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:CGSizeMake(cornerRadious, cornerRadious)];    //制定给rect矩形的某个角绘制圆角
+
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextAddPath(ctx, bezierPath.CGPath);
+    CGContextSetLineWidth(ctx, 2.0f);
+    CGContextSetStrokeColorWithColor(ctx, [UIColor greenColor].CGColor);
+    CGContextStrokePath(ctx);
+    
+    
+//    CGContextAddPath(context, bezierPath.CGPath);
+//    CGContextClip(context);
+//    
+//    [self drawInRect:rect];
+//    CGContextDrawPath(context, kCGPathFillStroke);
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    
     return newImage;
 }
 

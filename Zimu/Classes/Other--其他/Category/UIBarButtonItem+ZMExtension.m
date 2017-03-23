@@ -58,7 +58,7 @@
     [button setImage:[UIImage imageNamed:highLightImageName] forState:UIControlStateHighlighted];
     
     [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [button setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [button setContentEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 0)];
     
     button.bounds = CGRectMake(0, 0, button.currentImage.size.width + 80, button.currentImage.size.height);
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
