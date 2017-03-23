@@ -213,7 +213,7 @@ static NSString *topicCellId = @"findTopicId";
             return 44;
         }else{
 #pragma mark - 要计算cell的高度
-            CGFloat orginalH = 135.0 - 17.0;
+            CGFloat orginalH = 140.0 - 17.0;
             NSString *content = _textTest[indexPath.row - 1];
             CGRect r = [content boundingRectWithSize:CGSizeMake(kScreenWidth - 20,10000) options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.f]} context:nil];
             CGFloat trueH = orginalH + r.size.height + 5;
