@@ -101,6 +101,53 @@
             endingLineNumber = "170"
             landmarkName = "-refresh"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[HomeViewController refresh]_block_invoke.153"
+                  moduleName = "Zimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/redpower/ZimuZimu/Zimu/Classes/Home--%E9%A6%96%E9%A1%B5/Controller/HomeViewController.m"
+                  timestampString = "512363308.403507"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.154"
+                  moduleName = "Zimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/redpower/ZimuZimu/Zimu/Classes/Home--%E9%A6%96%E9%A1%B5/Controller/HomeViewController.m"
+                  timestampString = "512363308.405187"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.155"
+                  moduleName = "Zimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/redpower/ZimuZimu/Zimu/Classes/Home--%E9%A6%96%E9%A1%B5/Controller/HomeViewController.m"
+                  timestampString = "512363308.406811"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

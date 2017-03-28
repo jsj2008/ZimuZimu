@@ -47,6 +47,7 @@ static NSString *continueListenIdentifier = @"ContinueListenCell";
     }
     ContinueListenCell *cell = [tableView dequeueReusableCellWithIdentifier:continueListenIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.imageString = @"course_FM_placeholdImg";
     
     return cell;
 }

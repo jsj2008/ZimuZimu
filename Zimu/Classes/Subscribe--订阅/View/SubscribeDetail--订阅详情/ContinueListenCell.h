@@ -10,4 +10,6 @@
 
 @interface ContinueListenCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *imageString;
+
 @end

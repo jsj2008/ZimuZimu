@@ -395,7 +395,7 @@
         if (indexPath.section == 0 && indexPath.row == 0) {
             return 35;
         }
-        return 255;
+        return 210;
     }else{
         //导师信息
         SLDTextCellLayoutFrame *layout = [[SLDTextCellLayoutFrame alloc]init];

@@ -10,4 +10,6 @@
 
 @interface DailyStudyCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *imageString;
+
 @end

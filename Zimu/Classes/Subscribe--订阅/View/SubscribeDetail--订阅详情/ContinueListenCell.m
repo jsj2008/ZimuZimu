@@ -32,4 +32,11 @@
     // Configure the view for the selected state
 }
 
+- (void)setImageString:(NSString *)imageString{
+    if (_imageString != imageString) {
+        _imageString = imageString;
+        _headImageView.image = [UIImage imageNamed:_imageString];
+    }
+}
+
 @end

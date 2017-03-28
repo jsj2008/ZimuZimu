@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *readCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UIView *maskView;
+@property (weak, nonatomic) IBOutlet UIButton *lengthLabel;
 
 @end
 
@@ -21,13 +23,23 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    
+    _maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setImageString:(NSString *)imageString{
+    if (_imageString != imageString) {
+        _imageString = imageString;
+        _headImageView.image = [UIImage imageNamed:_imageString];
+    }
 }
 
 @end

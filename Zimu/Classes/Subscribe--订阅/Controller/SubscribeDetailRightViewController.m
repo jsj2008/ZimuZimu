@@ -8,10 +8,10 @@
 
 #import "SubscribeDetailRightViewController.h"
 #import "DailyLookTitleCell.h"
-#import "DailyLookCell.h"
+#import "DailyStudyCell.h"
 
 static NSString *dailyLookTitleIdentifier = @"DailyLookTitleCell";
-static NSString *dailyLookIdentifier = @"DailyLookCell";
+static NSString *dailyStudyIdentifier = @"DailyStudyCell";
 @interface SubscribeDetailRightViewController ()
 
 @end
@@ -24,7 +24,7 @@ static NSString *dailyLookIdentifier = @"DailyLookCell";
     self.view.backgroundColor = themeGray;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"DailyLookTitleCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:dailyLookTitleIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:@"DailyLookCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:dailyLookIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"DailyStudyCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:dailyStudyIdentifier];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -45,8 +45,9 @@ static NSString *dailyLookIdentifier = @"DailyLookCell";
         
         return cell;
     }
-    DailyLookCell *cell = [tableView dequeueReusableCellWithIdentifier:dailyLookIdentifier];
+    DailyStudyCell *cell = [tableView dequeueReusableCellWithIdentifier:dailyStudyIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.imageString = @"yiding_meirikan_pic";
     
     return cell;
 }
