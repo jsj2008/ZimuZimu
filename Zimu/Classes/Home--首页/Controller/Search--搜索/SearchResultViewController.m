@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UIButton *selectButton;           //选中的按钮（标题栏中）
 @property (nonatomic, strong) UIScrollView *scrollView;         //底层scrollView
 
+@property (nonatomic, assign) NSInteger nowIndex;
+
 
 @end
 
@@ -84,7 +86,7 @@
 - (void)setupTitleView{
     _titleView = [[UIView alloc]init];
     _titleView.width = kScreenWidth;
-    _titleView.height = 35;
+    _titleView.height = 40;
     _titleView.y = 0;
     _titleView.x = 0;
     _titleView.backgroundColor = themeWhite;
@@ -98,19 +100,19 @@
     
     //添加指示器
     _indicator = [[UIView alloc]init];
-    _indicator.backgroundColor = themeGreen;
+    _indicator.backgroundColor = themeYellow;
     _indicator.height = 2;
     _indicator.y = _titleView.height - _indicator.height - 2;
     
     //添加button
     NSArray *childVCs = self.childViewControllers;
-    CGFloat width = _titleView.width*0.8 / childVCs.count;
+    CGFloat width = (_titleView.width - 20) / childVCs.count;
     CGFloat height = _titleView.height - 15;
     for (int index = 0; index < childVCs.count; index++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.width = width;
         button.height = height;
-        button.x = width * index + _titleView.width * 0.1;
+        button.x = width * index + 10;
         button.y = 10;
         button.tag = 10 + index;
         [_titleView addSubview:button];
@@ -118,18 +120,19 @@
         UIViewController *vc = self.childViewControllers[index];
         [button setTitle:vc.title forState:UIControlStateNormal];
         [button setTitleColor:themeBlack forState:UIControlStateNormal];
-        [button setTitleColor:themeGreen forState:UIControlStateSelected];
+        [button setTitleColor:themeYellow forState:UIControlStateDisabled];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button addTarget:self action:@selector(selectTitle:) forControlEvents:UIControlEventTouchUpInside];
         
         //设置指示器,默认选中第一个标题 推荐
         if (index == 0) {
+            _nowIndex = index;
             button.enabled = NO;
             button.titleLabel.font = [UIFont systemFontOfSize:16];
             self.selectButton = button;
             [button layoutIfNeeded];
             
-            _indicator.width = _selectButton.titleLabel.width;
+            _indicator.width = _selectButton.width;
             _indicator.centerX = _selectButton.centerX;
         }
         
@@ -152,7 +155,7 @@
     //移动指示器
     [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0.3 options:
         UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
-            _indicator.width = _selectButton.titleLabel.width;
+            _indicator.width = _selectButton.width;
             _indicator.centerX = _selectButton.centerX;
         } completion:^(BOOL finished) {
             
@@ -160,6 +163,7 @@
     
     //滑动scrollView
     NSInteger index = button.tag - 10;
+    _nowIndex = index;
     [_scrollView setContentOffset:CGPointMake(index * _scrollView.width, 0) animated:YES];
 }
 
@@ -167,7 +171,7 @@
  *  设置ScrollView
  */
 - (void)setupScrollView{
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleView.frame), kScreenWidth, self.view.height - _titleView.height - 64)];  //self.view.height = KScreenHeight
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleView.frame), kScreenWidth, self.view.height - _titleView.height - 64)];
     _scrollView.backgroundColor = themeWhite;
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
@@ -198,10 +202,14 @@
     tableVC.view.height = scrollView.height;
     tableVC.tableView.x = scrollView.contentOffset.x;
     [scrollView addSubview:tableVC.tableView];
-    
 }
 
-
+- (void)reloadDataWithSearchText:(NSString *)searchText{
+    NSLog(@"~~~~~~~%@~~~~~~~~",searchText);
+    
+    
+    
+}
 
 
 @end

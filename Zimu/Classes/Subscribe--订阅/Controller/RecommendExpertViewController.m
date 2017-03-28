@@ -18,7 +18,6 @@
 @property (nonatomic, assign) NSInteger imageIndex;
 
 
-
 @end
 
 @implementation RecommendExpertViewController
@@ -32,7 +31,12 @@
 }
 
 - (void)setupSwipeableView{
-    _swipeableView = [[ZLSwipeableView alloc]initWithFrame:CGRectMake(30, 50, kScreenWidth - 60, kScreenHeight - 200)];
+    CGFloat x = kScreenWidth * 30/320.0;
+    CGFloat width = kScreenWidth - 2 * x;
+    CGFloat height = width / 0.7;
+    CGFloat y = (kScreenHeight - 49 - 64 - height)/2.0;
+    _swipeableView = [[ZLSwipeableView alloc]initWithFrame:CGRectMake(x, y, width, height)];
+    NSLog(@"size : %lf  %lf",_swipeableView.size.width, _swipeableView.size.height);
     _swipeableView.delegate = self;
     _swipeableView.dataSource = self;
     _swipeableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -66,6 +70,7 @@
     _imageIndex++;
     return view;
 }
+
 
 #pragma mark - ()
 

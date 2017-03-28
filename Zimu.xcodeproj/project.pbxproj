@@ -209,6 +209,25 @@
 		5F9CE2BE1E82CFA900424352 /* TagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2BD1E82CFA900424352 /* TagCollectionView.m */; };
 		5F9CE2C21E82CFBE00424352 /* TagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2C01E82CFBE00424352 /* TagCollectionViewCell.m */; };
 		5F9CE2C31E82CFBE00424352 /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CE2C11E82CFBE00424352 /* TagCollectionViewCell.xib */; };
+		5F9CE2C81E836A9B00424352 /* RecommendExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2C71E836A9B00424352 /* RecommendExpertDetailViewController.m */; };
+		5F9CE2CC1E839AC100424352 /* SLDTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2CA1E839AC100424352 /* SLDTextCell.m */; };
+		5F9CE2CD1E839AC100424352 /* SLDTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CE2CB1E839AC100424352 /* SLDTextCell.xib */; };
+		5F9CE2D01E839BD200424352 /* SLDTextCellLayoutFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2CF1E839BD200424352 /* SLDTextCellLayoutFrame.m */; };
+		5F9CE2D71E84BC2F00424352 /* HomeNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2D61E84BC2F00424352 /* HomeNavigationView.m */; };
+		5F9CE2DB1E84EFB700424352 /* SearchHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2D91E84EFB700424352 /* SearchHeaderCell.m */; };
+		5F9CE2DC1E84EFB700424352 /* SearchHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CE2DA1E84EFB700424352 /* SearchHeaderCell.xib */; };
+		5F9CE2E01E88ACC000424352 /* GetHomeFreeCourseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2DF1E88ACC000424352 /* GetHomeFreeCourseApi.m */; };
+		5FABE5FF1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE5FE1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m */; };
+		5FABE6021E890E2B00FE8A33 /* GetHomeFmApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE6011E890E2B00FE8A33 /* GetHomeFmApi.m */; };
+		5FABE6051E89102000FE8A33 /* GetHomeBannerApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE6041E89102000FE8A33 /* GetHomeBannerApi.m */; };
+		5FABE6081E89102F00FE8A33 /* GetHomeFourImageApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE6071E89102F00FE8A33 /* GetHomeFourImageApi.m */; };
+		5FABE60B1E89103E00FE8A33 /* GetHomeRecommendTodayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE60A1E89103E00FE8A33 /* GetHomeRecommendTodayApi.m */; };
+		5FABE60E1E891A9100FE8A33 /* HomeFreeCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE60D1E891A9100FE8A33 /* HomeFreeCourseModel.m */; };
+		5FABE6111E89776000FE8A33 /* HomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE6101E89776000FE8A33 /* HomeBannerModel.m */; };
+		5FABE6191E89F74A00FE8A33 /* ContinueListenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE6171E89F74A00FE8A33 /* ContinueListenCell.m */; };
+		5FABE61A1E89F74A00FE8A33 /* ContinueListenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FABE6181E89F74A00FE8A33 /* ContinueListenCell.xib */; };
+		5FABE61E1E8A00C200FE8A33 /* DailyStudyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE61C1E8A00C200FE8A33 /* DailyStudyCell.m */; };
+		5FABE61F1E8A00C200FE8A33 /* DailyStudyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FABE61D1E8A00C200FE8A33 /* DailyStudyCell.xib */; };
 		5FC6990D1E5D786200B8574D /* ZimuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC6990C1E5D786200B8574D /* ZimuTests.m */; };
 		5FC699181E5D786200B8574D /* ZimuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC699171E5D786200B8574D /* ZimuUITests.m */; };
 		5FDCB43F1E7A6A37003914D1 /* QuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCB43E1E7A6A37003914D1 /* QuestionAnswerViewController.m */; };
@@ -604,6 +623,41 @@
 		5F9CE2BF1E82CFBE00424352 /* TagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionViewCell.h; sourceTree = "<group>"; };
 		5F9CE2C01E82CFBE00424352 /* TagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionViewCell.m; sourceTree = "<group>"; };
 		5F9CE2C11E82CFBE00424352 /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
+		5F9CE2C61E836A9B00424352 /* RecommendExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendExpertDetailViewController.h; sourceTree = "<group>"; };
+		5F9CE2C71E836A9B00424352 /* RecommendExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendExpertDetailViewController.m; sourceTree = "<group>"; };
+		5F9CE2C91E839AC100424352 /* SLDTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDTextCell.h; sourceTree = "<group>"; };
+		5F9CE2CA1E839AC100424352 /* SLDTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLDTextCell.m; sourceTree = "<group>"; };
+		5F9CE2CB1E839AC100424352 /* SLDTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLDTextCell.xib; sourceTree = "<group>"; };
+		5F9CE2CE1E839BD200424352 /* SLDTextCellLayoutFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLDTextCellLayoutFrame.h; sourceTree = "<group>"; };
+		5F9CE2CF1E839BD200424352 /* SLDTextCellLayoutFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLDTextCellLayoutFrame.m; sourceTree = "<group>"; };
+		5F9CE2D51E84BC2E00424352 /* HomeNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationView.h; sourceTree = "<group>"; };
+		5F9CE2D61E84BC2F00424352 /* HomeNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationView.m; sourceTree = "<group>"; };
+		5F9CE2D81E84EFB700424352 /* SearchHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHeaderCell.h; sourceTree = "<group>"; };
+		5F9CE2D91E84EFB700424352 /* SearchHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHeaderCell.m; sourceTree = "<group>"; };
+		5F9CE2DA1E84EFB700424352 /* SearchHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeaderCell.xib; sourceTree = "<group>"; };
+		5F9CE2DE1E88ACC000424352 /* GetHomeFreeCourseApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHomeFreeCourseApi.h; sourceTree = "<group>"; };
+		5F9CE2DF1E88ACC000424352 /* GetHomeFreeCourseApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHomeFreeCourseApi.m; sourceTree = "<group>"; };
+		5F9CE2E41E88AD0000424352 /* Api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
+		5FABE5FD1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHomeCourseIsNotFreeApi.h; sourceTree = "<group>"; };
+		5FABE5FE1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHomeCourseIsNotFreeApi.m; sourceTree = "<group>"; };
+		5FABE6001E890E2B00FE8A33 /* GetHomeFmApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHomeFmApi.h; sourceTree = "<group>"; };
+		5FABE6011E890E2B00FE8A33 /* GetHomeFmApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHomeFmApi.m; sourceTree = "<group>"; };
+		5FABE6031E89102000FE8A33 /* GetHomeBannerApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHomeBannerApi.h; sourceTree = "<group>"; };
+		5FABE6041E89102000FE8A33 /* GetHomeBannerApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHomeBannerApi.m; sourceTree = "<group>"; };
+		5FABE6061E89102F00FE8A33 /* GetHomeFourImageApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHomeFourImageApi.h; sourceTree = "<group>"; };
+		5FABE6071E89102F00FE8A33 /* GetHomeFourImageApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHomeFourImageApi.m; sourceTree = "<group>"; };
+		5FABE6091E89103E00FE8A33 /* GetHomeRecommendTodayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetHomeRecommendTodayApi.h; sourceTree = "<group>"; };
+		5FABE60A1E89103E00FE8A33 /* GetHomeRecommendTodayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetHomeRecommendTodayApi.m; sourceTree = "<group>"; };
+		5FABE60C1E891A9100FE8A33 /* HomeFreeCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFreeCourseModel.h; sourceTree = "<group>"; };
+		5FABE60D1E891A9100FE8A33 /* HomeFreeCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFreeCourseModel.m; sourceTree = "<group>"; };
+		5FABE60F1E89776000FE8A33 /* HomeBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBannerModel.h; sourceTree = "<group>"; };
+		5FABE6101E89776000FE8A33 /* HomeBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBannerModel.m; sourceTree = "<group>"; };
+		5FABE6161E89F74A00FE8A33 /* ContinueListenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContinueListenCell.h; sourceTree = "<group>"; };
+		5FABE6171E89F74A00FE8A33 /* ContinueListenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContinueListenCell.m; sourceTree = "<group>"; };
+		5FABE6181E89F74A00FE8A33 /* ContinueListenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContinueListenCell.xib; sourceTree = "<group>"; };
+		5FABE61B1E8A00C200FE8A33 /* DailyStudyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyStudyCell.h; sourceTree = "<group>"; };
+		5FABE61C1E8A00C200FE8A33 /* DailyStudyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyStudyCell.m; sourceTree = "<group>"; };
+		5FABE61D1E8A00C200FE8A33 /* DailyStudyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyStudyCell.xib; sourceTree = "<group>"; };
 		5FC698EF1E5D786200B8574D /* Zimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC699081E5D786200B8574D /* ZimuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZimuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC6990C1E5D786200B8574D /* ZimuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZimuTests.m; sourceTree = "<group>"; };
@@ -883,6 +937,10 @@
 			children = (
 				18C7E6E01E6508FA00E62757 /* HomeVideoListModel.h */,
 				18C7E6E11E6508FA00E62757 /* HomeVideoListModel.m */,
+				5FABE60F1E89776000FE8A33 /* HomeBannerModel.h */,
+				5FABE6101E89776000FE8A33 /* HomeBannerModel.m */,
+				5FABE60C1E891A9100FE8A33 /* HomeFreeCourseModel.h */,
+				5FABE60D1E891A9100FE8A33 /* HomeFreeCourseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -939,6 +997,8 @@
 			children = (
 				5F2D61CE1E77BAF700B038A5 /* HeaderNavigationView.h */,
 				5F2D61CF1E77BAF700B038A5 /* HeaderNavigationView.m */,
+				5F9CE2D51E84BC2E00424352 /* HomeNavigationView.h */,
+				5F9CE2D61E84BC2F00424352 /* HomeNavigationView.m */,
 				5F2D61D01E77BAF700B038A5 /* ListSelectButton.h */,
 				5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */,
 			);
@@ -1090,6 +1150,7 @@
 			isa = PBXGroup;
 			children = (
 				5F9C3CE01E62CC6C009659E4 /* Tool--工具 */,
+				5F9CE2DD1E88A88D00424352 /* Api--接口 */,
 				5F9C3C7F1E5E802C009659E4 /* Other--其他 */,
 				5F9C3C751E5E802C009659E4 /* Home--首页 */,
 				5FDCB4531E7B7D58003914D1 /* Subscribe--订阅 */,
@@ -1344,6 +1405,100 @@
 			path = Cycle;
 			sourceTree = "<group>";
 		};
+		5F9CE2C41E836A4400424352 /* 已订阅 */ = {
+			isa = PBXGroup;
+			children = (
+				5FFB000D1E80C9590025D809 /* SubscribeDetailViewController.h */,
+				5FFB000E1E80C9590025D809 /* SubscribeDetailViewController.m */,
+				5FFB00101E80D81D0025D809 /* SubscribeDetailLeftViewController.h */,
+				5FFB00111E80D81D0025D809 /* SubscribeDetailLeftViewController.m */,
+				5FFB00131E80D8550025D809 /* SubscribeDetailMidViewController.h */,
+				5FFB00141E80D8550025D809 /* SubscribeDetailMidViewController.m */,
+				5FFB00161E80D8720025D809 /* SubscribeDetailRightViewController.h */,
+				5FFB00171E80D8720025D809 /* SubscribeDetailRightViewController.m */,
+			);
+			name = "已订阅";
+			sourceTree = "<group>";
+		};
+		5F9CE2C51E836A5D00424352 /* 未订阅 */ = {
+			isa = PBXGroup;
+			children = (
+				5F9CE2C61E836A9B00424352 /* RecommendExpertDetailViewController.h */,
+				5F9CE2C71E836A9B00424352 /* RecommendExpertDetailViewController.m */,
+			);
+			name = "未订阅";
+			sourceTree = "<group>";
+		};
+		5F9CE2DD1E88A88D00424352 /* Api--接口 */ = {
+			isa = PBXGroup;
+			children = (
+				5F9CE2E41E88AD0000424352 /* Api.h */,
+				5FABE6031E89102000FE8A33 /* GetHomeBannerApi.h */,
+				5FABE6041E89102000FE8A33 /* GetHomeBannerApi.m */,
+				5FABE6091E89103E00FE8A33 /* GetHomeRecommendTodayApi.h */,
+				5FABE60A1E89103E00FE8A33 /* GetHomeRecommendTodayApi.m */,
+				5FABE6061E89102F00FE8A33 /* GetHomeFourImageApi.h */,
+				5FABE6071E89102F00FE8A33 /* GetHomeFourImageApi.m */,
+				5F9CE2DE1E88ACC000424352 /* GetHomeFreeCourseApi.h */,
+				5F9CE2DF1E88ACC000424352 /* GetHomeFreeCourseApi.m */,
+				5FABE5FD1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.h */,
+				5FABE5FE1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m */,
+				5FABE6001E890E2B00FE8A33 /* GetHomeFmApi.h */,
+				5FABE6011E890E2B00FE8A33 /* GetHomeFmApi.m */,
+			);
+			path = "Api--接口";
+			sourceTree = "<group>";
+		};
+		5FABE6121E89F5FB00FE8A33 /* 讲师信息详情 */ = {
+			isa = PBXGroup;
+			children = (
+				5F9CE2A71E820F9E00424352 /* SubscribeLecturerDetailTableView.h */,
+				5F9CE2A81E820F9E00424352 /* SubscribeLecturerDetailTableView.m */,
+				5F9CE2AA1E82122400424352 /* SLDTitleCell.h */,
+				5F9CE2AB1E82122400424352 /* SLDTitleCell.m */,
+				5F9CE2AC1E82122400424352 /* SLDTitleCell.xib */,
+				5F9CE2C91E839AC100424352 /* SLDTextCell.h */,
+				5F9CE2CA1E839AC100424352 /* SLDTextCell.m */,
+				5F9CE2CB1E839AC100424352 /* SLDTextCell.xib */,
+				5F9CE2CE1E839BD200424352 /* SLDTextCellLayoutFrame.h */,
+				5F9CE2CF1E839BD200424352 /* SLDTextCellLayoutFrame.m */,
+			);
+			name = "讲师信息详情";
+			sourceTree = "<group>";
+		};
+		5FABE6131E89F63600FE8A33 /* 每日看 */ = {
+			isa = PBXGroup;
+			children = (
+				5F9CE2B71E82661800424352 /* DailyLookTitleCell.h */,
+				5F9CE2B81E82661800424352 /* DailyLookTitleCell.m */,
+				5F9CE2B91E82661800424352 /* DailyLookTitleCell.xib */,
+				5F9CE2B21E825AA200424352 /* DailyLookCell.h */,
+				5F9CE2B31E825AA200424352 /* DailyLookCell.m */,
+				5F9CE2B41E825AA200424352 /* DailyLookCell.xib */,
+			);
+			name = "每日看";
+			sourceTree = "<group>";
+		};
+		5FABE6141E89F68900FE8A33 /* 连续听 */ = {
+			isa = PBXGroup;
+			children = (
+				5FABE6161E89F74A00FE8A33 /* ContinueListenCell.h */,
+				5FABE6171E89F74A00FE8A33 /* ContinueListenCell.m */,
+				5FABE6181E89F74A00FE8A33 /* ContinueListenCell.xib */,
+			);
+			name = "连续听";
+			sourceTree = "<group>";
+		};
+		5FABE6151E89F6A200FE8A33 /* 天天学 */ = {
+			isa = PBXGroup;
+			children = (
+				5FABE61B1E8A00C200FE8A33 /* DailyStudyCell.h */,
+				5FABE61C1E8A00C200FE8A33 /* DailyStudyCell.m */,
+				5FABE61D1E8A00C200FE8A33 /* DailyStudyCell.xib */,
+			);
+			name = "天天学";
+			sourceTree = "<group>";
+		};
 		5FC698E61E5D786200B8574D = {
 			isa = PBXGroup;
 			children = (
@@ -1449,14 +1604,8 @@
 				5FDCB4641E7BB396003914D1 /* SubscribedExpertTableViewController.m */,
 				5FDCB4661E7BB409003914D1 /* RecommendExpertViewController.h */,
 				5FDCB4671E7BB409003914D1 /* RecommendExpertViewController.m */,
-				5FFB000D1E80C9590025D809 /* SubscribeDetailViewController.h */,
-				5FFB000E1E80C9590025D809 /* SubscribeDetailViewController.m */,
-				5FFB00101E80D81D0025D809 /* SubscribeDetailLeftViewController.h */,
-				5FFB00111E80D81D0025D809 /* SubscribeDetailLeftViewController.m */,
-				5FFB00131E80D8550025D809 /* SubscribeDetailMidViewController.h */,
-				5FFB00141E80D8550025D809 /* SubscribeDetailMidViewController.m */,
-				5FFB00161E80D8720025D809 /* SubscribeDetailRightViewController.h */,
-				5FFB00171E80D8720025D809 /* SubscribeDetailRightViewController.m */,
+				5F9CE2C51E836A5D00424352 /* 未订阅 */,
+				5F9CE2C41E836A4400424352 /* 已订阅 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1536,6 +1685,9 @@
 		5FE2006C1E66C8970021DD27 /* Search--搜索 */ = {
 			isa = PBXGroup;
 			children = (
+				5F9CE2D81E84EFB700424352 /* SearchHeaderCell.h */,
+				5F9CE2D91E84EFB700424352 /* SearchHeaderCell.m */,
+				5F9CE2DA1E84EFB700424352 /* SearchHeaderCell.xib */,
 				5F8EDD231E6D4F64000FC3E0 /* ExpertTableViewCell.h */,
 				5F8EDD241E6D4F64000FC3E0 /* ExpertTableViewCell.m */,
 				5F8EDD281E6E5695000FC3E0 /* QuestionTableViewCell.h */,
@@ -1664,17 +1816,10 @@
 				5FFB001B1E80D99E0025D809 /* SubscribeDetailContentHeadView.m */,
 				5FFB001D1E80D9CC0025D809 /* SubscribeDetailContentScrollView.h */,
 				5FFB001E1E80D9CC0025D809 /* SubscribeDetailContentScrollView.m */,
-				5F9CE2A71E820F9E00424352 /* SubscribeLecturerDetailTableView.h */,
-				5F9CE2A81E820F9E00424352 /* SubscribeLecturerDetailTableView.m */,
-				5F9CE2AA1E82122400424352 /* SLDTitleCell.h */,
-				5F9CE2AB1E82122400424352 /* SLDTitleCell.m */,
-				5F9CE2AC1E82122400424352 /* SLDTitleCell.xib */,
-				5F9CE2B71E82661800424352 /* DailyLookTitleCell.h */,
-				5F9CE2B81E82661800424352 /* DailyLookTitleCell.m */,
-				5F9CE2B91E82661800424352 /* DailyLookTitleCell.xib */,
-				5F9CE2B21E825AA200424352 /* DailyLookCell.h */,
-				5F9CE2B31E825AA200424352 /* DailyLookCell.m */,
-				5F9CE2B41E825AA200424352 /* DailyLookCell.xib */,
+				5FABE6121E89F5FB00FE8A33 /* 讲师信息详情 */,
+				5FABE6131E89F63600FE8A33 /* 每日看 */,
+				5FABE6141E89F68900FE8A33 /* 连续听 */,
+				5FABE6151E89F6A200FE8A33 /* 天天学 */,
 			);
 			path = "SubscribeDetail--订阅详情";
 			sourceTree = "<group>";
@@ -1819,7 +1964,9 @@
 				5F9C3D141E63C669009659E4 /* cycle_06.jpg in Resources */,
 				18C7E6FB1E6512F900E62757 /* VideoListCell.xib in Resources */,
 				5F9C3D101E63C669009659E4 /* cycle_02.jpg in Resources */,
+				5FABE61F1E8A00C200FE8A33 /* DailyStudyCell.xib in Resources */,
 				5FEB30831E7A36EE00B34CC7 /* OpenCourseVideoCollectionViewCell.xib in Resources */,
+				5F9CE2CD1E839AC100424352 /* SLDTextCell.xib in Resources */,
 				5F2D621F1E77BAF700B038A5 /* SubscibeCell.xib in Resources */,
 				5FEB30571E7924FF00B34CC7 /* danmakufile in Resources */,
 				5F2D62681E77FD7800B038A5 /* DynamicTextCell.xib in Resources */,
@@ -1844,7 +1991,9 @@
 				5F2D620D1E77BAF700B038A5 /* CircleCollectionViewCell.xib in Resources */,
 				5F2D62241E77BAF700B038A5 /* VideoCourseCollectionViewCell.xib in Resources */,
 				5F9CE2C31E82CFBE00424352 /* TagCollectionViewCell.xib in Resources */,
+				5F9CE2DC1E84EFB700424352 /* SearchHeaderCell.xib in Resources */,
 				1827C1F51E810FB20040B9AD /* FindAskTextCell.xib in Resources */,
+				5FABE61A1E89F74A00FE8A33 /* ContinueListenCell.xib in Resources */,
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
 				5F9CE2B61E825AA200424352 /* DailyLookCell.xib in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
@@ -1951,11 +2100,14 @@
 				5FDCB47F1E7F6874003914D1 /* CourseSearchTableViewController.m in Sources */,
 				5F2D620F1E77BAF700B038A5 /* ListenView.m in Sources */,
 				18AC3B971E729CFD007EE823 /* HomeVideoListCollectionView.h in Sources */,
+				5F9CE2D71E84BC2F00424352 /* HomeNavigationView.m in Sources */,
 				18AC3B981E729CFD007EE823 /* HomeVideoListCollectionView.m in Sources */,
 				1827C1F41E810FB20040B9AD /* FindAskTextCell.m in Sources */,
+				5FABE61E1E8A00C200FE8A33 /* DailyStudyCell.m in Sources */,
 				18AC3C3B1E7B74D3007EE823 /* ZM_MineTableView.m in Sources */,
 				18AC3B8A1E729CD2007EE823 /* TAAbstractDotView.h in Sources */,
 				18AC3B8B1E729CD2007EE823 /* TAAnimatedDotView.h in Sources */,
+				5F9CE2DB1E84EFB700424352 /* SearchHeaderCell.m in Sources */,
 				18AC3B8C1E729CD2007EE823 /* TADotView.h in Sources */,
 				18AC3B8D1E729CD2007EE823 /* TAPageControl.h in Sources */,
 				18AC3B8E1E729CD2007EE823 /* SDCollectionViewCell.h in Sources */,
@@ -1963,6 +2115,7 @@
 				5FDCB4A51E7FAF85003914D1 /* ZLSwipeableViewMovement.m in Sources */,
 				18AC3B901E729CD2007EE823 /* UIView+SDExtension.h in Sources */,
 				18AC3B911E729CD2007EE823 /* ODRefreshControl.h in Sources */,
+				5F9CE2C81E836A9B00424352 /* RecommendExpertDetailViewController.m in Sources */,
 				18AC3B921E729CD3007EE823 /* WXLabel.h in Sources */,
 				18AC3B931E729CD3007EE823 /* RegexKitLite.h in Sources */,
 				5FFB00181E80D8720025D809 /* SubscribeDetailRightViewController.m in Sources */,
@@ -1992,12 +2145,14 @@
 				1827C1E11E80D3E90040B9AD /* FindListTableView.m in Sources */,
 				5F8EDD451E6E9A6D000FC3E0 /* EvaluationCellLayout.m in Sources */,
 				5F9C3CA61E5EB7D8009659E4 /* BlankPageView.m in Sources */,
+				5FABE60E1E891A9100FE8A33 /* HomeFreeCourseModel.m in Sources */,
 				5F9C3CDF1E62CBA0009659E4 /* UIView+ViewController.m in Sources */,
 				5F9C3CFF1E63C0CB009659E4 /* TAAbstractDotView.m in Sources */,
 				5FEB30671E793D0200B34CC7 /* NSTimer+EOCBlocksSupport.m in Sources */,
 				5F9C3CAF1E5EB9FA009659E4 /* BaseViewController.m in Sources */,
 				5F2D62451E77D47400B038A5 /* ExamFreeVideoCell.m in Sources */,
 				5F8EDD2A1E6E5695000FC3E0 /* QuestionTableViewCell.m in Sources */,
+				5F9CE2D01E839BD200424352 /* SLDTextCellLayoutFrame.m in Sources */,
 				5F2D62291E77BAF700B038A5 /* HomeTableViewCell.m in Sources */,
 				5F9C3C9D1E5EB6A4009659E4 /* ZMTabBar.m in Sources */,
 				5FDCB49E1E7FAF85003914D1 /* DefaultShouldSwipeDeterminator.m in Sources */,
@@ -2008,6 +2163,7 @@
 				5FDCB4A21E7FAF85003914D1 /* Utils.m in Sources */,
 				5FEB304D1E79088000B34CC7 /* DanmakuRenderer.m in Sources */,
 				5F9C3CAC1E5EB825009659E4 /* UIView+BlankExtension.m in Sources */,
+				5FABE6111E89776000FE8A33 /* HomeBannerModel.m in Sources */,
 				5F8EDD261E6D4F64000FC3E0 /* ExpertTableViewCell.m in Sources */,
 				5F8EDD3D1E6E8FEB000FC3E0 /* ArticleTableViewCell.m in Sources */,
 				5FEB30541E7908AB00B34CC7 /* ListenHeartDanmuCell.m in Sources */,
@@ -2042,6 +2198,7 @@
 				5F2D621E1E77BAF700B038A5 /* SubscibeCell.m in Sources */,
 				5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */,
 				5FDCB4491E7A6C5D003914D1 /* QAPreviousQACell.m in Sources */,
+				5F9CE2E01E88ACC000424352 /* GetHomeFreeCourseApi.m in Sources */,
 				5F2D62321E77C1A300B038A5 /* ExamApplyTableView.m in Sources */,
 				18AC3B541E6FA075007EE823 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
@@ -2056,6 +2213,7 @@
 				18F7F2B41E825D7700DE6218 /* FindHotTopicListCollectiomView.m in Sources */,
 				5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */,
 				5F9CE2A91E820F9E00424352 /* SubscribeLecturerDetailTableView.m in Sources */,
+				5FABE6051E89102000FE8A33 /* GetHomeBannerApi.m in Sources */,
 				5F2D62361E77C36500B038A5 /* EntranceCell.m in Sources */,
 				5FEB30731E7A31CE00B34CC7 /* OpenCourseViewController.m in Sources */,
 				5F2D625B1E77F72300B038A5 /* ListenHeartTableView.m in Sources */,
@@ -2072,6 +2230,7 @@
 				5F8EDD301E6E7EED000FC3E0 /* WXLabel.m in Sources */,
 				5FDCB4AD1E7FB4B7003914D1 /* CardView.m in Sources */,
 				5F2D624D1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.m in Sources */,
+				5FABE6021E890E2B00FE8A33 /* GetHomeFmApi.m in Sources */,
 				5FEB304F1E79088000B34CC7 /* DanmakuFactory.m in Sources */,
 				5F8EDD331E6E8078000FC3E0 /* RegexKitLite.m in Sources */,
 				5FDCB49F1E7FAF85003914D1 /* DefaultViewAnimator.m in Sources */,
@@ -2082,6 +2241,7 @@
 				18AC3B6D1E71279A007EE823 /* NetWorkStatuesManager.m in Sources */,
 				5FFB00121E80D81D0025D809 /* SubscribeDetailLeftViewController.m in Sources */,
 				18C7E7111E67AF4100E62757 /* HomeVideoDetailViewController.m in Sources */,
+				5FABE6191E89F74A00FE8A33 /* ContinueListenCell.m in Sources */,
 				5FFB00151E80D8550025D809 /* SubscribeDetailMidViewController.m in Sources */,
 				5F2D620C1E77BAF700B038A5 /* CircleCollectionViewCell.m in Sources */,
 				5FDCB43F1E7A6A37003914D1 /* QuestionAnswerViewController.m in Sources */,
@@ -2094,6 +2254,7 @@
 				5F2D62231E77BAF700B038A5 /* VideoCourseCollectionViewCell.m in Sources */,
 				5FEB30821E7A36EE00B34CC7 /* OpenCourseVideoCollectionViewCell.m in Sources */,
 				18C7E6E61E65094F00E62757 /* HomeVideoViewController.m in Sources */,
+				5F9CE2CC1E839AC100424352 /* SLDTextCell.m in Sources */,
 				18AC3B551E6FA075007EE823 /* UIView+CustomControlView.m in Sources */,
 				5F9CE2BA1E82661800424352 /* DailyLookTitleCell.m in Sources */,
 				18AC3C511E7BBCE6007EE823 /* MineHeadCell.m in Sources */,
@@ -2116,11 +2277,14 @@
 				5FEB307A1E7A35EE00B34CC7 /* OpenCourseVideoCell.m in Sources */,
 				18C7E6E21E6508FA00E62757 /* HomeVideoListModel.m in Sources */,
 				5FDCB4A01E7FAF85003914D1 /* PanGestureRecognizer.m in Sources */,
+				5FABE5FF1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m in Sources */,
 				5F9CE2BE1E82CFA900424352 /* TagCollectionView.m in Sources */,
 				5FEB30761E7A329F00B34CC7 /* OpenCourseTableView.m in Sources */,
 				5F8EDD411E6E9A41000FC3E0 /* EvaluationTableViewCell.m in Sources */,
 				5F9C3CC41E5EBEC9009659E4 /* TestViewController.m in Sources */,
 				5FDCB4A11E7FAF85003914D1 /* Scheduler.m in Sources */,
+				5FABE60B1E89103E00FE8A33 /* GetHomeRecommendTodayApi.m in Sources */,
+				5FABE6081E89102F00FE8A33 /* GetHomeFourImageApi.m in Sources */,
 				5F9CE2B51E825AA200424352 /* DailyLookCell.m in Sources */,
 				5F2D62221E77BAF700B038A5 /* VideoCourseCollectionView.m in Sources */,
 				18AC3B521E6FA075007EE823 /* UIImageView+ZFCache.m in Sources */,
@@ -2269,49 +2433,7 @@
 				INFOPLIST_FILE = Zimu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"ASIHTTPRequest\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJRefresh\"",
-					"-l\"Masonry\"",
-					"-l\"PYSearch\"",
-					"-l\"Reachability\"",
-					"-l\"ReactiveCocoa\"",
-					"-l\"SDWebImage\"",
-					"-l\"YMCitySelect\"",
-					"-l\"YYModel\"",
-					"-l\"ZFDownload\"",
-					"-l\"sqlite3\"",
-					"-l\"xml2.2\"",
-					"-l\"z\"",
-					"-l\"z.1\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreFoundation\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"UMMobClick\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.Zimu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2329,49 +2451,7 @@
 				INFOPLIST_FILE = Zimu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"ASIHTTPRequest\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJRefresh\"",
-					"-l\"Masonry\"",
-					"-l\"PYSearch\"",
-					"-l\"Reachability\"",
-					"-l\"ReactiveCocoa\"",
-					"-l\"SDWebImage\"",
-					"-l\"YMCitySelect\"",
-					"-l\"YYModel\"",
-					"-l\"ZFDownload\"",
-					"-l\"sqlite3\"",
-					"-l\"xml2.2\"",
-					"-l\"z\"",
-					"-l\"z.1\"",
-					"-framework",
-					"\"CFNetwork\"",
-					"-framework",
-					"\"CoreFoundation\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"UMMobClick\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.Zimu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, PYSearchResultShowMode) { // 搜索结果显示方式
     PYSearchResultShowModeDefault = PYSearchResultShowModeCustom // 默认为用户自定义（自己处理）
 };
 
-@protocol PYSearchViewControllerDataSource <NSObject, UITableViewDataSource>
+@protocol PYSearchViewControllerDataSource <NSObject>
 
 @optional
 /**
@@ -62,12 +62,13 @@ typedef NS_ENUM(NSInteger, PYSearchResultShowMode) { // 搜索结果显示方式
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSearchWithsearchBar:(UISearchBar *)searchBar searchText:(NSString *)searchText;
 /** 点击热门搜索时调用，如果实现该代理方法则点击热门搜索时searchViewController:didSearchWithsearchBar:searchText:失效*/
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectHotSearchAtIndex:(NSInteger)index searchText:(NSString *)searchText;
-/** 点击搜索历史时调用，如果实现该代理方法则搜索历史时searchViewController:didSearchWithsearchBar:searchText:失效 */
+/** 点击搜索历史时调用，如果实现该代理方法则点击搜索历史时
+    searchViewController:didSearchWithsearchBar:searchText:失效 */
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchHistoryAtIndex:(NSInteger)index searchText:(NSString *)searchText;
 /** 点击搜索建议时调用，如果实现该代理方法则点击搜索建议时searchViewController:didSearchWithsearchBar:searchText:失效 */
 - (void)searchViewController:(PYSearchViewController *)searchViewController didSelectSearchSuggestionAtIndex:(NSInteger)index searchText:(NSString *)searchText;
 /** 搜索框文本变化时，显示的搜索建议通过searchViewController的searchSuggestions赋值即可 */
-- (void)searchViewController:(PYSearchViewController *)searchViewController  searchTextDidChange:(UISearchBar *)searchBar searchText:(NSString *)searchText;
+- (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)searchBar searchText:(NSString *)searchText;
 /** 点击取消时调用，如果没有实现该代理方法，默认执行：[self dismissViewControllerAnimated:YES completion:nil]; */
 - (void)didClickCancel:(PYSearchViewController *)searchViewController;
 
@@ -91,6 +92,12 @@ typedef NS_ENUM(NSInteger, PYSearchResultShowMode) { // 搜索结果显示方式
  * 该属性只有在设置hotSearchStyle为PYHotSearchStyleColorfulTag才生效
  */
 @property (nonatomic, strong) NSMutableArray<UIColor *> *colorPol;
+
+/** 
+ * 是否对换热门搜索和搜索历史，默认为：NO，即热门搜索在搜索历史上方，对换后搜索历史在热门搜索上方
+ * 注意：该属性只适用于当搜索历史为标签类型才有效，即PYSearchHistoryStyle != PYSearchHistoryStyleCell
+ */
+@property (nonatomic, assign) BOOL swapHotSeachWithSearchHistory;
 
 /** 热门搜索 */
 @property (nonatomic, copy) NSArray<NSString *> *hotSearches;
@@ -118,6 +125,8 @@ typedef NS_ENUM(NSInteger, PYSearchResultShowMode) { // 搜索结果显示方式
 @property (nonatomic, copy) NSString *searchHistoriesCachePath;
 /** 搜索历史记录缓存数量，默认为20 */
 @property (nonatomic, assign) NSUInteger searchHistoriesCount;
+/** 是否去除搜索词中的空格，默认为YES */
+@property (nonatomic, assign) BOOL removeSpaceOnSearchString;
 /** 当PYSearchHistoryStyle != PYSearchHistoryStyleCell时，搜索历史标签的清空按钮 */
 @property (nonatomic, weak) UIButton *emptyButton;
 /** 当PYSearchHistoryStyle = PYSearchHistoryStyleCell时，tableBleView底部的清空搜索历史 */

@@ -18,4 +18,15 @@
 + (UIColor *)colorWithHexString:(NSString *)color;
 
 
+/*
+ *  色值渐变
+ *
+ *  ratio               :       色值比例
+ *  originalColor       :       初始色十六进制色值
+ *  destinationColor    :       目标色十六进制色值
+ *
+ *  return      UIColor
+ */
++ (UIColor *)changeColorWithRatio:(CGFloat)ratio fromColor:(NSString *)originalColor toColor:(NSString *)destinationColor;
+
 @end

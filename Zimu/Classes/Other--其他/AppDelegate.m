@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "UMMobClick/MobClick.h"
 #import "RootTabBarController.h"
-
+#import "YTKNetworkConfig.h"
+//#import "YTKUrlArgumentsFilter.h"
 
 @interface AppDelegate ()
 
@@ -17,10 +18,21 @@
 
 @implementation AppDelegate
 
+- (void)setupRequestFilters{
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = @"http://192.168.10.165:8082/portal/";
+    
+//    config addUrlFilter:(nonnull id<YTKUrlFilterProtocol>)
+    
+}
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setUMMobClick];
+    
+    [self setupRequestFilters];
     
     //设置BaseTabBarController为根控制器
     self.window = [[UIWindow alloc]init];

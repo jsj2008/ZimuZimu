@@ -55,5 +55,14 @@
     value = [bundle localizedStringForKey:key value:value table:nil];
     return [[NSBundle mainBundle] localizedStringForKey:key value:value table:nil];
 }
+    
++ (UIImage *)py_imageNamed:(NSString *)name
+{
+    // 判断分辨率，设置图片名称
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    name = scale == 3.0 ? [NSString stringWithFormat:@"%@@3x.png", name] : [NSString stringWithFormat:@"%@@2x.png", name];
+    UIImage *image = [UIImage imageWithContentsOfFile:[[[NSBundle py_searchBundle] resourcePath] stringByAppendingPathComponent:name]];
+    return image;
+}
 
 @end

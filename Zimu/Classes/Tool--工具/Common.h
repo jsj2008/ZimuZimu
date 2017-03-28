@@ -22,6 +22,7 @@
 #define themeBlack [UIColor colorWithHexString:@"4a4a4a"]           //黑
 #define themeGreen [UIColor colorWithHexString:@"4cd964"]           //绿
 #define themeGold [UIColor colorWithHexString:@"dabd85"]            //金
+
 #define themeWhite [UIColor whiteColor]                             //白
 #define themeRed [UIColor redColor]                                 //红
 #define themeOrange [UIColor colorWithHexString:@"ff9500"]          //橙

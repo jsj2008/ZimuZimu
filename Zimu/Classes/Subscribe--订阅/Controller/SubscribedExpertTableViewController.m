@@ -8,6 +8,7 @@
 
 #import "SubscribedExpertTableViewController.h"
 #import "SubscribedExpertCell.h"
+#import "SubscribeDetailViewController.h"
 
 static NSString *subscribedExpertIdentifier = @"subscribedExpertCell";
 @interface SubscribedExpertTableViewController ()
@@ -46,6 +47,10 @@ static NSString *subscribedExpertIdentifier = @"subscribedExpertCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 120;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.navigationController pushViewController:[[SubscribeDetailViewController alloc]init] animated:YES];
 }
 
 
