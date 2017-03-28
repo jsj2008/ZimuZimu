@@ -30,7 +30,7 @@ PODS:
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
-  - PYSearch (0.5.8)
+  - PYSearch (0.7.4)
   - Reachability (3.2)
   - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core (= 2.1.8)
@@ -43,6 +43,8 @@ PODS:
   - SDWebImage/Core (4.0.0)
   - UMengAnalytics (4.2.4)
   - YMCitySelect (1.2.2)
+  - YTKNetwork (2.0.3):
+    - AFNetworking (~> 3.0)
   - YYModel (1.0.4)
   - ZFDownload (1.0.2):
     - ASIHTTPRequest
@@ -57,6 +59,7 @@ DEPENDENCIES:
   - SDWebImage
   - UMengAnalytics
   - YMCitySelect
+  - YTKNetwork
   - YYModel
   - ZFDownload
 
@@ -66,15 +69,16 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  PYSearch: d6cce1f5a2f9390d1f2636d9dc0544cad0607ea8
+  PYSearch: fe5b95a6c3d58f3bbac0cef6c2042cec2af2fd13
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   YMCitySelect: 1b415b7d8c1cc5ba8efac4327ed944c918244a81
+  YTKNetwork: c4b0c29c9d639dc050d475de69ee626d53eac598
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZFDownload: a52f94ebb080833b8a8ceb19a409f2941343fe7f
 
-PODFILE CHECKSUM: 6b4829bf94dc3ee3abcd0dc8b1be2af39180c735
+PODFILE CHECKSUM: 7b346559cd6c8a880d02c5ca665430b7ad33f1b7
 
 COCOAPODS: 1.2.0

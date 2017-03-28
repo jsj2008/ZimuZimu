@@ -6,6 +6,7 @@
 //  NSBundle 分类
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSBundle (PYSearchExtension)
 
@@ -14,5 +15,8 @@
 
 /** 获取PYSearch.bundle路径 */
 + (NSBundle *)py_searchBundle;
+
+/** 获取PYSearch.bundle路径中的图片 */
++ (UIImage *)py_imageNamed:(NSString *)name;
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import "TagCollectionViewCell.h"
+#import "UIImage+ZMExtension.h"
 
 @interface TagCollectionViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 
 @end
@@ -20,10 +22,17 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.backgroundColor = themeYellow;
-    self.layer.cornerRadius = 3;
-    self.layer.masksToBounds = YES;
-    _tagLabel.textColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor clearColor];
+    _tagLabel.textColor = [UIColor colorWithHexString:@"888888"];
+    
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    UIImage *image = [UIImage imageWithColor:[UIColor colorWithHexString:@"FFE9A2"] size:_bgImageView.size];
+    image = [image imageAddCornerWithRadious:5 size:_bgImageView.size];
+    _bgImageView.image = image;
 }
 
 - (void)setTagString:(NSString *)tagString{

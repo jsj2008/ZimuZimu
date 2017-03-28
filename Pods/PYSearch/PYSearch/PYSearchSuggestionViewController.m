@@ -9,6 +9,7 @@
 #import "PYSearchConst.h"
 
 @interface PYSearchSuggestionViewController ()
+
 /** 记录消失前的contentInset */
 @property (nonatomic, assign) UIEdgeInsets originalContentInset;
 
@@ -30,7 +31,10 @@
     
     // 取消分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    // 确保iPad中，tableView的正常显示
+    if ([self.tableView respondsToSelector:@selector(setCellLayoutMarginsFollowReadableWidth:)]) { // 为适配iPad
+        self.tableView.cellLayoutMarginsFollowReadableWidth = NO;
+    }
     // 监听键盘
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboradFrameDidChange:) name:UIKeyboardDidShowNotification object:nil];
 }
@@ -74,7 +78,6 @@
     self.tableView.contentOffset = CGPointMake(0, -self.tableView.contentInset.top);
 }
 
-
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInSearchSuggestionView:)]) {
@@ -105,7 +108,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.backgroundColor = [UIColor clearColor];
         // 添加分割线
-        UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell-content-line" inBundle:[NSBundle py_searchBundle] compatibleWithTraitCollection:nil]];
+        UIImageView *line = [[UIImageView alloc] initWithImage: [NSBundle py_imageNamed:@"cell-content-line"]];
         line.py_height = 0.5;
         line.alpha = 0.7;
         line.py_x = PYSEARCH_MARGIN;
@@ -114,7 +117,7 @@
         [cell.contentView addSubview:line];
     }
     // 设置数据
-    cell.imageView.image = PYSEARCH_SEARCH_SUGGESTION_IMAGE;
+    cell.imageView.image = [NSBundle py_imageNamed:@"search"];
     cell.textLabel.text = self.searchSuggestions[indexPath.row];
     return cell;
 }

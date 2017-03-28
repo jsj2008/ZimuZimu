@@ -18,7 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="113" height="46"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laF-Ag-LG2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1qd-Zs-17e">
+                        <rect key="frame" x="0.0" y="0.0" width="113" height="46"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laF-Ag-LG2">
                         <rect key="frame" x="0.0" y="0.0" width="113" height="46"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
@@ -27,13 +30,18 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="1qd-Zs-17e" secondAttribute="bottom" id="0MH-Rp-9zc"/>
+                <constraint firstAttribute="trailing" secondItem="1qd-Zs-17e" secondAttribute="trailing" id="ASY-tC-C6B"/>
                 <constraint firstAttribute="bottom" secondItem="laF-Ag-LG2" secondAttribute="bottom" id="HaX-Bh-CBs"/>
                 <constraint firstItem="laF-Ag-LG2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XZi-1u-cZ5"/>
+                <constraint firstItem="1qd-Zs-17e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bMY-Tj-Cd0"/>
                 <constraint firstAttribute="trailing" secondItem="laF-Ag-LG2" secondAttribute="trailing" id="pbR-8V-L6j"/>
                 <constraint firstItem="laF-Ag-LG2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sJ4-p9-Qpi"/>
+                <constraint firstItem="1qd-Zs-17e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uff-qx-aSi"/>
             </constraints>
             <size key="customSize" width="113" height="46"/>
             <connections>
+                <outlet property="bgImageView" destination="1qd-Zs-17e" id="jjf-GQ-Z9H"/>
                 <outlet property="tagLabel" destination="laF-Ag-LG2" id="r6t-pV-Yzh"/>
             </connections>
             <point key="canvasLocation" x="2.5" y="66"/>

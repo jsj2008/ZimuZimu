@@ -8,10 +8,10 @@
 
 #import "SubscribeDetailMidViewController.h"
 #import "DailyLookTitleCell.h"
-#import "DailyLookCell.h"
+#import "ContinueListenCell.h"
 
 static NSString *dailyLookTitleIdentifier = @"DailyLookTitleCell";
-static NSString *dailyLookIdentifier = @"DailyLookCell";
+static NSString *continueListenIdentifier = @"ContinueListenCell";
 @interface SubscribeDetailMidViewController ()
 
 @end
@@ -24,7 +24,7 @@ static NSString *dailyLookIdentifier = @"DailyLookCell";
     self.view.backgroundColor = themeGray;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"DailyLookTitleCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:dailyLookTitleIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:@"DailyLookCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:dailyLookIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ContinueListenCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:continueListenIdentifier];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -45,7 +45,7 @@ static NSString *dailyLookIdentifier = @"DailyLookCell";
         
         return cell;
     }
-    DailyLookCell *cell = [tableView dequeueReusableCellWithIdentifier:dailyLookIdentifier];
+    ContinueListenCell *cell = [tableView dequeueReusableCellWithIdentifier:continueListenIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

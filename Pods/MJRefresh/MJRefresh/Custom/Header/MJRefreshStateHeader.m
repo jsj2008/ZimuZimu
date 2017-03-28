@@ -139,7 +139,7 @@
         // 状态
         if (noConstrainsOnStatusLabel) {
             self.stateLabel.mj_x = 0;
-            self.stateLabel.mj_y = 0;
+            self.stateLabel.mj_y = 10;
             self.stateLabel.mj_w = self.mj_w;
             self.stateLabel.mj_h = stateLabelH;
         }

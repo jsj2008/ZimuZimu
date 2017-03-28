@@ -8,10 +8,11 @@
 
 #import "RecommendSearchTableViewController.h"
 #import "MJRefresh.h"
+#import "SearchHeaderCell.h"
 #import "ExpertTableViewCell.h"
 #import "QuestionTableViewCell.h"
 
-static NSString *headerCellIdentifier = @"headerCell";
+static NSString *headerCellIdentifier = @"SearchHeaderCell";
 static NSString *expertCellIdentifier = @"expertCell";
 static NSString *questionCellIdentifier = @"questionCell";
 
@@ -32,7 +33,7 @@ static NSString *questionCellIdentifier = @"questionCell";
 
 //注册单元格
 - (void)registerCellIdentifier{
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:headerCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SearchHeaderCell" bundle:nil] forCellReuseIdentifier:headerCellIdentifier];
     [self.tableView registerClass:[ExpertTableViewCell class] forCellReuseIdentifier:expertCellIdentifier];
     [self.tableView registerClass:[QuestionTableViewCell class] forCellReuseIdentifier:questionCellIdentifier];
 }
@@ -66,13 +67,8 @@ static NSString *questionCellIdentifier = @"questionCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:headerCellIdentifier forIndexPath:indexPath];
+                SearchHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerCellIdentifier forIndexPath:indexPath];
                 cell.separatorInset = UIEdgeInsetsMake(cell.height - 0.5, 0, 0.5, 0);
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.textLabel.text = @"咨询专家(300位)";
-                cell.textLabel.font = [UIFont systemFontOfSize:12];
-                cell.textLabel.textColor = [UIColor darkGrayColor];
                 
                 return cell;
             }else{
@@ -92,13 +88,8 @@ static NSString *questionCellIdentifier = @"questionCell";
             }
         }else{
             if (indexPath.row == 0) {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:headerCellIdentifier forIndexPath:indexPath];
+                SearchHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerCellIdentifier forIndexPath:indexPath];
                 cell.separatorInset = UIEdgeInsetsMake(cell.height - 0.5, 0, 0.5, 0);
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.textLabel.text = @"问答内容(300)";
-                cell.textLabel.font = [UIFont systemFontOfSize:12];
-                cell.textLabel.textColor = [UIColor darkGrayColor];
                 
                 return cell;
             }
@@ -117,7 +108,7 @@ static NSString *questionCellIdentifier = @"questionCell";
         if (indexPath.row == 0) {
             return 35;
         }
-        return 80;
+        return 90;
     }else{
         if (indexPath.row == 0) {
             return 35;

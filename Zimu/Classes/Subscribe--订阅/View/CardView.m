@@ -11,6 +11,7 @@
 #import "UIView+ViewController.h"
 #import "SubscribeDetailViewController.h"
 #import "TagCollectionView.h"
+#import "RecommendExpertDetailViewController.h"
 
 @interface CardView ()
 
@@ -66,6 +67,9 @@
     [_contentView addSubview:self.introLabel];
     [_contentView addSubview:self.lineView];
     [_contentView addSubview:self.tagCollectionView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    [self addGestureRecognizer:tap];
 }
 
 //contentView
@@ -118,18 +122,19 @@
 - (TagCollectionView *)tagCollectionView{
     if (!_tagCollectionView) {
         _tagCollectionView = [[TagCollectionView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_lineView.frame) + 10, self.width - 30, self.height - CGRectGetMaxY(_lineView.frame) - 20) collectionViewLayout:[[UICollectionViewFlowLayout alloc]init]];
-        _tagCollectionView.userInteractionEnabled = NO;
+//        _tagCollectionView.userInteractionEnabled = NO;
+        _tagCollectionView.showsVerticalScrollIndicator = NO;
         _tagCollectionView.backgroundColor = themeWhite;
-        NSArray *tagArray = @[@"抑郁",@"孩子叛逆",@"教养方法",@"不爱学习",@"离异",@"性格内向",@"脾气暴躁",@"注意力分散"];
+        NSArray *tagArray = @[@"抑郁",@"孩子叛逆",@"教养方法",@"懦弱",@"不爱学习",@"离异",@"性格内向",@"胆小",@"脾气暴躁",@"注意力分散"];
         _tagCollectionView.tagArray = tagArray;
     }
     return _tagCollectionView;
 }
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)tapAction{
     NSLog(@"别碰我 %li", _index);
-    [self.viewController.navigationController pushViewController:[[SubscribeDetailViewController alloc]init] animated:YES];
+    [self.viewController.navigationController pushViewController:[[RecommendExpertDetailViewController alloc]init] animated:YES];
 }
 
 

@@ -10,4 +10,6 @@
 
 @interface SearchResultViewController : UIViewController
 
+- (void)reloadDataWithSearchText:(NSString *)searchText;
+
 @end

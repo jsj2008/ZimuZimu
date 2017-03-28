@@ -15,15 +15,26 @@
 
 #import "TestViewController.h"
 
-#import "HeaderNavigationView.h"
+#import "HomeNavigationView.h"
 #import "HomeTableView.h"
 #import "HomeHeaderView.h"
 
+#import "YTKBatchRequest.h"
+#import "GetHomeBannerApi.h"
+#import "GetHomeRecommendTodayApi.h"
+#import "GetHomeFourImageApi.h"
+#import "GetHomeFreeCourseApi.h"
+#import "GetHomeCourseIsNotFreeApi.h"
+#import "GetHomeFmApi.h"
+
+#import "YYModel.h"
+#import "HomeFreeCourseModel.h"
+
 #define kHeaderViewHeight 195           //即轮播图高度
 
-@interface HomeViewController ()
+@interface HomeViewController ()<YTKRequestDelegate>
 
-@property (nonatomic, strong) HeaderNavigationView *headerNaviView;     //导航栏
+@property (nonatomic, strong) HomeNavigationView *homeNavigationView;   //导航栏
 @property (nonatomic, strong) HomeHeaderView *headView;     //做为tableView的headerView
 
 @property (nonatomic, strong) HomeTableView *tableView;
@@ -100,9 +111,10 @@
     self.tableView.mj_header = mj_header;
 
     //导航栏  (要在tableView创建之后)
-    self.headerNaviView = [[HeaderNavigationView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 64)];
-    self.headerNaviView.homeTableView = self.tableView;
-    [self.view addSubview:self.headerNaviView];
+    self.homeNavigationView = [[HomeNavigationView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 64)];
+    self.homeNavigationView.homeTableView = self.tableView;
+    [self.view addSubview:self.homeNavigationView];
+
 }
 
 /**
@@ -122,10 +134,47 @@
 
 //下拉刷新
 - (void)refresh{
-    [NSTimer scheduledTimerWithTimeInterval:3.5f repeats:NO block:^(NSTimer * _Nonnull timer) {
+    GetHomeBannerApi *getHomeBannerApi = [[GetHomeBannerApi alloc]init];
+    GetHomeRecommendTodayApi *getHomeRecommendTodayApi = [[GetHomeRecommendTodayApi alloc]init];
+    GetHomeFourImageApi *getHomeFourImageApi = [[GetHomeFourImageApi alloc]init];
+    GetHomeFreeCourseApi *getHomeFreeCourseApi = [[GetHomeFreeCourseApi alloc]init];
+    GetHomeCourseIsNotFreeApi *getHomeCourseIsNotFreeApi = [[GetHomeCourseIsNotFreeApi alloc]init];
+    GetHomeFmApi *getHomeFmApi = [[GetHomeFmApi alloc]init];
+    NSLog(@"start");
+    YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc]initWithRequestArray:@[getHomeBannerApi, getHomeRecommendTodayApi, getHomeFourImageApi, getHomeFreeCourseApi, getHomeCourseIsNotFreeApi, getHomeFmApi]];
+    [batchRequest startWithCompletionBlockWithSuccess:^(YTKBatchRequest * _Nonnull batchRequest) {
+        NSArray *requestArray = batchRequest.requestArray;
+        GetHomeBannerApi *getHomeBannerApi = (GetHomeBannerApi *)requestArray[0];
+        GetHomeRecommendTodayApi *getHomeRecommendTodayApi = (GetHomeRecommendTodayApi *)requestArray[1];
+        GetHomeFourImageApi *getHomeFourImageApi = (GetHomeFourImageApi *)requestArray[2];
+        GetHomeFreeCourseApi *getHomeFreeCourseApi = (GetHomeFreeCourseApi *)requestArray[3];
+        GetHomeCourseIsNotFreeApi *getHomeCourseIsNotFreeApi = (GetHomeCourseIsNotFreeApi *)requestArray[4];
+        GetHomeFmApi *getHomeFmApi = (GetHomeFmApi *)requestArray[5];
+        
+        NSDictionary *bannerDataDic = [self parseDataFromRequest:getHomeBannerApi];
+        NSDictionary *recommendDataDic = [self parseDataFromRequest:getHomeRecommendTodayApi];
+        NSDictionary *fourImageDataDic = [self parseDataFromRequest:getHomeFourImageApi];
+        NSDictionary *freeCourseDataDic = [self parseDataFromRequest:getHomeFreeCourseApi];
+        NSDictionary *notFreeCourseDataDic = [self parseDataFromRequest:getHomeCourseIsNotFreeApi];
+        NSDictionary *FMDataDic = [self parseDataFromRequest:getHomeFmApi];
+        
+        HomeFreeCourseModel *homefreeCourseModel = [HomeFreeCourseModel yy_modelWithDictionary:bannerDataDic];
+        NSLog(@"homeFreeCourseModel : %@",homefreeCourseModel.items);
+        Items *item = homefreeCourseModel.items[0];
+//        NSString *courseID = item.courseImg;
+        NSLog(@"item : %@",item);
+//        NSLog(@"%@, %@, %@, %@, %@, %@",bannerDataDic, recommendDataDic, fourImageDataDic, freeCourseDataDic, notFreeCourseDataDic, FMDataDic);
+        [self.tableView.mj_header endRefreshing];
+    } failure:^(YTKBatchRequest * _Nonnull batchRequest) {
         [self.tableView.mj_header endRefreshing];
     }];
+    
 }
 
+
+- (NSDictionary *)parseDataFromRequest:(YTKRequest *)request{
+    NSData *data = request.responseData;
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+}
 
 @end

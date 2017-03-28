@@ -14,6 +14,7 @@
 #import "SubscribeDetailContentScrollView.h"
 #import "SubscribeLecturerDetailTableView.h"
 #import "SLDBarView.h"
+#import "SLDTextCellLayoutFrame.h"
 
 @interface SubscribeDetailViewController ()<UIScrollViewDelegate, UITableViewDelegate, SLDBarViewDelegate>
 
@@ -168,8 +169,8 @@
 - (void)setupHeadImageview{
     _headImageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _headerView.width, _headerImageHeight)];
     _headImageview.image = [UIImage imageNamed:@"yiding_banner"];
-    _headerView.contentMode = UIViewContentModeScaleAspectFill;
-    _headerView.clipsToBounds = YES;
+    _headImageview.contentMode = UIViewContentModeScaleAspectFill;
+    _headImageview.clipsToBounds = YES;
     [_headerView addSubview:self.headImageview];
     
     //导师姓名栏,点击展开导师详情
@@ -375,32 +376,52 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewController *leftVC = self.childViewControllers[0];
+    UITableViewController *midVC = self.childViewControllers[1];
+    UITableViewController *rightVC = self.childViewControllers[2];
     if (tableView == leftVC.tableView) {
+        //左边  每日看
         if (indexPath.section == 0 && indexPath.row == 0) {
             return 35;
         }
         return 255;
+    }else if (tableView == midVC.tableView) {
+        //中间  连续听
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            return 35;
+        }
+        return 80;
+    }else if (tableView == rightVC.tableView) {
+        //右边  天天学
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            return 35;
+        }
+        return 255;
+    }else{
+        //导师信息
+        SLDTextCellLayoutFrame *layout = [[SLDTextCellLayoutFrame alloc]init];
+        return layout.cellHeight;
     }
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        return 35;
-    }
-    return 255;
 }
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    UITableViewController *leftVC = self.childViewControllers[0];
-//    if (tableView == leftVC.tableView) {
-//    }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc]init];
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
-
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (tableView == _SLDTableView) {
+        return 10;
+    }
+    return CGFLOAT_MIN;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    UITableViewController *leftVC = self.childViewControllers[0];
-//    if (tableView == leftVC.tableView) {
-//        return 10;
-//    }
+    if (tableView == _SLDTableView) {
+        return CGFLOAT_MIN;
+    }
     return 10;
 }
 
@@ -449,7 +470,6 @@
 }
 
 #pragma mark - 切换页面  导师信息和导师内容
-
 - (void)openButtonAction{
     NSLog(@"打开");
     _SLDTableView.hidden = NO;
@@ -457,11 +477,10 @@
     
     [UIView animateWithDuration:0.8f animations:^{
         _SLDTableView.alpha = 1;
-        _titleView.frame = CGRectMake(0, kScreenHeight + _titleView.y, _titleView.width, _titleView.height);
-        _contentScrollView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight);
+        _titleView.alpha = 0;
+        _contentScrollView.alpha = 0;
         _detailBarView.frame = CGRectMake(15, _headerView.height - 85, kScreenWidth - 30, 85);
         [_detailBarView LSDBarTransformWithSLDBarState:SLDBarStateShadow];
-        
         
         
         //将headView复原,_SLDTableView的contentOffset复原
@@ -471,6 +490,8 @@
         [self changeNavigationViewAlphaWithOffsetY:0];
         
     } completion:^(BOOL finished) {
+        _titleView.hidden = YES;
+        _contentScrollView.hidden = YES;
         _contentScrollView.delegate = nil;
         _contentScrollView.userInteractionEnabled = NO;
         for (UITableViewController *vc in self.childViewControllers) {
@@ -483,13 +504,15 @@
 - (void)restoreButtonAction{
     NSLog(@"关闭");
     _restoreButton.hidden = YES;
+    _contentScrollView.hidden = NO;
+    _titleView.hidden = NO;
     //停止滚动
     _stopDecelerating = YES;
     [self scrollViewDidEndDecelerating:_SLDTableView];
 
     [UIView animateWithDuration:0.8f animations:^{
-        _titleView.frame = CGRectMake(0, CGRectGetMaxY(_headImageview.frame), _titleView.width, _titleView.height);
-        _contentScrollView.frame = CGRectMake(0, 0, _contentScrollView.width, _contentScrollView.height);
+        _titleView.alpha = 1;
+        _contentScrollView.alpha = 1;
         _detailBarView.frame = CGRectMake(0, _headImageview.height - 35, kScreenWidth, 35);
         [_detailBarView LSDBarTransformWithSLDBarState:SLDBarStateNormal];
         

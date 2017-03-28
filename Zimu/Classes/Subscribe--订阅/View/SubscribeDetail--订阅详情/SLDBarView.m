@@ -139,7 +139,7 @@ static NSInteger smallFont = 11;
             self.layer.shadowOpacity = 0;
             self.layer.shadowOffset = CGSizeMake(0, 0);
             _openButton.frame = CGRectMake(self.width - 35, 0, 35, 35);
-            _normalNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 150, 35)];
+            _normalNameLabel.frame = CGRectMake(10, 0, 150, 35);
             
             _normalNameLabel.hidden = NO;
             _openButton.hidden = NO;
@@ -156,7 +156,7 @@ static NSInteger smallFont = 11;
             self.layer.shadowOpacity = 0.33;
             self.layer.shadowOffset = CGSizeMake(0, 1.5);
             _openButton.frame = CGRectMake(self.width - 35, 0, 35, 35);
-            _normalNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 150, 35)];
+            _normalNameLabel.frame = CGRectMake(10, 0, 150, 35);
 
             _normalNameLabel.hidden = YES;
             _openButton.hidden = YES;
