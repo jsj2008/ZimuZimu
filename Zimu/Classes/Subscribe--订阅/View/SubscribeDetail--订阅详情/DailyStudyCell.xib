@@ -43,10 +43,10 @@
                         <rect key="frame" x="10" y="179.5" width="300" height="20"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ac-rd-wZZ">
-                                <rect key="frame" x="234" y="-1" width="70" height="22"/>
+                                <rect key="frame" x="244" y="3" width="50" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title=" 40:20" image="find_comment"/>
+                                <state key="normal" title=" 40:20" image="course_video_icon"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,7 +94,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="find_comment" width="15" height="13"/>
+        <image name="course_video_icon" width="12" height="12"/>
         <image name="yiding_dianzan" width="15" height="14"/>
     </resources>
 </document>
