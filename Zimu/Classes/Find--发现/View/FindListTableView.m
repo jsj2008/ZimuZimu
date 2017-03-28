@@ -7,6 +7,9 @@
 //
 
 #import "FindListTableView.h"
+#import "NSString+YFString.h"
+#import "WXLabel.h"
+
 #import "FindHeadCell.h"
 #import "FindListActCell.h"
 #import "FindAskTextCell.h"
@@ -67,7 +70,7 @@ static NSString *topicCellId = @"findTopicId";
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        _textTest = @[@"请问欧福军我们都知道利用XIB可以很轻松的设置一个label为自适应高度，但如果将一个label放在tableviewcell上面，并且这个cell还想用XIB描述，这个时候就需要先确定label的高度再确定cell的高度，最后才能显示到屏幕上。", @"奥斯卡飞机哈地方"];
+        _textTest = @[@"请问欧福军我", @"请问欧福军我们都知道利用XIB可以很轻松的设置一个label为自适应高度，但如果将一个label放在tableviewcell上面，并且这个cell还想用XIB描述，这个时候就需要先确定label的高度再确定cell的高度，最后才能显示福军我们都知道利用Xasgaasdgadfgkhjakerhng   iugI"];
     }
     return self;
 }
@@ -124,7 +127,7 @@ static NSString *topicCellId = @"findTopicId";
         if (indexPath.row == 0) {
             FindCenterTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:cenCellId forIndexPath:indexPath];
             cell.centerTitleLabel.text = @"我参与的话题讨论";
-            cell.centerTitleLabel.textColor = [UIColor grayColor];
+            cell.centerTitleLabel.textColor = [UIColor colorWithHexString:@"666666"];
             cell.backgroundColor = themeGray;
             return cell;
         }else if (indexPath.row == 1){
@@ -135,7 +138,7 @@ static NSString *topicCellId = @"findTopicId";
         }else{
             FindCenterTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:cenCellId forIndexPath:indexPath];
             cell.centerTitleLabel.text = @"查看更早参与的话题";
-            cell.centerTitleLabel.textColor = [UIColor lightGrayColor];
+            cell.centerTitleLabel.textColor = [UIColor colorWithHexString:@"999999"];
             cell.backgroundColor = themeWhite;
             return cell;
         }
@@ -147,7 +150,7 @@ static NSString *topicCellId = @"findTopicId";
             flowLayout.minimumInteritemSpacing = 0;
             flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
             
-            _functionView = [[FindFunctionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, (kScreenWidth - 29) / 4) collectionViewLayout:flowLayout];
+            _functionView = [[FindFunctionView alloc] initWithFrame:CGRectMake(14.5, 0, kScreenWidth - 29, (kScreenWidth - 29) / 8 + 45) collectionViewLayout:flowLayout];
         }
         [cell addSubview:_functionView];
         return cell;
@@ -168,7 +171,10 @@ static NSString *topicCellId = @"findTopicId";
             return cell;
         }else{
             FindAskTextCell *cell = [tableView dequeueReusableCellWithIdentifier:askCellId forIndexPath:indexPath];
-            cell.askDetail.text = _textTest[indexPath.row - 1];
+            NSString *str = _textTest[indexPath.row - 1];
+            NSAttributedString *attrString = [NSString getAttributedStringWithString:str lineSpace:1.5];
+            cell.askDetail.attributedText = attrString;
+//            cell.askDetail.text = str;
             return cell;
         }
     }else{                                 //文章排行
@@ -201,29 +207,37 @@ static NSString *topicCellId = @"findTopicId";
             return 35;
         }
     }else if (indexPath.section == 2){      //功能按钮
-        return (kScreenWidth - 29) / 4;
+        return (kScreenWidth - 29) / 8 + 45;
     }else if (indexPath.section == 3){     //活动推荐
         if (indexPath.row == 0) {
             return 44;
         }else{
-            return 185;
+#pragma mark - 计算活动cell高度
+            CGFloat actHeight = (kScreenWidth - 20) * 28 / 71 + 44;
+            return actHeight;
         }
     }else if (indexPath.section == 4){     //问答排行
         if (indexPath.row == 0) {
             return 44;
         }else{
 #pragma mark - 要计算cell的高度
-            CGFloat orginalH = 140.0 - 17.0;
+            CGFloat orginalH = 113;
             NSString *content = _textTest[indexPath.row - 1];
-            CGRect r = [content boundingRectWithSize:CGSizeMake(kScreenWidth - 20,10000) options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.f]} context:nil];
-            CGFloat trueH = orginalH + r.size.height + 5;
+            CGFloat height = [WXLabel getTextHeight:14.0 width:kScreenWidth - 20 text:content linespace:1.5];
+            
+            CGFloat trueH = orginalH + height;
+            if (trueH > 113 + 90 ) {
+                trueH = 113 + 90;
+            }
             return trueH;       //这个高度需要计算
         }
     }else{                                 //文章排行
         if (indexPath.row == 0) {
             return 44;
         }else{
-            return 282;
+#pragma mark - 计算文章cell高度
+            CGFloat articleHeight = (kScreenWidth - 20) * 14 / 37 + 140;
+            return articleHeight;
         }
         
     }

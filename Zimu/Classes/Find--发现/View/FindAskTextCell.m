@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+//    _askDetail.numberOfLines = 5;
     // Initialization code
 }
 

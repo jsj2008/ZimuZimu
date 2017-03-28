@@ -10,6 +10,7 @@
 #import <CoreText/CoreText.h>
 #import "RegexKitLite.h"
 #define WXLABEL_IMAGE_NAME @"imageName"
+
 @interface WXLabel ()
 
 @property(nonatomic,assign)NSRange movieStringRange;//当前选中的字符索引

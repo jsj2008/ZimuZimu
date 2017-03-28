@@ -10,7 +10,7 @@
 #import "FindFunctionsCell.h"
 
 #define FIND_FUN_WIDTH (kScreenWidth - 29) / 4
-#define FIND_FUN_HEGHT FIND_FUN_WIDTH
+#define FIND_FUN_HEGHT FIND_FUN_WIDTH / 2 + 45
 static NSString *cellReuesId = @"FindFunctionsCelLId";
 @interface FindFunctionView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 /** 图片和标题数组 **/

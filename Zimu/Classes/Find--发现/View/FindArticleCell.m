@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.priceLabel.layer.borderColor = [UIColor colorWithHexString:@"FEBD18"].CGColor;
+    self.priceLabel.layer.borderWidth = 0.5;
     // Initialization code
 }
 

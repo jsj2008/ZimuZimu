@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CourseHotBookListCell">
+            <rect key="frame" x="0.0" y="0.0" width="208" height="207"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="208" height="207"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="course_hot" translatesAutoresizingMaskIntoConstraints="NO" id="Ow7-AB-C6a">
+                        <rect key="frame" x="15" y="10" width="179" height="140"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Ow7-AB-C6a" secondAttribute="height" multiplier="179:140" id="dXB-5t-yaq"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPv-jI-FTT">
+                        <rect key="frame" x="15" y="160" width="179" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Ow7-AB-C6a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="1bL-Jn-PaQ"/>
+                <constraint firstAttribute="trailing" secondItem="Ow7-AB-C6a" secondAttribute="trailing" constant="14" id="B29-5J-2gz"/>
+                <constraint firstItem="hPv-jI-FTT" firstAttribute="top" secondItem="Ow7-AB-C6a" secondAttribute="bottom" constant="10" id="ayw-Jy-39l"/>
+                <constraint firstItem="hPv-jI-FTT" firstAttribute="leading" secondItem="Ow7-AB-C6a" secondAttribute="leading" id="esF-Kx-5mC"/>
+                <constraint firstItem="hPv-jI-FTT" firstAttribute="trailing" secondItem="Ow7-AB-C6a" secondAttribute="trailing" id="rWs-cC-Wwj"/>
+                <constraint firstItem="Ow7-AB-C6a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ulk-dE-DAY"/>
+            </constraints>
+            <size key="customSize" width="208" height="207"/>
+            <connections>
+                <outlet property="hotBookTitleLabel" destination="hPv-jI-FTT" id="wpL-SY-2qC"/>
+                <outlet property="img" destination="Ow7-AB-C6a" id="shn-Ep-Nig"/>
+            </connections>
+            <point key="canvasLocation" x="-63" y="-7.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="course_hot" width="105" height="140"/>
+    </resources>
+</document>
