@@ -2089,11 +2089,8 @@
 				5F2D620D1E77BAF700B038A5 /* CircleCollectionViewCell.xib in Resources */,
 				5F2D62241E77BAF700B038A5 /* VideoCourseCollectionViewCell.xib in Resources */,
 				5F9CE2C31E82CFBE00424352 /* TagCollectionViewCell.xib in Resources */,
-<<<<<<< HEAD
 				1E0142081E84CBE5004D3957 /* CourseFuncationCell.xib in Resources */,
-=======
 				5F9CE2DC1E84EFB700424352 /* SearchHeaderCell.xib in Resources */,
->>>>>>> origin/master
 				1827C1F51E810FB20040B9AD /* FindAskTextCell.xib in Resources */,
 				5FABE61A1E89F74A00FE8A33 /* ContinueListenCell.xib in Resources */,
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
@@ -2260,12 +2257,9 @@
 				5F9C3CAF1E5EB9FA009659E4 /* BaseViewController.m in Sources */,
 				5F2D62451E77D47400B038A5 /* ExamFreeVideoCell.m in Sources */,
 				5F8EDD2A1E6E5695000FC3E0 /* QuestionTableViewCell.m in Sources */,
-<<<<<<< HEAD
 				18F7F2BC1E836ACD00DE6218 /* NSString+YFString.m in Sources */,
 				1E0142021E84C553004D3957 /* CarouselSubview.m in Sources */,
-=======
 				5F9CE2D01E839BD200424352 /* SLDTextCellLayoutFrame.m in Sources */,
->>>>>>> origin/master
 				5F2D62291E77BAF700B038A5 /* HomeTableViewCell.m in Sources */,
 				5F9C3C9D1E5EB6A4009659E4 /* ZMTabBar.m in Sources */,
 				5FDCB49E1E7FAF85003914D1 /* DefaultShouldSwipeDeterminator.m in Sources */,
@@ -2345,11 +2339,8 @@
 				5F8EDD301E6E7EED000FC3E0 /* WXLabel.m in Sources */,
 				5FDCB4AD1E7FB4B7003914D1 /* CardView.m in Sources */,
 				5F2D624D1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.m in Sources */,
-<<<<<<< HEAD
 				1E0142031E84C553004D3957 /* ImageCarouselView.m in Sources */,
-=======
 				5FABE6021E890E2B00FE8A33 /* GetHomeFmApi.m in Sources */,
->>>>>>> origin/master
 				5FEB304F1E79088000B34CC7 /* DanmakuFactory.m in Sources */,
 				5F8EDD331E6E8078000FC3E0 /* RegexKitLite.m in Sources */,
 				5FDCB49F1E7FAF85003914D1 /* DefaultViewAnimator.m in Sources */,
