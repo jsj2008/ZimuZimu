@@ -9,9 +9,10 @@
 #import "CourseHotListView.h"
 #import "CourseHotListCell.h"
 
-#define FREECOURSE_WIDTH (kScreenWidth / 2)
-#define FREECOURSE_HEIGHT (FREECOURSE_WIDTH / 1.7)
-static NSString *cellReuesId = @"CourseListVideoCellid";
+#define FREECOURSE_WIDTH (kScreenWidth / 3)
+#define COURSE_FM_HEIGHT  kScreenWidth * 0.214 + 60
+
+static NSString *cellReuesId = @"CourseHotListCellid";
 @interface CourseHotListView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 /** 图片和标题数组 **/
 @property (nonatomic, copy) NSArray *imgDataArray;
@@ -24,8 +25,8 @@ static NSString *cellReuesId = @"CourseListVideoCellid";
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
-        _imgDataArray = @[@"find_topic_1", @"find_topic_2", @"find_topic_4"];
-        _textDataArray = @[@"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症"];
+        _imgDataArray = @[@"find_topic_1", @"find_topic_2", @"find_topic_4", @"find_topic_4"];
+        _textDataArray = @[@"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症"];
         //注册单元格
         UINib *nib = [UINib nibWithNibName:@"CourseHotListCell" bundle:[NSBundle mainBundle]];
         [self registerNib:nib forCellWithReuseIdentifier:cellReuesId];
@@ -54,7 +55,7 @@ static NSString *cellReuesId = @"CourseListVideoCellid";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(FREECOURSE_WIDTH, FREECOURSE_HEIGHT);
+    return CGSizeMake(FREECOURSE_WIDTH, COURSE_FM_HEIGHT);
 }
 
 @end
