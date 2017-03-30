@@ -244,6 +244,8 @@
             }
             [self startScroll];
         }
+        //这里做各个view的缩放
+        
     }
 }
 
