@@ -110,8 +110,6 @@
 		1E0142211E850137004D3957 /* CourseHotBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142201E850137004D3957 /* CourseHotBookListView.m */; };
 		1E0142251E85014C004D3957 /* CourseHotBookListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142231E85014C004D3957 /* CourseHotBookListCell.m */; };
 		1E0142261E85014C004D3957 /* CourseHotBookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E0142241E85014C004D3957 /* CourseHotBookListCell.xib */; };
-<<<<<<< HEAD
-=======
 		1E3949B21E8BAF9900BB346F /* SubscribeFreeReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B11E8BAF9900BB346F /* SubscribeFreeReadViewController.m */; };
 		1E3949B61E8BB04A00BB346F /* SubscribeFreeReadListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B51E8BB04A00BB346F /* SubscribeFreeReadListView.m */; };
 		1E3949BA1E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B81E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m */; };
@@ -123,7 +121,6 @@
 		1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */; };
 		1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */; };
 		5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61CF1E77BAF700B038A5 /* HeaderNavigationView.m */; };
->>>>>>> origin/master
 		5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */; };
 		5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D41E77BAF700B038A5 /* CircleCollectionView.m */; };
 		5F2D620C1E77BAF700B038A5 /* CircleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D61E77BAF700B038A5 /* CircleCollectionViewCell.m */; };
@@ -2206,12 +2203,9 @@
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5F9CE2BB1E82661800424352 /* DailyLookTitleCell.xib in Resources */,
-<<<<<<< HEAD
-=======
 				5F2D622A1E77BAF700B038A5 /* HomeTableViewCell.xib in Resources */,
 				1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */,
 				1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */,
->>>>>>> origin/master
 				1E0142151E84F1AD004D3957 /* CourseListVideoCell.xib in Resources */,
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
@@ -2551,11 +2545,8 @@
 				5FEA2AAF1E8BA08400405F75 /* HomeArticleModel.m in Sources */,
 				1E0142181E84FA7B004D3957 /* CourseHotListView.m in Sources */,
 				5F8EDD3A1E6E8FD3000FC3E0 /* ArticleCellLayout.m in Sources */,
-<<<<<<< HEAD
 				5FEA2A9F1E8B4C4300405F75 /* CityCourseHeaderCell.m in Sources */,
-=======
 				1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */,
->>>>>>> origin/master
 				5F2D62581E77F38C00B038A5 /* ListenHeartViewController.m in Sources */,
 				5FDCB46D1E7BBC20003914D1 /* SubscribedExpertCell.m in Sources */,
 				5F2D62401E77D12700B038A5 /* ExamAnswerCell.m in Sources */,
