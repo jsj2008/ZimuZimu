@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+//typedef enum VideoCourseCellStyle{
+//    VideoCourseCellStyleFree = 0,           //免费课程
+//    VideoCourseCellStyleNotFree = 1,        //付费课程
+//}VideoCourseCellStyle;
+
 @interface VideoCourseCell : UITableViewCell
 
-@property (nonatomic, strong) NSArray *imageArray;
+//@property (nonatomic, assign) VideoCourseCellStyle videoCourseCellStyle;
+@property (nonatomic, strong) NSArray *homeFreeCourseModelArray;
+@property (nonatomic, strong) NSArray *homeNotFreeCourseModelArray;
 
 @end

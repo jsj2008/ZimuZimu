@@ -40,30 +40,35 @@ static const NSInteger smallFont = 10;
     //头像
     _headImageView.frame = CGRectMake(10, 10, 75, 100);
     _headImageView.clipsToBounds = YES;
-//    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    UIImage *image = _headImageView.image;
-//    image = [image imageAddCornerWithRadious:5 size:_headImageView.size];
-//    _headImageView.image = image;
     _headImageView.layer.cornerRadius = 5;
     _headImageView.layer.masksToBounds = YES;
     
     //价格
-    NSString *priceString = @"￥199/年";
+    CGFloat price = _homeExpretItem.expert.expertPrice.price;
+    NSString *priceString = [NSString stringWithFormat:@"￥%.1lf/年",price];
+    _priceLabel.text = priceString;
+    _priceLabel.textColor = themeYellow;
     CGSize priceSize = [priceString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:midFont]}];
     _priceLabel.frame = CGRectMake(self.width - priceSize.width - 10, CGRectGetMinY(_headImageView.frame), priceSize.width, 20);
     
     //标题
+    NSString *titleString = [NSString stringWithFormat:@"%@",_homeExpretItem.userName];
+    _titleLabel.text = titleString;
     CGFloat titleWidth = CGRectGetMinX(_priceLabel.frame) - CGRectGetMaxX(_headImageView.frame) - 15 - 10;
-    CGSize titleSize = [priceString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:largeFont]}];
+    CGSize titleSize = [titleString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:largeFont]}];
     _titleLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame) + 15, CGRectGetMinY(_headImageView.frame), titleWidth, titleSize.height);
     
     //简介
-    CGSize introSize = [priceString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:midFont]}];
+    NSString *introString = _homeExpretItem.expert.profile;
+    _introLabel.text = introString;
+    CGSize introSize = [introString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:midFont]}];
     _introLabel.frame = CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_titleLabel.frame) + 10, titleWidth, introSize.height);
     
     //最新内容
+    NSString *contentString = [NSString stringWithFormat:@"%@ | %@",_homeExpretItem.latestSubscription.type, _homeExpretItem.latestSubscription.name];
+    _contentLabel.text = contentString;
     CGFloat contentWidth = self.width - CGRectGetMaxX(_headImageView.frame) - 15 - 10 - 10;
-    CGSize contentSize = [priceString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:midFont2]}];
+    CGSize contentSize = [contentString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:midFont2]}];
     _contentLabel.frame = CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_headImageView.frame) - contentSize.height, contentWidth, contentSize.height);
     
     //更新时间
@@ -81,6 +86,16 @@ static const NSInteger smallFont = 10;
         _headImageView.image = [UIImage imageNamed:_imageString];;
     }
 }
+
+- (void)setHomeExpretItem:(HomeExpertItems *)homeExpretItem{
+    if (_homeExpretItem != homeExpretItem) {
+        _homeExpretItem = homeExpretItem;
+        
+        [self layoutIfNeeded];
+        
+    }
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

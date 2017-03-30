@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeArticleModel.h"
 
 @interface BookHomeCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *imageString;
+
+@property (nonatomic, strong) HomeArticleItems *homeArticleItem;
 
 @end

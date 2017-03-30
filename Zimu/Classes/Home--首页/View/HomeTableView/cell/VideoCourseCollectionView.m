@@ -41,18 +41,37 @@ static NSString *identifier = @"videoCourseCollectionCell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _imageArray.count;
+    switch (_videoCourseCellStyle) {
+        case VideoCourseCellStyleFree:
+            return _homeFreeCourseModelArray.count;
+            
+            break;
+        case VideoCourseCellStyleNotFree:
+            return _homeNotFreeCourseModelArray.count;
+            break;
+    }
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     VideoCourseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    cell.imageString = _imageArray[indexPath.row];//[NSString stringWithFormat:@"home_course%li",indexPath.row + 1];
-    cell.titleString = @"你的孩子不理你了怎么办？他为什么不";
+    
+    switch (_videoCourseCellStyle) {
+        case VideoCourseCellStyleFree:
+            
+            cell.homeFreeCourseModel = _homeFreeCourseModelArray[indexPath.row];
+            
+            break;
+        case VideoCourseCellStyleNotFree:
+            
+            cell.homeNotFreeCourseModel = _homeNotFreeCourseModelArray[indexPath.row];
+            
+            break;
+    }
     
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat width = (135 / 375.0) * kScreenWidth ;
+    CGFloat width = 135/375.0 * kScreenWidth;
     CGFloat height = self.height - 20;
     return CGSizeMake(width, height);
 }
@@ -64,9 +83,17 @@ static NSString *identifier = @"videoCourseCollectionCell";
     NSLog(@"indexPath : %@",indexPath);
 }
 
-- (void)setImageArray:(NSArray *)imageArray{
-    if (_imageArray != imageArray) {
-        _imageArray = imageArray;
+
+- (void)setHomeFreeCourseModelArray:(NSArray *)homeFreeCourseModelArray{
+    if (_homeFreeCourseModelArray != homeFreeCourseModelArray) {
+        _homeFreeCourseModelArray = homeFreeCourseModelArray;
+        [self reloadData];
+    }
+}
+
+- (void)setHomeNotFreeCourseModelArray:(NSArray *)homeNotFreeCourseModelArray{
+    if (_homeNotFreeCourseModelArray != homeNotFreeCourseModelArray) {
+        _homeNotFreeCourseModelArray = homeNotFreeCourseModelArray;
         [self reloadData];
     }
 }

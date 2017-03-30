@@ -23,14 +23,22 @@
 #import "GetHomeBannerApi.h"
 #import "GetHomeRecommendTodayApi.h"
 #import "GetHomeFourImageApi.h"
+#import "GetRecommendExpertListApi.h"
 #import "GetHomeFreeCourseApi.h"
 #import "GetHomeCourseIsNotFreeApi.h"
 #import "GetHomeFmApi.h"
+#import "GetHomeRecommendArticleApi.h"
 
-#import "YYModel.h"
+#import "HomeBannerModel.h"
+#import "HomeRecommendTodayModel.h"
+#import "HomeFourImageModel.h"
+#import "HomeExpertListModel.h"
 #import "HomeFreeCourseModel.h"
+#import "HomeNotFreeCourseModel.h"
+#import "HomeFMModel.h"
+#import "HomeArticleModel.h"
 
-#define kHeaderViewHeight 195           //即轮播图高度
+#define kHeaderViewHeight 224/375.0 * kScreenWidth           //即轮播图高度
 
 @interface HomeViewController ()<YTKRequestDelegate>
 
@@ -56,6 +64,8 @@
     [self setupTableView];
     
     [self setupHeaderView];
+    
+    [self refresh];
 
 }
 
@@ -137,33 +147,112 @@
     GetHomeBannerApi *getHomeBannerApi = [[GetHomeBannerApi alloc]init];
     GetHomeRecommendTodayApi *getHomeRecommendTodayApi = [[GetHomeRecommendTodayApi alloc]init];
     GetHomeFourImageApi *getHomeFourImageApi = [[GetHomeFourImageApi alloc]init];
+    GetRecommendExpertListApi *getRecommendExpertListApi = [[GetRecommendExpertListApi alloc]init];
     GetHomeFreeCourseApi *getHomeFreeCourseApi = [[GetHomeFreeCourseApi alloc]init];
     GetHomeCourseIsNotFreeApi *getHomeCourseIsNotFreeApi = [[GetHomeCourseIsNotFreeApi alloc]init];
     GetHomeFmApi *getHomeFmApi = [[GetHomeFmApi alloc]init];
+    GetHomeRecommendArticleApi *articleApi = [[GetHomeRecommendArticleApi alloc]init];
     NSLog(@"start");
-    YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc]initWithRequestArray:@[getHomeBannerApi, getHomeRecommendTodayApi, getHomeFourImageApi, getHomeFreeCourseApi, getHomeCourseIsNotFreeApi, getHomeFmApi]];
+    YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc]initWithRequestArray:@[getHomeBannerApi,
+                                                                                   getHomeRecommendTodayApi,
+                                                                                   getHomeFourImageApi,
+                                                                                   getRecommendExpertListApi,
+                                                                                   getHomeFreeCourseApi,
+                                                                                   getHomeCourseIsNotFreeApi,
+                                                                                   getHomeFmApi,
+                                                                                   articleApi]];
     [batchRequest startWithCompletionBlockWithSuccess:^(YTKBatchRequest * _Nonnull batchRequest) {
         NSArray *requestArray = batchRequest.requestArray;
         GetHomeBannerApi *getHomeBannerApi = (GetHomeBannerApi *)requestArray[0];
         GetHomeRecommendTodayApi *getHomeRecommendTodayApi = (GetHomeRecommendTodayApi *)requestArray[1];
         GetHomeFourImageApi *getHomeFourImageApi = (GetHomeFourImageApi *)requestArray[2];
-        GetHomeFreeCourseApi *getHomeFreeCourseApi = (GetHomeFreeCourseApi *)requestArray[3];
-        GetHomeCourseIsNotFreeApi *getHomeCourseIsNotFreeApi = (GetHomeCourseIsNotFreeApi *)requestArray[4];
-        GetHomeFmApi *getHomeFmApi = (GetHomeFmApi *)requestArray[5];
+        GetRecommendExpertListApi *recommendExpertApi = (GetRecommendExpertListApi *)requestArray[3];
+        GetHomeFreeCourseApi *getHomeFreeCourseApi = (GetHomeFreeCourseApi *)requestArray[4];
+        GetHomeCourseIsNotFreeApi *getHomeCourseIsNotFreeApi = (GetHomeCourseIsNotFreeApi *)requestArray[5];
+        GetHomeFmApi *getHomeFmApi = (GetHomeFmApi *)requestArray[6];
+        GetHomeRecommendArticleApi *getArticleApi = (GetHomeRecommendArticleApi *)requestArray[7];
         
         NSDictionary *bannerDataDic = [self parseDataFromRequest:getHomeBannerApi];
         NSDictionary *recommendDataDic = [self parseDataFromRequest:getHomeRecommendTodayApi];
         NSDictionary *fourImageDataDic = [self parseDataFromRequest:getHomeFourImageApi];
+        NSDictionary *expertListDataDic = [self parseDataFromRequest:recommendExpertApi];
         NSDictionary *freeCourseDataDic = [self parseDataFromRequest:getHomeFreeCourseApi];
         NSDictionary *notFreeCourseDataDic = [self parseDataFromRequest:getHomeCourseIsNotFreeApi];
         NSDictionary *FMDataDic = [self parseDataFromRequest:getHomeFmApi];
+        NSDictionary *articleDataDic = [self parseDataFromRequest:getArticleApi];
         
-        HomeFreeCourseModel *homefreeCourseModel = [HomeFreeCourseModel yy_modelWithDictionary:bannerDataDic];
-        NSLog(@"homeFreeCourseModel : %@",homefreeCourseModel.items);
-        Items *item = homefreeCourseModel.items[0];
-//        NSString *courseID = item.courseImg;
-        NSLog(@"item : %@",item);
-//        NSLog(@"%@, %@, %@, %@, %@, %@",bannerDataDic, recommendDataDic, fourImageDataDic, freeCourseDataDic, notFreeCourseDataDic, FMDataDic);
+        //轮播
+        HomeBannerModel *homeBannerModel = [HomeBannerModel yy_modelWithDictionary:bannerDataDic];
+        NSArray *bannerItemArray = (NSArray *)homeBannerModel.items;
+        NSMutableArray *bannerItemDataArray = [NSMutableArray arrayWithCapacity:bannerItemArray.count];
+        for (NSDictionary *bannerItemDic in bannerItemArray) {
+            HomeBannerItems *bannerItem = [HomeBannerItems yy_modelWithDictionary:bannerItemDic];
+            [bannerItemDataArray addObject:bannerItem];
+        }
+        _headView.bannerArray = bannerItemDataArray;
+        //今日推荐
+        
+        HomeRecommendTodayModel *recommendTodayModel = [HomeRecommendTodayModel yy_modelWithDictionary:recommendDataDic];
+        NSLog(@"recommendTodayObject.article.articleTitle : %@",recommendTodayModel.object.article.articleTitle);
+        
+        //四块功能图
+        
+        
+        //专栏订阅  推荐专家
+        HomeExpertListModel *expertListModel = [HomeExpertListModel yy_modelWithDictionary:expertListDataDic];
+        NSArray *expertListItemArray = (NSArray *)expertListModel.items;
+        NSMutableArray *expertListItemDataArray = [NSMutableArray arrayWithCapacity:expertListItemArray.count];
+        for (NSDictionary *expertListItemDic in expertListItemArray) {
+            HomeExpertItems *item = [HomeExpertItems yy_modelWithDictionary:expertListItemDic];
+            [expertListItemDataArray addObject:item];
+        }
+        
+        
+        //免费课程
+        HomeFreeCourseModel *homeFreeCourseModel = [HomeFreeCourseModel yy_modelWithDictionary:freeCourseDataDic];
+        NSArray *freeCourseItemArray = (NSArray *)homeFreeCourseModel.items;
+        NSMutableArray *freeCourseItemDataArray = [NSMutableArray arrayWithCapacity:freeCourseItemArray.count];
+        for (NSDictionary *freeCourseItemDic in freeCourseItemArray) {
+            HomeFreeCourseItems *freeCourseItem = [HomeFreeCourseItems yy_modelWithDictionary:freeCourseItemDic];
+            [freeCourseItemDataArray addObject:freeCourseItem];
+        }
+        NSLog(@"freeCourseItemDataArray : %@",freeCourseItemDataArray);
+        
+        
+        //付费课程
+        HomeNotFreeCourseModel *homeNotFreeCourseModel = [HomeNotFreeCourseModel yy_modelWithDictionary:notFreeCourseDataDic];
+        NSArray *notFreeCourseItemArray = (NSArray *)homeNotFreeCourseModel.items;
+        NSMutableArray *notFreeCourseItemDataArray = [NSMutableArray arrayWithCapacity:notFreeCourseItemArray.count];
+        for (NSDictionary *notFreeCourseItemDic in notFreeCourseItemArray) {
+            HomeNotFreeCourseItems *notFreeCourseItem = [HomeNotFreeCourseItems yy_modelWithDictionary:notFreeCourseItemDic];
+            [notFreeCourseItemDataArray addObject:notFreeCourseItem];
+        }
+        NSLog(@"notFreeCourseItemDataArray : %@",notFreeCourseItemDataArray);
+        
+        //FM
+        HomeFMModel *FMModel = [HomeFMModel yy_modelWithDictionary:FMDataDic];
+        NSArray *FMItemArray = (NSArray *)FMModel.items;
+        NSMutableArray *FMItemDataArray = [NSMutableArray arrayWithCapacity:FMItemArray.count];
+        for (NSDictionary *FMItemDic in FMItemArray) {
+            HomeFMItems *FMItem = [HomeFMItems yy_modelWithDictionary:FMItemDic];
+            [FMItemDataArray addObject:FMItem];
+        }
+        NSLog(@"FMItemDataArray : %@",FMItemDataArray);
+        
+        //美文推荐
+        HomeArticleModel *homeArticleModel = [HomeArticleModel yy_modelWithDictionary:articleDataDic];
+        NSDictionary *homeArticleItemDic = (NSDictionary *)homeArticleModel.items[0];
+        HomeArticleItems *homeArticleItem = [HomeArticleItems yy_modelWithDictionary:homeArticleItemDic];
+        
+        
+        _tableView.homeRecommendTodayModel = recommendTodayModel;
+        _tableView.homeExpertListArray = expertListItemDataArray;
+        _tableView.homeFreeCourseArray = freeCourseItemDataArray;
+        _tableView.homeNotFreeCourseArray = notFreeCourseItemDataArray;
+        _tableView.homeFMArray = FMItemDataArray;
+        _tableView.homeArticleItem = homeArticleItem;
+        [_tableView reloadData];
+        
         [self.tableView.mj_header endRefreshing];
     } failure:^(YTKBatchRequest * _Nonnull batchRequest) {
         [self.tableView.mj_header endRefreshing];
@@ -173,6 +262,11 @@
 
 
 - (NSDictionary *)parseDataFromRequest:(YTKRequest *)request{
+    NSData *data = request.responseData;
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+}
+
+- (NSString *)parseStringFromRequest:(YTKRequest *)request{
     NSData *data = request.responseData;
     return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }

@@ -8,11 +8,15 @@
 
 #import "VideoCourseCollectionViewCell.h"
 #import "UIImage+ZMExtension.h"
+#import "UIImageView+WebCache.h"
 
 @interface VideoCourseCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *courseImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *lengthLabel;
+@property (weak, nonatomic) IBOutlet UIButton *playCountLabel;
+
 
 
 @end
@@ -27,13 +31,12 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    _courseImageView.clipsToBounds = YES;
-    _courseImageView.layer.cornerRadius = 5;
-    _courseImageView.layer.masksToBounds = YES;
+//    _courseImageView.clipsToBounds = YES;
+//    _courseImageView.layer.cornerRadius = 5;
+//    _courseImageView.layer.masksToBounds = YES;
     _titleLabel.textColor = themeBlack;
-//    UIImage *image = _courseImageView.image;
-//    image = [image imageAddCornerWithRadious:5 size:_courseImageView.size];
-//    _courseImageView.image = image;
+    [_titleLabel sizeToFit];
+
 }
 
 - (void)setImageString:(NSString *)imageString{
@@ -49,6 +52,26 @@
         _titleString = titleString;
         _titleLabel.text = _titleString;
         
+    }
+}
+
+//免费课程
+- (void)setHomeFreeCourseModel:(HomeFreeCourseItems *)homeFreeCourseModel{
+    if (_homeFreeCourseModel != homeFreeCourseModel) {
+        _homeFreeCourseModel = homeFreeCourseModel;
+        _titleLabel.text = _homeFreeCourseModel.courseName;
+        NSURL *url = [NSURL URLWithString:_homeFreeCourseModel.courseImg];
+        [_courseImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"home_course1"]];
+    }
+}
+
+//付费课程
+- (void)setHomeNotFreeCourseModel:(HomeNotFreeCourseItems *)homeNotFreeCourseModel{
+    if (_homeNotFreeCourseModel != homeNotFreeCourseModel) {
+        _homeNotFreeCourseModel = homeNotFreeCourseModel;
+        _titleLabel.text = homeNotFreeCourseModel.courseName;
+        NSURL *url = [NSURL URLWithString:_homeFreeCourseModel.courseImg];
+        [_courseImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"home_course2"]];
     }
 }
 

@@ -40,18 +40,17 @@ static NSString *identifier = @"FMCollectionViewCell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _imageArray.count;
+    return _homeFMModelArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FMCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    cell.imageString = _imageArray[indexPath.row];//[NSString stringWithFormat:@"home_course%li",indexPath.row + 1];
-    cell.titleString = @"费曼：学习方式也是思维方式";
+    cell.homeFMItem = _homeFMModelArray[indexPath.row];
     
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat width = (100 / 375.0) * kScreenWidth ;
+    CGFloat width = 100/375.0 * kScreenWidth;
     CGFloat height = self.height - 20;
     return CGSizeMake(width, height);
 }
@@ -63,9 +62,9 @@ static NSString *identifier = @"FMCollectionViewCell";
     NSLog(@"indexPath : %@",indexPath);
 }
 
-- (void)setImageArray:(NSArray *)imageArray{
-    if (_imageArray != imageArray) {
-        _imageArray = imageArray;
+- (void)setHomeFMModelArray:(NSArray *)homeFMModelArray{
+    if (_homeFMModelArray != homeFMModelArray) {
+        _homeFMModelArray = homeFMModelArray;
         [self reloadData];
     }
 }

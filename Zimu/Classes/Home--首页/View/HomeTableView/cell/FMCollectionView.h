@@ -10,6 +10,6 @@
 
 @interface FMCollectionView : UICollectionView
 
-@property (nonatomic, strong) NSArray *imageArray;
+@property (nonatomic, strong) NSArray *homeFMModelArray;
 
 @end

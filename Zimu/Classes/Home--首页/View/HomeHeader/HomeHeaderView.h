@@ -10,4 +10,6 @@
 
 @interface HomeHeaderView : UIView
 
+@property (nonatomic, strong) NSArray *bannerArray;
+
 @end

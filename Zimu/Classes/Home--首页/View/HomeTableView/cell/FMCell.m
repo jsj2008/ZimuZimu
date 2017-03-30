@@ -26,10 +26,10 @@
     // Configure the view for the selected state
 }
 
-- (void)setImageArray:(NSArray *)imageArray{
-    if (_imageArray != imageArray) {
-        _imageArray = imageArray;
-        _collectionView.imageArray = _imageArray;
+- (void)setHomeFMModelArray:(NSArray *)homeFMModelArray{
+    if (_homeFMModelArray != homeFMModelArray) {
+        _homeFMModelArray = homeFMModelArray;
+        _collectionView.homeFMModelArray = _homeFMModelArray;
     }
 }
 

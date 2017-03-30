@@ -14,11 +14,12 @@
 #import "ExamApplyViewController.h"
 #import "OpenCourseViewController.h"
 #import "QuestionAnswerViewController.h"
+#import "CityCourseViewController.h"
 
 @interface SquareButtonView ()
 
-@property (nonatomic, strong) UIButton *examApplyButton;      //考试报名按钮
-@property (nonatomic, strong) UIButton *questionAnswerButton;      //试题解答
+@property (nonatomic, strong) UIButton *examApplyButton;      //考试报名按钮    一城一课
+@property (nonatomic, strong) UIButton *questionAnswerButton;      //试题解答  免费考证
 @property (nonatomic, strong) UIButton *openCourseButton;   //公开课程
 @property (nonatomic, strong) UIButton *publicBenefitButton;    //公益众筹
 
@@ -41,23 +42,23 @@
     
     //布局
     [_examApplyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_left).with.offset(12.5);
-        make.top.equalTo(self.mas_top).with.offset(10);
-        make.bottom.equalTo(self.mas_centerY).with.offset(-5);
-        make.right.equalTo(self.mas_centerX).with.offset(-5);
+        make.left.equalTo(self.mas_left).with.offset(5);
+        make.top.equalTo(self.mas_top).with.offset(5);
+        make.bottom.equalTo(self.mas_centerY).with.offset(-2.5);
+        make.right.equalTo(self.mas_centerX).with.offset(-2.5);
     }];
     
     [_questionAnswerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_centerX).with.offset(5);
+        make.left.equalTo(self.mas_centerX).with.offset(2.5);
         make.top.equalTo(_examApplyButton.mas_top);
         make.bottom.equalTo(_examApplyButton.mas_bottom);
-        make.right.equalTo(self.mas_right).with.offset(-12.5);
+        make.right.equalTo(self.mas_right).with.offset(-5);
     }];
     
     [_openCourseButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_examApplyButton.mas_left);
-        make.top.equalTo(self.mas_centerY).with.offset(5);
-        make.bottom.equalTo(self.mas_bottom).with.offset(-10);
+        make.top.equalTo(self.mas_centerY).with.offset(2.5);
+        make.bottom.equalTo(self.mas_bottom).with.offset(-5);
         make.width.equalTo(_examApplyButton.mas_width);
     }];
     
@@ -90,26 +91,27 @@
 }
 
 /**
- *  考试报名
+ *  一城一课
  */
 - (UIButton *)examApplyButton{
     if (!_examApplyButton) {
         _examApplyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_examApplyButton setBackgroundImage:[UIImage imageNamed:@"home_baoming"] forState:UIControlStateNormal];
+        [_examApplyButton setBackgroundImage:[UIImage imageNamed:@"home_yichengyike"] forState:UIControlStateNormal];
         [[_examApplyButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self.viewController.navigationController pushViewController:[[ExamApplyViewController alloc]init] animated:YES];
+//            [self.viewController.navigationController pushViewController:[[ExamApplyViewController alloc]init] animated:YES];
+            [self.viewController.navigationController pushViewController:[[CityCourseViewController alloc]init] animated:YES];
         }];
     }
     return _examApplyButton;
 }
 
 /**
- *  试题解答
+ *  免费考证
  */
 - (UIButton *)questionAnswerButton{
     if (!_questionAnswerButton) {
         _questionAnswerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_questionAnswerButton setBackgroundImage:[UIImage imageNamed:@"home_shiti"] forState:UIControlStateNormal];
+        [_questionAnswerButton setBackgroundImage:[UIImage imageNamed:@"home_mianfeikaozheng"] forState:UIControlStateNormal];
         [[_questionAnswerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
             [self.viewController.navigationController pushViewController:[[QuestionAnswerViewController alloc]init] animated:YES];
         }];

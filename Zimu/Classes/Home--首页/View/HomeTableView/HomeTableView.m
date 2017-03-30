@@ -54,9 +54,7 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         [self registerNib:[UINib nibWithNibName:@"FMCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:FMIdentifier];
         [self registerNib:[UINib nibWithNibName:@"BookHomeCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:bookHomeIdentifier];
         
-        
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [self sethiddenExtraLine];
     }
     return self;
 }
@@ -72,7 +70,7 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
     }else if (section == 1) {
         return 4;
     }else if (section == 3) {
-        return 3;
+        return 1 + _homeExpertListArray.count;
     }
     return 2;
 }
@@ -81,7 +79,6 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
     if (indexPath.section == 0) {
         WindListenCell *cell = [tableView dequeueReusableCellWithIdentifier:windListenIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
         
         return cell;
     }else if (indexPath.section == 1) {
@@ -95,16 +92,22 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
             return cell;
         }
         RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:recommendCellIdentifier];
-        cell.titleString = @"布满汉字，老外眼中的中国键盘竟是这样的";
+        if (indexPath.row == 1) {
+            cell.titleString = [NSString stringWithFormat:@"文章 | %@",_homeRecommendTodayModel.object.article.articleTitle];
+        }else if (indexPath.row == 2){
+            cell.titleString = [NSString stringWithFormat:@"FM | %@",_homeRecommendTodayModel.object.fm.fmTitle];
+        }else if (indexPath.row == 3){
+            cell.titleString = [NSString stringWithFormat:@"视频 | %@",_homeRecommendTodayModel.object.video.videoTitle];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
-    }else if (indexPath.section == 2) {
+    }else if (indexPath.section == 2) {     //四张图功能
         FourSquareCell *cell = [tableView dequeueReusableCellWithIdentifier:fourSquareIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 3){       //专栏订阅
         if (indexPath.row == 0) {
             HeaderTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:headerTitleIdentifier];
             cell.titleString = @"专栏订阅";
@@ -117,6 +120,7 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         SubscibeCell *cell = [tableView dequeueReusableCellWithIdentifier:subscribeIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.imageString = [NSString stringWithFormat:@"home_zhuanlandingyue%li",indexPath.row];
+        cell.homeExpretItem = _homeExpertListArray[indexPath.row - 1];
         
         return cell;
     }else if(indexPath.section == 4){
@@ -131,7 +135,7 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         }
         VideoCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:videoCourseIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageArray = @[@"home_course1",@"home_course2",@"home_course3",@"home_course1",@"home_course2",@"home_course3"];
+        cell.homeFreeCourseModelArray = _homeFreeCourseArray;
         
         return cell;
     }else if(indexPath.section == 5){
@@ -146,7 +150,8 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         }
         VideoCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:videoCourseIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageArray = @[@"home_video1",@"home_video2",@"home_video3",@"home_video1",@"home_video2",@"home_video3"];
+        cell.homeNotFreeCourseModelArray = _homeNotFreeCourseArray;
+        
         
         return cell;
     }else if(indexPath.section == 6){
@@ -161,7 +166,7 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         }
         FMCell *cell = [tableView dequeueReusableCellWithIdentifier:FMIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageArray = @[@"home_FM1",@"home_FM2",@"home_FM3",@"home_FM1",@"home_FM2",@"home_FM3"];
+        cell.homeFMModelArray = _homeFMArray;
         
         return cell;
     }else{
@@ -178,7 +183,8 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         
         BookHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:bookHomeIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageString = @"home_ recommend";
+//        cell.imageString = @"home_ recommend";
+        cell.homeArticleItem = _homeArticleItem;
         
         return cell;
     }
@@ -199,39 +205,36 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {       //清风倾听
-        return 60;
+        return 60/375.0 * kScreenWidth;
     }else if (indexPath.section == 1) {     //今日推荐
         if (indexPath.row == 0) {
             return 38;
         }else if (indexPath.row == 2){
             return 15;
         }
-        
         return 45;
     }else if (indexPath.section == 2) {     //四个模块
-        return 190;
+        return 190/375.0 * kScreenWidth;
     }else if(indexPath.section == 3){       //专栏订阅
         if (indexPath.row == 0) {
             return 38;
         }
-        
         return 120;
     }else if(indexPath.section == 4 | indexPath.section == 5){
         if (indexPath.row == 0) {
             return 38;
         }
-        return (142/375.0) * kScreenWidth + 20;
+        return 90/375.0 * kScreenWidth + 37 + 20;
     }else if(indexPath.section == 6){
         if (indexPath.row == 0) {
             return 38;
         }
-        return (132/375.0) * kScreenWidth + 20;
+        return 80/375.0 * kScreenWidth + 37 + 20;
     }else{
         if (indexPath.row == 0) {
             return 38;
         }
-        
-        return 110;
+        return 110/375.0 * kScreenWidth;
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -248,12 +251,6 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
 }
 
 
-
-- (void)sethiddenExtraLine{
-    UIView *view = [[UIView alloc]init];
-    
-    self.tableFooterView = view;
-}
 
 
 

@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FMCollectionViewCell" id="gTV-IL-0wX" customClass="FMCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="130" height="152"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="130" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="130" height="152"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-pU-iL9">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="98"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="115"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="费曼：学习方式也是思维方式" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgP-K4-g5r">
-                        <rect key="frame" x="0.0" y="108" width="130" height="32"/>
+                        <rect key="frame" x="0.0" y="120" width="130" height="32"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -30,21 +30,21 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="QgP-K4-g5r" firstAttribute="top" secondItem="fF6-pU-iL9" secondAttribute="bottom" constant="10" id="6ac-pH-hIe"/>
+                <constraint firstItem="QgP-K4-g5r" firstAttribute="top" secondItem="fF6-pU-iL9" secondAttribute="bottom" constant="5" id="6ac-pH-hIe"/>
                 <constraint firstAttribute="trailing" secondItem="QgP-K4-g5r" secondAttribute="trailing" id="ANR-Tg-kf0"/>
                 <constraint firstAttribute="trailing" secondItem="fF6-pU-iL9" secondAttribute="trailing" id="EQX-Jz-kgG"/>
                 <constraint firstItem="QgP-K4-g5r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uoe-bs-w5u"/>
                 <constraint firstItem="fF6-pU-iL9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="W2e-UT-6GC"/>
-                <constraint firstAttribute="bottom" secondItem="fF6-pU-iL9" secondAttribute="bottom" constant="52" id="csb-Ea-FOA"/>
+                <constraint firstAttribute="bottom" secondItem="fF6-pU-iL9" secondAttribute="bottom" constant="37" id="csb-Ea-FOA"/>
                 <constraint firstItem="fF6-pU-iL9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="g5K-5C-VgJ"/>
-                <constraint firstAttribute="bottom" secondItem="QgP-K4-g5r" secondAttribute="bottom" constant="10" id="ybK-2X-1gh"/>
+                <constraint firstAttribute="bottom" secondItem="QgP-K4-g5r" secondAttribute="bottom" id="ybK-2X-1gh"/>
             </constraints>
-            <size key="customSize" width="130" height="150"/>
+            <size key="customSize" width="130" height="152"/>
             <connections>
                 <outlet property="FMImageView" destination="fF6-pU-iL9" id="9xa-oX-Jlr"/>
                 <outlet property="titleLabel" destination="QgP-K4-g5r" id="i0B-HO-EfJ"/>
             </connections>
-            <point key="canvasLocation" x="-5" y="107"/>
+            <point key="canvasLocation" x="-5" y="108"/>
         </collectionViewCell>
     </objects>
 </document>

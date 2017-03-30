@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeExpertListModel.h"
 
 @interface SubscibeCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *imageString;
+
+@property (nonatomic, strong) HomeExpertItems *homeExpretItem;
 
 @end

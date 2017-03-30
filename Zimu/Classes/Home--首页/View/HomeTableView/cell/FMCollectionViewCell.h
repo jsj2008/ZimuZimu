@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeFMModel.h"
 
 @interface FMCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, copy) NSString *imageString;
-@property (nonatomic, copy) NSString *titleString;
+@property (nonatomic, strong) HomeFMItems *homeFMItem;
 
 @end

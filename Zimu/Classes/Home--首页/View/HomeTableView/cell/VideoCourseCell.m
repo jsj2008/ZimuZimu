@@ -23,10 +23,20 @@
     // Initialization code
 }
 
-- (void)setImageArray:(NSArray *)imageArray{
-    if (_imageArray != imageArray) {
-        _imageArray = imageArray;
-        _videoCourseCollectionView.imageArray = _imageArray;
+
+- (void)setHomeFreeCourseModelArray:(NSArray *)homeFreeCourseModelArray{
+    if (_homeFreeCourseModelArray != homeFreeCourseModelArray) {
+        _homeFreeCourseModelArray = homeFreeCourseModelArray;
+        _videoCourseCollectionView.homeFreeCourseModelArray = homeFreeCourseModelArray;
+        _videoCourseCollectionView.videoCourseCellStyle = VideoCourseCellStyleFree;
+    }
+}
+
+- (void)setHomeNotFreeCourseModelArray:(NSArray *)homeNotFreeCourseModelArray{
+    if (_homeNotFreeCourseModelArray != homeNotFreeCourseModelArray) {
+        _homeNotFreeCourseModelArray = homeNotFreeCourseModelArray;
+        _videoCourseCollectionView.homeNotFreeCourseModelArray = homeNotFreeCourseModelArray;
+        _videoCourseCollectionView.videoCourseCellStyle = VideoCourseCellStyleNotFree;
     }
 }
 

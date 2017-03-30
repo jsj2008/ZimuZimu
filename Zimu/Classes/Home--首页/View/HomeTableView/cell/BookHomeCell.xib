@@ -6,7 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,42 +18,42 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1qO-Yo-vSe">
-                        <rect key="frame" x="10" y="10" width="137.5" height="90"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="90" id="faH-8F-DSW"/>
-                            <constraint firstAttribute="width" constant="137.5" id="gWv-U8-vRW"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重现6000年前古巴比伦的财富智慧" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8R-Ep-LJ2">
-                        <rect key="frame" x="157.5" y="10" width="204.5" height="38.5"/>
+                        <rect key="frame" x="159" y="10" width="203" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何从第一笔收入开始就进行有效的理财？如何投资才会得到合理回报？当机遇降临时应该怎样抓住他？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bs3-6K-mDA">
-                        <rect key="frame" x="157.5" y="53.5" width="204.5" height="17"/>
+                        <rect key="frame" x="159" y="34.5" width="203" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量：100万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6P-fU-7vC">
-                        <rect key="frame" x="157.5" y="84" width="75.5" height="16"/>
+                        <rect key="frame" x="159" y="84" width="75.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：于浩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxS-fj-38c">
-                        <rect key="frame" x="295.5" y="84" width="66.5" height="16"/>
+                        <rect key="frame" x="295.5" y="84.5" width="66.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1qO-Yo-vSe">
+                        <rect key="frame" x="10" y="9.5" width="139" height="91"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="1qO-Yo-vSe" secondAttribute="height" multiplier="137:90" id="7cm-zK-rNX"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="1qO-Yo-vSe" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.37" id="05O-BQ-cSO"/>
                     <constraint firstItem="zxS-fj-38c" firstAttribute="trailing" secondItem="S8R-Ep-LJ2" secondAttribute="trailing" id="0ty-fd-uLL"/>
                     <constraint firstItem="o6P-fU-7vC" firstAttribute="leading" secondItem="S8R-Ep-LJ2" secondAttribute="leading" id="5Ht-nd-v2u"/>
                     <constraint firstItem="bs3-6K-mDA" firstAttribute="trailing" secondItem="S8R-Ep-LJ2" secondAttribute="trailing" id="Aoh-PX-sO5"/>

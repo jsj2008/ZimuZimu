@@ -10,6 +10,6 @@
 
 @interface FMCell : UITableViewCell
 
-@property (nonatomic, strong) NSArray *imageArray;
+@property (nonatomic, strong) NSArray *homeFMModelArray;
 
 @end

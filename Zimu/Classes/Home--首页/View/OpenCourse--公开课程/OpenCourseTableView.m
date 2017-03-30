@@ -89,9 +89,7 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
     return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return CGFLOAT_MIN;
-//    }
+
     return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

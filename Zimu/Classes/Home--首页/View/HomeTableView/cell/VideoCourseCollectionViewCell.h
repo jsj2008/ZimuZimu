@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeFreeCourseModel.h"
+#import "HomeNotFreeCourseModel.h"
 
 @interface VideoCourseCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, copy) NSString *imageString;
 @property (nonatomic, copy) NSString *titleString;
+
+@property (nonatomic, strong) HomeFreeCourseItems *homeFreeCourseModel;
+@property (nonatomic, strong) HomeNotFreeCourseItems *homeNotFreeCourseModel;
 
 @end

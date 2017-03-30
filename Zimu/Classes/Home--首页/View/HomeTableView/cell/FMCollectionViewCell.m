@@ -7,6 +7,7 @@
 //
 
 #import "FMCollectionViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface FMCollectionViewCell ()
 
@@ -19,33 +20,27 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _titleLabel.textColor = themeBlack;
+    [_titleLabel sizeToFit];
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    _FMImageView.clipsToBounds = YES;
-    _FMImageView.layer.cornerRadius = 5;
-    _FMImageView.layer.masksToBounds = YES;
-    _titleLabel.textColor = themeBlack;
-    //    UIImage *image = _FMImageView.image;
-    //    image = [image imageAddCornerWithRadious:5 size:_FMImageView.size];
-    //    _FMImageView.image = image;
+//    _FMImageView.clipsToBounds = YES;
+//    _FMImageView.layer.cornerRadius = 5;
+//    _FMImageView.layer.masksToBounds = YES;
+//    _titleLabel.textColor = themeBlack;
+//    [_titleLabel sizeToFit];
 }
 
-- (void)setImageString:(NSString *)imageString{
-    if (_imageString != imageString) {
-        _imageString = imageString;
-        _FMImageView.image = [UIImage imageNamed:_imageString];
-        
-    }
-}
 
-- (void)setTitleString:(NSString *)titleString{
-    if (_titleString != titleString) {
-        _titleString = titleString;
-        _titleLabel.text = _titleString;
-        
+- (void)setHomeFMItem:(HomeFMItems *)homeFMItem{
+    if (_homeFMItem != homeFMItem) {
+        _homeFMItem = homeFMItem;
+        _titleLabel.text = homeFMItem.fmTitle;
+        NSURL *url = [NSURL URLWithString:@"http://on9fin031.bkt.clouddn.com/image/20170323174423228187"];
+        [_FMImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"home_FM"]];
     }
 }
 

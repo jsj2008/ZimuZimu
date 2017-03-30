@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Items :NSObject
+@interface HomeFreeCourseItems :NSObject
 @property (nonatomic , copy) NSString              * courseName;
 @property (nonatomic , assign) NSInteger              courseScore;
 @property (nonatomic , copy) NSString              * courseId;
@@ -23,6 +23,6 @@
 @interface HomeFreeCourseModel :NSObject
 @property (nonatomic , assign) BOOL              isTrue;
 @property (nonatomic , copy) NSString              * message;
-@property (nonatomic , strong) NSArray<Items *>              * items;
+@property (nonatomic , strong) NSArray<HomeFreeCourseItems *>              * items;
 
 @end

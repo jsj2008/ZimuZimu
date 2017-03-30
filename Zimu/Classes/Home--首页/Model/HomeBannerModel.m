@@ -11,3 +11,6 @@
 @implementation HomeBannerModel
 
 @end
+@implementation HomeBannerItems
+
+@end

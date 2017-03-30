@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>WHC_Model.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YMCitySelect.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,17 +82,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01C958020047D09371ED6E81D2DD77DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>421E41CA9DAA30B27765F78DE411715A</key>
+		<key>25A4C13F0D18A8D14E90BEB106F46B4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2EA354FCB8417C87D8AA487B5125002B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4D211A9C4302B59283876AEF03805860</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E91AA82A4492FE736F527E32EC79CC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,22 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65C6D423A692475339770D3AA3B904EE</key>
+		<key>59E9DD799500F63F8A30E840588852CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7918AA6255830504CB8E24F8B8CD3D1B</key>
+		<key>7A8B30E4C5E048A0E6FBBC60FC17E927</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7DCF4A09606588D9DD2AE42198CE5FE3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>83D19ECF12076DD4BB2FAE002E604025</key>
+		<key>89836FC144A21F74BD6DC62B89B2B605</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,12 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEA3B732DC6181C1F1A779ECDDCAD184</key>
+		<key>A2E5CB695EC905E0742330605DC599DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B551A0A411726F8CE51417E8AF6A2DE0</key>
+		<key>A471F235B8471F58D0FC5014F5EB4F72</key>
 		<dict>
 			<key>primary</key>
 			<true/>

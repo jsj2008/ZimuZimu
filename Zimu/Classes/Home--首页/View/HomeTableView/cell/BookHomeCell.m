@@ -49,4 +49,18 @@
     }
 }
 
+
+- (void)setHomeArticleItem:(HomeArticleItems *)homeArticleItem{
+    if (_homeArticleItem != homeArticleItem) {
+        _homeArticleItem = homeArticleItem;
+        
+        _titleLabel.text = homeArticleItem.articleTitle;
+        _contentLabel.text = homeArticleItem.articleAbs;
+        _saleCountLabel.text = [NSString stringWithFormat:@"阅读量:%li",homeArticleItem.readNum];
+        _authorLabel.text = [NSString stringWithFormat:@"作者:%@",homeArticleItem.userName];
+    }
+}
+
+
+
 @end

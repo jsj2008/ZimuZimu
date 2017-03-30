@@ -20,7 +20,7 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://192.168.10.165:8082/portal/";
+    config.baseUrl = @"http://120.27.221.31:8080/zimu_portal/";
     
 //    config addUrlFilter:(nonnull id<YTKUrlFilterProtocol>)
     

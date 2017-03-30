@@ -14,5 +14,6 @@ pod 'YMCitySelect'
 pod 'YYModel'
 pod 'ZFDownload'
 pod 'YTKNetwork'
+pod 'WHC_Model'
 
 end
