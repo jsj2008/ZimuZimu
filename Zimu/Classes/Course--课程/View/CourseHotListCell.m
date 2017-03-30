@@ -15,4 +15,9 @@
     // Initialization code
 }
 
+- (void)setListenCount:(NSInteger)listenCount{
+    _listenCount = listenCount;
+    [_listenCounBtn setTitle:[NSString stringWithFormat:@"  %zd", listenCount] forState:UIControlStateNormal];
+}
+
 @end

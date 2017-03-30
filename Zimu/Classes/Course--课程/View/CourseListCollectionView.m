@@ -10,7 +10,9 @@
 #import "CourseListVideoCell.h"
 
 #define FREECOURSE_WIDTH (kScreenWidth / 2)
-#define FREECOURSE_HEIGHT (FREECOURSE_WIDTH / 1.7)
+#define COURSE_VIDEOIMG_HEIGHT  kScreenWidth * 0.266
+#define COURSE_VIDEO_HEIGHT     (COURSE_VIDEOIMG_HEIGHT + 14 + 30)
+
 static NSString *cellReuesId = @"CourseListVideoCellid";
 @interface CourseListCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 /** 图片和标题数组 **/
@@ -54,7 +56,7 @@ static NSString *cellReuesId = @"CourseListVideoCellid";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(FREECOURSE_WIDTH, FREECOURSE_HEIGHT);
+    return CGSizeMake(FREECOURSE_WIDTH, COURSE_VIDEO_HEIGHT);
 }
 
 @end

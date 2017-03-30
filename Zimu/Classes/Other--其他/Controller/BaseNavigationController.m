@@ -22,6 +22,26 @@
     
     self.interactivePopGestureRecognizer.delegate = self;
     
+    
+    
+    UIFont *font = [UIFont systemFontOfSize:18.f];
+    
+    NSDictionary *textAttributes = @{
+                                     
+                                     NSFontAttributeName : font,
+                                     
+                                     NSForegroundColorAttributeName : [UIColor colorWithHexString:@"222222"]
+                                     
+                                     };
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
+    
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"222222"]];
+    
+
+    
 }
 
 //修改返回按钮后，会导致pop手势失效，需重新实现

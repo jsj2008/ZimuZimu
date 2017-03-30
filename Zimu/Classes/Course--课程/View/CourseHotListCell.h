@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *listenCounBtn;
 @property (weak, nonatomic) IBOutlet UILabel *hotFmTitleLabel;
 
+@property (nonatomic, assign) NSInteger listenCount;
 @end

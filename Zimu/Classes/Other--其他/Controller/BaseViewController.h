@@ -18,5 +18,4 @@
 //没有网络
 - (void)noNet;
 
-
 @end

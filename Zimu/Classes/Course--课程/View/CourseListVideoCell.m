@@ -16,10 +16,12 @@
 }
 
 - (void)setTotalTime:(NSString *)totalTime{
+    _totalTime = totalTime;
     [_totalTimeBtn setTitle:[NSString stringWithFormat:@"  %@", totalTime] forState:UIControlStateNormal];
 }
 
 - (void)setReadCount:(NSInteger)readCount{
+    _readCount  = readCount;
     [_totalTimeBtn setTitle:[NSString stringWithFormat:@"  %zd", readCount] forState:UIControlStateNormal];
 }
 @end

@@ -18,21 +18,19 @@
 
 
 //tableViewCell的高度
-#define COURSE_CYCLE_HEIGHT     kScreenWidth * 0.733 + 20
-#define COURSE_FUN_HEIGHT       kScreenWidth * 0.293 + 20
+#define COURSE_CYCLE_HEIGHT     kScreenWidth * 0.366 + 20
+#define COURSE_FUN_HEIGHT       kScreenWidth * 0.147 + 20
 #define COURSE_HEAD_HEIGHT      37
 
-#define COURSE_VIDEOIMG_HEIGHT  kScreenWidth * 0.533
+#define COURSE_VIDEOIMG_HEIGHT  kScreenWidth * 0.266
 #define COURSE_VIDEO_HEIGHT     (COURSE_VIDEOIMG_HEIGHT + 14 + 30) * 2
-#define COURSE_FM_HEIGHT        kScreenWidth * 0.427 + 60
-#define COURSE_BOOK_HEIGHT      kScreenWidth * 0.747 + 30 + 30
+#define COURSE_FM_HEIGHT        kScreenWidth * 0.214 + 60
+#define COURSE_BOOK_HEIGHT      kScreenWidth * 0.373 + 30 + 30
 
 //cell复用的id
 static NSString *headCellId = @"CourseHeadCell";
 static NSString *funcCellId = @"CourseFuncationCell";
 static NSString *normalCellId = @"courseListNormalCell";
-
-//各个单元格的高度
 
 @interface CourseTabelView () <UITableViewDelegate, UITableViewDataSource, ImageCarouselViewDelegate, ImageCarouselViewDataSource>
 
@@ -87,26 +85,108 @@ static NSString *normalCellId = @"courseListNormalCell";
     return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId];
+    if (indexPath.section == 0) {   //轮播
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
         if (!_imageCarouselView) {
             _imageCarouselView = [[ImageCarouselView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, COURSE_CYCLE_HEIGHT - 20) withDataSource:self withDelegate:self];
         }
+        _imageCarouselView.backgroundColor = themeGray;
+        cell.backgroundColor = themeGray;
         [cell addSubview:_imageCarouselView];
         return cell;
+    }else if (indexPath.section == 1) {                             //中间三个大按钮
+        CourseFuncationCell *cell = [tableView dequeueReusableCellWithIdentifier:funcCellId forIndexPath:indexPath];
+        return cell;
+    }else if (indexPath.section == 2) {                 //免费好课
+        if (indexPath.row == 0) {
+            CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.headTitleLabel.text = @"免费好课";
+            cell.headDetailLabel.text = @"免费排行榜";
+            return cell;
+        }else{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            if (!_freeListView) {
+                UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+                flowLayout.minimumLineSpacing = 0;
+                flowLayout.minimumInteritemSpacing = 0;
+                flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+                
+                _freeListView = [[CourseListCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 0, COURSE_VIDEO_HEIGHT) collectionViewLayout:flowLayout];
+            }
+            [cell addSubview:_freeListView];
+            return cell;
+        }
+    }else if (indexPath.section == 3) {                 //畅销好课
+        if (indexPath.row == 0) {
+            CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.headTitleLabel.text = @"畅销好课";
+            cell.headDetailLabel.text = @"畅销排行榜";
+            return cell;
+        }else{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            if (!_hotVideoListView) {
+                UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+                flowLayout.minimumLineSpacing = 0;
+                flowLayout.minimumInteritemSpacing = 0;
+                flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+                
+                _hotVideoListView = [[CourseListCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 0, COURSE_VIDEO_HEIGHT) collectionViewLayout:flowLayout];
+            }
+            [cell addSubview:_hotVideoListView];
+            return cell;
+
+        }
+    }else if (indexPath.section == 4) {             //畅销FM
+        if (indexPath.row == 0) {
+            CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.headTitleLabel.text = @"畅销FM";
+            cell.headDetailLabel.text = @"畅销排行榜";
+            return cell;
+
+        }else{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            if (!_fmListView) {
+                UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+                flowLayout.minimumLineSpacing = 0;
+                flowLayout.minimumInteritemSpacing = 0;
+                flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+                
+                _fmListView = [[CourseHotListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 0, COURSE_FM_HEIGHT) collectionViewLayout:flowLayout];
+            }
+            [cell addSubview:_fmListView];
+            return cell;
+
+        }
+    }else {             //热门书籍
+        if (indexPath.row == 0) {
+            CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.headTitleLabel.text = @"热门";
+            cell.headDetailLabel.text = @"查看全部666条";
+            return cell;
+        }else{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            if (!_bookListView) {
+                UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+                flowLayout.minimumLineSpacing = 0;
+                flowLayout.minimumInteritemSpacing = 0;
+                flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+                
+                _bookListView = [[CourseHotBookListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 0, COURSE_BOOK_HEIGHT) collectionViewLayout:flowLayout];
+            }
+            [cell addSubview:_bookListView];
+            return cell;
+
+        }
     }
-    
-    UITableViewCell *cell;
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0) return 0;
-    if (section == 1) return 20;
-    if (section == 2) return 20;
-    if (section == 3) return 20;
-    if (section == 4) return 20;
-    if (section == 5) return 20;
+    if (section == 0) return 0.01;
+    if (section == 1) return 10;
+    if (section == 2) return 10;
+    if (section == 3) return 10;
+    if (section == 4) return 10;
+    if (section == 5) return 10;
     
     return 0;
 }
@@ -130,7 +210,7 @@ static NSString *normalCellId = @"courseListNormalCell";
 }
 #pragma mark - ImageCarouselView代理和数据源
 - (CGSize)sizeForPageInCarouselView:(ImageCarouselView *)carouselView {
-    return CGSizeMake(kScreenWidth, self.pageHeight);
+    return CGSizeMake(kScreenWidth * 0.84, self.pageHeight);
 }
 
 - (NSInteger)numberOfPagesInCarouselView:(ImageCarouselView *)carouselView {
@@ -138,7 +218,7 @@ static NSString *normalCellId = @"courseListNormalCell";
 }
 
 - (CarouselCell *)carouselView:(ImageCarouselView *)carouselView cellForPageAtIndex:(NSUInteger)index {
-    CarouselCellImageView *cell = [[CarouselCellImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 4, self.pageHeight)];
+    CarouselCellImageView *cell = [[CarouselCellImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth  * 0.84, self.pageHeight)];
     cell.showTime = 4;
     cell.imageView.image = [UIImage imageNamed:_cellInfoArray[index]];
     
@@ -146,14 +226,11 @@ static NSString *normalCellId = @"courseListNormalCell";
 }
 
 - (void)carouselView:(ImageCarouselView *)carouselView didScrollToPage:(NSInteger)pageNumber {
-//    _labelOne.text = [NSString stringWithFormat:@"滚动到了第 %zd 页", pageNumber];
     NSLog(@"滚到了了%zd", pageNumber);
-//    carouselView set
 }
 
 - (void)carouselView:(ImageCarouselView *)carouselView didSelectPageAtIndex:(NSInteger)index {
     NSLog(@"点击了%zd", index);
-//    _labelTwo.text = [NSString stringWithFormat:@"点击了第 %zd 页", index];
 }
 
 

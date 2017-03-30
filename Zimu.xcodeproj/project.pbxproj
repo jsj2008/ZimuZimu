@@ -110,6 +110,20 @@
 		1E0142211E850137004D3957 /* CourseHotBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142201E850137004D3957 /* CourseHotBookListView.m */; };
 		1E0142251E85014C004D3957 /* CourseHotBookListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142231E85014C004D3957 /* CourseHotBookListCell.m */; };
 		1E0142261E85014C004D3957 /* CourseHotBookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E0142241E85014C004D3957 /* CourseHotBookListCell.xib */; };
+<<<<<<< HEAD
+=======
+		1E3949B21E8BAF9900BB346F /* SubscribeFreeReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B11E8BAF9900BB346F /* SubscribeFreeReadViewController.m */; };
+		1E3949B61E8BB04A00BB346F /* SubscribeFreeReadListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B51E8BB04A00BB346F /* SubscribeFreeReadListView.m */; };
+		1E3949BA1E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B81E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m */; };
+		1E3949BB1E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949B91E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.xib */; };
+		1E3949BF1E8BB39800BB346F /* SubscribeFreeReadVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949BD1E8BB39800BB346F /* SubscribeFreeReadVideoCell.m */; };
+		1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949BE1E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib */; };
+		1E3949C41E8BB91000BB346F /* SubscribeFreeFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */; };
+		1E3949C51E8BB91000BB346F /* SubscribeFreeFMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */; };
+		1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */; };
+		1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */; };
+		5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61CF1E77BAF700B038A5 /* HeaderNavigationView.m */; };
+>>>>>>> origin/master
 		5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */; };
 		5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D41E77BAF700B038A5 /* CircleCollectionView.m */; };
 		5F2D620C1E77BAF700B038A5 /* CircleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D61E77BAF700B038A5 /* CircleCollectionViewCell.m */; };
@@ -483,6 +497,22 @@
 		1E0142221E85014C004D3957 /* CourseHotBookListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseHotBookListCell.h; sourceTree = "<group>"; };
 		1E0142231E85014C004D3957 /* CourseHotBookListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseHotBookListCell.m; sourceTree = "<group>"; };
 		1E0142241E85014C004D3957 /* CourseHotBookListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseHotBookListCell.xib; sourceTree = "<group>"; };
+		1E3949B01E8BAF9900BB346F /* SubscribeFreeReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadViewController.h; sourceTree = "<group>"; };
+		1E3949B11E8BAF9900BB346F /* SubscribeFreeReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeReadViewController.m; sourceTree = "<group>"; };
+		1E3949B41E8BB04A00BB346F /* SubscribeFreeReadListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadListView.h; sourceTree = "<group>"; };
+		1E3949B51E8BB04A00BB346F /* SubscribeFreeReadListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeReadListView.m; sourceTree = "<group>"; };
+		1E3949B71E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscreibeReadFreeHeadCell.h; sourceTree = "<group>"; };
+		1E3949B81E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscreibeReadFreeHeadCell.m; sourceTree = "<group>"; };
+		1E3949B91E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscreibeReadFreeHeadCell.xib; sourceTree = "<group>"; };
+		1E3949BC1E8BB39800BB346F /* SubscribeFreeReadVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadVideoCell.h; sourceTree = "<group>"; };
+		1E3949BD1E8BB39800BB346F /* SubscribeFreeReadVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeReadVideoCell.m; sourceTree = "<group>"; };
+		1E3949BE1E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribeFreeReadVideoCell.xib; sourceTree = "<group>"; };
+		1E3949C11E8BB91000BB346F /* SubscribeFreeFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeFMCell.h; sourceTree = "<group>"; };
+		1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeFMCell.m; sourceTree = "<group>"; };
+		1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribeFreeFMCell.xib; sourceTree = "<group>"; };
+		1E3949C61E8C964C00BB346F /* SubscribeFreeReadArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadArticleCell.h; sourceTree = "<group>"; };
+		1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeReadArticleCell.m; sourceTree = "<group>"; };
+		1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribeFreeReadArticleCell.xib; sourceTree = "<group>"; };
 		24C58225F6A6D44E756F28AE /* libPods-Zimu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zimu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
 		5F2D61D01E77BAF700B038A5 /* ListSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSelectButton.h; sourceTree = "<group>"; };
@@ -1120,6 +1150,27 @@
 			name = collectionView;
 			sourceTree = "<group>";
 		};
+		1E3949B31E8BB00400BB346F /* 免费试读 */ = {
+			isa = PBXGroup;
+			children = (
+				1E3949B41E8BB04A00BB346F /* SubscribeFreeReadListView.h */,
+				1E3949B51E8BB04A00BB346F /* SubscribeFreeReadListView.m */,
+				1E3949B71E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.h */,
+				1E3949B81E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m */,
+				1E3949B91E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.xib */,
+				1E3949BC1E8BB39800BB346F /* SubscribeFreeReadVideoCell.h */,
+				1E3949BD1E8BB39800BB346F /* SubscribeFreeReadVideoCell.m */,
+				1E3949BE1E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib */,
+				1E3949C11E8BB91000BB346F /* SubscribeFreeFMCell.h */,
+				1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */,
+				1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */,
+				1E3949C61E8C964C00BB346F /* SubscribeFreeReadArticleCell.h */,
+				1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */,
+				1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */,
+			);
+			name = "免费试读";
+			sourceTree = "<group>";
+		};
 		49EDFC34B92567266CE5ABA9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1743,6 +1794,8 @@
 				5FDCB4641E7BB396003914D1 /* SubscribedExpertTableViewController.m */,
 				5FDCB4661E7BB409003914D1 /* RecommendExpertViewController.h */,
 				5FDCB4671E7BB409003914D1 /* RecommendExpertViewController.m */,
+				1E3949B01E8BAF9900BB346F /* SubscribeFreeReadViewController.h */,
+				1E3949B11E8BAF9900BB346F /* SubscribeFreeReadViewController.m */,
 				5F9CE2C51E836A5D00424352 /* 未订阅 */,
 				5F9CE2C41E836A4400424352 /* 已订阅 */,
 			);
@@ -1768,6 +1821,7 @@
 				5F9CE2C11E82CFBE00424352 /* TagCollectionViewCell.xib */,
 				5FDCB4601E7B848D003914D1 /* SubscribeNavigationView.h */,
 				5FDCB4611E7B848D003914D1 /* SubscribeNavigationView.m */,
+				1E3949B31E8BB00400BB346F /* 免费试读 */,
 				5FFB00191E80D94D0025D809 /* SubscribeDetail--订阅详情 */,
 				5FDCB4691E7BBBEF003914D1 /* Cells */,
 			);
@@ -2152,6 +2206,12 @@
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5F9CE2BB1E82661800424352 /* DailyLookTitleCell.xib in Resources */,
+<<<<<<< HEAD
+=======
+				5F2D622A1E77BAF700B038A5 /* HomeTableViewCell.xib in Resources */,
+				1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */,
+				1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */,
+>>>>>>> origin/master
 				1E0142151E84F1AD004D3957 /* CourseListVideoCell.xib in Resources */,
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
@@ -2183,8 +2243,10 @@
 				1827C1F01E8102E10040B9AD /* FindListActCell.xib in Resources */,
 				5F8EDD4F1E6EA5B2000FC3E0 /* FMTableViewCell.xib in Resources */,
 				5F2D621B1E77BAF700B038A5 /* HeaderTitleCell.xib in Resources */,
+				1E3949BB1E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.xib in Resources */,
 				5F8EDD4A1E6EA01C000FC3E0 /* CourseTableViewCell.xib in Resources */,
 				18AC3C451E7B82F8007EE823 /* MineNormalCell.xib in Resources */,
+				1E3949C51E8BB91000BB346F /* SubscribeFreeFMCell.xib in Resources */,
 				18C7E7001E65135500E62757 /* SectionFootCell.xib in Resources */,
 				18AC3B631E6FA8BD007EE823 /* TrySeeEndView.xib in Resources */,
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
@@ -2297,6 +2359,7 @@
 				18AC3B951E729CD3007EE823 /* ZimuPrefixHeader.pch in Sources */,
 				1827C20B1E8240BC0040B9AD /* FindTopicCell.m in Sources */,
 				18AC3B961E729CD3007EE823 /* NetWorkStatuesManager.h in Sources */,
+				1E3949BA1E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m in Sources */,
 				18AC3B891E729CBA007EE823 /* TAPageControl.m in Sources */,
 				5F8EDD2D1E6E5CA7000FC3E0 /* QuestionCellLayout.m in Sources */,
 				18F7F2B81E825DA400DE6218 /* FindHotTopicCell.m in Sources */,
@@ -2405,6 +2468,8 @@
 				5F2D62521E77DFDA00B038A5 /* ExamFreeFMCell.m in Sources */,
 				5F9C3CE51E62CFF2009659E4 /* UIColor+HexString.m in Sources */,
 				18AC3B501E6FA075007EE823 /* ASValuePopUpView.m in Sources */,
+				1E3949BF1E8BB39800BB346F /* SubscribeFreeReadVideoCell.m in Sources */,
+				1E3949B21E8BAF9900BB346F /* SubscribeFreeReadViewController.m in Sources */,
 				18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */,
 				5FEA2AAC1E8BA02F00405F75 /* HomeExpertListModel.m in Sources */,
@@ -2420,6 +2485,7 @@
 				5FEB304F1E79088000B34CC7 /* DanmakuFactory.m in Sources */,
 				5F8EDD331E6E8078000FC3E0 /* RegexKitLite.m in Sources */,
 				5FDCB49F1E7FAF85003914D1 /* DefaultViewAnimator.m in Sources */,
+				1E3949B61E8BB04A00BB346F /* SubscribeFreeReadListView.m in Sources */,
 				5FE2008B1E66D06A0021DD27 /* EvaluationSearchTableViewController.m in Sources */,
 				18AC3C481E7B841A007EE823 /* MineMainFunctionCollectionView.m in Sources */,
 				5FABE6221E8A15E100FE8A33 /* HomeRecommendTodayModel.m in Sources */,
@@ -2437,6 +2503,7 @@
 				5FDCB4AA1E7FB129003914D1 /* UIColor+FlatColors.m in Sources */,
 				5F2D62131E77BAF700B038A5 /* FMCell.m in Sources */,
 				5F9C3D001E63C0CB009659E4 /* TAAnimatedDotView.m in Sources */,
+				1E3949C41E8BB91000BB346F /* SubscribeFreeFMCell.m in Sources */,
 				5F2D62181E77BAF700B038A5 /* FourSquareCell.m in Sources */,
 				5F9C3D031E63C0CB009659E4 /* SDCollectionViewCell.m in Sources */,
 				5F2D62231E77BAF700B038A5 /* VideoCourseCollectionViewCell.m in Sources */,
@@ -2484,7 +2551,11 @@
 				5FEA2AAF1E8BA08400405F75 /* HomeArticleModel.m in Sources */,
 				1E0142181E84FA7B004D3957 /* CourseHotListView.m in Sources */,
 				5F8EDD3A1E6E8FD3000FC3E0 /* ArticleCellLayout.m in Sources */,
+<<<<<<< HEAD
 				5FEA2A9F1E8B4C4300405F75 /* CityCourseHeaderCell.m in Sources */,
+=======
+				1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */,
+>>>>>>> origin/master
 				5F2D62581E77F38C00B038A5 /* ListenHeartViewController.m in Sources */,
 				5FDCB46D1E7BBC20003914D1 /* SubscribedExpertCell.m in Sources */,
 				5F2D62401E77D12700B038A5 /* ExamAnswerCell.m in Sources */,
