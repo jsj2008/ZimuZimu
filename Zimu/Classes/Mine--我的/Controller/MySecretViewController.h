@@ -1,5 +1,5 @@
 //
-//  SubscribeFreeReadArticleCell.h
+//  MySecretViewController.h
 //  Zimu
 //
 //  Created by 飞飞飞 on 2017/3/30.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SubscribeFreeReadArticleCell : UITableViewCell
+@interface MySecretViewController : UIViewController
 
 @end

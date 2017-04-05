@@ -10,4 +10,6 @@
 
 @interface SubscreibeReadFreeHeadCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *headTitleLabel;
+
 @end

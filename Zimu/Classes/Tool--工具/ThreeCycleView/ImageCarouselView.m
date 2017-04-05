@@ -145,7 +145,9 @@
     [self.timer invalidate];
     self.timer = nil;
 }
-
+- (void)dealloc{
+    [self stopScroll];
+}
 #pragma mark - 自动轮播
 
 - (void)autoNextPage {

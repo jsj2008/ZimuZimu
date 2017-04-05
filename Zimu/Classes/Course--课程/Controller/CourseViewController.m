@@ -32,6 +32,15 @@
     [self setUpSearchBar];
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [_courseTableView viewWillDisappear];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    if (_courseTableView) {
+        [_courseTableView reloadData];
+    }
+}
 - (void)setUpSearchBar{
     UIBarButtonItem *searchBtn = [UIBarButtonItem barButtonItemWithImageName:@"course_searchicon" title:@"" target:self action:@selector(search)];
     self.navigationItem.leftBarButtonItem = searchBtn;

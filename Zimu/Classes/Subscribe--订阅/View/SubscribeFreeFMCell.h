@@ -10,4 +10,11 @@
 
 @interface SubscribeFreeFMCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *img;
+@property (weak, nonatomic) IBOutlet UILabel *fmTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *updateTimeLable;
+@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *listenCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *goodCountLabel;
+
 @end

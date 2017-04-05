@@ -6,17 +6,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="252" id="KGk-i7-Jjw" customClass="SubscribeFreeReadVideoCell">
-            <rect key="frame" x="0.0" y="0.0" width="358" height="252"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="223" id="KGk-i7-Jjw" customClass="SubscribeFreeReadVideoCell">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="223"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="358" height="252"/>
+                <rect key="frame" x="0.0" y="0.0" width="366" height="223"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zI-T7-Qiv">
@@ -44,23 +44,25 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wu-qG-dtP">
-                        <rect key="frame" x="301" y="6" width="47" height="78"/>
+                        <rect key="frame" x="309" y="38" width="47" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" 1020" image="readfree_good_yes">
                             <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="readfree_playvideo" translatesAutoresizingMaskIntoConstraints="NO" id="cTg-gL-RJK">
-                        <rect key="frame" x="166.5" y="151" width="25" height="25"/>
+                        <rect key="frame" x="170.5" y="119" width="25" height="25"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="find_article" translatesAutoresizingMaskIntoConstraints="NO" id="ZHb-eY-V4R">
-                        <rect key="frame" x="10" y="93.5" width="338" height="140"/>
+                        <rect key="frame" x="10" y="62.5" width="346" height="138.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ZHb-eY-V4R" secondAttribute="height" multiplier="5:2" id="AiR-7d-R9y"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Yqg-cr-LJv" firstAttribute="leading" secondItem="HWo-1x-wyH" secondAttribute="trailing" constant="10" id="2AY-gE-p6z"/>
                     <constraint firstItem="ZHb-eY-V4R" firstAttribute="leading" secondItem="HWo-1x-wyH" secondAttribute="leading" id="9wh-iC-OL9"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ZHb-eY-V4R" secondAttribute="bottom" constant="10" id="DDk-Dh-l7D"/>
                     <constraint firstItem="ZHb-eY-V4R" firstAttribute="top" secondItem="4Wu-qG-dtP" secondAttribute="bottom" constant="10" id="Dvh-wL-tw2"/>
                     <constraint firstAttribute="trailing" secondItem="4Wu-qG-dtP" secondAttribute="trailing" constant="10" id="Pz7-YP-ZRs"/>
                     <constraint firstItem="6zI-T7-Qiv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TLT-i0-obR"/>
@@ -77,7 +79,15 @@
                     <constraint firstItem="cTg-gL-RJK" firstAttribute="centerY" secondItem="ZHb-eY-V4R" secondAttribute="centerY" id="xYI-rz-HSU"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="53" y="158"/>
+            <connections>
+                <outlet property="dateLabel" destination="Yqg-cr-LJv" id="CAW-6t-LmU"/>
+                <outlet property="goodCountLabel" destination="4Wu-qG-dtP" id="oKq-UD-wRs"/>
+                <outlet property="img" destination="ZHb-eY-V4R" id="xbT-m4-6CH"/>
+                <outlet property="msgLabel" destination="HWo-1x-wyH" id="nCE-zr-Tgm"/>
+                <outlet property="videoTitleLabel" destination="6zI-T7-Qiv" id="Q7b-lp-WGJ"/>
+                <outlet property="viewCountLabel" destination="FO8-cT-y7i" id="esK-9n-iv9"/>
+            </connections>
+            <point key="canvasLocation" x="55" y="183.5"/>
         </tableViewCell>
     </objects>
     <resources>

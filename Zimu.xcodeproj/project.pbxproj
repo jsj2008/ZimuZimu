@@ -118,9 +118,18 @@
 		1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949BE1E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib */; };
 		1E3949C41E8BB91000BB346F /* SubscribeFreeFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */; };
 		1E3949C51E8BB91000BB346F /* SubscribeFreeFMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */; };
-		1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */; };
-		1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */; };
-		5F2D62091E77BAF700B038A5 /* HeaderNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61CF1E77BAF700B038A5 /* HeaderNavigationView.m */; };
+		1E3949CD1E8CEE1000BB346F /* MySecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949CC1E8CEE1000BB346F /* MySecretViewController.m */; };
+		1E3949D11E8CFCF100BB346F /* MySecretTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949D01E8CFCF100BB346F /* MySecretTableView.m */; };
+		1E3949DA1E8CFDA700BB346F /* MySecretHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949D81E8CFDA700BB346F /* MySecretHeadCell.m */; };
+		1E3949DB1E8CFDA700BB346F /* MySecretHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949D91E8CFDA700BB346F /* MySecretHeadCell.xib */; };
+		1E3949DF1E8CFDC100BB346F /* MySecretDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949DD1E8CFDC100BB346F /* MySecretDetailCell.m */; };
+		1E3949E01E8CFDC100BB346F /* MySecretDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949DE1E8CFDC100BB346F /* MySecretDetailCell.xib */; };
+		1E3949E41E8D0BFD00BB346F /* MySecretCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949E21E8D0BFD00BB346F /* MySecretCommentsCell.m */; };
+		1E3949E51E8D0BFD00BB346F /* MySecretCommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949E31E8D0BFD00BB346F /* MySecretCommentsCell.xib */; };
+		1E3949E81E8E03B600BB346F /* FindTestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949E71E8E03B600BB346F /* FindTestListViewController.m */; };
+		1E394A3E1E94814000BB346F /* FindTestListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E394A3D1E94814000BB346F /* FindTestListTableView.m */; };
+		1E394A421E9498AA00BB346F /* FindTestListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E394A401E9498AA00BB346F /* FindTestListCell.m */; };
+		1E394A431E9498AA00BB346F /* FindTestListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E394A411E9498AA00BB346F /* FindTestListCell.xib */; };
 		5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */; };
 		5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D41E77BAF700B038A5 /* CircleCollectionView.m */; };
 		5F2D620C1E77BAF700B038A5 /* CircleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D61E77BAF700B038A5 /* CircleCollectionViewCell.m */; };
@@ -507,9 +516,26 @@
 		1E3949C11E8BB91000BB346F /* SubscribeFreeFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeFMCell.h; sourceTree = "<group>"; };
 		1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeFMCell.m; sourceTree = "<group>"; };
 		1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribeFreeFMCell.xib; sourceTree = "<group>"; };
-		1E3949C61E8C964C00BB346F /* SubscribeFreeReadArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadArticleCell.h; sourceTree = "<group>"; };
-		1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeReadArticleCell.m; sourceTree = "<group>"; };
-		1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribeFreeReadArticleCell.xib; sourceTree = "<group>"; };
+		1E3949CB1E8CEE1000BB346F /* MySecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySecretViewController.h; sourceTree = "<group>"; };
+		1E3949CC1E8CEE1000BB346F /* MySecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySecretViewController.m; sourceTree = "<group>"; };
+		1E3949CF1E8CFCF100BB346F /* MySecretTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySecretTableView.h; sourceTree = "<group>"; };
+		1E3949D01E8CFCF100BB346F /* MySecretTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySecretTableView.m; sourceTree = "<group>"; };
+		1E3949D71E8CFDA700BB346F /* MySecretHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySecretHeadCell.h; sourceTree = "<group>"; };
+		1E3949D81E8CFDA700BB346F /* MySecretHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySecretHeadCell.m; sourceTree = "<group>"; };
+		1E3949D91E8CFDA700BB346F /* MySecretHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MySecretHeadCell.xib; sourceTree = "<group>"; };
+		1E3949DC1E8CFDC100BB346F /* MySecretDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySecretDetailCell.h; sourceTree = "<group>"; };
+		1E3949DD1E8CFDC100BB346F /* MySecretDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySecretDetailCell.m; sourceTree = "<group>"; };
+		1E3949DE1E8CFDC100BB346F /* MySecretDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MySecretDetailCell.xib; sourceTree = "<group>"; };
+		1E3949E11E8D0BFD00BB346F /* MySecretCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySecretCommentsCell.h; sourceTree = "<group>"; };
+		1E3949E21E8D0BFD00BB346F /* MySecretCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySecretCommentsCell.m; sourceTree = "<group>"; };
+		1E3949E31E8D0BFD00BB346F /* MySecretCommentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MySecretCommentsCell.xib; sourceTree = "<group>"; };
+		1E3949E61E8E03B600BB346F /* FindTestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTestListViewController.h; sourceTree = "<group>"; };
+		1E3949E71E8E03B600BB346F /* FindTestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTestListViewController.m; sourceTree = "<group>"; };
+		1E394A3C1E94814000BB346F /* FindTestListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTestListTableView.h; sourceTree = "<group>"; };
+		1E394A3D1E94814000BB346F /* FindTestListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTestListTableView.m; sourceTree = "<group>"; };
+		1E394A3F1E9498AA00BB346F /* FindTestListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTestListCell.h; sourceTree = "<group>"; };
+		1E394A401E9498AA00BB346F /* FindTestListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTestListCell.m; sourceTree = "<group>"; };
+		1E394A411E9498AA00BB346F /* FindTestListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindTestListCell.xib; sourceTree = "<group>"; };
 		24C58225F6A6D44E756F28AE /* libPods-Zimu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zimu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
 		5F2D61D01E77BAF700B038A5 /* ListSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSelectButton.h; sourceTree = "<group>"; };
@@ -942,6 +968,7 @@
 		1827C1DE1E80D3C10040B9AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E3949E91E8E08AC00BB346F /* 测试 */,
 				1827C1DF1E80D3E90040B9AD /* FindListTableView.h */,
 				1827C1E01E80D3E90040B9AD /* FindListTableView.m */,
 				18F7F2B21E825D7700DE6218 /* FindHotTopicListCollectiomView.h */,
@@ -1032,6 +1059,7 @@
 		18AC3C381E7B6F01007EE823 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E3949CE1E8CFCCD00BB346F /* 我的心事 */,
 				18AC3C391E7B74D3007EE823 /* ZM_MineTableView.h */,
 				18AC3C3A1E7B74D3007EE823 /* ZM_MineTableView.m */,
 				18AC3C4E1E7BBCE5007EE823 /* MineHeadCell.h */,
@@ -1161,11 +1189,38 @@
 				1E3949C11E8BB91000BB346F /* SubscribeFreeFMCell.h */,
 				1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */,
 				1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */,
-				1E3949C61E8C964C00BB346F /* SubscribeFreeReadArticleCell.h */,
-				1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */,
-				1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */,
 			);
 			name = "免费试读";
+			sourceTree = "<group>";
+		};
+		1E3949CE1E8CFCCD00BB346F /* 我的心事 */ = {
+			isa = PBXGroup;
+			children = (
+				1E3949CF1E8CFCF100BB346F /* MySecretTableView.h */,
+				1E3949D01E8CFCF100BB346F /* MySecretTableView.m */,
+				1E3949D71E8CFDA700BB346F /* MySecretHeadCell.h */,
+				1E3949D81E8CFDA700BB346F /* MySecretHeadCell.m */,
+				1E3949D91E8CFDA700BB346F /* MySecretHeadCell.xib */,
+				1E3949DC1E8CFDC100BB346F /* MySecretDetailCell.h */,
+				1E3949DD1E8CFDC100BB346F /* MySecretDetailCell.m */,
+				1E3949DE1E8CFDC100BB346F /* MySecretDetailCell.xib */,
+				1E3949E11E8D0BFD00BB346F /* MySecretCommentsCell.h */,
+				1E3949E21E8D0BFD00BB346F /* MySecretCommentsCell.m */,
+				1E3949E31E8D0BFD00BB346F /* MySecretCommentsCell.xib */,
+			);
+			name = "我的心事";
+			sourceTree = "<group>";
+		};
+		1E3949E91E8E08AC00BB346F /* 测试 */ = {
+			isa = PBXGroup;
+			children = (
+				1E394A3C1E94814000BB346F /* FindTestListTableView.h */,
+				1E394A3D1E94814000BB346F /* FindTestListTableView.m */,
+				1E394A3F1E9498AA00BB346F /* FindTestListCell.h */,
+				1E394A401E9498AA00BB346F /* FindTestListCell.m */,
+				1E394A411E9498AA00BB346F /* FindTestListCell.xib */,
+			);
+			name = "测试";
 			sourceTree = "<group>";
 		};
 		49EDFC34B92567266CE5ABA9 /* Pods */ = {
@@ -1380,6 +1435,8 @@
 			children = (
 				5F9C3CB91E5EBA49009659E4 /* FindViewController.h */,
 				5F9C3CBA1E5EBA49009659E4 /* FindViewController.m */,
+				1E3949E61E8E03B600BB346F /* FindTestListViewController.h */,
+				1E3949E71E8E03B600BB346F /* FindTestListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1451,6 +1508,8 @@
 			children = (
 				5F9C3CBC1E5EBA52009659E4 /* MineViewController.h */,
 				5F9C3CBD1E5EBA52009659E4 /* MineViewController.m */,
+				1E3949CB1E8CEE1000BB346F /* MySecretViewController.h */,
+				1E3949CC1E8CEE1000BB346F /* MySecretViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2195,6 +2254,7 @@
 				5F9CE2AE1E82122400424352 /* SLDTitleCell.xib in Resources */,
 				18AC3B591E6FA075007EE823 /* ZFPlayer.bundle in Resources */,
 				18C7E6F61E6512C200E62757 /* SectionTitleCell.xib in Resources */,
+				1E3949E01E8CFDC100BB346F /* MySecretDetailCell.xib in Resources */,
 				5FDCB44A1E7A6C5D003914D1 /* QAPreviousQACell.xib in Resources */,
 				5F2D62461E77D47400B038A5 /* ExamFreeVideoCell.xib in Resources */,
 				1827C1FA1E8217B80040B9AD /* FindArticleCell.xib in Resources */,
@@ -2203,11 +2263,10 @@
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5F9CE2BB1E82661800424352 /* DailyLookTitleCell.xib in Resources */,
-				5F2D622A1E77BAF700B038A5 /* HomeTableViewCell.xib in Resources */,
-				1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */,
 				1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */,
 				1E0142151E84F1AD004D3957 /* CourseListVideoCell.xib in Resources */,
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
+				1E394A431E9498AA00BB346F /* FindTestListCell.xib in Resources */,
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
 				5F2D620D1E77BAF700B038A5 /* CircleCollectionViewCell.xib in Resources */,
 				5F2D62241E77BAF700B038A5 /* VideoCourseCollectionViewCell.xib in Resources */,
@@ -2226,6 +2285,7 @@
 				18C7E6F11E6512A200E62757 /* SubjectListCell.xib in Resources */,
 				5FDCB46E1E7BBC20003914D1 /* SubscribedExpertCell.xib in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
+				1E3949E51E8D0BFD00BB346F /* MySecretCommentsCell.xib in Resources */,
 				5F2D62601E77F8D000B038A5 /* PouroutCell.xib in Resources */,
 				5F2D62261E77BAF700B038A5 /* WindListenCell.xib in Resources */,
 				5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */,
@@ -2244,6 +2304,7 @@
 				18C7E7001E65135500E62757 /* SectionFootCell.xib in Resources */,
 				18AC3B631E6FA8BD007EE823 /* TrySeeEndView.xib in Resources */,
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
+				1E3949DB1E8CFDA700BB346F /* MySecretHeadCell.xib in Resources */,
 				5F8EDD541E6EA8FE000FC3E0 /* BooksTableViewCell.xib in Resources */,
 				5F2D62211E77BAF700B038A5 /* VideoCourseCell.xib in Resources */,
 				1E01421D1E84FA92004D3957 /* CourseHotListCell.xib in Resources */,
@@ -2330,6 +2391,7 @@
 				5F9CE2D71E84BC2F00424352 /* HomeNavigationView.m in Sources */,
 				18AC3B981E729CFD007EE823 /* HomeVideoListCollectionView.m in Sources */,
 				1827C1F41E810FB20040B9AD /* FindAskTextCell.m in Sources */,
+				1E3949DA1E8CFDA700BB346F /* MySecretHeadCell.m in Sources */,
 				5FABE61E1E8A00C200FE8A33 /* DailyStudyCell.m in Sources */,
 				18AC3C3B1E7B74D3007EE823 /* ZM_MineTableView.m in Sources */,
 				18AC3B8A1E729CD2007EE823 /* TAAbstractDotView.h in Sources */,
@@ -2390,6 +2452,7 @@
 				5F9CE2D01E839BD200424352 /* SLDTextCellLayoutFrame.m in Sources */,
 				5FABE62B1E8A3D7A00FE8A33 /* HomeFMModel.m in Sources */,
 				5F9C3C9D1E5EB6A4009659E4 /* ZMTabBar.m in Sources */,
+				1E3949E41E8D0BFD00BB346F /* MySecretCommentsCell.m in Sources */,
 				5FDCB49E1E7FAF85003914D1 /* DefaultShouldSwipeDeterminator.m in Sources */,
 				5FEB304E1E79088000B34CC7 /* DanmakuRetainer.m in Sources */,
 				5F9C3CC11E5EBB96009659E4 /* UIBarButtonItem+ZMExtension.m in Sources */,
@@ -2443,6 +2506,7 @@
 				5FABE6251E8A3BDE00FE8A33 /* HomeFourImageModel.m in Sources */,
 				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
 				1827C2061E8227460040B9AD /* FindCenterTitleCell.m in Sources */,
+				1E394A421E9498AA00BB346F /* FindTestListCell.m in Sources */,
 				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
 				5F9C3D011E63C0CB009659E4 /* TADotView.m in Sources */,
@@ -2482,6 +2546,7 @@
 				1E3949B61E8BB04A00BB346F /* SubscribeFreeReadListView.m in Sources */,
 				5FE2008B1E66D06A0021DD27 /* EvaluationSearchTableViewController.m in Sources */,
 				18AC3C481E7B841A007EE823 /* MineMainFunctionCollectionView.m in Sources */,
+				1E3949D11E8CFCF100BB346F /* MySecretTableView.m in Sources */,
 				5FABE6221E8A15E100FE8A33 /* HomeRecommendTodayModel.m in Sources */,
 				5F9C3CEB1E62D17C009659E4 /* UIView+ZMExtension.m in Sources */,
 				18AC3B561E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m in Sources */,
@@ -2496,7 +2561,9 @@
 				5F9C3CBE1E5EBA52009659E4 /* MineViewController.m in Sources */,
 				5FDCB4AA1E7FB129003914D1 /* UIColor+FlatColors.m in Sources */,
 				5F2D62131E77BAF700B038A5 /* FMCell.m in Sources */,
+				1E394A3E1E94814000BB346F /* FindTestListTableView.m in Sources */,
 				5F9C3D001E63C0CB009659E4 /* TAAnimatedDotView.m in Sources */,
+				1E3949CD1E8CEE1000BB346F /* MySecretViewController.m in Sources */,
 				1E3949C41E8BB91000BB346F /* SubscribeFreeFMCell.m in Sources */,
 				5F2D62181E77BAF700B038A5 /* FourSquareCell.m in Sources */,
 				5F9C3D031E63C0CB009659E4 /* SDCollectionViewCell.m in Sources */,
@@ -2518,6 +2585,7 @@
 				5FDCB4A41E7FAF85003914D1 /* ZLSwipeableView.m in Sources */,
 				5FDCB4A31E7FAF85003914D1 /* ViewManager.m in Sources */,
 				5FEA2AA91E8B9C5000405F75 /* GetHomeRecommendArticleApi.m in Sources */,
+				1E3949DF1E8CFDC100BB346F /* MySecretDetailCell.m in Sources */,
 				5FFB001C1E80D99E0025D809 /* SubscribeDetailContentHeadView.m in Sources */,
 				1E0142011E84C553004D3957 /* CarouselCellInfo.m in Sources */,
 				5F2D62671E77FD7800B038A5 /* DynamicTextCell.m in Sources */,
@@ -2546,12 +2614,12 @@
 				1E0142181E84FA7B004D3957 /* CourseHotListView.m in Sources */,
 				5F8EDD3A1E6E8FD3000FC3E0 /* ArticleCellLayout.m in Sources */,
 				5FEA2A9F1E8B4C4300405F75 /* CityCourseHeaderCell.m in Sources */,
-				1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */,
 				5F2D62581E77F38C00B038A5 /* ListenHeartViewController.m in Sources */,
 				5FDCB46D1E7BBC20003914D1 /* SubscribedExpertCell.m in Sources */,
 				5F2D62401E77D12700B038A5 /* ExamAnswerCell.m in Sources */,
 				5F9C3D051E63C0CB009659E4 /* UIView+SDExtension.m in Sources */,
 				1827C2021E8221C10040B9AD /* FindFunctionView.m in Sources */,
+				1E3949E81E8E03B600BB346F /* FindTestListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
