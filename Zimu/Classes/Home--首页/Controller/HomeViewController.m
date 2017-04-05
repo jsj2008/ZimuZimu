@@ -266,9 +266,5 @@
     return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
-- (NSString *)parseStringFromRequest:(YTKRequest *)request{
-    NSData *data = request.responseData;
-    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-}
 
 @end

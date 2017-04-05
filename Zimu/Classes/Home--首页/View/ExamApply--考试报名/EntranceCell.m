@@ -38,13 +38,13 @@
     _psychologyButton.layer.masksToBounds = YES;
     [_psychologyButton setTitle:@"心理咨询师报名入口" forState:UIControlStateNormal];
     [_psychologyButton setTitleColor:themeBlack forState:UIControlStateNormal];
-    [_psychologyButton setBackgroundColor:themeYellow];
+    [_psychologyButton setBackgroundColor:[UIColor colorWithHexString:@"fedb18"]];
     
     _marriageutton.layer.cornerRadius = 5;
     _marriageutton.layer.masksToBounds = YES;
     [_marriageutton setTitle:@"婚姻咨询师报名入口" forState:UIControlStateNormal];
     [_marriageutton setTitleColor:themeBlack forState:UIControlStateNormal];
-    [_marriageutton setBackgroundColor:themeYellow];
+    [_marriageutton setBackgroundColor:[UIColor colorWithHexString:@"fedb18"]];
     
 }
 

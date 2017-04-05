@@ -10,9 +10,11 @@
 
 @interface ExamSectionHeaderCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *markImageView;
+@property (weak, nonatomic) IBOutlet UIView *markView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
+@property (weak, nonatomic) IBOutlet UILabel *moreLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *moreImageView;
 
 
 @end
@@ -33,17 +35,14 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
+    _markView.backgroundColor = themeYellow;
     _titleLabel.textColor = themeBlack;
     _lineView.backgroundColor = themeGray;
-    [_askButton setTitleColor:themeBlack forState:UIControlStateNormal];
+    _moreLabel.text = @"查看全部";
+    _moreLabel.textColor = themeYellow;
 }
 
-- (void)setImageString:(NSString *)imageString{
-    if (_imageString != imageString) {
-        _imageString = imageString;
-        _markImageView.image = [UIImage imageNamed:_imageString];;
-    }
-}
+
 - (void)setTitleString:(NSString *)titleString{
     if (_titleString != titleString) {
         _titleString = titleString;
@@ -51,18 +50,5 @@
     }
 }
 
-
-- (void)setButtonTitle:(NSString *)buttonTitle{
-    if (_buttonTitle != buttonTitle) {
-        _buttonTitle = buttonTitle;
-        [_askButton setTitle:_buttonTitle forState:UIControlStateNormal];
-    }
-}
-- (void)setButtonImageString:(NSString *)buttonImageString{
-    if (_buttonImageString != buttonImageString) {
-        _buttonImageString = buttonImageString;
-        [_askButton setImage:[UIImage imageNamed:_buttonImageString] forState:UIControlStateNormal];
-    }
-}
 
 @end

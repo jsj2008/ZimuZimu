@@ -49,8 +49,7 @@
     NSString *nameString = @"吴老师";
     _nameLabel.text = nameString;
     CGSize nameSize = [nameString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}];
-    _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame) + 10, CGRectGetMinY(_headImageView.frame) + 5, nameSize.width, nameSize.height);
-    _nameLabel.textColor = themeBlack;
+    _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame) + 10, CGRectGetMinY(_headImageView.frame) + 10, nameSize.width, nameSize.height);
     
     //导师资质
     NSString *certificateString = @"国家二级认证咨询师";
@@ -60,29 +59,26 @@
     _certificateLabel.layer.cornerRadius = 5;
     _certificateLabel.layer.masksToBounds = YES;
     _certificateLabel.layer.borderWidth = 1.0f;
-    _certificateLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _certificateLabel.textColor = [UIColor lightGrayColor];
+    _certificateLabel.layer.borderColor = [UIColor colorWithHexString:@"FBBF38"].CGColor;
+    _certificateLabel.textColor = [UIColor colorWithHexString:@"FBBF38"];
     
     //标签1
     NSString *tagString1 = @"亲子";
     _tagLabel1.text = tagString1;
     CGSize tagSize1 = [tagString1 sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-    _tagLabel1.frame = CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(_headImageView.frame) - tagSize1.height, tagSize1.width, tagSize1.height);
-    _tagLabel1.textColor = [UIColor darkGrayColor];
+    _tagLabel1.frame = CGRectMake(CGRectGetMinX(_nameLabel.frame), CGRectGetMaxY(_headImageView.frame) - tagSize1.height - 5, tagSize1.width, tagSize1.height);
 
     //标签2
     NSString *tagString2 = @"家庭";
     _tagLabel2.text = tagString2;
     CGSize tagSize2 = [tagString2 sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
     _tagLabel2.frame = CGRectMake(CGRectGetMaxX(_tagLabel1.frame) + 15, CGRectGetMinY(_tagLabel1.frame), tagSize2.width, tagSize2.height);
-    _tagLabel2.textColor = [UIColor darkGrayColor];
     
     //标签1
     NSString *tagString3 = @"育儿";
     _tagLabel3.text = tagString3;
     CGSize tagSize3 = [tagString3 sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
     _tagLabel3.frame = CGRectMake(CGRectGetMaxX(_tagLabel2.frame) + 15, CGRectGetMinY(_tagLabel1.frame), tagSize3.width, tagSize3.height);
-    _tagLabel3.textColor = [UIColor darkGrayColor];
     
     //关注
     NSString *attentionString = @"关注";

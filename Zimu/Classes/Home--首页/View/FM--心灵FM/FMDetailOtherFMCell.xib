@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FMDetailOtherFMCell" rowHeight="132" id="KGk-i7-Jjw" customClass="FMDetailOtherFMCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_zhuanlandingyue1" translatesAutoresizingMaskIntoConstraints="NO" id="hfC-sN-qgJ">
+                        <rect key="frame" x="10" y="5.5" width="66" height="88.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="hfC-sN-qgJ" secondAttribute="height" multiplier="3:4" id="rzR-Eu-Qpq"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孩子叛逆怎么办" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-xS-Fny">
+                        <rect key="frame" x="86" y="5.5" width="114.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者：吴东辉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9R-n6-fD8">
+                        <rect key="frame" x="86" y="47" width="86" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放量：100万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcJ-hW-AD4">
+                        <rect key="frame" x="86" y="72" width="95.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hfC-sN-qgJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DxT-5n-hQk"/>
+                    <constraint firstItem="hfC-sN-qgJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="abb-5D-Pf0"/>
+                    <constraint firstItem="vcJ-hW-AD4" firstAttribute="leading" secondItem="gQX-xS-Fny" secondAttribute="leading" id="f70-5M-xoq"/>
+                    <constraint firstItem="hfC-sN-qgJ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="8:9" id="fbU-UO-GRh"/>
+                    <constraint firstItem="vcJ-hW-AD4" firstAttribute="top" secondItem="h9R-n6-fD8" secondAttribute="bottom" constant="8" id="lVV-16-ucl"/>
+                    <constraint firstItem="h9R-n6-fD8" firstAttribute="leading" secondItem="gQX-xS-Fny" secondAttribute="leading" id="mV0-10-J7A"/>
+                    <constraint firstItem="gQX-xS-Fny" firstAttribute="top" secondItem="hfC-sN-qgJ" secondAttribute="top" id="pPr-VE-Vnl"/>
+                    <constraint firstItem="vcJ-hW-AD4" firstAttribute="bottom" secondItem="hfC-sN-qgJ" secondAttribute="bottom" constant="-5" id="tox-fA-jXk"/>
+                    <constraint firstItem="gQX-xS-Fny" firstAttribute="leading" secondItem="hfC-sN-qgJ" secondAttribute="trailing" constant="10" id="yF2-fj-bNH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="countLabel" destination="vcJ-hW-AD4" id="VdL-IS-hWi"/>
+                <outlet property="headImageView" destination="hfC-sN-qgJ" id="UzB-tE-hwc"/>
+                <outlet property="nameLabel" destination="h9R-n6-fD8" id="b7C-JU-GWP"/>
+                <outlet property="titleLabel" destination="gQX-xS-Fny" id="fO3-kd-8ec"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="131"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="home_zhuanlandingyue1" width="75" height="100"/>
+    </resources>
+</document>

@@ -15,15 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yR-b0-ueb">
-                        <rect key="frame" x="30" y="115" width="315" height="50"/>
+                        <rect key="frame" x="30" y="112.5" width="315" height="40"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="sjR-AR-GNw"/>
+                            <constraint firstAttribute="height" constant="40" id="sjR-AR-GNw"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -32,11 +33,12 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndG-dr-Fw2">
-                        <rect key="frame" x="30" y="45" width="315" height="50"/>
+                        <rect key="frame" x="30" y="57.5" width="315" height="40"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="T0j-HR-MXP"/>
+                            <constraint firstAttribute="height" constant="40" id="T0j-HR-MXP"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -47,11 +49,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="8yR-b0-ueb" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Lf5-uR-lAr"/>
-                    <constraint firstItem="ndG-dr-Fw2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-35" id="O96-gK-kyn"/>
+                    <constraint firstItem="ndG-dr-Fw2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-27.5" id="O96-gK-kyn"/>
                     <constraint firstItem="8yR-b0-ueb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Uqq-lS-WpN"/>
                     <constraint firstItem="ndG-dr-Fw2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="XJM-0y-Pz6"/>
                     <constraint firstItem="ndG-dr-Fw2" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Ztu-ns-cRj"/>
-                    <constraint firstItem="8yR-b0-ueb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="35" id="c7F-7y-796"/>
+                    <constraint firstItem="8yR-b0-ueb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="27.5" id="c7F-7y-796"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

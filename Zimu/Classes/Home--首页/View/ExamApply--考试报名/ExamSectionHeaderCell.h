@@ -10,14 +10,10 @@
 
 @interface ExamSectionHeaderCell : UITableViewCell
 
-@property (nonatomic, copy) NSString *imageString;
 
 @property (nonatomic, copy) NSString *titleString;
 
-@property (nonatomic, copy) NSString *buttonTitle;
-@property (nonatomic, copy) NSString *buttonImageString;
 
-@property (weak, nonatomic) IBOutlet UIButton *askButton;
 
 
 @end

@@ -8,6 +8,8 @@
 
 #import "FMCollectionView.h"
 #import "FMCollectionViewCell.h"
+#import "FMViewController.h"
+#import "UIView+ViewController.h"
 
 static NSString *identifier = @"FMCollectionViewCell";
 @interface FMCollectionView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -60,6 +62,9 @@ static NSString *identifier = @"FMCollectionViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"indexPath : %@",indexPath);
+    
+    [self.viewController.navigationController pushViewController:[[FMViewController alloc]init] animated:YES];
+
 }
 
 - (void)setHomeFMModelArray:(NSArray *)homeFMModelArray{
@@ -68,5 +73,7 @@ static NSString *identifier = @"FMCollectionViewCell";
         [self reloadData];
     }
 }
+//255 234 170
+
 
 @end

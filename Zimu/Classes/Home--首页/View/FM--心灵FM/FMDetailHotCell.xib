@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FMDetailHotCell" id="KGk-i7-Jjw" customClass="FMDetailHotCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMh-GZ-2vB">
+                        <rect key="frame" x="280" y="8" width="30" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="5万">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ai-Ap-5yt">
+                        <rect key="frame" x="240" y="7" width="30" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="分享">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tuy-B4-rI5">
+                        <rect key="frame" x="200" y="7" width="30" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="收藏">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热度：100万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-Mi-utZ">
+                        <rect key="frame" x="10" y="13" width="81" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UMh-GZ-2vB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4kL-li-Tto"/>
+                    <constraint firstItem="Tuy-B4-rI5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="D6x-D6-2pW"/>
+                    <constraint firstItem="8Ai-Ap-5yt" firstAttribute="leading" secondItem="Tuy-B4-rI5" secondAttribute="trailing" constant="10" id="Eub-oM-Lgg"/>
+                    <constraint firstItem="NaE-Mi-utZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QIM-Pu-vpB"/>
+                    <constraint firstItem="NaE-Mi-utZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QfE-Dz-CY8"/>
+                    <constraint firstAttribute="trailing" secondItem="UMh-GZ-2vB" secondAttribute="trailing" constant="10" id="iu3-E0-wof"/>
+                    <constraint firstItem="8Ai-Ap-5yt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="j8y-Cs-STz"/>
+                    <constraint firstItem="UMh-GZ-2vB" firstAttribute="leading" secondItem="8Ai-Ap-5yt" secondAttribute="trailing" constant="10" id="jUd-DK-6q2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectButton" destination="Tuy-B4-rI5" id="2my-OI-cS8"/>
+                <outlet property="conmmentButton" destination="UMh-GZ-2vB" id="HzS-FI-PyF"/>
+                <outlet property="hotLabel" destination="NaE-Mi-utZ" id="6yD-6K-2Iu"/>
+                <outlet property="shareButton" destination="8Ai-Ap-5yt" id="e4I-7g-crP"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

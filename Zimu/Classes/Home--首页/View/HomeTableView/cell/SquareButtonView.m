@@ -15,6 +15,7 @@
 #import "OpenCourseViewController.h"
 #import "QuestionAnswerViewController.h"
 #import "CityCourseViewController.h"
+#import "FreeCertificateViewController.h"
 
 @interface SquareButtonView ()
 
@@ -113,7 +114,8 @@
         _questionAnswerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_questionAnswerButton setBackgroundImage:[UIImage imageNamed:@"home_mianfeikaozheng"] forState:UIControlStateNormal];
         [[_questionAnswerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self.viewController.navigationController pushViewController:[[QuestionAnswerViewController alloc]init] animated:YES];
+//            [self.viewController.navigationController pushViewController:[[QuestionAnswerViewController alloc]init] animated:YES];
+            [self.viewController.navigationController pushViewController:[[FreeCertificateViewController alloc]init] animated:YES];
         }];
     }
     return _questionAnswerButton;

@@ -8,11 +8,14 @@
 
 #import "ListenHeartViewController.h"
 #import "ListenHeartTableView.h"
+#import "UIView+SnailUse.h"
+#import "PaymentChannelView.h"
+#import "SnailQuickMaskPopups.h"
 
 @interface ListenHeartViewController ()
 
 @property (nonatomic, strong) ListenHeartTableView *listenHeartTableView;
-@property (nonatomic, strong) UIView *callPhoneView;
+@property (nonatomic, strong) SnailQuickMaskPopups *popup;
 
 @end
 
@@ -30,36 +33,32 @@
 }
 
 - (void)setupListenHeartTableView{
-    _listenHeartTableView = [[ListenHeartTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    _listenHeartTableView = [[ListenHeartTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49) style:UITableViewStylePlain];
     [self.view addSubview:_listenHeartTableView];
 }
 
 - (void)setupCallPhoneView{
-    _callPhoneView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight - 64, kScreenWidth, 64)];
-    _callPhoneView.backgroundColor = themeWhite;
-    [self.view addSubview:_callPhoneView];
-    
-    CALayer *line = [[CALayer alloc]init];
-    line.frame = CGRectMake(0, 0, _callPhoneView.width, 1);
-    line.backgroundColor = themeGray.CGColor;
-    [_callPhoneView.layer addSublayer:line];
-    
     UIButton *callButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    callButton.frame = CGRectMake(_callPhoneView.width * 0.2, (_callPhoneView.height - 40)/2.0, _callPhoneView.width * 0.6, 40);
-    [callButton setBackgroundColor:themeYellow];
+    callButton.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
+    [callButton setBackgroundColor:[UIColor colorWithHexString:@"FBBF38"]];
     [callButton setTitle:@"一键咨询" forState:UIControlStateNormal];
-    [callButton setTitleColor:themeBlack forState:UIControlStateNormal];
+    [callButton setTitleColor:themeWhite forState:UIControlStateNormal];
     [callButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     callButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    callButton.layer.cornerRadius = 5;
-    callButton.layer.masksToBounds = YES;
     [callButton addTarget:self action:@selector(callPhone) forControlEvents:UIControlEventTouchUpInside];
     
-    [_callPhoneView addSubview:callButton];
+    [self.view addSubview:callButton];
 }
 
 - (void)callPhone{
     NSLog(@"打个电话");
+    PaymentChannelView *view = [UIView paymentChannelView];
+    _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:view];
+    _popup.isAllowPopupsDrag = YES;
+    _popup.dampingRatio = 0.9;
+    _popup.presentationStyle = PresentationStyleBottom;
+    [_popup presentAnimated:YES completion:nil];
+    
 }
 
 @end

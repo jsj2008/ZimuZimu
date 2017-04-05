@@ -30,6 +30,7 @@ PODS:
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
+  - pop (1.0.9)
   - PYSearch (0.7.4)
   - Reachability (3.2)
   - ReactiveCocoa (2.1.8):
@@ -41,6 +42,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - StreamingKit (0.1.29)
   - UMengAnalytics (4.2.4)
   - WHC_Model (1.6.6)
   - YMCitySelect (1.2.2)
@@ -55,9 +57,11 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD
   - MJRefresh
+  - pop (~> 1.0)
   - PYSearch
   - ReactiveCocoa (~> 2.1.8)
   - SDWebImage
+  - StreamingKit
   - UMengAnalytics
   - WHC_Model
   - YMCitySelect
@@ -71,10 +75,12 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PYSearch: fe5b95a6c3d58f3bbac0cef6c2042cec2af2fd13
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WHC_Model: f9311a0a976be1fce7c419d484def3f67dbfb1c0
   YMCitySelect: 1b415b7d8c1cc5ba8efac4327ed944c918244a81
@@ -82,6 +88,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZFDownload: a52f94ebb080833b8a8ceb19a409f2941343fe7f
 
-PODFILE CHECKSUM: 71e29b1cf297d90c372b175668b2aead6a7580ab
+PODFILE CHECKSUM: f07ac9da52c25615e2cae0a3b897302f6c9644d4
 
 COCOAPODS: 1.2.0

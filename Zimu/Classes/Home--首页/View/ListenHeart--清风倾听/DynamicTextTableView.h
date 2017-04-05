@@ -10,6 +10,6 @@
 
 @interface DynamicTextTableView : UITableView
 
-@property (nonatomic, strong) NSArray *textArray;
+@property (nonatomic, strong) NSMutableArray *textArray;
 
 @end

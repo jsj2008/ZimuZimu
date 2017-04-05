@@ -15,5 +15,7 @@ pod 'YYModel'
 pod 'ZFDownload'
 pod 'YTKNetwork'
 pod 'WHC_Model'
+pod 'pop','~>1.0'
+pod 'StreamingKit'
 
 end

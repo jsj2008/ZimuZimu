@@ -20,8 +20,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    _titleLabel.textColor = themeBlack;
-    [_titleLabel sizeToFit];
 }
 
 - (void)layoutSubviews{
@@ -30,8 +28,8 @@
 //    _FMImageView.clipsToBounds = YES;
 //    _FMImageView.layer.cornerRadius = 5;
 //    _FMImageView.layer.masksToBounds = YES;
-//    _titleLabel.textColor = themeBlack;
-//    [_titleLabel sizeToFit];
+    _titleLabel.textColor = themeBlack;
+    [_titleLabel sizeToFit];
 }
 
 

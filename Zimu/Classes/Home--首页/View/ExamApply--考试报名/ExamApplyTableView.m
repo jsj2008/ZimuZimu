@@ -35,7 +35,7 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:@"entranceCell"];
+//        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:@"entranceCell"];
         [self registerNib:[UINib nibWithNibName:@"EntranceCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:entranceIdentifier];
         [self registerNib:[UINib nibWithNibName:@"ExamSectionHeaderCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:examSectionHeaderIdentifier];
         [self registerNib:[UINib nibWithNibName:@"ExamAnswerCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:examAnswerIdentifier];
@@ -58,7 +58,7 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
     }else if (section == 2){
         return 2;
     }else{
-        return 3;
+        return 2;
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,8 +83,6 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
             ExamSectionHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:examSectionHeaderIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.titleString = @"考试视频 | 免费";
-            cell.buttonTitle = @"换一批";
-            cell.buttonImageString = @"change";
             
             return cell;
         }
@@ -99,8 +97,6 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
             ExamSectionHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:examSectionHeaderIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.titleString = @"FM课程 | 免费";
-            cell.buttonTitle = @"换一批";
-            cell.buttonImageString = @"change";
             
             return cell;
         }
@@ -127,12 +123,12 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 160;
+        return 135;
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
             return 44;
         }
-        return 40;
+        return 30;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
             return 44;
@@ -144,7 +140,7 @@ static NSString *examFreeFMIdentifier = @"examFreeFMCell";
         if (indexPath.row == 0) {
             return 44;
         }
-        return 80;
+        return 80/375.0 * kScreenWidth;
     }
 }
 
