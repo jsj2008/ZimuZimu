@@ -118,10 +118,8 @@
 		1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949BE1E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib */; };
 		1E3949C41E8BB91000BB346F /* SubscribeFreeFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */; };
 		1E3949C51E8BB91000BB346F /* SubscribeFreeFMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */; };
-<<<<<<< HEAD
 		1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */; };
 		1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */; };
-=======
 		1E3949CD1E8CEE1000BB346F /* MySecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949CC1E8CEE1000BB346F /* MySecretViewController.m */; };
 		1E3949D11E8CFCF100BB346F /* MySecretTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949D01E8CFCF100BB346F /* MySecretTableView.m */; };
 		1E3949DA1E8CFDA700BB346F /* MySecretHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949D81E8CFDA700BB346F /* MySecretHeadCell.m */; };
@@ -134,7 +132,6 @@
 		1E394A3E1E94814000BB346F /* FindTestListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E394A3D1E94814000BB346F /* FindTestListTableView.m */; };
 		1E394A421E9498AA00BB346F /* FindTestListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E394A401E9498AA00BB346F /* FindTestListCell.m */; };
 		1E394A431E9498AA00BB346F /* FindTestListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E394A411E9498AA00BB346F /* FindTestListCell.xib */; };
->>>>>>> origin/master
 		5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */; };
 		5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D41E77BAF700B038A5 /* CircleCollectionView.m */; };
 		5F2D620C1E77BAF700B038A5 /* CircleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D61E77BAF700B038A5 /* CircleCollectionViewCell.m */; };
@@ -2405,7 +2402,6 @@
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5FEA2B021E8F956900405F75 /* FMDeatilCommentCell.xib in Resources */,
 				5F9CE2BB1E82661800424352 /* DailyLookTitleCell.xib in Resources */,
-<<<<<<< HEAD
 				1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */,
 				1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */,
 				1E0142151E84F1AD004D3957 /* CourseListVideoCell.xib in Resources */,
@@ -2413,12 +2409,10 @@
 				5FEA2AF01E8E438C00405F75 /* FMDetailOtherFMHeaderCell.xib in Resources */,
 				5FAED5491E94D88900E295AC /* PaymentChannelCell.xib in Resources */,
 				5FAED5311E94819800E295AC /* ListenHeartBannerCell.xib in Resources */,
-=======
 				1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */,
 				1E0142151E84F1AD004D3957 /* CourseListVideoCell.xib in Resources */,
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
 				1E394A431E9498AA00BB346F /* FindTestListCell.xib in Resources */,
->>>>>>> origin/master
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
 				5F2D620D1E77BAF700B038A5 /* CircleCollectionViewCell.xib in Resources */,
 				5F2D62241E77BAF700B038A5 /* VideoCourseCollectionViewCell.xib in Resources */,
@@ -2439,11 +2433,8 @@
 				5FDCB46E1E7BBC20003914D1 /* SubscribedExpertCell.xib in Resources */,
 				5FEA2AFD1E8F900100405F75 /* FMDetailCommentHeaderCell.xib in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
-<<<<<<< HEAD
-=======
 				1E3949E51E8D0BFD00BB346F /* MySecretCommentsCell.xib in Resources */,
 				5F2D62601E77F8D000B038A5 /* PouroutCell.xib in Resources */,
->>>>>>> origin/master
 				5F2D62261E77BAF700B038A5 /* WindListenCell.xib in Resources */,
 				5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */,
 				5FEB30371E78DDA600B34CC7 /* ListenHeartTutorCell.xib in Resources */,
@@ -2712,12 +2703,9 @@
 				5FE2008B1E66D06A0021DD27 /* EvaluationSearchTableViewController.m in Sources */,
 				5FEA2AB71E8CA3F000405F75 /* FreeCertificateTableView.m in Sources */,
 				18AC3C481E7B841A007EE823 /* MineMainFunctionCollectionView.m in Sources */,
-<<<<<<< HEAD
 				5FEA2AD41E8DF95300405F75 /* ZimuAudioPlayer.m in Sources */,
 				5FEA2AE01E8E38AD00405F75 /* FMDetailHotCell.m in Sources */,
-=======
 				1E3949D11E8CFCF100BB346F /* MySecretTableView.m in Sources */,
->>>>>>> origin/master
 				5FABE6221E8A15E100FE8A33 /* HomeRecommendTodayModel.m in Sources */,
 				5F9C3CEB1E62D17C009659E4 /* UIView+ZMExtension.m in Sources */,
 				5FEA2AC21E8CEADA00405F75 /* CircleView.m in Sources */,
