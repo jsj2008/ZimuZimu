@@ -226,7 +226,8 @@ static NSString *normalCellId = @"courseListNormalCell";
 }
 
 - (void)carouselView:(ImageCarouselView *)carouselView didScrollToPage:(NSInteger)pageNumber {
-    NSLog(@"滚到了了%zd", pageNumber);
+    NSLog(@"滚到了%zd", pageNumber);
+
 }
 
 - (void)carouselView:(ImageCarouselView *)carouselView didSelectPageAtIndex:(NSInteger)index {
@@ -237,5 +238,11 @@ static NSString *normalCellId = @"courseListNormalCell";
 - (NSUInteger)pageHeight {
     return COURSE_CYCLE_HEIGHT - 20;
 }
-
+- (void)viewWillDisappear{
+    _imageCarouselView.delegate = nil;
+    _imageCarouselView.dataSource = nil;
+    
+    [_imageCarouselView removeFromSuperview];
+    _imageCarouselView = nil;
+}
 @end

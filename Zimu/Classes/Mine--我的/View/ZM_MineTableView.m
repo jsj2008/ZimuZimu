@@ -37,7 +37,7 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
         _imgDataArray = @[@[@"mine_orderMananger", @"mine_mycollection", @"mine_previous", @"mine_library"],
                           @[@"mine_feedBack", @"mine_sysConfig"]
                           ];
-        _textDataArray = @[@[@"订单管理", @"我的收藏", @"最近浏览", @"我的书架"],
+        _textDataArray = @[@[@"订单管理", @"我的收藏", @"最近浏览"],
                            @[@"反馈帮组中心", @"设置"]
                            ];
         //注册单元格
@@ -65,7 +65,7 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
     }else if (section == 1){
         return 1;
     }else if (section == 2){
-        return 4;
+        return 3;
     }else{
         return 2;
     }

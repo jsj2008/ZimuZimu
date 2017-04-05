@@ -236,7 +236,7 @@ static NSString *topicCellId = @"findTopicId";
             return 44;
         }else{
 #pragma mark - 计算文章cell高度
-            CGFloat articleHeight = (kScreenWidth - 20) * 14 / 37 + 140;
+            CGFloat articleHeight = (kScreenWidth - 20) * 28 / 71  + 125;
             return articleHeight;
         }
         

@@ -1,14 +1,14 @@
 //
-//  SubscribeFreeReadArticleCell.m
+//  MySecretCommentsCell.m
 //  Zimu
 //
 //  Created by 飞飞飞 on 2017/3/30.
 //  Copyright © 2017年 Zimu. All rights reserved.
 //
 
-#import "SubscribeFreeReadArticleCell.h"
+#import "MySecretCommentsCell.h"
 
-@implementation SubscribeFreeReadArticleCell
+@implementation MySecretCommentsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

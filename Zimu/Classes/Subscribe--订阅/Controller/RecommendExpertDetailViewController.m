@@ -10,6 +10,7 @@
 #import "SubscribeLecturerDetailTableView.h"
 #import "SLDBarView.h"
 #import "SLDTextCellLayoutFrame.h"
+#import "SubscribeFreeReadViewController.h"
 
 @interface RecommendExpertDetailViewController ()<UITableViewDelegate>
 
@@ -208,6 +209,8 @@
 }
 //免费试读
 - (void)freeReadAction{
+    SubscribeFreeReadViewController *subsFreeVC = [[SubscribeFreeReadViewController alloc] init];
+    [self.navigationController pushViewController:subsFreeVC animated:YES];
     NSLog(@"免费试读");
 }
 //订阅

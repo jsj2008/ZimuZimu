@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="376" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="376" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fA1-u2-Hna">
@@ -78,6 +78,14 @@
                     <constraint firstItem="bhF-Dj-q7z" firstAttribute="centerY" secondItem="eb8-hF-5HP" secondAttribute="centerY" id="w2h-bB-i7P"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="fmTitleLabel" destination="wi8-fi-7jG" id="yFm-9J-gQ0"/>
+                <outlet property="goodCountLabel" destination="bhF-Dj-q7z" id="QxR-KE-0bU"/>
+                <outlet property="img" destination="fA1-u2-Hna" id="OAY-dd-bDi"/>
+                <outlet property="listenCountLabel" destination="8qd-tk-oOg" id="q3f-4S-ttR"/>
+                <outlet property="totalTimeLabel" destination="eb8-hF-5HP" id="GCa-gU-D1o"/>
+                <outlet property="updateTimeLable" destination="nPy-cX-HkY" id="Pg0-iz-ldw"/>
+            </connections>
             <point key="canvasLocation" x="62" y="72"/>
         </tableViewCell>
     </objects>

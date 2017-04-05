@@ -8,6 +8,8 @@
 
 #import "MineMainFunctionCollectionView.h"
 #import "MineBigFunctionCell.h"
+#import "MySecretViewController.h"
+#import "UIView+ViewController.h"
 
 #define MAINFUN_CELL_HEIGHT 95
 #define MAINFUN_CELL_WIDTH (kScreenWidth / 3)
@@ -56,6 +58,13 @@ static NSString *cellReuesId = @"MineBigFunctionCellid";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     return CGSizeMake(MAINFUN_CELL_WIDTH, MAINFUN_CELL_HEIGHT);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 1) {
+        MySecretViewController *mySeVC = [[MySecretViewController alloc] init];
+        [self.viewController.navigationController pushViewController:mySeVC animated:YES];
+    }
 }
 
 @end

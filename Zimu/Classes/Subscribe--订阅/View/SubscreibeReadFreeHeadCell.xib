@@ -40,7 +40,10 @@
                     <constraint firstAttribute="bottom" secondItem="t05-sV-TCg" secondAttribute="bottom" constant="10" id="wUp-co-XJR"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="14.5" y="-23"/>
+            <connections>
+                <outlet property="headTitleLabel" destination="b8q-nM-83N" id="zIf-zu-YVR"/>
+            </connections>
+            <point key="canvasLocation" x="-108" y="-147"/>
         </tableViewCell>
     </objects>
 </document>

@@ -7,8 +7,13 @@
 //
 
 #import "SubscribeFreeReadViewController.h"
+#import "SubscribeFreeReadListView.h"
+#import "UIBarButtonItem+ZMExtension.h"
+#import "UIImage+ZMExtension.h"
 
 @interface SubscribeFreeReadViewController ()
+
+@property (nonatomic, strong) SubscribeFreeReadListView *tableView;
 
 @end
 
@@ -16,22 +21,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self makeTableView];
+    [self makeNavRightBtn];
     // Do any additional setup after loading the view.
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 0)] forBarMetrics:UIBarMetricsDefault];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)makeTableView{
+    if (!_tableView) {
+        _tableView = [[SubscribeFreeReadListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
 }
-*/
-
+- (void)makeNavRightBtn{
+    UIBarButtonItem *searchBtn = [UIBarButtonItem barButtonItemWithImageName:@"course_nav_right" title:@"" target:self action:@selector(fm)];
+    self.navigationItem.rightBarButtonItem = searchBtn;
+}
+- (void)fm{
+    NSLog(@"fm点击");
+}
 @end
