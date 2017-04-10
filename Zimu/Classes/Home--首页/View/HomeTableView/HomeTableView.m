@@ -214,7 +214,7 @@ static NSString *bookHomeIdentifier = @"bookHomeCell";
         }
         return 45;
     }else if (indexPath.section == 2) {     //四个模块
-        return 190/375.0 * kScreenWidth;
+        return 100/375.0 * kScreenWidth;
     }else if(indexPath.section == 3){       //专栏订阅
         if (indexPath.row == 0) {
             return 38;

@@ -13,5 +13,9 @@
 
 @property (nonatomic, assign) CGFloat progress;
 @property (nonatomic, assign) CGFloat strokeStart;
+@property (nonatomic, strong) CAShapeLayer *progressLayer;
+
+
+- (void)drawCircle;
 
 @end

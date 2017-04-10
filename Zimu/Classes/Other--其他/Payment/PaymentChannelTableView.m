@@ -60,7 +60,7 @@ static NSString *channelIdentifier = @"PaymentChannelCell";
     footerView.backgroundColor = themeWhite;
     UILabel *footerLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, footerView.width - 20, footerView.height)];
     footerLabel.numberOfLines = 0;
-    footerLabel.text = @"*倾诉费用支付到子慕平台账号，若中途倾诉失败活取消，倾诉费用将原路退回至您的支付账户";
+    footerLabel.text = @"*费用支付到子慕平台账号，若中途支付失败或取消，费用将原路退回至您的支付账户";
     footerLabel.font = [UIFont systemFontOfSize:11];
     footerLabel.textColor = [UIColor colorWithHexString:@"999999"];
     [footerView addSubview:footerLabel];

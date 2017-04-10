@@ -9,11 +9,12 @@
 #import "VideoCourseCollectionViewCell.h"
 #import "UIImage+ZMExtension.h"
 #import "UIImageView+WebCache.h"
+#import "AlignmentLabel.h"
 
 @interface VideoCourseCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *courseImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet AlignmentLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *lengthLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playCountLabel;
 
@@ -26,34 +27,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-}
-
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    
-//    _courseImageView.clipsToBounds = YES;
-//    _courseImageView.layer.cornerRadius = 5;
-//    _courseImageView.layer.masksToBounds = YES;
     _titleLabel.textColor = themeBlack;
-    [_titleLabel sizeToFit];
-
 }
 
-- (void)setImageString:(NSString *)imageString{
-    if (_imageString != imageString) {
-        _imageString = imageString;
-        _courseImageView.image = [UIImage imageNamed:_imageString];
-        
-    }
-}
-
-- (void)setTitleString:(NSString *)titleString{
-    if (_titleString != titleString) {
-        _titleString = titleString;
-        _titleLabel.text = _titleString;
-        
-    }
-}
 
 //免费课程
 - (void)setHomeFreeCourseModel:(HomeFreeCourseItems *)homeFreeCourseModel{

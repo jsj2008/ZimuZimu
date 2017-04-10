@@ -73,7 +73,7 @@ static NSString *identifier = @"FMCollectionViewCell";
         [self reloadData];
     }
 }
-//255 234 170
+
 
 
 @end

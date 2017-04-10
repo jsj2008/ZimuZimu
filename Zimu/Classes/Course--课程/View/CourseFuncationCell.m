@@ -7,6 +7,10 @@
 //
 
 #import "CourseFuncationCell.h"
+#import "VideoCourseViewController.h"
+#import "BookCourseViewController.h"
+#import "FMListViewController.h"
+#import "UIView+ViewController.h"
 
 @implementation CourseFuncationCell
 
@@ -16,13 +20,20 @@
 }
 
 - (IBAction)videoBtnAction:(id)sender {
-    
+    NSLog(@"视频课程");
+    [self.viewController.navigationController pushViewController:[[VideoCourseViewController alloc]init] animated:YES];
+
 }
 - (IBAction)bookBtnAction:(id)sender {
+    NSLog(@"书籍");
+    
+    [self.viewController.navigationController pushViewController:[[BookCourseViewController alloc]init] animated:YES];
     
 }
 - (IBAction)FMBtnAction:(id)sender {
-    
+    NSLog(@"FM课程");
+    [self.viewController.navigationController pushViewController:[[FMListViewController alloc]init] animated:YES];
+
 }
 
 @end

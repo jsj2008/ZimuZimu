@@ -27,20 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = themeGray;
+    
     [self makeNavRightBtn];
     [self setUpTableView];
     [self setUpSearchBar];
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [_courseTableView viewWillDisappear];
-}
-- (void)viewWillAppear:(BOOL)animated{
-    if (_courseTableView) {
-        [_courseTableView reloadData];
-    }
-}
 - (void)setUpSearchBar{
     UIBarButtonItem *searchBtn = [UIBarButtonItem barButtonItemWithImageName:@"course_searchicon" title:@"" target:self action:@selector(search)];
     self.navigationItem.leftBarButtonItem = searchBtn;
@@ -48,7 +42,8 @@
 
 - (void)setUpTableView{
     if (!_courseTableView) {
-        _courseTableView = [[CourseTabelView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20) style:UITableViewStylePlain];
+        _courseTableView = [[CourseTabelView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+        _courseTableView.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_courseTableView];
     }
 }

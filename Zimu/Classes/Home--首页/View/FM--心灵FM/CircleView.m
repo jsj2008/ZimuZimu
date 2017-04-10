@@ -14,8 +14,9 @@
 }
 
 @property (nonatomic, strong) UIImageView *bgImageView;     //背景图片
-@property (nonatomic, strong) CAShapeLayer *progressLayer;
 @property (nonatomic, assign) BOOL playing;
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+@property (nonatomic, strong) CAShapeLayer *bgLayer;
 
 @end
 
@@ -29,16 +30,24 @@
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.width/2.0, self.height/2.0) radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
     
     //添加背景圆环
-    CAShapeLayer *bgLayer = [CAShapeLayer layer];
-    bgLayer.frame = self.bounds;
-    bgLayer.lineWidth = lineWidth;
-    bgLayer.fillColor = nil;
-    bgLayer.strokeColor = [UIColor colorWithHexString:@"FFEAAA"].CGColor;
-    bgLayer.strokeEnd = 1.0f;
-    bgLayer.path = bezierPath.CGPath;
-    [self.layer addSublayer:bgLayer];
+    if (_bgLayer) {
+        [_bgLayer removeFromSuperlayer];
+        _bgLayer = nil;
+    }
+    _bgLayer = [CAShapeLayer layer];
+    _bgLayer.frame = self.bounds;
+    _bgLayer.lineWidth = lineWidth;
+    _bgLayer.fillColor = nil;
+    _bgLayer.strokeColor = [UIColor colorWithHexString:@"FFEAAA"].CGColor;
+    _bgLayer.strokeEnd = 1.0f;
+    _bgLayer.path = bezierPath.CGPath;
+    [self.layer addSublayer:_bgLayer];
     
     //创建进度layer
+    if (_progressLayer) {
+        [_progressLayer removeFromSuperlayer];
+        _progressLayer = nil;
+    }
     _progressLayer = [CAShapeLayer layer];
     _progressLayer.frame = self.bounds;
     _progressLayer.fillColor =  [[UIColor clearColor] CGColor];
@@ -50,13 +59,17 @@
     _progressLayer.strokeEnd = 0;
     
     //渐变色层
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.bounds;
-    [gradientLayer setColors:[NSArray arrayWithObjects:(id)[[UIColor colorWithHexString:@"FF9700"] CGColor],(id)[[UIColor colorWithHexString:@"FFCB00"] CGColor], nil]];
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(0, 1);
-    [gradientLayer setMask:_progressLayer];
-    [self.layer addSublayer:gradientLayer];
+    if (_gradientLayer) {
+        [_gradientLayer removeFromSuperlayer];
+        _gradientLayer = nil;
+    }
+    _gradientLayer = [CAGradientLayer layer];
+    _gradientLayer.frame = self.bounds;
+    [_gradientLayer setColors:[NSArray arrayWithObjects:(id)[[UIColor colorWithHexString:@"FF9700"] CGColor],(id)[[UIColor colorWithHexString:@"FFCB00"] CGColor], nil]];
+    _gradientLayer.startPoint = CGPointMake(0, 0);
+    _gradientLayer.endPoint = CGPointMake(0, 1);
+    [_gradientLayer setMask:_progressLayer];
+    [self.layer addSublayer:_gradientLayer];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -68,7 +81,6 @@
         _strokeNow = 0;
         [self addSubview:self.bgImageView];
         [self drawCircle];
-        
     }
     return self;
 }
@@ -94,15 +106,20 @@
 }
 
 - (void)setProgress:(CGFloat)progress{
-    if (progress == 0) {
-        self.progressLayer.hidden = YES;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.progressLayer.strokeEnd = 0;
-        });
-    }else {
-        self.progressLayer.hidden = NO;
-        self.progressLayer.strokeEnd = progress;
-    }
+    self.progressLayer.strokeStart = 0;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (progress == 0) {
+            self.progressLayer.hidden = YES;
+            self.progressLayer.strokeEnd = progress;
+            
+//            [self drawCircle];
+            
+        }else {
+            self.progressLayer.hidden = NO;
+            self.progressLayer.strokeEnd = progress;
+        }
+    });
+    
 }
 
 

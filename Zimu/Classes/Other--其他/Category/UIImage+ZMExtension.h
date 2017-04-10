@@ -31,4 +31,9 @@
 //给指定角绘制圆角
 - (UIImage *)imageAddCornerWithRadious:(CGFloat)cornerRadious size:(CGSize)size byRoundingCorners:(UIRectCorner)corners;
 
+/**
+*    高斯模糊
+*/
++ (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur;
+
 @end

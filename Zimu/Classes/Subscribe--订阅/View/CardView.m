@@ -142,6 +142,7 @@
     if (_imageString != imageString) {
         _imageString = imageString;
         _imageView.image = [UIImage imageNamed:_imageString];
+        
     }
 }
 

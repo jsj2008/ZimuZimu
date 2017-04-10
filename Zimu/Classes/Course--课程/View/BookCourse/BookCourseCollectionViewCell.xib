@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCourseCollectionCell" id="gTV-IL-0wX" customClass="BookCourseCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="235"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="235"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_zhuanlandingyue1" translatesAutoresizingMaskIntoConstraints="NO" id="RVo-Q0-q5R">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="195"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未闻花名" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM5-6Y-UEP" customClass="AlignmentLabel">
+                        <rect key="frame" x="0.0" y="200" width="160" height="35"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RVo-Q0-q5R" secondAttribute="trailing" id="QEh-BQ-42e"/>
+                <constraint firstAttribute="bottom" secondItem="cM5-6Y-UEP" secondAttribute="bottom" id="fBT-Fi-quL"/>
+                <constraint firstItem="RVo-Q0-q5R" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ic5-nS-EZT"/>
+                <constraint firstItem="cM5-6Y-UEP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="j5L-QC-BUK"/>
+                <constraint firstAttribute="trailing" secondItem="cM5-6Y-UEP" secondAttribute="trailing" id="nqY-LI-PA6"/>
+                <constraint firstAttribute="bottom" secondItem="RVo-Q0-q5R" secondAttribute="bottom" constant="40" id="x9l-C7-wbJ"/>
+                <constraint firstItem="RVo-Q0-q5R" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yWM-Uh-pjK"/>
+                <constraint firstItem="cM5-6Y-UEP" firstAttribute="top" secondItem="RVo-Q0-q5R" secondAttribute="bottom" constant="5" id="zKT-5X-9uk"/>
+            </constraints>
+            <size key="customSize" width="160" height="235"/>
+            <connections>
+                <outlet property="bookImageView" destination="RVo-Q0-q5R" id="Gfq-jh-bGO"/>
+                <outlet property="nameLabel" destination="cM5-6Y-UEP" id="WqR-QU-MiL"/>
+            </connections>
+            <point key="canvasLocation" x="89" y="146.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="home_zhuanlandingyue1" width="75" height="100"/>
+    </resources>
+</document>

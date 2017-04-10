@@ -8,11 +8,12 @@
 
 #import "FMCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "AlignmentLabel.h"
 
 @interface FMCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *FMImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet AlignmentLabel *titleLabel;
 
 @end
 @implementation FMCollectionViewCell
@@ -20,18 +21,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-}
-
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    
-//    _FMImageView.clipsToBounds = YES;
-//    _FMImageView.layer.cornerRadius = 5;
-//    _FMImageView.layer.masksToBounds = YES;
     _titleLabel.textColor = themeBlack;
-    [_titleLabel sizeToFit];
 }
-
 
 - (void)setHomeFMItem:(HomeFMItems *)homeFMItem{
     if (_homeFMItem != homeFMItem) {

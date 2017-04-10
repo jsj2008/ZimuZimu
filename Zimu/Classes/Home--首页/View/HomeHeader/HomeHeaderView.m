@@ -51,7 +51,6 @@
     NSLog(@"index : %li  title : %@",index, item.title);
 }
 
-
 - (void)setBannerArray:(NSArray *)bannerArray {
     if (_bannerArray != bannerArray) {
         _bannerArray = bannerArray;

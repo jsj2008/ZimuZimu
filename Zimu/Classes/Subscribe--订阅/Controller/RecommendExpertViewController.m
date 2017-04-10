@@ -16,7 +16,7 @@
 @property (nonatomic, strong) ZLSwipeableView *swipeableView;
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, assign) NSInteger imageIndex;
-
+@property (nonatomic, strong) UIImageView *bgImageView;
 
 @end
 
@@ -29,6 +29,7 @@
     
     [self setupSwipeableView];
 }
+
 
 - (void)setupSwipeableView{
     CGFloat x = kScreenWidth * 30/320.0;

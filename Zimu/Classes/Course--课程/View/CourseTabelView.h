@@ -10,6 +10,5 @@
 
 @interface CourseTabelView : UITableView
 
-- (void)viewWillDisappear;
 
 @end

@@ -8,6 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FMPlayViewDelegate <NSObject>
+
+//下一曲
+- (void)nextSong;
+
+//上一曲
+- (void)previousSong;
+
+@end
+
 @interface FMPlayView : UIView
+
+@property (nonatomic, copy) NSString *fmURL;
+@property (nonatomic, strong) NSArray *fmURLArray;
+
+
+- (instancetype)initWithFrame:(CGRect)frame fmURLArray:(NSArray *)fmURLArray;
+@property (nonatomic, assign) id<FMPlayViewDelegate> delegate;
+
+
+- (void)initAudioPlayer;
 
 @end

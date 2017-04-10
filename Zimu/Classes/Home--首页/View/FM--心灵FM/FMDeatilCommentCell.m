@@ -39,7 +39,8 @@
         
         //头像
         _headImageView.frame = commentLayoutFrame.headImageViewFrame;
-        _headImageView.image = [[UIImage imageNamed:@"mine_head_placeholder"] imageAddCornerWithRadious:_headImageView.width/2.0 size:_headImageView.size];
+        _headImageView.image = [UIImage imageNamed:@"mine_head_placeholder"];
+//        _headImageView.image = [[UIImage imageNamed:@"mine_head_placeholder"] imageAddCornerWithRadious:_headImageView.width/2.0 size:_headImageView.size];
         
         //姓名
         _nameLabel.frame = commentLayoutFrame.nameLabelFrame;

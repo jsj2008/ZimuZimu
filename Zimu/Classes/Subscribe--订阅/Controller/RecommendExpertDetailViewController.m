@@ -11,6 +11,9 @@
 #import "SLDBarView.h"
 #import "SLDTextCellLayoutFrame.h"
 #import "SubscribeFreeReadViewController.h"
+#import "PaymentChannelView.h"
+#import "UIView+SnailUse.h"
+#import "SnailQuickMaskPopups.h"
 
 @interface RecommendExpertDetailViewController ()<UITableViewDelegate>
 
@@ -27,6 +30,8 @@
 @property (nonatomic, assign) CGFloat headerHeight;     //headerView高度
 
 @property (nonatomic, strong) UIView *bottomView;       //底部订阅按钮的底层view
+
+@property (nonatomic, strong) SnailQuickMaskPopups *popup;
 
 @end
 
@@ -216,6 +221,12 @@
 //订阅
 - (void)subscribeAction{
     NSLog(@"订阅：￥1.00");
+    PaymentChannelView *view = [UIView paymentChannelView];
+    _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:view];
+    _popup.isAllowPopupsDrag = YES;
+    _popup.dampingRatio = 0.9;
+    _popup.presentationStyle = PresentationStyleBottom;
+    [_popup presentAnimated:YES completion:nil];
 }
 
 

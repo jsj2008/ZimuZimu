@@ -28,13 +28,18 @@
 @property (nonatomic, assign) NSNumber *duration;
 @property (nonatomic, assign) NSNumber *nowDuration;
 
+@property (nonatomic, assign) NSInteger nowFMIndex;      //当前播放的FM索引
+
 @end
 
 @implementation FMPlayView
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame fmURLArray:(NSArray *)fmURLArray{
     self = [super initWithFrame:frame];
     if (self) {
+        _fmURLArray = fmURLArray;
+        _nowFMIndex = 0;
+        
         [ZimuAudioPlayer shareInstance].delegate = self;
         [ZimuAudioPlayer shareInstance].zimuDelegate = self;
         
@@ -46,28 +51,38 @@
 
 - (void)initAudioPlayer{
     if ([ZimuAudioPlayer shareInstance].state == STKAudioPlayerStateStopped || [ZimuAudioPlayer shareInstance].state == STKAudioPlayerStateReady) {
-        NSURL *url = [NSURL URLWithString:@"http://mxd.766.com/sdo/music/data/3/m10.mp3"];
-        STKDataSource *dataSource = [STKAudioPlayer dataSourceFromURL:url];
-        [[ZimuAudioPlayer shareInstance] setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:url andCount:0]];
+        [self playFM];
     }else if ([ZimuAudioPlayer shareInstance].state == STKAudioPlayerStatePaused){
         [[ZimuAudioPlayer shareInstance] resume];
     }
 }
 
+- (void)playFM{
+    NSURL *url = [NSURL URLWithString:_fmURLArray[_nowFMIndex]];
+    STKDataSource *dataSource = [STKAudioPlayer dataSourceFromURL:url];
+    [[ZimuAudioPlayer shareInstance] setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:url andCount:0]];
+}
+
 - (void)timerFiring:(CGFloat)duration progress:(CGFloat)progress{
     _progressLabel.text = [NSString stringWithFormat:@"%02i:%02i / %02i:%02i",((int)progress)/60, ((int)progress)%60,((int)duration)/60, ((int)duration)%60];
     _progressPercent = (CGFloat)progress / duration;
-    _circleView.progress = _progressPercent;
+//    NSLog(@"=============    %lf    ==========",_progressPercent);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _circleView.progress = _progressPercent;
+    });
 }
 
-
-- (void)setSubviews{
-    //播放进度、FM图片
+//播放进度、FM图片
+- (void)setupCircleView{
     CGFloat circleViewWidth = 218 / 375.0 * kScreenWidth;
     CGFloat circleX = (self.width - circleViewWidth)/2.0;
     CGFloat circleY = 23/375.0 * kScreenWidth;
     _circleView = [[CircleView alloc]initWithFrame:CGRectMake(circleX, circleY, circleViewWidth, circleViewWidth)];
     [self addSubview:_circleView];
+}
+
+- (void)setSubviews{
+    [self setupCircleView];
     
     //FM标题
     _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(25, CGRectGetMaxY(_circleView.frame) + 25/375.0 * kScreenWidth, kScreenWidth - 50, 15)];
@@ -113,9 +128,7 @@
             //正在播放状态
             NSLog(@"state : %li",[ZimuAudioPlayer shareInstance].state);
             if ([ZimuAudioPlayer shareInstance].state == STKAudioPlayerStateStopped ) {
-                NSURL *url = [NSURL URLWithString:@"http://mxd.766.com/sdo/music/data/3/m10.mp3"];
-                STKDataSource *dataSource = [STKAudioPlayer dataSourceFromURL:url];
-                [[ZimuAudioPlayer shareInstance] setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:url andCount:0]];
+                [self playFM];
             }else if ([ZimuAudioPlayer shareInstance].state == STKAudioPlayerStatePaused){
                 [[ZimuAudioPlayer shareInstance] resume];
             }
@@ -137,13 +150,28 @@
     [self addSubview:_lastButton];
     
     [[_lastButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"快退15秒");
-        double currentTime = [ZimuAudioPlayer shareInstance].progress;
-        double targetTime = currentTime - 15;
-        if (targetTime <= 0) {
-            targetTime = 0;
+//        NSLog(@"快退15秒");
+//        double currentTime = [ZimuAudioPlayer shareInstance].progress;
+//        double targetTime = currentTime - 15;
+//        if (targetTime <= 0) {
+//            targetTime = 0;
+//        }
+//        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
+        
+        if (_nowFMIndex == 0) {
+            //第一首了
+            return ;
         }
-        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
+        _nowFMIndex--;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self playFM];
+        });
+        
+        
+        if ([self.delegate respondsToSelector:@selector(previousSong)]) {
+            [self.delegate previousSong];
+        }
+
     }];
     
     //下一曲
@@ -154,13 +182,26 @@
     [self addSubview:_nextButton];
     
     [[_nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"快进15秒");
-        double currentTime = [ZimuAudioPlayer shareInstance].progress;
-        double targetTime = currentTime + 15;
-        if (targetTime >= [ZimuAudioPlayer shareInstance].duration) {
-            targetTime = [ZimuAudioPlayer shareInstance].duration;
+//        NSLog(@"快进15秒");
+//        double currentTime = [ZimuAudioPlayer shareInstance].progress;
+//        double targetTime = currentTime + 15;
+//        if (targetTime >= [ZimuAudioPlayer shareInstance].duration) {
+//            targetTime = [ZimuAudioPlayer shareInstance].duration;
+//        }
+//        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
+        
+        if (_nowFMIndex == _fmURLArray.count - 1) {
+            //最后一首了
+            return;
         }
-        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
+        _nowFMIndex++;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self playFM];
+        });
+        
+        if ([self.delegate respondsToSelector:@selector(nextSong)]) {
+            [self.delegate nextSong];
+        }
     }];
 }
 
@@ -203,5 +244,10 @@
     NSLog(@"出了某些问题 %li",errorCode);
 }
 
+- (void)setFmURL:(NSString *)fmURL{
+    if (_fmURL != fmURL) {
+        _fmURL = fmURL;
+    }
+}
 
 @end

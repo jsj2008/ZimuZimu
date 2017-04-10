@@ -35,7 +35,15 @@
     }else{
         [_timer setFireDate:[NSDate date]];
     }
-    [self.zimuDelegate timerFiring:self.duration progress:self.progress];
+//    [self.zimuDelegate timerFiring:self.duration progress:self.progress];
+}
+
+- (void)timerRestart{
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+    [self setupTimer];
 }
 
 @end

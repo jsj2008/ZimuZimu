@@ -7,11 +7,10 @@
 //
 
 #import "CourseTabelView.h"
-#import "ImageCarouselView.h"
 #import "CourseListCollectionView.h"
 #import "CourseHotBookListView.h"
 #import "CourseHotListView.h"
-#import "CarouselCellInfo.h"
+#import "CourseBannerView.h"
 
 #import "CourseHeadCell.h"
 #import "CourseFuncationCell.h"
@@ -31,11 +30,17 @@
 static NSString *headCellId = @"CourseHeadCell";
 static NSString *funcCellId = @"CourseFuncationCell";
 static NSString *normalCellId = @"courseListNormalCell";
+static NSString *cycleCellId = @"cycleCell";        //轮播
+static NSString *freeCourseCellId = @"freeCourseCell";      //免费好课
+static NSString *onsaleCourseCellId = @"onsaleCourseCell";      //畅销好课
+static NSString *onsaleFMCellId = @"onsaleFMCell";      //畅销FM
+static NSString *hotBookCellId = @"hotBookCell";        //热门书籍
 
-@interface CourseTabelView () <UITableViewDelegate, UITableViewDataSource, ImageCarouselViewDelegate, ImageCarouselViewDataSource>
+
+@interface CourseTabelView () <UITableViewDelegate, UITableViewDataSource>
 
 /* 顶部轮播视图 */
-@property (nonatomic, strong) ImageCarouselView             *imageCarouselView;
+@property (nonatomic, strong) CourseBannerView              *courseBannerView;
 //免费排行
 @property (nonatomic, strong) CourseListCollectionView      *freeListView;
 //热门视频课程
@@ -60,7 +65,11 @@ static NSString *normalCellId = @"courseListNormalCell";
         UINib *nib2 = [UINib nibWithNibName:funcCellId bundle:[NSBundle mainBundle]];
         [self registerNib:nib2 forCellReuseIdentifier:funcCellId];
         
-        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:normalCellId];
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:cycleCellId];
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:freeCourseCellId];
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:onsaleCourseCellId];
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:onsaleFMCellId];
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:hotBookCellId];
         
         self.delegate = self;
         self.dataSource = self;
@@ -86,13 +95,17 @@ static NSString *normalCellId = @"courseListNormalCell";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {   //轮播
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
-        if (!_imageCarouselView) {
-            _imageCarouselView = [[ImageCarouselView alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, COURSE_CYCLE_HEIGHT - 20) withDataSource:self withDelegate:self];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cycleCellId forIndexPath:indexPath];
+        if (!_courseBannerView) {
+            _courseBannerView = [[CourseBannerView alloc] initWithFrame:CGRectMake(0, 0, cell.width, cell.height)];
+            _courseBannerView.bannerArray = @[@"http://on9fin031.bkt.clouddn.com/image/20170323174423228187",
+                                              @"http://on9fin031.bkt.clouddn.com/image/20170323174653515679",
+                                              @"http://on9fin031.bkt.clouddn.com/image/20170323174810211784",
+                                              @"http://on9fin031.bkt.clouddn.com/image/20170323174827350730"];
         }
-        _imageCarouselView.backgroundColor = themeGray;
+        _courseBannerView.backgroundColor = themeGray;
         cell.backgroundColor = themeGray;
-        [cell addSubview:_imageCarouselView];
+        [cell addSubview:_courseBannerView];
         return cell;
     }else if (indexPath.section == 1) {                             //中间三个大按钮
         CourseFuncationCell *cell = [tableView dequeueReusableCellWithIdentifier:funcCellId forIndexPath:indexPath];
@@ -104,7 +117,7 @@ static NSString *normalCellId = @"courseListNormalCell";
             cell.headDetailLabel.text = @"免费排行榜";
             return cell;
         }else{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:freeCourseCellId forIndexPath:indexPath];
             if (!_freeListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 0;
@@ -123,7 +136,7 @@ static NSString *normalCellId = @"courseListNormalCell";
             cell.headDetailLabel.text = @"畅销排行榜";
             return cell;
         }else{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:onsaleCourseCellId forIndexPath:indexPath];
             if (!_hotVideoListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 0;
@@ -144,7 +157,7 @@ static NSString *normalCellId = @"courseListNormalCell";
             return cell;
 
         }else{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:onsaleFMCellId forIndexPath:indexPath];
             if (!_fmListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 0;
@@ -164,11 +177,11 @@ static NSString *normalCellId = @"courseListNormalCell";
             cell.headDetailLabel.text = @"查看全部666条";
             return cell;
         }else{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCellId forIndexPath:indexPath];
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:hotBookCellId forIndexPath:indexPath];
             if (!_bookListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-                flowLayout.minimumLineSpacing = 0;
-                flowLayout.minimumInteritemSpacing = 0;
+                flowLayout.minimumLineSpacing = 10;
+                flowLayout.minimumInteritemSpacing = 10;
                 flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
                 
                 _bookListView = [[CourseHotBookListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 0, COURSE_BOOK_HEIGHT) collectionViewLayout:flowLayout];
@@ -181,21 +194,22 @@ static NSString *normalCellId = @"courseListNormalCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0) return 0.01;
-    if (section == 1) return 10;
-    if (section == 2) return 10;
-    if (section == 3) return 10;
-    if (section == 4) return 10;
-    if (section == 5) return 10;
-    
-    return 0;
+    if (section == 5) {
+        return CGFLOAT_MIN;
+    }
+    return 10;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     
-    if (section == 0) return COURSE_CYCLE_HEIGHT;
+    if (section == 0) return 200/375.0 * kScreenWidth;
     else if (section == 1) return COURSE_FUN_HEIGHT;
     else{
         if (row == 0) return 37;
@@ -206,43 +220,7 @@ static NSString *normalCellId = @"courseListNormalCell";
         }
     }
     
-    return 0;
-}
-#pragma mark - ImageCarouselView代理和数据源
-- (CGSize)sizeForPageInCarouselView:(ImageCarouselView *)carouselView {
-    return CGSizeMake(kScreenWidth * 0.84, self.pageHeight);
+    return 0.001;
 }
 
-- (NSInteger)numberOfPagesInCarouselView:(ImageCarouselView *)carouselView {
-    return self.cellInfoArray.count;
-}
-
-- (CarouselCell *)carouselView:(ImageCarouselView *)carouselView cellForPageAtIndex:(NSUInteger)index {
-    CarouselCellImageView *cell = [[CarouselCellImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth  * 0.84, self.pageHeight)];
-    cell.showTime = 4;
-    cell.imageView.image = [UIImage imageNamed:_cellInfoArray[index]];
-    
-    return cell;
-}
-
-- (void)carouselView:(ImageCarouselView *)carouselView didScrollToPage:(NSInteger)pageNumber {
-    NSLog(@"滚到了%zd", pageNumber);
-
-}
-
-- (void)carouselView:(ImageCarouselView *)carouselView didSelectPageAtIndex:(NSInteger)index {
-    NSLog(@"点击了%zd", index);
-}
-
-
-- (NSUInteger)pageHeight {
-    return COURSE_CYCLE_HEIGHT - 20;
-}
-- (void)viewWillDisappear{
-    _imageCarouselView.delegate = nil;
-    _imageCarouselView.dataSource = nil;
-    
-    [_imageCarouselView removeFromSuperview];
-    _imageCarouselView = nil;
-}
 @end

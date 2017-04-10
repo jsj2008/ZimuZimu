@@ -24,4 +24,6 @@
 
 - (void)runTimerState:(BOOL)state;
 
+- (void)timerRestart;
+
 @end

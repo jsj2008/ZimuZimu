@@ -82,7 +82,7 @@
     _indicatorView.backgroundColor = themeYellow;
     _indicatorView.height = 2;
     _indicatorView.y = _navigationView.height - _indicatorView.height;
-    [_navigationView addSubview:_indicatorView];
+//    [_navigationView addSubview:_indicatorView]; 
     
     //添加button
     NSArray *childVCs = self.childViewControllers;
