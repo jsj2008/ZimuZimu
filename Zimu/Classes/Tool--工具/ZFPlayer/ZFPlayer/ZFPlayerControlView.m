@@ -931,6 +931,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if(!_trySeeEndView){
 //        UINib *nib = [UINib nibWithNibName:@"TrySeeEndView" bundle:[NSBundle mainBundle]];
         _trySeeEndView = [TrySeeEndView shareInstance];
+        _trySeeEndView.trySeePrice = _trySeePrice;
     }
     return _trySeeEndView;
 }
@@ -1118,7 +1119,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
                     make.edges.mas_equalTo(UIEdgeInsetsZero);
                 }];
                 [self.trySeeEndView.goBuyBtn addTarget:self action:@selector(goBuyBtnAction) forControlEvents:UIControlEventTouchUpInside];
-                self.trySeeEndView.bgImgV.image = [UIImage imageNamed:@"cycle_08.jpg"];
+//                self.trySeeEndView.bgImgV.image = [UIImage imageNamed:@"cycle_08.jpg"];
                 
             }
         }

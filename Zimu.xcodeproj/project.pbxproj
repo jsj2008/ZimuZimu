@@ -110,6 +110,14 @@
 		1E0142211E850137004D3957 /* CourseHotBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142201E850137004D3957 /* CourseHotBookListView.m */; };
 		1E0142251E85014C004D3957 /* CourseHotBookListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142231E85014C004D3957 /* CourseHotBookListCell.m */; };
 		1E0142261E85014C004D3957 /* CourseHotBookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E0142241E85014C004D3957 /* CourseHotBookListCell.xib */; };
+		1E1D47C31E95CD7800BD3CAA /* MyBrowsingHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D47C21E95CD7800BD3CAA /* MyBrowsingHistoryViewController.m */; };
+		1E1D47C81E95D17500BD3CAA /* BrowsVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D47C71E95D17500BD3CAA /* BrowsVideoViewController.m */; };
+		1E1D47CB1E95D18600BD3CAA /* BrowsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D47CA1E95D18600BD3CAA /* BrowsArticleViewController.m */; };
+		1E1D47CE1E95D1EC00BD3CAA /* BrowsFMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D47CD1E95D1EC00BD3CAA /* BrowsFMViewController.m */; };
+		1E1D47D21E95E4E600BD3CAA /* BrowsVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D47D01E95E4E600BD3CAA /* BrowsVideoCell.m */; };
+		1E1D47D31E95E4E600BD3CAA /* BrowsVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1D47D11E95E4E600BD3CAA /* BrowsVideoCell.xib */; };
+		1E1D47D71E95EDB600BD3CAA /* BrowsArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D47D51E95EDB600BD3CAA /* BrowsArticleCell.m */; };
+		1E1D47D81E95EDB600BD3CAA /* BrowsArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1D47D61E95EDB600BD3CAA /* BrowsArticleCell.xib */; };
 		1E3949B21E8BAF9900BB346F /* SubscribeFreeReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B11E8BAF9900BB346F /* SubscribeFreeReadViewController.m */; };
 		1E3949B61E8BB04A00BB346F /* SubscribeFreeReadListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B51E8BB04A00BB346F /* SubscribeFreeReadListView.m */; };
 		1E3949BA1E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949B81E8BB06A00BB346F /* SubscreibeReadFreeHeadCell.m */; };
@@ -118,8 +126,7 @@
 		1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949BE1E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib */; };
 		1E3949C41E8BB91000BB346F /* SubscribeFreeFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C21E8BB91000BB346F /* SubscribeFreeFMCell.m */; };
 		1E3949C51E8BB91000BB346F /* SubscribeFreeFMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C31E8BB91000BB346F /* SubscribeFreeFMCell.xib */; };
-		1E3949C91E8C964C00BB346F /* SubscribeFreeReadArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949C71E8C964C00BB346F /* SubscribeFreeReadArticleCell.m */; };
-		1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E3949C81E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib */; };
+		1E3949CA1E8C964C00BB346F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1E3949CD1E8CEE1000BB346F /* MySecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949CC1E8CEE1000BB346F /* MySecretViewController.m */; };
 		1E3949D11E8CFCF100BB346F /* MySecretTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949D01E8CFCF100BB346F /* MySecretTableView.m */; };
 		1E3949DA1E8CFDA700BB346F /* MySecretHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3949D81E8CFDA700BB346F /* MySecretHeadCell.m */; };
@@ -132,6 +139,8 @@
 		1E394A3E1E94814000BB346F /* FindTestListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E394A3D1E94814000BB346F /* FindTestListTableView.m */; };
 		1E394A421E9498AA00BB346F /* FindTestListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E394A401E9498AA00BB346F /* FindTestListCell.m */; };
 		1E394A431E9498AA00BB346F /* FindTestListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E394A411E9498AA00BB346F /* FindTestListCell.xib */; };
+		1EC967B41E961D3C00667EC7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC967B21E961D3C00667EC7 /* LoginViewController.m */; };
+		1EC967B51E961D3C00667EC7 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC967B31E961D3C00667EC7 /* LoginViewController.xib */; };
 		5F2D620A1E77BAF700B038A5 /* ListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D11E77BAF700B038A5 /* ListSelectButton.m */; };
 		5F2D620B1E77BAF700B038A5 /* CircleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D41E77BAF700B038A5 /* CircleCollectionView.m */; };
 		5F2D620C1E77BAF700B038A5 /* CircleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D61D61E77BAF700B038A5 /* CircleCollectionViewCell.m */; };
@@ -528,6 +537,20 @@
 		1E0142221E85014C004D3957 /* CourseHotBookListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseHotBookListCell.h; sourceTree = "<group>"; };
 		1E0142231E85014C004D3957 /* CourseHotBookListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseHotBookListCell.m; sourceTree = "<group>"; };
 		1E0142241E85014C004D3957 /* CourseHotBookListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseHotBookListCell.xib; sourceTree = "<group>"; };
+		1E1D47C11E95CD7800BD3CAA /* MyBrowsingHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBrowsingHistoryViewController.h; sourceTree = "<group>"; };
+		1E1D47C21E95CD7800BD3CAA /* MyBrowsingHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBrowsingHistoryViewController.m; sourceTree = "<group>"; };
+		1E1D47C61E95D17500BD3CAA /* BrowsVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsVideoViewController.h; sourceTree = "<group>"; };
+		1E1D47C71E95D17500BD3CAA /* BrowsVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsVideoViewController.m; sourceTree = "<group>"; };
+		1E1D47C91E95D18600BD3CAA /* BrowsArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsArticleViewController.h; sourceTree = "<group>"; };
+		1E1D47CA1E95D18600BD3CAA /* BrowsArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsArticleViewController.m; sourceTree = "<group>"; };
+		1E1D47CC1E95D1EC00BD3CAA /* BrowsFMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsFMViewController.h; sourceTree = "<group>"; };
+		1E1D47CD1E95D1EC00BD3CAA /* BrowsFMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsFMViewController.m; sourceTree = "<group>"; };
+		1E1D47CF1E95E4E600BD3CAA /* BrowsVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsVideoCell.h; sourceTree = "<group>"; };
+		1E1D47D01E95E4E600BD3CAA /* BrowsVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsVideoCell.m; sourceTree = "<group>"; };
+		1E1D47D11E95E4E600BD3CAA /* BrowsVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowsVideoCell.xib; sourceTree = "<group>"; };
+		1E1D47D41E95EDB600BD3CAA /* BrowsArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsArticleCell.h; sourceTree = "<group>"; };
+		1E1D47D51E95EDB600BD3CAA /* BrowsArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsArticleCell.m; sourceTree = "<group>"; };
+		1E1D47D61E95EDB600BD3CAA /* BrowsArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowsArticleCell.xib; sourceTree = "<group>"; };
 		1E3949B01E8BAF9900BB346F /* SubscribeFreeReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadViewController.h; sourceTree = "<group>"; };
 		1E3949B11E8BAF9900BB346F /* SubscribeFreeReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeFreeReadViewController.m; sourceTree = "<group>"; };
 		1E3949B41E8BB04A00BB346F /* SubscribeFreeReadListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeFreeReadListView.h; sourceTree = "<group>"; };
@@ -561,6 +584,9 @@
 		1E394A3F1E9498AA00BB346F /* FindTestListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTestListCell.h; sourceTree = "<group>"; };
 		1E394A401E9498AA00BB346F /* FindTestListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTestListCell.m; sourceTree = "<group>"; };
 		1E394A411E9498AA00BB346F /* FindTestListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindTestListCell.xib; sourceTree = "<group>"; };
+		1EC967B11E961D3C00667EC7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1EC967B21E961D3C00667EC7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1EC967B31E961D3C00667EC7 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		24C58225F6A6D44E756F28AE /* libPods-Zimu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zimu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3032DEBE425F530364D998 /* Pods-Zimu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.debug.xcconfig"; sourceTree = "<group>"; };
 		5F2D61D01E77BAF700B038A5 /* ListSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSelectButton.h; sourceTree = "<group>"; };
@@ -1122,6 +1148,7 @@
 		18AC3C381E7B6F01007EE823 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E1D47C41E95CD8000BD3CAA /* 我的浏览记录 */,
 				1E3949CE1E8CFCCD00BB346F /* 我的心事 */,
 				18AC3C391E7B74D3007EE823 /* ZM_MineTableView.h */,
 				18AC3C3A1E7B74D3007EE823 /* ZM_MineTableView.m */,
@@ -1236,6 +1263,34 @@
 				1E0142241E85014C004D3957 /* CourseHotBookListCell.xib */,
 			);
 			name = collectionView;
+			sourceTree = "<group>";
+		};
+		1E1D47C41E95CD8000BD3CAA /* 我的浏览记录 */ = {
+			isa = PBXGroup;
+			children = (
+				1E1D47CF1E95E4E600BD3CAA /* BrowsVideoCell.h */,
+				1E1D47D01E95E4E600BD3CAA /* BrowsVideoCell.m */,
+				1E1D47D11E95E4E600BD3CAA /* BrowsVideoCell.xib */,
+				1E1D47D41E95EDB600BD3CAA /* BrowsArticleCell.h */,
+				1E1D47D51E95EDB600BD3CAA /* BrowsArticleCell.m */,
+				1E1D47D61E95EDB600BD3CAA /* BrowsArticleCell.xib */,
+			);
+			name = "我的浏览记录";
+			sourceTree = "<group>";
+		};
+		1E1D47C51E95D15100BD3CAA /* 最近浏览 */ = {
+			isa = PBXGroup;
+			children = (
+				1E1D47C11E95CD7800BD3CAA /* MyBrowsingHistoryViewController.h */,
+				1E1D47C21E95CD7800BD3CAA /* MyBrowsingHistoryViewController.m */,
+				1E1D47C61E95D17500BD3CAA /* BrowsVideoViewController.h */,
+				1E1D47C71E95D17500BD3CAA /* BrowsVideoViewController.m */,
+				1E1D47C91E95D18600BD3CAA /* BrowsArticleViewController.h */,
+				1E1D47CA1E95D18600BD3CAA /* BrowsArticleViewController.m */,
+				1E1D47CC1E95D1EC00BD3CAA /* BrowsFMViewController.h */,
+				1E1D47CD1E95D1EC00BD3CAA /* BrowsFMViewController.m */,
+			);
+			name = "最近浏览";
 			sourceTree = "<group>";
 		};
 		1E3949B31E8BB00400BB346F /* 免费试读 */ = {
@@ -1574,6 +1629,7 @@
 		5F9C3C7C1E5E802C009659E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1E1D47C51E95D15100BD3CAA /* 最近浏览 */,
 				5F9C3CBC1E5EBA52009659E4 /* MineViewController.h */,
 				5F9C3CBD1E5EBA52009659E4 /* MineViewController.m */,
 				1E3949CB1E8CEE1000BB346F /* MySecretViewController.h */,
@@ -1632,6 +1688,9 @@
 				5F9C3CA21E5EB7B5009659E4 /* BaseNavigationController.m */,
 				5F9C3CAD1E5EB9FA009659E4 /* BaseViewController.h */,
 				5F9C3CAE1E5EB9FA009659E4 /* BaseViewController.m */,
+				1EC967B11E961D3C00667EC7 /* LoginViewController.h */,
+				1EC967B21E961D3C00667EC7 /* LoginViewController.m */,
+				1EC967B31E961D3C00667EC7 /* LoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2324,7 +2383,7 @@
 				TargetAttributes = {
 					5FC698EE1E5D786200B8574D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5QXRFWHY2A;
+						DevelopmentTeam = K49ZSV7M57;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -2387,6 +2446,7 @@
 				5F9C3D111E63C669009659E4 /* cycle_03.jpg in Resources */,
 				5F2D62371E77C36500B038A5 /* EntranceCell.xib in Resources */,
 				18F7F2B91E825DA400DE6218 /* FindHotTopicCell.xib in Resources */,
+				1E1D47D81E95EDB600BD3CAA /* BrowsArticleCell.xib in Resources */,
 				5F2D62191E77BAF700B038A5 /* FourSquareCell.xib in Resources */,
 				5F2D62121E77BAF700B038A5 /* BookHomeCell.xib in Resources */,
 				5F9CE2AE1E82122400424352 /* SLDTitleCell.xib in Resources */,
@@ -2402,7 +2462,7 @@
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5FEA2B021E8F956900405F75 /* FMDeatilCommentCell.xib in Resources */,
 				5F9CE2BB1E82661800424352 /* DailyLookTitleCell.xib in Resources */,
-				1E3949CA1E8C964C00BB346F /* SubscribeFreeReadArticleCell.xib in Resources */,
+				1E3949CA1E8C964C00BB346F /* (null) in Resources */,
 				1E3949C01E8BB39800BB346F /* SubscribeFreeReadVideoCell.xib in Resources */,
 				1E0142151E84F1AD004D3957 /* CourseListVideoCell.xib in Resources */,
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
@@ -2421,6 +2481,7 @@
 				5F9CE2DC1E84EFB700424352 /* SearchHeaderCell.xib in Resources */,
 				1827C1F51E810FB20040B9AD /* FindAskTextCell.xib in Resources */,
 				5FABE61A1E89F74A00FE8A33 /* ContinueListenCell.xib in Resources */,
+				1E1D47D31E95E4E600BD3CAA /* BrowsVideoCell.xib in Resources */,
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
 				5F9CE2B61E825AA200424352 /* DailyLookCell.xib in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
@@ -2429,12 +2490,12 @@
 				1827C1E61E80EE520040B9AD /* FindHeadCell.xib in Resources */,
 				5F2D621D1E77BAF700B038A5 /* RecommendCell.xib in Resources */,
 				5FEA2A9B1E8B4B8300405F75 /* CityCourseCell.xib in Resources */,
+				1EC967B51E961D3C00667EC7 /* LoginViewController.xib in Resources */,
 				18C7E6F11E6512A200E62757 /* SubjectListCell.xib in Resources */,
 				5FDCB46E1E7BBC20003914D1 /* SubscribedExpertCell.xib in Resources */,
 				5FEA2AFD1E8F900100405F75 /* FMDetailCommentHeaderCell.xib in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
 				1E3949E51E8D0BFD00BB346F /* MySecretCommentsCell.xib in Resources */,
-				5F2D62601E77F8D000B038A5 /* PouroutCell.xib in Resources */,
 				5F2D62261E77BAF700B038A5 /* WindListenCell.xib in Resources */,
 				5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */,
 				5FEB30371E78DDA600B34CC7 /* ListenHeartTutorCell.xib in Resources */,
@@ -2550,11 +2611,13 @@
 				18AC3B8B1E729CD2007EE823 /* TAAnimatedDotView.h in Sources */,
 				5F9CE2DB1E84EFB700424352 /* SearchHeaderCell.m in Sources */,
 				18AC3B8C1E729CD2007EE823 /* TADotView.h in Sources */,
+				1E1D47C31E95CD7800BD3CAA /* MyBrowsingHistoryViewController.m in Sources */,
 				5FEA2ABF1E8CE86200405F75 /* FMPlayView.m in Sources */,
 				18AC3B8D1E729CD2007EE823 /* TAPageControl.h in Sources */,
 				18AC3B8E1E729CD2007EE823 /* SDCollectionViewCell.h in Sources */,
 				18AC3B8F1E729CD2007EE823 /* SDCycleScrollView.h in Sources */,
 				5FAED5411E94D79400E295AC /* PaymentChannelView.m in Sources */,
+				1EC967B41E961D3C00667EC7 /* LoginViewController.m in Sources */,
 				5FEA2AA31E8B663F00405F75 /* SegmentView.m in Sources */,
 				5FDCB4A51E7FAF85003914D1 /* ZLSwipeableViewMovement.m in Sources */,
 				1E01420C1E84EED0004D3957 /* CourseHeadCell.m in Sources */,
@@ -2574,6 +2637,7 @@
 				5FEA2ABC1E8CE63E00405F75 /* FMViewController.m in Sources */,
 				18AC3B891E729CBA007EE823 /* TAPageControl.m in Sources */,
 				5F8EDD2D1E6E5CA7000FC3E0 /* QuestionCellLayout.m in Sources */,
+				1E1D47CE1E95D1EC00BD3CAA /* BrowsFMViewController.m in Sources */,
 				18F7F2B81E825DA400DE6218 /* FindHotTopicCell.m in Sources */,
 				5F2D62631E77FD2600B038A5 /* DynamicTextTableView.m in Sources */,
 				5F2D62281E77BAF700B038A5 /* HomeTableView.m in Sources */,
@@ -2581,6 +2645,7 @@
 				5FAED5351E948ACF00E295AC /* ListenHeartDynamicCell.m in Sources */,
 				5FDCB49D1E7FAF85003914D1 /* DefaultDirectionInterpretor.m in Sources */,
 				5FFB000F1E80C9590025D809 /* SubscribeDetailViewController.m in Sources */,
+				1E1D47D21E95E4E600BD3CAA /* BrowsVideoCell.m in Sources */,
 				5FEA2AA61E8B9C3B00405F75 /* GetRecommendExpertListApi.m in Sources */,
 				5FEA2A931E8B496600405F75 /* CityCourseViewController.m in Sources */,
 				1827C1FE1E821E490040B9AD /* FindFunctionsCell.m in Sources */,
@@ -2696,8 +2761,10 @@
 				5FDCB4AD1E7FB4B7003914D1 /* CardView.m in Sources */,
 				5F2D624D1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.m in Sources */,
 				1E0142031E84C553004D3957 /* ImageCarouselView.m in Sources */,
+				1E1D47D71E95EDB600BD3CAA /* BrowsArticleCell.m in Sources */,
 				5FABE6021E890E2B00FE8A33 /* GetHomeFmApi.m in Sources */,
 				5F8EDD331E6E8078000FC3E0 /* RegexKitLite.m in Sources */,
+				1E1D47CB1E95D18600BD3CAA /* BrowsArticleViewController.m in Sources */,
 				5FDCB49F1E7FAF85003914D1 /* DefaultViewAnimator.m in Sources */,
 				1E3949B61E8BB04A00BB346F /* SubscribeFreeReadListView.m in Sources */,
 				5FE2008B1E66D06A0021DD27 /* EvaluationSearchTableViewController.m in Sources */,
@@ -2713,6 +2780,7 @@
 				18AC3B6D1E71279A007EE823 /* NetWorkStatuesManager.m in Sources */,
 				5FEA2AF41E8E45C500405F75 /* FMDetailOtherFMCell.m in Sources */,
 				5FFB00121E80D81D0025D809 /* SubscribeDetailLeftViewController.m in Sources */,
+				1E1D47C81E95D17500BD3CAA /* BrowsVideoViewController.m in Sources */,
 				18C7E7111E67AF4100E62757 /* HomeVideoDetailViewController.m in Sources */,
 				5FABE6191E89F74A00FE8A33 /* ContinueListenCell.m in Sources */,
 				5FFB00151E80D8550025D809 /* SubscribeDetailMidViewController.m in Sources */,
@@ -2918,7 +2986,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				DEVELOPMENT_TEAM = K49ZSV7M57;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Zimu/Classes/Tool--工具/ZimuPrefixHeader.pch";
 				INFOPLIST_FILE = Zimu/Info.plist;
@@ -2936,7 +3004,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				DEVELOPMENT_TEAM = 5QXRFWHY2A;
+				DEVELOPMENT_TEAM = K49ZSV7M57;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Zimu/Classes/Tool--工具/ZimuPrefixHeader.pch";
 				INFOPLIST_FILE = Zimu/Info.plist;

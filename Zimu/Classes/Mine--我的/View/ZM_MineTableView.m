@@ -8,8 +8,11 @@
 
 #import "ZM_MineTableView.h"
 #import "MineNormalCell.h"
+#import "UIView+ViewController.h"
 #import "MineMainFunctionCollectionView.h"
+#import "MyBrowsingHistoryViewController.h"
 #import "MineHeadCell.h"
+#import "LoginViewController.h"
 
 static NSString *mineHeadCellId = @"ZM_MineheadCellid";
 static NSString *mineNormalCellId = @"MineNormalCellid";
@@ -37,7 +40,7 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
         _imgDataArray = @[@[@"mine_orderMananger", @"mine_mycollection", @"mine_previous", @"mine_library"],
                           @[@"mine_feedBack", @"mine_sysConfig"]
                           ];
-        _textDataArray = @[@[@"订单管理", @"我的收藏", @"最近浏览"],
+        _textDataArray = @[@[@"订单管理", @"我的收藏", @"最近浏览", @"我的测试"],
                            @[@"反馈帮组中心", @"设置"]
                            ];
         //注册单元格
@@ -65,7 +68,7 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
     }else if (section == 1){
         return 1;
     }else if (section == 2){
-        return 3;
+        return 4;
     }else{
         return 2;
     }
@@ -115,6 +118,20 @@ static NSString *mineNormalCellId = @"MineNormalCellid";
         cell.markImgView.image = [UIImage imageNamed:_imgDataArray[indexPath.section - 2][indexPath.row]];
         cell.titleLbel.text =_textDataArray[indexPath.section - 2][indexPath.row];
         return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self.viewController presentViewController:loginVC animated:YES completion:nil];
+    }
+    if (indexPath.section == 2) {
+        if (indexPath.row == 2) {
+            MyBrowsingHistoryViewController *browsVC = [[MyBrowsingHistoryViewController alloc] init];
+            [self.viewController.navigationController pushViewController:browsVC animated:YES];
+            
+        }
     }
 }
 @end

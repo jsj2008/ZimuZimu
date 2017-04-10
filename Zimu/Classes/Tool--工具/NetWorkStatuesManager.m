@@ -38,7 +38,7 @@ static NetWorkStatuesManager *_instance = nil;
 }
 //监听网络
 - (void)obeseverNet{
-    Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
     //网络连接上了，判断是wifi还是移动数据
     NetWorkStatuesManager __weak *weakSelf = self;
     reach.reachableBlock = ^(Reachability*reach){
