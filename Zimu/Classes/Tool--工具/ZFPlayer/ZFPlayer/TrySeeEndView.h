@@ -16,6 +16,9 @@ static TrySeeEndView *_instance = nil;
 @property (weak, nonatomic) IBOutlet UIButton *goBuyBtn;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgV;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+@property (nonatomic, assign) CGFloat trySeePrice;
 
 + (TrySeeEndView *)shareInstance;
 

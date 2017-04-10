@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface HomeVideoDetailViewController : UIViewController
+@interface HomeVideoDetailViewController : BaseViewController
 
 @end

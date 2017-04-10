@@ -28,7 +28,8 @@
 typedef void(^ChangeResolutionBlock)(UIButton *button);
 typedef void(^SliderTapBlock)(CGFloat value);
 
-@interface ZFPlayerControlView : UIView 
+@interface ZFPlayerControlView : UIView
 
+@property (nonatomic, assign)CGFloat trySeePrice;
 
 @end

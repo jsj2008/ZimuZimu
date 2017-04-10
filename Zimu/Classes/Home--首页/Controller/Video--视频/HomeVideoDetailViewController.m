@@ -80,7 +80,9 @@
     //播放器
     if (!_player) {
         _player = [[ZFPlayerView alloc] init];
-        [_player playerControlView:nil playerModel:self.playerModel];
+        ZFPlayerControlView *controllerView = [[ZFPlayerControlView alloc] init];
+        controllerView.trySeePrice = 321;
+        [_player playerControlView:controllerView playerModel:self.playerModel];
         
         // 设置代理
         _player.delegate = self;
@@ -102,7 +104,7 @@
     if (!_playerModel) {
         _playerModel                  = [[ZFPlayerModel alloc] init];
         _playerModel.title            = @"这里设置视频标题";
-        _playerModel.videoURL         = [NSURL URLWithString:@"http://baobab.wdjcdn.com/1456316686552The.mp4"];
+        _playerModel.videoURL         = [NSURL URLWithString:@"http://on59kdhax.bkt.clouddn.com/video/20170322105906280310"];
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
         _playerModel.fatherView       = _playerFatherView;
         

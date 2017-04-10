@@ -54,6 +54,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>StreamingKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>WHC_Model.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -78,6 +83,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -112,7 +122,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2F1119F305CB68B813F47EB9ED4ED621</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>300A8C02A04ACBCF3CD2B6026E756043</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>351EB2CDB658672F5F272EE82D92493C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -123,6 +143,11 @@
 			<true/>
 		</dict>
 		<key>4D211A9C4302B59283876AEF03805860</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E6047DF5D06360C0C9FA84835FCD00A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -143,6 +168,16 @@
 			<true/>
 		</dict>
 		<key>65C6D423A692475339770D3AA3B904EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AFF7094F4A643AA5B24F2D11CD57AA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71927CC2335DAD819B1AC54C0825A6FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,7 +217,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9AE1E1573EA1C64DBE628C0A2B5733BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9C623D1AF8229419BA603B3C66BE24B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CD07EA744DAF90AAEA40C58F7DDD294</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,7 +272,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C7CC217F608E64DFAEBFCFBEC9FF7C89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F0EA78F8F3362DEBC9840500226DA5E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F53C38F0EF1343234C2A8948B3A748DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F808006F5B9DEE5C54C8BBE8D07F1237</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F877E55FACBB4E53AED8B900E07CE36C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

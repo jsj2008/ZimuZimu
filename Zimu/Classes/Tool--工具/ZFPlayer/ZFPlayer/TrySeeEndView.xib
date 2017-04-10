@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TrySeeEndView">
-            <rect key="frame" x="0.0" y="0.0" width="409" height="289"/>
+            <rect key="frame" x="0.0" y="0.0" width="409" height="209"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mtV-PW-fTW">
-                    <rect key="frame" x="0.0" y="0.0" width="409" height="289"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_buyBg" translatesAutoresizingMaskIntoConstraints="NO" id="mtV-PW-fTW">
+                    <rect key="frame" x="0.0" y="0.0" width="409" height="209"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVs-zL-PIj">
-                    <rect key="frame" x="173" y="144.5" width="62" height="30"/>
-                    <state key="normal" title="前往购买"/>
+                    <rect key="frame" x="165" y="119.5" width="78" height="30"/>
+                    <color key="backgroundColor" red="0.99607843137254903" green="0.74117647058823533" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="  立即购买  ">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试看结束，点击购买" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qr-Eu-QFo">
-                    <rect key="frame" x="126" y="119" width="156" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买课程查看完整版教学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qr-Eu-QFo">
+                    <rect key="frame" x="109" y="64" width="191" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uC0-sj-gmf">
+                    <rect key="frame" x="15" y="10" width="30" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="SNs-fE-0hz"/>
+                        <constraint firstAttribute="width" constant="30" id="bOb-eM-fDo"/>
+                    </constraints>
+                    <state key="normal" image="video_detail_back"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付600元即可学习本课程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utC-cQ-O2x">
+                    <rect key="frame" x="108.5" y="95" width="193" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -33,12 +50,16 @@
             <constraints>
                 <constraint firstItem="mtV-PW-fTW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5mg-2K-mOY"/>
                 <constraint firstItem="7qr-Eu-QFo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ini-az-EJa"/>
-                <constraint firstItem="7qr-Eu-QFo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-15" id="TpT-Oy-D5q"/>
+                <constraint firstItem="uC0-sj-gmf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="L1u-Kx-gwR"/>
+                <constraint firstItem="utC-cQ-O2x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="On9-cz-NrV"/>
+                <constraint firstItem="7qr-Eu-QFo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-30" id="TpT-Oy-D5q"/>
                 <constraint firstAttribute="bottom" secondItem="mtV-PW-fTW" secondAttribute="bottom" id="XXy-GX-PSv"/>
-                <constraint firstItem="XVs-zL-PIj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="15" id="YPA-Et-Z29"/>
+                <constraint firstItem="XVs-zL-PIj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="30" id="YPA-Et-Z29"/>
                 <constraint firstItem="XVs-zL-PIj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aPM-Of-7UY"/>
+                <constraint firstItem="uC0-sj-gmf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="lgG-nf-RUr"/>
                 <constraint firstItem="mtV-PW-fTW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oBJ-Rg-8zs"/>
                 <constraint firstAttribute="trailing" secondItem="mtV-PW-fTW" secondAttribute="trailing" id="uJj-Tz-Rai"/>
+                <constraint firstItem="utC-cQ-O2x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vDh-1f-sQd"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -47,9 +68,14 @@
             <connections>
                 <outlet property="bgImgV" destination="mtV-PW-fTW" id="fXi-eG-0aR"/>
                 <outlet property="goBuyBtn" destination="XVs-zL-PIj" id="JUE-Kh-tOZ"/>
+                <outlet property="priceLabel" destination="utC-cQ-O2x" id="vxH-Pe-Fbp"/>
                 <outlet property="titleLabel" destination="7qr-Eu-QFo" id="F7b-h6-bwk"/>
             </connections>
-            <point key="canvasLocation" x="50.5" y="-134.5"/>
+            <point key="canvasLocation" x="50.5" y="-174.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="video_buyBg" width="375" height="210"/>
+        <image name="video_detail_back" width="9" height="15"/>
+    </resources>
 </document>

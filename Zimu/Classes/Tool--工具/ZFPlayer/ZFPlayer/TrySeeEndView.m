@@ -16,6 +16,7 @@
     dispatch_once(&onceToken, ^{
         _instance = [[super alloc] init];
     });
+    
     return _instance;
 }
 
@@ -39,7 +40,13 @@
     }
     return self;
 }
-
+- (void)setTrySeePrice:(CGFloat)trySeePrice{
+    _trySeePrice = trySeePrice;
+    NSString *titleString = [NSString stringWithFormat:@"%.1f/课时", _trySeePrice];
+    NSMutableAttributedString *titleAttributedString = [[NSMutableAttributedString alloc]initWithString:titleString attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"febd18"]}];
+    [titleAttributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17] range:NSMakeRange(0, titleString.length - 3)];
+    _priceLabel.attributedText = titleAttributedString;
+}
 
 
 @end

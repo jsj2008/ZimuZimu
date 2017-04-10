@@ -8,6 +8,8 @@
 
 #import "CourseListCollectionView.h"
 #import "CourseListVideoCell.h"
+#import "HomeVideoDetailViewController.h"
+#import "UIView+ViewController.h"
 
 #define FREECOURSE_WIDTH (kScreenWidth / 2)
 #define COURSE_VIDEOIMG_HEIGHT  kScreenWidth * 0.266
@@ -58,5 +60,8 @@ static NSString *cellReuesId = @"CourseListVideoCellid";
     
     return CGSizeMake(FREECOURSE_WIDTH, COURSE_VIDEO_HEIGHT);
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    HomeVideoDetailViewController *videoDetailVC = [[HomeVideoDetailViewController alloc] init];
+    [self.viewController.navigationController pushViewController:videoDetailVC animated:YES];
+}
 @end
