@@ -10,7 +10,7 @@
 #import "CourseHotBookListCell.h"
 
 #define FREECOURSE_WIDTH        (kScreenWidth / 3)
-#define COURSE_BOOK_HEIGHT      kScreenWidth * 0.373 + 30 + 30
+#define COURSE_BOOK_HEIGHT      (FREECOURSE_WIDTH - 15) * 1.333 + 37 + 27
 static NSString *cellReuesId = @"CourseHotBookListCellid";
 @interface CourseHotBookListView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 /** 图片和标题数组 **/
