@@ -33,18 +33,18 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ag-tO-DEo">
-                        <rect key="frame" x="395.5" y="248.5" width="50" height="16"/>
+                        <rect key="frame" x="398.5" y="249.5" width="47" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" 2.3万" image="course_viewCount"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwQ-N0-1F0">
-                        <rect key="frame" x="10" y="279.5" width="35.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何让孩子变成学霸" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwQ-N0-1F0">
+                        <rect key="frame" x="10" y="279.5" width="129" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axW-mq-h0o">
-                        <rect key="frame" x="15" y="248.5" width="54" height="16"/>
+                        <rect key="frame" x="15" y="249.5" width="50" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" 40:20" image="course_video_icon"/>
                     </button>
@@ -69,8 +69,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="course_video_icon" width="16" height="16"/>
-        <image name="course_viewCount" width="16" height="16"/>
-        <image name="home_video2" width="16" height="16"/>
+        <image name="course_video_icon" width="12" height="12"/>
+        <image name="course_viewCount" width="13" height="8"/>
+        <image name="home_video2" width="135" height="90"/>
     </resources>
 </document>
