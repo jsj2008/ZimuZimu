@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self makeTableView];
+    self.title = @"吴东辉";
     [self makeNavRightBtn];
     // Do any additional setup after loading the view.
 }

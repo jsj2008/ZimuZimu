@@ -7,6 +7,7 @@
 //
 
 #import "TrySeeEndView.h"
+#import "UIView+ViewController.h"
 
 @implementation TrySeeEndView
 
@@ -47,6 +48,9 @@
     [titleAttributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17] range:NSMakeRange(0, titleString.length - 3)];
     _priceLabel.attributedText = titleAttributedString;
 }
+//- (IBAction)backBtnAction:(id)sender {
+//    [self.viewController.navigationController popViewControllerAnimated:YES];
+//}
 
 
 @end

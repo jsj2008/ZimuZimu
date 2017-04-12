@@ -24,7 +24,7 @@
 #define COURSE_VIDEOIMG_HEIGHT  kScreenWidth * 0.266
 #define COURSE_VIDEO_HEIGHT     (COURSE_VIDEOIMG_HEIGHT + 14 + 30) * 2
 #define COURSE_FM_HEIGHT        kScreenWidth * 0.214 + 60
-#define COURSE_BOOK_HEIGHT      kScreenWidth * 0.373 + 30 + 30
+#define COURSE_BOOK_HEIGHT      (kScreenWidth / 3 - 10) * 1.333 + 37 + 27
 
 //cell复用的id
 static NSString *headCellId = @"CourseHeadCell";

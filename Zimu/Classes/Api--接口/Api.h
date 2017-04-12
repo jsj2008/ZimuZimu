@@ -9,6 +9,11 @@
 #ifndef Api_h
 #define Api_h
 
+
+//================================================登录==========================================================
+#define GetSMS @"sms/sendCaptcha.do"                                        //获取验证码
+#define UserLogin @"appLogin/loginAndRegister.do"                           //登录接口 post
+
 //================================================HOME==========================================================
 #define GetHomeBanner @"appHome/getHomeBanner.do"                           //获取首页轮播banner
 #define GetHomeRecommendToday @"appHome/getHomeRecommendToday.do"           //获取首页今日推荐
@@ -18,7 +23,6 @@
 #define GetHomeCourseIsNotFree @"appHome/getHomeCourseIsNotFree.do"         //获取首页付费课程
 #define GetHomeFm @"appHome/getHomeFm.do"                                   //获取首页FM
 #define GetHomeRecommendArticle @"appHome/getHomeRecommendArticle.do"       //获取首页美文推荐
-
 
 
 #endif /* Api_h */
