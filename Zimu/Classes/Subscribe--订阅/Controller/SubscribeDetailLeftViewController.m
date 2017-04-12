@@ -9,6 +9,7 @@
 #import "SubscribeDetailLeftViewController.h"
 #import "DailyLookTitleCell.h"
 #import "DailyLookCell.h"
+#import "HomeVideoDetailViewController.h"
 
 static NSString *dailyLookTitleIdentifier = @"DailyLookTitleCell";
 static NSString *dailyLookIdentifier = @"DailyLookCell";
@@ -51,7 +52,6 @@ static NSString *dailyLookIdentifier = @"DailyLookCell";
     
     return cell;
 }
-
 
 
 @end

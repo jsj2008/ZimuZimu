@@ -9,6 +9,7 @@
 #import "SubscribeDetailMidViewController.h"
 #import "DailyLookTitleCell.h"
 #import "ContinueListenCell.h"
+#import "FMViewController.h"
 
 static NSString *dailyLookTitleIdentifier = @"DailyLookTitleCell";
 static NSString *continueListenIdentifier = @"ContinueListenCell";
@@ -51,5 +52,7 @@ static NSString *continueListenIdentifier = @"ContinueListenCell";
     
     return cell;
 }
+
+
 
 @end

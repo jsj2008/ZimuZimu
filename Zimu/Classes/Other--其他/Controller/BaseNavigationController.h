@@ -10,4 +10,7 @@
 
 @interface BaseNavigationController : UINavigationController
 
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *panGestureRec;      //pan手势识别器
+
+
 @end

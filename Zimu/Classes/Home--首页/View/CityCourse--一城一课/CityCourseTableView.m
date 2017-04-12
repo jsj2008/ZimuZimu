@@ -7,13 +7,15 @@
 //
 
 #import "CityCourseTableView.h"
-//#import "CityCourseHeaderCell.h"
+#import "CityCourseHeaderCell.h"
 #import "CityCourseCell.h"
 
-//static NSString *cityCourseHeaderIdentifier = @"CityCourseHeaderCell";
+static NSString *cityCourseHeaderIdentifier = @"CityCourseHeaderCell";
 static NSString *cityCourseIdentifier = @"CityCourseCell";
 
-@interface CityCourseTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface CityCourseTableView ()<UITableViewDelegate, UITableViewDataSource>{
+    NSArray *_headerTitles;
+}
 
 @end
 @implementation CityCourseTableView
@@ -25,8 +27,10 @@ static NSString *cityCourseIdentifier = @"CityCourseCell";
         self.delegate = self;
         self.dataSource = self;
         
-//        [self registerNib:[UINib nibWithNibName:@"CityCourseHeaderCell" bundle:nil] forCellReuseIdentifier:cityCourseHeaderIdentifier];
+        [self registerNib:[UINib nibWithNibName:@"CityCourseHeaderCell" bundle:nil] forCellReuseIdentifier:cityCourseHeaderIdentifier];
         [self registerNib:[UINib nibWithNibName:@"CityCourseCell" bundle:nil] forCellReuseIdentifier:cityCourseIdentifier];
+        
+        _headerTitles = @[@"离你最近",@"近期举办",@"猜你喜欢"];
         
     }
     return self;
@@ -35,53 +39,59 @@ static NSString *cityCourseIdentifier = @"CityCourseCell";
 
 //dataSourse
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return _headerTitles.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    if (section == 2) {
+        return 5;
+    }
+    return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.row == 0) {
-//        CityCourseHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:cityCourseHeaderIdentifier];
-//        cell.separatorInset = UIEdgeInsetsMake(cell.height - 1, 10, 0, 0);
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        
-//        return cell;
-//    }else{
-//    }
-    CityCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:cityCourseIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.separatorInset = UIEdgeInsetsMake(cell.height - 1, 10, 0, 0);
-    
-    return cell;
+    if (indexPath.row == 0) {
+        CityCourseHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:cityCourseHeaderIdentifier];
+        cell.separatorInset = UIEdgeInsetsMake(cell.height - 1, 10, 0, 0);
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.titleString = _headerTitles[indexPath.section];
+        
+        return cell;
+    }else{
+        CityCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:cityCourseIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.separatorInset = UIEdgeInsetsMake(cell.height - 1, 10, 0, 0);
+        
+        CityCourseCellLayoutFrame *layoutFrame = [[CityCourseCellLayoutFrame alloc]init];
+        cell.layoutFrame = layoutFrame;
+        
+        return cell;
+    }
     
 }
 
 //delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.row == 0) {
-//        return 40;
-//    }
-    return 185 / 375.0 * kScreenWidth;
+    if (indexPath.row == 0) {
+        return 40;
+    }
+    CityCourseCellLayoutFrame *layoutFrame = [[CityCourseCellLayoutFrame alloc]init];
+    return layoutFrame.cellHeight;
+//    return kScreenWidth * 0.4 + 65;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 40;
+    if (section == 0) {
+        return CGFLOAT_MIN;
+    }
+    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
     UIView *view = [[UIView alloc]init];
-    view.backgroundColor = themeGray;
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, self.width - 20, 20)];
-    label.text = @"当前：杭州";
-    label.textColor = [UIColor colorWithHexString:@"666666"];
-    label.font = [UIFont systemFontOfSize:14];
-    label.textAlignment = NSTextAlignmentLeft;
-    
-    [view addSubview:label];
-    
+    view.backgroundColor = [UIColor clearColor];
+
     return view;
 }
 

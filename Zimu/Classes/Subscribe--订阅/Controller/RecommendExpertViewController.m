@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) ZLSwipeableView *swipeableView;
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSArray *names;
 @property (nonatomic, assign) NSInteger imageIndex;
 @property (nonatomic, strong) UIImageView *bgImageView;
 
@@ -45,12 +46,44 @@
     
     _imageIndex = 0;
     _images = @[
-                @"home_video1",
-                @"home_video2",
-                @"home_video3",
-                @"yiding_meirikan_pic",
-                @"cycle_08.jpg",
+                @"吴东辉.jpeg",
+                @"张海顺.jpg",
+                @"班小红.jpg",
+                @"符梦梵.jpg",
+                @"贡丽娜.jpg",
+                @"何慧芬.jpg",
+                @"蒋超斌.jpg",
+                @"林巧云.jpg",
+                @"钱宇平.jpg",
+                @"王静.jpg",
+                @"王敏燕.jpg",
+                @"王小红.jpg",
+                @"吴俊宇.jpg",
+                @"席世阳.jpg",
+                @"徐霞.jpg",
+                @"周昕.jpg",
+                @"朱霞.jpg"
                 ];
+    _names = @[
+                @"吴东辉",
+                @"张海顺",
+                @"班小红",
+                @"符梦梵",
+                @"贡丽娜",
+                @"何慧芬",
+                @"蒋超斌",
+                @"林巧云",
+                @"钱宇平",
+                @"王静",
+                @"王敏燕",
+                @"王小红",
+                @"吴俊宇",
+                @"席世阳",
+                @"徐霞",
+                @"周昕",
+                @"朱霞"
+                ];
+    
 }
 
 - (void)viewDidLayoutSubviews{
@@ -67,6 +100,8 @@
     CardView *view = [[CardView alloc] initWithFrame:_swipeableView.bounds];
     view.backgroundColor = themeWhite;
     view.imageString = _images[_imageIndex];
+    view.name = _names[_imageIndex];
+    view.jobTitle = @"国家二级心理咨询师";
     view.index = _imageIndex;
     _imageIndex++;
     return view;

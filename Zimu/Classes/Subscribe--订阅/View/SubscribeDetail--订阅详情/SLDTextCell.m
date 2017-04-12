@@ -33,8 +33,8 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    _titleLabel.text = @"相关资质";
-    _contentLabel.text = @"清华大学心理学博士\n国家二级心理咨询师\n国家心理中心认证咨询师\n清华大学心理学博士\n国家二级心理咨询师\n国家心理中心认证咨询师";
+    _titleLabel.text = _layoutFrame.titleString;
+    _contentLabel.text = _layoutFrame.textString;
 }
 
 - (void)setLayoutFrame:(SLDTextCellLayoutFrame *)layoutFrame{
@@ -46,5 +46,6 @@
         
     }
 }
+
 
 @end

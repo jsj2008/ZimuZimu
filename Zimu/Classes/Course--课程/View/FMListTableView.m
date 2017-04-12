@@ -70,9 +70,9 @@ static NSString *FMListIdentifier = @"FMListCell";
     }else{
         CGFloat height = ((kScreenWidth - 40)/3.0) * 0.75 + 40;
         if (indexPath.section == 0) {
-            return height/375.0 * kScreenWidth + 20;
+            return height + 20;
         }
-        return (height * 2)/375.0 * kScreenWidth + 30;
+        return height * 2 + 30;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

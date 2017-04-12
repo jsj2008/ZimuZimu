@@ -13,4 +13,7 @@
 
 @property (nonatomic, strong) SLDTextCellLayoutFrame *layoutFrame;
 
+@property (nonatomic, copy) NSString *textString;
+
+
 @end

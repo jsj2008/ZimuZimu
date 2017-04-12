@@ -9,6 +9,7 @@
 #import "SubscribeDetailRightViewController.h"
 #import "DailyLookTitleCell.h"
 #import "DailyStudyCell.h"
+#import "ArticleViewController.h"
 
 static NSString *dailyLookTitleIdentifier = @"DailyLookTitleCell";
 static NSString *dailyStudyIdentifier = @"DailyStudyCell";

@@ -13,6 +13,8 @@
 static NSString *subscribedExpertIdentifier = @"subscribedExpertCell";
 @interface SubscribedExpertTableViewController ()
 
+@property (nonatomic, strong) NSArray *images;
+
 @end
 
 @implementation SubscribedExpertTableViewController
@@ -24,6 +26,16 @@ static NSString *subscribedExpertIdentifier = @"subscribedExpertCell";
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"SubscribedExpertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:subscribedExpertIdentifier];
+    
+    _images = @[
+                @"班小红1.jpg",
+                @"贡丽娜1.jpg",
+                @"何慧芬1.jpg",
+                @"王小红1.jpg",
+                @"林巧云1.png",
+                @"钱宇平1.jpg",
+                
+                ];
 }
 
 
@@ -34,13 +46,13 @@ static NSString *subscribedExpertIdentifier = @"subscribedExpertCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return _images.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SubscribedExpertCell *cell = [tableView dequeueReusableCellWithIdentifier:subscribedExpertIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.imageString = @"home_zhuanlandingyue1";
+    cell.imageString = _images[indexPath.row];
     
     return cell;
 }

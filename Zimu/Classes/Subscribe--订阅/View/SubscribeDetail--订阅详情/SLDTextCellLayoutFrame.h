@@ -15,5 +15,9 @@
 
 @property (nonatomic, assign) CGFloat cellHeight;
 
+@property (nonatomic, copy) NSString *textString;
+@property (nonatomic, copy) NSString *titleString;
+
+- (instancetype)initWithTitle:(NSString *)title TextString:(NSString *)textString;
 
 @end

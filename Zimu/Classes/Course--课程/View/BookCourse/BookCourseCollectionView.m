@@ -52,7 +52,7 @@ static NSString *identifier = @"BookCourseCollectionCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat width = (kScreenWidth - 40)/3.0;
-    CGFloat height = width/0.7 + 40;
+    CGFloat height = width/0.75 + 40;
     return CGSizeMake(width, height);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

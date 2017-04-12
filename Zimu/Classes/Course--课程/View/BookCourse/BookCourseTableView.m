@@ -57,7 +57,7 @@ static NSString *bookIdentifier = @"BookCourseCell";
     if (indexPath.row == 0) {
         return 40;
     }
-    return ((kScreenWidth - 40)/3.0)/0.7 + 40 + 20;
+    return ((kScreenWidth - 40)/3.0)/0.75 + 40 + 20;
 }
 
 

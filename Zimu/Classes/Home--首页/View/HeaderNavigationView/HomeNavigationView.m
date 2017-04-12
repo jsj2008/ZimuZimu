@@ -13,7 +13,7 @@
 #import "UIView+ViewController.h"
 #import "BaseNavigationController.h"
 #import "PYSearch.h"
-
+#import "FMViewController.h"
 
 #define homeHeaderHeight 136
 
@@ -74,6 +74,8 @@
 }
 - (void)FMButtonAction{
     NSLog(@"FM电台");
+    FMViewController *fmVC = [[FMViewController alloc]init];
+    [self.viewController.navigationController pushViewController:fmVC animated:YES];
 }
 
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_zhuanlandingyue1" translatesAutoresizingMaskIntoConstraints="NO" id="p4x-NQ-bEG">
@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" secondItem="p4x-NQ-bEG" secondAttribute="height" multiplier="135:180" id="ubU-ee-2LP"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="书籍名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-yg-HBo">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="书籍名书籍名书籍名书籍名书籍名书籍名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-yg-HBo">
                         <rect key="frame" x="155" y="10" width="202" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="QCS-7U-Zb6"/>
@@ -60,16 +60,6 @@
                             <color key="titleColor" red="0.99607843139999996" green="0.74117647060000003" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imh-bM-w4D">
-                        <rect key="frame" x="255" y="171.5" width="50" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title=" 收藏" image="book_shoucang">
-                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <state key="selected" image="book_shoucang">
-                            <color key="titleColor" red="0.99607843139999996" green="0.74117647060000003" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VG4-sl-dp9">
                         <rect key="frame" x="10" y="198" width="365" height="1"/>
                         <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,6 +67,12 @@
                             <constraint firstAttribute="height" constant="1" id="Nqo-en-J5O"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格:￥199" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVE-Ud-dMN">
+                        <rect key="frame" x="155" y="168" width="85.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VG4-sl-dp9" secondAttribute="trailing" id="21r-qt-VYn"/>
@@ -84,12 +80,11 @@
                     <constraint firstAttribute="trailingMargin" secondItem="B4y-U9-3hG" secondAttribute="trailing" constant="10" id="Def-iM-UDb"/>
                     <constraint firstItem="p4x-NQ-bEG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FqC-1F-jVo"/>
                     <constraint firstItem="WoW-Vm-wun" firstAttribute="leading" secondItem="hGe-yg-HBo" secondAttribute="leading" id="IDA-ad-lWK"/>
+                    <constraint firstItem="GVE-Ud-dMN" firstAttribute="bottom" secondItem="p4x-NQ-bEG" secondAttribute="bottom" id="JbK-Al-eT4"/>
                     <constraint firstItem="hGe-yg-HBo" firstAttribute="top" secondItem="p4x-NQ-bEG" secondAttribute="top" id="KFT-ft-9Sl"/>
-                    <constraint firstItem="h1D-dU-vxQ" firstAttribute="leading" secondItem="imh-bM-w4D" secondAttribute="trailing" constant="15" id="NtL-tS-b0P"/>
                     <constraint firstItem="hGe-yg-HBo" firstAttribute="leading" secondItem="p4x-NQ-bEG" secondAttribute="trailing" constant="10" id="OCq-6o-i3j"/>
                     <constraint firstItem="lsE-KQ-WTs" firstAttribute="top" secondItem="WoW-Vm-wun" secondAttribute="bottom" constant="5" id="PMf-pb-4KO"/>
                     <constraint firstItem="WoW-Vm-wun" firstAttribute="top" secondItem="hGe-yg-HBo" secondAttribute="bottom" constant="20" id="QTp-DO-e4A"/>
-                    <constraint firstItem="imh-bM-w4D" firstAttribute="bottom" secondItem="p4x-NQ-bEG" secondAttribute="bottom" id="QlQ-1B-xnk"/>
                     <constraint firstItem="p4x-NQ-bEG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SRM-Ph-eoH"/>
                     <constraint firstItem="B4y-U9-3hG" firstAttribute="leading" secondItem="WoW-Vm-wun" secondAttribute="leading" id="UP3-6C-SlG"/>
                     <constraint firstItem="VG4-sl-dp9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="WAj-At-8Oc"/>
@@ -100,6 +95,7 @@
                     <constraint firstAttribute="trailing" secondItem="h1D-dU-vxQ" secondAttribute="trailing" constant="10" id="eZm-sX-xYE"/>
                     <constraint firstAttribute="bottom" secondItem="VG4-sl-dp9" secondAttribute="bottom" id="pV0-g3-TI7"/>
                     <constraint firstAttribute="trailingMargin" secondItem="lsE-KQ-WTs" secondAttribute="trailing" constant="10" id="qeT-ee-NxS"/>
+                    <constraint firstItem="GVE-Ud-dMN" firstAttribute="leading" secondItem="hGe-yg-HBo" secondAttribute="leading" id="vER-jY-QNr"/>
                     <constraint firstItem="lsE-KQ-WTs" firstAttribute="leading" secondItem="WoW-Vm-wun" secondAttribute="leading" id="y0d-8T-Aqq"/>
                 </constraints>
             </tableViewCellContentView>
@@ -107,7 +103,7 @@
                 <outlet property="authorLabel" destination="lsE-KQ-WTs" id="Yxl-gf-s9W"/>
                 <outlet property="bookImageView" destination="p4x-NQ-bEG" id="EB9-kP-91q"/>
                 <outlet property="categoryLabel" destination="WoW-Vm-wun" id="3Dz-0j-4Lm"/>
-                <outlet property="collectButton" destination="imh-bM-w4D" id="RGY-qZ-nEY"/>
+                <outlet property="priceLabel" destination="GVE-Ud-dMN" id="r2e-Ic-SeG"/>
                 <outlet property="saleCountLabel" destination="B4y-U9-3hG" id="uez-mv-RGn"/>
                 <outlet property="seperateLine" destination="VG4-sl-dp9" id="fAw-JH-TC7"/>
                 <outlet property="shareButton" destination="h1D-dU-vxQ" id="q5I-mk-9yt"/>
@@ -118,7 +114,6 @@
     </objects>
     <resources>
         <image name="book_fenxiang_click" width="12" height="14"/>
-        <image name="book_shoucang" width="15" height="14"/>
         <image name="home_zhuanlandingyue1" width="75" height="100"/>
     </resources>
 </document>

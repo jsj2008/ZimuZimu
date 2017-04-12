@@ -12,8 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *markView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *moreLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *moreImageView;
 
 
 @end
@@ -29,6 +27,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setTitleString:(NSString *)titleString{
+    if (_titleString != titleString) {
+        _titleString = titleString;
+        _titleLabel.text = titleString;
+    }
 }
 
 @end

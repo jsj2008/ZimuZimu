@@ -9,7 +9,9 @@
 #import "FindFunctionView.h"
 #import "FindFunctionsCell.h"
 #import "UIView+ViewController.h"
+#import "AskViewController.h"
 #import "FindTestListViewController.h"
+
 
 #define FIND_FUN_WIDTH (kScreenWidth - 29) / 4
 #define FIND_FUN_HEGHT FIND_FUN_WIDTH / 2 + 45
@@ -60,7 +62,13 @@ static NSString *cellReuesId = @"FindFunctionsCelLId";
     return CGSizeMake(FIND_FUN_WIDTH, FIND_FUN_HEGHT);
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        /*问答*/
+        AskViewController *askVC = [[AskViewController alloc]init];
+        [self.viewController.navigationController pushViewController:askVC animated:YES];
+    }
     if (indexPath.row == 3) {
+        /*测试*/
         FindTestListViewController *testVC = [[FindTestListViewController alloc] init];
         [self.viewController.navigationController pushViewController:testVC animated:YES];
     }

@@ -105,19 +105,23 @@ static NSString *hotBookCellId = @"hotBookCell";        //热门书籍
         }
         _courseBannerView.backgroundColor = themeGray;
         cell.backgroundColor = themeGray;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell addSubview:_courseBannerView];
         return cell;
     }else if (indexPath.section == 1) {                             //中间三个大按钮
         CourseFuncationCell *cell = [tableView dequeueReusableCellWithIdentifier:funcCellId forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 2) {                 //免费好课
         if (indexPath.row == 0) {
             CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.headTitleLabel.text = @"免费好课";
             cell.headDetailLabel.text = @"免费排行榜";
             return cell;
         }else{
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:freeCourseCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!_freeListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 0;
@@ -132,11 +136,13 @@ static NSString *hotBookCellId = @"hotBookCell";        //热门书籍
     }else if (indexPath.section == 3) {                 //畅销好课
         if (indexPath.row == 0) {
             CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.headTitleLabel.text = @"畅销好课";
             cell.headDetailLabel.text = @"畅销排行榜";
             return cell;
         }else{
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:onsaleCourseCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!_hotVideoListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 0;
@@ -152,12 +158,14 @@ static NSString *hotBookCellId = @"hotBookCell";        //热门书籍
     }else if (indexPath.section == 4) {             //畅销FM
         if (indexPath.row == 0) {
             CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.headTitleLabel.text = @"畅销FM";
             cell.headDetailLabel.text = @"畅销排行榜";
             return cell;
 
         }else{
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:onsaleFMCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!_fmListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 0;
@@ -173,11 +181,13 @@ static NSString *hotBookCellId = @"hotBookCell";        //热门书籍
     }else {             //热门书籍
         if (indexPath.row == 0) {
             CourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellId forIndexPath:indexPath];
-            cell.headTitleLabel.text = @"热门";
-            cell.headDetailLabel.text = @"查看全部666条";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.headTitleLabel.text = @"热门书籍";
+            cell.headDetailLabel.text = @"查看全部";
             return cell;
         }else{
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:hotBookCellId forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!_bookListView) {
                 UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
                 flowLayout.minimumLineSpacing = 10;
@@ -188,7 +198,6 @@ static NSString *hotBookCellId = @"hotBookCell";        //热门书籍
             }
             [cell addSubview:_bookListView];
             return cell;
-
         }
     }
 }

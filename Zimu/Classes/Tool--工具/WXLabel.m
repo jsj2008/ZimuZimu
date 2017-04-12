@@ -108,7 +108,8 @@
     //行距
 //    self.linespace = 10.0f;
     CTParagraphStyleSetting lineSpaceSetting;
-    lineSpaceSetting.spec = kCTParagraphStyleSpecifierLineSpacing;
+//    lineSpaceSetting.spec = kCTParagraphStyleSpecifierLineSpacing;
+    lineSpaceSetting.spec = kCTParagraphStyleSpecifierParagraphSpacing;
     lineSpaceSetting.value = &_linespace;
     lineSpaceSetting.valueSize = sizeof(_linespace);
     

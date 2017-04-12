@@ -34,8 +34,8 @@
     
     self.title = @"书籍名称";
     self.view.backgroundColor = themeGray;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     
     [self addChildVC];
     [self setupTitleView];
@@ -60,7 +60,7 @@
  *  创建titleView
  */
 - (void)setupTitleView{
-    _titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+    _titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, 40)];
     _titleView.backgroundColor = themeWhite;
     [self.view addSubview:_titleView];
     CALayer *topLine = [[CALayer alloc]init];
@@ -127,7 +127,7 @@
  *  创建scrollView
  */
 - (void)setupScrollView{
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleView.frame), kScreenWidth, kScreenHeight - CGRectGetMaxY(_titleView.frame) - 49 - 64)];
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleView.frame), kScreenWidth, kScreenHeight - CGRectGetMaxY(_titleView.frame) - 49)];
     _scrollView.contentSize = CGSizeMake(kScreenWidth * self.childViewControllers.count, 0);
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.backgroundColor = themeGray;
@@ -170,7 +170,7 @@
 
 #pragma mark - 底部view
 - (void)setupBottomView{
-    _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight - 49 - 64, kScreenWidth, 49)];
+    _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
     _bottomView.backgroundColor = themeWhite;
     [self.view addSubview:_bottomView];
     CALayer *topLine = [[CALayer alloc]init];

@@ -10,4 +10,6 @@
 
 @interface CityCourseHeaderCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *titleString;
+
 @end

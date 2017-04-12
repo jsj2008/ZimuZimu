@@ -52,8 +52,8 @@ static NSString *identifier = @"FMCollectionViewCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat width = 100/375.0 * kScreenWidth;
-    CGFloat height = self.height - 20;
+    CGFloat width = (kScreenWidth - 40)/3.0;
+    CGFloat height = width * 160/220.0 + 40;
     return CGSizeMake(width, height);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

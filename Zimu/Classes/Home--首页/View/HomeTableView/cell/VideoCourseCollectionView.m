@@ -8,6 +8,8 @@
 
 #import "VideoCourseCollectionView.h"
 #import "VideoCourseCollectionViewCell.h"
+#import "HomeVideoDetailViewController.h"
+#import "UIView+ViewController.h"
 
 static NSString *identifier = @"videoCourseCollectionCell";
 @interface VideoCourseCollectionView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -71,8 +73,8 @@ static NSString *identifier = @"videoCourseCollectionCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat width = 135/375.0 * kScreenWidth;
-    CGFloat height = self.height - 20;
+    CGFloat width = (kScreenWidth - 30)/2;
+    CGFloat height = width * 0.7 + 40;
     return CGSizeMake(width, height);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -81,6 +83,8 @@ static NSString *identifier = @"videoCourseCollectionCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"indexPath : %@",indexPath);
+    HomeVideoDetailViewController *videoVC = [[HomeVideoDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:videoVC animated:YES];
 }
 
 

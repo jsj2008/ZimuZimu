@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityCourseCellLayoutFrame.h"
 
 @interface CityCourseCell : UITableViewCell
+
+@property (nonatomic, strong) CityCourseCellLayoutFrame *layoutFrame;
 
 @end
