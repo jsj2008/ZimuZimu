@@ -32,9 +32,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uC0-sj-gmf">
-                    <rect key="frame" x="15" y="10" width="30" height="26"/>
+                    <rect key="frame" x="15" y="15" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="26" id="SNs-fE-0hz"/>
+                        <constraint firstAttribute="height" constant="30" id="SNs-fE-0hz"/>
                         <constraint firstAttribute="width" constant="30" id="bOb-eM-fDo"/>
                     </constraints>
                     <state key="normal" image="video_detail_back"/>
@@ -56,7 +56,7 @@
                 <constraint firstAttribute="bottom" secondItem="mtV-PW-fTW" secondAttribute="bottom" id="XXy-GX-PSv"/>
                 <constraint firstItem="XVs-zL-PIj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="30" id="YPA-Et-Z29"/>
                 <constraint firstItem="XVs-zL-PIj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aPM-Of-7UY"/>
-                <constraint firstItem="uC0-sj-gmf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="lgG-nf-RUr"/>
+                <constraint firstItem="uC0-sj-gmf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="lgG-nf-RUr"/>
                 <constraint firstItem="mtV-PW-fTW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oBJ-Rg-8zs"/>
                 <constraint firstAttribute="trailing" secondItem="mtV-PW-fTW" secondAttribute="trailing" id="uJj-Tz-Rai"/>
                 <constraint firstItem="utC-cQ-O2x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vDh-1f-sQd"/>
@@ -66,6 +66,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="backBtn" destination="uC0-sj-gmf" id="eB9-lE-rVy"/>
                 <outlet property="bgImgV" destination="mtV-PW-fTW" id="fXi-eG-0aR"/>
                 <outlet property="goBuyBtn" destination="XVs-zL-PIj" id="JUE-Kh-tOZ"/>
                 <outlet property="priceLabel" destination="utC-cQ-O2x" id="vxH-Pe-Fbp"/>

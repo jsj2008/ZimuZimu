@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "GetSMsApi.h"
+#import "LoginApi.h"
+#import "MBProgressHUD.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -107,11 +110,41 @@
 #pragma mark - 网络请求
 - (void)getCheckCode{
     NSLog(@"获取验证码");
+    GetSMsApi *getSMS = [[GetSMsApi alloc] initWithPhoneNo:_phoneTextField.text];
+    
+    LoginViewController __weak *weakSelf = self;
+    [getSMS startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        LoginViewController __strong *strongSelf = weakSelf;
+        NSData *data = request.responseData;
+        //        NSLog(@"sss");
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"%@", dic);
+        
+    } failure:^(YTKBaseRequest *request) {
+       
+    }];
+
+    
     
     [self startTimer];
 }
 
 - (void)login{
+    LoginApi *login = [[LoginApi alloc] initWithPhoneNo:_phoneTextField.text checkCode:_checkNumTextField.text];
+    
+    LoginViewController __weak *weakSelf = self;
+    [login startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        LoginViewController __strong *strongSelf = weakSelf;
+        NSData *data = request.responseData;
+        //        NSLog(@"sss");
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"%@", dic);
+        
+    } failure:^(YTKBaseRequest *request) {
+        NSLog(@"阿斯顿和飞机可能");
+    }];
     NSLog(@"登录");
 }
 

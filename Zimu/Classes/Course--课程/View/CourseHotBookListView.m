@@ -9,8 +9,8 @@
 #import "CourseHotBookListView.h"
 #import "CourseHotBookListCell.h"
 
-#define FREECOURSE_WIDTH        (kScreenWidth / 3)
-#define COURSE_BOOK_HEIGHT      (FREECOURSE_WIDTH - 15) * 1.333 + 37 + 27
+#define FREECOURSE_WIDTH        (kScreenWidth / 3) - 10
+#define COURSE_BOOK_HEIGHT      (FREECOURSE_WIDTH) * 1.333 + 37 + 27
 static NSString *cellReuesId = @"CourseHotBookListCellid";
 @interface CourseHotBookListView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 /** 图片和标题数组 **/
@@ -50,7 +50,7 @@ static NSString *cellReuesId = @"CourseHotBookListCellid";
 #pragma mark - delegateFlowLayout
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(0, 5, 0, 5);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     

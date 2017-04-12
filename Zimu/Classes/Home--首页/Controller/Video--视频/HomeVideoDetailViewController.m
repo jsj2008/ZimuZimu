@@ -12,6 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <Masonry/Masonry.h>
 #import <ZFDownload/ZFDownloadManager.h>
+#import "HomeVideoDeatilView.h"
 
 @interface HomeVideoDetailViewController ()<ZFPlayerDelegate>
 /*播放器*/
@@ -21,6 +22,7 @@
 @property (nonatomic, assign) BOOL isPlaying;
 
 /* 详细信息 */
+@property (nonatomic, strong) HomeVideoDeatilView *detailView;
 @end
 
 @implementation HomeVideoDetailViewController
@@ -36,13 +38,13 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.title = @"视频详情";
     
-    //自动播放
-//    [self.player autoPlayTheVideo];
+
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     [self makePlayer];
     
+    [self makeTbleView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,7 +75,7 @@
 #pragma mark - 创建播放器
 - (void)makePlayer{
     //player的父视图
-    _playerFatherView  = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 210)];
+    _playerFatherView  = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 0.56 * kScreenWidth)];
     _playerFatherView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_playerFatherView];
     
@@ -99,6 +101,13 @@
         [self.player autoPlayTheVideo];
     }
     
+}
+- (void)makeTbleView{
+    if (!_detailView) {
+        _detailView = [[HomeVideoDeatilView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_playerFatherView.frame), kScreenWidth, kScreenHeight - CGRectGetMaxY(_playerFatherView.frame)) style:UITableViewStylePlain];
+        
+    }
+    [self.view addSubview:_detailView];
 }
 - (ZFPlayerModel *)playerModel {
     if (!_playerModel) {

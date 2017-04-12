@@ -1119,6 +1119,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
                     make.edges.mas_equalTo(UIEdgeInsetsZero);
                 }];
                 [self.trySeeEndView.goBuyBtn addTarget:self action:@selector(goBuyBtnAction) forControlEvents:UIControlEventTouchUpInside];
+                [self.trySeeEndView.backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 //                self.trySeeEndView.bgImgV.image = [UIImage imageNamed:@"cycle_08.jpg"];
                 
             }
