@@ -2869,11 +2869,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				5F5665A81E9E52E20050AD29 /* 徐霞1.png in Resources */,
-=======
 				1E14438F1E9B591400FCDE02 /* VideoDetailTextCell.xib in Resources */,
->>>>>>> origin/master
 				1827C1FF1E821E490040B9AD /* FindFunctionsCell.xib in Resources */,
 				1827C1B11E7F722D0040B9AD /* SectionTitleCell.h in Resources */,
 				5FEA2AA01E8B4C4300405F75 /* CityCourseHeaderCell.xib in Resources */,
@@ -2914,11 +2911,8 @@
 				5F56654B1E9DD0800050AD29 /* HomeArticleCell.xib in Resources */,
 				1E01420D1E84EED0004D3957 /* CourseHeadCell.xib in Resources */,
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
-<<<<<<< HEAD
 				5F56656C1E9E347A0050AD29 /* 张海顺.jpg in Resources */,
-=======
 				1E14438A1E9B576300FCDE02 /* VideoDetailTitleCell.xib in Resources */,
->>>>>>> origin/master
 				5F2D62141E77BAF700B038A5 /* FMCell.xib in Resources */,
 				5F5665AB1E9E52E20050AD29 /* 王小红1.jpg in Resources */,
 				5FEA2B021E8F956900405F75 /* FMDeatilCommentCell.xib in Resources */,
@@ -3515,10 +3509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-<<<<<<< HEAD
-=======
 				CODE_SIGN_ENTITLEMENTS = Zimu/Zimu.entitlements;
->>>>>>> origin/master
 				DEVELOPMENT_TEAM = K49ZSV7M57;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Zimu/Classes/Tool--工具/ZimuPrefixHeader.pch";
@@ -3538,10 +3529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-<<<<<<< HEAD
-=======
 				CODE_SIGN_ENTITLEMENTS = Zimu/Zimu.entitlements;
->>>>>>> origin/master
 				DEVELOPMENT_TEAM = K49ZSV7M57;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Zimu/Classes/Tool--工具/ZimuPrefixHeader.pch";
