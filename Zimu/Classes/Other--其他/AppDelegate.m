@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "UMMobClick/MobClick.h"
-#import "RootTabBarController.h"
 #import "YTKNetworkConfig.h"
+#import "HomeViewController.h"
+#import "BaseNavigationController.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -37,8 +38,10 @@
     //设置BaseTabBarController为根控制器
     self.window = [[UIWindow alloc]init];
     self.window.backgroundColor = themeWhite;
-    RootTabBarController *rootTabBarController = [[RootTabBarController alloc]init];
-    [self.window setRootViewController:rootTabBarController];
+//    RootTabBarController *rootTabBarController = [[RootTabBarController alloc]init];
+//    [self.window setRootViewController:rootTabBarController];
+    HomeViewController *viewController = [[HomeViewController alloc]init];
+    [self.window setRootViewController:[[BaseNavigationController alloc]initWithRootViewController:viewController]];
     [self.window makeKeyAndVisible];
 
     return YES;

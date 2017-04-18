@@ -29,4 +29,15 @@
  */
 + (UIColor *)changeColorWithRatio:(CGFloat)ratio fromColor:(NSString *)originalColor toColor:(NSString *)destinationColor;
 
+
+/*
+ *  图片主色调
+ *
+ *  image               :       图片对象
+ *
+ *  return      UIColor
+ */
++ (UIColor *)mostColorOfImage:(UIImage *)image;
+    
+    
 @end

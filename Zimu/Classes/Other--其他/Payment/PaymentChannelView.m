@@ -68,6 +68,17 @@
     NSLog(@"pay : %@",_paymentChannelTableView.channel);
 }
 
+- (void)setPrice:(NSString *)price{
+    if (_price != price) {
+        _price = price;
+        NSString *titleString = [NSString stringWithFormat:@"确认支付 ￥%@",price];//@"确认支付 ￥1.00";
+        NSMutableAttributedString *titleAttributedString = [[NSMutableAttributedString alloc]initWithString:titleString attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:themeWhite}];
+        [titleAttributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:18] range:NSMakeRange(5, titleString.length - 5)];
+        [_payButton setAttributedTitle:titleAttributedString forState:UIControlStateNormal];
+        
+    }
+}
+
 
 
 @end

@@ -51,7 +51,6 @@
 }
 
 - (void)callPhone{
-    NSLog(@"打个电话");
     PaymentChannelView *view = [UIView paymentChannelView];
     _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:view];
     _popup.isAllowPopupsDrag = YES;

@@ -10,4 +10,7 @@
 
 @interface PaymentChannelView : UIView
 
+@property (nonatomic, copy) NSString *price;
+
+
 @end

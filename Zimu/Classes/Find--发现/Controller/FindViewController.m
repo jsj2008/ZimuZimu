@@ -2,12 +2,12 @@
 //  FindViewController.m
 //  Zimu
 //
-//  Created by Redpower on 2017/2/23.
+//  Created by Redpower on 2017/4/18.
 //  Copyright © 2017年 Zimu. All rights reserved.
 //
 
 #import "FindViewController.h"
-#import "FindListTableView.h"
+#import "UIImage+ZMExtension.h"
 
 @interface FindViewController ()
 
@@ -18,14 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self makeTableView];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = themeWhite;
+    self.title = @"发现更多";
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeYellow size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
-- (void)makeTableView{
-    FindListTableView *tableView = [[FindListTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 0) style:UITableViewStylePlain];
-    
-    [self.view addSubview:tableView];
-}
+
+
+
 @end

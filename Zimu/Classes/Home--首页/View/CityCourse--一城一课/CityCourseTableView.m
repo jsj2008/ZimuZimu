@@ -9,6 +9,8 @@
 #import "CityCourseTableView.h"
 #import "CityCourseHeaderCell.h"
 #import "CityCourseCell.h"
+#import "CityCourseDetailViewController.h"
+#import "UIView+ViewController.h"
 
 static NSString *cityCourseHeaderIdentifier = @"CityCourseHeaderCell";
 static NSString *cityCourseIdentifier = @"CityCourseCell";
@@ -95,6 +97,11 @@ static NSString *cityCourseIdentifier = @"CityCourseCell";
     return view;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CityCourseDetailViewController *cityCourseDetailVC = [[CityCourseDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:cityCourseDetailVC animated:YES];
+}
 
 
 @end

@@ -2,12 +2,13 @@
 //  HomeViewController.h
 //  Zimu
 //
-//  Created by Redpower on 2017/2/23.
+//  Created by Redpower on 2017/4/17.
 //  Copyright © 2017年 Zimu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface HomeViewController : BaseViewController
+@interface HomeViewController : UIViewController
+
 
 @end
