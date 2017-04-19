@@ -49,11 +49,30 @@
 		18AC3B951E729CD3007EE823 /* ZimuPrefixHeader.pch in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3CE21E62CD02009659E4 /* ZimuPrefixHeader.pch */; };
 		18AC3B961E729CD3007EE823 /* NetWorkStatuesManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3B6B1E71279A007EE823 /* NetWorkStatuesManager.h */; };
 		18F7F2BC1E836ACD00DE6218 /* NSString+YFString.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F7F2BB1E836ACD00DE6218 /* NSString+YFString.m */; };
+<<<<<<< HEAD
 		1E0142011E84C553004D3957 /* CarouselCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0141FC1E84C553004D3957 /* CarouselCellInfo.m */; };
 		1E0142021E84C553004D3957 /* CarouselSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0141FE1E84C553004D3957 /* CarouselSubview.m */; };
 		1E0142031E84C553004D3957 /* ImageCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0142001E84C553004D3957 /* ImageCarouselView.m */; };
+=======
+		1E1443891E9B576300FCDE02 /* VideoDetailTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1443871E9B576300FCDE02 /* VideoDetailTitleCell.m */; };
+		1E14438A1E9B576300FCDE02 /* VideoDetailTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1443881E9B576300FCDE02 /* VideoDetailTitleCell.xib */; };
+		1E14438E1E9B591400FCDE02 /* VideoDetailTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E14438C1E9B591400FCDE02 /* VideoDetailTextCell.m */; };
+		1E14438F1E9B591400FCDE02 /* VideoDetailTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E14438D1E9B591400FCDE02 /* VideoDetailTextCell.xib */; };
+		1E1443931E9B59B500FCDE02 /* VideoDetailToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1443911E9B59B500FCDE02 /* VideoDetailToolCell.m */; };
+		1E1443941E9B59B500FCDE02 /* VideoDetailToolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1443921E9B59B500FCDE02 /* VideoDetailToolCell.xib */; };
+		1E1443981E9B63F200FCDE02 /* VideoTeacherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1443961E9B63F200FCDE02 /* VideoTeacherCell.m */; };
+		1E1443991E9B63F200FCDE02 /* VideoTeacherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1443971E9B63F200FCDE02 /* VideoTeacherCell.xib */; };
+>>>>>>> origin/master
 		1E14439C1E9B80B200FCDE02 /* GetSMsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E14439B1E9B80B200FCDE02 /* GetSMsApi.m */; };
 		1E14439F1E9B86B900FCDE02 /* LoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E14439E1E9B86B900FCDE02 /* LoginApi.m */; };
+		1E1443E01EA5DE4000FCDE02 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1443DE1EA5DE4000FCDE02 /* libUMessage_Sdk_1.5.0a.a */; };
+		1E1443E21EA5DFE800FCDE02 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1443E11EA5DFE800FCDE02 /* UserNotifications.framework */; };
+		1E1443E41EA5DFFF00FCDE02 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1443E31EA5DFFF00FCDE02 /* libz.tbd */; };
+		1E1443EA1EA5E18F00FCDE02 /* UMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1443E91EA5E18F00FCDE02 /* UMessageManager.m */; };
+		1E1443ED1EA604D700FCDE02 /* DeviceMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1443EC1EA604D700FCDE02 /* DeviceMessageModel.m */; };
+		1E1443F21EA6140400FCDE02 /* my.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1443F11EA6140400FCDE02 /* my.caf */; };
+		1E1443F41EA6F59E00FCDE02 /* 12718.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1443F31EA6F59E00FCDE02 /* 12718.caf */; };
+		1E1443F71EA6FA1200FCDE02 /* LovelyFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1443F61EA6FA1200FCDE02 /* LovelyFaceViewController.m */; };
 		1E3949CA1E8C964C00BB346F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1EC967B41E961D3C00667EC7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC967B21E961D3C00667EC7 /* LoginViewController.m */; };
 		1EC967B51E961D3C00667EC7 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC967B31E961D3C00667EC7 /* LoginViewController.xib */; };
@@ -128,14 +147,6 @@
 		5F9C3D031E63C0CB009659E4 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3CFA1E63C0CB009659E4 /* SDCollectionViewCell.m */; };
 		5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3CFC1E63C0CB009659E4 /* SDCycleScrollView.m */; };
 		5F9C3D051E63C0CB009659E4 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3CFE1E63C0CB009659E4 /* UIView+SDExtension.m */; };
-		5F9C3D0F1E63C669009659E4 /* cycle_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D071E63C669009659E4 /* cycle_01.jpg */; };
-		5F9C3D101E63C669009659E4 /* cycle_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D081E63C669009659E4 /* cycle_02.jpg */; };
-		5F9C3D111E63C669009659E4 /* cycle_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D091E63C669009659E4 /* cycle_03.jpg */; };
-		5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D0A1E63C669009659E4 /* cycle_04.jpg */; };
-		5F9C3D131E63C669009659E4 /* cycle_05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D0B1E63C669009659E4 /* cycle_05.jpg */; };
-		5F9C3D141E63C669009659E4 /* cycle_06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D0C1E63C669009659E4 /* cycle_06.jpg */; };
-		5F9C3D151E63C669009659E4 /* cycle_07.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D0D1E63C669009659E4 /* cycle_07.jpg */; };
-		5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F9C3D0E1E63C669009659E4 /* cycle_08.jpg */; };
 		5F9CE2DB1E84EFB700424352 /* SearchHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2D91E84EFB700424352 /* SearchHeaderCell.m */; };
 		5F9CE2DC1E84EFB700424352 /* SearchHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CE2DA1E84EFB700424352 /* SearchHeaderCell.xib */; };
 		5F9CE2E01E88ACC000424352 /* GetHomeFreeCourseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE2DF1E88ACC000424352 /* GetHomeFreeCourseApi.m */; };
@@ -349,17 +360,44 @@
 		18AC3B871E729B40007EE823 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18F7F2BA1E836ACD00DE6218 /* NSString+YFString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YFString.h"; sourceTree = "<group>"; };
 		18F7F2BB1E836ACD00DE6218 /* NSString+YFString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YFString.m"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		1E0141FB1E84C553004D3957 /* CarouselCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselCellInfo.h; sourceTree = "<group>"; };
 		1E0141FC1E84C553004D3957 /* CarouselCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselCellInfo.m; sourceTree = "<group>"; };
 		1E0141FD1E84C553004D3957 /* CarouselSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselSubview.h; sourceTree = "<group>"; };
 		1E0141FE1E84C553004D3957 /* CarouselSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselSubview.m; sourceTree = "<group>"; };
 		1E0141FF1E84C553004D3957 /* ImageCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCarouselView.h; sourceTree = "<group>"; };
 		1E0142001E84C553004D3957 /* ImageCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCarouselView.m; sourceTree = "<group>"; };
+=======
+		1E1443861E9B576300FCDE02 /* VideoDetailTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailTitleCell.h; sourceTree = "<group>"; };
+		1E1443871E9B576300FCDE02 /* VideoDetailTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailTitleCell.m; sourceTree = "<group>"; };
+		1E1443881E9B576300FCDE02 /* VideoDetailTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDetailTitleCell.xib; sourceTree = "<group>"; };
+		1E14438B1E9B591400FCDE02 /* VideoDetailTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailTextCell.h; sourceTree = "<group>"; };
+		1E14438C1E9B591400FCDE02 /* VideoDetailTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailTextCell.m; sourceTree = "<group>"; };
+		1E14438D1E9B591400FCDE02 /* VideoDetailTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDetailTextCell.xib; sourceTree = "<group>"; };
+		1E1443901E9B59B500FCDE02 /* VideoDetailToolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailToolCell.h; sourceTree = "<group>"; };
+		1E1443911E9B59B500FCDE02 /* VideoDetailToolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailToolCell.m; sourceTree = "<group>"; };
+		1E1443921E9B59B500FCDE02 /* VideoDetailToolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDetailToolCell.xib; sourceTree = "<group>"; };
+		1E1443951E9B63F200FCDE02 /* VideoTeacherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTeacherCell.h; sourceTree = "<group>"; };
+		1E1443961E9B63F200FCDE02 /* VideoTeacherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTeacherCell.m; sourceTree = "<group>"; };
+		1E1443971E9B63F200FCDE02 /* VideoTeacherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTeacherCell.xib; sourceTree = "<group>"; };
+>>>>>>> origin/master
 		1E14439A1E9B80B200FCDE02 /* GetSMsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSMsApi.h; sourceTree = "<group>"; };
 		1E14439B1E9B80B200FCDE02 /* GetSMsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSMsApi.m; sourceTree = "<group>"; };
 		1E14439D1E9B86B900FCDE02 /* LoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginApi.h; sourceTree = "<group>"; };
 		1E14439E1E9B86B900FCDE02 /* LoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginApi.m; sourceTree = "<group>"; };
 		1E1443A01E9C6A9E00FCDE02 /* Zimu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zimu.entitlements; sourceTree = "<group>"; };
+		1E1443DE1EA5DE4000FCDE02 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
+		1E1443DF1EA5DE4000FCDE02 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		1E1443E11EA5DFE800FCDE02 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		1E1443E31EA5DFFF00FCDE02 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		1E1443E81EA5E18F00FCDE02 /* UMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessageManager.h; sourceTree = "<group>"; };
+		1E1443E91EA5E18F00FCDE02 /* UMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMessageManager.m; sourceTree = "<group>"; };
+		1E1443EB1EA604D700FCDE02 /* DeviceMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceMessageModel.h; sourceTree = "<group>"; };
+		1E1443EC1EA604D700FCDE02 /* DeviceMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageModel.m; sourceTree = "<group>"; };
+		1E1443F11EA6140400FCDE02 /* my.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = my.caf; path = ../my.caf; sourceTree = "<group>"; };
+		1E1443F31EA6F59E00FCDE02 /* 12718.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 12718.caf; sourceTree = "<group>"; };
+		1E1443F51EA6FA1200FCDE02 /* LovelyFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LovelyFaceViewController.h; path = "Zimu/Classes/Other--其他/LovelyFaceViewController.h"; sourceTree = SOURCE_ROOT; };
+		1E1443F61EA6FA1200FCDE02 /* LovelyFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LovelyFaceViewController.m; path = "Zimu/Classes/Other--其他/LovelyFaceViewController.m"; sourceTree = SOURCE_ROOT; };
 		1EC967B11E961D3C00667EC7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		1EC967B21E961D3C00667EC7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1EC967B31E961D3C00667EC7 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -493,14 +531,6 @@
 		5F9C3CFC1E63C0CB009659E4 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		5F9C3CFD1E63C0CB009659E4 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		5F9C3CFE1E63C0CB009659E4 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
-		5F9C3D071E63C669009659E4 /* cycle_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_01.jpg; sourceTree = "<group>"; };
-		5F9C3D081E63C669009659E4 /* cycle_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_02.jpg; sourceTree = "<group>"; };
-		5F9C3D091E63C669009659E4 /* cycle_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_03.jpg; sourceTree = "<group>"; };
-		5F9C3D0A1E63C669009659E4 /* cycle_04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_04.jpg; sourceTree = "<group>"; };
-		5F9C3D0B1E63C669009659E4 /* cycle_05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_05.jpg; sourceTree = "<group>"; };
-		5F9C3D0C1E63C669009659E4 /* cycle_06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_06.jpg; sourceTree = "<group>"; };
-		5F9C3D0D1E63C669009659E4 /* cycle_07.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_07.jpg; sourceTree = "<group>"; };
-		5F9C3D0E1E63C669009659E4 /* cycle_08.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cycle_08.jpg; sourceTree = "<group>"; };
 		5F9CE2D81E84EFB700424352 /* SearchHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHeaderCell.h; sourceTree = "<group>"; };
 		5F9CE2D91E84EFB700424352 /* SearchHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHeaderCell.m; sourceTree = "<group>"; };
 		5F9CE2DA1E84EFB700424352 /* SearchHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeaderCell.xib; sourceTree = "<group>"; };
@@ -770,6 +800,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1443E41EA5DFFF00FCDE02 /* libz.tbd in Frameworks */,
+				1E1443E21EA5DFE800FCDE02 /* UserNotifications.framework in Frameworks */,
 				5FAED54E1E95003400E295AC /* Accelerate.framework in Frameworks */,
 				18AC3B881E729B40007EE823 /* UIKit.framework in Frameworks */,
 				18AC3B2D1E6D62F8007EE823 /* SystemConfiguration.framework in Frameworks */,
@@ -781,6 +813,7 @@
 				18AC3B7C1E729B0F007EE823 /* CoreGraphics.framework in Frameworks */,
 				18AC3B7A1E729B06007EE823 /* CoreFoundation.framework in Frameworks */,
 				18AC3B781E729AFC007EE823 /* CFNetwork.framework in Frameworks */,
+				1E1443E01EA5DE4000FCDE02 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				18AC3B2B1E6D3EF8007EE823 /* MediaPlayer.framework in Frameworks */,
 				5F8EDD371E6E81A5000FC3E0 /* libicucore.tbd in Frameworks */,
 				5F8EDD351E6E817F000FC3E0 /* CoreText.framework in Frameworks */,
@@ -881,17 +914,73 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		1E0141FA1E84C553004D3957 /* ThreeCycleView */ = {
+=======
+		18C7E6E31E65092900E62757 /* Video--视频 */ = {
 			isa = PBXGroup;
 			children = (
-				1E0141FB1E84C553004D3957 /* CarouselCellInfo.h */,
-				1E0141FC1E84C553004D3957 /* CarouselCellInfo.m */,
-				1E0141FD1E84C553004D3957 /* CarouselSubview.h */,
-				1E0141FE1E84C553004D3957 /* CarouselSubview.m */,
-				1E0141FF1E84C553004D3957 /* ImageCarouselView.h */,
-				1E0142001E84C553004D3957 /* ImageCarouselView.m */,
+				18C7E6E41E65094F00E62757 /* HomeVideoViewController.h */,
+				18C7E6E51E65094F00E62757 /* HomeVideoViewController.m */,
+				18C7E70F1E67AF4100E62757 /* HomeVideoDetailViewController.h */,
+				18C7E7101E67AF4100E62757 /* HomeVideoDetailViewController.m */,
 			);
-			path = ThreeCycleView;
+			path = "Video--视频";
+			sourceTree = "<group>";
+		};
+		18C7E6E71E6511B300E62757 /* video--视频 */ = {
+			isa = PBXGroup;
+			children = (
+				5FCFEF241EA5AEE0003788A0 /* CourseHotListCell.h */,
+				5FCFEF251EA5AEE0003788A0 /* CourseHotListCell.m */,
+				5FCFEF261EA5AEE0003788A0 /* CourseHotListCell.xib */,
+				5FCFEF211EA5AEA4003788A0 /* CourseHotListView.h */,
+				5FCFEF221EA5AEA4003788A0 /* CourseHotListView.m */,
+				5FCFEF1C1EA5AE88003788A0 /* SubscreibeReadFreeHeadCell.h */,
+				5FCFEF1D1EA5AE88003788A0 /* SubscreibeReadFreeHeadCell.m */,
+				5FCFEF1E1EA5AE88003788A0 /* SubscreibeReadFreeHeadCell.xib */,
+				18C7E7011E6528AF00E62757 /* HomeVideoListCollectionView.h */,
+				18C7E7021E6528AF00E62757 /* HomeVideoListCollectionView.m */,
+				18C7E7041E655A1500E62757 /* SubjectCourseListView.h */,
+				18C7E7051E655A1500E62757 /* SubjectCourseListView.m */,
+				18C7E6ED1E6512A200E62757 /* SubjectListCell.h */,
+				18C7E6EE1E6512A200E62757 /* SubjectListCell.m */,
+				18C7E6EF1E6512A200E62757 /* SubjectListCell.xib */,
+				18C7E6F21E6512C200E62757 /* SectionTitleCell.h */,
+				18C7E6F31E6512C200E62757 /* SectionTitleCell.m */,
+				18C7E6F41E6512C200E62757 /* SectionTitleCell.xib */,
+				18C7E6F71E6512F900E62757 /* VideoListCell.h */,
+				18C7E6F81E6512F900E62757 /* VideoListCell.m */,
+				18C7E6F91E6512F900E62757 /* VideoListCell.xib */,
+				18C7E6FC1E65135500E62757 /* SectionFootCell.h */,
+				18C7E6FD1E65135500E62757 /* SectionFootCell.m */,
+				18C7E6FE1E65135500E62757 /* SectionFootCell.xib */,
+				18AC3AF41E67E72D007EE823 /* HomeVideoDeatilView.h */,
+				18AC3AF51E67E72D007EE823 /* HomeVideoDeatilView.m */,
+				1E1443861E9B576300FCDE02 /* VideoDetailTitleCell.h */,
+				1E1443871E9B576300FCDE02 /* VideoDetailTitleCell.m */,
+				1E1443881E9B576300FCDE02 /* VideoDetailTitleCell.xib */,
+				1E14438B1E9B591400FCDE02 /* VideoDetailTextCell.h */,
+				1E14438C1E9B591400FCDE02 /* VideoDetailTextCell.m */,
+				1E14438D1E9B591400FCDE02 /* VideoDetailTextCell.xib */,
+				1E1443901E9B59B500FCDE02 /* VideoDetailToolCell.h */,
+				1E1443911E9B59B500FCDE02 /* VideoDetailToolCell.m */,
+				1E1443921E9B59B500FCDE02 /* VideoDetailToolCell.xib */,
+				1E1443951E9B63F200FCDE02 /* VideoTeacherCell.h */,
+				1E1443961E9B63F200FCDE02 /* VideoTeacherCell.m */,
+				1E1443971E9B63F200FCDE02 /* VideoTeacherCell.xib */,
+			);
+			path = "video--视频";
+			sourceTree = "<group>";
+		};
+		1E1443DD1EA5DE4000FCDE02 /* UMessage_Sdk_1.5.0a */ = {
+>>>>>>> origin/master
+			isa = PBXGroup;
+			children = (
+				1E1443DE1EA5DE4000FCDE02 /* libUMessage_Sdk_1.5.0a.a */,
+				1E1443DF1EA5DE4000FCDE02 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.5.0a;
 			sourceTree = "<group>";
 		};
 		49EDFC34B92567266CE5ABA9 /* Pods */ = {
@@ -1009,6 +1098,8 @@
 		5F9C3C671E5E802C009659E4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1E1443F31EA6F59E00FCDE02 /* 12718.caf */,
+				1E1443F11EA6140400FCDE02 /* my.caf */,
 				5F9C3CE01E62CC6C009659E4 /* Tool--工具 */,
 				5F9CE2DD1E88A88D00424352 /* Api--接口 */,
 				5F9C3C7F1E5E802C009659E4 /* Other--其他 */,
@@ -1073,6 +1164,8 @@
 			children = (
 				5F9C3C801E5E802C009659E4 /* AppDelegate.h */,
 				5F9C3C811E5E802C009659E4 /* AppDelegate.m */,
+				1E1443E81EA5E18F00FCDE02 /* UMessageManager.h */,
+				1E1443E91EA5E18F00FCDE02 /* UMessageManager.m */,
 				5FAED53B1E94D5D700E295AC /* Payment--支付相关 */,
 				5F9C3C951E5EB6A4009659E4 /* Category */,
 				5F9C3C981E5EB6A4009659E4 /* Controller */,
@@ -1134,12 +1227,11 @@
 		5F9C3CE01E62CC6C009659E4 /* Tool--工具 */ = {
 			isa = PBXGroup;
 			children = (
-				1E0141FA1E84C553004D3957 /* ThreeCycleView */,
+				1E1443DD1EA5DE4000FCDE02 /* UMessage_Sdk_1.5.0a */,
 				5FEB305C1E793D0200B34CC7 /* NSTimer+EOCBlocksSupport.h */,
 				5FEB305D1E793D0200B34CC7 /* NSTimer+EOCBlocksSupport.m */,
 				5F5EB6691E9CB0B700503455 /* YXSliderBar */,
 				18AC3B2E1E6FA075007EE823 /* ZFPlayer */,
-				5F9C3D061E63C669009659E4 /* Cycle */,
 				5F9C3CEF1E63C0CB009659E4 /* SDCycleScrollView */,
 				5FDCB4881E7FAF85003914D1 /* ZLSwipeableView */,
 				5FAED5371E94D50000E295AC /* SnailQuickMaskPopups */,
@@ -1156,6 +1248,8 @@
 				18AC3B6C1E71279A007EE823 /* NetWorkStatuesManager.m */,
 				18F7F2BA1E836ACD00DE6218 /* NSString+YFString.h */,
 				18F7F2BB1E836ACD00DE6218 /* NSString+YFString.m */,
+				1E1443EB1EA604D700FCDE02 /* DeviceMessageModel.h */,
+				1E1443EC1EA604D700FCDE02 /* DeviceMessageModel.m */,
 			);
 			path = "Tool--工具";
 			sourceTree = "<group>";
@@ -1187,21 +1281,6 @@
 				5F9C3CF81E63C0CB009659E4 /* TAPageControl.m */,
 			);
 			path = PageControl;
-			sourceTree = "<group>";
-		};
-		5F9C3D061E63C669009659E4 /* Cycle */ = {
-			isa = PBXGroup;
-			children = (
-				5F9C3D071E63C669009659E4 /* cycle_01.jpg */,
-				5F9C3D081E63C669009659E4 /* cycle_02.jpg */,
-				5F9C3D091E63C669009659E4 /* cycle_03.jpg */,
-				5F9C3D0A1E63C669009659E4 /* cycle_04.jpg */,
-				5F9C3D0B1E63C669009659E4 /* cycle_05.jpg */,
-				5F9C3D0C1E63C669009659E4 /* cycle_06.jpg */,
-				5F9C3D0D1E63C669009659E4 /* cycle_07.jpg */,
-				5F9C3D0E1E63C669009659E4 /* cycle_08.jpg */,
-			);
-			path = Cycle;
 			sourceTree = "<group>";
 		};
 		5F9CE2DD1E88A88D00424352 /* Api--接口 */ = {
@@ -1526,6 +1605,8 @@
 		5FCFEF971EA5B601003788A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1E1443F51EA6FA1200FCDE02 /* LovelyFaceViewController.h */,
+				1E1443F61EA6FA1200FCDE02 /* LovelyFaceViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1837,6 +1918,8 @@
 		A408D73709D2BEB81BB564F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E1443E31EA5DFFF00FCDE02 /* libz.tbd */,
+				1E1443E11EA5DFE800FCDE02 /* UserNotifications.framework */,
 				5FAED54D1E95003400E295AC /* Accelerate.framework */,
 				18AC3B871E729B40007EE823 /* UIKit.framework */,
 				18AC3B851E729B33007EE823 /* Security.framework */,
@@ -1980,6 +2063,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FEA2AA01E8B4C4300405F75 /* CityCourseHeaderCell.xib in Resources */,
+<<<<<<< HEAD
 				5F9C3D141E63C669009659E4 /* cycle_06.jpg in Resources */,
 				5FCFF0431EA60A25003788A0 /* SectionTitleCell.xib in Resources */,
 				5FCFF02F1EA60A25003788A0 /* FMDetailHotCell.xib in Resources */,
@@ -1990,6 +2074,12 @@
 				5FCFF03C1EA60A25003788A0 /* CourseHotListCell.xib in Resources */,
 				5FCFF0281EA60A25003788A0 /* FMDeatilCommentCell.xib in Resources */,
 				5F9C3D111E63C669009659E4 /* cycle_03.jpg in Resources */,
+=======
+				5FDCB4801E7F688F003914D1 /* SectionTitleCell.m in Resources */,
+				18C7E6FB1E6512F900E62757 /* VideoListCell.xib in Resources */,
+				5F2D62681E77FD7800B038A5 /* DynamicTextCell.xib in Resources */,
+				5FCFEF281EA5AEE1003788A0 /* CourseHotListCell.xib in Resources */,
+>>>>>>> origin/master
 				5F2D62371E77C36500B038A5 /* EntranceCell.xib in Resources */,
 				18AC3B591E6FA075007EE823 /* ZFPlayer.bundle in Resources */,
 				5FCFEFAA1EA5B66F003788A0 /* OpenCourseVideoCell.xib in Resources */,
@@ -1999,31 +2089,47 @@
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
 				1E3949CA1E8C964C00BB346F /* (null) in Resources */,
 				5FCFEF0D1EA47787003788A0 /* HomeCollectionViewCell.xib in Resources */,
+<<<<<<< HEAD
 				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
 				5FCFF0531EA60A25003788A0 /* VideoListCell.xib in Resources */,
+=======
+				5FEA2AF01E8E438C00405F75 /* FMDetailOtherFMHeaderCell.xib in Resources */,
+>>>>>>> origin/master
 				5FAED5491E94D88900E295AC /* PaymentChannelCell.xib in Resources */,
+				1E1443F21EA6140400FCDE02 /* my.caf in Resources */,
 				5FAED5311E94819800E295AC /* ListenHeartBannerCell.xib in Resources */,
-				5F9C3D121E63C669009659E4 /* cycle_04.jpg in Resources */,
 				5F2D62531E77DFDA00B038A5 /* ExamFreeFMCell.xib in Resources */,
 				5F9CE2DC1E84EFB700424352 /* SearchHeaderCell.xib in Resources */,
 				5F5665C51E9E8ED30050AD29 /* CityCourseDetailInfoCell.xib in Resources */,
 				5F9C3C901E5E80AC009659E4 /* Info.plist in Resources */,
 				5FCFF04B1EA60A25003788A0 /* TrainningNormalCell.xib in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
+<<<<<<< HEAD
 				5F9C3D151E63C669009659E4 /* cycle_07.jpg in Resources */,
+=======
+				5FEA2AE11E8E38AD00405F75 /* FMDetailHotCell.xib in Resources */,
+				1E1443941E9B59B500FCDE02 /* VideoDetailToolCell.xib in Resources */,
+>>>>>>> origin/master
 				5FEA2A9B1E8B4B8300405F75 /* CityCourseCell.xib in Resources */,
 				5FCFEF1B1EA5AE5A003788A0 /* HeaderTitleCell.xib in Resources */,
 				5FCFEFAD1EA5B66F003788A0 /* OpenCourseVideoCollectionViewCell.xib in Resources */,
 				1EC967B51E961D3C00667EC7 /* LoginViewController.xib in Resources */,
 				5FCFF0511EA60A25003788A0 /* VideoDetailToolCell.xib in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
+<<<<<<< HEAD
 				5FCFF0411EA60A25003788A0 /* SectionFootCell.xib in Resources */,
 				5F9C3D161E63C669009659E4 /* cycle_08.jpg in Resources */,
+=======
+>>>>>>> origin/master
 				5FEB30371E78DDA600B34CC7 /* ListenHeartTutorCell.xib in Resources */,
-				5F9C3D131E63C669009659E4 /* cycle_05.jpg in Resources */,
 				5F5665CD1E9F0D000050AD29 /* CityCourseDetailHeaderCell.xib in Resources */,
 				5FCFF02A1EA60A25003788A0 /* FMDetailAuthorCell.xib in Resources */,
 				5F8EDD4F1E6EA5B2000FC3E0 /* FMTableViewCell.xib in Resources */,
+<<<<<<< HEAD
+=======
+				1E1443F41EA6F59E00FCDE02 /* 12718.caf in Resources */,
+				5FEA2AEB1E8E3F4900405F75 /* FMDetailAuthorCell.xib in Resources */,
+>>>>>>> origin/master
 				5F8EDD4A1E6EA01C000FC3E0 /* CourseTableViewCell.xib in Resources */,
 				5FCFF0461EA60A25003788A0 /* SubjectListCell.xib in Resources */,
 				5FCFEFB81EA5C0BA003788A0 /* FindListCell.xib in Resources */,
@@ -2038,8 +2144,11 @@
 				5FCFF04F1EA60A25003788A0 /* VideoDetailTitleCell.xib in Resources */,
 				5FAED5361E948ACF00E295AC /* ListenHeartDynamicCell.xib in Resources */,
 				5F2D62411E77D12700B038A5 /* ExamAnswerCell.xib in Resources */,
+<<<<<<< HEAD
 				5F9C3D0F1E63C669009659E4 /* cycle_01.jpg in Resources */,
 				5FCFF0481EA60A25003788A0 /* SubscreibeReadFreeHeadCell.xib in Resources */,
+=======
+>>>>>>> origin/master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2171,8 +2280,11 @@
 				5F8EDD2A1E6E5695000FC3E0 /* QuestionTableViewCell.m in Sources */,
 				18F7F2BC1E836ACD00DE6218 /* NSString+YFString.m in Sources */,
 				5FCFEFA81EA5B66F003788A0 /* OpenCourseTableView.m in Sources */,
+<<<<<<< HEAD
 				5FCFF04E1EA60A25003788A0 /* VideoDetailTitleCell.m in Sources */,
 				1E0142021E84C553004D3957 /* CarouselSubview.m in Sources */,
+=======
+>>>>>>> origin/master
 				5FABE62B1E8A3D7A00FE8A33 /* HomeFMModel.m in Sources */,
 				5F9C3C9D1E5EB6A4009659E4 /* ZMTabBar.m in Sources */,
 				5FCFF0541EA60A25003788A0 /* VideoTeacherCell.m in Sources */,
@@ -2185,6 +2297,12 @@
 				5FCFF02E1EA60A25003788A0 /* FMDetailHotCell.m in Sources */,
 				5FCFF04C1EA60A25003788A0 /* VideoDetailTextCell.m in Sources */,
 				5F8EDD3D1E6E8FEB000FC3E0 /* ArticleTableViewCell.m in Sources */,
+<<<<<<< HEAD
+=======
+				1E1443EA1EA5E18F00FCDE02 /* UMessageManager.m in Sources */,
+				18C7E6F01E6512A200E62757 /* SubjectListCell.m in Sources */,
+				5FEA2AEF1E8E438C00405F75 /* FMDetailOtherFMHeaderCell.m in Sources */,
+>>>>>>> origin/master
 				5F9C3C911E5E80AC009659E4 /* main.m in Sources */,
 				5F9C3CA31E5EB7B5009659E4 /* BaseNavigationController.m in Sources */,
 				5FE200851E66D02F0021DD27 /* RecommendSearchTableViewController.m in Sources */,
@@ -2204,6 +2322,11 @@
 				1E14439F1E9B86B900FCDE02 /* LoginApi.m in Sources */,
 				5F2D622F1E77BBC000B038A5 /* ExamApplyViewController.m in Sources */,
 				5F2D62491E77D49600B038A5 /* ExamFreeVideoCollectionView.m in Sources */,
+<<<<<<< HEAD
+=======
+				5FEA2AFC1E8F900100405F75 /* FMDetailCommentHeaderCell.m in Sources */,
+				1E1443F71EA6FA1200FCDE02 /* LovelyFaceViewController.m in Sources */,
+>>>>>>> origin/master
 				5FAED5C41E9B738500E295AC /* AnimationContoller.m in Sources */,
 				5F9C3CEE1E63209B009659E4 /* ODRefreshControl.m in Sources */,
 				5FDCB4521E7A8638003914D1 /* QANiceQuestionCellLayout.m in Sources */,
@@ -2246,8 +2369,12 @@
 				5FCFEFD51EA60A17003788A0 /* HomeVideoViewController.m in Sources */,
 				5F8EDD301E6E7EED000FC3E0 /* WXLabel.m in Sources */,
 				5F2D624D1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.m in Sources */,
-				1E0142031E84C553004D3957 /* ImageCarouselView.m in Sources */,
 				5FABE6021E890E2B00FE8A33 /* GetHomeFmApi.m in Sources */,
+<<<<<<< HEAD
+=======
+				1E1443ED1EA604D700FCDE02 /* DeviceMessageModel.m in Sources */,
+				1E14438E1E9B591400FCDE02 /* VideoDetailTextCell.m in Sources */,
+>>>>>>> origin/master
 				5FCFEF161EA5AE0A003788A0 /* ListSelectButton.m in Sources */,
 				5FCFF03A1EA60A25003788A0 /* ZimuAudioPlayer.m in Sources */,
 				5FCFF0391EA60A25003788A0 /* SampleQueueId.m in Sources */,
@@ -2284,7 +2411,6 @@
 				5FEA2AA91E8B9C5000405F75 /* GetHomeRecommendArticleApi.m in Sources */,
 				5FCFF03E1EA60A25003788A0 /* HomeVideoDeatilView.m in Sources */,
 				5FEA2AB41E8CA39400405F75 /* FreeCertificateViewController.m in Sources */,
-				1E0142011E84C553004D3957 /* CarouselCellInfo.m in Sources */,
 				5F2D62671E77FD7800B038A5 /* DynamicTextCell.m in Sources */,
 				18AC3B5A1E6FA075007EE823 /* ZFPlayerControlView.m in Sources */,
 				18AC3B5C1E6FA075007EE823 /* ZFPlayerView.m in Sources */,
@@ -2449,6 +2575,10 @@
 				INFOPLIST_FILE = Zimu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Zimu/Classes/Tool--工具/UMessage_Sdk_1.5.0a",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.Zimu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2469,6 +2599,10 @@
 				INFOPLIST_FILE = Zimu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Zimu/Classes/Tool--工具/UMessage_Sdk_1.5.0a",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zimu.Zimu;
 				PRODUCT_NAME = "$(TARGET_NAME)";

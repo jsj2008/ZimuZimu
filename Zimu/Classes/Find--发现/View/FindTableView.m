@@ -62,6 +62,7 @@ static NSString *listIdentifier = @"FindListCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.titleString = @"如何让他变得更加乐观向上爱与人交流爱与人分享";
+<<<<<<< HEAD
     cell.bgImageString = [NSString stringWithFormat:@"find_list%li",(indexPath.row + 1)%3 + 1];
     switch (indexPath.row) {
         case 0:
@@ -87,6 +88,9 @@ static NSString *listIdentifier = @"FindListCell";
             cell.countString = @" 3000";
             break;
     }
+=======
+    cell.bgImageString = [NSString stringWithFormat:@"find_"];
+>>>>>>> origin/master
     
     return cell;
 }
