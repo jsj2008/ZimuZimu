@@ -20,7 +20,7 @@
 @implementation SettingView
 
 + (instancetype)showToView:(UIView *)view{
-    SettingView *settingView = [[self alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    SettingView *settingView = [[self alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
     [view addSubview:settingView];
     [settingView animation];
     
