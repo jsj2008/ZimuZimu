@@ -17,5 +17,6 @@ pod 'YTKNetwork'
 pod 'WHC_Model'
 pod 'pop','~>1.0'
 pod 'StreamingKit'
+pod 'SVProgressHUD', '~> 2.0.3'
 
 end
