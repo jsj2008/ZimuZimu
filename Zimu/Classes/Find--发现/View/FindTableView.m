@@ -66,25 +66,25 @@ static NSString *listIdentifier = @"FindListCell";
     switch (indexPath.row) {
         case 0:
             cell.findCellType = FindCellTypeArticle;
-            cell.countString = @" 1000";
+            cell.countString = @"1000";
             break;
             
         case 1:
             cell.findCellType = FindCellTypeVideo;
-            cell.countString = @" 1500";
+            cell.countString = @"1500";
             break;
             
         case 2:
             cell.findCellType = FindCellTypeFM;
-            cell.countString = @" 2000";
+            cell.countString = @"2000";
             break;
         case 3:
             cell.findCellType = FindCellTypeVideo;
-            cell.countString = @" 2500";
+            cell.countString = @"2500";
             break;
         case 4:
             cell.findCellType = FindCellTypeFM;
-            cell.countString = @" 3000";
+            cell.countString = @"3000";
             break;
     }
     

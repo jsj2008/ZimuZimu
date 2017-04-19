@@ -76,7 +76,7 @@
 
 - (void)setCountString:(NSString *)countString{
     if (_countString != countString) {
-        _countString = countString;
+        _countString = [NSString stringWithFormat:@" %@",countString];
         [_countButton setTitle:countString forState:UIControlStateNormal];
         [self draw];
     }

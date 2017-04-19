@@ -13,6 +13,8 @@
 #import "OpenCourseViewController.h"
 #import "FindViewController.h"
 #import "ActivityViewController.h"
+#import "MineViewController.h"
+#import "SettingView.h"
 
 @interface HomeViewController ()<CollectionViewDelegate>
 
@@ -167,7 +169,7 @@
     setButton.layer.cornerRadius = setButton.height / 2.0;
     setButton.layer.masksToBounds = YES;
     [setButton setImage:[UIImage imageNamed:@"home_shezhi"] forState:UIControlStateNormal];
-    [setButton addTarget:self action:@selector(transitionAction:) forControlEvents:UIControlEventTouchUpInside];
+    [setButton addTarget:self action:@selector(setButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar addSubview:setButton];
     
     //我的
@@ -177,7 +179,7 @@
     mineButton.layer.cornerRadius = mineButton.height / 2.0;
     mineButton.layer.masksToBounds = YES;
     [mineButton setImage:[UIImage imageNamed:@"home_person"] forState:UIControlStateNormal];
-    [mineButton addTarget:self action:@selector(transitionAction:) forControlEvents:UIControlEventTouchUpInside];
+    [mineButton addTarget:self action:@selector(mineButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar addSubview:mineButton];
     
     //动画
@@ -188,11 +190,20 @@
 }
 
 - (void)transitionAction:(UIButton *)button{
-    _transitionView = button;
     SecondViewController *homeVC = [[SecondViewController alloc]init];
     [self.navigationController pushViewController:homeVC animated:YES];
 }
 
+/*我的*/
+- (void)mineButtonAction{
+    MineViewController *mineVC = [[MineViewController alloc]init];
+    [self.navigationController pushViewController:mineVC animated:YES];
+}
+
+/*设置*/
+- (void)setButtonAction{
+    [SettingView showToView:self.view];
+}
 
 
 

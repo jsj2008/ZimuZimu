@@ -11,7 +11,11 @@
 
 static NSString *identifier = @"ActivityListCell";
 
-@interface ActivityTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface ActivityTableView ()<UITableViewDelegate, UITableViewDataSource>{
+    NSArray *_titleArray;
+    NSArray *_priceArray;
+    NSArray *_bgImageArray;
+}
 
 @end
 
@@ -26,7 +30,11 @@ static NSString *identifier = @"ActivityListCell";
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        [self registerNib:[UINib nibWithNibName:@"FindListCell" bundle:nil] forCellReuseIdentifier:identifier];
+        [self registerNib:[UINib nibWithNibName:@"ActivityListCell" bundle:nil] forCellReuseIdentifier:identifier];
+        
+        _titleArray = @[@"亲子共学团", @"家庭幸福助力成长", @"子慕幸福合伙人计划",@"温柔教养"];
+        _priceArray = @[@"500",@"2680",@"8800",@"12880"];
+        _bgImageArray = @[@"activity_list1",@"activity_list2",@"activity_list3",@"activity_list1"];
         
     }
     return self;
@@ -37,7 +45,7 @@ static NSString *identifier = @"ActivityListCell";
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -45,33 +53,10 @@ static NSString *identifier = @"ActivityListCell";
     ActivityListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-//    cell.titleString = @"如何让他变得更加乐观向上爱与人交流爱与人分享";
-//    cell.bgImageString = [NSString stringWithFormat:@"find_list%li",(indexPath.row + 1)%3 + 1];
-//    switch (indexPath.row) {
-//        case 0:
-//            cell.findCellType = FindCellTypeArticle;
-//            cell.countString = @" 1000";
-//            break;
-//            
-//        case 1:
-//            cell.findCellType = FindCellTypeVideo;
-//            cell.countString = @" 1500";
-//            break;
-//            
-//        case 2:
-//            cell.findCellType = FindCellTypeFM;
-//            cell.countString = @" 2000";
-//            break;
-//        case 3:
-//            cell.findCellType = FindCellTypeVideo;
-//            cell.countString = @" 2500";
-//            break;
-//        case 4:
-//            cell.findCellType = FindCellTypeFM;
-//            cell.countString = @" 3000";
-//            break;
-//    }
-//    
+    cell.titleString = _titleArray[indexPath.row];
+    cell.priceString = _priceArray[indexPath.row];
+    cell.bgImageString = _bgImageArray[indexPath.row];
+    
     return cell;
 }
 

@@ -10,4 +10,8 @@
 
 @interface ActivityListCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *titleString;
+@property (nonatomic, copy) NSString *priceString;
+@property (nonatomic, copy) NSString *bgImageString;
+
 @end
