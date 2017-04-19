@@ -12,6 +12,7 @@
 
 #import "OpenCourseViewController.h"
 #import "FindViewController.h"
+#import "ActivityViewController.h"
 
 @interface HomeViewController ()<CollectionViewDelegate>
 
@@ -94,14 +95,13 @@
         
     } completion:^(BOOL finished) {
         if (indexPath.row == 3) {               //活动报名
-            
+            ActivityViewController *activityVC = [[ActivityViewController alloc]init];
+            [self.navigationController pushViewController:activityVC animated:YES];
         }else if (indexPath.row == 4){          //公开课
             OpenCourseViewController *openCourseVC = [[OpenCourseViewController alloc]init];
-            openCourseVC.naviColor = _transitionView.backgroundColor;
             [self.navigationController pushViewController:openCourseVC animated:NO];
         }else if (indexPath.row == 5){          //发现更多
             FindViewController *findVC = [[FindViewController alloc]init];
-            findVC.naviColor = _transitionView.backgroundColor;
             [self.navigationController pushViewController:findVC animated:NO];
         }else{
             SecondViewController *secondVC = [[SecondViewController alloc]init];
@@ -110,24 +110,17 @@
         }
         
     }];
-    [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        _transitionCoverView.center = CGPointMake(kScreenWidth/2.0, 64/2.0);
-        _transitionCoverView.transform = CGAffineTransformScale(_transitionCoverView.transform, 0.5, 0.5);
-        _transitionView.frame = CGRectMake(0, 0, kScreenWidth, 64);
-    } completion:^(BOOL finished) {
-//        [_transitionCoverView removeFromSuperview];
-//        _transitionCoverView = nil;
-    }];
-    [UIView animateWithDuration:0.3 delay:1.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.5 delay:0.6 options:UIViewAnimationOptionCurveEaseOut animations:^{
         _transitionCoverView.alpha = 0;
         _transitionView.alpha = 0;
+        _transitionCoverView.transform = CGAffineTransformScale(_transitionCoverView.transform, 2, 2);
     } completion:^(BOOL finished) {
         [_transitionView removeFromSuperview];
         _transitionView = nil;
         [_transitionCoverView removeFromSuperview];
         _transitionCoverView = nil;
-
     }];
+
     
 }
 

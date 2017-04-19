@@ -10,6 +10,5 @@
 
 @interface FindViewController : UIViewController
 
-@property (nonatomic, strong) UIColor *naviColor;
 
 @end

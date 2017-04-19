@@ -25,7 +25,8 @@
     
     self.title = @"公开课程";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:_naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.view.backgroundColor = themeWhite;
     

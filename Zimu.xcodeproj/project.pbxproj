@@ -241,6 +241,10 @@
 		5FCFF0531EA60A25003788A0 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCFF0221EA60A25003788A0 /* VideoListCell.xib */; };
 		5FCFF0541EA60A25003788A0 /* VideoTeacherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0241EA60A25003788A0 /* VideoTeacherCell.m */; };
 		5FCFF0551EA60A25003788A0 /* VideoTeacherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCFF0251EA60A25003788A0 /* VideoTeacherCell.xib */; };
+		5FCFF05F1EA707E8003788A0 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF05E1EA707E8003788A0 /* ActivityViewController.m */; };
+		5FCFF0621EA70DC0003788A0 /* ActivityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0611EA70DC0003788A0 /* ActivityTableView.m */; };
+		5FCFF0661EA70F0C003788A0 /* ActivityListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0641EA70F0C003788A0 /* ActivityListCell.m */; };
+		5FCFF0671EA70F0C003788A0 /* ActivityListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCFF0651EA70F0C003788A0 /* ActivityListCell.xib */; };
 		5FDCB43F1E7A6A37003914D1 /* QuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCB43E1E7A6A37003914D1 /* QuestionAnswerViewController.m */; };
 		5FDCB4421E7A6B56003914D1 /* QuestionAnswerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCB4411E7A6B56003914D1 /* QuestionAnswerTableView.m */; };
 		5FDCB4491E7A6C5D003914D1 /* QAPreviousQACell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCB4471E7A6C5D003914D1 /* QAPreviousQACell.m */; };
@@ -686,6 +690,13 @@
 		5FCFF0231EA60A25003788A0 /* VideoTeacherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTeacherCell.h; sourceTree = "<group>"; };
 		5FCFF0241EA60A25003788A0 /* VideoTeacherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTeacherCell.m; sourceTree = "<group>"; };
 		5FCFF0251EA60A25003788A0 /* VideoTeacherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTeacherCell.xib; sourceTree = "<group>"; };
+		5FCFF05D1EA707E8003788A0 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		5FCFF05E1EA707E8003788A0 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		5FCFF0601EA70DC0003788A0 /* ActivityTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableView.h; sourceTree = "<group>"; };
+		5FCFF0611EA70DC0003788A0 /* ActivityTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableView.m; sourceTree = "<group>"; };
+		5FCFF0631EA70F0C003788A0 /* ActivityListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListCell.h; sourceTree = "<group>"; };
+		5FCFF0641EA70F0C003788A0 /* ActivityListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListCell.m; sourceTree = "<group>"; };
+		5FCFF0651EA70F0C003788A0 /* ActivityListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityListCell.xib; sourceTree = "<group>"; };
 		5FDCB43D1E7A6A37003914D1 /* QuestionAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswerViewController.h; sourceTree = "<group>"; };
 		5FDCB43E1E7A6A37003914D1 /* QuestionAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswerViewController.m; sourceTree = "<group>"; };
 		5FDCB4401E7A6B56003914D1 /* QuestionAnswerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswerTableView.h; sourceTree = "<group>"; };
@@ -1013,11 +1024,8 @@
 				5F9CE2DD1E88A88D00424352 /* Api--接口 */,
 				5F9C3C7F1E5E802C009659E4 /* Other--其他 */,
 				5F9C3C751E5E802C009659E4 /* Home--首页 */,
-				5FCFEF961EA5B601003788A0 /* LovelyFace--萌拍 */,
-				5FCFEF8E1EA5B601003788A0 /* Friends--找朋友 */,
-				5FCFEF921EA5B601003788A0 /* Game--游戏 */,
-				5FCFEF801EA5B601003788A0 /* Activity--活动 */,
 				5FCFEF841EA5B601003788A0 /* Course--公开课 */,
+				5FCFF0591EA70733003788A0 /* Activity--活动 */,
 				5FCFEF8A1EA5B601003788A0 /* Find--发现 */,
 			);
 			path = Classes;
@@ -1325,37 +1333,6 @@
 			path = ZimuUITests;
 			sourceTree = "<group>";
 		};
-		5FCFEF801EA5B601003788A0 /* Activity--活动 */ = {
-			isa = PBXGroup;
-			children = (
-				5FCFEF811EA5B601003788A0 /* Controller */,
-				5FCFEF821EA5B601003788A0 /* Model */,
-				5FCFEF831EA5B601003788A0 /* View */,
-			);
-			path = "Activity--活动";
-			sourceTree = "<group>";
-		};
-		5FCFEF811EA5B601003788A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		5FCFEF821EA5B601003788A0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5FCFEF831EA5B601003788A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		5FCFEF841EA5B601003788A0 /* Course--公开课 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1447,99 +1424,6 @@
 				5FCFEFB61EA5C0BA003788A0 /* FindListCell.xib */,
 				5FCFEFD61EA60A25003788A0 /* FM--心灵FM */,
 				5FCFEFFA1EA60A25003788A0 /* video--视频 */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5FCFEF8E1EA5B601003788A0 /* Friends--找朋友 */ = {
-			isa = PBXGroup;
-			children = (
-				5FCFEF8F1EA5B601003788A0 /* Controller */,
-				5FCFEF901EA5B601003788A0 /* Model */,
-				5FCFEF911EA5B601003788A0 /* View */,
-			);
-			path = "Friends--找朋友";
-			sourceTree = "<group>";
-		};
-		5FCFEF8F1EA5B601003788A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		5FCFEF901EA5B601003788A0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5FCFEF911EA5B601003788A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5FCFEF921EA5B601003788A0 /* Game--游戏 */ = {
-			isa = PBXGroup;
-			children = (
-				5FCFEF931EA5B601003788A0 /* Controller */,
-				5FCFEF941EA5B601003788A0 /* Model */,
-				5FCFEF951EA5B601003788A0 /* View */,
-			);
-			path = "Game--游戏";
-			sourceTree = "<group>";
-		};
-		5FCFEF931EA5B601003788A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		5FCFEF941EA5B601003788A0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5FCFEF951EA5B601003788A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5FCFEF961EA5B601003788A0 /* LovelyFace--萌拍 */ = {
-			isa = PBXGroup;
-			children = (
-				5FCFEF971EA5B601003788A0 /* Controller */,
-				5FCFEF981EA5B601003788A0 /* Model */,
-				5FCFEF991EA5B601003788A0 /* View */,
-			);
-			path = "LovelyFace--萌拍";
-			sourceTree = "<group>";
-		};
-		5FCFEF971EA5B601003788A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		5FCFEF981EA5B601003788A0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5FCFEF991EA5B601003788A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1663,6 +1547,44 @@
 				5FCFF0251EA60A25003788A0 /* VideoTeacherCell.xib */,
 			);
 			path = "video--视频";
+			sourceTree = "<group>";
+		};
+		5FCFF0591EA70733003788A0 /* Activity--活动 */ = {
+			isa = PBXGroup;
+			children = (
+				5FCFF05A1EA70733003788A0 /* Controller */,
+				5FCFF05B1EA70733003788A0 /* Model */,
+				5FCFF05C1EA70733003788A0 /* View */,
+			);
+			path = "Activity--活动";
+			sourceTree = "<group>";
+		};
+		5FCFF05A1EA70733003788A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5FCFF05D1EA707E8003788A0 /* ActivityViewController.h */,
+				5FCFF05E1EA707E8003788A0 /* ActivityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FCFF05B1EA70733003788A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5FCFF05C1EA70733003788A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FCFF0601EA70DC0003788A0 /* ActivityTableView.h */,
+				5FCFF0611EA70DC0003788A0 /* ActivityTableView.m */,
+				5FCFF0631EA70F0C003788A0 /* ActivityListCell.h */,
+				5FCFF0641EA70F0C003788A0 /* ActivityListCell.m */,
+				5FCFF0651EA70F0C003788A0 /* ActivityListCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5FDCB43B1E7A699B003914D1 /* QuestionAnswer--试题解答 */ = {
@@ -2011,6 +1933,7 @@
 				5FCFF04B1EA60A25003788A0 /* TrainningNormalCell.xib in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
 				5F9C3D151E63C669009659E4 /* cycle_07.jpg in Resources */,
+				5FCFF0671EA70F0C003788A0 /* ActivityListCell.xib in Resources */,
 				5FEA2A9B1E8B4B8300405F75 /* CityCourseCell.xib in Resources */,
 				5FCFEF1B1EA5AE5A003788A0 /* HeaderTitleCell.xib in Resources */,
 				5FCFEFAD1EA5B66F003788A0 /* OpenCourseVideoCollectionViewCell.xib in Resources */,
@@ -2223,6 +2146,7 @@
 				5FDCB4A61E7FAF85003914D1 /* ZLSwipeableViewSwipeOptions.m in Sources */,
 				5FABE6281E8A3CC100FE8A33 /* HomeNotFreeCourseModel.m in Sources */,
 				5FCFF0491EA60A25003788A0 /* TrainningDeatailView.m in Sources */,
+				5FCFF0621EA70DC0003788A0 /* ActivityTableView.m in Sources */,
 				5F5EB66F1E9CB0B700503455 /* YXSliderBar.m in Sources */,
 				5FABE6051E89102000FE8A33 /* GetHomeBannerApi.m in Sources */,
 				5F2D62361E77C36500B038A5 /* EntranceCell.m in Sources */,
@@ -2231,6 +2155,7 @@
 				5FCFEFB01EA5B72F003788A0 /* FindViewController.m in Sources */,
 				5FCFF02B1EA60A25003788A0 /* FMDetailCommentHeaderCell.m in Sources */,
 				5F2D62521E77DFDA00B038A5 /* ExamFreeFMCell.m in Sources */,
+				5FCFF05F1EA707E8003788A0 /* ActivityViewController.m in Sources */,
 				5F9C3CE51E62CFF2009659E4 /* UIColor+HexString.m in Sources */,
 				5F5665B41E9E86320050AD29 /* CityCourseDetailViewController.m in Sources */,
 				18AC3B501E6FA075007EE823 /* ASValuePopUpView.m in Sources */,
@@ -2308,6 +2233,7 @@
 				5F8EDD3A1E6E8FD3000FC3E0 /* ArticleCellLayout.m in Sources */,
 				5FEA2A9F1E8B4C4300405F75 /* CityCourseHeaderCell.m in Sources */,
 				5F2D62581E77F38C00B038A5 /* ListenHeartViewController.m in Sources */,
+				5FCFF0661EA70F0C003788A0 /* ActivityListCell.m in Sources */,
 				5F2D62401E77D12700B038A5 /* ExamAnswerCell.m in Sources */,
 				5FCFF0321EA60A25003788A0 /* FMDetailIntroLayoutFrame.m in Sources */,
 				5F9C3D051E63C0CB009659E4 /* UIView+SDExtension.m in Sources */,

@@ -24,7 +24,8 @@
     self.view.backgroundColor = themeWhite;
     self.title = @"发现更多";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:_naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     //创建findTableView

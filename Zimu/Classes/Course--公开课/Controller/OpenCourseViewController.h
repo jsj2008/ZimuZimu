@@ -10,6 +10,5 @@
 
 @interface OpenCourseViewController : UIViewController
 
-@property (nonatomic, strong) UIColor *naviColor;
 
 @end
