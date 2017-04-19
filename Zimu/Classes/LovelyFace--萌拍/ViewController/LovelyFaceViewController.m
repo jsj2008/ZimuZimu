@@ -113,7 +113,7 @@
     
     _demoBar.filtersDataSource = @[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
     _demoBar.selectedFilter = _demoBar.filtersDataSource[0];
-    
+//    _demoBar.backgroundColor = [UIColor clearColor];
     _demoBar.selectedBlur = 6;
     
     _demoBar.beautyLevel = 0.5;
@@ -232,12 +232,16 @@
 
 #pragma -显示工具栏
 - (IBAction)filterBtnClick:(UIButton *)sender {
-    self.barBtn.hidden = YES;
-    self.photoBtn.hidden = YES;
     
     [UIView animateWithDuration:0.5 animations:^{
-        self.demoBar.transform = CGAffineTransformMakeTranslation(0, -self.demoBar.frame.size.height);
+        self.demoBar.transform = CGAffineTransformMakeTranslation(0, -self.demoBar.frame.size.height);//- (kScreenHeight - self.photoBtn.frame.origin.y));
+        self.demoBar.alpha = 1;
+        self.photoBtn.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.barBtn.hidden = YES;
+        self.photoBtn.hidden = YES;
     }];
+
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -248,6 +252,8 @@
     }
     [UIView animateWithDuration:0.5 animations:^{
         self.demoBar.transform = CGAffineTransformIdentity;
+        self.demoBar.alpha = 0;
+        self.photoBtn.alpha = 1;
     } completion:^(BOOL finished) {
         self.barBtn.hidden = NO;
         self.photoBtn.hidden = NO;
