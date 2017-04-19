@@ -13,13 +13,9 @@
 #import "OpenCourseViewController.h"
 #import "FindViewController.h"
 #import "ActivityViewController.h"
-<<<<<<< HEAD
 #import "MineViewController.h"
 #import "SettingView.h"
-=======
 #import "LovelyFaceViewController.h"
-
->>>>>>> origin/master
 
 @interface HomeViewController ()<CollectionViewDelegate>
 

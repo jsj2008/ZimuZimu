@@ -369,21 +369,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-<<<<<<< HEAD
-		5FCFF06A1EA7193D003788A0 /* Embed Frameworks */ = {
-=======
 		1E14444A1EA7141400FCDE02 /* Embed Frameworks */ = {
->>>>>>> origin/master
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-<<<<<<< HEAD
 				5FCFF0691EA7193D003788A0 /* FUAPIDemoBar.framework in Embed Frameworks */,
-=======
-				1E1444491EA7141400FCDE02 /* FUAPIDemoBar.framework in Embed Frameworks */,
->>>>>>> origin/master
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -958,11 +950,6 @@
 				18AC3B881E729B40007EE823 /* UIKit.framework in Frameworks */,
 				18AC3B2D1E6D62F8007EE823 /* SystemConfiguration.framework in Frameworks */,
 				1E1444301EA70FFE00FCDE02 /* libnama.a in Frameworks */,
-<<<<<<< HEAD
-				5FCFF0681EA7193D003788A0 /* FUAPIDemoBar.framework in Frameworks */,
-=======
-				1E1444481EA7141400FCDE02 /* FUAPIDemoBar.framework in Frameworks */,
->>>>>>> origin/master
 				18AC3B861E729B33007EE823 /* Security.framework in Frameworks */,
 				18AC3B841E729B2C007EE823 /* QuartzCore.framework in Frameworks */,
 				18AC3B821E729B25007EE823 /* MobileCoreServices.framework in Frameworks */,
@@ -2172,11 +2159,7 @@
 				5FC698ED1E5D786200B8574D /* Resources */,
 				D734DE4920A56CF237F82354 /* [CP] Embed Pods Frameworks */,
 				ED0086385F7615949E8C33ED /* [CP] Copy Pods Resources */,
-<<<<<<< HEAD
-				5FCFF06A1EA7193D003788A0 /* Embed Frameworks */,
-=======
 				1E14444A1EA7141400FCDE02 /* Embed Frameworks */,
->>>>>>> origin/master
 			);
 			buildRules = (
 			);
