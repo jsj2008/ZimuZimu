@@ -34,7 +34,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Zmj-uT-4Wb"/>
                                     <constraint firstAttribute="width" constant="50" id="mgz-jS-aVD"/>
                                 </constraints>
-                                <state key="normal" image="FM_last"/>
+                                <state key="normal" image="video_detail_back"/>
                                 <connections>
                                     <action selector="back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mzt-yT-7Di"/>
                                 </connections>
@@ -105,10 +105,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FM_last" width="31" height="31"/>
         <image name="camera_btn_camera_heighted" width="76" height="76"/>
         <image name="camera_btn_camera_normal" width="76" height="76"/>
         <image name="camera_btn_filter_normal" width="55" height="55"/>
         <image name="camera_btn_shotcut_normal" width="55" height="55"/>
+        <image name="video_detail_back" width="9" height="15"/>
     </resources>
 </document>
