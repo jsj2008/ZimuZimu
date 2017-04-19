@@ -43,6 +43,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - StreamingKit (0.1.29)
+  - SVProgressHUD (2.0.4)
   - UMengAnalytics (4.2.4)
   - WHC_Model (1.6.6)
   - YMCitySelect (1.2.2)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.1.8)
   - SDWebImage
   - StreamingKit
+  - SVProgressHUD (~> 2.0.3)
   - UMengAnalytics
   - WHC_Model
   - YMCitySelect
@@ -81,6 +83,7 @@ SPEC CHECKSUMS:
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
+  SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WHC_Model: f9311a0a976be1fce7c419d484def3f67dbfb1c0
   YMCitySelect: 1b415b7d8c1cc5ba8efac4327ed944c918244a81
@@ -88,6 +91,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZFDownload: a52f94ebb080833b8a8ceb19a409f2941343fe7f
 
-PODFILE CHECKSUM: f07ac9da52c25615e2cae0a3b897302f6c9644d4
+PODFILE CHECKSUM: 00500441a8d02c5f1e8f34e0d320279000819929
 
 COCOAPODS: 1.2.0
