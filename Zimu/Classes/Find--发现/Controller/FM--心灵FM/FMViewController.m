@@ -34,7 +34,7 @@
  */
 - (FMTableView *)tableView{
     if (!_tableView) {
-        _tableView = [[FMTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+        _tableView = [[FMTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
         _tableView.tableHeaderView = self.FMPlayView;
     }
     return _tableView;

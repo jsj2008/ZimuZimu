@@ -1,5 +1,5 @@
 //
-//  FindViewController.h
+//  FindDailyTableView.h
 //  Zimu
 //
 //  Created by Redpower on 2017/4/18.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FindViewController : UIViewController
-
-@property (nonatomic, strong) UIColor *naviColor;
+@interface FindDailyTableView : UITableView
 
 @end

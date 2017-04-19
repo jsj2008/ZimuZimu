@@ -1,5 +1,5 @@
 //
-//  FindViewController.h
+//  FindListHeaderCell.h
 //  Zimu
 //
 //  Created by Redpower on 2017/4/18.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FindViewController : UIViewController
+@interface FindListHeaderCell : UITableViewCell
 
-@property (nonatomic, strong) UIColor *naviColor;
+@property (nonatomic, copy) NSString *bgImageString;
 
 @end
