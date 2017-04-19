@@ -83,6 +83,9 @@
 		1E14443F1EA70FFE00FCDE02 /* tiara.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1444281EA70FFE00FCDE02 /* tiara.bundle */; };
 		1E1444401EA70FFE00FCDE02 /* YellowEar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1444291EA70FFE00FCDE02 /* YellowEar.bundle */; };
 		1E1444451EA7105C00FCDE02 /* LovelyFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1444441EA7105C00FCDE02 /* LovelyFaceViewController.m */; };
+		1E1444481EA7141400FCDE02 /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E14440B1EA70FFE00FCDE02 /* FUAPIDemoBar.framework */; };
+		1E1444491EA7141400FCDE02 /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1E14440B1EA70FFE00FCDE02 /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1E14444C1EA723D800FCDE02 /* LovelyFace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E14444B1EA723D800FCDE02 /* LovelyFace.storyboard */; };
 		1E3949CA1E8C964C00BB346F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1EC967B41E961D3C00667EC7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC967B21E961D3C00667EC7 /* LoginViewController.m */; };
 		1EC967B51E961D3C00667EC7 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC967B31E961D3C00667EC7 /* LoginViewController.xib */; };
@@ -334,6 +337,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1E14444A1EA7141400FCDE02 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1E1444491EA7141400FCDE02 /* FUAPIDemoBar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1573BFC1D12E396CD1C32560 /* Pods-Zimu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zimu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zimu/Pods-Zimu.release.xcconfig"; sourceTree = "<group>"; };
 		18AC3B2A1E6D3EF8007EE823 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -432,6 +449,7 @@
 		1E1444291EA70FFE00FCDE02 /* YellowEar.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = YellowEar.bundle; sourceTree = "<group>"; };
 		1E1444431EA7105C00FCDE02 /* LovelyFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LovelyFaceViewController.h; sourceTree = "<group>"; };
 		1E1444441EA7105C00FCDE02 /* LovelyFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LovelyFaceViewController.m; sourceTree = "<group>"; };
+		1E14444B1EA723D800FCDE02 /* LovelyFace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LovelyFace.storyboard; sourceTree = "<group>"; };
 		1EC967B11E961D3C00667EC7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		1EC967B21E961D3C00667EC7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1EC967B31E961D3C00667EC7 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -847,11 +865,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E1443FF1EA705E400FCDE02 /* UserNotifications.framework in Frameworks */,
 				5FAED54E1E95003400E295AC /* Accelerate.framework in Frameworks */,
+				1E1443FF1EA705E400FCDE02 /* UserNotifications.framework in Frameworks */,
 				18AC3B881E729B40007EE823 /* UIKit.framework in Frameworks */,
 				18AC3B2D1E6D62F8007EE823 /* SystemConfiguration.framework in Frameworks */,
 				1E1444301EA70FFE00FCDE02 /* libnama.a in Frameworks */,
+				1E1444481EA7141400FCDE02 /* FUAPIDemoBar.framework in Frameworks */,
 				18AC3B861E729B33007EE823 /* Security.framework in Frameworks */,
 				18AC3B841E729B2C007EE823 /* QuartzCore.framework in Frameworks */,
 				18AC3B821E729B25007EE823 /* MobileCoreServices.framework in Frameworks */,
@@ -1055,6 +1074,7 @@
 		1E1444421EA7103900FCDE02 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1E14444B1EA723D800FCDE02 /* LovelyFace.storyboard */,
 				1E1444431EA7105C00FCDE02 /* LovelyFaceViewController.h */,
 				1E1444441EA7105C00FCDE02 /* LovelyFaceViewController.m */,
 			);
@@ -1182,7 +1202,6 @@
 				5F9C3C7F1E5E802C009659E4 /* Other--其他 */,
 				1E1444411EA7103900FCDE02 /* LovelyFace--萌拍 */,
 				5F9C3C751E5E802C009659E4 /* Home--首页 */,
-				5FCFEF801EA5B601003788A0 /* Activity--活动 */,
 				5FCFEF841EA5B601003788A0 /* Course--公开课 */,
 				5FCFF0591EA70733003788A0 /* Activity--活动 */,
 				5FCFEF8A1EA5B601003788A0 /* Find--发现 */,
@@ -1956,6 +1975,7 @@
 				5FC698ED1E5D786200B8574D /* Resources */,
 				D734DE4920A56CF237F82354 /* [CP] Embed Pods Frameworks */,
 				ED0086385F7615949E8C33ED /* [CP] Copy Pods Resources */,
+				1E14444A1EA7141400FCDE02 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2076,6 +2096,7 @@
 				5FCFEFBD1EA5E5F1003788A0 /* FindListHeaderCell.xib in Resources */,
 				5F9C3D101E63C669009659E4 /* cycle_02.jpg in Resources */,
 				5FCFF02C1EA60A25003788A0 /* FMDetailCommentHeaderCell.xib in Resources */,
+				1E14444C1EA723D800FCDE02 /* LovelyFace.storyboard in Resources */,
 				5F2D62681E77FD7800B038A5 /* DynamicTextCell.xib in Resources */,
 				5FCFF03C1EA60A25003788A0 /* CourseHotListCell.xib in Resources */,
 				5FCFF0281EA60A25003788A0 /* FMDeatilCommentCell.xib in Resources */,

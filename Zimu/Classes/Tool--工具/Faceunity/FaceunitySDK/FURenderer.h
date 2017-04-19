@@ -15,6 +15,7 @@ typedef struct{
     GLuint bgraTextureHandle;
 }FUOutput;
 
+
 @interface FURenderer : NSObject
 
 + (FURenderer *)shareRenderer;

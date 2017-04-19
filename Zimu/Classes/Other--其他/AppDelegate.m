@@ -17,6 +17,8 @@
 #import "ZimuAudioPlayer.h"
 
 #import "UMessageManager.h"
+
+#import <SVProgressHUD/SVProgressHUD.h>
 @interface AppDelegate ()
 
 @property (nonatomic, strong)UMessageManager *umMgr;
@@ -50,6 +52,8 @@
     //友盟消息推送
     _umMgr  = [UMessageManager shareInstance];
     [_umMgr setUmessage:launchOptions];
+    
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
     return YES;
 }
 
