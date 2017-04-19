@@ -13,8 +13,4 @@
 @property (nonatomic, copy) NSString *articleTitle;
 
 
-/*加载网页*/
-- (void)loadWebURLSring:(NSString *)string;
-
-
 @end

@@ -131,7 +131,7 @@
     flowLayout.minimumInteritemSpacing = 1;
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    HomeVideoListCollectionView *viedoListView = [[HomeVideoListCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) collectionViewLayout:flowLayout];
+    HomeVideoListCollectionView *viedoListView = [[HomeVideoListCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) collectionViewLayout:flowLayout];
     [viedoListView setCirData:_testDic[@"cycle"] subjectCourseListData:_testDic[@"video"] videoListData:_testDic[@"videoList"]];
     viedoListView.backgroundColor = themeGray;
     [self.view addSubview:viedoListView];

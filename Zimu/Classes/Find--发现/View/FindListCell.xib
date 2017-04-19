@@ -18,39 +18,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="hoM-4y-SE6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WI9-MR-mWo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="mUC-Ep-CAV">
-                        <rect key="frame" x="319" y="0.0" width="56" height="58"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xUi-66-AFX">
+                        <rect key="frame" x="317" y="0.0" width="58" height="52"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hyR-Ym-W8k">
-                        <rect key="frame" x="262" y="71" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="如何让他变得开朗乐观爱交流是个开放光辉时刻发挥公司客户来看" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4d3-SX-i2K">
+                        <rect key="frame" x="236" y="64" width="124" height="46"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qnu-d9-SBa">
-                        <rect key="frame" x="319" y="137" width="46" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rOu-4h-8Ah">
+                        <rect key="frame" x="309" y="144" width="56" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" title=" 1000" image="find_eye_icon"/>
                     </button>
                 </subviews>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.90752476453781128" green="0.83548349142074585" blue="0.95575565099716187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="bgImageView" destination="hoM-4y-SE6" id="c9N-hK-ho4"/>
-                <outlet property="countButton" destination="Qnu-d9-SBa" id="Zwd-zN-5Wo"/>
-                <outlet property="flagImageView" destination="mUC-Ep-CAV" id="2iJ-94-EpN"/>
-                <outlet property="titleLabel" destination="hyR-Ym-W8k" id="ORe-Jn-j2f"/>
+                <outlet property="bgImageView" destination="WI9-MR-mWo" id="xMq-BN-5mk"/>
+                <outlet property="countLabel" destination="rOu-4h-8Ah" id="2aD-4j-QLH"/>
+                <outlet property="flagImageView" destination="xUi-66-AFX" id="1fA-wJ-46f"/>
+                <outlet property="titleLabel" destination="4d3-SX-i2K" id="JWe-az-IPj"/>
             </connections>
-            <point key="canvasLocation" x="803.5" y="112.5"/>
+            <point key="canvasLocation" x="33.5" y="115.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="find_eye_icon" width="15" height="9"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

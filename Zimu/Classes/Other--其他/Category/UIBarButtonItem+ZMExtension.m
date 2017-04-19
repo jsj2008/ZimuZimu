@@ -19,11 +19,10 @@
         [button setTitle:title forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //计算button宽度
-        UIFont *font = [UIFont systemFontOfSize:14];
+        UIFont *font = [UIFont systemFontOfSize:16];
         if ([UIScreen mainScreen].bounds.size.width > 375) {
             font = [UIFont systemFontOfSize:24];
         }
-        button.titleLabel.font = font;
         CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:font}];
         button.bounds = CGRectMake(0, 0, size.width, size.height);
         
@@ -61,7 +60,7 @@
     [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [button setContentEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 0)];
     
-    button.bounds = CGRectMake(0, 0, button.currentImage.size.width + 30, button.currentImage.size.height);
+    button.bounds = CGRectMake(0, 0, button.currentImage.size.width + 80, button.currentImage.size.height);
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
     return [[UIBarButtonItem alloc]initWithCustomView:button];

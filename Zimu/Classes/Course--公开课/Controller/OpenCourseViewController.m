@@ -9,7 +9,6 @@
 #import "OpenCourseViewController.h"
 #import "OpenCourseTableView.h"
 #import "SDCycleScrollView.h"
-#import "UIImage+ZMExtension.h"
 
 @interface OpenCourseViewController ()<SDCycleScrollViewDelegate>
 
@@ -24,16 +23,13 @@
     [super viewDidLoad];
     
     self.title = @"公开课程";
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:_naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.view.backgroundColor = themeWhite;
+    self.view.backgroundColor = themeGray;
     
     [self setupOpenCourseTableView];
 }
 
 - (void)setupOpenCourseTableView{
-    _openCourseTableView = [[OpenCourseTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    _openCourseTableView = [[OpenCourseTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     [self.view addSubview:_openCourseTableView];
     
     NSMutableArray *imageUrlArray = [NSMutableArray array];

@@ -10,7 +10,7 @@
 
 @interface SecondViewController : UIViewController
 
-@property (nonatomic, strong) UIColor *naviColor;
-
+@property (nonatomic, strong) UIView *transitionView;
+@property (nonatomic, assign) CGFloat cornerRadius;
 
 @end

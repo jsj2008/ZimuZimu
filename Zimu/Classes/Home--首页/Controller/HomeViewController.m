@@ -79,8 +79,6 @@
     _transitionCoverView.frame = frame;
     _transitionCoverView.alpha = 1;
     
-    
-    /*转场动画*/
     UIWindow *window = [UIApplication sharedApplication].delegate.window;
     [window addSubview:_transitionView];
     [window addSubview:_transitionCoverView];
@@ -97,36 +95,24 @@
             
         }else if (indexPath.row == 4){          //公开课
             OpenCourseViewController *openCourseVC = [[OpenCourseViewController alloc]init];
-            openCourseVC.naviColor = _transitionView.backgroundColor;
             [self.navigationController pushViewController:openCourseVC animated:NO];
         }else if (indexPath.row == 5){          //发现更多
             FindViewController *findVC = [[FindViewController alloc]init];
-            findVC.naviColor = _transitionView.backgroundColor;
             [self.navigationController pushViewController:findVC animated:NO];
         }else{
-            SecondViewController *secondVC = [[SecondViewController alloc]init];
-            secondVC.naviColor = _transitionView.backgroundColor;
-            [self.navigationController pushViewController:secondVC animated:NO];
+            SecondViewController *homeVC = [[SecondViewController alloc]init];
+            [self.navigationController pushViewController:homeVC animated:YES];
         }
         
-    }];
-    [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        _transitionCoverView.center = CGPointMake(kScreenWidth/2.0, 64/2.0);
-        _transitionCoverView.transform = CGAffineTransformScale(_transitionCoverView.transform, 0.5, 0.5);
-        _transitionView.frame = CGRectMake(0, 0, kScreenWidth, 64);
-    } completion:^(BOOL finished) {
-//        [_transitionCoverView removeFromSuperview];
-//        _transitionCoverView = nil;
-    }];
-    [UIView animateWithDuration:0.3 delay:1.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        _transitionCoverView.alpha = 0;
-        _transitionView.alpha = 0;
-    } completion:^(BOOL finished) {
-        [_transitionView removeFromSuperview];
-        _transitionView = nil;
-        [_transitionCoverView removeFromSuperview];
-        _transitionCoverView = nil;
-
+        [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            _transitionView.alpha = 0;
+            _transitionCoverView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [_transitionView removeFromSuperview];
+            _transitionView = nil;
+            [_transitionCoverView removeFromSuperview];
+            _transitionCoverView = nil;
+        }];
     }];
     
 }

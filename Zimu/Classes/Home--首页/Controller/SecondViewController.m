@@ -7,7 +7,6 @@
 //
 
 #import "SecondViewController.h"
-#import "UIImage+ZMExtension.h"
 
 @interface SecondViewController ()
 
@@ -18,10 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:_naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
     self.view.backgroundColor = themeYellow;
     self.title = @"测试";
 
