@@ -10,7 +10,6 @@
 
 @interface OpenCourseViewController : UIViewController
 
-@property (nonatomic, strong) UIView *transitionView;
-@property (nonatomic, assign) CGFloat cornerRadius;
+@property (nonatomic, strong) UIColor *naviColor;
 
 @end
