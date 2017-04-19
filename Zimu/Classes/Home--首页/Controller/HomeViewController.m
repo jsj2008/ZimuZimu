@@ -13,8 +13,13 @@
 #import "OpenCourseViewController.h"
 #import "FindViewController.h"
 #import "ActivityViewController.h"
+<<<<<<< HEAD
 #import "MineViewController.h"
 #import "SettingView.h"
+=======
+#import "LovelyFaceViewController.h"
+
+>>>>>>> origin/master
 
 @interface HomeViewController ()<CollectionViewDelegate>
 
@@ -96,9 +101,16 @@
         _transitionCoverView.center = window.center;
         
     } completion:^(BOOL finished) {
-        if (indexPath.row == 3) {               //活动报名
+        if (indexPath.row == 0) {
+            //将我们的storyBoard实例化，“Main”为StoryBoard的名称
+            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"LovelyFace" bundle:nil];
+            //将第二个控制器实例化，"SecondViewController"为我们设置的控制器的ID
+            LovelyFaceViewController *faceVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LovelyFaceViewController"];
+            //跳转事件
+            [self.navigationController pushViewController:faceVC animated:YES];
+        }else if (indexPath.row == 3) {               //活动报名
             ActivityViewController *activityVC = [[ActivityViewController alloc]init];
-            [self.navigationController pushViewController:activityVC animated:YES];
+            [self.navigationController pushViewController:activityVC animated:NO];
         }else if (indexPath.row == 4){          //公开课
             OpenCourseViewController *openCourseVC = [[OpenCourseViewController alloc]init];
             [self.navigationController pushViewController:openCourseVC animated:NO];

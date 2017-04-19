@@ -47,6 +47,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *changeCameraBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+
 @end
 
 @implementation LovelyFaceViewController
@@ -70,10 +72,21 @@
     
     
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+- (void)viewDidDisappear:(BOOL)animated{
 
+}
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [curCamera stopRecord];
+    [curCamera stopCapture];
+    curCamera.delegate = nil;
+    fuDestroyAllItems();
+    curCamera = nil;
 }
 
 - (void)addObserver{
@@ -95,7 +108,7 @@
 - (void)setDemoBar:(FUAPIDemoBar *)demoBar
 {
     _demoBar = demoBar;
-    _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"Einstein", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn"];
+    _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn"];
     _demoBar.selectedItem = _demoBar.itemsDataSource[1];
     
     _demoBar.filtersDataSource = @[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
@@ -202,7 +215,8 @@
 - (void)startRecord
 {
     self.barBtn.enabled = NO;
-    self.segment.enabled = NO;
+    self.backBtn.enabled = NO;
+
     self.changeCameraBtn.enabled = NO;
     [curCamera startRecord];
 }
@@ -211,7 +225,7 @@
 - (void)stopRecord
 {
     self.barBtn.enabled = YES;
-    self.segment.enabled = YES;
+    self.backBtn.enabled = YES;
     self.changeCameraBtn.enabled = YES;
     [curCamera stopRecord];
 }
@@ -263,6 +277,10 @@
     }
     [curCamera startCapture];
     
+}
+#pragma - 返回按钮
+- (IBAction)back:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma -FUAPIDemoBarDelegate
