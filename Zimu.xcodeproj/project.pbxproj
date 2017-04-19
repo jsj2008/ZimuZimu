@@ -1182,10 +1182,7 @@
 				5F9C3C7F1E5E802C009659E4 /* Other--其他 */,
 				1E1444411EA7103900FCDE02 /* LovelyFace--萌拍 */,
 				5F9C3C751E5E802C009659E4 /* Home--首页 */,
-<<<<<<< HEAD
-=======
 				5FCFEF801EA5B601003788A0 /* Activity--活动 */,
->>>>>>> origin/master
 				5FCFEF841EA5B601003788A0 /* Course--公开课 */,
 				5FCFF0591EA70733003788A0 /* Activity--活动 */,
 				5FCFEF8A1EA5B601003788A0 /* Find--发现 */,
