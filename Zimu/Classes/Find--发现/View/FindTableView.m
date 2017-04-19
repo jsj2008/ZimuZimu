@@ -43,7 +43,7 @@ static NSString *headerIdentifier = @"";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.titleString = @"如何让他变得更加乐观向上爱与人交流爱与人分享";
-    cell.flagImageString = [NSString stringWithFormat:@"find_"];
+    cell.bgImageString = [NSString stringWithFormat:@"find_"];
     
     return cell;
 }

@@ -16,7 +16,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "ZimuAudioPlayer.h"
 
+#import "UMessageManager.h"
 @interface AppDelegate ()
+
+@property (nonatomic, strong)UMessageManager *umMgr;
 
 @end
 
@@ -44,6 +47,9 @@
     [self.window setRootViewController:[[BaseNavigationController alloc]initWithRootViewController:viewController]];
     [self.window makeKeyAndVisible];
 
+    //友盟消息推送
+    _umMgr  = [UMessageManager shareInstance];
+    [_umMgr setUmessage:launchOptions];
     return YES;
 }
 
@@ -61,6 +67,8 @@
     [MobClick startWithConfigure:UMConfigInstance];
     
 }
+//
+
 
 //初始化播放器
 - (void)configAudioPlayer{
@@ -131,7 +139,7 @@
         
         NSMutableDictionary *songInfo = [ [NSMutableDictionary alloc] init];
         
-        MPMediaItemArtwork *albumArt = [ [MPMediaItemArtwork alloc] initWithImage: [UIImage imageNamed:@"cycle_01.jpg"] ];
+        MPMediaItemArtwork *albumArt = [ [MPMediaItemArtwork alloc] initWithImage: [UIImage imageNamed:@"course_fm_b"] ];
         
         [ songInfo setObject: @"赵小臭的翻唱电台" forKey:MPMediaItemPropertyTitle ];
         [ songInfo setObject: @"赵小臭" forKey:MPMediaItemPropertyArtist ];
@@ -207,8 +215,17 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
 }
-
-
+#pragma mark - 接收到推送，iOS 10以下
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    [_umMgr didReceiveRemoteNotificationbefore10:userInfo];
+}
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // 1.2.7版本开始不需要用户再手动注册devicetoken，SDK会自动注册
+    //[UMessage registerDeviceToken:deviceToken];
+    NSString *deviceTokenstr = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
+    NSLog(@"[%@]",deviceTokenstr);
+}
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
