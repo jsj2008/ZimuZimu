@@ -103,7 +103,7 @@
             //将第二个控制器实例化，"SecondViewController"为我们设置的控制器的ID
             LovelyFaceViewController *faceVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LovelyFaceViewController"];
             //跳转事件
-            [self.navigationController pushViewController:faceVC animated:YES];
+            [self.navigationController pushViewController:faceVC animated:NO];
         }else if (indexPath.row == 3) {               //活动报名
             ActivityViewController *activityVC = [[ActivityViewController alloc]init];
             [self.navigationController pushViewController:activityVC animated:NO];

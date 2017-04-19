@@ -83,8 +83,6 @@
 		1E14443F1EA70FFE00FCDE02 /* tiara.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1444281EA70FFE00FCDE02 /* tiara.bundle */; };
 		1E1444401EA70FFE00FCDE02 /* YellowEar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1444291EA70FFE00FCDE02 /* YellowEar.bundle */; };
 		1E1444451EA7105C00FCDE02 /* LovelyFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1444441EA7105C00FCDE02 /* LovelyFaceViewController.m */; };
-		1E1444481EA7141400FCDE02 /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E14440B1EA70FFE00FCDE02 /* FUAPIDemoBar.framework */; };
-		1E1444491EA7141400FCDE02 /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1E14440B1EA70FFE00FCDE02 /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1E14444C1EA723D800FCDE02 /* LovelyFace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E14444B1EA723D800FCDE02 /* LovelyFace.storyboard */; };
 		1E3949CA1E8C964C00BB346F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1EC967B41E961D3C00667EC7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC967B21E961D3C00667EC7 /* LoginViewController.m */; };
@@ -276,7 +274,6 @@
 		5FCFF0621EA70DC0003788A0 /* ActivityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0611EA70DC0003788A0 /* ActivityTableView.m */; };
 		5FCFF0661EA70F0C003788A0 /* ActivityListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0641EA70F0C003788A0 /* ActivityListCell.m */; };
 		5FCFF0671EA70F0C003788A0 /* ActivityListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCFF0651EA70F0C003788A0 /* ActivityListCell.xib */; };
-		5FCFF0681EA7193D003788A0 /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E14440B1EA70FFE00FCDE02 /* FUAPIDemoBar.framework */; };
 		5FCFF0691EA7193D003788A0 /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1E14440B1EA70FFE00FCDE02 /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5FCFF0981EA7368C003788A0 /* BrowsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF06E1EA7368C003788A0 /* BrowsArticleViewController.m */; };
 		5FCFF0991EA7368C003788A0 /* BrowsFMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0701EA7368C003788A0 /* BrowsFMViewController.m */; };
