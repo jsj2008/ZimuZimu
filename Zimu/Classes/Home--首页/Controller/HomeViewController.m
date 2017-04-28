@@ -17,9 +17,7 @@
 #import "MineViewController.h"
 #import "SettingView.h"
 #import "LovelyFaceViewController.h"
-<<<<<<< HEAD
 #import "FindFriendsViewController.h"
-=======
 #import "EvaluationViewController.h"
 
 #import "GetHomeSixImageApi.h"
@@ -27,7 +25,6 @@
 #import "YTKRequest.h"
 #import "MBProgressHUD+MJ.h"
 #import "UIImageView+WebCache.h"
->>>>>>> origin/master
 
 @interface HomeViewController ()<CollectionViewDelegate>
 
