@@ -13,9 +13,17 @@
 #import "OpenCourseViewController.h"
 #import "FindViewController.h"
 #import "ActivityViewController.h"
+#import "QuestionViewController.h"
 #import "MineViewController.h"
 #import "SettingView.h"
 #import "LovelyFaceViewController.h"
+#import "EvaluationViewController.h"
+
+#import "GetHomeSixImageApi.h"
+#import "HomeImageModel.h"
+#import "YTKRequest.h"
+#import "MBProgressHUD+MJ.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeViewController ()<CollectionViewDelegate>
 
@@ -49,6 +57,7 @@
     [self setupCoverImageView];
     [self setupToolView];
     
+    [self getDataNetWork];
 }
 
 #pragma mark - bgImageView
@@ -83,7 +92,6 @@
     _transitionCoverView.frame = frame;
     _transitionCoverView.alpha = 1;
     
-    
     /*转场动画*/
     UIWindow *window = [UIApplication sharedApplication].delegate.window;
     [window addSubview:_transitionView];
@@ -108,8 +116,8 @@
             ActivityViewController *activityVC = [[ActivityViewController alloc]init];
             [self.navigationController pushViewController:activityVC animated:NO];
         }else if (indexPath.row == 4){          //公开课
-            OpenCourseViewController *openCourseVC = [[OpenCourseViewController alloc]init];
-            [self.navigationController pushViewController:openCourseVC animated:NO];
+            EvaluationViewController *evaluaionVC = [[EvaluationViewController alloc]init];
+            [self.navigationController pushViewController:evaluaionVC animated:NO];
         }else if (indexPath.row == 5){          //发现更多
             FindViewController *findVC = [[FindViewController alloc]init];
             [self.navigationController pushViewController:findVC animated:NO];
@@ -130,8 +138,6 @@
         [_transitionCoverView removeFromSuperview];
         _transitionCoverView = nil;
     }];
-
-    
 }
 
 #pragma mark - coverImageView
@@ -167,7 +173,7 @@
     [expertButton setTitle:@"  专家解答" forState:UIControlStateNormal];
     [expertButton setTitleColor:themeWhite forState:UIControlStateNormal];
     expertButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-    [expertButton addTarget:self action:@selector(transitionAction:) forControlEvents:UIControlEventTouchUpInside];
+    [expertButton addTarget:self action:@selector(expertButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar addSubview:expertButton];
     
     //设置
@@ -197,9 +203,9 @@
     }];
 }
 
-- (void)transitionAction:(UIButton *)button{
-    SecondViewController *homeVC = [[SecondViewController alloc]init];
-    [self.navigationController pushViewController:homeVC animated:YES];
+- (void)expertButtonAction{
+    QuestionViewController *questionVC = [[QuestionViewController alloc]init];
+    [self.navigationController pushViewController:questionVC animated:YES];
 }
 
 /*我的*/
@@ -213,6 +219,38 @@
     [SettingView showToView:self.view];
 }
 
+
+#pragma mark - 获取数据
+- (void)getDataNetWork{
+    GetHomeSixImageApi *getHomeSixImageApi = [[GetHomeSixImageApi alloc]init];
+    [getHomeSixImageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            return ; 
+        }
+        HomeImageModel *homeImageModel = [HomeImageModel yy_modelWithDictionary:dataDic];
+        BOOL isTrue = homeImageModel.isTrue;
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+            return;
+        }
+        NSArray *homeImageItemArray = (NSArray *)homeImageModel.items;
+        NSMutableArray *homeImageItems = [NSMutableArray arrayWithCapacity:homeImageItemArray.count];
+        for (NSDictionary *item in homeImageItemArray) {
+            HomeImageItems *homeImageItem = [HomeImageItems yy_modelWithDictionary:item];
+            [homeImageItems addObject:homeImageItem];
+        }
+//        _collectionView.modelArray = homeImageItems;
+        HomeImageItems *item = homeImageItems.lastObject;
+        [_coverImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imagePrefixURL, item.imgUrl]]];
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+    }];
+}
 
 
 @end

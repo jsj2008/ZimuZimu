@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '351EB2CDB658672F5F272EE82D92493C'
+               BlueprintIdentifier = 'A8EB31AE3DA5B2EBE1F964F202B3A32D'
                BlueprintName = 'ZFDownload'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libZFDownload.a'>

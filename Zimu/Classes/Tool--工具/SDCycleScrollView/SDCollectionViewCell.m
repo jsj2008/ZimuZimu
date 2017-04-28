@@ -35,7 +35,8 @@
 
 @implementation SDCollectionViewCell
 {
-    __weak UILabel *_titleLabel;
+//    __weak UILabel *_titleLabel;
+    __weak UIView *_titleBGView;        //titleLabel的灰色半透明背景
 }
 
 
@@ -43,7 +44,9 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setupImageView];
+        [self setuptitleBGView];
         [self setupTitleLabel];
+        
     }
     
     return self;
@@ -74,6 +77,13 @@
     [self.contentView addSubview:imageView];
 }
 
+- (void)setuptitleBGView{
+    UIView *bgView = [[UIView alloc]init];
+    _titleBGView = bgView;
+    _titleBGView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+    [self.contentView addSubview:_titleBGView];
+}
+
 - (void)setupTitleLabel
 {
     UILabel *titleLabel = [[UILabel alloc] init];
@@ -99,8 +109,9 @@
     if (self.onlyDisplayText) {
         _titleLabel.frame = self.bounds;
     } else {
+        _titleBGView.frame = CGRectMake(0, self.sd_height - _titleLabelHeight, self.sd_width, _titleLabelHeight);
         _imageView.frame = self.bounds;
-        CGFloat titleLabelW = self.sd_width;
+        CGFloat titleLabelW = self.sd_width * 0.75;
         CGFloat titleLabelH = _titleLabelHeight;
         CGFloat titleLabelX = 0;
         CGFloat titleLabelY = self.sd_height - titleLabelH;

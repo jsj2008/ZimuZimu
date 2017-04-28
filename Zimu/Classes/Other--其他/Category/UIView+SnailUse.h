@@ -12,4 +12,6 @@
 
 + (id)paymentChannelView;
 
++ (id)callPhoneView;
+
 @end

@@ -29,7 +29,7 @@
 #define themeOrangeRed [UIColor colorWithHexString:@"ff4500"]       //橘红
 
 
-
+#define imagePrefixURL @"http://on9fin031.bkt.clouddn.com/"     //图片前缀
 
 /*判断系统版本*/
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

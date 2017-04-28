@@ -7,10 +7,10 @@
 //
 
 #import "OpenCourseVideoCell.h"
-#import "OpenCourseVideoCollectionView.h"
+#import "VideoCourseCollectionView.h"
 
 @interface OpenCourseVideoCell ()
-@property (weak, nonatomic) IBOutlet OpenCourseVideoCollectionView *openCourseVideoCollectionView;
+@property (weak, nonatomic) IBOutlet VideoCourseCollectionView *videoCourseCollectionView;
 
 @end
 @implementation OpenCourseVideoCell
@@ -29,7 +29,7 @@
 - (void)setImageArray:(NSArray *)imageArray{
     if (_imageArray != imageArray) {
         _imageArray = imageArray;
-        _openCourseVideoCollectionView.imageArray = _imageArray;
+        _videoCourseCollectionView.imageArray = _imageArray;
     }
 }
 

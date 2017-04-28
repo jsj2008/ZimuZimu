@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_cellbg_1" translatesAutoresizingMaskIntoConstraints="NO" id="aUi-xE-bgH">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aUi-xE-bgH">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L5j-el-CTl">
@@ -54,7 +54,4 @@
             <point key="canvasLocation" x="89" y="157"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="home_cellbg_1" width="122" height="122"/>
-    </resources>
 </document>

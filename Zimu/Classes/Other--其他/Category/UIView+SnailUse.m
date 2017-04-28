@@ -8,11 +8,18 @@
 
 #import "UIView+SnailUse.h"
 #import "PaymentChannelView.h"
+#import "CallPhoneView.h"
 
 @implementation UIView (SnailUse)
 
 + (id)paymentChannelView{
     PaymentChannelView *view = [[PaymentChannelView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
+    
+    return view;
+}
+
++ (id)callPhoneView{
+    CallPhoneView *view = [[CallPhoneView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 153)];
     
     return view;
 }

@@ -22,5 +22,6 @@
 
 
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSArray *modelArray;
 
 @end
