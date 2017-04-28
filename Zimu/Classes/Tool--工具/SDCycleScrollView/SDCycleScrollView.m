@@ -78,7 +78,7 @@ NSString * const ID = @"cycleCell";
     _autoScrollTimeInterval = 2.0;
     _titleLabelTextColor = [UIColor whiteColor];
     _titleLabelTextFont= [UIFont systemFontOfSize:14];
-    _titleLabelBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    _titleLabelBackgroundColor = [UIColor clearColor];//[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     _titleLabelHeight = 30;
     _autoScroll = YES;
     _infiniteLoop = YES;
@@ -500,6 +500,7 @@ NSString * const ID = @"cycleCell";
     pageControlFrame.origin.x -= self.pageControlRightOffset;
     self.pageControl.frame = pageControlFrame;
     self.pageControl.hidden = !_showPageControl;
+//    [self.mainView reloadData];
     
     if (self.backgroundImageView) {
         self.backgroundImageView.frame = self.bounds;
@@ -560,6 +561,7 @@ NSString * const ID = @"cycleCell";
         cell.imageView.image = (UIImage *)imagePath;
     }
     
+//    cell.titleLabel.width = self.width - 10 - self.pageControl.width - 10;
     if (_titlesGroup.count && itemIndex < _titlesGroup.count) {
         cell.title = _titlesGroup[itemIndex];
     }

@@ -7,6 +7,7 @@
 //
 
 #import "HomeCollectionViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeCollectionViewCell ()
 
@@ -79,4 +80,16 @@
     }
 }
 
+- (void)setDataDic:(NSDictionary *)dataDic{
+    if (_dataDic != dataDic) {
+        _dataDic = dataDic;
+        NSString *bgImageString = dataDic[@"bgImageString"];
+        NSString *bgPlaceHolderImage = dataDic[@"bgPlaceHolderImage"];
+        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imagePrefixURL, bgImageString]] placeholderImage:[UIImage imageNamed:bgPlaceHolderImage]];
+        
+        NSString *coverImageString = dataDic[@"coverImageString"];
+        NSString *coverPlaceHolderImage = dataDic[@"coverPlaceHolderImage"];
+        [_coverImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imagePrefixURL, coverImageString]] placeholderImage:[UIImage imageNamed:coverPlaceHolderImage]];
+    }
+}
 @end

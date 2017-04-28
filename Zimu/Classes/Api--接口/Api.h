@@ -10,7 +10,7 @@
 #define Api_h
 
 
-//================================================登录==========================================================
+//============================================登录==========================================================
 #define GetSMS @"sms/sendCaptcha.do"                                        //获取验证码
 #define UserLogin @"appLogin/loginAndRegister.do"                           //登录接口 post
 
@@ -23,6 +23,13 @@
 #define GetHomeCourseIsNotFree @"appHome/getHomeCourseIsNotFree.do"         //获取首页付费课程
 #define GetHomeFm @"appHome/getHomeFm.do"                                   //获取首页FM
 #define GetHomeRecommendArticle @"appHome/getHomeRecommendArticle.do"       //获取首页美文推荐
+
+
+
+//============================================== #new# ====================================================
+
+#define GetHomeSixImageURL @"appImgs/getHomeSixImage.do"                //获取首页图片
+#define GetParentSchoolListURL @"appFind/getFindMoreList.do"            //获取亲子学堂页数据 endTime : 时间戳
 
 
 #endif /* Api_h */

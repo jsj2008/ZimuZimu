@@ -34,7 +34,7 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://120.27.221.31/zimu_portal/";
+    config.baseUrl = @"http://192.168.10.185:8082/portal/";//@"http://120.27.221.31/zimu_portal/";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

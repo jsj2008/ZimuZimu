@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductInfoCell" rowHeight="163" id="taD-yC-ix2" customClass="ProductInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="taD-yC-ix2" id="pxf-Tr-J4f">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPp-ku-kmZ">
+                        <rect key="frame" x="10" y="10" width="81" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal" title=" 视频课程" image="order_activity_icon">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5w-qf-saV">
+                        <rect key="frame" x="0.0" y="38" width="375" height="80"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_cellbg_0" translatesAutoresizingMaskIntoConstraints="NO" id="Oww-e5-tZ4">
+                                <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2qr-j2-XAl"/>
+                                    <constraint firstAttribute="width" constant="60" id="ApE-zg-jbZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何让你的孩子标的更加优秀" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjL-nZ-svf">
+                                <rect key="frame" x="75" y="10" width="187.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥300.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlP-AV-zY0">
+                                <rect key="frame" x="304.5" y="53" width="60.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PjL-nZ-svf" firstAttribute="leading" secondItem="Oww-e5-tZ4" secondAttribute="trailing" constant="5" id="0Df-pB-ZaM"/>
+                            <constraint firstItem="PjL-nZ-svf" firstAttribute="width" secondItem="r5w-qf-saV" secondAttribute="width" multiplier="1:2" id="1fT-QT-wKA"/>
+                            <constraint firstItem="Oww-e5-tZ4" firstAttribute="leading" secondItem="r5w-qf-saV" secondAttribute="leading" constant="10" id="6sc-Yz-9Us"/>
+                            <constraint firstItem="Oww-e5-tZ4" firstAttribute="top" secondItem="r5w-qf-saV" secondAttribute="top" constant="10" id="FLJ-oW-GIL"/>
+                            <constraint firstItem="PjL-nZ-svf" firstAttribute="top" secondItem="Oww-e5-tZ4" secondAttribute="top" id="M9R-UJ-6PH"/>
+                            <constraint firstAttribute="height" constant="80" id="WdR-Zy-Gak"/>
+                            <constraint firstAttribute="trailing" secondItem="DlP-AV-zY0" secondAttribute="trailing" constant="10" id="rOo-a0-aGf"/>
+                            <constraint firstItem="DlP-AV-zY0" firstAttribute="bottom" secondItem="Oww-e5-tZ4" secondAttribute="bottom" id="xXk-Kz-I7j"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：￥300.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMa-Es-UU1">
+                        <rect key="frame" x="233" y="128" width="132" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计1件商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDM-rD-y9b">
+                        <rect key="frame" x="10" y="131.5" width="67" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="XMa-Es-UU1" secondAttribute="trailing" constant="10" id="6yj-WG-vFo"/>
+                    <constraint firstItem="OPp-ku-kmZ" firstAttribute="leading" secondItem="pxf-Tr-J4f" secondAttribute="leading" constant="10" id="G2Q-8d-FGY"/>
+                    <constraint firstItem="kDM-rD-y9b" firstAttribute="leading" secondItem="pxf-Tr-J4f" secondAttribute="leading" constant="10" id="TNT-nK-nSM"/>
+                    <constraint firstItem="XMa-Es-UU1" firstAttribute="top" secondItem="r5w-qf-saV" secondAttribute="bottom" constant="10" id="WSK-Wt-HMC"/>
+                    <constraint firstItem="XMa-Es-UU1" firstAttribute="centerY" secondItem="kDM-rD-y9b" secondAttribute="centerY" id="YmV-Rp-sde"/>
+                    <constraint firstAttribute="trailing" secondItem="r5w-qf-saV" secondAttribute="trailing" id="a8Z-ia-0sW"/>
+                    <constraint firstItem="OPp-ku-kmZ" firstAttribute="top" secondItem="pxf-Tr-J4f" secondAttribute="top" constant="10" id="evW-ro-Ytv"/>
+                    <constraint firstItem="r5w-qf-saV" firstAttribute="top" secondItem="OPp-ku-kmZ" secondAttribute="bottom" constant="10" id="njz-5G-HJW"/>
+                    <constraint firstItem="r5w-qf-saV" firstAttribute="leading" secondItem="pxf-Tr-J4f" secondAttribute="leading" id="qrX-FN-K9b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentBGView" destination="r5w-qf-saV" id="8od-ot-IXL"/>
+                <outlet property="countLabel" destination="kDM-rD-y9b" id="YUI-VU-nC1"/>
+                <outlet property="orderTypeButton" destination="OPp-ku-kmZ" id="hq9-ct-lt8"/>
+                <outlet property="priceLabel" destination="DlP-AV-zY0" id="PgL-Ah-2nl"/>
+                <outlet property="productImageView" destination="Oww-e5-tZ4" id="uWM-lf-AKc"/>
+                <outlet property="titleLabel" destination="PjL-nZ-svf" id="V5d-56-bl7"/>
+                <outlet property="totalPriceLabel" destination="XMa-Es-UU1" id="00r-e2-lNY"/>
+            </connections>
+            <point key="canvasLocation" x="27.5" y="198"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="home_cellbg_0" width="122" height="122"/>
+        <image name="order_activity_icon" width="15" height="15"/>
+    </resources>
+</document>

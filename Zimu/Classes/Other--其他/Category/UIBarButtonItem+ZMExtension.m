@@ -20,9 +20,9 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //计算button宽度
         UIFont *font = [UIFont systemFontOfSize:14];
-        if ([UIScreen mainScreen].bounds.size.width > 375) {
-            font = [UIFont systemFontOfSize:24];
-        }
+//        if ([UIScreen mainScreen].bounds.size.width > 375) {
+//            font = [UIFont systemFontOfSize:24];
+//        }
         button.titleLabel.font = font;
         CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:font}];
         button.bounds = CGRectMake(0, 0, size.width, size.height);

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FMDetailCommentCell" rowHeight="100" id="KGk-i7-Jjw" customClass="FMDeatilCommentCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qke-GU-aDD">
+                        <rect key="frame" x="10" y="14" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="qke-GU-aDD" secondAttribute="height" multiplier="1:1" id="2w0-VY-KNs"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佚名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIB-ne-Uch">
+                        <rect key="frame" x="92" y="14" width="31" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="qg7-dq-AGy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上了一堂真正的心理课，现在心情豁然开朗，终于知道这位专家为什么这么火了，都是有原因的" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM5-oa-jyF">
+                        <rect key="frame" x="92" y="37" width="218" height="50.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7p-q8-hvF">
+                        <rect key="frame" x="261" y="14" width="49" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title=" 1000" image="yiding_dianzan">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qke-GU-aDD" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="5:7" id="1jA-ET-exH"/>
+                    <constraint firstItem="gM5-oa-jyF" firstAttribute="top" secondItem="lIB-ne-Uch" secondAttribute="bottom" constant="8" id="731-ja-kE2"/>
+                    <constraint firstItem="d7p-q8-hvF" firstAttribute="top" secondItem="lIB-ne-Uch" secondAttribute="top" id="EB2-ZC-Khu"/>
+                    <constraint firstItem="qke-GU-aDD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GtC-wN-doh"/>
+                    <constraint firstItem="gM5-oa-jyF" firstAttribute="leading" secondItem="lIB-ne-Uch" secondAttribute="leading" id="H3B-Na-lhq"/>
+                    <constraint firstAttribute="trailing" secondItem="d7p-q8-hvF" secondAttribute="trailing" constant="10" id="MfC-M4-eiQ"/>
+                    <constraint firstItem="lIB-ne-Uch" firstAttribute="top" secondItem="qke-GU-aDD" secondAttribute="top" id="SK4-wn-rWc"/>
+                    <constraint firstItem="lIB-ne-Uch" firstAttribute="leading" secondItem="qke-GU-aDD" secondAttribute="trailing" constant="10" id="hWE-XC-DJh"/>
+                    <constraint firstItem="d7p-q8-hvF" firstAttribute="trailing" secondItem="gM5-oa-jyF" secondAttribute="trailing" id="kXk-rs-i9v"/>
+                    <constraint firstItem="qke-GU-aDD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ofT-AL-oy3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="commentLabel" destination="gM5-oa-jyF" id="IcC-ns-Sqe"/>
+                <outlet property="headImageView" destination="qke-GU-aDD" id="QGb-LM-3a6"/>
+                <outlet property="likeButton" destination="d7p-q8-hvF" id="TwK-bt-yuk"/>
+                <outlet property="nameLabel" destination="lIB-ne-Uch" id="6rh-oX-9Rh"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="140"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="yiding_dianzan" width="15" height="14"/>
+    </resources>
+</document>

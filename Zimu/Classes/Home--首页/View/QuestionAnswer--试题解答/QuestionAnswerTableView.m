@@ -57,7 +57,7 @@ static NSString *QANiceQuestionIdentifier = @"QANiceQuestionCell";
             HeaderTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:HeaderTitleIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.titleString = @"往期试题解答精选";
-            cell.imageString = @"home_zhuanlandingyue_icon";
+//            cell.imageString = @"home_zhuanlandingyue_icon";
             
             return cell;
         }
@@ -70,7 +70,7 @@ static NSString *QANiceQuestionIdentifier = @"QANiceQuestionCell";
             HeaderTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:HeaderTitleIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.titleString = @"本期提问精选";
-            cell.imageString = @"home_meiwentuijian_icon";
+//            cell.imageString = @"home_meiwentuijian_icon";
             
             return cell;
         }

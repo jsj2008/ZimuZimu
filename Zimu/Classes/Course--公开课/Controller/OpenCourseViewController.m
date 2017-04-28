@@ -38,13 +38,20 @@
     [self.view addSubview:_openCourseTableView];
     
     NSMutableArray *imageUrlArray = [NSMutableArray array];
-    for (int index = 1; index < 9; index++) {
+    for (int index = 1; index < 5; index++) {
         NSString *url = [NSString stringWithFormat:@"cycle_0%i.jpg",index];
         [imageUrlArray addObject:url];
     }
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, _openCourseTableView.width, 150) imageNamesGroup:imageUrlArray];
     _cycleScrollView.delegate = self;
+    _cycleScrollView.titlesGroup = @[@"免费 | 怎样的沟通方式，不会伤害到孩子孩子孩子",@"最新 | 怎样的沟通方式，不会伤害到孩子孩子孩子",@"免费 | 怎样的沟通方式，不会伤害到孩子孩子孩子",@"最新 | 怎样的沟通方式，不会伤害到孩子孩子孩子"];
+//    _cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+//    _cycleScrollView.pageControlRightOffset = 10; 
+//    _cycleScrollView.pageControlBottomOffset = 20;
+    _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+//    _cycleScrollView.pageControlDotSize = CGSizeMake(2, 2);
     _openCourseTableView.tableHeaderView = _cycleScrollView;
+    
 }
 
 #pragma mark - SDCycleScrollViewDelegate

@@ -7,6 +7,7 @@
 //
 
 #import "HomeCollectionView.h"
+#import "HomeImageModel.h"
 
 static NSString *identifier = @"HomeCollectionCell";
 @interface HomeCollectionView ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -34,8 +35,7 @@ static NSString *identifier = @"HomeCollectionCell";
         self.dataSource = self;
         
         [self registerNib:[UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier];
-        _titleArray = @[@"萌拍",@"找朋友",@"互动游戏",@"活动报名",@"公开课",@"发现更多"];
-        
+        _titleArray = @[@"萌拍",@"找朋友",@"互动游戏",@"活动报名",@"心理测试",@"亲子学堂"];
     }
     return self;
 }
@@ -47,8 +47,13 @@ static NSString *identifier = @"HomeCollectionCell";
     HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.layer.cornerRadius = 5;
     cell.titleImageString = [NSString stringWithFormat:@"home_icon_%li",indexPath.row + 1];
-    cell.bgimageString = [NSString stringWithFormat:@"home_cellbg_%li",indexPath.row + 1];
-    cell.coverImageString = [NSString stringWithFormat:@"home_cover_%li",indexPath.row + 1];
+    cell.bgimageString = [NSString stringWithFormat:@"home_cellbg_%li",indexPath.row * 2];
+    cell.coverImageString = [NSString stringWithFormat:@"home_cover_%li",indexPath.row * 2];
+    if (_modelArray.count) {
+        NSDictionary *dataDic = _modelArray[indexPath.row];
+        cell.dataDic = dataDic;
+    }
+    
     cell.titleString = _titleArray[indexPath.row];
     
     return cell;
@@ -56,14 +61,7 @@ static NSString *identifier = @"HomeCollectionCell";
 
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-//    if (indexPath.row % 2 != 0) {
-//        cell.transform = CGAffineTransformTranslate(cell.transform, 0, 200);
-//    }else{
-//        cell.transform = CGAffineTransformTranslate(cell.transform, 0, 300);
-//    }
-    
+
     CGFloat translateY = 0;
     if (indexPath.row == 0) {
         translateY = 150;
@@ -86,7 +84,6 @@ static NSString *identifier = @"HomeCollectionCell";
         cell.alpha = 1.0;
     } completion:^(BOOL finished) {
         
-        
     }];
 }
 
@@ -102,6 +99,36 @@ static NSString *identifier = @"HomeCollectionCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     HomeCollectionViewCell *cell = (HomeCollectionViewCell *)[self cellForItemAtIndexPath:indexPath];
     [self.collectionDelegate collectionView:self didSelectCell:cell indexPath:indexPath];
+}
+
+- (void)setModelArray:(NSArray *)modelArray{
+    if (_modelArray != modelArray) {
+        _modelArray = modelArray;
+        _modelArray = [self handleDataWithArray:_modelArray];
+        [self reloadData];
+    }
+}
+
+- (NSArray *)handleDataWithArray:(NSArray *)dataArray{
+    NSString *bgImageString = @"";
+    NSString *coverImageString = @"";
+    NSDictionary *dic = [NSDictionary dictionary];
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < dataArray.count - 1; i += 2) {
+        
+        HomeImageItems *item1 = dataArray[i];
+        bgImageString = item1.imgUrl;
+        HomeImageItems *item2 = dataArray[i + 1];
+        coverImageString = item2.imgUrl;
+        NSString *bgPlaceHolderImage = [NSString stringWithFormat:@"home_cellbg_%i",i];
+        NSString *coverPlaceHolderImage = [NSString stringWithFormat:@"home_cover_%i",i];
+        dic = @{@"bgImageString":bgImageString,
+                @"bgPlaceHolderImage":bgPlaceHolderImage,
+                @"coverImageString":coverImageString,
+                @"coverPlaceHolderImage":coverPlaceHolderImage};
+        [array addObject:dic];
+    }
+    return array;
 }
 
 @end
