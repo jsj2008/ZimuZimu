@@ -16,6 +16,7 @@
 #import "MineViewController.h"
 #import "SettingView.h"
 #import "LovelyFaceViewController.h"
+#import "FindFriendsViewController.h"
 
 @interface HomeViewController ()<CollectionViewDelegate>
 
@@ -104,6 +105,9 @@
             LovelyFaceViewController *faceVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LovelyFaceViewController"];
             //跳转事件
             [self.navigationController pushViewController:faceVC animated:NO];
+        }else if (indexPath.row == 1){
+            FindFriendsViewController *findVC = [[FindFriendsViewController alloc] init];
+            [self.navigationController pushViewController:findVC animated:NO];
         }else if (indexPath.row == 3) {               //活动报名
             ActivityViewController *activityVC = [[ActivityViewController alloc]init];
             [self.navigationController pushViewController:activityVC animated:NO];

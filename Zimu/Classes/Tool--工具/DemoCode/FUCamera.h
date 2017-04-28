@@ -13,6 +13,9 @@
 
 - (void)didOutputVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
+- (void)savePhoto:(UIImage *)saveImage;
+
+- (void)saveVideo:(NSString *)videoPath;
 @end
 
 @interface FUCamera : NSObject

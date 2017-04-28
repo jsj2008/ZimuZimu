@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0FFE10B5622A53548FB4D4863885F6AA'
+               BlueprintIdentifier = '5DBAE51165545852211767D6652614B1'
                BlueprintName = 'Pods-Zimu'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Zimu.a'>
