@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8666FD432B7B1DBF3FED0E8CE9EFEC6C'
+               BlueprintIdentifier = '9069738B8C05F370086A770497177788'
                BlueprintName = 'YMCitySelect'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libYMCitySelect.a'>

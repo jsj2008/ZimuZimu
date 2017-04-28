@@ -16,12 +16,17 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "ZimuAudioPlayer.h"
 
-#import "UMessageManager.h"
+#import "JPUSHService.h"
+#import "ZMPushManager.h"
+
+#import "PLStreamingKit.h"
+//#import "PLHomeViewController.h"
+#import "PLMediaStreamingSession.h"
 
 #import <SVProgressHUD/SVProgressHUD.h>
 @interface AppDelegate ()
 
-@property (nonatomic, strong)UMessageManager *umMgr;
+@property (nonatomic, strong)ZMPushManager *pushMgr;
 
 @end
 
@@ -35,7 +40,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setUMMobClick];
-    
+    [self configQNLive];
     [self setupRequestFilters];
     //初始化播放器
     [self configAudioPlayer];
@@ -50,8 +55,8 @@
     [self.window makeKeyAndVisible];
 
     //友盟消息推送
-    _umMgr  = [UMessageManager shareInstance];
-    [_umMgr setUmessage:launchOptions];
+    _pushMgr  = [ZMPushManager shareInstance];
+    [_pushMgr setUmessage:launchOptions];
     
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
     return YES;
@@ -72,7 +77,13 @@
     
 }
 //
-
+- (void)configQNLive{
+    [PLStreamingEnv initEnv];
+    
+    [PLStreamingEnv setLogLevel:PLStreamLogLevelDebug];
+    [PLStreamingEnv enableFileLogging];
+    [PLMediaStreamingSession performSelector:@selector(enableRTCLogging)];
+}
 
 //初始化播放器
 - (void)configAudioPlayer{
@@ -116,6 +127,7 @@
             // called at start - also when other audio wants to play
             NSLog(@"AVAudioSessionRouteChangeReasonCategoryChange");
             break;
+        default:break;
     }
 }
 
@@ -212,6 +224,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    //设置应用角标为0
+    application.applicationIconBadgeNumber = 0;
+    //    [JPUSHService resetBadge];
 }
 
 
@@ -221,14 +236,11 @@
 }
 #pragma mark - 接收到推送，iOS 10以下
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    [_umMgr didReceiveRemoteNotificationbefore10:userInfo];
+    [_pushMgr didReceiveRemoteNotificationbefore10:userInfo];
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    // 1.2.7版本开始不需要用户再手动注册devicetoken，SDK会自动注册
-    //[UMessage registerDeviceToken:deviceToken];
-    NSString *deviceTokenstr = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
-    NSLog(@"[%@]",deviceTokenstr);
+    [JPUSHService registerDeviceToken:deviceToken];
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

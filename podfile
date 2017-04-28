@@ -18,5 +18,9 @@ pod 'WHC_Model'
 pod 'pop','~>1.0'
 pod 'StreamingKit'
 pod 'SVProgressHUD', '~> 2.0.3'
+pod 'PLPlayerKit'
+pod 'pili-librtmp'
+pod 'QNNetDiag'
+pod 'JPush'
 
 end

@@ -17,6 +17,8 @@
 #include <sys/stat.h>
 #import "authpack.h"
 
+#import "PreviewPhotoVideoViewController.h"
+
 @interface LovelyFaceViewController ()<FUAPIDemoBarDelegate,FUCameraDelegate,PhotoButtonDelegate>
 {
     //MARK: Faceunity
@@ -187,7 +189,7 @@
     [curCamera startCapture];
 }
 
-#pragma -PhotoButtonDelegate
+#pragma mark - PhotoButtonDelegate
 //拍照
 - (void)takePhoto
 {
@@ -207,7 +209,6 @@
             [whiteView removeFromSuperview];
         }];
     }];
-    
     [curCamera takePhotoAndSave];
 }
 
@@ -230,7 +231,7 @@
     [curCamera stopRecord];
 }
 
-#pragma -显示工具栏
+#pragma mark - 显示工具栏
 - (IBAction)filterBtnClick:(UIButton *)sender {
     
     [UIView animateWithDuration:0.5 animations:^{
@@ -260,7 +261,7 @@
     }];
 }
 
-#pragma -摄像头切换
+#pragma mark - 摄像头切换
 - (IBAction)changeCamera:(UIButton *)sender {
     
     [self.bgraCamera changeCameraInputDeviceisFront:!self.bgraCamera.isFrontCamera];
@@ -284,12 +285,12 @@
     [curCamera startCapture];
     
 }
-#pragma - 返回按钮
+#pragma mark - 返回按钮
 - (IBAction)back:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma -FUAPIDemoBarDelegate
+#pragma mark - FUAPIDemoBarDelegate
 - (void)demoBarDidSelectedItem:(NSString *)item
 {
     dispatch_async(curCamera.captureQueue, ^{
@@ -299,7 +300,7 @@
 
 
 
-#pragma -FUCameraDelegate
+#pragma mark - FUCameraDelegate
 - (void)didOutputVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
@@ -309,7 +310,7 @@
     //如果当前环境中已存在EAGLContext，此步骤可省略，但必须要调用[EAGLContext setCurrentContext:curContext]函数。
 #warning 此步骤不可放在异步线程中执行
     [self setUpContext];
-    
+    fuSetMaxFaces(6);
     //Faceunity初始化
 #warning 此步骤不可放在异步线程中执行
     if (!fuInit)
@@ -325,8 +326,11 @@
     int curTrack = fuIsTracking();
     dispatch_async(dispatch_get_main_queue(), ^{
         self.noTrackView.hidden = curTrack;
+        
     });
-    
+//    if (!curTrack) {
+//        return;
+//    }
     //切换贴纸、3D道具
 #warning 如果需要异步加载道具，需停止调用Faceunity的其他接口，否则将会产生崩溃
     if (needReloadItem) {
@@ -355,6 +359,13 @@
 #warning 此步骤不可放在异步线程中执行
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     [[FURenderer shareRenderer] renderPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:3];
+    
+    double landmarksData[4];
+    fuGetFaceInfo(0, "rotation", landmarksData, 4);
+    double asdkjf = (double)landmarksData[1];
+//    NSLog(@"%.3lf", asdkjf);
+    printf("%lf \n%lf  \n%lf  \n%lf \n-----------------\n\n", landmarksData[0], landmarksData[1], landmarksData[2], landmarksData[3]);
+    
     frameID += 1;
     
 #warning 执行完上一步骤，即可将pixelBuffer绘制到屏幕上或推流到服务器进行直播
@@ -368,7 +379,20 @@
         [self.bufferDisplayer enqueueSampleBuffer:sampleBuffer];
     }
 }
-
+- (void)saveVideo:(NSString *)videoPath{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        PreviewPhotoVideoViewController *videoVC = [[PreviewPhotoVideoViewController  alloc] initWithVideoPath:videoPath];
+        [self presentViewController:videoVC animated:YES completion:nil];
+    });
+}
+- (void)savePhoto:(UIImage *)saveImage{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        PreviewPhotoVideoViewController *videoVC = [[PreviewPhotoVideoViewController  alloc] initWithPhoto:saveImage];
+        [self presentViewController:videoVC animated:YES completion:nil];
+    });
+}
 #pragma -Faceunity Set EAGLContext
 - (void)setUpContext
 {

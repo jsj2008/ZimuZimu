@@ -242,7 +242,10 @@ typedef enum : NSUInteger {
             CVPixelBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
             UIImage *image = [self imageFromPixelBuffer:buffer];
             if (image) {
-                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+//                Uimage
+#pragma mark - 保存图片
+                [self.delegate savePhoto:image];
+//                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
             }
         }
             break;
@@ -302,7 +305,10 @@ typedef enum : NSUInteger {
                 NSString *path = self.recordEncoder.path;
                 self.recordEncoder = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), NULL);
+//                    UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path);
+#pragma mark - 保存视频
+                    [self.delegate saveVideo:path];
+//                    UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), NULL);
                 });
                 
             }];

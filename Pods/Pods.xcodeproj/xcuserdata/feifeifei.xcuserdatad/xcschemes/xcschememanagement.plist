@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,6 +40,11 @@
 			<false/>
 		</dict>
 		<key>Pods-Zimu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>QNNetDiag.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -89,6 +99,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>pili-librtmp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,17 +112,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0191A279950DD9F6D147AC01E5C69A7E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0FFE10B5622A53548FB4D4863885F6AA</key>
+		<key>0962E9CDBA5BC9E82BC6A00C95023324</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3502688CB106BAFDE7CDC37E3B773F0C</key>
+		<key>1230A1185E5BD7AC5F443EE015461B91</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>12B36555E73893E9A9287C8AB4F22CC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53B2B897D64E4516E75AC86348B86622</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,27 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7115E61977301D4A091505A72348996A</key>
+		<key>5DBAE51165545852211767D6652614B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A7D684653A645CA2E59E8E769247912</key>
+		<key>9069738B8C05F370086A770497177788</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>84B1FDD0787E75EF59B8E514DB35B596</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8666FD432B7B1DBF3FED0E8CE9EFEC6C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8EB5A0FCC3B6CC7716F10D099174FA13</key>
+		<key>9106D9CCDF09D7037FB49DE9B8CF208B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,22 +177,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8EB31AE3DA5B2EBE1F964F202B3A32D</key>
+		<key>A40B72B433C9B623DFBA61E8DBF835CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1DB8CD69CC7EE7E60044B0FBD11C413</key>
+		<key>BBA289094018B6B84107C5D89B80B250</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF52EB5A018A5FB78CBE0A268AA6994F</key>
+		<key>C61122DF1A452102BA67FE0C4FA34780</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E72C8372963C43AA26AFA79D0C5FD33B</key>
+		<key>CEFBF1FCDE16A721CDB55FE042126DF2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DDBA3117A3DD80542FC82F2952E088DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF635BFC5566B0F68EAD07EB6571677C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,7 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC42E69072F387208A80A6FDE326C315</key>
+		<key>F8A42D1699823FC0EA19D5F61C6B6B91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
