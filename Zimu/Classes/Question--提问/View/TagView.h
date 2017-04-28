@@ -10,6 +10,7 @@
 
 @interface TagView : UIView
 
-@property (nonatomic, strong) NSArray *tagTextArray;
+
+@property (nonatomic, copy) NSString *tagText;          //选好的标签
 
 @end

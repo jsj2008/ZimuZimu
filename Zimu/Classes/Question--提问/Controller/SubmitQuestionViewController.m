@@ -12,6 +12,7 @@
 #import "TagView.h"
 #import "MBProgressHUD+MJ.h"
 #import "AnswerViewController.h"
+#import "InsertQuestionApi.h"
 
 @interface SubmitQuestionViewController ()<ConfuseDetailViewDelegate>
 
@@ -49,14 +50,28 @@
         [MBProgressHUD showMessage_WithoutImage:@"请填写您的困扰" toView:self.view];
         return;
     }
-    if (!_tagsView.tagTextArray.count) {
+    if (!_tagsView.tagText.length) {
         [MBProgressHUD showMessage_WithoutImage:@"请选择标签" toView:self.view];
         return;
     }
-    NSLog(@"提交 %@ \n %@",_confuseDetailView.confuseString, _tagsView.tagTextArray);
+//    NSLog(@"提交 %@ \n %@",_confuseDetailView.confuseString, _tagsView.tagTextArray);
     [MBProgressHUD showMessage_WithoutImage:@"已提交您的困惑,请耐心等待专家回答" toView:self.view];
     [self performSelector:@selector(jumpToAnswerVC) withObject:nil afterDelay:0.5];
+    [self submitDataToSever];
 }
+
+#pragma mark - 提交数据
+- (void)submitDataToSever{
+    NSString *questionVal = _confuseDetailView.confuseString;
+    NSString *keyWord = _tagsView.tagText;
+    InsertQuestionApi *insertQuestionApi = [[InsertQuestionApi alloc]initWithUserId:@"" questionTitle:_questionTitle keyWord:keyWord questionVal:questionVal];
+    [insertQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
+
 - (void)jumpToAnswerVC{    
     AnswerViewController *answerVC = [[AnswerViewController alloc]init];
     [self.navigationController pushViewController:answerVC animated:YES];

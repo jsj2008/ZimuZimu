@@ -30,6 +30,8 @@
 
 #define GetHomeSixImageURL @"appImgs/getHomeSixImage.do"                //获取首页图片
 #define GetParentSchoolListURL @"appFind/getFindMoreList.do"            //获取亲子学堂页数据 endTime : 时间戳
+#define InsertQuestionURL @"appQuestion/insertQuestion.do"            //提交问题  参数对应名称（用户id:userId 问题标题:questionTitle 标签:keyWord 问题内容:questionVal）
+
 
 
 #endif /* Api_h */

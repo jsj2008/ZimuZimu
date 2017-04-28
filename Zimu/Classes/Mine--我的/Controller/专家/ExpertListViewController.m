@@ -32,6 +32,7 @@
  */
 - (void)setupExpertListTableView{
     _expertListTableView = [[ExpertListTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    _expertListTableView.backgroundColor = themeGray;
     [self.view addSubview:_expertListTableView];
 }
 

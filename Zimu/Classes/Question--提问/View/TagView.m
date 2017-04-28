@@ -57,9 +57,14 @@
     [self addSubview:_tagCollectionView];
 }
 
-- (NSArray *)tagTextArray{
-    _tagTextArray = _tagCollectionView.selectTagArray;
-    return _tagTextArray;
+
+- (NSString *)tagText{
+    NSMutableString *tagString = [NSMutableString string];
+    for (int index = 0; index < _tagCollectionView.selectTagArray.count; index++) {
+        NSString *text = _tagCollectionView.selectTagArray[index];
+        [tagString appendString:text];
+    }
+    return tagString;
 }
 
 

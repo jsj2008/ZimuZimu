@@ -14,6 +14,7 @@
 #import "MySecretViewController.h"
 #import "MyCollectViewController.h"
 #import "MyEvaluationViewController.h"
+#import "ExpertListViewController.h"
 
 static NSString *identifier = @"MineCollectionViewCell";
 
@@ -118,6 +119,9 @@ static NSString *identifier = @"MineCollectionViewCell";
     }else if (indexPath.row == 4){
         MyCollectViewController *myCollectVC = [[MyCollectViewController alloc]init];
         [self.viewController.navigationController pushViewController:myCollectVC animated:YES];
+    }else if(indexPath.row == 5){
+        ExpertListViewController *expertListVC = [[ExpertListViewController alloc]init];
+        [self.viewController.navigationController pushViewController:expertListVC animated:YES];
     }
 }
 

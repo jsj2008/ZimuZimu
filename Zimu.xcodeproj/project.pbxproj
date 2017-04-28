@@ -122,6 +122,7 @@
 		5F4833811EB2DB8100481407 /* MyExpertTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F48337F1EB2DB8100481407 /* MyExpertTableViewCell.m */; };
 		5F4833821EB2DB8100481407 /* MyExpertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4833801EB2DB8100481407 /* MyExpertTableViewCell.xib */; };
 		5F4833881EB2EEA500481407 /* MyExpertCellLayoutFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4833871EB2EEA500481407 /* MyExpertCellLayoutFrame.m */; };
+		5F48338B1EB3360400481407 /* InsertQuestionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F48338A1EB3360400481407 /* InsertQuestionApi.m */; };
 		5F56654E1E9E235C0050AD29 /* CityCourseCellLayoutFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F56654D1E9E235C0050AD29 /* CityCourseCellLayoutFrame.m */; };
 		5F5665B41E9E86320050AD29 /* CityCourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5665B31E9E86320050AD29 /* CityCourseDetailViewController.m */; };
 		5F5665B81E9E88070050AD29 /* CityCourseDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5665B71E9E88070050AD29 /* CityCourseDetailTableView.m */; };
@@ -598,6 +599,8 @@
 		5F4833801EB2DB8100481407 /* MyExpertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyExpertTableViewCell.xib; sourceTree = "<group>"; };
 		5F4833861EB2EEA500481407 /* MyExpertCellLayoutFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyExpertCellLayoutFrame.h; sourceTree = "<group>"; };
 		5F4833871EB2EEA500481407 /* MyExpertCellLayoutFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyExpertCellLayoutFrame.m; sourceTree = "<group>"; };
+		5F4833891EB3360400481407 /* InsertQuestionApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertQuestionApi.h; sourceTree = "<group>"; };
+		5F48338A1EB3360400481407 /* InsertQuestionApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertQuestionApi.m; sourceTree = "<group>"; };
 		5F56654C1E9E235C0050AD29 /* CityCourseCellLayoutFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCourseCellLayoutFrame.h; sourceTree = "<group>"; };
 		5F56654D1E9E235C0050AD29 /* CityCourseCellLayoutFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCourseCellLayoutFrame.m; sourceTree = "<group>"; };
 		5F5665B21E9E86320050AD29 /* CityCourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCourseDetailViewController.h; sourceTree = "<group>"; };
@@ -1815,6 +1818,8 @@
 				5F574D9D1EAF894E007648D0 /* GetHomeSixImageApi.m */,
 				5FF4F2E81EB087A100977045 /* GetParentSchoolListApi.h */,
 				5FF4F2E91EB087A100977045 /* GetParentSchoolListApi.m */,
+				5F4833891EB3360400481407 /* InsertQuestionApi.h */,
+				5F48338A1EB3360400481407 /* InsertQuestionApi.m */,
 			);
 			path = "Api--接口";
 			sourceTree = "<group>";
@@ -3062,6 +3067,7 @@
 				5FCFF1271EA9ECEC003788A0 /* ConfuseTagCell.m in Sources */,
 				5FCFF1C41EAD9BB2003788A0 /* FMDetailAuthorCell.m in Sources */,
 				18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */,
+				5F48338B1EB3360400481407 /* InsertQuestionApi.m in Sources */,
 				5FF4F2FB1EB09A6D00977045 /* AllOrderTableViewController.m in Sources */,
 				5FCFEF051EA47777003788A0 /* SecondViewController.m in Sources */,
 				18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */,
