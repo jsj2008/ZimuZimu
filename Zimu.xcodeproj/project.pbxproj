@@ -142,16 +142,13 @@
 		1EF3F9A21EB3146C0002D7EE /* ZMTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C3C9B1E5EB6A4009659E4 /* ZMTabBar.m */; };
 		1EF3F9A31EB3146C0002D7EE /* HomeFMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FABE62A1E8A3D7A00FE8A33 /* HomeFMModel.m */; };
 		1EF3F9A41EB3146C0002D7EE /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0741EA7368C003788A0 /* MineViewController.m */; };
-<<<<<<< HEAD
 		5F0A9B711EBC710B0066F7BE /* EditProvinceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A9B701EBC710B0066F7BE /* EditProvinceTableViewController.m */; };
 		5F0A9B741EBC71550066F7BE /* EditCityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A9B731EBC71550066F7BE /* EditCityTableViewController.m */; };
 		5F0A9B771EBC730D0066F7BE /* EditProvinceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A9B761EBC730D0066F7BE /* EditProvinceApi.m */; };
 		5F0A9B7A1EBC731C0066F7BE /* EditCityApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A9B791EBC731C0066F7BE /* EditCityApi.m */; };
 		5F0A9B7D1EBC745B0066F7BE /* ProvinceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A9B7C1EBC745B0066F7BE /* ProvinceModel.m */; };
 		5F0A9B801EBC74BE0066F7BE /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A9B7F1EBC74BE0066F7BE /* CityModel.m */; };
-=======
 		1EF3F9A91EB839630002D7EE /* ZM_ChatRoomAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3F9A81EB839630002D7EE /* ZM_ChatRoomAlertViewController.m */; };
->>>>>>> origin/master
 		5F2D622F1E77BBC000B038A5 /* ExamApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D622E1E77BBC000B038A5 /* ExamApplyViewController.m */; };
 		5F2D62321E77C1A300B038A5 /* ExamApplyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D62311E77C1A300B038A5 /* ExamApplyTableView.m */; };
 		5F2D62361E77C36500B038A5 /* EntranceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D62341E77C36500B038A5 /* EntranceCell.m */; };
@@ -3526,12 +3523,9 @@
 				1E0FF3A71EA9B2BC000156B5 /* ZMPushManager.m in Sources */,
 				5F8CB59C1EC1B26C00541A57 /* ActivityNoteCell.m in Sources */,
 				1E0FF3D51EA9F28B000156B5 /* PLMediaChiefPKViewController.m in Sources */,
-<<<<<<< HEAD
 				5F4833A61EB85DEB00481407 /* MyInfoTextCell.m in Sources */,
 				5F8CB5771EC015C200541A57 /* InsertCommentCell.m in Sources */,
-=======
 				1E1762FD1EC155E900292DAC /* SearchFriendsViewController.m in Sources */,
->>>>>>> origin/master
 				5F574D6F1EADE83F007648D0 /* BrowsFMViewController.m in Sources */,
 				5F9CE2DB1E84EFB700424352 /* SearchHeaderCell.m in Sources */,
 				18AC3B8C1E729CD2007EE823 /* TADotView.h in Sources */,
@@ -3555,11 +3549,8 @@
 				5FCFF1CD1EAD9BB2003788A0 /* FMDetailIntroLayoutFrame.m in Sources */,
 				1E1763251EC15A1900292DAC /* UIImage+demobar.m in Sources */,
 				5FCFF0CA1EA85C40003788A0 /* VideoCourseCollectionView.m in Sources */,
-<<<<<<< HEAD
 				5F4833D41EB9A49500481407 /* SearchQuestionApi.m in Sources */,
-=======
 				1E1762F51EC023DE00292DAC /* PersonalMessageViewController.m in Sources */,
->>>>>>> origin/master
 				5FCFEF0C1EA47787003788A0 /* HomeCollectionViewCell.m in Sources */,
 				5F4833F51EBB1FB500481407 /* EditSexApi.m in Sources */,
 				5FCFF0D01EA86971003788A0 /* VideoCourseBigCell.m in Sources */,
@@ -3677,12 +3668,9 @@
 				5F2D622F1E77BBC000B038A5 /* ExamApplyViewController.m in Sources */,
 				5FCFF1DA1EAD9BB2003788A0 /* HomeVideoListCollectionView.m in Sources */,
 				5F2D62491E77D49600B038A5 /* ExamFreeVideoCollectionView.m in Sources */,
-<<<<<<< HEAD
 				5F0A9B741EBC71550066F7BE /* EditCityTableViewController.m in Sources */,
-=======
 				1E1762D11EB9A8C600292DAC /* SingleViewerViewController.m in Sources */,
 				1E71B02C1EC19F7D00DDEDDB /* SearchFriendResultViewController.m in Sources */,
->>>>>>> origin/master
 				5FAED5C41E9B738500E295AC /* AnimationContoller.m in Sources */,
 				5FCFF1B91EAD9BB2003788A0 /* HomeVideoDetailViewController.m in Sources */,
 				5F656A661EBB481B009BB71A /* InsertCommentApi.m in Sources */,
@@ -3707,11 +3695,8 @@
 				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F574D931EAEEE07007648D0 /* LoginView.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
-<<<<<<< HEAD
 				5F4833F21EBB1FA600481407 /* EditAgeApi.m in Sources */,
-=======
 				1E1762DD1EBAF0A900292DAC /* ZMChatAlertViewController.m in Sources */,
->>>>>>> origin/master
 				5FCFF1DB1EAD9BB2003788A0 /* SectionFootCell.m in Sources */,
 				5FCFF1E41EAD9BB2003788A0 /* TrainningDeatailView.m in Sources */,
 				5FF4F2EA1EB087A100977045 /* GetParentSchoolListApi.m in Sources */,
