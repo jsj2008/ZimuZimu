@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="FriendMsgCell">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="435" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kvm-35-MRz">
+                        <rect key="frame" x="10" y="10" width="49.5" height="49.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="kvm-35-MRz" secondAttribute="height" id="FAb-bl-4jU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佚名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewh-YC-Zbu">
+                        <rect key="frame" x="69.5" y="13" width="35" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是小公举1号，请求添加你为好友！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdC-G2-XPT">
+                        <rect key="frame" x="69.5" y="40.5" width="267.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-ee-ZgD">
+                        <rect key="frame" x="357" y="20" width="60" height="30"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.80784313725490198" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="8i9-H6-xBk"/>
+                            <constraint firstAttribute="width" constant="60" id="BJ0-0z-hLc"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="acceptBtnActio:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aPI-Iy-xJb"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kvm-35-MRz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="0kT-Zy-oOh"/>
+                    <constraint firstItem="Btb-ee-ZgD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="D7a-K5-zf9"/>
+                    <constraint firstAttribute="bottom" secondItem="kvm-35-MRz" secondAttribute="bottom" constant="10" id="MWS-7b-Fxb"/>
+                    <constraint firstItem="sdC-G2-XPT" firstAttribute="leading" secondItem="ewh-YC-Zbu" secondAttribute="leading" id="Py8-fW-F5F"/>
+                    <constraint firstItem="kvm-35-MRz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="c5t-Rs-Eb3"/>
+                    <constraint firstItem="sdC-G2-XPT" firstAttribute="bottom" secondItem="kvm-35-MRz" secondAttribute="bottom" constant="-3" id="hPx-kB-e5o"/>
+                    <constraint firstItem="ewh-YC-Zbu" firstAttribute="top" secondItem="kvm-35-MRz" secondAttribute="top" constant="3" id="moK-uU-qLp"/>
+                    <constraint firstItem="Btb-ee-ZgD" firstAttribute="leading" secondItem="sdC-G2-XPT" secondAttribute="trailing" constant="20" id="pI6-Tn-1J6"/>
+                    <constraint firstItem="sdC-G2-XPT" firstAttribute="leading" secondItem="kvm-35-MRz" secondAttribute="trailing" constant="10" id="rDh-ey-Ppg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Btb-ee-ZgD" secondAttribute="trailing" constant="10" id="v3C-t4-eae"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailLabel" destination="sdC-G2-XPT" id="Fi8-La-gRY"/>
+                <outlet property="headImgView" destination="kvm-35-MRz" id="zVf-dc-Xbv"/>
+                <outlet property="nameLabel" destination="ewh-YC-Zbu" id="jtm-BQ-jJJ"/>
+                <outlet property="sureBtn" destination="Btb-ee-ZgD" id="xaM-ko-Jhz"/>
+            </connections>
+            <point key="canvasLocation" x="89.5" y="51"/>
+        </tableViewCell>
+    </objects>
+</document>

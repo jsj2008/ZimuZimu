@@ -24,6 +24,8 @@
 #import "PLMediaStreamingSession.h"
 
 #import <SVProgressHUD/SVProgressHUD.h>
+
+#import "ZM_CallingHandleCategory.h"
 @interface AppDelegate ()
 
 @property (nonatomic, strong)ZMPushManager *pushMgr;
@@ -59,9 +61,17 @@
     [_pushMgr setUmessage:launchOptions];
     
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+    
+   
+//    [ZM_CallingHandleCategory jumpToWaitVC];
+    [self getCapture];
     return YES;
 }
-
+//调用摄像头权限
+- (void)getCapture{
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+    }];
+}
 //设置友盟统计参数
 - (void)setUMMobClick{
     UMConfigInstance.appKey = @"58ad5e6a75ca355b62000766";

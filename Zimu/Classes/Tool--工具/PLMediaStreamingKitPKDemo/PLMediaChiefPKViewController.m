@@ -12,7 +12,7 @@
 #import "PLPixelBufferProcessor.h"
 
 #import <GLKit/GLKit.h>
-#import <FUAPIDemoBar/FUAPIDemoBar.h>
+#import "FUAPIDemoBar.h"
 #import "PhotoButton.h"
 
 #import "FURenderer.h"
@@ -272,8 +272,8 @@ const static char *rtcStateNames[] = {
     //1  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:1C9e_uWj9rXxVSJFHA0pRLnW3bA=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjEiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjU3MH0=
     //2  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:bVZM8cikBvmwb-4BI7YYSzSI3Uo=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjIiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjU5OH0=
     //3  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:6DTLOq02RDmc8BP6V_r3FW89ork=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjMiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjYyNH0=
-    self.userID = @"0";
-    self.roomToken = @"uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:ODK2rA7DL1DgsdH0Dc3YFd3F3zY=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjAiLCJwZXJtIjoiYWRtaW4iLCJleHBpcmVfYXQiOjE0OTMyNTcxODh9";
+    self.userID = @"123";
+    self.roomToken = @"uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:fBD00X1-80cDdjzEyZN0rHqovGI=:eyJyb29tX25hbWUiOiJ0ZXN0Nzc4IiwidXNlcl9pZCI6IjEyMyIsInBlcm0iOiJhZG1pbiIsImV4cGlyZV9hdCI6MTQ5NDMyMDM1OX0=";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -290,8 +290,8 @@ const static char *rtcStateNames[] = {
     self.session = nil;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 #pragma mark - 推流按钮点击
@@ -364,7 +364,7 @@ const static char *rtcStateNames[] = {
 //开始连麦
 - (void)startConnect{
     if (!_isConnect) {
-        _isConnect = YES;
+//        _isConnect = YES;
         [self.session startConferenceWithRoomName:self.roomName userID:self.userID roomToken:self.roomToken rtcConfiguration:[PLRTCConfiguration defaultConfiguration]];
         NSDictionary *option = @{kPLRTCRejoinTimesKey:@(2), kPLRTCConnetTimeoutKey:@(3000)};
         self.session.rtcOption = option;
@@ -499,6 +499,7 @@ const static char *rtcStateNames[] = {
     
     if (state == PLRTCStateConferenceStarted) {
         self.conferenceButton.selected = YES;
+        _isConnect = YES;
     } else {
         self.conferenceButton.selected = NO;
         self.viewSpaceMask = 0;

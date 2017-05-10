@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/LovelyFace--&#x840c;&#x62cd;/ViewController/LovelyFaceViewController.m"
-            timestampString = "514889662.519378"
+            timestampString = "515648802.327632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "-didOutputVideoSampleBuffer:"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,6 +138,38 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "-setState:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/FindFriends--&#x627e;&#x670b;&#x53cb;/VIew/ZM_SelectSexView.m"
+            timestampString = "515495981.666379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-pickerView:attributedTitleForRow:forComponent:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/PLMediaStreamingKitPKDemo/PLMediaChiefPKViewController.m"
+            timestampString = "515926535.844064"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
+            landmarkName = "-mediaStreamingSession:rtcStateDidChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

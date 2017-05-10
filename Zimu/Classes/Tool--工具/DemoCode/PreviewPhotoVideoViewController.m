@@ -58,7 +58,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUI];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setUI];
+    });
     // Do any additional setup after loading the view.
 }
 
@@ -68,7 +70,6 @@
 #pragma mark - 设置UI
 - (void)setUI{
     //添加预览
-    NSLog(@"asdf0");
     if (!_isVideo) {
         [self.view addSubview:self.imgView];
     }else{
@@ -76,11 +77,10 @@
         [self startPlay];
     }
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(10, 30, 50, 50);
-    [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(20, self.view.height - 100, 80, 80);
+    [backBtn setImage:[UIImage imageNamed:@"lovelyface_back"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
-    NSLog(@"asdf1");
     
     //再添加视频播放、保存按钮
     [self.view addSubview:self.saveBtn];
@@ -88,9 +88,7 @@
         [self.view addSubview:self.playBtn];
         _playBtn.hidden = YES;
     }
-    
     //设置返回按钮
-    NSLog(@"asdf2");
 }
 #pragma mark - 视频预览
 - (void)setupPlayer{
@@ -127,7 +125,7 @@
     if (!_saveBtn) {
         _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.view addSubview:_saveBtn];
-        [_saveBtn setImage:[UIImage imageNamed:@"save"] forState:UIControlStateNormal];
+        [_saveBtn setImage:[UIImage imageNamed:@"lovelyface_save"] forState:UIControlStateNormal];
         [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(self.view).with.offset(-20);
             make.centerX.mas_equalTo(0);
@@ -142,7 +140,7 @@
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.view addSubview:_playBtn];
-        [_playBtn setImage:[UIImage imageNamed:@"home_bofang"] forState:UIControlStateNormal];
+        [_playBtn setImage:[UIImage imageNamed:@"lovelyface_replay"] forState:UIControlStateNormal];
         [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
             make.centerX.mas_equalTo(0);

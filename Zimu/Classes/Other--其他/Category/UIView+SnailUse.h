@@ -14,4 +14,6 @@
 
 + (id)callPhoneView;
 
++ (id)sexChooseView;
+
 @end
