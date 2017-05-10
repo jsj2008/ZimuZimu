@@ -30,8 +30,29 @@
 
 #define GetHomeSixImageURL @"appImgs/getHomeSixImage.do"                //获取首页图片
 #define GetParentSchoolListURL @"appFind/getFindMoreList.do"            //获取亲子学堂页数据 endTime : 时间戳
-#define InsertQuestionURL @"appQuestion/insertQuestion.do"            //提交问题  参数对应名称（用户id:userId 问题标题:questionTitle 标签:keyWord 问题内容:questionVal）
 
 
+//============================================== #提问# ====================================================
+#define AppExpSolveURL @"appExpSolve/appExpSolve.do"                  //搜索问题  参数对应名称（questionTitle : 问题标题）
+#define InsertQuestionURL @"appExpSolve/insertQuestion.do"            //提交问题  参数对应名称（问题标题:questionTitle 标签:keyWord 问题内容:questionVal）
+#define AppQuestionByIdURL @"appExpSolve/appQuestionById.do"          //查询问题详情  参数对应名称（问题id:questionId）
+#define AppExpSolveReadURL @"appExpSolve/appExpSolveRead.do"          //问题详情中专家回答内容 （问题id:questionId）
+#define AppUserCommentURL @"appExpSolve/appUserComment.do"            //问题详情中用户评论列表  参数对应名称（问题id:questionId）
+#define InsertCommentURL @"appExpSolve/insertComment.do"            //提交评论 （评论内容 commentVal  问题id questionId）
+
+
+//=========================================== #我的个人信息# ================================================
+#define GetMyInfoURL @"appUser/getMyInfo.do"                //获取个人信息  （带参数userToken，后台拦截器会拦截userToken取出该用户信息）
+#define EditMyInfoURL @"appUser/editMyInfo.do"              //修改个人信息，带参数 userToken 和要修改的 某个参数
+#define GetProvinceURL @"appAddress/getProvince.do"         //获取所有省份
+#define GetCityURL @"appAddress/getCitysByPrevId.do"        //根据省份ID获取城市 (prevId : 省份ID 例：ff19987b-484f-4645-9835-08c2daf344ce)
 
 #endif /* Api_h */
+
+
+
+/*
+ *  还没用过的接口
+ 
+ 5. appFind/getFindMoreSearchList.do?title=test   亲自学堂页面，搜索接口
+ */

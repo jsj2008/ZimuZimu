@@ -13,4 +13,7 @@
 
 @property (nonatomic, strong) FMDetailCommentLayoutFrame *commentLayoutFrame;
 
+/*提问：用户评论*/
+@property (nonatomic, strong) FMDetailCommentLayoutFrame *userCommentLayoutFrame;
+
 @end

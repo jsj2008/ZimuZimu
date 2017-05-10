@@ -19,7 +19,6 @@
 }
 
 - (void)layoutFrames{
-    
     //标签MarkLabel
     NSString *markString = @"内容简介";
     CGSize markSize = [markString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}];
@@ -40,7 +39,6 @@
     _openButtonFrame = CGRectMake((kScreenWidth - openButtonWidth)/2.0, CGRectGetMaxY(_contentLabelFrame) + 5, openButtonWidth, openButtonHeight);
     
     _cellHeight = CGRectGetMaxY(_openButtonFrame) + 5;
-    
     
 }
 

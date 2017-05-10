@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Zimu. All rights reserved.
 //
 
+//  刚提交后跳转的页面
+
 #import "AnswerTableView.h"
 #import "ConfuseTagCell.h"
 #import "ConfuseContentCell.h"
@@ -33,6 +35,7 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
         self.dataSource = self;
         [self hideExtraLines];
         self.backgroundColor = themeGray;
+        self.separatorColor = themeGray;
         
         [self registerNib:[UINib nibWithNibName:@"ConfuseTagCell" bundle:nil] forCellReuseIdentifier:confuseTagIdentifier];
         [self registerNib:[UINib nibWithNibName:@"ConfuseContentCell" bundle:nil] forCellReuseIdentifier:confuseContentCellIdentifier];
@@ -59,22 +62,24 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             ConfuseTagCell *cell = [tableView dequeueReusableCellWithIdentifier:confuseTagIdentifier];
-            cell.separatorInset = UIEdgeInsetsMake(self.height - 1, 0, 0, 0);
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.width, 0, 0);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.tagArray = @[@"亲子关系",@"叛逆",@"网瘾少年"];
+            cell.tagArray = [_questionModel.keyWord componentsSeparatedByString:@","];
             
             return cell;
         }
         ConfuseContentCell *cell = [tableView dequeueReusableCellWithIdentifier:confuseContentCellIdentifier];
         cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width, 0, 0);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]initWithModel:_questionModel];
+        cell.layoutFrame = layoutFrame;
+        
         return cell;
     }else if (indexPath.section == 1){
         NoAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:noAnswerCellIdentifier];
         cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width, 0, 0);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
         return cell;
     }else{
         if (indexPath.row == 0) {
@@ -98,7 +103,7 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
         if (indexPath.row == 0) {
             return 45;
         }
-        ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]init];
+        ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]initWithModel:_questionModel];
         return layoutFrame.cellHeight;
         
     }else if (indexPath.section == 1){
@@ -121,9 +126,6 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
 
 
 
@@ -132,6 +134,16 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
     view.backgroundColor = themeWhite;
     self.tableFooterView = view;
 }
+
+
+#pragma mark - 数据
+- (void)setQuestionModel:(QuestionModel *)questionModel{
+    if (_questionModel != questionModel) {
+        _questionModel = questionModel;
+        [self reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
 
 
 @end

@@ -84,6 +84,9 @@
         NSInteger isTure = [dic[@"isTrue"] integerValue];
         if (isTure) {
             [MBProgressHUD showMessage_WithoutImage:@"登录成功" toView:self.view];
+            //存储用户userToken
+            [[NSUserDefaults standardUserDefaults] setObject:dic[@"object"] forKey:@"userToken"];
+            
             if ([self.delegate respondsToSelector:@selector(loginSuccess)]) {
                 [self.delegate loginSuccess];
             }

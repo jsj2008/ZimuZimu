@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSString *previousVC;
 
+@property (nonatomic, copy) NSString *questionID;
+
+
 @end

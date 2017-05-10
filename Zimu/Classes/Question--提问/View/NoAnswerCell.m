@@ -29,4 +29,11 @@
     // Configure the view for the selected state
 }
 
+- (void)setPlaceholderText:(NSString *)placeholderText{
+    if (_placeholderText != placeholderText) {
+        _placeholderText = placeholderText;
+        _titleLabel.text = placeholderText;
+    }
+}
+
 @end

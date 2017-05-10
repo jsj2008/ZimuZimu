@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuestionDetailModel.h"
 
 @interface AnswerTableView : UITableView
+
+@property (nonatomic, strong) QuestionModel *questionModel;
+
 
 @end

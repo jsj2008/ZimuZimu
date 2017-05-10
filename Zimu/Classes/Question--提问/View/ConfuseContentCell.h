@@ -12,5 +12,6 @@
 @interface ConfuseContentCell : UITableViewCell
 
 @property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrame;
+@property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrameNormal;
 
 @end

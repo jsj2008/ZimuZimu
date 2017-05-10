@@ -7,8 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QuestionUserCommentModel.h"
 
 @interface FMDetailCommentLayoutFrame : NSObject
+
+
+/*提问：用户评论*/
+- (instancetype)initWithUserCommentModel:(UserCommentModel *)userCommentModel;
+@property (nonatomic, strong) UserCommentModel *userCommentModel;
+
 
 @property (nonatomic, assign) CGRect headImageViewFrame;
 @property (nonatomic, assign) CGRect nameLabelFrame;

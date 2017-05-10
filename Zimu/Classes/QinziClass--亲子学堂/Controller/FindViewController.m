@@ -49,7 +49,7 @@
     _findTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getDataNetWork)];
     [_findTableView.mj_header beginRefreshing];
     //上拉加载
-    _findTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+//    _findTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
     [self.view addSubview:_findTableView];
 }
@@ -68,13 +68,13 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            
+            [_findTableView.mj_header endRefreshing];
             return ;
         }
         ParentSchoolModel *parentScoolModel = [ParentSchoolModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = parentScoolModel.isTrue;
         if (!isTrue) {
-            
+            [_findTableView.mj_header endRefreshing];
             return;
         }
         NSArray *items = parentScoolModel.items;

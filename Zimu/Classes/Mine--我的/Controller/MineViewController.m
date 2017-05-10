@@ -10,6 +10,7 @@
 #import "UIImage+ZMExtension.h"
 #import "MineCollectionView.h"
 #import "NewLoginViewController.h"
+#import "MyInfoSetTableViewController.h"
 
 @interface MineViewController ()
 
@@ -82,18 +83,18 @@
     //头像
     _headButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _headButton.frame = CGRectMake(0, 0, 75 * kScreenWidth/375.0, 75 * kScreenWidth/375.0);
-    _headButton.center = CGPointMake(_contentView.centerX, 0);
+    _headButton.center = CGPointMake(_contentView.centerX, _contentView.y);
     _headButton.layer.cornerRadius = _headButton.height/2.0;
     _headButton.layer.masksToBounds = YES;
     [_headButton setImage:[UIImage imageNamed:@"wode_touxiang"] forState:UIControlStateNormal];
     [_headButton addTarget:self action:@selector(myInfo) forControlEvents:UIControlEventTouchUpInside];
-    [_contentView addSubview:_headButton];
+    [_scrollView addSubview:_headButton];
     
     //姓名
     NSString *name = @"蘇三的歌";
     UIFont *font = [UIFont boldSystemFontOfSize:18];
     CGSize nameSize = [name sizeWithAttributes:@{NSFontAttributeName:font}];
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headButton.frame) + 10, nameSize.width, nameSize.height)];
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, _headButton.height/2.0 + 10, nameSize.width, nameSize.height)];
     _nameLabel.centerX = _headButton.centerX;
     _nameLabel.text = name;
     _nameLabel.font = font;
@@ -134,8 +135,17 @@
 
 //我的个人信息
 - (void)myInfo{
+    
+    MyInfoSetTableViewController *myInfoSetVC = [[MyInfoSetTableViewController alloc]init];
+    [self.navigationController pushViewController:myInfoSetVC animated:YES];
+}
+
+- (void)login{
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
     [self presentViewController:newLoginVC animated:YES completion:nil];
+
 }
+
+
 
 @end

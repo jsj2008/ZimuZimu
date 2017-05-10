@@ -9,10 +9,12 @@
 #import "QuestionResultTableView.h"
 #import "QuestionResultCell.h"
 #import "AnswerDetailViewController.h"
+#import "AnswerViewController.h"
 #import "UIView+ViewController.h"
+#import "SearchQuestionModel.h"
 
 static NSString *identifier = @"QuestionResultCell";
-@interface QuestionResultTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface QuestionResultTableView ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @end
 
@@ -40,20 +42,50 @@ static NSString *identifier = @"QuestionResultCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     QuestionResultCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.separatorInset = UIEdgeInsetsMake(self.height - 1, 10, 0, 0);
-    cell.titleString = _resultArray[indexPath.row];
+    
+    SearchQuestionResultModel *model = _resultArray[indexPath.row];
+    cell.model = model;
+    
     
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 25;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = themeWhite;
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, self.width - 20, 25)];
+    label.font = [UIFont systemFontOfSize:13];
+    label.text = @"相关问题推荐";
+    label.textColor = [UIColor colorWithHexString:@"999999"];
+    label.textAlignment = NSTextAlignmentLeft;
+    [view addSubview:label];
+    
+    return view;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     QuestionResultCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
     NSLog(@"title : %@",cell.titleString);
     
-    AnswerDetailViewController *answerDetailVC = [[AnswerDetailViewController alloc]init];
-    [self.viewController.navigationController pushViewController:answerDetailVC animated:YES];
+    SearchQuestionResultModel *model = _resultArray[indexPath.row];
+    
+    if (cell.model.commentNum == nil && [cell.model.isExpAnswer isEqualToString:@"0"]) {
+        //专家未解答，没有用户评论
+        AnswerViewController *answerVC = [[AnswerViewController alloc]init];
+        answerVC.questionID = model.questionId;
+        [self.viewController.navigationController pushViewController:answerVC animated:YES];
+    }else{
+        AnswerDetailViewController *answerDetailVC = [[AnswerDetailViewController alloc]init];
+        answerDetailVC.questionId = model.questionId;
+        [self.viewController.navigationController pushViewController:answerDetailVC animated:YES];
+    }
     
 }
 
@@ -66,6 +98,14 @@ static NSString *identifier = @"QuestionResultCell";
     UIView *view = [[UIView alloc]init];
     view.backgroundColor = themeWhite;
     self.tableFooterView = view;
+}
+
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if ([self.scrollDelegate respondsToSelector:@selector(questionResultTableViewDidScroll)]) {
+        [self.scrollDelegate questionResultTableViewDidScroll];
+    }
 }
 
 

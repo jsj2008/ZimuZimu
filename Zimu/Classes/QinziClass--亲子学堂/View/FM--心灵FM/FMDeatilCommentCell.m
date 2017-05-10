@@ -8,6 +8,7 @@
 
 #import "FMDeatilCommentCell.h"
 #import "UIImage+ZMExtension.h"
+#import "UIImageView+WebCache.h"
 
 @interface FMDeatilCommentCell ()
 
@@ -56,6 +57,35 @@
         _commentLabel.textColor = [UIColor lightGrayColor];
         _commentLabel.font = [UIFont systemFontOfSize:13];
         _commentLabel.frame = commentLayoutFrame.commentLabelFrame;
+        
+    }
+}
+
+/*提问：用户评论*/
+- (void)setUserCommentLayoutFrame:(FMDetailCommentLayoutFrame *)userCommentLayoutFrame{
+    if (_userCommentLayoutFrame != userCommentLayoutFrame) {
+        _userCommentLayoutFrame = userCommentLayoutFrame;
+        
+        //头像
+        _headImageView.frame = userCommentLayoutFrame.headImageViewFrame;
+        NSString *imageString = [NSString stringWithFormat:@"%@%@",imagePrefixURL , userCommentLayoutFrame.userCommentModel.userImg];
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
+        
+        //姓名
+        _nameLabel.frame = userCommentLayoutFrame.nameLabelFrame;
+        _nameLabel.text = userCommentLayoutFrame.userCommentModel.userName;
+        _nameLabel.font = [UIFont systemFontOfSize:14];
+        
+        //点赞
+        _likeButton.frame = userCommentLayoutFrame.likeButtonFrame;
+        [_likeButton setTitle:[NSString stringWithFormat:@" %li",userCommentLayoutFrame.userCommentModel.dianZanNum] forState:UIControlStateNormal];
+        
+        //评论内容
+        NSString *commentString = userCommentLayoutFrame.userCommentModel.commentVal;
+        _commentLabel.text = commentString;
+        _commentLabel.textColor = [UIColor lightGrayColor];
+        _commentLabel.font = [UIFont systemFontOfSize:13];
+        _commentLabel.frame = userCommentLayoutFrame.commentLabelFrame;
         
     }
 }

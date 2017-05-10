@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QuestionExpertAnswerModel.h"
 
 @interface ExpertAnswerLayoutFrame : NSObject
 
+- (instancetype)initWithExpertAnswerModel:(ExpertAnswerModel *)expertAnswerModel;
+@property (nonatomic, strong) ExpertAnswerModel *expertAnswerModel;
+
 @property (nonatomic, assign) CGRect headImageViewFrame;
+@property (nonatomic, assign) CGRect headCoverImageViewFrame;
 @property (nonatomic, assign) CGRect nameLabelFrame;
 @property (nonatomic, assign) CGRect tagLabel1Frame;
 @property (nonatomic, assign) CGRect tagLabel2Frame;

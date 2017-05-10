@@ -10,4 +10,7 @@
 
 @interface AnswerDetailViewController : UIViewController
 
+@property (nonatomic, copy) NSString *questionId;
+
+
 @end

@@ -9,16 +9,14 @@
 #import "InsertQuestionApi.h"
 
 @implementation InsertQuestionApi{
-    NSString *_userId;
     NSString *_questionTitle;
     NSString *_keyWord;
     NSString *_questioVal;
 }
 
-- (instancetype)initWithUserId:(NSString *)userId questionTitle:(NSString *)questionTitle keyWord:(NSString *)keyWord questionVal:(NSString *)questionVal{
+- (instancetype)initWithQuestionTitle:(NSString *)questionTitle keyWord:(NSString *)keyWord questionVal:(NSString *)questionVal{
     if (self = [super init]) {
         
-        _userId = userId;
         _questionTitle = questionTitle;
         _keyWord = keyWord;
         _questioVal = questionVal;
@@ -31,10 +29,15 @@
 }
 
 - (id)requestArgument{
-    return @{@"userId":_userId,
+    return @{
              @"questionTitle":_questionTitle,
              @"keyWord":_keyWord,
-             @"questionVal":_questioVal};
+             @"questionVal":_questioVal,
+             @"userToken":userToken};
+}
+
+- (YTKRequestMethod)requestMethod{
+    return YTKRequestMethodPOST;
 }
 
 @end

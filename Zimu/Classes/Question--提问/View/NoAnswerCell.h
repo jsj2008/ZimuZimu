@@ -10,4 +10,7 @@
 
 @interface NoAnswerCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *placeholderText;
+
+
 @end

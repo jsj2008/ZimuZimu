@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuestionDetailModel.h"
 
 @interface ConfuseAnswerDetailTableView : UITableView
+
+@property (nonatomic, strong) QuestionModel *questionModel;
+@property (nonatomic, strong) NSArray *expertAnswerModelArray;
+@property (nonatomic, strong) NSArray *userCommentModelArray;
 
 @end

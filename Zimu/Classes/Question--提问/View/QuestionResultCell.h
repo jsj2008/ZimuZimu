@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchQuestionModel.h"
 
 @interface QuestionResultCell : UITableViewCell
 
 
 @property (nonatomic, copy) NSString *titleString;
+
+@property (nonatomic, strong) SearchQuestionResultModel *model;
+
 
 
 @end

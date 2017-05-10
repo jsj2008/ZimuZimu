@@ -28,6 +28,8 @@
 #define themeOrange [UIColor colorWithHexString:@"ff9500"]          //橙
 #define themeOrangeRed [UIColor colorWithHexString:@"ff4500"]       //橘红
 
+/*用户userToken*/
+#define userToken [[NSUserDefaults standardUserDefaults] objectForKey:@"userToken"]
 
 #define imagePrefixURL @"http://on9fin031.bkt.clouddn.com/"     //图片前缀
 

@@ -86,12 +86,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cycle_head" translatesAutoresizingMaskIntoConstraints="NO" id="Oz1-a8-WEd">
+                        <rect key="frame" x="8" y="8" width="57" height="58"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="advisoryButton" destination="xZa-Dv-2OE" id="VK1-Gz-HQN"/>
                 <outlet property="answerLabel" destination="ctb-OO-1Z7" id="0He-rk-tJv"/>
                 <outlet property="commentButton" destination="U97-b3-JOc" id="RNz-TF-yhR"/>
+                <outlet property="headCoverImageView" destination="Oz1-a8-WEd" id="FqB-9e-qGo"/>
                 <outlet property="headImageView" destination="FBz-vi-5tP" id="MIJ-b4-0Jq"/>
                 <outlet property="likeButton" destination="Upd-lo-ZPx" id="OlJ-0A-uBi"/>
                 <outlet property="nameLabel" destination="K88-f7-zh0" id="qFW-NX-JxV"/>
@@ -104,6 +109,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="cycle_head" width="50" height="50"/>
         <image name="find_comment" width="15" height="13"/>
         <image name="mine_head_placeholder" width="75" height="75"/>
         <image name="share" width="13" height="15"/>

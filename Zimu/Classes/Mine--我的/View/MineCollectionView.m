@@ -15,6 +15,7 @@
 #import "MyCollectViewController.h"
 #import "MyEvaluationViewController.h"
 #import "ExpertListViewController.h"
+#import "NewLoginViewController.h"
 
 static NSString *identifier = @"MineCollectionViewCell";
 
@@ -116,6 +117,9 @@ static NSString *identifier = @"MineCollectionViewCell";
     }else if (indexPath.row == 2) {
         MySecretViewController *mySecretVC = [[MySecretViewController alloc]init];
         [self.viewController.navigationController pushViewController:mySecretVC animated:YES];
+    }else if (indexPath.row == 3) {
+        NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+        [self.viewController presentViewController:newLoginVC animated:YES completion:nil];
     }else if (indexPath.row == 4){
         MyCollectViewController *myCollectVC = [[MyCollectViewController alloc]init];
         [self.viewController.navigationController pushViewController:myCollectVC animated:YES];

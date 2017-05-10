@@ -8,6 +8,8 @@
 
 #import "ActivityTableView.h"
 #import "ActivityListCell.h"
+#import "UIView+ViewController.h"
+#import "ActivityDetailViewController.h"
 
 static NSString *identifier = @"ActivityListCell";
 
@@ -61,7 +63,8 @@ static NSString *identifier = @"ActivityListCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    ActivityDetailViewController *activityDetailTableView = [[ActivityDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:activityDetailTableView animated:YES];
 }
 
 

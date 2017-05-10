@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIView *seperateLine;
 
-- (IBAction)commentButton:(id)sender;
+//- (IBAction)commentButton:(id)sender;
 
 
 @end
@@ -29,8 +29,10 @@
     _commentButton.layer.cornerRadius = _commentButton.height/2.0;
     _commentButton.layer.masksToBounds = YES;
     _commentButton.backgroundColor = themeGray;
+    _commentButton.enabled = NO;
     
     _seperateLine.backgroundColor = themeGray;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,7 +41,7 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)commentButton:(id)sender {
-    NSLog(@"去评论");
-}
+//- (IBAction)commentButton:(id)sender {
+//    NSLog(@"去评论");
+//}
 @end

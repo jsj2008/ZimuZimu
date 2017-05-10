@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暴躁的孩子应该怎么教育" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1mn-hQ-Mfs">
@@ -25,22 +25,73 @@
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mh6-hi-qYn" customClass="AlignmentLabel">
-                        <rect key="frame" x="10" y="40" width="357" height="129"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="北京子慕教育咨询有限公司的前身为本心文化传播（上海）有限公司北京子慕教育咨询有限公司的前身为本心文化传播（上海）有限公司北京子慕教育咨询有限公司的前身为本心文化传播（上海）有限公司北京子慕教育咨询有限公司的前身为本心文化传播（上海）有限公司&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mh6-hi-qYn" customClass="AlignmentLabel">
+                        <rect key="frame" x="10" y="40" width="357" height="107"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" misplaced="YES" id="BLa-Ua-QdP">
+                        <rect key="frame" x="0.0" y="155" width="375" height="7"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lKT-xS-FEl">
+                        <rect key="frame" x="4" y="169" width="58" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title=" 1000" image="yiding_dianzan">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" image="yiding_dianzan_click">
+                            <color key="titleColor" red="0.99607843139999996" green="0.74901960779999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="likeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l24-4E-JJD"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cvK-Sz-fHU">
+                        <rect key="frame" x="156" y="169" width="52" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title=" 1000" image="find_comment">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="commentButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3sK-9F-GCe"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Od-0l-wHd">
+                        <rect key="frame" x="321" y="169" width="46" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title=" 分享" image="share">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="shareButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OzE-Ov-Yal"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentButton" destination="cvK-Sz-fHU" id="K65-5V-Z7Q"/>
                 <outlet property="contentLabel" destination="mh6-hi-qYn" id="5Rk-BH-ewk"/>
+                <outlet property="likeButton" destination="lKT-xS-FEl" id="AkW-te-hYs"/>
+                <outlet property="seperateLine" destination="BLa-Ua-QdP" id="MrP-pM-RIA"/>
+                <outlet property="shareButton" destination="8Od-0l-wHd" id="0DE-HD-8az"/>
                 <outlet property="titleLabel" destination="1mn-hQ-Mfs" id="vJy-ko-wZH"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="68"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="find_comment" width="15" height="13"/>
+        <image name="share" width="13" height="15"/>
+        <image name="yiding_dianzan" width="15" height="14"/>
+        <image name="yiding_dianzan_click" width="15" height="14"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

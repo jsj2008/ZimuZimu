@@ -12,13 +12,14 @@
 #import "QuestionResultTableView.h"
 #import "SubmitQuestionViewController.h"
 #import "MBProgressHUD+MJ.h"
+#import "SearchQuestionApi.h"
+#import "SearchQuestionModel.h"
 
-@interface QuestionViewController ()<UITextFieldDelegate>
+@interface QuestionViewController ()<UITextFieldDelegate, QuestionResultTableViewDelegate>
 
 @property (nonatomic, strong) UIView *editView;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) QuestionResultTableView *questionResultTableView;
-@property (nonatomic, strong) NSMutableArray *resultArray;
 
 @end
 
@@ -33,11 +34,10 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
-    UIBarButtonItem *rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"" title:@"下一步" target:self action:@selector(nextStep)];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+//    UIBarButtonItem *rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"" title:@"下一步" target:self action:@selector(nextStep)];
+//    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     self.view.backgroundColor = themeWhite;
     
-    _resultArray = [NSMutableArray array];
     [self setupEditView];
     [self setupQuestionResultTableView];
 }
@@ -49,15 +49,11 @@
     [super viewDidAppear:animated];
     [_textField becomeFirstResponder];
 }
-//下一步
-- (void)nextStep{
-    NSLog(@"下一步");
-    if (_textField.text.length == 0) {
-        [MBProgressHUD showMessage_WithoutImage:@"请填写你的困惑" toView:self.view];
-    }else{
-        SubmitQuestionViewController *submitQuestionVC = [[SubmitQuestionViewController alloc]init];
-        submitQuestionVC.questionTitle = _textField.text;
-        [self.navigationController pushViewController:submitQuestionVC animated:YES];
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_textField != nil && _textField.text.length > 0) {
+        [self searchQuestionWithTitle:_textField.text];
     }
 }
 
@@ -70,7 +66,7 @@
     line.backgroundColor = themeGray.CGColor;
     [_editView.layer addSublayer:line];
     
-    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, _editView.width - 20, _editView.height - 1)];
+    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, _editView.width - 20 - 45, _editView.height - 1)];
     _textField.placeholder = @"说出你的困惑";
     _textField.textColor = [UIColor colorWithHexString:@"222222"];
     _textField.font = [UIFont systemFontOfSize:17];
@@ -79,6 +75,29 @@
     _textField.delegate = self;
     [_editView addSubview:_textField];
     
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(CGRectGetMaxX(_textField.frame) + 10, 0, 40, 45);
+    nextButton.imageEdgeInsets = UIEdgeInsetsMake(12.5, 5, 12.5, 15);
+    [nextButton setImage:[UIImage imageNamed:@"question_next"] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
+    [_editView addSubview:nextButton];
+    CALayer *leftLine = [[CALayer alloc]init];
+    leftLine.frame = CGRectMake(CGRectGetMinX(nextButton.frame) - 10, (nextButton.height - 25)/2.0, 1, 25);
+    leftLine.backgroundColor = themeGray.CGColor;
+    [_editView.layer addSublayer:leftLine];
+    
+}
+
+//下一步
+- (void)nextStep{
+    NSLog(@"下一步");
+    if (_textField.text.length == 0) {
+        [MBProgressHUD showMessage_WithoutImage:@"请填写你的困惑" toView:self.view];
+    }else{
+        SubmitQuestionViewController *submitQuestionVC = [[SubmitQuestionViewController alloc]init];
+        submitQuestionVC.questionTitle = _textField.text;
+        [self.navigationController pushViewController:submitQuestionVC animated:YES];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -89,20 +108,60 @@
 
 - (void)textFieldDidChange:(UITextField *)textField{
     if (textField.text.length == 0) {
-        [_resultArray removeAllObjects];
+        _questionResultTableView.hidden = YES;
     }else{
-        [_resultArray addObject:textField.text];
+        [self searchQuestionWithTitle:textField.text];
     }
-    _questionResultTableView.resultArray = _resultArray;
 }
+
 
 #pragma mark - 搜索结果
 - (void)setupQuestionResultTableView{
     _questionResultTableView = [[QuestionResultTableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_editView.frame), kScreenWidth, kScreenHeight - CGRectGetMaxY(_editView.frame) - 64) style:UITableViewStylePlain];
+    _questionResultTableView.scrollDelegate = self;
+    _questionResultTableView.hidden = YES;
     [self.view addSubview:_questionResultTableView];
+}
+//QuestionResultTableViewDelegate    滚动时收起键盘
+- (void)questionResultTableViewDidScroll{
+    [_textField resignFirstResponder];
 }
 
 
+#pragma mark - 网络请求
+- (void)searchQuestionWithTitle:(NSString *)questionTitle{
+    SearchQuestionApi *searchQuestionApi = [[SearchQuestionApi alloc]initWithQuestionTitle:questionTitle];
+    [searchQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            return ;
+        }
+        SearchQuestionModel *searchQuestionModel = [SearchQuestionModel yy_modelWithDictionary:dataDic];
+        BOOL isTrue = searchQuestionModel.isTrue;
+        if (!isTrue) {
+            return;
+        }
+        NSArray *questionResultModelArray = searchQuestionModel.items;
+        if (!questionResultModelArray.count) {
+            //数据库没数据
+            _questionResultTableView.hidden = YES;
+            return;
+        }
+        _questionResultTableView.hidden = NO;
+        NSMutableArray *resultModelArray = [NSMutableArray arrayWithCapacity:questionResultModelArray.count];
+        for (int i = 0; i < questionResultModelArray.count; i++) {
+            NSDictionary *modelDic = questionResultModelArray[i];
+            SearchQuestionResultModel *resultModel = [SearchQuestionResultModel yy_modelWithDictionary:modelDic];
+            [resultModelArray addObject:resultModel];
+        }
+        _questionResultTableView.resultArray = resultModelArray;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+}
 
 
 

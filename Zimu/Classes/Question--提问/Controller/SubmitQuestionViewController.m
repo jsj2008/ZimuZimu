@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) ConfuseDetailView *confuseDetailView;
 @property (nonatomic, strong) TagView *tagsView;
+@property (nonatomic, copy) NSString *questionId;       //提交成功后得到的问题ID
 
 @end
 
@@ -42,7 +43,12 @@
 
 //取消
 - (void)quit{
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 //提交
 - (void)submit{
@@ -54,26 +60,42 @@
         [MBProgressHUD showMessage_WithoutImage:@"请选择标签" toView:self.view];
         return;
     }
-//    NSLog(@"提交 %@ \n %@",_confuseDetailView.confuseString, _tagsView.tagTextArray);
-    [MBProgressHUD showMessage_WithoutImage:@"已提交您的困惑,请耐心等待专家回答" toView:self.view];
-    [self performSelector:@selector(jumpToAnswerVC) withObject:nil afterDelay:0.5];
+    
     [self submitDataToSever];
 }
 
 #pragma mark - 提交数据
 - (void)submitDataToSever{
-    NSString *questionVal = _confuseDetailView.confuseString;
-    NSString *keyWord = _tagsView.tagText;
-    InsertQuestionApi *insertQuestionApi = [[InsertQuestionApi alloc]initWithUserId:@"" questionTitle:_questionTitle keyWord:keyWord questionVal:questionVal];
+    InsertQuestionApi *insertQuestionApi = [[InsertQuestionApi alloc]initWithQuestionTitle:_questionTitle keyWord:_tagsView.tagText questionVal:_confuseDetailView.confuseString];
+    NSLog(@"title : %@ keyWord : %@ confuseString : %@", _questionTitle, _tagsView.tagText, _confuseDetailView.confuseString);
     [insertQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+            return ;
+        }
+        NSLog(@"dataDic : %@",dataDic);
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+            return;
+        }
+        [MBProgressHUD showMessage_WithoutImage:@"已提交您的困惑,请耐心等待专家回答" toView:self.view];
+        NSDictionary *object = dataDic[@"object"];
+        _questionId = object[@"questionId"];
+        [self performSelector:@selector(jumpToAnswerVC) withObject:nil afterDelay:0.5];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
+        [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
     }];
 }
 
 - (void)jumpToAnswerVC{    
     AnswerViewController *answerVC = [[AnswerViewController alloc]init];
+    answerVC.previousVC = NSStringFromClass([self class]);
+    answerVC.questionID = _questionId;
     [self.navigationController pushViewController:answerVC animated:YES];
 }
 
@@ -146,6 +168,8 @@
         _contentScrollView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64);
     }];
 }
+
+
 
 
 

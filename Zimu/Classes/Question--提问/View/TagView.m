@@ -62,7 +62,12 @@
     NSMutableString *tagString = [NSMutableString string];
     for (int index = 0; index < _tagCollectionView.selectTagArray.count; index++) {
         NSString *text = _tagCollectionView.selectTagArray[index];
-        [tagString appendString:text];
+        if (index == 0) {
+            [tagString appendString:text];
+        }else {
+            [tagString appendString:@","];
+            [tagString appendString:text];
+        }
     }
     return tagString;
 }
