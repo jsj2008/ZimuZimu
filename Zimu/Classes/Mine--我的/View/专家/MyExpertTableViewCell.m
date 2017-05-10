@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel        *tagLabel1;             //标签1
 @property (weak, nonatomic) IBOutlet UILabel        *tagLabel2;             //标签2
 @property (weak, nonatomic) IBOutlet UILabel        *introLabel;            //介绍
+@property (weak, nonatomic) IBOutlet UIView *seperateLine;
 
 @end
 
@@ -23,6 +24,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    _tagLabel1.layer.borderColor = themeYellow.CGColor;
+    _tagLabel1.layer.borderWidth = 0.5;
+    
+    _tagLabel2.layer.borderColor = themeYellow.CGColor;
+    _tagLabel2.layer.borderWidth = 0.5;
+    
+    _seperateLine.backgroundColor = themeGray;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -53,6 +63,9 @@
         
         //介绍
         _introLabel.frame = layoutFrame.introLabelFrame;
+        
+        //分割线
+        _seperateLine.frame = layoutFrame.seperateLineFrame;
         
     }
 }

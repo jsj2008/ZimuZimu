@@ -15,5 +15,7 @@
 @property (nonatomic, assign) CGRect tagLabel1Frame;            //标签1
 @property (nonatomic, assign) CGRect tagLabel2Frame;            //标签2
 @property (nonatomic, assign) CGRect introLabelFrame;           //介绍
+@property (nonatomic, assign) CGRect seperateLineFrame;         //分割线
+
 
 @end
