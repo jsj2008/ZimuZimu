@@ -24,7 +24,7 @@ static NSString *friendCellId = @"ZM_FriendCell";
         _selectItems = [NSMutableDictionary dictionary];
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
         _flowLayout.minimumLineSpacing = 15;
-        _flowLayout.minimumInteritemSpacing = 45;
+        _flowLayout.minimumInteritemSpacing = 40;
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     }
     return _flowLayout;
@@ -58,7 +58,6 @@ static NSString *friendCellId = @"ZM_FriendCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ZM_FriendCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:friendCellId forIndexPath:indexPath];
     if (_state == chooseStateChoosing) {
-//        cell.state = friendViewStateChoosing;
         NSString *selectKey = [NSString stringWithFormat:@"%zd", indexPath.row];
         if (_selectItems[selectKey] != nil) {
             cell.state = friendViewStateChoosingSelected;
@@ -86,19 +85,19 @@ static NSString *friendCellId = @"ZM_FriendCell";
                 
             }else{
                 [_selectItems setObject:_dataArray[indexPath.row] forKey:selectKey];
+                [self.selectMoreDelegate didSelectItems:(NSDictionary *)_selectItems];
             }
-            
         }
-        [self.selectMoreDelegate didSelectItems:(NSDictionary *)_selectItems];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self reloadItemsAtIndexPaths:@[indexPath]];
         });
     }else{
-        NSLog(@"发起聊天 %zd", indexPath.row);
         [self.selectMoreDelegate watchFriendDetailWithIndex:indexPath.row];
     }
 }
 
+
+#pragma mark - 布局Delegate
 //每个Cell的contentView缩进
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
@@ -106,7 +105,7 @@ static NSString *friendCellId = @"ZM_FriendCell";
 }
 //每个Cell的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((kScreenWidth - 40 - 90) / 3, (kScreenWidth - 130) / 3 + 14 + 17);
+    return CGSizeMake((self.width - 90) / 3, (kScreenWidth - 130) / 3 + 14 + 17);
 }
 
 @end

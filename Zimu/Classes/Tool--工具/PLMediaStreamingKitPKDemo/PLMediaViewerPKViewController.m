@@ -12,7 +12,7 @@
 #import "PLPixelBufferProcessor.h"
 
 #import <GLKit/GLKit.h>
-#import <FUAPIDemoBar/FUAPIDemoBar.h>
+#import "FUAPIDemoBar.h"
 #import "PhotoButton.h"
 
 #import "FURenderer.h"
@@ -37,7 +37,7 @@ const static NSString *playerStatusNames[] = {
     @"PLPlayerStatusError"
 };
 
-@interface PLMediaViewerPKViewController ()<PLMediaStreamingSessionDelegate, PLPlayerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>{
+@interface PLMediaViewerPKViewController ()<PLMediaStreamingSessionDelegate, PLPlayerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, FUAPIDemoBarDelegate>{
     //MARK: Faceunity
     EAGLContext *mcontext;
     int items[3];
@@ -174,7 +174,7 @@ const static NSString *playerStatusNames[] = {
         _demoBar.delegate = self;
     }
     return _demoBar;
-    //    return nil;
+
 }
 - (UIButton *)barBtn{
     if (!_barBtn) {
@@ -249,7 +249,7 @@ const static NSString *playerStatusNames[] = {
         [self.view insertSubview:self.session.previewView atIndex:0];
     });
     
-//    self.actionButton.hidden = NO;
+//    self.actionButton.hidden = NO;as
 //    self.conferenceButton.hidden = NO;
     
     self.conferenceButton.hidden = NO;
@@ -259,8 +259,8 @@ const static NSString *playerStatusNames[] = {
     //1  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:1C9e_uWj9rXxVSJFHA0pRLnW3bA=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjEiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjU3MH0=
     //2  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:bVZM8cikBvmwb-4BI7YYSzSI3Uo=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjIiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjU5OH0=
     //3  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:6DTLOq02RDmc8BP6V_r3FW89ork=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjMiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjYyNH0=
-    self.userID = @"1";
-    self.roomToken = @"uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:iDSozCsjtbBu1OzYuEvmUdPdIuk=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjEiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzI1NzIzOX0=";
+    self.userID = @"124";
+    self.roomToken = @"uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:3xxmsfXLLq72DOAkBvF8Q4g-pl8=:eyJyb29tX25hbWUiOiJ0ZXN0Nzc4IiwidXNlcl9pZCI6IjEyNCIsInBlcm0iOiJ1c2VyIiwiZXhwaXJlX2F0IjoxNDk0MzIwNDE2fQ==";
 }
 #pragma  mark - 播放器
 - (void)initPlayer
@@ -295,6 +295,7 @@ const static NSString *playerStatusNames[] = {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [self.navigationController setNavigationBarHidden:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -62,7 +62,7 @@
         }
     }];
     //打开日志，方便调试
-   
+    [JPUSHService setLogOFF];
 }
 #pragma mark - 接收到消息的处理
 - (void)didReceiveRemoteNotificationbefore10:(NSDictionary *)userInfo{

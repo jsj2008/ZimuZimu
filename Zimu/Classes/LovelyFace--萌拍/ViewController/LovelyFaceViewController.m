@@ -9,7 +9,7 @@
 #import "LovelyFaceViewController.h"
 #import <GLKit/GLKit.h>
 #import "FUCamera.h"
-#import <FUAPIDemoBar/FUAPIDemoBar.h>
+#import "FUAPIDemoBar.h"
 #import "PhotoButton.h"
 
 #import "FURenderer.h"
@@ -110,7 +110,7 @@
 - (void)setDemoBar:(FUAPIDemoBar *)demoBar
 {
     _demoBar = demoBar;
-    _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn"];
+    _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn", @"xiaoemo", @"mao"];
     _demoBar.selectedItem = _demoBar.itemsDataSource[1];
     
     _demoBar.filtersDataSource = @[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
@@ -360,11 +360,12 @@
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     [[FURenderer shareRenderer] renderPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:3];
     
-    double landmarksData[4];
-    fuGetFaceInfo(0, "rotation", landmarksData, 4);
-    double asdkjf = (double)landmarksData[1];
-//    NSLog(@"%.3lf", asdkjf);
-    printf("%lf \n%lf  \n%lf  \n%lf \n-----------------\n\n", landmarksData[0], landmarksData[1], landmarksData[2], landmarksData[3]);
+     //这里是做人脸点位识别的
+//    double landmarksData[4];
+//    fuGetFaceInfo(0, "rotation", landmarksData, 4);
+//    double asdkjf = (double)landmarksData[1];
+////    NSLog(@"%.3lf", asdkjf);
+//    printf("%lf \n%lf  \n%lf  \n%lf \n-----------------\n\n", landmarksData[0], landmarksData[1], landmarksData[2], landmarksData[3]);
     
     frameID += 1;
     
@@ -423,6 +424,9 @@
     
     // load selected
     void *data = [self mmap_bundle:[_demoBar.selectedItem stringByAppendingString:@".bundle"] psize:&size];
+    if (!data) {
+        data = [self mmap_bundle:[_demoBar.selectedItem stringByAppendingString:@".mp3"] psize:&size];
+    }
     items[0] = fuCreateItemFromPackage(data, size);
     
     NSLog(@"faceunity: load item");
