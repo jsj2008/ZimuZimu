@@ -43,23 +43,28 @@ static NSString *noteIdentifier = @"ActivityNoteCell";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return 2;
+    }
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        ActivityHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
+        if (indexPath.row == 0) {
+            ActivityHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+        }else{
+            ActivityProgressCell*cell = [tableView dequeueReusableCellWithIdentifier:progressIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+        }
     }else if(indexPath.section == 1){
-        ActivityProgressCell*cell = [tableView dequeueReusableCellWithIdentifier:progressIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-    }else if(indexPath.section == 2){
         ActivityIntroCell *cell = [tableView dequeueReusableCellWithIdentifier:introIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
@@ -79,10 +84,13 @@ static NSString *noteIdentifier = @"ActivityNoteCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 345 * kScreenWidth/375.0 + 75;
+        if (indexPath.row == 0) {
+            return 345 * kScreenWidth/375.0 + 75;
+        }else{
+            return CGFLOAT_MIN;
+        }
     }else if(indexPath.section == 1){
-        return 130;
-    }else if(indexPath.section == 2){
+//        return 130;
         ActivityIntroCellLayoutFrame *layoutFrame = [[ActivityIntroCellLayoutFrame alloc]init];
         layoutFrame.isOpening = _introCellIsOpening;
         return layoutFrame.cellHeight;

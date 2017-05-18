@@ -16,11 +16,10 @@
 
 + (id)sexChooseView;
 
-<<<<<<< HEAD
 //评论栏
 + (id)commentBar;
-=======
+
 + (id)ageChooseView;
->>>>>>> origin/master
+
 
 @end

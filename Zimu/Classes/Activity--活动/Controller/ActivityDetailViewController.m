@@ -35,13 +35,15 @@
 }
 - (void)dealloc{
     //在页面消失时，解除代理，加载空网页，停止加载，清空缓存，释放webview
+    //销毁的时候别忘移除监听
+    [self.webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
     _webView.delegate = nil;
     [_webView loadHTMLString:@"" baseURL:nil];
     [_webView stopLoading];
     [_webView removeFromSuperview];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     _webView = nil;
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
 }
 
 
@@ -80,7 +82,7 @@
     [NSURLCache setSharedURLCache:sharedCache];
     
     _webView.delegate = self;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.jianshu.com/p/e199496a8b8a"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
     
     self.activityDetailTableView.tableFooterView = _webView;
     
