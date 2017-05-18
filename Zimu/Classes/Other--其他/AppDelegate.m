@@ -65,7 +65,7 @@
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
 
     [self getCapture];
-    [ZM_CallingHandleCategory jumpToWaitVC];
+//    [ZM_CallingHandleCategory jumpToWaitVC];
     
     [self configUMSocial];
     return YES;
