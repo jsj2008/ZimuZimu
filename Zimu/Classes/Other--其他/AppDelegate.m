@@ -18,6 +18,7 @@
 
 #import "JPUSHService.h"
 #import "ZMPushManager.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 #import "PLStreamingKit.h"
 //#import "PLHomeViewController.h"
@@ -26,6 +27,8 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #import "ZM_CallingHandleCategory.h"
+
+#import "ZMSocketManager.h"
 @interface AppDelegate ()
 
 @property (nonatomic, strong)ZMPushManager *pushMgr;
@@ -36,7 +39,7 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://192.168.10.185:8080/portal/";//@"http://120.27.221.31/zimu_portal/";
+    config.baseUrl = @"http://192.168.10.183:8080/portal/";//@"http://120.27.221.31/zimu_portal/";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -61,12 +64,14 @@
     [_pushMgr setUmessage:launchOptions];
     
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
-    
-   
-//    [ZM_CallingHandleCategory jumpToWaitVC];
+
     [self getCapture];
+    [ZM_CallingHandleCategory jumpToWaitVC];
+    
+    [self configUMSocial];
     return YES;
 }
+
 //调用摄像头权限
 - (void)getCapture{
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
@@ -86,6 +91,73 @@
     [MobClick startWithConfigure:UMConfigInstance];
     
 }
+#pragma mark - um分享
+- (void)configUMSocial{
+    [[UMSocialManager defaultManager] openLog:YES];
+    // 打开图片水印
+    //[UMSocialGlobal shareInstance].isUsingWaterMark = YES;
+    [UMSocialGlobal shareInstance].isClearCacheWhenGetUserInfo = NO;
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"58f5940a8f4a9d52b7002380"];
+    
+    [self configUSharePlatforms];
+    
+//    [self confitUShareSettings];
+
+}
+- (void)configUSharePlatforms
+{
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxf3b92b17e0cdf08b" appSecret:@"78dde879ce172c645034a5da011921ca" redirectURL:@"http://mobile.umeng.com/social"];
+    /*
+     * 设置微信朋友圈
+     */
+//     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatTimeLine appKey:@"wxf3b92b17e0cdf08b" appSecret:@"78dde879ce172c645034a5da011921ca" redirectURL:@"http://mobile.umeng.com/social"];
+    //[[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];
+    
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     100424468.no permission of union id
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105934837"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    
+    /* 设置新浪的appKey和appSecret */
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+    
+//    /* 钉钉的appKey */
+//    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_DingDing appKey:@"dingoalmlnohc0wggfedpk" appSecret:nil redirectURL:nil];
+//    
+//    /* 支付宝的appKey */
+//    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_AlipaySession appKey:@"2015111700822536" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+//    
+//    
+//    /* 设置易信的appKey */
+//    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_YixinSession appKey:@"yx35664bdff4db42c2b7be1e29390c1a06" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+//    
+//    /* 设置点点虫（原来往）的appKey和appSecret */
+//    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_LaiWangSession appKey:@"8112117817424282305" appSecret:@"9996ed5039e641658de7b83345fee6c9" redirectURL:@"http://mobile.umeng.com/social"];
+//    
+//    /* 设置领英的appKey和appSecret */
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Linkedin appKey:@"81t5eiem37d2sc"  appSecret:@"7dgUXPLH8kA8WHMV" redirectURL:@"https://api.linkedin.com/v1/people"];
+//    
+//    /* 设置Twitter的appKey和appSecret */
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Twitter appKey:@"fB5tvRpna1CKK97xZUslbxiet"  appSecret:@"YcbSvseLIwZ4hZg9YmgJPP5uWzd4zr6BpBKGZhf07zzh3oj62K" redirectURL:nil];
+//    
+//    /* 设置Facebook的appKey和UrlString */
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"506027402887373"  appSecret:nil redirectURL:@"http://www.umeng.com/social"];
+//    
+//    /* 设置Pinterest的appKey */
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Pinterest appKey:@"4864546872699668063"  appSecret:nil redirectURL:nil];
+//    
+//    /* dropbox的appKey */
+//    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_DropBox appKey:@"k4pn9gdwygpy4av" appSecret:@"td28zkbyb9p49xu" redirectURL:@"https://mobile.umeng.com/social"];
+//    
+//    /* vk的appkey */
+//    [[UMSocialManager defaultManager]  setPlaform:UMSocialPlatformType_VKontakte appKey:@"5786123" appSecret:nil redirectURL:nil];
+    
+}
+
 //
 - (void)configQNLive{
     [PLStreamingEnv initEnv];
@@ -227,30 +299,72 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+
     //设置应用角标为0
     application.applicationIconBadgeNumber = 0;
-    //    [JPUSHService resetBadge];
+
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
     
 }
 #pragma mark - 接收到推送，iOS 10以下
+//userInfo的数据格式
+//{
+//    "_j_business" = 1;                //极光的内容，没卵用
+//    "_j_msgid" = 2620321121;
+//    "_j_uid" = 9361759977;
+//    aps =     {
+//        alert =         {             //显示在提示框的内容
+//            body = fasdfas;
+//            subtitle = qweqwegerba;
+//            title = asf;
+//        };
+//        badge = 1;                    //角标值
+//        sound = "12718.caf";          //播放的声音，需要在本地有这个caf文件，一定是caf文件
+//    };
+//    friendName = ui;     //自定义消息字段
+//    notiType = 1;        //自定义消息字段
+//}
+
+//{         //静默推送
+//    "_j_business" = 1;
+//    "_j_msgid" = 3964698298;
+//    "_j_uid" = 9361759977;
+//    aps =     {
+//        alert = "";
+//        "content-available" = 1;
+//    };
+//    we = 234;
+//}
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     [_pushMgr didReceiveRemoteNotificationbefore10:userInfo];
+    
+    NSLog(@"%@", userInfo);
+
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     [JPUSHService registerDeviceToken:deviceToken];
+    
+    NSString *tag = @"asdf";
+    NSSet *tags = [NSSet setWithObjects:tag, nil];
+    NSString  *alias = @"yf";
+    [JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+         NSLog(@"rescode: %d\n tags: %@\nalias:%@", iResCode, iTags, iAlias);
+     }];
+    
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

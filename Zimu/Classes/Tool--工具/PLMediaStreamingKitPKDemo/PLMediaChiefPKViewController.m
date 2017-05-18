@@ -86,10 +86,10 @@ const static char *rtcStateNames[] = {
     [self.navigationController setNavigationBarHidden:YES];
     self.userViewDictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
     
-    if (!self.roomName) {
-        [self showAlertWithMessage:@"请先在设置界面设置您的房间名" completion:nil];
-        return;
-    }
+//    if (!self.roomName) {
+//        [self showAlertWithMessage:@"请先在设置界面设置您的房间名" completion:nil];
+//        return;
+//    }
     
     [self setupUI];
     [self initStreamingSession];
@@ -314,7 +314,8 @@ const static char *rtcStateNames[] = {
                     self.actionButton.selected = YES;
                 }
                 else {
-                    [self showAlertWithMessage:[NSString stringWithFormat:@"推流失败! feedback is %lu", (unsigned long)feedback] completion:nil];
+//                    [self showAlertWithMessage:[NSString stringWithFormat:@"推流失败! feedback is %lu", (unsigned long)feedback] completion:nil];
+                    [self showAlertWithMessage:@"通话失败" completion:nil];
                 }
             });
         }];
@@ -481,7 +482,8 @@ const static char *rtcStateNames[] = {
 - (void)mediaStreamingSession:(PLMediaStreamingSession *)session didDisconnectWithError:(NSError *)error {
     NSLog(@"error: %@", error);
     self.actionButton.enabled = YES;
-    [self showAlertWithMessage:[NSString stringWithFormat:@"Error code: %ld, %@", (long)error.code, error.localizedDescription] completion:nil];
+//    [self showAlertWithMessage:[NSString stringWithFormat:@"Error code: %ld, %@", (long)error.code, error.localizedDescription] completion:nil];
+    [self showAlertWithMessage:@"通话中断" completion:nil];
 }
 
 
@@ -511,8 +513,11 @@ const static char *rtcStateNames[] = {
 - (void)mediaStreamingSession:(PLMediaStreamingSession *)session rtcDidFailWithError:(NSError *)error {
     NSLog(@"error: %@", error);
     self.conferenceButton.enabled = YES;
-    [self showAlertWithMessage:[NSString stringWithFormat:@"Error code: %ld, %@", (long)error.code, error.localizedDescription] completion:^{
-        [self backButtonClick:nil];
+//    [self showAlertWithMessage:[NSString stringWithFormat:@"Error code: %ld, %@", (long)error.code, error.localizedDescription] completion:^{
+//        [self backButtonClick:nil];
+//    }];
+    [self showAlertWithMessage:@"连接断开" completion:^{
+        
     }];
 }
 #pragma mark - 连麦观众界面设置

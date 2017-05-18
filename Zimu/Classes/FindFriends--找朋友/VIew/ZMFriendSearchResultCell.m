@@ -29,11 +29,11 @@
     // Configure the view for the selected state
 }
 - (void)layoutSubviews{
-    _nameLabel.frame = CGRectMake(105, 14.5, 200, 17);
-    _nameLabel.textColor = themeBlack;
-    
-    _idLabel.frame = CGRectMake(105, 39.5, 200, 17);
-    _idLabel.textColor = [UIColor colorWithHexString:@"999999"];
+//    _nameLabel.frame = CGRectMake(105, 14.5, 200, 17);
+//    _nameLabel.textColor = themeBlack;
+//    
+//    _idLabel.frame = CGRectMake(105, 39.5, 200, 17);
+//    _idLabel.textColor = [UIColor colorWithHexString:@"999999"];
     
     self.separatorInset = UIEdgeInsetsMake(0, kScreenWidth, 0, 0);
 }

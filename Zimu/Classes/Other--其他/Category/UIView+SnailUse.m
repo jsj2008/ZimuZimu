@@ -10,6 +10,7 @@
 #import "PaymentChannelView.h"
 #import "CallPhoneView.h"
 #import "ZM_SelectSexView.h"
+#import "AgeRangeView.h"
 
 @implementation UIView (SnailUse)
 
@@ -27,6 +28,11 @@
 + (id)sexChooseView{
     ZM_SelectSexView *view = [[ZM_SelectSexView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 80, kScreenHeight - 290)];
     view.sex = 0;
+    return view;
+}
+
++ (id)ageChooseView{
+    AgeRangeView *view = [[AgeRangeView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180) style:UITableViewStylePlain];
     return view;
 }
 

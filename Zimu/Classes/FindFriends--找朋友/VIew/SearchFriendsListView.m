@@ -10,10 +10,13 @@
 #import "SearchFriendsFriendCell.h"
 #import "UIView+ViewController.h"
 #import "SearchFriendDetailViewController.h"
+#import "SearchFriendMyMsgCell.h"
 
 
 static NSString *cellId = @"SearchFriendsFriendCell";
 static NSString *section1Id = @"normalCellFriend";
+static NSString *myMsgCell = @"SearchFriendMyMsgCell";
+
 @interface SearchFriendsListView () <UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -25,6 +28,9 @@ static NSString *section1Id = @"normalCellFriend";
     if (self) {
         UINib *nib = [UINib nibWithNibName:cellId bundle:[NSBundle mainBundle]];
         [self registerNib:nib forCellReuseIdentifier:cellId];
+        
+        UINib *nib1 = [UINib nibWithNibName:myMsgCell bundle:[NSBundle mainBundle]];
+        [self registerNib:nib1 forCellReuseIdentifier:myMsgCell];
         
         [self registerClass:[UITableViewCell class] forCellReuseIdentifier:section1Id];
 //        self.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -48,9 +54,8 @@ static NSString *section1Id = @"normalCellFriend";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        SearchFriendsFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+        SearchFriendMyMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:myMsgCell forIndexPath:indexPath];
         [cell setName:@"我啊" idStr:@"293857" age:8 imgUrlString:@"asdfij"];
-        cell.addFriendBtn.hidden = YES;
         cell.separatorInset = UIEdgeInsetsMake(0, kScreenWidth, 0, 0);
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -87,6 +92,7 @@ static NSString *section1Id = @"normalCellFriend";
     }else{
         SearchFriendsFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
         [cell setName:@"我啊124" idStr:@"29385124 7" age:8 imgUrlString:@"asdfij"];
+        [cell setSex: indexPath.row % 2? 1:0];
 //        cell.separatorInset = UIEdgeInsetsMake(0, 0, 10, 0);
 //        cell.separatorInset = UIEdgeInsetsZero;
         cell.separatorInset = UIEdgeInsetsMake(0, kScreenWidth, 0, 0);
@@ -107,7 +113,7 @@ static NSString *section1Id = @"normalCellFriend";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) return 0;
-    if (section == 1) return 0;
+    if (section == 1) return 10;
     if (section == 2) return 30;
     
     return 0;

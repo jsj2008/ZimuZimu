@@ -16,4 +16,6 @@
 
 + (id)sexChooseView;
 
++ (id)ageChooseView;
+
 @end

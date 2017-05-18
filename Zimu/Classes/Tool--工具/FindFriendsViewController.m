@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = themeWhite;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"f2f3f7"];
     self.title = @"找朋友";
     self.automaticallyAdjustsScrollViewInsets = NO;
     UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
@@ -85,22 +85,28 @@
 #pragma mark - 绘制UI
 - (void)setUI{
     //搜索按钮
+    UIView *searchBg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 45)];
+    searchBg.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
+    [self.view addSubview:searchBg];
+    
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.frame = CGRectMake(20, 20, kScreenWidth - 40, 40);
-    searchBtn.layer.cornerRadius = 20;
-    searchBtn.layer.borderColor = [UIColor colorWithHexString:@"adadad"].CGColor;
-    searchBtn.layer.borderWidth = 1;
-    [searchBtn setTitleColor:[UIColor colorWithHexString:@"adadad"] forState:UIControlStateNormal];
+    searchBtn.frame = CGRectMake(10, 5, kScreenWidth - 20, 35);
+    searchBtn.layer.cornerRadius = 5;
+//    searchBtn.layer.borderColor = [UIColor colorWithHexString:@"adadad"].CGColor;
+//    searchBtn.layer.borderWidth = 1;
+    [searchBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
     searchBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [searchBtn setTitle:@"输入好友昵称" forState:UIControlStateNormal];
+    [searchBtn setTitle:@"  搜索好友名称" forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:searchBtn];
+    searchBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+    searchBtn.backgroundColor = themeWhite;
+    [searchBg addSubview:searchBtn];
     
     //好友列表
     if (!_listView) {
-        _listView = [[ZM_FriendsListView alloc] initWithFrame:CGRectMake(20, 144 - 64, kScreenWidth - 40, kScreenHeight - 144 - 75 - 35) collectionViewLayout:[UICollectionViewFlowLayout new]];
-        _listView.backgroundColor = themeWhite;
-        NSArray *array = @[@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三",@"heasdimg":@"find_topic_4" },@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三", @"heasdimg":@"find_topic_4"  },@{@"name":@"张三", @"heasdimg":@"find_topic_4" }, @{@"name":@"张三", @"heasdimg":@"find_topic_4"}, @{@"name":@"张三", @"heasdimg":@"find_topic_4"  }, @{@"name":@"张三", @"heasdimg":@"find_topic_4" }, @{@"name":@"张三",@"heasdimg":@"find_topic_4"}, @{@"name":@"张三",@"heasdimg":@"find_topic_4"}, @{@"name":@"张三", @"heasdimg":@"find_topic_4"}, @{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三",@"heasdimg":@"find_topic_4" },@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三", @"heasdimg":@"find_topic_4"  },@{@"name":@"张三", @"heasdimg":@"find_topic_4" }, @{@"name":@"张三", @"heasdimg":@"find_topic_4"}, @{@"name":@"张三", @"heasdimg":@"find_topic_4"  }, @{@"name":@"张三", @"heasdimg":@"find_topic_4" }, @{@"name":@"张三",@"heasdimg":@"find_topic_4"}, @{@"name":@"张三",@"heasdimg":@"find_topic_4"}, @{@"name":@"张三", @"heasdimg":@"find_topic_4"}, @{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三",@"heasdimg":@"find_topic_4" },@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三",@"heasdimg":@"find_topic_4"},@{@"name":@"张三", @"heasdimg":@"find_topic_4"  },@{@"name":@"张三", @"heasdimg":@"find_topic_4" }, @{@"name":@"张三", @"heasdimg":@"find_topic_4"}, @{@"name":@"张三", @"heasdimg":@"find_topic_4"  }, @{@"name":@"张三", @"heasdimg":@"find_topic_4" }, @{@"name":@"张三",@"heasdimg":@"find_topic_4"}, @{@"name":@"张三",@"heasdimg":@"find_topic_4"}, @{@"name":@"张三", @"heasdimg":@"find_topic_4"}];
+        _listView = [[ZM_FriendsListView alloc] initWithFrame:CGRectMake(0, 45, kScreenWidth, kScreenHeight - 45) collectionViewLayout:[UICollectionViewFlowLayout new]];
+        _listView.backgroundColor = [UIColor colorWithHexString:@"f2f3f7"];
+        NSArray *array = @[@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }];
         _listView.dataArray = array;
         _listView.showsVerticalScrollIndicator = NO;
         _listView.selectMoreDelegate = self;
@@ -108,17 +114,19 @@
     }
     //选择好友按钮
     if (!_chooseBtn) {
-        NSArray *btnAry = @[@"发起聊天", @"开始聊天"];
+        NSArray *btnAry = @[@"选择多个好友", @"开始聊天"];
         
         _chooseBtn = [[ZM_MutiplyClickButton alloc] initWithDataSource:btnAry];
-        _chooseBtn.frame = CGRectMake(kScreenWidth / 2 - 100, kScreenHeight - 35 - 40 - 64, 200, 40);
+        _chooseBtn.frame = CGRectMake(kScreenWidth / 2 - 100, kScreenHeight - 35 - 40 - 55, 200, 40);
         
         _chooseBtn.delegate = self;
-        _chooseBtn.backgroundColor = themeYellow;
+        _chooseBtn.backgroundColor = [UIColor colorWithHexString:@"f5cd13"];
 //        [_chooseBtn addTarget:self action:@selector(startViewAction) forControlEvents:UIControlEventTouchUpInside];
         _chooseBtn.titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
         _chooseBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-        
+        _chooseBtn.layer.shadowOffset =  CGSizeMake(1, 1);
+        _chooseBtn.layer.shadowOpacity = 0.8;
+        _chooseBtn.layer.shadowColor =  [UIColor colorWithHexString:@"333333"].CGColor;
         _chooseBtn.layer.cornerRadius = 20;
         [self.view addSubview:_chooseBtn];
     }

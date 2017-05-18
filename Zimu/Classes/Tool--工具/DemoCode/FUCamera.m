@@ -349,7 +349,7 @@ typedef enum : NSUInteger {
     CIContext *temporaryContext = [CIContext contextWithOptions:nil];
     CGImageRef videoImage = [temporaryContext
                              createCGImage:ciImage
-                             fromRect:CGRectMake(cropX, cropY,
+                             fromRect:CGRectMake(cropX, cropY, 
                                                  cropW,
                                                  cropH)];
     

@@ -8,7 +8,7 @@
 
 #import "ZMChatAlertViewController.h"
 #import "ChatRoomMemberView.h"
-
+#import "ZM_CallingHandleCategory.h"
 
 @interface ZMChatAlertViewController ()
 //背景图片
@@ -70,6 +70,15 @@
 }
 - (IBAction)acceptBtnAction:(id)sender {
     NSLog(@"接受");
+    [self dismissViewControllerAnimated:NO completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        ZM_CallingHandleCategory *handleJump = [[ZM_CallingHandleCategory alloc] initWithRole:ZMChatRoleGroupChief];
+        [handleJump jumpToChatRoom];
+    });
+    
 }
+
+
+#pragma mark - 网络请求
 
 @end

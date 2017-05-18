@@ -9,11 +9,22 @@
 #import "SearchFriendDetailViewController.h"
 #import "UIImage+ZMExtension.h"
 #import "SearchFriendResultViewController.h"
+#import "FriendProvinceTableViewController.h"
+
+#import "SnailQuickMaskPopups.h"
+#import "AgeRangeView.h"
+#import "UIView+SnailUse.h"
+#import "ZM_SelectSexView.h"
 
 @interface SearchFriendDetailViewController ()<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, assign)searchFriendStyle style;
-
+//弹出的选择年龄
+@property (nonatomic, strong) SnailQuickMaskPopups *popups;
+@property (nonatomic, strong) AgeRangeView *ageChooseView;
+//选择的搜索条件
+@property (nonatomic, copy) NSString *ageRange;
+@property (nonatomic, copy) NSString *address;
 //按条件查找陌生人
 @property (nonatomic, strong) NSMutableArray *sexBtns;
 @property (nonatomic, assign) NSInteger sexSelectIndex;
@@ -39,10 +50,14 @@
     if (_style == searchFriendStyleId) {
         self.title = @"查找好友";
     }else{
-        self.title = @"按条件超找陌生人";
+        self.title = @"按条件查找陌生人";
     }
+    _address = @"全国";
+    _ageRange = @"5-10";
     
     [self makeUI];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressDidchange:) name:@"ProvinceCityFriendNotification" object:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -177,18 +192,59 @@
     cell.detailTextLabel.font = [UIFont systemFontOfSize:16];
     if (indexPath.row == 0) {
         cell.textLabel.text = @"年龄";
-        cell.detailTextLabel.text = @"5-10岁";
+        cell.detailTextLabel.text = [_ageRange stringByAppendingString:@"岁"];
     }else{
         cell.textLabel.text = @"所在地";
-        cell.detailTextLabel.text = @"浙江-杭州";
+        cell.detailTextLabel.text = _address;
     }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == _ageChooseView) {
+        return 60;
+    }
     return 45;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%zd", indexPath.row);
+    if (tableView == _ageChooseView) {
+       NSString *ageRan = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+        _ageRange = [ageRan substringToIndex:ageRan.length - 1];
+        [_agePlaceList reloadData];
+        [_popups dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
+            NSLog(@"弹出框走了");
+        }];
+        _popups = nil;
+        _ageChooseView.delegate = nil;
+        _ageChooseView = nil;
+
+    }else{
+        if (indexPath.row == 0) {
+            [self ageChoose];
+        }else{
+            FriendProvinceTableViewController *provinceVC = [[FriendProvinceTableViewController alloc] init];
+            [self.navigationController pushViewController:provinceVC animated:YES];
+        }
+    }
+    
 }
 
+#pragma mark - 选择信息
+- (void)ageChoose{
+    _ageChooseView = [UIView ageChooseView];
+    _ageChooseView.delegate = self;
+    _popups = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_ageChooseView];
+    _popups.isAllowMaskTouch = NO;
+    _popups.transitionStyle = TransitionStyleFromBottom;
+    _popups.presentationStyle = PresentationStyleBottom;
+    _ageChooseView.delegate = self;
+    [_popups presentAnimated:YES completion:nil];
+}
+
+- (void)addressDidchange:(NSNotification *)noti{
+    NSDictionary *userInfo = noti.userInfo;
+    _address = userInfo[@"addressNme"];
+    [_agePlaceList reloadData];
+    
+    NSLog(@"%@", userInfo);
+}
 @end

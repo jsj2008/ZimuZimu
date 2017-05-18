@@ -35,15 +35,16 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
 
 #pragma mark - UI
 - (void)configSearchBar{
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 55)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _tableView.frame.size.width, 64)];
     bgView.backgroundColor = [UIColor colorWithHexString:@"f5ce13"];
     [self.view addSubview:bgView];
     
-    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(10, 20, kScreenWidth - 20, 30)];
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(8, 30, kScreenWidth - 16, 25)];
     _searchBar.placeholder = @"搜索";
     [_searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"f5ce13"] size:_searchBar.size]];
     [_searchBar setSearchFieldBackgroundImage:[UIImage imageWithColor:themeWhite size:_searchBar.size] forState:UIControlStateNormal];
     _searchBar.delegate = self;
+    
     _searchBar.tintColor = themeBlack;
     for (UIView *subView in [[_searchBar.subviews lastObject] subviews]) {
         if ([[subView class] isSubclassOfClass:[UITextField class]]) { // 是UItextField
@@ -62,6 +63,7 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
             UIButton *button = (UIButton *)view;
             [button setTitleColor:themeBlack forState:UIControlStateNormal];
             [button setTitle:@"取消" forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:16];
             [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
@@ -141,6 +143,7 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZMFriendSearchResultCell * cell = [tableView dequeueReusableCellWithIdentifier:searchResultCellId];
 
+    cell.separatorInset = UIEdgeInsetsZero;
     cell.nameString = [NSString stringWithFormat:@"%@ %zd", _subDataArray[indexPath.row], indexPath.row];
     cell.idString = @"12987u5";
     return cell;

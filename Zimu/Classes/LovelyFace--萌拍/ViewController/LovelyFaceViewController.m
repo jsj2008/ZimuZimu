@@ -18,8 +18,9 @@
 #import "authpack.h"
 
 #import "PreviewPhotoVideoViewController.h"
+#import "ShareImgViewController.h"
 
-@interface LovelyFaceViewController ()<FUAPIDemoBarDelegate,FUCameraDelegate,PhotoButtonDelegate>
+@interface LovelyFaceViewController ()<FUAPIDemoBarDelegate,FUCameraDelegate,PhotoButtonDelegate, PreviewPhotoVideoDelegate>
 {
     //MARK: Faceunity
     EAGLContext *mcontext;
@@ -72,7 +73,7 @@
     
     self.bufferDisplayer.frame = self.view.bounds;
     
-    
+    _demoBar.frame = CGRectMake(kScreenWidth, kScreenHeight - self.demoBar.frame.size.height - _photoBtn.height - 15, kScreenWidth, 128);
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -104,13 +105,22 @@
     
     _photoBtn.delegate = self;
 }
-
+#pragma mark - 随机显示一个头像挂件
+- (IBAction)randomAction:(id)sender {
+    int y = 1 +  (arc4random() % (_demoBar.itemsDataSource.count - 1));
+    _demoBar.selectedItem = _demoBar.itemsDataSource[y];
+    needReloadItem = YES;
+//     dispatch_async(dispatch_get_main_queue(), ^{
+    
+         [_demoBar reloadSelectedItem:y];
+//     });
+}
 
 //底部工具条
 - (void)setDemoBar:(FUAPIDemoBar *)demoBar
 {
     _demoBar = demoBar;
-    _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn", @"xiaoemo", @"mao"];
+    _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn", @"tiantianquan", @"mao", @"xiong", @"yuhangyuan", @"zhnagyu"];
     _demoBar.selectedItem = _demoBar.itemsDataSource[1];
     
     _demoBar.filtersDataSource = @[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
@@ -235,12 +245,12 @@
 - (IBAction)filterBtnClick:(UIButton *)sender {
     
     [UIView animateWithDuration:0.5 animations:^{
-        self.demoBar.transform = CGAffineTransformMakeTranslation(0, -self.demoBar.frame.size.height);//- (kScreenHeight - self.photoBtn.frame.origin.y));
+        self.demoBar.transform = CGAffineTransformMakeTranslation(-kScreenWidth, 0);// -self.demoBar.frame.size.height - _photoBtn.height - 15);//- (kScreenHeight - self.photoBtn.frame.origin.y));
         self.demoBar.alpha = 1;
-        self.photoBtn.alpha = 0;
+//        self.photoBtn.alpha = 0;
     } completion:^(BOOL finished) {
         self.barBtn.hidden = YES;
-        self.photoBtn.hidden = YES;
+//        self.photoBtn.hidden = YES;
     }];
 
 }
@@ -391,8 +401,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         PreviewPhotoVideoViewController *videoVC = [[PreviewPhotoVideoViewController  alloc] initWithPhoto:saveImage];
+        videoVC.previewDelegate = self;
         [self presentViewController:videoVC animated:YES completion:nil];
     });
+}
+- (void)gotoShareImg:(UIImage *)img{
+    ShareImgViewController *shareVC = [[ShareImgViewController alloc] initWithNibName:@"ShareImgViewController" bundle:[NSBundle mainBundle]];
+    shareVC.img = img;
+    [self.navigationController pushViewController:shareVC animated:YES];
 }
 #pragma -Faceunity Set EAGLContext
 - (void)setUpContext
