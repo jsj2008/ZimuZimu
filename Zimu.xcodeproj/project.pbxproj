@@ -113,7 +113,6 @@
 		1E3949CA1E8C964C00BB346F /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1E71B0291EC1975800DDEDDB /* SearchFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B0281EC1975800DDEDDB /* SearchFriendDetailViewController.m */; };
 		1E71B02C1EC19F7D00DDEDDB /* SearchFriendResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B02B1EC19F7D00DDEDDB /* SearchFriendResultViewController.m */; };
-		1E71B0351EC2AEB100DDEDDB /* ZMSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B0341EC2AEB100DDEDDB /* ZMSocketManager.m */; };
 		1E71B0391EC2E41100DDEDDB /* AgeRangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B0381EC2E41100DDEDDB /* AgeRangeView.m */; };
 		1E71B03C1EC2F82600DDEDDB /* FriendProvinceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B03B1EC2F82600DDEDDB /* FriendProvinceTableViewController.m */; };
 		1E71B03F1EC2F83700DDEDDB /* FriendCityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B03E1EC2F83600DDEDDB /* FriendCityTableViewController.m */; };
@@ -768,8 +767,6 @@
 		1E71B0281EC1975800DDEDDB /* SearchFriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendDetailViewController.m; sourceTree = "<group>"; };
 		1E71B02A1EC19F7D00DDEDDB /* SearchFriendResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendResultViewController.h; sourceTree = "<group>"; };
 		1E71B02B1EC19F7D00DDEDDB /* SearchFriendResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendResultViewController.m; sourceTree = "<group>"; };
-		1E71B0331EC2AEB100DDEDDB /* ZMSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMSocketManager.h; sourceTree = "<group>"; };
-		1E71B0341EC2AEB100DDEDDB /* ZMSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMSocketManager.m; sourceTree = "<group>"; };
 		1E71B0371EC2E41100DDEDDB /* AgeRangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeRangeView.h; sourceTree = "<group>"; };
 		1E71B0381EC2E41100DDEDDB /* AgeRangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeRangeView.m; sourceTree = "<group>"; };
 		1E71B03A1EC2F82600DDEDDB /* FriendProvinceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendProvinceTableViewController.h; sourceTree = "<group>"; };
@@ -1985,8 +1982,6 @@
 				1E1762E21EBAF77700292DAC /* ChatRoomMemberCell.h */,
 				1E1762E31EBAF77700292DAC /* ChatRoomMemberCell.m */,
 				1E1762E41EBAF77700292DAC /* ChatRoomMemberCell.xib */,
-				1E71B0331EC2AEB100DDEDDB /* ZMSocketManager.h */,
-				1E71B0341EC2AEB100DDEDDB /* ZMSocketManager.m */,
 			);
 			path = "接到视频通话请求";
 			sourceTree = "<group>";
@@ -4327,7 +4322,6 @@
 				5F4833751EB1CCBE00481407 /* CallPhoneView.m in Sources */,
 				5F48337D1EB2D80300481407 /* ExpertListTableView.m in Sources */,
 				5FABE60E1E891A9100FE8A33 /* HomeFreeCourseModel.m in Sources */,
-				1E71B0351EC2AEB100DDEDDB /* ZMSocketManager.m in Sources */,
 				1E71B13A1ECC27EE00DDEDDB /* ZMShareManager.m in Sources */,
 				5FCFF1F61EADA07D003788A0 /* AnswerDetailViewController.m in Sources */,
 				5FCFF0D81EA89AB0003788A0 /* QuestionViewController.m in Sources */,

@@ -28,7 +28,6 @@
 
 #import "ZM_CallingHandleCategory.h"
 
-#import "ZMSocketManager.h"
 @interface AppDelegate ()
 
 @property (nonatomic, strong)ZMPushManager *pushMgr;
