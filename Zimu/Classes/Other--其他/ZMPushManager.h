@@ -23,8 +23,8 @@
 - (void)didReceiveRemoteNotificationbefore10:(NSDictionary *)userInfo;
 
 //别名相关
-- (void)setAlias:(NSString *)aliasName type:(NSString *)aliasType;
-- (void)removeAlias:(NSString *)aliasName type:(NSString *)aliasType;
+//- (void)setAlias:(NSString *)aliasName type:(NSString *)aliasType;
+//- (void)removeAlias:(NSString *)aliasName type:(NSString *)aliasType;
 
 @end
 

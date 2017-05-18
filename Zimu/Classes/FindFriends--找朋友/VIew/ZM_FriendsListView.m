@@ -10,6 +10,7 @@
 #import "ZM_FriendCell.h"
 
 static NSString *friendCellId = @"ZM_FriendCell";
+static NSString *nullCell = @"friendNullCell";
 @interface ZM_FriendsListView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableDictionary *selectItems;
@@ -23,8 +24,8 @@ static NSString *friendCellId = @"ZM_FriendCell";
     if (!_flowLayout) {
         _selectItems = [NSMutableDictionary dictionary];
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        _flowLayout.minimumLineSpacing = 15;
-        _flowLayout.minimumInteritemSpacing = 40;
+        _flowLayout.minimumLineSpacing = 10;
+        _flowLayout.minimumInteritemSpacing = 10;
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     }
     return _flowLayout;
@@ -37,6 +38,9 @@ static NSString *friendCellId = @"ZM_FriendCell";
         UINib *nib = [UINib nibWithNibName:friendCellId bundle:[NSBundle mainBundle]];
         [self registerNib:nib forCellWithReuseIdentifier:friendCellId];
         
+        [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:nullCell];
+        
+        self.backgroundColor = [UIColor colorWithHexString:@"F2F3F7"];
         self.delegate = self;
         self.dataSource = self;
     }
@@ -52,10 +56,15 @@ static NSString *friendCellId = @"ZM_FriendCell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _dataArray.count;
+    return _dataArray.count + 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row >= _dataArray.count) {
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:nullCell forIndexPath:indexPath];
+        return cell;
+    }
+    
     ZM_FriendCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:friendCellId forIndexPath:indexPath];
     if (_state == chooseStateChoosing) {
         NSString *selectKey = [NSString stringWithFormat:@"%zd", indexPath.row];
@@ -67,7 +76,7 @@ static NSString *friendCellId = @"ZM_FriendCell";
     }else{
         cell.state = friendViewStateNormal;
     }
-
+    
     //在这里设置cell的内容
     NSDictionary *dataDic = _dataArray[indexPath.row];
     cell.nameString = dataDic[@"name"];
@@ -76,23 +85,27 @@ static NSString *friendCellId = @"ZM_FriendCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (_state == chooseStateChoosing) {
-        NSString *selectKey = [NSString stringWithFormat:@"%zd", indexPath.row];
-        if (_selectItems[selectKey] != nil) {
-            [_selectItems removeObjectForKey:selectKey];
-        }else{
-            if (_selectItems.count >= 3) {
-                
-            }else{
-                [_selectItems setObject:_dataArray[indexPath.row] forKey:selectKey];
-                [self.selectMoreDelegate didSelectItems:(NSDictionary *)_selectItems];
-            }
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self reloadItemsAtIndexPaths:@[indexPath]];
-        });
+    if (indexPath.row >= _dataArray.count) {
+        NSLog(@"我不是"); 
     }else{
-        [self.selectMoreDelegate watchFriendDetailWithIndex:indexPath.row];
+        if (_state == chooseStateChoosing) {
+            NSString *selectKey = [NSString stringWithFormat:@"%zd", indexPath.row];
+            if (_selectItems[selectKey] != nil) {
+                [_selectItems removeObjectForKey:selectKey];
+            }else{
+                if (_selectItems.count >= 3) {
+                    
+                }else{
+                    [_selectItems setObject:_dataArray[indexPath.row] forKey:selectKey];
+                    [self.selectMoreDelegate didSelectItems:(NSDictionary *)_selectItems];
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self reloadItemsAtIndexPaths:@[indexPath]];
+            });
+        }else{
+            [self.selectMoreDelegate watchFriendDetailWithIndex:indexPath.row];
+        }
     }
 }
 
@@ -101,11 +114,11 @@ static NSString *friendCellId = @"ZM_FriendCell";
 //每个Cell的contentView缩进
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
-    return UIEdgeInsetsZero;
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 //每个Cell的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((self.width - 90) / 3, (kScreenWidth - 130) / 3 + 14 + 17);
+    return CGSizeMake(self.width * 0.3333 - 45 * 0.3333, self.width * 0.38);
 }
 
 @end

@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
+#import "ShareImgViewController.h"
 
 #define SCREEN_WIDTH kScreenWidth
 #define SCREEN_HEIGHT kScreenHeight
@@ -77,8 +78,8 @@
         [self startPlay];
     }
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(20, self.view.height - 100, 80, 80);
-    [backBtn setImage:[UIImage imageNamed:@"lovelyface_back"] forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(55, self.view.height - 89 - 80, 80, 80);
+    [backBtn setImage:[UIImage imageNamed:@"previewBack"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
     
@@ -124,14 +125,15 @@
 - (UIButton *)saveBtn{
     if (!_saveBtn) {
         _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _saveBtn.frame = CGRectMake(self.view.width - 55 - 80, self.view.height - 89 - 80, 80, 80);
         [self.view addSubview:_saveBtn];
-        [_saveBtn setImage:[UIImage imageNamed:@"lovelyface_save"] forState:UIControlStateNormal];
-        [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.view).with.offset(-20);
-            make.centerX.mas_equalTo(0);
-            make.width.mas_equalTo(80);
-            make.height.mas_equalTo(80);
-        }];
+        [_saveBtn setImage:[UIImage imageNamed:@"previewShare"] forState:UIControlStateNormal];
+//        [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(-89);
+//            make.right.mas_equalTo(45 - 80);
+//            make.width.mas_equalTo(80);
+//            make.height.mas_equalTo(80);
+//        }];
         [_saveBtn addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     }
     return _saveBtn;
@@ -170,7 +172,11 @@
         UISaveVideoAtPathToSavedPhotosAlbum(_videoPath, self, @selector(video:didFinishSavingWithError:contextInfo:), NULL);
     }else{
         UIImageWriteToSavedPhotosAlbum(_previewImg, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        [self.previewDelegate gotoShareImg:_previewImg];
+        
+        [self dismissViewControllerAnimated:NO completion:nil];
     }
+
 }
 - (void)backAction{
     [self dismissViewControllerAnimated:YES completion:nil];

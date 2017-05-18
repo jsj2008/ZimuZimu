@@ -19,10 +19,6 @@ static NSString *identifier = @"provinceCell";
 
 @end
 
-@interface EditProvinceTableViewController ()
-
-@end
-
 @implementation EditProvinceTableViewController
 
 - (void)viewDidLoad {
@@ -70,7 +66,7 @@ static NSString *identifier = @"provinceCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     EditCityTableViewController *editCityVC = [[EditCityTableViewController alloc]init];
     ProvinceModel *provinceModel = _provinceModelArray[indexPath.row];
-    editCityVC.provinceId = [NSString stringWithFormat:@"%li",provinceModel.cityId];
+    editCityVC.provinceId = [NSString stringWithFormat:@"%@",provinceModel.cityId];
     editCityVC.province = provinceModel.areaName;
     [self.navigationController pushViewController:editCityVC animated:YES];
 }

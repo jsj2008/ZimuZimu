@@ -89,10 +89,10 @@ const static NSString *playerStatusNames[] = {
     self.userViewDictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
     self.reconnectCount = 0;
     
-    if (!self.roomName) {
-        [self showAlertWithMessage:@"请先在设置界面设置您的房间名" completion:nil];
-        return;
-    }
+//    if (!self.roomName) {
+//        [self showAlertWithMessage:@"请先在设置界面设置您的房间名" completion:nil];
+//        return;
+//    }
     
     [self setupUI];
     [self initStreamingSession];
@@ -434,9 +434,10 @@ const static NSString *playerStatusNames[] = {
     NSLog(@"error: %@", error);
     self.conferenceButton.enabled = YES;
     self.conferenceButton.selected = NO;
-    [self showAlertWithMessage:[NSString stringWithFormat:@"Error code: %ld, %@", (long)error.code, error.localizedDescription] completion:^{
-        [self backButtonClick:nil];
-    }];
+//    [self showAlertWithMessage:[NSString stringWithFormat:@"Error code: %ld, %@", (long)error.code, error.localizedDescription] completion:^{
+//        [self backButtonClick:nil];
+//    }];
+    [self showAlertWithMessage:@"通话中断" completion:nil];
 }
 
 - (void)mediaStreamingSession:(PLMediaStreamingSession *)session userID:(NSString *)userID didAttachRemoteView:(UIView *)remoteView {
@@ -560,7 +561,8 @@ const static NSString *playerStatusNames[] = {
     
     self.reconnectCount ++;
     NSString *errorMessage = [NSString stringWithFormat:@"Error code: %ld, %@, 播放器将在%.1f秒后进行第 %ld 次重连", (long)error.code, error.localizedDescription, 0.5 * pow(2, self.reconnectCount - 1), (long)self.reconnectCount];
-    [self showAlertWithMessage:errorMessage completion:nil];
+//    [self showAlertWithMessage:errorMessage completion:nil];
+    [self showAlertWithMessage:[NSString stringWithFormat:@"连接错误 将在%.1f秒后重连",0.5 * pow(2, self.reconnectCount - 1)] completion:nil];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * pow(2, self.reconnectCount) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.player play];
     });

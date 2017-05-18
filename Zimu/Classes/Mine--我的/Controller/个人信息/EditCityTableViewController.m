@@ -79,7 +79,7 @@ static NSString *identifier = @"cityCell";
     [self.navigationController popToViewController:vcs[index] animated:YES];
     
     CityModel *cityModel = _cityModelArray[indexPath.row];
-    _cityId = [NSString stringWithFormat:@"%li",cityModel.cityId];
+    _cityId = [NSString stringWithFormat:@"%@",cityModel.cityId];
     
     [self updateAddressInfo];
     //发送通知，传递省、市

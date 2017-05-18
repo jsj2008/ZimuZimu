@@ -10,7 +10,7 @@
 
 @interface ProvinceModel :NSObject
 @property (nonatomic , copy) NSString              * first;
-@property (nonatomic , copy) NSString              * id;
+@property (nonatomic , copy) NSString              * cityId;
 @property (nonatomic , copy) NSString              * shortName;         //省份简称
 @property (nonatomic , copy) NSString              * position;
 @property (nonatomic , copy) NSString              * prevId;
@@ -20,7 +20,7 @@
 @property (nonatomic , assign) NSInteger             level;
 @property (nonatomic , copy) NSString              * areaName;          //省份名
 @property (nonatomic , copy) NSString              * lng;
-@property (nonatomic , assign) NSInteger             cityId;           //省份Id
+@property (nonatomic , assign) NSInteger             cityNum;           //省份Id
 @property (nonatomic , assign) NSInteger             sort;
 @property (nonatomic , assign) NSInteger             parentId;
 

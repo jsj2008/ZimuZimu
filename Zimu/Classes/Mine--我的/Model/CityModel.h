@@ -10,7 +10,7 @@
 
 @interface CityModel :NSObject
 @property (nonatomic , copy) NSString              * first;
-@property (nonatomic , copy) NSString              * id;
+@property (nonatomic , copy) NSString              * cityId;
 @property (nonatomic , copy) NSString              * shortName;     //城市名简称
 @property (nonatomic , copy) NSString              * position;
 @property (nonatomic , copy) NSString              * prevId;        //所属省份id
@@ -20,7 +20,7 @@
 @property (nonatomic , assign) NSInteger             level;
 @property (nonatomic , copy) NSString              * areaName;      //城市名
 @property (nonatomic , copy) NSString              * lng;
-@property (nonatomic , assign) NSInteger             cityId;       //城市ID
+@property (nonatomic , assign) NSInteger             cityNum;       //城市ID
 @property (nonatomic , assign) NSInteger             sort;
 @property (nonatomic , assign) NSInteger             parentId;
 
