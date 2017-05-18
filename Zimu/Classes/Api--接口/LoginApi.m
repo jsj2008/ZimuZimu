@@ -7,10 +7,12 @@
 //
 
 #import "LoginApi.h"
+#import "DeviceMessageModel.h"
 
 @implementation LoginApi{
     NSString *_phoneNo;
     NSString *_checkCode;
+    
 }
 
 - (instancetype)initWithPhoneNo:(NSString *)phoneNo checkCode:(NSString *)checkCode{
@@ -28,8 +30,15 @@
 
 - (id)requestArgument{
     return @{
-             @"phoneNo":_phoneNo,
-             @"smsCaptcha":_checkCode
+             @"phoneNo"        :       _phoneNo,                                           //手机号
+             @"smsCaptcha"     :       _checkCode,                                         //验证码
+             @"deviceModel"    :       [DeviceMessageModel GetCurrentDeviceModel],         //设备型号
+             @"deviceName"     :       [DeviceMessageModel GetName],                       //设备名称
+             @"systemName"     :       [DeviceMessageModel GetSystemName],                 //系统名称
+             @"systemVersion"  :       [DeviceMessageModel GetSystemVersion],              //系统版本
+             @"publicIp"       :       [DeviceMessageModel GetHostIP],                     //公网ip
+             @"deviceUuid"     :       [DeviceMessageModel GetUUID],                       //设备UUID
+             @"appVersion"     :       [DeviceMessageModel GetAPPVersion]                  //APP版本
              };
 }
 - (YTKRequestMethod)requestMethod{

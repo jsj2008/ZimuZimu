@@ -11,6 +11,7 @@
 #import "GetSMsApi.h"
 #import "LoginApi.h"
 #import "MBProgressHUD+MJ.h"
+#import "UserModel.h"
 
 @interface NewLoginViewController ()<LoginViewDelegate>{
     NSInteger _timeCount;            //倒计时计数
@@ -74,18 +75,16 @@
     
     LoginApi *login = [[LoginApi alloc] initWithPhoneNo:phone checkCode:code];
     
-//    NewLoginViewController __weak *weakSelf = self;
     [login startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
-        
-//        NewLoginViewController __strong *strongSelf = weakSelf;
         NSData *data = request.responseData;
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@", dic);
         NSInteger isTure = [dic[@"isTrue"] integerValue];
         if (isTure) {
             [MBProgressHUD showMessage_WithoutImage:@"登录成功" toView:self.view];
+            UserModel *userModel = [UserModel yy_modelWithDictionary:dic[@"object"]];
             //存储用户userToken
-            [[NSUserDefaults standardUserDefaults] setObject:dic[@"object"] forKey:@"userToken"];
+            [[NSUserDefaults standardUserDefaults] setObject:userModel.token forKey:@"userToken"];
             
             if ([self.delegate respondsToSelector:@selector(loginSuccess)]) {
                 [self.delegate loginSuccess];
@@ -117,10 +116,8 @@
     
     GetSMsApi *getSMS = [[GetSMsApi alloc] initWithPhoneNo:phone];
     
-//    NewLoginViewController __weak *weakSelf = self;
     [getSMS startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         
-//        NewLoginViewController __strong *strongSelf = weakSelf;
         NSData *data = request.responseData;
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@", dic);

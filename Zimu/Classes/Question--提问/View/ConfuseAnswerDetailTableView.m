@@ -108,7 +108,7 @@ static NSString *noAnswerIdentifier = @"NoAnswerCell";
             return cell;
         }else{
             ConfuseExpertAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:expertAnswerCellIdentifier];
-            cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width, 0, 0);
+            cell.separatorInset = UIEdgeInsetsMake(self.height - 1, 10, 0, 0);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             ExpertAnswerModel *expertAnswerModel = _expertAnswerModelArray[indexPath.row - 1];
             ExpertAnswerLayoutFrame *layoutFrame = [[ExpertAnswerLayoutFrame alloc]initWithExpertAnswerModel:expertAnswerModel];
@@ -230,6 +230,11 @@ static NSString *noAnswerIdentifier = @"NoAnswerCell";
         _userCommentModelArray = userCommentModelArray;
         [self reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
     }
+}
+
+- (void)setCareState:(NSInteger)careState{
+    ConfuseContentCell *cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    cell.careState = careState;
 }
 
 

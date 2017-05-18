@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ParentSchoolItem :NSObject
-@property (nonatomic , copy) NSString                       *id;
+@property (nonatomic , copy) NSString                       *qinziid;
 @property (nonatomic , copy) NSString                       *title;
 @property (nonatomic , copy) NSString                       *picture;
 @property (nonatomic , copy) NSString                       *type;

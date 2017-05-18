@@ -10,4 +10,7 @@
 
 @interface FMViewController : UIViewController
 
+@property (nonatomic, copy) NSString *fmId;
+
+
 @end

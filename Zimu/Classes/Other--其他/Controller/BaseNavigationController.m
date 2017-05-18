@@ -45,6 +45,7 @@
     /*1.创建pan手势识别器，并绑定监听方法*/
     _panGestureRec = [[UIScreenEdgePanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRec:)];
     _panGestureRec.edges = UIRectEdgeLeft;
+    [_panGestureRec delaysTouchesBegan];
     [self.view addGestureRecognizer:_panGestureRec];
     
     /*2.创建截图的imageView*/
@@ -225,16 +226,12 @@
 - (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                             animationControllerForOperation:(UINavigationControllerOperation)operation
                                                          fromViewController:(UIViewController *)fromVC
-                                                           toViewController:(UIViewController *)toVC  NS_AVAILABLE_IOS(7_0)
-{
+                                                           toViewController:(UIViewController *)toVC  NS_AVAILABLE_IOS(7_0){
     self.animationController.navigationOperation = operation;
     self.animationController.navigationController = self;
-    //    self.animationController.lastVCScreenShot = self.lastVCScreenShotImg;
-    // self.animationController.nextVCScreenShot = self.nextVCScreenShotImg;
     return self.animationController;
 }
-- (AnimationContoller *)animationController
-{
+- (AnimationContoller *)animationController{
     if (_animationController == nil) {
         _animationController = [[AnimationContoller alloc]init];
         
@@ -266,8 +263,7 @@
     
     return [super popViewControllerAnimated:animated];
 }
-- (NSArray<UIViewController *> *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
+- (NSArray<UIViewController *> *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated{
     
     NSInteger removeCount = 0;
     for (NSInteger i = self.viewControllers.count - 1; i > 0; i--) {

@@ -22,5 +22,6 @@ pod 'PLPlayerKit'
 pod 'pili-librtmp'
 pod 'QNNetDiag'
 pod 'JPush'
+pod 'DGActivityIndicatorView'
 
 end

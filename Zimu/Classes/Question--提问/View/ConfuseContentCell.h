@@ -14,4 +14,6 @@
 @property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrame;
 @property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrameNormal;
 
+@property (nonatomic, assign) NSInteger careState;
+
 @end

@@ -69,7 +69,7 @@
     NSBundle *frameWorkBundle = [NSBundle bundleForClass:self.class];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FUDemoBar" bundle:frameWorkBundle];
     FUDemoBar *bar = (FUDemoBar *)storyboard.instantiateInitialViewController.view;
-    
+    _beautyBtn.hidden = YES;
     if (!bar) {
         return nil;
     }
@@ -441,5 +441,8 @@
     return UIEdgeInsetsMake(0, 30, 0, 30);
 }
 
+- (void)reloadData:(NSInteger)seleceBlur{
+    _itemsView.selectedItem = seleceBlur;
+}
 @end
 

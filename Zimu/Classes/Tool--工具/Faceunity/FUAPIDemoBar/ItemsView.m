@@ -116,6 +116,16 @@
         });
     }
 }
-
+- (void)setSelectedItem:(NSInteger)selectedItem{
+    if (labs(selectedItem - _selectedItem) > 5) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:selectedItem inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+        });
+    }
+    
+    _selectedItem = selectedItem;
+    
+    [self reloadData];
+}
 @end
 

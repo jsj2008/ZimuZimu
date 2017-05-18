@@ -9,14 +9,13 @@
 #import "ActivityDetailViewController.h"
 #import "ActivityDetailTableView.h"
 #import <MJRefresh.h>
+#import <WebKit/WebKit.h>
 
 @interface ActivityDetailViewController ()<UIWebViewDelegate>
 
-@property (nonatomic, strong) UIScrollView *botScrollView;
 @property (nonatomic, strong) ActivityDetailTableView *activityDetailTableView;
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, assign) NSInteger height;
-@property (nonatomic, strong) UIButton *applyButton;        //一键报名
+@property (nonatomic, strong) UIButton *applyButton;        //立即报名
 
 @end
 
@@ -25,18 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _height = kScreenHeight - 64 - 49;
     self.title = @"亲子共学团";
     self.view.backgroundColor = themeGray;
     
-    [self setupBotScrollView];
     [self setupActivityDetailTableView];
     [self setupWebView];
     [self setupApplyButton];
-    
-    //设置上拉与下拉
-    [self setProductDetailTableViewFooter];
-    [self setWebViewHeader];
+
     
 }
 - (void)dealloc{
@@ -50,17 +44,13 @@
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [self.botScrollView addSubview:self.webView];
-}
-
 
 #pragma mark - 创建一键报名按钮
 - (void)setupApplyButton{
     _applyButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _applyButton.frame = CGRectMake(0, kScreenHeight - 64 - 49, kScreenWidth, 49);
     [_applyButton setBackgroundColor:themeYellow];
-    [_applyButton setTitle:@"一键报名" forState:UIControlStateNormal];
+    [_applyButton setTitle:@"立即报名" forState:UIControlStateNormal];
     [_applyButton setTitleColor:themeWhite forState:UIControlStateNormal];
     _applyButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [_applyButton addTarget:self action:@selector(applyActivity) forControlEvents:UIControlEventTouchUpInside];
@@ -71,27 +61,15 @@
     NSLog(@"报名成功");
 }
 
-
-#pragma mark - 创建底层scrollView
-- (void)setupBotScrollView{
-    _botScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, _height)];
-    _botScrollView.contentSize = CGSizeMake(kScreenWidth, _height * 2);
-    _botScrollView.contentOffset = CGPointMake(0, 0);
-    _botScrollView.pagingEnabled = YES;
-    _botScrollView.scrollEnabled = NO;
-    _botScrollView.backgroundColor = themeGray;
-    [self.view addSubview:_botScrollView];
-}
-
 #pragma mark - 创建activityDetailTableView
 - (void)setupActivityDetailTableView{
-    _activityDetailTableView = [[ActivityDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, _height) style:UITableViewStylePlain];
-    [_botScrollView addSubview:_activityDetailTableView];
+    _activityDetailTableView = [[ActivityDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain];
+    [self.view addSubview:_activityDetailTableView];
 }
 
 #pragma mark - webView图文详情
 - (void)setupWebView{
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, _height, kScreenWidth, _height)];
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     _webView.backgroundColor = themeGray;
     _webView.scrollView.showsVerticalScrollIndicator = NO;
     
@@ -102,9 +80,24 @@
     [NSURLCache setSharedURLCache:sharedCache];
     
     _webView.delegate = self;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.jianshu.com/p/e199496a8b8a"]]];
     
-    [_botScrollView addSubview:_webView];
+    self.activityDetailTableView.tableFooterView = _webView;
+    
+    //使用kvo为webView添加监听，监听webView的内容高度
+    [self.webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+}
+
+//实时改变webView的控件高度，使其高度跟内容高度一致
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    
+    if ([keyPath isEqualToString:@"contentSize"]) {
+        CGRect frame = self.webView.frame;
+        frame.size.height = self.webView.scrollView.contentSize.height;
+        self.webView.frame = frame;
+                
+        self.activityDetailTableView.tableFooterView = self.webView;
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -113,46 +106,6 @@
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitOfflineWebApplicationCacheEnabled"];//自己添加的，原文没有提到。
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-#pragma mark - 设置_activityDetailTableView的上拉加载和webView的下拉加载
-- (void)setProductDetailTableViewFooter{
-    MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction:)];
-    footer.gifView.hidden = YES;
-    [footer setBackgroundColor:themeGray];
-    [footer setTitle:@"继续拖动，查看图文详情" forState:MJRefreshStateIdle];       /** 普通闲置状态 */
-    [footer setTitle:@"释放，即可查看图文详情" forState:MJRefreshStatePulling];    /** 松开就可以进行刷新的状态 */
-    [footer setTitle:@"马上为您呈现" forState:MJRefreshStateRefreshing]; /** 正在刷新中的状态 */
-    
-    _activityDetailTableView.mj_footer = footer;
-    
-}
-- (void)footerRefreshAction:(MJRefreshBackGifFooter *)footer{
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        _botScrollView.contentOffset = CGPointMake(0, _height);
-        _activityDetailTableView.frame = CGRectMake(0, 0, kScreenWidth, _height);
-    } completion:^(BOOL finished) {
-        [footer endRefreshing];
-        [_activityDetailTableView.mj_footer setState:MJRefreshStateIdle];
-    }];
 
-}
-- (void)setWebViewHeader{
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction:)];
-    header.gifView.hidden = YES;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    [header setBackgroundColor:themeGray];
-    [header setTitle:@"下拉，查看活动简介" forState:MJRefreshStateIdle];
-    [header setTitle:@"释放，即可查看活动简介" forState:MJRefreshStatePulling];
-    [header setTitle:@"马上为您呈现" forState:MJRefreshStateRefreshing];
-    
-    _webView.scrollView.mj_header = header;
-}
-- (void)headerRefreshAction:(MJRefreshGifHeader *)header{
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        _botScrollView.contentOffset = CGPointMake(0, 0);
-    } completion:^(BOOL finished) {
-        [header endRefreshing];
-        [_webView.scrollView.mj_header setState:MJRefreshStateIdle];
-    }];
-}
 
 @end

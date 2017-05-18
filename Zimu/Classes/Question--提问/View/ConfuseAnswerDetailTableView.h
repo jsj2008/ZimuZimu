@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSArray *expertAnswerModelArray;
 @property (nonatomic, strong) NSArray *userCommentModelArray;
 
+@property (nonatomic, assign) NSInteger careState;      //用户是否已关注该问题
+
 @end

@@ -11,6 +11,7 @@
 @interface ArticleViewController : UIViewController
 
 @property (nonatomic, copy) NSString *articleTitle;
+@property (nonatomic, copy) NSString *articleID;
 
 
 /*加载网页*/

@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityListModel.h"
 
 @interface ActivityListCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *titleString;
 @property (nonatomic, copy) NSString *priceString;
 @property (nonatomic, copy) NSString *bgImageString;
+
+@property (nonatomic, strong) ActivityListModel *activityListModel;
 
 @end

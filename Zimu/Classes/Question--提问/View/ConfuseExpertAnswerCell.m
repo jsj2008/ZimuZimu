@@ -8,6 +8,8 @@
 
 #import "ConfuseExpertAnswerCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIView+ViewController.h"
+#import "ExpertDetailViewController.h"
 
 @interface ConfuseExpertAnswerCell ()
 
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;              //点赞
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;           //评论
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;             //分享
+- (IBAction)advisoryButtonAction:(UIButton *)sender;
 
 @end
 
@@ -70,21 +73,26 @@
         _nameLabel.frame = layoutFrame.nameLabelFrame;
         _nameLabel.text = layoutFrame.expertAnswerModel.userName;
         
-        NSArray *tagArray = [layoutFrame.expertAnswerModel.good componentsSeparatedByString:@","];
-        if (tagArray == nil || tagArray.count == 1) {
-            tagArray = @[@"亲子关系",@"孩子心理"];
-        }
         //标签1
         _tagLabel1.frame = layoutFrame.tagLabel1Frame;
         _tagLabel1.layer.cornerRadius = _tagLabel1.height/2.0;
         _tagLabel1.layer.masksToBounds = YES;
-        _tagLabel1.text = tagArray[0];
-        
         //标签2
         _tagLabel2.frame = layoutFrame.tagLabel2Frame;
         _tagLabel2.layer.cornerRadius = _tagLabel2.height/2.0;
         _tagLabel2.layer.masksToBounds = YES;
-        _tagLabel2.text = tagArray[1];
+        NSArray *tagArray = [layoutFrame.expertAnswerModel.good componentsSeparatedByString:@","];
+        if (tagArray == nil || tagArray.count == 0) {
+            _tagLabel1.hidden = YES;
+            _tagLabel2.hidden = YES;
+        }else if (tagArray.count == 1){
+            _tagLabel1.text = tagArray[0];
+            _tagLabel2.hidden = YES;
+        }else{
+            _tagLabel1.text = tagArray[0];
+            _tagLabel2.text = tagArray[1];
+        }
+        
         
         //咨询
         _advisoryButton.frame = layoutFrame.advisoryButtonFrame;
@@ -109,5 +117,13 @@
         
     }
 }
+
+- (IBAction)advisoryButtonAction:(UIButton *)sender {
+    ExpertDetailViewController *expertDetailVC = [[ExpertDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:expertDetailVC animated:YES];
+}
+
+
+
 
 @end

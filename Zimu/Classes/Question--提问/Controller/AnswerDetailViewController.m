@@ -14,6 +14,8 @@
 #import "QuestionExpertAnswerModel.h"
 #import "QuestionUserCommentApi.h"
 #import "QuestionUserCommentModel.h"
+#import "QueryWhetherCareApi.h"
+#import "CareStateModel.h"
 #import "MBProgressHUD+MJ.h"
 
 @interface AnswerDetailViewController ()
@@ -71,12 +73,40 @@
         }
         NSLog(@"questionDeatilModel : %@",questionDeatilModel);
         _answerDetailTableView.questionModel = questionDeatilModel.object;
-        
+        //检查用户是否已关注该问题
+        [self checkWeatherCareQuestion];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
     }];
 }
 
+//检查用户是否已关注该问题
+- (void)checkWeatherCareQuestion{
+    QueryWhetherCareApi *queryWhetherCareApi = [[QueryWhetherCareApi alloc]initWithQuestionId:_questionId];
+    [queryWhetherCareApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+            return;
+        }
+        CareStateModel *careStateModel = [CareStateModel yy_modelWithDictionary:dataDic[@"object"]];
+        NSInteger careState = [careStateModel.status integerValue];
+        _answerDetailTableView.careState = careState;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+
+    }];
+}
+
+//获取专家评论
 - (void)getExpertAnswerData{
     QuestionExpertAnswerApi *questionExpertAnswerApi = [[QuestionExpertAnswerApi alloc]initWithQuestionId:_questionId];
     [questionExpertAnswerApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {

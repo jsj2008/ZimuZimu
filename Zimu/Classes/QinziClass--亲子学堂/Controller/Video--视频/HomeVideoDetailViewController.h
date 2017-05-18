@@ -11,4 +11,7 @@
 
 @interface HomeVideoDetailViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *videoId;
+
+
 @end

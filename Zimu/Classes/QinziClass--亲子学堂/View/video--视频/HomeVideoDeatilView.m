@@ -10,23 +10,25 @@
 //
 
 #import "HomeVideoDeatilView.h"
-#import "VideoDetailTitleCell.h"
-#import "VideoDetailTextCell.h"
-#import "SubscreibeReadFreeHeadCell.h"
-#import "VideoDetailToolCell.h"
-#import "FMDetailCommentHeaderCell.h"
-#import "FMDeatilCommentCell.h"
-#import "FMDetailAuthorCell.h"
+#import "FMIntroCell.h"
+#import "FMIntroCellLayoutFrame.h"
+#import "FMAuthorCell.h"
+#import "FMAuthorCellLayoutFrame.h"
+
+#import "HotCourseHeadCell.h"
 #import "CourseHotListView.h"
 
-static NSString *titleCell = @"VideoDetailTitleCell";           //专家讲堂
-static NSString *deTextCell = @"VideoDetailTextCell";           //孩子学习是个大问题
-static NSString *headCell = @"SubscreibeReadFreeHeadCell";      //推荐课程
-static NSString *commentCell = @"FMDetailCommentHeaderCell";    //提交评论cell
-static NSString *toolBarCell = @"VideoDetailToolCell";          //点赞评论bar
-static NSString *authorCell = @"FMDetailAuthorCell";            //作者
+#import "FMCommentHeaderCell.h"
+#import "FMCommentTableViewCell.h"
+#import "FMCommentCellLayoutFrame.h"
+
+static NSString *introIdentifier = @"FMIntroCell";              //视频介绍
+static NSString *authorIdentifier = @"FMAuthorCell";            //作者cell
+static NSString *headCellIdentifier = @"HotCourseHeadCell";               //推荐课程
 static NSString *normalCell = @"videoDetailCellNormal";         //普通
-static NSString *commentDetailCell = @"FMDetailCommentCell";    //评论
+
+static NSString *headerIdentifier = @"FMCommentHeaderCell";
+static NSString *commentIdentifier = @"FMCommentTableViewCell";
 
 #define COURSE_FM_HEIGHT        kScreenWidth * 0.214 + 60
 
@@ -40,30 +42,16 @@ static NSString *commentDetailCell = @"FMDetailCommentCell";    //评论
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
     self = [super initWithFrame:frame style:style];
     if (self) {
-        UINib *nib1 = [UINib nibWithNibName:titleCell bundle:[NSBundle mainBundle]];
-        [self registerNib:nib1 forCellReuseIdentifier:titleCell];
+        [self registerClass:[FMIntroCell class] forCellReuseIdentifier:introIdentifier];
+        [self registerClass:[FMAuthorCell class] forCellReuseIdentifier:authorIdentifier];
         
-        UINib *nib2 = [UINib nibWithNibName:deTextCell bundle:[NSBundle mainBundle]];
-        [self registerNib:nib2 forCellReuseIdentifier:deTextCell];
-        
-        UINib *nib3 = [UINib nibWithNibName:headCell bundle:[NSBundle mainBundle]];
-        [self registerNib:nib3 forCellReuseIdentifier:headCell];
-        
-        UINib *nib4 = [UINib nibWithNibName:commentCell bundle:[NSBundle mainBundle]];
-        [self registerNib:nib4 forCellReuseIdentifier:commentCell];
-        
-        UINib *nib5 = [UINib nibWithNibName:toolBarCell bundle:[NSBundle mainBundle]];
-        [self registerNib:nib5 forCellReuseIdentifier:toolBarCell];
-        
-        UINib *nib6 = [UINib nibWithNibName:authorCell bundle:[NSBundle mainBundle]];
-        [self registerNib:nib6 forCellReuseIdentifier:authorCell];
-
-        UINib *nib7 = [UINib nibWithNibName:@"FMDeatilCommentCell" bundle:[NSBundle mainBundle]];
-        [self registerNib:nib7 forCellReuseIdentifier:commentDetailCell];
-        
+        [self registerClass:[HotCourseHeadCell class] forCellReuseIdentifier:headCellIdentifier];
         [self registerClass:[UITableViewCell class] forCellReuseIdentifier:normalCell];
+        [self registerClass:[FMCommentHeaderCell class] forCellReuseIdentifier:headerIdentifier];
+        [self registerClass:[FMCommentTableViewCell class] forCellReuseIdentifier:commentIdentifier];
         
         self.backgroundColor = themeGray;
+        self.separatorColor = themeGray;
         self.delegate = self;
         self.dataSource = self;
     }
@@ -76,77 +64,81 @@ static NSString *commentDetailCell = @"FMDetailCommentCell";    //评论
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) return 3;
-    if (section == 1) return 1;
-    if (section == 2) return 2;
-    if (section == 3) return 6;
-    return 0;
+    if (section == 2) {
+        return 2;
+    }else if (section == 3){
+        return 1 + _videoCommentModelArray.count;
+    }else{
+        return 1;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            VideoDetailTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:titleCell forIndexPath:indexPath];
-            return cell;
-        }else if (indexPath.row == 1){
-            VideoDetailTextCell *cell = [tableView dequeueReusableCellWithIdentifier:deTextCell forIndexPath:indexPath];
-            return cell;
-        }else{
-            VideoDetailToolCell *cell = [tableView dequeueReusableCellWithIdentifier:toolBarCell forIndexPath:indexPath];
-            return cell;
-        }
-    }else if (indexPath.section == 1){
-        FMDetailAuthorCell *cell = [tableView dequeueReusableCellWithIdentifier:authorCell forIndexPath:indexPath];
-        return cell;
+        FMIntroCell *cell = [tableView dequeueReusableCellWithIdentifier:introIdentifier];
+        FMIntroCellLayoutFrame *layoutFrame = [[FMIntroCellLayoutFrame alloc]initWithVideoDetailModel:_videoDetailModel];
+        cell.videolayoutFrame = layoutFrame;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        return cell;
+    }else if (indexPath.section == 1){
+        FMAuthorCell *cell = [tableView dequeueReusableCellWithIdentifier:authorIdentifier forIndexPath:indexPath];
+        FMAuthorCellLayoutFrame *layoutFrame = [[FMAuthorCellLayoutFrame alloc]initWithExpertDetailModel:_expertDetailModel];
+        cell.dataLayoutFrame = layoutFrame;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
-            SubscreibeReadFreeHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCell forIndexPath:indexPath];
-            cell.headTitleLabel.text = @"推荐课程";
+            HotCourseHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:headCellIdentifier forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             return cell;
         }else{
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:normalCell forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
             if (!_hotListView) {
-                UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-                flowLayout.minimumLineSpacing = 0;
-                flowLayout.minimumInteritemSpacing = 0;
-                flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-                
-                _hotListView = [[CourseHotListView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 0, COURSE_FM_HEIGHT) collectionViewLayout:flowLayout];
+                _hotListView = [[CourseHotListView alloc] initWithFrame:CGRectMake(0, 0, cell.width, (kScreenWidth - 40)/3.0 * 0.8 + 50) collectionViewLayout:[UICollectionViewFlowLayout new]];
+                [cell addSubview:_hotListView];
             }
-            [cell addSubview:_hotListView];
+            _hotListView.hotVideoModelArray = _hotVideoModelArray;
+            
             return cell;
         }
     }else{
         if (indexPath.row == 0) {
-            FMDetailCommentHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:commentCell forIndexPath:indexPath];
+            FMCommentHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.commentCount = _videoCommentModelArray.count;
             
             return cell;
-        }else{
-            FMDeatilCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:commentDetailCell forIndexPath:indexPath];
-            FMDetailCommentLayoutFrame *layoutFrame = [[FMDetailCommentLayoutFrame alloc]init];
-            cell.commentLayoutFrame = layoutFrame;
-            return cell;
-
         }
+        FMCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:commentIdentifier];
+        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]initWithVideoCommentModel:_videoCommentModelArray[indexPath.row - 1]];
+        cell.videoCommentLayoutFrame = layoutFrame;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
     }
-    
-    
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) return 40;
-        if (indexPath.row == 1) return 65;
-        return 40;
+        FMIntroCellLayoutFrame *layoutFrame = [[FMIntroCellLayoutFrame alloc]initWithVideoDetailModel:_videoDetailModel];
+        return layoutFrame.cellHeight;
     }else if (indexPath.section == 1){
-        return 60;
+        FMAuthorCellLayoutFrame *layoutFrame = [[FMAuthorCellLayoutFrame alloc]initWithExpertDetailModel:_expertDetailModel];
+        return layoutFrame.cellHeight;
     }else if (indexPath.section == 2){
-        if (indexPath.row == 0) return 40;
-        if (indexPath.row == 1) return COURSE_FM_HEIGHT;
+        if (indexPath.row == 0) return 35;
+        else return COURSE_FM_HEIGHT;
     }else{
-        if (indexPath.row == 0) return 50;
-        return 70;
+        if (indexPath.row == 0) {
+            return 35;
+        }
+        FMCommentCellLayoutFrame *videoLayoutFrame = [[FMCommentCellLayoutFrame alloc]initWithVideoCommentModel:_videoCommentModelArray[indexPath.row - 1]];
+        return videoLayoutFrame.cellHeight;
     }
-    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -157,4 +149,28 @@ static NSString *commentDetailCell = @"FMDetailCommentCell";    //评论
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
+
+- (void)setVideoDetailModel:(VideoDetailModel *)videoDetailModel{
+    _videoDetailModel = videoDetailModel;
+    [self reloadData];
+}
+
+- (void)setExpertDetailModel:(ExpertDetailModel *)expertDetailModel{
+    _expertDetailModel = expertDetailModel;
+    [self reloadData];
+}
+
+- (void)setHotVideoModelArray:(NSArray *)hotVideoModelArray{
+    _hotVideoModelArray = hotVideoModelArray;
+    
+    [self reloadData];
+}
+
+- (void)setVideoCommentModelArray:(NSArray *)videoCommentModelArray{
+    _videoCommentModelArray = videoCommentModelArray;
+    
+    [self reloadData];
+}
+
+
 @end

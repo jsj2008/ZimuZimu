@@ -7,22 +7,27 @@
 //
 
 #import "FMPlayView.h"
-#import "CircleView.h"
 #import "ZimuAudioPlayer.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "SampleQueueId.h"
 #import <AVFoundation/AVFoundation.h>
+#import <UIImageView+WebCache.h>
+#import "UIImage+ZMExtension.h"
 
 @interface FMPlayView ()<STKAudioPlayerDelegate, ZimuAudioPlayerDelegate>
 
-@property (nonatomic, strong) CircleView *circleView;           //播放进度
-@property (nonatomic, strong) UILabel *titleLabel;              //标题
-@property (nonatomic, strong) UILabel *progressLabel;           //播放时间label
-@property (nonatomic, strong) UILabel *authorLabel;             //上传者
+//@property (nonatomic, strong) CircleView *circleView;           //播放进度
+//@property (nonatomic, strong) UILabel *titleLabel;              //标题
+//@property (nonatomic, strong) UILabel *progressLabel;           //播放时间label
+//@property (nonatomic, strong) UILabel *authorLabel;             //上传者
 
-@property (nonatomic, strong) UIButton *lastButton;             //上一曲
-@property (nonatomic, strong) UIButton *nextButton;             //下一曲
-@property (nonatomic, strong) UIButton *startButton;            //开始、暂停
+@property (nonatomic, strong) UIImageView *bgImageView;     //FM背景图
+@property (nonatomic, strong) UISlider *slider;             //播放进度
+@property (nonatomic, strong) UILabel *totalTimeLabel;      //总时长label
+@property (nonatomic, strong) UILabel *progressLabel;       //时间进度label
+@property (nonatomic, strong) UIButton *startButton;        //播放按钮
+@property (nonatomic, strong) UIButton *backWardButton;     //后退15秒
+@property (nonatomic, strong) UIButton *forwardButton;      //前进15秒
 
 @property (nonatomic, assign) CGFloat progressPercent;
 @property (nonatomic, assign) NSNumber *duration;
@@ -34,16 +39,13 @@
 
 @implementation FMPlayView
 
-- (instancetype)initWithFrame:(CGRect)frame fmURLArray:(NSArray *)fmURLArray{
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        _fmURLArray = fmURLArray;
-        _nowFMIndex = 0;
         
         [ZimuAudioPlayer shareInstance].delegate = self;
         [ZimuAudioPlayer shareInstance].zimuDelegate = self;
         
-        [self initAudioPlayer];
         [self setSubviews];
     }
     return self;
@@ -58,68 +60,62 @@
 }
 
 - (void)playFM{
-    NSURL *url = [NSURL URLWithString:_fmURLArray[_nowFMIndex]];
+    NSURL *url = [NSURL URLWithString:_fmURL];
     STKDataSource *dataSource = [STKAudioPlayer dataSourceFromURL:url];
     [[ZimuAudioPlayer shareInstance] setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:url andCount:0]];
 }
 
 - (void)timerFiring:(CGFloat)duration progress:(CGFloat)progress{
-    _progressLabel.text = [NSString stringWithFormat:@"%02i:%02i / %02i:%02i",((int)progress)/60, ((int)progress)%60,((int)duration)/60, ((int)duration)%60];
+    _progressLabel.text = [NSString stringWithFormat:@"%02i:%02i",((int)progress)/60, ((int)progress)%60];
+    _totalTimeLabel.text = [NSString stringWithFormat:@"%02i:%02i",((int)duration)/60, ((int)duration)%60];
     _progressPercent = (CGFloat)progress / duration;
-//    NSLog(@"=============    %lf    ==========",_progressPercent);
     dispatch_async(dispatch_get_main_queue(), ^{
-        _circleView.progress = _progressPercent;
+        _slider.value = _progressPercent;
     });
 }
 
-//播放进度、FM图片
-- (void)setupCircleView{
-    CGFloat circleViewWidth = 218 / 375.0 * kScreenWidth;
-    CGFloat circleX = (self.width - circleViewWidth)/2.0;
-    CGFloat circleY = 23/375.0 * kScreenWidth;
-    _circleView = [[CircleView alloc]initWithFrame:CGRectMake(circleX, circleY, circleViewWidth, circleViewWidth)];
-    [self addSubview:_circleView];
-}
 
 - (void)setSubviews{
-    [self setupCircleView];
+    //fm背景图
+    _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, self.width)];
+    _bgImageView.image = [UIImage imageNamed:@"fm_beijing"];
+    [self addSubview:_bgImageView];
     
-    //FM标题
-    _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(25, CGRectGetMaxY(_circleView.frame) + 25/375.0 * kScreenWidth, kScreenWidth - 50, 15)];
-    _titleLabel.text = @"如何让爸爸妈妈们了解孩子的成长";
-    _titleLabel.font = [UIFont systemFontOfSize:14];
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.textColor = [UIColor colorWithHexString:@"000000"];
-    [self addSubview:_titleLabel];
+    //播放进度
+    _slider = [[UISlider alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_bgImageView.frame), self.width, 5)];
+    _slider.center = CGPointMake(self.centerX, CGRectGetMaxY(_bgImageView.frame));
+    UIImage *image = [UIImage imageWithColor:themeYellow size:CGSizeMake(15, 15)];
+    image = [image imageAddCornerWithRadious:image.size.height/2.0 size:image.size];
+    [_slider setThumbImage:image forState:UIControlStateNormal];
+    [_slider setMinimumTrackTintColor:themeYellow];
+    [_slider setMaximumTrackTintColor:[UIColor colorWithHexString:@"c0c0c0"]];
+    [self addSubview:_slider];
+    [[_slider rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+        CGFloat seekTime =  [ZimuAudioPlayer shareInstance].duration * _slider.value;
+        [[ZimuAudioPlayer shareInstance] seekToTime:seekTime];
+    }];
     
-    //播放时间文字进度
-    _progressLabel = [[UILabel alloc]initWithFrame:CGRectMake(25, CGRectGetMaxY(_titleLabel.frame) + 8, self.width - 50, 15)];
-    _progressLabel.font = [UIFont systemFontOfSize:14];
-    _progressLabel.textColor = [UIColor colorWithHexString:@"BCBCBC"];
-    _progressLabel.textAlignment = NSTextAlignmentCenter;
+    //已播放时间
+    _progressLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_slider.frame) + 5, 80, 15)];
+    _progressLabel.textAlignment = NSTextAlignmentLeft;
+    _progressLabel.font = [UIFont systemFontOfSize:11];
+    _progressLabel.textColor = [UIColor colorWithHexString:@"999999"];
     [self addSubview:_progressLabel];
     
-    //上传者
-    NSString *authorString = @"上传：吴老师";
-    CGSize authorSize = [authorString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
-    CGFloat authorWith = authorSize.width + 10;
-    CGFloat authorHeight = authorSize.height + 10;
-    _authorLabel = [[UILabel alloc]initWithFrame:CGRectMake((self.width - authorWith)/2.0, CGRectGetMaxY(_progressLabel.frame) + 15, authorWith, authorHeight)];
-    _authorLabel.text = authorString;
-    _authorLabel.font = [UIFont systemFontOfSize:14];
-    _authorLabel.textColor = themeWhite;
-    _authorLabel.backgroundColor = themeYellow;
-    _authorLabel.textAlignment = NSTextAlignmentCenter;
-    _authorLabel.layer.cornerRadius = authorHeight/2.0;
-    _authorLabel.layer.masksToBounds = YES;
-    [self addSubview:_authorLabel];
+    //总时长label
+    _totalTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.width - 10 - 80, CGRectGetMinY(_progressLabel.frame), 80, 15)];
+    _totalTimeLabel.textAlignment = NSTextAlignmentRight;
+    _totalTimeLabel.font = [UIFont systemFontOfSize:11];
+    _totalTimeLabel.textColor = [UIColor colorWithHexString:@"999999"];
+    [self addSubview:_totalTimeLabel];
+    
     
     //开始、暂停按钮
     _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_startButton setBackgroundImage:[UIImage imageNamed:@"FM_play"] forState:UIControlStateNormal];
-    [_startButton setBackgroundImage:[UIImage imageNamed:@"FM_pause"] forState:UIControlStateSelected];
+    [_startButton setBackgroundImage:[UIImage imageNamed:@"fm_play"] forState:UIControlStateNormal];
+    [_startButton setBackgroundImage:[UIImage imageNamed:@"fm_pause"] forState:UIControlStateSelected];
     _startButton.size = _startButton.currentBackgroundImage.size;
-    _startButton.center = _circleView.center;
+    _startButton.center = CGPointMake(self.centerX, CGRectGetMaxY(_slider.frame) + 20 + _startButton.height/2.0);
     _startButton.selected = YES;
     [self addSubview:_startButton];
 
@@ -141,67 +137,39 @@
         }
     }];
     
-    //上一曲
-    _lastButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_lastButton setBackgroundImage:[UIImage imageNamed:@"FM_last"] forState:UIControlStateNormal];
-    _lastButton.size = _lastButton.currentBackgroundImage.size;
-    CGFloat gap = 25/375.0 * kScreenWidth;
-    _lastButton.center = CGPointMake(gap + _lastButton.width/2.0, _circleView.centerY);
-    [self addSubview:_lastButton];
     
-    [[_lastButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"快退15秒");
-//        double currentTime = [ZimuAudioPlayer shareInstance].progress;
-//        double targetTime = currentTime - 15;
-//        if (targetTime <= 0) {
-//            targetTime = 0;
-//        }
-//        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
-        
-        if (_nowFMIndex == 0) {
-            //第一首了
-            return ;
+    //上一曲
+    _backWardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_backWardButton setBackgroundImage:[UIImage imageNamed:@"fm_houtui"] forState:UIControlStateNormal];
+    _backWardButton.size = _backWardButton.currentBackgroundImage.size;
+    CGFloat gap = 40/375.0 * kScreenWidth;
+    _backWardButton.center = CGPointMake(CGRectGetMinX(_startButton.frame) - gap - _backWardButton.width/2.0, _startButton.centerY);
+    [self addSubview:_backWardButton];
+    [[_backWardButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"快退15秒");
+        double currentTime = [ZimuAudioPlayer shareInstance].progress;
+        double targetTime = currentTime - 15;
+        if (targetTime <= 0) {
+            targetTime = 0;
         }
-        _nowFMIndex--;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self playFM];
-        });
-        
-        
-        if ([self.delegate respondsToSelector:@selector(previousSong)]) {
-            [self.delegate previousSong];
-        }
-
+        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
     }];
     
     //下一曲
-    _nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_nextButton setBackgroundImage:[UIImage imageNamed:@"FM_next"] forState:UIControlStateNormal];
-    _nextButton.size = _nextButton.currentBackgroundImage.size;
-    _nextButton.center = CGPointMake(self.width - gap - _nextButton.width/2.0, _circleView.centerY);
-    [self addSubview:_nextButton];
+    _forwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_forwardButton setBackgroundImage:[UIImage imageNamed:@"fm_kuaijin"] forState:UIControlStateNormal];
+    _forwardButton.size = _forwardButton.currentBackgroundImage.size;
+    _forwardButton.center = CGPointMake(CGRectGetMaxX(_startButton.frame) + gap + _forwardButton.width/2.0, _startButton.centerY);
+    [self addSubview:_forwardButton];
     
-    [[_nextButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"快进15秒");
-//        double currentTime = [ZimuAudioPlayer shareInstance].progress;
-//        double targetTime = currentTime + 15;
-//        if (targetTime >= [ZimuAudioPlayer shareInstance].duration) {
-//            targetTime = [ZimuAudioPlayer shareInstance].duration;
-//        }
-//        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
-        
-        if (_nowFMIndex == _fmURLArray.count - 1) {
-            //最后一首了
-            return;
+    [[_forwardButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"快进15秒");
+        double currentTime = [ZimuAudioPlayer shareInstance].progress;
+        double targetTime = currentTime + 15;
+        if (targetTime >= [ZimuAudioPlayer shareInstance].duration) {
+            targetTime = [ZimuAudioPlayer shareInstance].duration;
         }
-        _nowFMIndex++;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self playFM];
-        });
-        
-        if ([self.delegate respondsToSelector:@selector(nextSong)]) {
-            [self.delegate nextSong];
-        }
+        [[ZimuAudioPlayer shareInstance] seekToTime:targetTime];
     }];
 }
 
@@ -244,9 +212,18 @@
     NSLog(@"出了某些问题 %li",errorCode);
 }
 
-- (void)setFmURL:(NSString *)fmURL{
-    if (_fmURL != fmURL) {
-        _fmURL = fmURL;
+
+
+
+- (void)setFmDetailModel:(FMDetailModel *)fmDetailModel{
+    if (_fmDetailModel != fmDetailModel) {
+        _fmDetailModel = fmDetailModel;
+        _fmURL = [@"http://on9fin031.bkt.clouddn.com/" stringByAppendingString:_fmDetailModel.audioUrl];
+        [self initAudioPlayer];
+        
+        //刷新数据
+        //图片
+        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:[imagePrefixURL stringByAppendingString:fmDetailModel.fmImg]] placeholderImage:[UIImage imageNamed:@"fm_beijing"]];
     }
 }
 

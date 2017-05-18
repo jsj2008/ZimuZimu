@@ -21,26 +21,31 @@
 
 - (void)layoutFrame{
     //头像
-    _headImageViewFrame = CGRectMake(10, 10, 60, 60);
+    _headImageViewFrame = CGRectMake(10, 10, 50, 50);
     
     //头像
-    _headCoverImageViewFrame = CGRectMake(10, 10, 60, 60);
+    _headCoverImageViewFrame = _headImageViewFrame;
     
     //姓名
     _nameLabelFrame = CGRectMake(CGRectGetMaxX(_headImageViewFrame) + 10, CGRectGetMinY(_headImageViewFrame), 100, 20);
     
     //标签1
     NSArray *tagArray = [_expertAnswerModel.good componentsSeparatedByString:@","];
-    if (tagArray == nil || tagArray.count == 1) {
-        tagArray = @[@"亲子关系",@"孩子心理"];
+    NSString *tagString1 = @"";
+    NSString *tagString2 = @"";
+    if (tagArray == nil || tagArray.count == 0) {
+        
+    }else if (tagArray.count == 1){
+        tagString1 = tagArray[0];
+    }else{
+        tagString1 = tagArray[0];
+        tagString2 = tagArray[1];
     }
-    NSString *tagString = tagArray[0];
-    CGSize tagSize = [tagString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    CGSize tagSize = [tagString1 sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
     _tagLabel1Frame = CGRectMake(CGRectGetMinX(_nameLabelFrame), CGRectGetMaxY(_nameLabelFrame) + 5, tagSize.width + 15, tagSize.height + 6);
     
     //标签2
-    tagString = tagArray[1];
-    tagSize = [tagString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    tagSize = [tagString2 sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
     _tagLabel2Frame = CGRectMake(CGRectGetMaxX(_tagLabel1Frame) + 10, CGRectGetMinY(_tagLabel1Frame), tagSize.width + 15, tagSize.height + 6);
     
     //咨询

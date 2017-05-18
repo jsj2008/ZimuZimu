@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyInfoModel.h"
 
 @interface MyInfoSetTableViewController : UITableViewController
+
+@property (nonatomic, strong) MyInfoModel *myInfoModel;
 
 @end

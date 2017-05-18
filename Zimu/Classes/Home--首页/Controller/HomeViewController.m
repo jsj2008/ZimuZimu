@@ -19,6 +19,7 @@
 #import "LovelyFaceViewController.h"
 #import "FindFriendsViewController.h"
 #import "EvaluationViewController.h"
+#import "NewLoginViewController.h"
 
 #import "GetHomeSixImageApi.h"
 #import "HomeImageModel.h"
@@ -124,6 +125,7 @@
             [self.navigationController pushViewController:evaluaionVC animated:NO];
         }else if (indexPath.row == 5){          //发现更多
             FindViewController *findVC = [[FindViewController alloc]init];
+//            DYNavigationController *navi = [[DYNavigationController alloc]initWithRootViewController:findVC];
             [self.navigationController pushViewController:findVC animated:NO];
         }else{
             SecondViewController *secondVC = [[SecondViewController alloc]init];
@@ -214,6 +216,14 @@
 
 /*我的*/
 - (void)mineButtonAction{
+    //判断是否已登录
+    if ([userToken isEqualToString:@"logout"]) {
+        //未登录，跳转至登录页
+        NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+        [self presentViewController:newLoginVC animated:YES completion:nil];
+        
+        return;
+    }
     MineViewController *mineVC = [[MineViewController alloc]init];
     [self.navigationController pushViewController:mineVC animated:YES];
 }

@@ -9,6 +9,11 @@
 #import "ArticleViewController.h"
 #import <WebKit/WKWebView.h>
 #import <WebKit/WebKit.h>
+#import "GetArticleByPrimaryKeyApi.h"
+#import "ArticleDetailModel.h"
+#import "MBProgressHUD+MJ.h"
+#import "CommentBar.h"
+#import "UIView+SnailUse.h"
 
 static void *WkwebBrowserContext = &WkwebBrowserContext;
 
@@ -37,15 +42,8 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
     self.view.backgroundColor = themeWhite;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //加载web页面
-    [self startLoadWebView];
-    
-    //添加到主控制器上
-    [self.view addSubview:self.wkWebView];
-    
-    //添加进度条
-    [self.view addSubview:self.progressView];
-    
+    //获取文章数据
+    [self getArticleDetailData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -53,6 +51,48 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
     self.wkWebView.navigationDelegate = nil;
     self.wkWebView.UIDelegate = nil;
 }
+
+- (void)setupCommentBar{
+    CommentBar *commentBar = [UIView commentBar];
+    [self.view addSubview:commentBar];
+}
+
+#pragma mark - 获取文章数据
+- (void)getArticleDetailData{
+    GetArticleByPrimaryKeyApi *getArticleByPrimaryKeyApi = [[GetArticleByPrimaryKeyApi alloc]initWithArticleId:_articleID];
+    [getArticleByPrimaryKeyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        ArticleDetailModel *articleDetailModel = [ArticleDetailModel yy_modelWithDictionary:dataDic];
+        if (!articleDetailModel.isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        [self loadWebURLSring:articleDetailModel.object];
+        
+        //加载web页面
+        [self startLoadWebView];
+        
+        //添加到主控制器上
+        [self.view addSubview:self.wkWebView];
+        
+        //添加进度条
+        [self.view addSubview:self.progressView];
+        
+         [self setupCommentBar];
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+    
+}
+
+
 
 /**
  *  开始加载web页面
@@ -76,7 +116,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         configuration.selectionGranularity = YES;
         //是否支持记忆读取
         configuration.suppressesIncrementalRendering = YES;
-        _wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) configuration:configuration];
+        _wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) configuration:configuration];
         _wkWebView.backgroundColor = [UIColor clearColor];
         //设置代理
         _wkWebView.scrollView.delegate = self;
@@ -101,7 +141,6 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         //进度值
         [_progressView setTrackTintColor:themeGreen];
         [_progressView setTintColor:themeGreen];
-        
     }
     return _progressView;
 }
@@ -118,7 +157,6 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 -(void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
     NSLog(@"页面加载超时");
 }
-
 
 
 #pragma mark - UIScrollViewDelegate
@@ -148,15 +186,14 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
                 [self.progressView setProgress:0.0f animated:NO];
             }];
         }
-    }
-    else {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
 
 - (void)loadWebURLSring:(NSString *)string{
-    self.URLString = string;
+    self.URLString = [@"http://" stringByAppendingString:string];
 }
 
 @end

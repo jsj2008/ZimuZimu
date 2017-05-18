@@ -10,4 +10,6 @@
 
 @interface CourseHotListView : UICollectionView
 
+@property (nonatomic, strong) NSArray *hotVideoModelArray;
+
 @end

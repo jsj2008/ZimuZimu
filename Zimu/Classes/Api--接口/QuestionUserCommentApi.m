@@ -25,7 +25,7 @@
 }
 
 - (id)requestArgument{
-    return @{@"questionId":_questionId};
+    return @{@"questionId":_questionId,@"userToken":userToken};
 }
 
 - (YTKRequestMethod)requestMethod{

@@ -13,8 +13,23 @@
 #import <Masonry/Masonry.h>
 #import <ZFDownload/ZFDownloadManager.h>
 #import "HomeVideoDeatilView.h"
+#import "MBProgressHUD+MJ.h"
+#import "UIView+SnailUse.h"
+#import "CommentBar.h"
 
-@interface HomeVideoDetailViewController ()<ZFPlayerDelegate>
+#import <YTKBatchRequest.h>
+#import "AppQueryVideoApi.h"
+#import "GetExpertByPrimaryKeyApi.h"
+#import "GetHotVideoApi.h"
+#import "GetVideoCommentApi.h"
+#import "InsertVideoCommentApi.h"
+#import "GetWhetherFavoriteVideoApi.h"
+#import "VideoDetailModel.h"
+#import "HotVideoModel.h"
+#import "VideoCommentModel.h"
+#import "ExpertDetailModel.h"
+
+@interface HomeVideoDetailViewController ()<ZFPlayerDelegate, CommentBarDelegate>
 /*播放器*/
 @property (nonatomic, strong) ZFPlayerView *player;
 @property (nonatomic, strong) UIView *playerFatherView;
@@ -23,6 +38,12 @@
 
 /* 详细信息 */
 @property (nonatomic, strong) HomeVideoDeatilView *detailView;
+/* 评论栏 */
+@property (nonatomic, strong) CommentBar *commentBar;
+
+@property (nonatomic, strong) NSMutableArray *hotVideoModelArray;       //推荐视频数组
+@property (nonatomic, strong) NSMutableArray *commentModelArray;        //评论数据数组
+
 @end
 
 @implementation HomeVideoDetailViewController
@@ -32,32 +53,42 @@
     self.player = nil;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    self.title = @"视频详情";
-    
 
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     
+    [self getVideoDetailData];      //获取视频信息
+    [self getHotVideoData];         //获取推荐视频
+    [self getVideoCommentData];     //获取视频评论
+    
     [self makePlayer];
     
-    [self makeTbleView];
+    [self makeTableView];
+    
+    [self setupCommentBar];
+    
+    //判断是否登录
+    NSString *token = userToken;
+    if (token.length != 0) {
+        //登录
+        [self checkWhetherSelectVideo];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    // pop回来时候是否自动播放
-    if (self.navigationController.viewControllers.count == 2 && self.player && self.isPlaying) {
-        self.isPlaying = NO;
-        [self.player play];
-        
-    }
+//    // pop回来时候是否自动播放
+//    if (self.navigationController.viewControllers.count == 2 && self.player && self.isPlaying) {
+//        self.isPlaying = NO;
+//        [self.player play];
+//        
+//    }
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -84,8 +115,9 @@
     if (!_player) {
         _player = [[ZFPlayerView alloc] init];
         ZFPlayerControlView *controllerView = [[ZFPlayerControlView alloc] init];
-        controllerView.trySeePrice = 321;
-        [_player playerControlView:controllerView playerModel:self.playerModel];
+//        controllerView.trySeePrice = 321;
+        [self setPlayerModelWithTitle:@"塑料袋看风景" videoStr:@""];
+        [_player playerControlView:controllerView playerModel:_playerModel];
         
         // 设置代理
         _player.delegate = self;
@@ -93,35 +125,70 @@
         // 打开下载功能（默认没有这个功能）
         _player.hasDownload    = YES;
         //设置试看时间，如果没有试看则设置试看时间为0 isTrySee设为NO
-        _player.trySeeTime = 10;
-        _player.isTrysee = YES;
+//        _player.trySeeTime = 10;
+        _player.isTrysee = NO;
         // 打开预览图
         self.player.hasPreviewView = YES;
         //    ZFPlayerControlView
         //自动播放
         [self.player autoPlayTheVideo];
     }
-    
 }
-- (void)makeTbleView{
+
+- (void)makeTableView{
     if (!_detailView) {
-        _detailView = [[HomeVideoDeatilView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_playerFatherView.frame), kScreenWidth, kScreenHeight - CGRectGetMaxY(_playerFatherView.frame)) style:UITableViewStylePlain];
-        
+        _detailView = [[HomeVideoDeatilView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_playerFatherView.frame), kScreenWidth, kScreenHeight - CGRectGetMaxY(_playerFatherView.frame) - 49) style:UITableViewStylePlain];
     }
     [self.view addSubview:_detailView];
 }
+
+#pragma mark - 评论栏
+- (void)setupCommentBar{
+    _commentBar = [[CommentBar alloc]initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49) containNaviHeight:NO];
+    _commentBar.delegate = self;
+    [self.view addSubview:_commentBar];
+}
+
+#pragma mark - CommentBarDelegae
+/*分享*/
+- (void)commentBarShare{
+    NSLog(@"分享");
+}
+/*收藏*/
+- (void)commentBarSelect{
+    NSLog(@"收藏");
+}
+/*点击评论按钮*/
+- (void)commentBarComment{
+    NSLog(@"评论");
+}
+/*发表评论*/
+- (void)commentBarSubmit:(NSString *)text{
+    [self insertVideoComment:text];
+}
+
+
+
 - (ZFPlayerModel *)playerModel {
     if (!_playerModel) {
         _playerModel                  = [[ZFPlayerModel alloc] init];
-        _playerModel.title            = @"这里设置视频标题";
-        _playerModel.videoURL         = [NSURL URLWithString:@"http://on59kdhax.bkt.clouddn.com/video/20170322105906280310"];
         _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+//        _playerModel.videoURL         = [NSURL URLWithString:@"http://on9fin031.bkt.clouddn.com/video/20170517150000012312"];
         _playerModel.fatherView       = _playerFatherView;
         
     }
     return _playerModel;
 }
-
+- (void)setPlayerModelWithTitle:(NSString *)title videoStr:(NSString *)videoStr{
+//    if (!_playerModel) {
+        _playerModel                  = [[ZFPlayerModel alloc] init];
+        _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+        _playerModel.videoURL         = [NSURL URLWithString:videoStr];
+        _playerModel.title = title;
+        _playerModel.fatherView       = _playerFatherView;
+        
+//    }
+}
 // 视频详情页不支持系统转屏
 - (BOOL)shouldAutorotate {
     return NO;
@@ -138,6 +205,180 @@
     [[ZFDownloadManager sharedDownloadManager] downFileUrl:url filename:name fileimage:nil];
     // 设置最多同时下载个数（默认是3）
     [ZFDownloadManager sharedDownloadManager].maxCount = 4;
+}
+
+
+#pragma mark - 获取视频详情
+- (void)getVideoDetailData{
+    AppQueryVideoApi *appQueryVideoApi = [[AppQueryVideoApi alloc]initWithVideoId:_videoId];
+    [appQueryVideoApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        VideoDetailModel *videoDetailModel = [VideoDetailModel yy_modelWithDictionary:dataDic[@"object"]];
+        NSLog(@"%@",videoDetailModel);
+        _detailView.videoDetailModel = videoDetailModel;
+        [self getVideoExpertData:videoDetailModel.expertId];
+        
+        //播放视频
+        NSString *urlString = [NSString stringWithFormat:@"http://on9fin031.bkt.clouddn.com/%@",videoDetailModel.videoUrl];
+        [self setPlayerModelWithTitle:videoDetailModel.videoTitle videoStr:urlString];
+        [_player playerControlView:_playerFatherView  playerModel:_playerModel];
+        [self.player autoPlayTheVideo];
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+}
+
+#pragma mark - 获取推荐视频
+- (void)getHotVideoData{
+    GetHotVideoApi *getHotVideoApi = [[GetHotVideoApi alloc]init];
+    [getHotVideoApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        if (_hotVideoModelArray) {
+            [_hotVideoModelArray removeAllObjects];
+            _hotVideoModelArray = nil;
+        }
+        _hotVideoModelArray = [NSMutableArray array];
+        NSArray *dataArray = dataDic[@"items"];
+        if (dataArray.count) {
+            for (NSDictionary *dic in dataArray) {
+                HotVideoModel *hotVideoModel = [HotVideoModel yy_modelWithDictionary:dic];
+                [_hotVideoModelArray addObject:hotVideoModel];
+            }
+        }
+        _detailView.hotVideoModelArray = _hotVideoModelArray;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+}
+
+#pragma mark - 获取视频评论
+- (void)getVideoCommentData{
+    GetVideoCommentApi *getVideoCommentApi = [[GetVideoCommentApi alloc]initWithVideoId:_videoId];
+    [getVideoCommentApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        if (_commentModelArray) {
+            [_commentModelArray removeAllObjects];
+            _commentModelArray = nil;
+        }
+        _commentModelArray = [NSMutableArray array];
+        NSArray *dataArray = dataDic[@"items"];
+        if (dataArray.count) {
+            for (NSDictionary *dic in dataArray) {
+                VideoCommentModel *videoCommentModel = [VideoCommentModel yy_modelWithDictionary:dic];
+                [_commentModelArray addObject:videoCommentModel];
+            }
+        }
+        _detailView.videoCommentModelArray = _commentModelArray;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+}
+
+#pragma mark - 获取视频专家信息
+- (void)getVideoExpertData:(NSString *)expertId{
+    GetExpertByPrimaryKeyApi *getExpertByPrimaryKeyApi = [[GetExpertByPrimaryKeyApi alloc]initWithExpertId:expertId];
+    [getExpertByPrimaryKeyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        ExpertDetailModel *expertDetailModel = [ExpertDetailModel yy_modelWithDictionary:dataDic[@"object"]];
+        _detailView.expertDetailModel = expertDetailModel;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+}
+
+#pragma mark - 提交评论
+- (void)insertVideoComment:(NSString *)text{
+    InsertVideoCommentApi *insertVideoCommentApi = [[InsertVideoCommentApi alloc]initWithCommentVal:text videoId:_videoId];
+    [insertVideoCommentApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        [MBProgressHUD showMessage_WithoutImage:@"发表成功" toView:self.view];
+        _commentBar.textField.text = @"";
+        [_commentBar.textField resignFirstResponder];
+
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
+}
+
+#pragma mark - 查询是否已收藏视频
+- (void)checkWhetherSelectVideo{
+    GetWhetherFavoriteVideoApi *getWhetherFavoriteVideoApi = [[GetWhetherFavoriteVideoApi alloc]initWithVideoId:_videoId];
+    [getWhetherFavoriteVideoApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return;
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+    }];
 }
 
 

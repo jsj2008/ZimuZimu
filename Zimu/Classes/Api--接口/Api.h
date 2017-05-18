@@ -29,7 +29,9 @@
 //============================================== #new# ====================================================
 
 #define GetHomeSixImageURL @"appImgs/getHomeSixImage.do"                //获取首页图片
-#define GetParentSchoolListURL @"appFind/getFindMoreList.do"            //获取亲子学堂页数据 endTime : 时间戳
+
+//============================================== #线下活动# =================================================
+#define GetAppOfflineCourseListURL @"appCourse/getAppOfflineCourseList.do"      //获取所有线下活动
 
 
 //============================================== #提问# ====================================================
@@ -39,6 +41,8 @@
 #define AppExpSolveReadURL @"appExpSolve/appExpSolveRead.do"          //问题详情中专家回答内容 （问题id:questionId）
 #define AppUserCommentURL @"appExpSolve/appUserComment.do"            //问题详情中用户评论列表  参数对应名称（问题id:questionId）
 #define InsertCommentURL @"appExpSolve/insertComment.do"            //提交评论 （评论内容 commentVal  问题id questionId）
+#define CareQuestionURL @"appExpSolve/careQuestion.do"               //关注问题 （传userToken，问题id）
+#define QueryWhetherCareURL @"appExpSolve/queryWhetherCare.do"       //是否已关注该问题（传userToken，问题id）
 
 
 //=========================================== #我的个人信息# ================================================
@@ -47,6 +51,23 @@
 #define GetProvinceURL @"appAddress/getProvince.do"         //获取所有省份
 #define GetCityURL @"appAddress/getCitysByPrevId.do"        //根据省份ID获取城市 (prevId : 省份ID 例：ff19987b-484f-4645-9835-08c2daf344ce)
 
+
+//=========================================== #亲子学堂# ================================================
+#define GetParentSchoolListURL @"appFind/getFindMoreList.do"                //获取亲子学堂页数据 endTime : 时间戳
+//FM
+#define GetFmByPrimaryKeyURL @"appFm/getFmByPrimaryKey.do"                  //获取FM详情  （参数：fmId）
+#define GetFmCommentListURL  @"appFm/getFmCommentList.do"                   //获取fm列表   (参数：fmId)
+
+//文章
+#define GetArticleByPrimaryKeyURL @"appArticle/getArticleByPrimaryKey.do"   //获取文章详情  （参数：传articleId）
+//视频
+#define AppQueryVideoURL @"appVideo/appQueryVideo.do"                       //获取视频详情  （参数：传videoId）
+#define GetHotVideoURL @"appVideo/getRandTwoVideo.do"                       //获取热门推荐视频
+#define GetVideoCommentListURL  @"appVideo/getVideoCommentList.do"          //获取视频评论列表  （参数：videoId）
+#define InsertVideoCommentURL  @"appVideo/insertVideoComment.do"            //评论视频    （参数：commentVal、videoId、userToken）
+#define GetExpertByPrimaryKeyURL  @"appExpert/getExpertByPrimaryKey.do"     //获取专家信息  (参数：expertId)
+#define GetWhetherFavoriteVideoURL  @"appVideo/getWhetherFavoriteVideo.do"  //查询是否已收藏视频  (参数：videoId、userToken)
+
 #endif /* Api_h */
 
 
@@ -54,5 +75,5 @@
 /*
  *  还没用过的接口
  
- 5. appFind/getFindMoreSearchList.do?title=test   亲自学堂页面，搜索接口
+ 5. appFind/getFindMoreSearchList.do?title=test   亲子学堂页面，搜索接口
  */

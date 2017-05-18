@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VideoDetailModel.h"
+#import "ExpertDetailModel.h"
 
 @interface HomeVideoDeatilView : UITableView
+
+@property (nonatomic, strong) VideoDetailModel *videoDetailModel;
+@property (nonatomic, strong) ExpertDetailModel *expertDetailModel;
+@property (nonatomic, strong) NSArray *hotVideoModelArray;
+@property (nonatomic, strong) NSArray *videoCommentModelArray;
 
 @end

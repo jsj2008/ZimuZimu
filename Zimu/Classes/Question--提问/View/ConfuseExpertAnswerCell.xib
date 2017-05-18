@@ -45,6 +45,9 @@
                         <color key="backgroundColor" red="0.99607843139999996" green="0.74901960779999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="一对一咨询"/>
+                        <connections>
+                            <action selector="advisoryButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bbe-ZU-7zi"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mine_head_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="FBz-vi-5tP">
                         <rect key="frame" x="8" y="8" width="59" height="58"/>

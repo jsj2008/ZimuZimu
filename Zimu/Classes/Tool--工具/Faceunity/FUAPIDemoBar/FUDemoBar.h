@@ -48,4 +48,6 @@
 
 @property (nonatomic, strong) NSArray<NSString *> *filtersDataSource;
 
+- (void)reloadData:(NSInteger)seleceBlur;
+
 @end

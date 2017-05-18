@@ -10,4 +10,6 @@
 
 @interface ActivityTableView : UITableView
 
+@property (nonatomic, strong) NSArray *activityListModelArray;
+
 @end

@@ -55,4 +55,7 @@ FOUNDATION_EXPORT const unsigned char FUDemoBarVersionString[];
 
 @property (nonatomic, strong) NSArray<NSString *> *filtersDataSource;
 
+
+- (void)reloadSelectedItem:(NSInteger)selectItem;
+
 @end

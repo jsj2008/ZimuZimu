@@ -16,4 +16,7 @@
 
 + (id)sexChooseView;
 
+//评论栏
++ (id)commentBar;
+
 @end

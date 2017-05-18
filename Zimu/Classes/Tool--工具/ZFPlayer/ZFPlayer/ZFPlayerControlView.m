@@ -184,7 +184,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self.mas_trailing).offset(7);
         make.top.equalTo(self.mas_top).offset(-7);
-        make.width.height.mas_equalTo(20);
+//        make.width.height.mas_equalTo(30);
     }];
     
     [self.topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -860,6 +860,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (!_failBtn) {
         _failBtn = [UIButton buttonWithType:UIButtonTypeSystem];
         [_failBtn setTitle:@"加载失败,点击重试" forState:UIControlStateNormal];
+        [self zf_playerShowControlView];
         [_failBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _failBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         _failBtn.backgroundColor = RGBA(0, 0, 0, 0.7);
@@ -969,7 +970,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.showing                     = NO;
     self.playeEnd                    = NO;
     self.lockBtn.hidden              = !self.isFullScreen;
-    self.failBtn.hidden              = YES;
+//    self.failBtn.hidden              = YES;
     self.placeholderImageView.alpha  = 1;
 }
 

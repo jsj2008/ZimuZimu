@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HotVideoModel.h"
 
 @interface CourseHotListCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *img;
-@property (weak, nonatomic) IBOutlet UIButton *listenCounBtn;
-@property (weak, nonatomic) IBOutlet UILabel *hotFmTitleLabel;
+@property (nonatomic, strong) HotVideoModel *hotVideoModel;
 
-@property (nonatomic, assign) NSInteger listenCount;
 @end

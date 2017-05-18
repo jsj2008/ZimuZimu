@@ -51,7 +51,7 @@ static NSString *videoCellId = @"BrowsVideoCell";
 
 #pragma mark - colectionView代理、数据源
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 20;
+    return 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

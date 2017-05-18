@@ -12,24 +12,30 @@
 #define FREECOURSE_WIDTH (kScreenWidth / 3)
 #define COURSE_FM_HEIGHT  kScreenWidth * 0.214 + 60
 
-static NSString *cellReuesId = @"CourseHotListCellid";
-@interface CourseHotListView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-/** 图片和标题数组 **/
-@property (nonatomic, copy) NSArray *imgDataArray;
-@property (nonatomic, copy) NSArray *textDataArray;
+static NSString *hotListCellIdentifier = @"CourseHotListCellid";
+@interface CourseHotListView ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @end
 
 @implementation CourseHotListView
 
+- (UICollectionViewFlowLayout *)flowLayout{
+    if (!_flowLayout) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        _flowLayout.minimumLineSpacing = 10;
+        _flowLayout.minimumInteritemSpacing = 10;
+        _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    }
+    return _flowLayout;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
-    self = [super initWithFrame:frame collectionViewLayout:layout];
+    self = [super initWithFrame:frame collectionViewLayout:self.flowLayout];
     if (self) {
-        _imgDataArray = @[@"find_topic_1", @"find_topic_2", @"find_topic_4", @"find_topic_4"];
-        _textDataArray = @[@"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症", @"哪一刻你觉得自己得了抑郁症"];
         //注册单元格
-        UINib *nib = [UINib nibWithNibName:@"CourseHotListCell" bundle:[NSBundle mainBundle]];
-        [self registerNib:nib forCellWithReuseIdentifier:cellReuesId];
+        [self registerClass:[CourseHotListCell class] forCellWithReuseIdentifier:hotListCellIdentifier];
         
         self.backgroundColor = themeWhite;
         self.dataSource = self;
@@ -40,22 +46,28 @@ static NSString *cellReuesId = @"CourseHotListCellid";
 }
 #pragma mark - delegate dataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _imgDataArray.count;
+    return _hotVideoModelArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CourseHotListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuesId forIndexPath:indexPath];
-    cell.img.image = [UIImage imageNamed:_imgDataArray[indexPath.row]];
-    cell.hotFmTitleLabel.text = _textDataArray[indexPath.row];
+    CourseHotListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:hotListCellIdentifier forIndexPath:indexPath];
+    cell.hotVideoModel = _hotVideoModelArray[indexPath.row];
+    
     return cell;
 }
 #pragma mark - delegateFlowLayout
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(0, 10, 0, 10);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat width = (kScreenWidth - 40)/3.0;
+    return CGSizeMake(width, width * 0.8 + 45);
+}
+
+- (void)setHotVideoModelArray:(NSArray *)hotVideoModelArray{
+    _hotVideoModelArray = hotVideoModelArray;
     
-    return CGSizeMake(FREECOURSE_WIDTH, COURSE_FM_HEIGHT);
+    [self reloadData];
 }
 
 @end

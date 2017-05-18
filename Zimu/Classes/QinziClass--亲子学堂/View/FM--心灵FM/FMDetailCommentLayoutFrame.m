@@ -31,7 +31,7 @@
 
 - (void)layoutFrames{
     //头像
-    CGFloat headImageViewWidth = 50/375.0 * kScreenWidth;
+    CGFloat headImageViewWidth = 30/375.0 * kScreenWidth;
     _headImageViewFrame = CGRectMake(10, 10, headImageViewWidth, headImageViewWidth);
     
     //姓名
@@ -56,7 +56,7 @@
 /*提问：用户评论*/
 - (void)layoutFrames_userComment{
     //头像
-    CGFloat headImageViewWidth = 50/375.0 * kScreenWidth;
+    CGFloat headImageViewWidth = 30/375.0 * kScreenWidth;
     _headImageViewFrame = CGRectMake(10, 10, headImageViewWidth, headImageViewWidth);
     
     //姓名
@@ -65,7 +65,9 @@
     _nameLabelFrame = CGRectMake(CGRectGetMaxX(_headImageViewFrame) + 10, CGRectGetMinY(_headImageViewFrame), nameSize.width, nameSize.height);
     
     //点赞
-    _likeButtonFrame = CGRectMake(kScreenWidth - 80 - 10, CGRectGetMinY(_nameLabelFrame), 80, nameSize.height);
+    NSString *countString = [NSString stringWithFormat:@" %li",_userCommentModel.dianZanNum];
+    CGSize countSize = [countString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    _likeButtonFrame = CGRectMake(kScreenWidth - (countSize.width + 20) - 10, CGRectGetMinY(_nameLabelFrame), countSize.width + 20, nameSize.height);
     
     //评论内容
     NSString *commentString = _userCommentModel.commentVal;

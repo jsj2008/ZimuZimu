@@ -79,7 +79,7 @@ static NSString *noteIdentifier = @"ActivityNoteCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 40 + 140 * kScreenWidth/375.0 + 50;
+        return 345 * kScreenWidth/375.0 + 75;
     }else if(indexPath.section == 1){
         return 130;
     }else if(indexPath.section == 2){
@@ -91,13 +91,10 @@ static NSString *noteIdentifier = @"ActivityNoteCell";
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return CGFLOAT_MIN;
-    }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 10;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *view = [[UIView alloc]init];
     view.backgroundColor = [UIColor clearColor];
     return view;

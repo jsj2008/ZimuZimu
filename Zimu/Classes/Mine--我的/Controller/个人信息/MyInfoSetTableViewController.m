@@ -14,8 +14,8 @@
 #import "EditAgeTableViewController.h"
 #import "EditProvinceTableViewController.h"
 #import "EditSexTableViewController.h"
-#import "GetMyInfoAPI.h"
 #import "MBProgressHUD+MJ.h"
+#import "HomeViewController.h"
 
 static NSString *textIdentifier = @"MyInfoTextCell";
 static NSString *noEditTextIdentifier = @"MyInfoNoEditTextCell";
@@ -24,7 +24,7 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
 @interface MyInfoSetTableViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
-
+@property (nonatomic, strong) UIButton *logoutButton;       //退出登录按钮
 
 @end
 
@@ -41,11 +41,11 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
     [self.tableView registerClass:[MyInfoPhotoCell class] forCellReuseIdentifier:photoIdentifier];
     [self hideExtraLine];
     
+    [self setupLogoutButton];
+    
     //监听通知，获取省、市
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedAddress:) name:@"ProvinceCityNotification" object:nil];
     
-    //获取信息数据
-    [self getMyInfoNetWork];
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ProvinceCityNotification" object:nil];
@@ -173,24 +173,6 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
     self.tableView.tableFooterView = view;
 }
 
-#pragma mark - 获取我的信息数据
-- (void)getMyInfoNetWork{
-    GetMyInfoAPI *getMyInfoApi = [[GetMyInfoAPI alloc]init];
-    [getMyInfoApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSData *data = request.responseData;
-        NSError *error = nil;
-        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        if (error) {
-            return ;
-        }
-        NSLog(@"dataDic : %@",dataDic);
-        
-        
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:nil];
-    }];
-}
 
 
 
@@ -260,6 +242,38 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
     //    NSString *dtr = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSLog(@"length : %li", (unsigned long)encodedImageStr.length);
+}
+
+
+#pragma mark - 退出登录
+- (void)setupLogoutButton{
+    _logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _logoutButton.frame = CGRectMake(kScreenWidth * 0.1, kScreenHeight - 64 - 40 - 20, kScreenWidth * 0.8, 40);
+    [_logoutButton setTitle:@"退出账号" forState:UIControlStateNormal];
+    [_logoutButton setTitleColor:themeWhite forState:UIControlStateNormal];
+    _logoutButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [_logoutButton setBackgroundColor:themeYellow];
+    [_logoutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_logoutButton];
+}
+
+- (void)logout{
+    [[NSUserDefaults standardUserDefaults] setObject:@"logout" forKey:@"userToken"];
+    [MBProgressHUD showMessage_WithoutImage:@"退出登录成功" toView:self.view];
+    [self performSelector:@selector(backToHome) withObject:nil afterDelay:0.7];
+}
+- (void)backToHome{
+    NSArray *vcs = self.navigationController.viewControllers;
+    
+    NSInteger index = 0;
+    for (UIViewController *viewController in vcs) {
+        if([viewController isKindOfClass:[HomeViewController class]]){
+            index = [vcs indexOfObject:viewController];
+            break;
+        }
+    }
+    
+    [self.navigationController popToViewController:vcs[index] animated:YES];
 }
 
 

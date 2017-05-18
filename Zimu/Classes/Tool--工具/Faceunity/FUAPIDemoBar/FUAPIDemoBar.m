@@ -256,5 +256,7 @@
 //    }
 //}
 
-
+- (void)reloadSelectedItem:(NSInteger)selectItem{
+    [bar reloadData:selectItem];
+}
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ActivityListCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface ActivityListCell ()
 
@@ -39,26 +40,12 @@
     // Configure the view for the selected state
 }
 
-- (void)setTitleString:(NSString *)titleString{
-    if (_titleString != titleString) {
-        _titleString = titleString;
-        _titleLabel.text = _titleString;
-    }
-}
 
-- (void)setPriceString:(NSString *)priceString{
-    if (_priceString != priceString) {
-        _priceString = [NSString stringWithFormat:@"￥%@",priceString];
-        _priceLabel.text = _priceString;
-    }
+- (void)setActivityListModel:(ActivityListModel *)activityListModel{
+    _titleLabel.text = activityListModel.categoryName;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%@",activityListModel.coursePrice];
+    NSString *imgURLString = [imagePrefixURL stringByAppendingString:activityListModel.imgUrl];
+    [_bgImageView sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"activity_list2"]];
 }
-
-- (void)setBgImageString:(NSString *)bgImageString{
-    if (_bgImageString != bgImageString) {
-        _bgImageString = bgImageString;
-        _bgImageView.image = [UIImage imageNamed:bgImageString];
-    }
-}
-
 
 @end

@@ -10,6 +10,9 @@
 #import "AlignmentLabel.h"
 #import "InsertCommentTableViewController.h"
 #import "UIView+ViewController.h"
+#import "CareQuestionApi.h"
+#import "QuestionDetailModel.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface ConfuseContentCell ()
 
@@ -78,20 +81,51 @@
         //分割线
         _seperateLine.frame = layoutFrame.seperateLineFrame;
         
-        //点赞
+        //关怀
         _likeButton.frame = layoutFrame.likeButtonFrame;
+        [_likeButton setTitle:[NSString stringWithFormat:@" %@",layoutFrame.model.careNum] forState:UIControlStateNormal];
         
         //评论
         _commentButton.frame = layoutFrame.commentButtonFrame;
-        
+        [_commentButton setTitle:[NSString stringWithFormat:@" %@",layoutFrame.model.count] forState:UIControlStateNormal];
+
         //分享
         _shareButton.frame = layoutFrame.shareButtonFrame;
 
     }
 }
 
+- (void)setCareState:(NSInteger)careState{
+    _likeButton.selected = careState;
+}
+
 - (IBAction)likeButtonAction:(UIButton *)sender {
-    sender.selected = !sender.selected;
+    [self careQuestion];
+}
+//关怀问题
+- (void)careQuestion{
+    CareQuestionApi *careQuestionApi = [[CareQuestionApi alloc]initWithQuestionId:_layoutFrame.model.questionId];
+    [careQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+            return;
+        }
+        QuestionModel *questionModel = [QuestionModel yy_modelWithDictionary:dataDic[@"object"]];
+        ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]initWithModel:questionModel];
+        self.layoutFrame = layoutFrame;
+        _likeButton.selected = !_likeButton.selected;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+    }];
 }
 
 - (IBAction)commentButtonAction:(UIButton *)sender {

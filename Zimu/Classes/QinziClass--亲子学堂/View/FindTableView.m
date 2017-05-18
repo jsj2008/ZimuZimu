@@ -73,24 +73,28 @@ static NSString *listIdentifier = @"FindListCell";
 //        [self.viewController.navigationController pushViewController:dailySelectionVC animated:YES];
 //    }else{
 //}
+    ParentSchoolItem *itemModel = _modelArray[indexPath.row];
     FindListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"findCellType : %i",cell.findCellType);
     switch (cell.findCellType) {
         case FindCellTypeArticle:{          //文章
             ArticleViewController *articleVC = [[ArticleViewController alloc]init];
-            [articleVC loadWebURLSring:@"http://mp.weixin.qq.com/s/WFlfD_GgedmXzlGvx3maxw"];
+            articleVC.articleID = itemModel.qinziid;
+//            [articleVC loadWebURLSring:@"http://mp.weixin.qq.com/s/WFlfD_GgedmXzlGvx3maxw"];
             [self.viewController.navigationController pushViewController:articleVC animated:YES];
         }
             break;
             
         case FindCellTypeFM:{               //FM
             FMViewController *fmVC = [[FMViewController alloc]init];
+            fmVC.fmId = itemModel.qinziid;
             [self.viewController.navigationController pushViewController:fmVC animated:YES];
         }
             break;
             
         case FindCellTypeVideo:{            //视频
             HomeVideoDetailViewController *videoDetailVC = [[HomeVideoDetailViewController alloc]init];
+            videoDetailVC.videoId = itemModel.qinziid;
             [self.viewController.navigationController pushViewController:videoDetailVC animated:YES];
         }
             break;
@@ -109,6 +113,7 @@ static NSString *listIdentifier = @"FindListCell";
         [self reloadData];
     }
 }
+
 
 
 @end
