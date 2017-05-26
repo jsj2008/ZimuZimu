@@ -40,16 +40,11 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-<<<<<<< HEAD
     config.baseUrl = @"http://116.62.200.235:8080/zimu_portal/";
     //正式：@"http://120.27.221.31/zimu_portal/"
     //亚欧的：@"http://192.168.10.183:8082/portal/";
     //猪的:@"http://192.168.3.10:8082/portal/";
     //线上测试服务器：@"http://116.62.200.235:8080/zimu_portal/";
-=======
-    config.baseUrl = @"http://116.62.200.235:8080/zimu_portal/";//@"http://120.27.221.31/zimu_portal/";//@"http://192.168.3.10:8082/portal/";//@"http://192.168.10.183:8080/portal/"
-
->>>>>>> origin/master
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

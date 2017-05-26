@@ -2,7 +2,6 @@ platform :ios, '8.0'
 
 target 'Zimu' do
 
-<<<<<<< HEAD
 pod 'MBProgressHUD'
 pod 'AFNetworking'
 pod 'ReactiveCocoa', '~> 2.1.8'
@@ -25,27 +24,5 @@ pod 'QNNetDiag'
 pod 'JPush'
 pod 'DGActivityIndicatorView'
 
-=======
-    pod 'MBProgressHUD'
-    pod 'AFNetworking'
-    pod 'ReactiveCocoa', '~> 2.1.8'
-    pod 'Masonry'
-    pod 'PYSearch'
-    pod 'SDWebImage'
-    pod 'UMengAnalytics'
-    pod 'MJRefresh'
-    pod 'YMCitySelect'
-    pod 'YYModel'
-    pod 'ZFDownload'
-    pod 'YTKNetwork'
-    pod 'WHC_Model'
-    pod 'pop','~>1.0'
-    pod 'StreamingKit'
-    pod 'SVProgressHUD', '~> 2.0.3'
-    pod 'PLPlayerKit'
-    pod 'pili-librtmp'
-    pod 'QNNetDiag'
-    pod 'JPush'
-    
->>>>>>> origin/master
+
 end

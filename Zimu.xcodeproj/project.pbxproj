@@ -520,7 +520,6 @@
 		5FE6BCC71ECC78B800A2852F /* GetFmCommentListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCC61ECC78B800A2852F /* GetFmCommentListApi.m */; };
 		5FE6BCCB1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCCA1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m */; };
 		5FE6BCCE1ECD38E300A2852F /* ActivityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCCD1ECD38E300A2852F /* ActivityListModel.m */; };
-<<<<<<< HEAD
 		5FE6BD041ECD7DE200A2852F /* ActivityChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BD031ECD7DE200A2852F /* ActivityChooseCell.m */; };
 		5FE6BD071ECD93A600A2852F /* GetOfflineCourseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BD061ECD93A600A2852F /* GetOfflineCourseApi.m */; };
 		5FE6BD0A1ECD946300A2852F /* ActivityTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BD091ECD946300A2852F /* ActivityTimeTableViewController.m */; };
@@ -576,8 +575,6 @@
 		5FE6BDB61ED7F7F400A2852F /* ZimuRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDB51ED7F7F400A2852F /* ZimuRefreshGifHeader.m */; };
 		5FE6BDB91ED8032100A2852F /* QuestionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */; };
 		5FE6BDBC1ED84DCA00A2852F /* QueryMyQuestionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDBB1ED84DCA00A2852F /* QueryMyQuestionApi.m */; };
-=======
->>>>>>> origin/master
 		5FEA2A931E8B496600405F75 /* CityCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA2A921E8B496600405F75 /* CityCourseViewController.m */; };
 		5FEA2A961E8B4A0900405F75 /* CityCourseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA2A951E8B4A0900405F75 /* CityCourseTableView.m */; };
 		5FEA2A9A1E8B4B8300405F75 /* CityCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA2A981E8B4B8300405F75 /* CityCourseCell.m */; };
@@ -1631,7 +1628,6 @@
 		5FE6BCCA1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppOfflineCourseListApi.m; sourceTree = "<group>"; };
 		5FE6BCCC1ECD38E300A2852F /* ActivityListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListModel.h; sourceTree = "<group>"; };
 		5FE6BCCD1ECD38E300A2852F /* ActivityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListModel.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		5FE6BD021ECD7DE200A2852F /* ActivityChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityChooseCell.h; sourceTree = "<group>"; };
 		5FE6BD031ECD7DE200A2852F /* ActivityChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityChooseCell.m; sourceTree = "<group>"; };
 		5FE6BD051ECD93A600A2852F /* GetOfflineCourseApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOfflineCourseApi.h; sourceTree = "<group>"; };
@@ -1731,8 +1727,6 @@
 		5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleView.m; sourceTree = "<group>"; };
 		5FE6BDBA1ED84DCA00A2852F /* QueryMyQuestionApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryMyQuestionApi.h; sourceTree = "<group>"; };
 		5FE6BDBB1ED84DCA00A2852F /* QueryMyQuestionApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryMyQuestionApi.m; sourceTree = "<group>"; };
-=======
->>>>>>> origin/master
 		5FEA2A911E8B496600405F75 /* CityCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCourseViewController.h; sourceTree = "<group>"; };
 		5FEA2A921E8B496600405F75 /* CityCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCourseViewController.m; sourceTree = "<group>"; };
 		5FEA2A941E8B4A0900405F75 /* CityCourseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCourseTableView.h; sourceTree = "<group>"; };
@@ -3352,13 +3346,10 @@
 				1E71B17C1ED5848600DDEDDB /* 心理测试 */,
 				5FE6BCC81ECD369400A2852F /* Activity */,
 				5FE6BCC41ECC789600A2852F /* FMApi */,
-<<<<<<< HEAD
 				5FE6BD271ECEEFFB00A2852F /* ArticleApi */,
-=======
 				1E71B1401ECD864E00DDEDDB /* 找朋友Api */,
 				5FBB268C1EC4439400C01EC8 /* GetArticleByPrimaryKeyApi.h */,
 				5FBB268D1EC4439400C01EC8 /* GetArticleByPrimaryKeyApi.m */,
->>>>>>> origin/master
 				5F2CB4621ECBE32700A66B39 /* VideoApi */,
 				5F4833891EB3360400481407 /* InsertQuestionApi.h */,
 				5F48338A1EB3360400481407 /* InsertQuestionApi.m */,
@@ -4129,7 +4120,6 @@
 			name = Activity;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		5FE6BD231ECEE32800A2852F /* Article--文章 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4256,8 +4246,6 @@
 			name = "下拉刷新";
 			sourceTree = "<group>";
 		};
-=======
->>>>>>> origin/master
 		5FEA2A8F1E8B494500405F75 /* CityCourse--一城一课 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4316,15 +4304,12 @@
 				5F0A9B7C1EBC745B0066F7BE /* ProvinceModel.m */,
 				5F0A9B7E1EBC74BE0066F7BE /* CityModel.h */,
 				5F0A9B7F1EBC74BE0066F7BE /* CityModel.m */,
-<<<<<<< HEAD
 				5FE6BD981ED6828200A2852F /* OrderModel.h */,
 				5FE6BD991ED6828200A2852F /* OrderModel.m */,
-=======
 				1E6B81D51ED83856001DB05F /* MyCollectionArticleModel.h */,
 				1E6B81D61ED83856001DB05F /* MyCollectionArticleModel.m */,
 				1E6B81D81ED84E95001DB05F /* MyCollectionVideoModel.h */,
 				1E6B81D91ED84E95001DB05F /* MyCollectionVideoModel.m */,
->>>>>>> origin/master
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4855,11 +4840,8 @@
 				1E71B15D1ED2B0B100DDEDDB /* GetFriendsListApi.m in Sources */,
 				5F9C3CDF1E62CBA0009659E4 /* UIView+ViewController.m in Sources */,
 				5F4833B31EB85F9400481407 /* EditNickNameCell.m in Sources */,
-<<<<<<< HEAD
 				5FE6BD421ED2875C00A2852F /* InsertArticleCollectionApi.m in Sources */,
-=======
 				1E71B1661ED2E16000DDEDDB /* MyMsgModel.m in Sources */,
->>>>>>> origin/master
 				5F8CB5711EC008A600541A57 /* GetMyInfoAPI.m in Sources */,
 				5F9C3CFF1E63C0CB009659E4 /* TAAbstractDotView.m in Sources */,
 				5F4833591EB182DC00481407 /* OrderDetailViewController.m in Sources */,
@@ -5112,11 +5094,8 @@
 				5F8EDD4E1E6EA5B2000FC3E0 /* FMTableViewCell.m in Sources */,
 				5FE6BCA51ECC318900A2852F /* UIImage+demobar.m in Sources */,
 				5FE6BCCB1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m in Sources */,
-<<<<<<< HEAD
 				5FE6BD9D1ED6DC5000A2852F /* DeleteOffLineCourseOrderDetailApi.m in Sources */,
-=======
 				1E6B81CF1ED81601001DB05F /* GetMyFavouriteFmListApi.m in Sources */,
->>>>>>> origin/master
 				5FABE5FF1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m in Sources */,
 				5FBB26911EC443B200C01EC8 /* AppQueryVideoApi.m in Sources */,
 				5F8EDD411E6E9A41000FC3E0 /* EvaluationTableViewCell.m in Sources */,
