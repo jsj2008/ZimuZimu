@@ -10,12 +10,33 @@
 #import "ActivityDetailTableView.h"
 #import <MJRefresh.h>
 #import <WebKit/WebKit.h>
+#import "ActivityTimeTableViewController.h"
+#import "GetAppOfflineCourseByIdApi.h"
+#import "MBProgressHUD+MJ.h"
+#import "ActivityCategoryInfoModel.h"
+#import "UIView+SnailUse.h"
+#import "PaymentChannelView.h"
+#import "SnailQuickMaskPopups.h"
+#import "GetAppOfflineCourseByCourseIdApi.h"
+#import "ActivityCourseModel.h"
+#import "PaymentInfoModel.h"
+#import "NewLoginViewController.h"
+#import "ActivityOrderCompleteViewController.h"
+#import "NewLoginViewController.h"
 
-@interface ActivityDetailViewController ()<UIWebViewDelegate>
+@interface ActivityDetailViewController ()<UIWebViewDelegate, ActivityDetailTableViewDelegate, ActivityTimeTableViewControllerDelegate, PaymentChannelViewDelegate, ActivityOrderCompleteViewControllerDelegate>
 
 @property (nonatomic, strong) ActivityDetailTableView *activityDetailTableView;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIButton *applyButton;        //立即报名
+@property (nonatomic, assign) BOOL hasSelectAddress;        //是否已选择活动地址
+
+@property (nonatomic, strong) SnailQuickMaskPopups *popup;
+@property (nonatomic, copy) NSString *addressString;        //课程地址
+@property (nonatomic, copy) NSString *timeString;           //课程时间
+@property (nonatomic, copy) NSString *courseId;             //课程ID
+@property (nonatomic, strong) PaymentChannelView *paymentChannelView;
+
 
 @end
 
@@ -24,13 +45,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"亲子共学团";
+    self.title = _titleString;
     self.view.backgroundColor = themeGray;
     
     [self setupActivityDetailTableView];
     [self setupWebView];
     [self setupApplyButton];
-
+    
+    _hasSelectAddress = NO;
+    [self getCategoryActivityData];
     
 }
 - (void)dealloc{
@@ -58,15 +81,69 @@
     [_applyButton addTarget:self action:@selector(applyActivity) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_applyButton];
 }
-
+//立即报名
 - (void)applyActivity{
-    NSLog(@"报名成功");
+    
+    ActivityOrderCompleteViewController *orderCompleteVC = [[ActivityOrderCompleteViewController alloc]init];
+    orderCompleteVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    orderCompleteVC.orderCompleteDelegate = self;
+    orderCompleteVC.result = @"success";
+    orderCompleteVC.courseId = _courseId;
+    [self presentViewController:orderCompleteVC animated:YES completion:nil];
+    
+//    if (_hasSelectAddress) {
+//        //判断是否已登录
+//        if ([userToken isEqualToString:@"logout"] || userToken == nil) {
+//            //去登录
+//            NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+//            [self presentViewController:newLoginVC animated:YES completion:nil];
+//        }else{
+//            NSArray *textArray = [_addressString componentsSeparatedByString:@" "];
+//            NSDictionary *modelDic = @{@"title":_titleString,
+//                                       @"courseId":_courseId,
+//                                       @"price":_coursePrice,
+//                                       @"time":textArray[2],
+//                                       @"address":textArray[0]};
+//            PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
+//            _paymentChannelView = [UIView paymentChannelView];
+//            _paymentChannelView.delegate = self;
+//            _paymentChannelView.paymentInfoModel = paymentInfoModel;
+//            _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
+//            _popup.isAllowPopupsDrag = YES;
+//            _popup.dampingRatio = 0.9;
+//            _popup.presentationStyle = PresentationStyleBottom;
+//            [_popup presentAnimated:YES completion:nil];
+//        }
+//    }else{
+//        [_activityDetailTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//        [MBProgressHUD showMessage_WithoutImage:@"请先选择课程" toView:nil];
+//    }
 }
 
 #pragma mark - 创建activityDetailTableView
 - (void)setupActivityDetailTableView{
     _activityDetailTableView = [[ActivityDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain];
+    _activityDetailTableView.detailDelegate = self;
     [self.view addSubview:_activityDetailTableView];
+}
+
+//ActivityDetailTableViewDelegate
+- (void)activityDetailTableViewDidSelect{
+    ActivityTimeTableViewController *activityTimeTableVC = [[ActivityTimeTableViewController alloc]init];
+    activityTimeTableVC.delegate = self;
+    activityTimeTableVC.categoryId = _categoryId;
+    [self.navigationController pushViewController:activityTimeTableVC animated:YES];
+}
+//ActivityTimeTableViewControllerDelegate
+- (void)activityTimeTableViewControllerDidSelectAddress:(NSString *)address courseId:(NSString *)courseId{
+    _activityDetailTableView.isSelectAddress = YES;
+    [self getAppOfflineCourseDetailDataWithCourseId:courseId];       //获取活动具体数据
+    
+    self.hasSelectAddress = YES;
+    _addressString = address;
+    _courseId = courseId;
+    _activityDetailTableView.addressString = address;
+    NSLog(@"address : %@, courseId : %@",address, courseId);
 }
 
 #pragma mark - webView图文详情
@@ -82,7 +159,7 @@
     [NSURLCache setSharedURLCache:sharedCache];
     
     _webView.delegate = self;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.163.com"]]];
     
     self.activityDetailTableView.tableFooterView = _webView;
     
@@ -108,6 +185,95 @@
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitOfflineWebApplicationCacheEnabled"];//自己添加的，原文没有提到。
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
+#pragma mark - 获取该类别活动数据详情
+- (void)getCategoryActivityData{
+    GetAppOfflineCourseByIdApi *getAppOfflineCourseByIdApi = [[GetAppOfflineCourseByIdApi alloc]initWithCategoryId:_categoryId];
+    [getAppOfflineCourseByIdApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+            return;
+        }
+        ActivityCategoryInfoModel *activityCategoryInfoModel = [ActivityCategoryInfoModel yy_modelWithDictionary:dataDic[@"object"]];
+        _activityDetailTableView.activityCategoryInfoModel = activityCategoryInfoModel;
+        _activityDetailTableView.coursePrice = _coursePrice;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+    }];
+}
+
+
+#pragma mark - 获取具体活动数据
+- (void)getAppOfflineCourseDetailDataWithCourseId:(NSString *)courseId{
+    GetAppOfflineCourseByCourseIdApi *getAppOfflineCourseByCourseIdApi = [[GetAppOfflineCourseByCourseIdApi alloc]initWithCourseId:courseId];
+    [getAppOfflineCourseByCourseIdApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+            return;
+        }
+        ActivityCourseModel *model = [ActivityCourseModel yy_modelWithDictionary:dataDic[@"object"]];
+        _activityDetailTableView.activityCourseModel = model;
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"获取该活动数据失败" toView:self.view];
+    }];
+}
+
+
+#pragma mark - PaymentChannelViewDelegate
+- (void)paymentViewFinishPayWithResult:(NSString *)result{
+//    if ([result isEqualToString:@"fail"]) {
+//        result = @"支付失败";
+//    }else if ([result isEqualToString:@"success"]){
+//        result = @"支付成功";
+//    }else if ([result isEqualToString:@"cancel"]){
+//        result = @"取消支付";
+//    }
+    
+    [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
+        ActivityOrderCompleteViewController *orderCompleteVC = [[ActivityOrderCompleteViewController alloc]init];
+        orderCompleteVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        orderCompleteVC.orderCompleteDelegate = self;
+        orderCompleteVC.result = result;
+        orderCompleteVC.courseId = _courseId;
+        [self presentViewController:orderCompleteVC animated:YES completion:nil];
+    }];
+}
+
+- (void)loginFailed{
+    [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
+        [self login];
+    }];
+}
+
+- (void)login{
+    NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
+}
+
+#pragma mark - ActivityOrderCompleteViewControllerDelegate 重新支付
+- (void)payAgain{
+    [self performSelector:@selector(applyActivity) withObject:nil afterDelay:0.3];
+}
+
 
 
 @end

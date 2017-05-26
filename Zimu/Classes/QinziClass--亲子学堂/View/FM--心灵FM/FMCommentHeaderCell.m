@@ -48,7 +48,7 @@
 }
 
 - (void)setCommentCount:(NSInteger)commentCount{
-    _titleLabel.text = [NSString stringWithFormat:@"听众点评(%li)",commentCount];
+    _titleLabel.text = [NSString stringWithFormat:@"用户评论(%li)",commentCount];
 }
 
 @end

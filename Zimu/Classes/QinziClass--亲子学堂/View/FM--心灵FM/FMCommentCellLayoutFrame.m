@@ -43,7 +43,7 @@
 }
 
 #pragma mark - 视频评论
-- (instancetype)initWithVideoCommentModel:(VideoCommentModel *)videoCommentModel{
+- (instancetype)initWithCommentModel:(CommentModel *)videoCommentModel{
     self = [super init];
     if (self) {
         _videoCommentModel = videoCommentModel;

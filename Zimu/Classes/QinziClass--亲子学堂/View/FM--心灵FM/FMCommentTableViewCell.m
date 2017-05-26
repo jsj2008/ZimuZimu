@@ -76,17 +76,18 @@
     _commentLabel.text = @"音乐，让我在悲伤时感到一丝快乐，让我感动时潸然泪下。";
 }
 
-- (void)setVideoCommentLayoutFrame:(FMCommentCellLayoutFrame *)videoCommentLayoutFrame{
-    _headImageView.frame = videoCommentLayoutFrame.headImageViewFrame;
-    _coverImageView.frame = videoCommentLayoutFrame.coverImageViewFrame;
-    _nameLabel.frame = videoCommentLayoutFrame.nameLabelFrame;
-    _commentLabel.frame = videoCommentLayoutFrame.commentLabelFrame;
+- (void)setDataCommentLayoutFrame:(FMCommentCellLayoutFrame *)dataCommentLayoutFrame{
+    
+    _headImageView.frame = dataCommentLayoutFrame.headImageViewFrame;
+    _coverImageView.frame = dataCommentLayoutFrame.coverImageViewFrame;
+    _nameLabel.frame = dataCommentLayoutFrame.nameLabelFrame;
+    _commentLabel.frame = dataCommentLayoutFrame.commentLabelFrame;
     
 //    NSString *imgURLString = [imagePrefixURL stringByAppendingString:videoCommentLayoutFrame.videoCommentModel.userImg];
 //    [_headImageView sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
     _headImageView.image = [UIImage imageNamed:@"mine_head_placeholder"];
-    _nameLabel.text = videoCommentLayoutFrame.videoCommentModel.userName;
-    _commentLabel.text = videoCommentLayoutFrame.videoCommentModel.commentVal;
+    _nameLabel.text = dataCommentLayoutFrame.videoCommentModel.userName;
+    _commentLabel.text = dataCommentLayoutFrame.videoCommentModel.commentVal;
 }
 
 @end

@@ -8,6 +8,12 @@
 
 #import "SettingView.h"
 #import "DeviceMessageModel.h"
+#import "ClearUpCacheHelper.h"
+#import "MBProgressHUD+MJ.h"
+#import "AboutUsViewController.h"
+#import "UsingHelpViewController.h"
+#import "FeedBackViewController.h"
+#import "UIView+ViewController.h"
 
 @interface SettingView (){
     NSArray *titles;
@@ -110,8 +116,8 @@
         button.titleLabel.font = font;
         [button setTitle:title forState:UIControlStateNormal];
         [button setTitleColor:themeBlack forState:UIControlStateNormal];
-        CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:font}];
-        button.width = size.width + 18;
+//        CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:font}];
+        button.width = 200;
         button.height = height;
         
         //第二个按钮center等于self的center
@@ -130,31 +136,39 @@
     NSInteger index = button.tag - 110;
     switch (index) {
         case 0:{                    //清理缓存
-            
+            [button setTitle:@"清理中。。。" forState:UIControlStateNormal];
+            [ClearUpCacheHelper clearUpCache];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD showSuccess:@"清理完成" toView:nil];
+                [button setTitle:@"清理缓存" forState:UIControlStateNormal];
+            });
         }
             
             break;
             
         case 1:{                    //意见反馈
-            
+            FeedBackViewController *feedbackVC = [[FeedBackViewController alloc]init];
+            [self.viewController.navigationController pushViewController:feedbackVC animated:YES];
         }
             
             break;
             
         case 2:{                    //使用帮助
-            
+            UsingHelpViewController *usingHelpVC = [[UsingHelpViewController alloc]init];
+            [self.viewController.navigationController pushViewController:usingHelpVC animated:YES];
         }
             
             break;
             
         case 3:{                    //评价我们
-            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/us/app/%E4%B8%80%E9%B2%9C-%E6%88%91%E7%9A%84%E4%BC%98%E8%B4%A8%E7%94%9F%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%95%86/id1073096826?mt=8"]];
         }
             
             break;
             
         case 4:{                    //关于子慕
-            
+            AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc]init];
+            [self.viewController.navigationController pushViewController:aboutUsVC animated:YES];
         }
             
             break;

@@ -23,9 +23,11 @@ static NSString *orderInfoCellIdentifier = @"OrderInfoCell";
 
 @implementation OrderDetailTableView
 
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style orderModel:(OrderModel *)orderModel{
     self = [super initWithFrame:frame style:style];
     if (self) {
+        
+        _orderModel = orderModel;
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
@@ -51,18 +53,26 @@ static NSString *orderInfoCellIdentifier = @"OrderInfoCell";
     if (indexPath.section == 0) {
         OrderTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:orderTypeCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.status = [_orderModel.status integerValue];
+        
         return cell;
     }else if (indexPath.section == 1){
         CustomerInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:customerInfoCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.orderUserModel = _orderModel.user;
+        
         return cell;
     }else if (indexPath.section == 2){
         ProductInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:productInfoCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.orderModel = _orderModel;
+        
         return cell;
     }else{
         OrderInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:orderInfoCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.orderModel = _orderModel;
+        
         return cell;
     }
 }
@@ -91,6 +101,7 @@ static NSString *orderInfoCellIdentifier = @"OrderInfoCell";
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
+
 
 
 

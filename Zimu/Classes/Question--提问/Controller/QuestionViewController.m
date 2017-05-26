@@ -34,9 +34,10 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
-//    UIBarButtonItem *rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"" title:@"下一步" target:self action:@selector(nextStep)];
+//    UIBarButtonItem *rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"" title:@"搜索" target:self action:@selector(searchQuestion)];
 //    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     self.view.backgroundColor = themeWhite;
+    
     
     [self setupEditView];
     [self setupQuestionResultTableView];
@@ -57,7 +58,11 @@
     }
 }
 
-- (void) setupEditView{
+//- (void)searchQuestion{
+//    NSLog(@"搜索");
+//}
+
+- (void)setupEditView{
     _editView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 45)];
     [self.view addSubview:_editView];
     
@@ -66,7 +71,7 @@
     line.backgroundColor = themeGray.CGColor;
     [_editView.layer addSublayer:line];
     
-    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, _editView.width - 20 - 45, _editView.height - 1)];
+    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, _editView.width - 20, _editView.height - 1)];
     _textField.placeholder = @"说出你的困惑";
     _textField.textColor = [UIColor colorWithHexString:@"222222"];
     _textField.font = [UIFont systemFontOfSize:17];
@@ -75,30 +80,8 @@
     _textField.delegate = self;
     [_editView addSubview:_textField];
     
-    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame = CGRectMake(CGRectGetMaxX(_textField.frame) + 10, 0, 40, 45);
-    nextButton.imageEdgeInsets = UIEdgeInsetsMake(12.5, 5, 12.5, 15);
-    [nextButton setImage:[UIImage imageNamed:@"question_next"] forState:UIControlStateNormal];
-    [nextButton addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-    [_editView addSubview:nextButton];
-    CALayer *leftLine = [[CALayer alloc]init];
-    leftLine.frame = CGRectMake(CGRectGetMinX(nextButton.frame) - 10, (nextButton.height - 25)/2.0, 1, 25);
-    leftLine.backgroundColor = themeGray.CGColor;
-    [_editView.layer addSublayer:leftLine];
-    
 }
 
-//下一步
-- (void)nextStep{
-    NSLog(@"下一步");
-    if (_textField.text.length == 0) {
-        [MBProgressHUD showMessage_WithoutImage:@"请填写你的困惑" toView:self.view];
-    }else{
-        SubmitQuestionViewController *submitQuestionVC = [[SubmitQuestionViewController alloc]init];
-        submitQuestionVC.questionTitle = _textField.text;
-        [self.navigationController pushViewController:submitQuestionVC animated:YES];
-    }
-}
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

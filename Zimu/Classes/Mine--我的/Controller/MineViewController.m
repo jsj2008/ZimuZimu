@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, strong) UIButton *headButton;     //头像
+@property (nonatomic, strong) UIView *headBGView;
 @property (nonatomic, strong) UILabel *nameLabel;       //姓名
 @property (nonatomic, strong) UIButton *sexButton;      //性别年龄
 @property (nonatomic, strong) UILabel *introLabel;      //一句话描述
@@ -32,6 +33,7 @@
 
 @property (nonatomic, strong) MyInfoModel *myInfoModel;
 
+@property (nonatomic, assign) BOOL loginExpired;        //登录是否有效
 
 @end
 
@@ -42,11 +44,12 @@
     self.title = @"我的";
     self.view.backgroundColor = themeWhite;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    _loginExpired = YES;
     
     [self makeUI];
     
-    //获取信息数据
-//    [self getMyInfoNetWork];
+    //获取个人信息数据
+    [self getMyInfoNetWork];
 }
 
 
@@ -90,9 +93,15 @@
     _contentView.backgroundColor = [UIColor colorWithHexString:@"fff8eb"];
     [_scrollView addSubview:_contentView];
     
+    _headBGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 75 * kScreenWidth/375.0, 75 * kScreenWidth/375.0)];
+    _headBGView.center = CGPointMake(_contentView.centerX, _contentView.y);
+    _headBGView.backgroundColor = [UIColor colorWithHexString:@"fff8eb"];
+    _headBGView.layer.cornerRadius = _headBGView.width/2.0;
+    _headBGView.layer.masksToBounds = YES;
+    [_scrollView addSubview:_headBGView];
     //头像
     _headButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _headButton.frame = CGRectMake(0, 0, 75 * kScreenWidth/375.0, 75 * kScreenWidth/375.0);
+    _headButton.frame = CGRectMake(0, 0, 75 * kScreenWidth/375.0 - 5, 75 * kScreenWidth/375.0 - 5);
     _headButton.center = CGPointMake(_contentView.centerX, _contentView.y);
     _headButton.layer.cornerRadius = _headButton.height/2.0;
     _headButton.layer.masksToBounds = YES;
@@ -111,7 +120,7 @@
     [_contentView addSubview:_nameLabel];
     
     //性别年龄
-    NSString *oldText = @" 100岁";
+    NSString *oldText = @" 0岁";
     font = [UIFont systemFontOfSize:13];
     CGSize sexSize = [oldText sizeWithAttributes:@{NSFontAttributeName:font}];
     _sexButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -145,10 +154,13 @@
 
 //我的个人信息
 - (void)myInfo{
-    
-    MyInfoSetTableViewController *myInfoSetVC = [[MyInfoSetTableViewController alloc]init];
-    myInfoSetVC.myInfoModel = _myInfoModel;
-    [self.navigationController pushViewController:myInfoSetVC animated:YES];
+    if (_loginExpired) {
+        MyInfoSetTableViewController *myInfoSetVC = [[MyInfoSetTableViewController alloc]init];
+        myInfoSetVC.myInfoModel = _myInfoModel;
+        [self.navigationController pushViewController:myInfoSetVC animated:YES];
+    }else{
+        [self login];
+    }
 }
 
 - (void)login{
@@ -166,11 +178,15 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         NSLog(@"dataDic : %@",dataDic);
         NSInteger isTrue = [dataDic[@"isTrue"] integerValue];
         if (isTrue == 0) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self performSelector:@selector(login) withObject:nil afterDelay:1.0];
+            _loginExpired = NO;     //登录无效
             return;
         }
         _myInfoModel = [MyInfoModel yy_modelWithDictionary:dataDic[@"object"]];
@@ -184,25 +200,29 @@
 - (void)refreshMyInfo{
     //头像
     NSString *headImageString = _myInfoModel.userImg;
-    [_headButton sd_setImageWithURL:[NSURL URLWithString:headImageString] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"wode_touxiang"]];
+    [_headButton sd_setImageWithURL:[NSURL URLWithString:[imagePrefixURL stringByAppendingString:headImageString]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"wode_touxiang"]];
     
     //姓名
     NSString *name = _myInfoModel.userName;
     UIFont *font = [UIFont boldSystemFontOfSize:18];
     CGSize nameSize = [name sizeWithAttributes:@{NSFontAttributeName:font}];
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, _headButton.height/2.0 + 10, nameSize.width, nameSize.height)];
+    _nameLabel.frame = CGRectMake(0, _headButton.height/2.0 + 10, nameSize.width, nameSize.height);
     _nameLabel.centerX = _headButton.centerX;
+    _nameLabel.text = name;
     
     //性别、年龄
-    [_sexButton setImage:[UIImage imageNamed:@"mine_man"] forState:UIControlStateNormal];
+    UIImage *sexImage = [UIImage imageNamed:@"mine_man"];
+    NSInteger sex = [_myInfoModel.userSex integerValue];
+    if (sex == 0) {
+        sexImage = [UIImage imageNamed:@"mine_women"];
+    }
+    [_sexButton setImage:sexImage forState:UIControlStateNormal];
     NSString *ageText = [NSString stringWithFormat:@" %@岁",_myInfoModel.age];
     font = [UIFont systemFontOfSize:13];
     CGSize sexSize = [ageText sizeWithAttributes:@{NSFontAttributeName:font}];
-    _sexButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _sexButton.frame = CGRectMake(CGRectGetMaxX(_nameLabel.frame) + 10, 0, sexSize.width + 20, sexSize.height + 10);
     _sexButton.centerY = _nameLabel.centerY;
     [_sexButton setTitle:ageText forState:UIControlStateNormal];
-    
 }
 
 

@@ -16,6 +16,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "UIView+SnailUse.h"
 #import "CommentBar.h"
+#import "NewLoginViewController.h"
 
 #import <YTKBatchRequest.h>
 #import "AppQueryVideoApi.h"
@@ -26,8 +27,10 @@
 #import "GetWhetherFavoriteVideoApi.h"
 #import "VideoDetailModel.h"
 #import "HotVideoModel.h"
-#import "VideoCommentModel.h"
+#import "CommentModel.h"
 #import "ExpertDetailModel.h"
+#import "InsertVideoCollectionApi.h"
+#import "InsertCollectionModel.h"
 
 @interface HomeVideoDetailViewController ()<ZFPlayerDelegate, CommentBarDelegate>
 /*播放器*/
@@ -93,7 +96,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
     // push出下一级页面时候暂停
     if (self.navigationController.viewControllers.count == 3 && self.player && !self.player.isPauseByUser){
         self.isPlaying = YES;
@@ -155,16 +158,33 @@
     NSLog(@"分享");
 }
 /*收藏*/
-- (void)commentBarSelect{
+- (void)commentBarSelect:(UIButton *)button{
     NSLog(@"收藏");
+    //判断是否登录
+    if ([userToken isEqualToString:@"logout"]) {
+        //去登录
+        [self gotoLogin];
+    }else{
+        //发表评论
+        button.selected = !button.selected;
+        [self collectVideo];
+    }
 }
 /*点击评论按钮*/
 - (void)commentBarComment{
     NSLog(@"评论");
+    [_detailView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 /*发表评论*/
 - (void)commentBarSubmit:(NSString *)text{
-    [self insertVideoComment:text];
+    //判断是否登录
+    if ([userToken isEqualToString:@"logout"]) {
+        //去登录
+        [self gotoLogin];
+    }else{
+        //发表评论
+        [self insertVideoComment:text];
+    }
 }
 
 
@@ -299,7 +319,7 @@
         NSArray *dataArray = dataDic[@"items"];
         if (dataArray.count) {
             for (NSDictionary *dic in dataArray) {
-                VideoCommentModel *videoCommentModel = [VideoCommentModel yy_modelWithDictionary:dic];
+                CommentModel *videoCommentModel = [CommentModel yy_modelWithDictionary:dic];
                 [_commentModelArray addObject:videoCommentModel];
             }
         }
@@ -342,22 +362,30 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"评论发表失败" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self performSelector:@selector(gotoLogin) withObject:nil afterDelay:1.0];
             return;
         }
-        [MBProgressHUD showMessage_WithoutImage:@"发表成功" toView:self.view];
+        [MBProgressHUD showMessage_WithoutImage:@"评论发表成功" toView:self.view];
         _commentBar.textField.text = @"";
         [_commentBar.textField resignFirstResponder];
-
+        [self getVideoCommentData];
+        
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
     }];
 }
+
+//刷新数据
+- (void)refreshData{
+    [self getVideoCommentData];
+}
+
 
 #pragma mark - 查询是否已收藏视频
 - (void)checkWhetherSelectVideo{
@@ -371,14 +399,62 @@
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
-        if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
-            return;
+        if (isTrue) {
+            //已收藏
+            _commentBar.hasCollected = YES;
+            
+        }else{
+            //未收藏
+            _commentBar.hasCollected = NO;
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        [MBProgressHUD showMessage_WithoutImage:@"查询收藏状态失败" toView:self.view];
     }];
+}
+
+#pragma mark - 收藏视频
+- (void)collectVideo{
+    BOOL hasCollected = _commentBar.hasCollected;
+    InsertVideoCollectionApi *insertVideoCollectionApi = [[InsertVideoCollectionApi alloc]initWithVideoId:_videoId];
+    [insertVideoCollectionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            _commentBar.hasCollected = hasCollected;        //不改变收藏状态
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            _commentBar.hasCollected = hasCollected;        //不改变收藏状态
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self performSelector:@selector(gotoLogin) withObject:nil afterDelay:1.0];
+            return;
+        }
+        InsertCollectionModel *model = [InsertCollectionModel yy_modelWithDictionary:dataDic[@"object"]];
+        NSInteger status = [model.status integerValue];
+        if (status) {
+            //收藏成功
+            [MBProgressHUD showMessage_WithoutImage:@"收藏成功" toView:self.view];
+            _commentBar.hasCollected = YES;
+        }else{
+            //取消收藏成功
+            [MBProgressHUD showMessage_WithoutImage:@"取消收藏" toView:self.view];
+            _commentBar.hasCollected = NO;
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        _commentBar.hasCollected = hasCollected;        //不改变收藏状态
+        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
+    }];
+}
+
+
+#pragma mark - 去登陆
+- (void)gotoLogin{
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    [self presentViewController:newLoginVC animated:YES completion:nil];
 }
 
 

@@ -13,7 +13,7 @@
 @property (nonatomic , copy) NSString              * questionTitle;         //问题标题
 @property (nonatomic , copy) NSString              * questionVal;           //问题内容
 @property (nonatomic , copy) NSString              * userId;                //专家ID
-@property (nonatomic , copy) NSString              * count;
+@property (nonatomic , copy) NSString              * count;                 //评论数量
 @property (nonatomic , copy) NSString              * categoryId;
 @property (nonatomic , copy) NSString              * careNum;              //关注数
 @property (nonatomic , copy) NSString              * questionId;            //问题ID

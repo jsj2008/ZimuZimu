@@ -49,7 +49,7 @@
 }
 
 - (void)setupTagCollectionView{
-    _tagCollectionView = [[TagCollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerView.frame) + 10, self.width, 65) collectionViewLayout:[[UICollectionViewFlowLayout alloc]init]];
+    _tagCollectionView = [[TagCollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerView.frame), self.width, 65) collectionViewLayout:[[UICollectionViewFlowLayout alloc]init]];
     _tagCollectionView.showsVerticalScrollIndicator = NO;
     _tagCollectionView.backgroundColor = themeWhite;
     NSArray *array = @[@"抑郁",@"孩子叛逆",@"教养方法",@"懦弱",@"不爱学习",@"离异",@"性格内向",@"胆小",@"脾气暴躁",@"注意力分散"];

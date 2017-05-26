@@ -29,4 +29,16 @@
     // Configure the view for the selected state
 }
 
+
+- (void)setOrderUserModel:(OrderUserModel *)orderUserModel{
+    _orderUserModel = orderUserModel;
+    
+    //姓名
+    _nameLabel.text = [NSString stringWithFormat:@"联系人：%@",orderUserModel.userName];
+    
+    //电话
+    _phoneLabel.text = [NSString stringWithFormat:@"联系方式：%@",orderUserModel.userPhone];
+}
+
+
 @end

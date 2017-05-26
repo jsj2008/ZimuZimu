@@ -13,7 +13,7 @@
 #import "GetParentSchoolListApi.h"
 #import "ParentSchoolListModel.h"
 #import "MBProgressHUD+MJ.h"
-#import "MJRefresh.h"
+#import "ZimuRefreshGifHeader.h"
 
 @interface FindViewController ()
 
@@ -39,6 +39,14 @@
     [self getDataNetWork];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    
+}
+
 
 /**
  *  FindTableView
@@ -46,13 +54,24 @@
 - (void)setupFindTableView{
     _findTableView = [[FindTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
     //下拉刷新
-    _findTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getDataNetWork)];
-    [_findTableView.mj_header beginRefreshing];
+    [self setupRefreshingHeader];
+//    _findTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getDataNetWork)];
+//    [_findTableView.mj_header beginRefreshing];
     //上拉加载
 //    _findTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
     [self.view addSubview:_findTableView];
 }
+
+- (void)setupRefreshingHeader{
+    ZimuRefreshGifHeader *header = [ZimuRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(getDataNetWork)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    header.automaticallyChangeAlpha = YES;
+    [header beginRefreshing];
+    _findTableView.mj_header = header;
+}
+
 
 
 #pragma mark - 获取数据
@@ -106,13 +125,15 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+
             return ;
         }
         
         ParentSchoolModel *parentScoolModel = [ParentSchoolModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = parentScoolModel.isTrue;
         if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
             return;
         }
         NSArray *items = parentScoolModel.items;
@@ -131,6 +152,8 @@
         [_findTableView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_footer endRefreshing];
+        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+
     }];
 }
 

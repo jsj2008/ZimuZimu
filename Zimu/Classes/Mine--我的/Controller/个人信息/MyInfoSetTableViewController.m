@@ -16,6 +16,8 @@
 #import "EditSexTableViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "HomeViewController.h"
+#import "GetMyInfoAPI.h"
+#import "MyInfoModel.h"
 
 static NSString *textIdentifier = @"MyInfoTextCell";
 static NSString *noEditTextIdentifier = @"MyInfoNoEditTextCell";
@@ -94,28 +96,34 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
         cell.detailLabel.text = @"15757164712";
         
         return cell;
+    }else{
+        MyInfoTextCell *cell = [tableView dequeueReusableCellWithIdentifier:textIdentifier forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[MyInfoTextCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:textIdentifier];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.separatorInset = UIEdgeInsetsMake(cell.height - 0.5, 10, 0, 0);
+        if (indexPath.row == 1) {
+            cell.titleLabel.text = @"昵称";
+            cell.detailLabel.text = _myInfoModel.userName;
+        }else if (indexPath.row == 2){
+            cell.titleLabel.text = @"年龄";
+            cell.detailLabel.text = [NSString stringWithFormat:@"%@岁",_myInfoModel.age];
+        }else if (indexPath.row == 4){
+            cell.titleLabel.text = @"性别";
+            NSInteger sex = [_myInfoModel.userSex integerValue];
+            if (sex == 0) {
+                cell.detailLabel.text = @"女";
+            }else if(sex == 1){
+                cell.detailLabel.text = @"男";
+            }
+        }else if (indexPath.row == 5){
+            cell.titleLabel.text = @"地区";
+            cell.detailLabel.text = [NSString stringWithFormat:@"%@ %@",_myInfoModel.provinceName, _myInfoModel.cityName];
+        }
+        
+        return cell;
     }
-    MyInfoTextCell *cell = [tableView dequeueReusableCellWithIdentifier:textIdentifier forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[MyInfoTextCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:textIdentifier];
-    }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.separatorInset = UIEdgeInsetsMake(cell.height - 0.5, 10, 0, 0);
-    if (indexPath.row == 1) {
-        cell.titleLabel.text = @"昵称";
-        cell.detailLabel.text = @"小公举";
-    }else if (indexPath.row == 2){
-        cell.titleLabel.text = @"年龄";
-        cell.detailLabel.text = @"8岁";
-    }else if (indexPath.row == 4){
-        cell.titleLabel.text = @"性别";
-        cell.detailLabel.text = @"男";
-    }else if (indexPath.row == 5){
-        cell.titleLabel.text = @"地区";
-        cell.detailLabel.text = @"";
-    }
-    
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -275,6 +283,7 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
     
     [self.navigationController popToViewController:vcs[index] animated:YES];
 }
+
 
 
 @end

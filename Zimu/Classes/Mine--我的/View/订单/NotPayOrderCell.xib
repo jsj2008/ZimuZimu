@@ -20,9 +20,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-tH-pDJ">
-                        <rect key="frame" x="10" y="10" width="81" height="18"/>
+                        <rect key="frame" x="10" y="10" width="66" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="XZc-Fu-uiF"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title=" 视频课程" image="order_activity_icon">
+                        <state key="normal" title=" 视频课程">
                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -143,7 +146,7 @@
                 <outlet property="orderTypeButton" destination="Rlz-tH-pDJ" id="7ms-ij-bwE"/>
                 <outlet property="payButton" destination="vhR-RL-rRS" id="hLJ-yK-uFp"/>
                 <outlet property="priceLabel" destination="TsC-3X-k3h" id="zXX-Yg-C2A"/>
-                <outlet property="productImageView" destination="B2S-bs-ieY" id="a5s-j4-EVW"/>
+                <outlet property="productImageView" destination="Dp2-KF-dZ1" id="hnR-Sc-twE"/>
                 <outlet property="seperateLine" destination="hcn-E0-KuL" id="Lag-Fy-w44"/>
                 <outlet property="stateLabel" destination="36h-zQ-glb" id="4zF-Wb-JNW"/>
                 <outlet property="titleLabel" destination="Uke-kD-cyZ" id="wQL-mV-cLV"/>
@@ -154,7 +157,6 @@
     </objects>
     <resources>
         <image name="home_cellbg_0" width="122" height="122"/>
-        <image name="order_activity_icon" width="15" height="15"/>
         <image name="order_roundbg" width="90" height="30"/>
     </resources>
 </document>

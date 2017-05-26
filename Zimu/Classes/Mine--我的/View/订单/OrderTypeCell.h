@@ -10,4 +10,6 @@
 
 @interface OrderTypeCell : UITableViewCell
 
+@property (nonatomic, assign) NSInteger status;
+
 @end

@@ -16,6 +16,7 @@
 #import "MyEvaluationViewController.h"
 #import "ExpertListViewController.h"
 #import "NewLoginViewController.h"
+#import "SettingView.h"
 
 static NSString *identifier = @"MineCollectionViewCell";
 
@@ -48,8 +49,8 @@ static NSString *identifier = @"MineCollectionViewCell";
         
         self.backgroundColor = [UIColor clearColor];
         [self registerNib:[UINib nibWithNibName:@"MineCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:identifier];
-        _imageArray = @[@"mine_dingdan",@"mine_ceshi",@"mine_xinshi",@"mine_haoyou",@"mine_shoucang",@"mine_zhuanjia"];
-        _titleArray = @[@"订单",@"测试",@"心事",@"好友",@"收藏",@"专家"];
+        _imageArray = @[@"mine_dingdan",@"mine_ceshi",@"mine_xinshi",@"mine_zhuanjia",@"mine_shoucang",@"mine_shezhi"];
+        _titleArray = @[@"订单",@"测试",@"心事",@"专家",@"收藏",@"设置"];
         _colorArray = @[@"faab8a",@"85beea",@"fbb7c9",@"74d195",@"beb3e6",@"f7d36c"];
     }
     return self;
@@ -118,14 +119,14 @@ static NSString *identifier = @"MineCollectionViewCell";
         MySecretViewController *mySecretVC = [[MySecretViewController alloc]init];
         [self.viewController.navigationController pushViewController:mySecretVC animated:YES];
     }else if (indexPath.row == 3) {
-        NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
-        [self.viewController presentViewController:newLoginVC animated:YES completion:nil];
+        ExpertListViewController *expertListVC = [[ExpertListViewController alloc]init];
+        [self.viewController.navigationController pushViewController:expertListVC animated:YES];
     }else if (indexPath.row == 4){
         MyCollectViewController *myCollectVC = [[MyCollectViewController alloc]init];
         [self.viewController.navigationController pushViewController:myCollectVC animated:YES];
     }else if(indexPath.row == 5){
-        ExpertListViewController *expertListVC = [[ExpertListViewController alloc]init];
-        [self.viewController.navigationController pushViewController:expertListVC animated:YES];
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [SettingView showToView:window];
     }
 }
 

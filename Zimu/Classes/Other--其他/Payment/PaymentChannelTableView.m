@@ -41,8 +41,8 @@ static NSString *channelIdentifier = @"PaymentChannelCell";
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
     headerView.backgroundColor = themeWhite;
     UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, headerView.width - 20, headerView.height)];
-    headerLabel.text = @"支付方式";
-    headerLabel.font = [UIFont systemFontOfSize:18];
+    headerLabel.text = @"选择支付方式";
+    headerLabel.font = [UIFont systemFontOfSize:16];
     headerLabel.textColor = [UIColor colorWithHexString:@"999999"];
     [headerView addSubview:headerLabel];
     
@@ -87,9 +87,11 @@ static NSString *channelIdentifier = @"PaymentChannelCell";
     if (indexPath.row == 0) {
         cell.imageString = @"payment_alipay_icon";
         cell.channelString = @"  支付宝";
+        cell.channel = @"alipay";
     }else{
         cell.imageString = @"payment_weixin_icon";
         cell.channelString = @"  微信";
+        cell.channel = @"wx";
     }
     
     //设置默认付款方式
@@ -125,7 +127,7 @@ static NSString *channelIdentifier = @"PaymentChannelCell";
     
     _channel = cell.channelString;
     
-    [self.channelDelegate selectPaymentChannel:cell.channelString];
+    [self.channelDelegate selectPaymentChannel:cell.channel];
 }
 
 @end

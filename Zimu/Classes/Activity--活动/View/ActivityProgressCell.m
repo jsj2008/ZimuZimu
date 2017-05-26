@@ -68,5 +68,16 @@
 }
 
 
+- (void)setActivityCourseModel:(ActivityCourseModel *)activityCourseModel{
+    CGFloat totalNum = [activityCourseModel.applyNum floatValue];
+    CGFloat currentNum = [activityCourseModel.orderNum floatValue];
+    _progressView.maxValue = totalNum;
+    _progressView.currentSliderValue = currentNum;
+    _memberCountLabel.text = [NSString stringWithFormat:@"%.0f人已报名",currentNum];
+    if (totalNum == currentNum) {
+        _memberCountLabel.text = [NSString stringWithFormat:@"所有人已报名"];
+    }
+}
+
 
 @end

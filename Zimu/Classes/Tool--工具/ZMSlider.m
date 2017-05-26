@@ -48,13 +48,13 @@
     //进度数值位置
     _currentTextLabel.center = CGPointMake(_circleView.centerX, CGRectGetMinY(_circleView.frame) - 10);
     CGFloat ratio = _currentSliderValue/_zmMaxValue * 100;
-    _currentTextLabel.text = [NSString stringWithFormat:@"%.0lf%%",ratio];
+    _currentTextLabel.text = [NSString stringWithFormat:@"%.1lf%%",ratio];
     _maxTextLabel.center = CGPointMake(self.width, _currentTextLabel.centerY);
 }
 
 - (void)setMaxValue:(CGFloat)maxValue{
     _zmMaxValue = maxValue;
-    _maxTextLabel.text = [NSString stringWithFormat:@"%.0lf",_zmMaxValue];
+    _maxTextLabel.text = [NSString stringWithFormat:@"%.0lf人",_zmMaxValue];
 }
 
 - (void)setCurrentValueColor:(UIColor *)currentValueColor{

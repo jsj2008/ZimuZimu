@@ -13,6 +13,7 @@
 #import "CareQuestionApi.h"
 #import "QuestionDetailModel.h"
 #import "MBProgressHUD+MJ.h"
+#import "NewLoginViewController.h"
 
 @interface ConfuseContentCell ()
 
@@ -110,21 +111,27 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
+            [self performSelector:@selector(login) withObject:nil afterDelay:1.0];
             return;
         }
         QuestionModel *questionModel = [QuestionModel yy_modelWithDictionary:dataDic[@"object"]];
         ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]initWithModel:questionModel];
         self.layoutFrame = layoutFrame;
         _likeButton.selected = !_likeButton.selected;
+        if (_likeButton.selected) {
+            [MBProgressHUD showMessage_WithoutImage:@"关注成功" toView:nil];
+        }else{
+            [MBProgressHUD showMessage_WithoutImage:@"取消关注" toView:nil];
+        }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
     }];
 }
 
@@ -140,4 +147,12 @@
 - (IBAction)shareButtonAction:(UIButton *)sender {
     NSLog(@"分享");
 }
+
+#pragma mark -  login
+- (void)login{
+    NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    [self.viewController presentViewController:loginVC animated:YES completion:nil];
+}
+
+
 @end

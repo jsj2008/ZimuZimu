@@ -12,6 +12,8 @@
 @interface AnswerTableView : UITableView
 
 @property (nonatomic, strong) QuestionModel *questionModel;
+@property (nonatomic, strong) NSArray *resultArray;
 
+@property (nonatomic, assign) NSInteger careState;      //用户是否已关注该问题
 
 @end

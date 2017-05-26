@@ -8,6 +8,7 @@
 
 #import "ActivityHeaderCell.h"
 #import <Masonry.h>
+#import <UIImageView+WebCache.h>
 
 @interface ActivityHeaderCell ()
 
@@ -43,7 +44,6 @@
     
     //活动图片
     _activityImageView = [[UIImageView alloc]init];
-    _activityImageView.image = [UIImage imageNamed:@"activity_list1"];
     [self.contentView addSubview:_activityImageView];
     
     //标题label
@@ -51,7 +51,6 @@
     _titleLabel.font = [UIFont systemFontOfSize:16];
     _titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
     _titleLabel.textAlignment = NSTextAlignmentLeft;
-    _titleLabel.text = @"亲子共学团";
     [self.contentView addSubview:_titleLabel];
     
     //介绍label
@@ -59,16 +58,11 @@
     _introLabel.font = [UIFont systemFontOfSize:14];
     _introLabel.textColor = [UIColor colorWithHexString:@"999999"];
     _introLabel.textAlignment = NSTextAlignmentLeft;
-    _introLabel.text = @"爱行天下，每个父母都应该学习的课程";
     [self.contentView addSubview:_introLabel];
     
     //价格label
     _priceLabel = [[UILabel alloc]init];
     _priceLabel.textAlignment = NSTextAlignmentRight;
-    NSString *string = @"500元";
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"F5CD13"]}];
-    [attributeString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25] range:NSMakeRange(0, string.length - 1)];
-    _priceLabel.attributedText = attributeString;
     [self.contentView addSubview:_priceLabel];
 }
 
@@ -88,7 +82,7 @@
     
     //标题
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.mas_left).with.offset(10);
+        make.left.mas_equalTo(self.mas_left).with.offset(13);
         make.right.mas_equalTo(self.mas_right).with.offset(-10);
         make.top.mas_equalTo(_activityImageView.mas_bottom).with.offset(15);
     }];
@@ -108,9 +102,24 @@
     
 }
 
+- (void)setActivityCategoryInfoModel:(ActivityCategoryInfoModel *)activityCategoryInfoModel{
+    _activityCategoryInfoModel = activityCategoryInfoModel;
+    
+    NSString *imgURLString = [imagePrefixURL stringByAppendingString:activityCategoryInfoModel.imgUrl];
+    [_activityImageView sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"activity_list1"]];
+    
+    _titleLabel.text = activityCategoryInfoModel.courseName;
+    
+    _introLabel.text = activityCategoryInfoModel.courseIntro;
+    
+}
 
-
-
+- (void)setCoursePrice:(NSString *)coursePrice{
+    NSString *string = [NSString stringWithFormat:@"%@元",coursePrice];
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"F5CD13"]}];
+    [attributeString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25] range:NSMakeRange(0, string.length - 1)];
+    _priceLabel.attributedText = attributeString;
+}
 
 
 @end

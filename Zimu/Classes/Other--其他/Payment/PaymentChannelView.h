@@ -7,10 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PaymentInfoModel.h"
+
+@protocol PaymentChannelViewDelegate <NSObject>
+
+- (void)paymentViewFinishPayWithResult:(NSString *)result;
+
+- (void)loginFailed;
+
+@end
 
 @interface PaymentChannelView : UIView
 
 @property (nonatomic, copy) NSString *price;
 
+@property (nonatomic, strong) PaymentInfoModel *paymentInfoModel;
+
+@property (nonatomic, weak) id<PaymentChannelViewDelegate> delegate;
 
 @end

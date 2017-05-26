@@ -12,15 +12,14 @@
 #import "ConfuseTagCell.h"
 #import "ConfuseContentCell.h"
 #import "ConfuseContentCellLayoutFrame.h"
-#import "NoAnswerCell.h"
 #import "HeaderTitleCell.h"
-#import "ExpertListCell.h"
+#import "QuestionResultCell.h"
+#import "SearchQuestionModel.h"
 
 static NSString *confuseTagIdentifier = @"ConfuseTagCell";
 static NSString *confuseContentCellIdentifier = @"ConfuseContentCell";
-static NSString *noAnswerCellIdentifier = @"NoAnswerCell";
 static NSString *headerTitleCellIdentifier = @"headerTitleCell";
-static NSString *expertListCellIdentifier = @"ExpertListCell";
+static NSString *resultIdentifier = @"QuestionResultCell";
 
 @interface AnswerTableView ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -39,24 +38,21 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
         
         [self registerNib:[UINib nibWithNibName:@"ConfuseTagCell" bundle:nil] forCellReuseIdentifier:confuseTagIdentifier];
         [self registerNib:[UINib nibWithNibName:@"ConfuseContentCell" bundle:nil] forCellReuseIdentifier:confuseContentCellIdentifier];
-        [self registerNib:[UINib nibWithNibName:@"NoAnswerCell" bundle:nil] forCellReuseIdentifier:noAnswerCellIdentifier];
-        [self registerNib:[UINib nibWithNibName:@"ExpertListCell" bundle:nil] forCellReuseIdentifier:expertListCellIdentifier];
         [self registerNib:[UINib nibWithNibName:@"HeaderTitleCell" bundle:nil] forCellReuseIdentifier:headerTitleCellIdentifier];
-
+        [self registerNib:[UINib nibWithNibName:@"QuestionResultCell" bundle:nil] forCellReuseIdentifier:resultIdentifier];
+        
     }
     return self;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 2;
-    }else if (section == 1) {
-        return 1;
     }
-    return 5;
+    return  1 + _resultArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -75,25 +71,20 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
         cell.layoutFrame = layoutFrame;
         
         return cell;
-    }else if (indexPath.section == 1){
-        NoAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:noAnswerCellIdentifier];
-        cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width, 0, 0);
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
     }else{
         if (indexPath.row == 0) {
             HeaderTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:headerTitleCellIdentifier];
             cell.separatorInset = UIEdgeInsetsMake(self.height - 1, 10, 0, 0);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.titleString = @"专家推荐";
+            cell.titleString = @"类似问题";
             
             return cell;
         }
-        ExpertListCell *cell = [tableView dequeueReusableCellWithIdentifier:expertListCellIdentifier];
+        QuestionResultCell *cell = [tableView dequeueReusableCellWithIdentifier:resultIdentifier];
         cell.separatorInset = UIEdgeInsetsMake(self.height - 1, 10, 0, 0);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imageString = @"mine_head_placeholder";
+        SearchQuestionResultModel *resultModel = _resultArray[indexPath.row - 1];
+        cell.model = resultModel;
         
         return cell;
     }
@@ -106,17 +97,15 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
         ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]initWithModel:_questionModel];
         return layoutFrame.cellHeight;
         
-    }else if (indexPath.section == 1){
-        return 60;
     }else{
         if (indexPath.row == 0) {
             return 45;
         }
-        return 80;
+        return 70;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 2) {
+    if (section == 1) {
         return CGFLOAT_MIN;
     }
     return 10;
@@ -144,6 +133,16 @@ static NSString *expertListCellIdentifier = @"ExpertListCell";
     }
 }
 
+- (void)setResultArray:(NSArray *)resultArray{
+    if (_resultArray != resultArray) {
+        _resultArray = resultArray;
+        [self reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
 
+- (void)setCareState:(NSInteger)careState{
+    ConfuseContentCell *cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    cell.careState = careState;
+}
 
 @end

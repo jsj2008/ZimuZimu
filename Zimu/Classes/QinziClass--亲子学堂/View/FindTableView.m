@@ -80,6 +80,7 @@ static NSString *listIdentifier = @"FindListCell";
         case FindCellTypeArticle:{          //文章
             ArticleViewController *articleVC = [[ArticleViewController alloc]init];
             articleVC.articleID = itemModel.qinziid;
+            articleVC.articleTitle = itemModel.title;
 //            [articleVC loadWebURLSring:@"http://mp.weixin.qq.com/s/WFlfD_GgedmXzlGvx3maxw"];
             [self.viewController.navigationController pushViewController:articleVC animated:YES];
         }

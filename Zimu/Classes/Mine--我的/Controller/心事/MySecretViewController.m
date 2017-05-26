@@ -8,6 +8,8 @@
 
 #import "MySecretViewController.h"
 #import "MySecretTableView.h"
+#import "MBProgressHUD+MJ.h"
+#import "QueryMyQuestionApi.h"
 
 @interface MySecretViewController ()
 
@@ -20,13 +22,12 @@
     [super viewDidLoad];
     self.title = @"我的心事";
     [self makeTableView];
-    // Do any additional setup after loading the view.
+    
+    //获取我的心事
+    [self getMySecretListData];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)makeTableView{
     if (!_tableView) {
@@ -34,4 +35,40 @@
         [self.view addSubview:_tableView];
     }
 }
+
+
+#pragma mark - 获取我的心事数据
+- (void)getMySecretListData{
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+    NSString *time = [NSString stringWithFormat:@"%.0f",timeInterval];
+    QueryMyQuestionApi *queryMySecretApi = [[QueryMyQuestionApi alloc]initWithEndTime:time];
+    [queryMySecretApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            return;
+        }
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+    }];
+}
+
+- (NSString *)handleDateWithTimeStamp:(NSInteger)timeStamp{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp/1000.0];
+    NSString *dateString = [formatter stringFromDate:date];
+    return dateString;
+}
+
+
 @end

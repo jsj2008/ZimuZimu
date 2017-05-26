@@ -9,6 +9,8 @@
 #import "ExpertListTableView.h"
 #import "MyExpertTableViewCell.h"
 #import "MyExpertCellLayoutFrame.h"
+#import "UIView+ViewController.h"
+#import "ExpertDetailViewController.h"
 
 static NSString *identifier = @"MyExpertTableViewCell";
 @interface ExpertListTableView ()<UITableViewDelegate, UITableViewDataSource>
@@ -74,6 +76,11 @@ static NSString *identifier = @"MyExpertTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 35;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ExpertDetailViewController *expertDetailVC = [[ExpertDetailViewController alloc]init];
+    [self.viewController.navigationController pushViewController:expertDetailVC animated:YES];
 }
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "CommentBar.h"
+#import "NewLoginViewController.h"
+#import "UIView+ViewController.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface CommentBar ()<UITextFieldDelegate>
 
@@ -41,6 +44,7 @@
     if (self) {
         _containNaviHeight = containNaviHeight;
         self.backgroundColor = themeWhite;
+        _hasCollected = NO;
         [self makeUI];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTextFieldFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     }
@@ -108,7 +112,7 @@
     [_submitButton setTitle:@"发送" forState:UIControlStateNormal];
     _submitButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_submitButton setTitleColor:themeBlue forState:UIControlStateNormal];
-    [_submitButton addTarget:self action:@selector(submitButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [_submitButton addTarget:self action:@selector(submitButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     _submitButton.hidden = YES;
     _submitButton.alpha = 0;
     [self addSubview:_submitButton];
@@ -124,11 +128,16 @@
 }
 //收藏
 - (void)likeButtonAction:(UIButton *)button{
-    button.selected = !button.selected;
-    if ([self.delegate respondsToSelector:@selector(commentBarSelect)]) {
-        [self.delegate commentBarSelect];
+    if ([self.delegate respondsToSelector:@selector(commentBarSelect:)]) {
+        [self.delegate commentBarSelect:button];
     }
 }
+//是否已收藏
+- (void)setHasCollected:(BOOL)hasCollected{
+    _hasCollected = hasCollected;
+    _likeButton.selected = hasCollected;
+}
+
 //评论按钮
 - (void)commentButtonAction{
     NSLog(@"评论");
@@ -137,8 +146,12 @@
     }
 }
 //发表评论
-- (void)submitButtonAction{
+- (void)submitButtonAction:(UIButton *)button{
     NSLog(@"发表 %@",_textField.text);
+    if (_textField.text.length == 0) {
+        [MBProgressHUD showMessage_WithoutImage:@"请输入评论内容" toView:nil];
+        return;
+    }
     if ([self.delegate respondsToSelector:@selector(commentBarSubmit:)]) {
         [self.delegate commentBarSubmit:_textField.text];
     }
@@ -150,6 +163,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return NO;
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //判断是否登录
+    if ([userToken isEqualToString:@"logout"] || userToken == nil) {
+        [MBProgressHUD showMessage_WithoutImage:@"请先登录" toView:nil];
+    }
+    return YES;
 }
 
 #pragma mark - 监听键盘高度
@@ -179,6 +199,7 @@
             _shareButton.alpha = 0;
             _submitButton.alpha = 1;
             _textBGView.width = CGRectGetMinX(_submitButton.frame) - 10;
+            _textField.frame = CGRectMake(_textBGView.height/2.0, 0, _textBGView.width - _textBGView.height, _textBGView.height);
         } completion:^(BOOL finished) {
             _commentButton.hidden = YES;
             _likeButton.hidden = YES;
@@ -187,7 +208,7 @@
     }else{
         //键盘收回
         _commentButton.hidden = NO;
-        _likeButton.hidden = NO;
+        _likeButton.hidden = _collectButtonHide;
         _shareButton.hidden = NO;
         [UIView animateWithDuration:duration animations:^{
             _commentButton.alpha = 1;
@@ -195,12 +216,33 @@
             _shareButton.alpha = 1;
             _submitButton.alpha = 0;
             _textBGView.width = CGRectGetMinX(_commentButton.frame) - 10;
+            _textField.frame = CGRectMake(_textBGView.height/2.0, 0, _textBGView.width - _textBGView.height, _textBGView.height);
         } completion:^(BOOL finished) {
             _submitButton.hidden = YES;
         }];
     }
 }
 
+#pragma mark - 是否需要收藏
+- (void)setCollectButtonHide:(BOOL)collectButtonHide{
+    _collectButtonHide = collectButtonHide;
+    if (_collectButtonHide) {
+        //隐藏收藏按钮
+        _likeButton.hidden = _collectButtonHide;
+        _commentButton.frame = _likeButton.frame;
+        _textBGView.frame = CGRectMake(10, (self.height - 35)/2.0, CGRectGetMinX(_commentButton.frame) - 10, 35);
+        _textField.frame = CGRectMake(_textBGView.height/2.0, 0, _textBGView.width - _textBGView.height, _textBGView.height);
+    }
+}
+
+
+
+
+#pragma mark - 去登陆
+- (void)gotoLogin{
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    [self.viewController presentViewController:newLoginVC animated:YES completion:nil];
+}
 
 
 @end

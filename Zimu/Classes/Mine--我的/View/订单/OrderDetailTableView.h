@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderModel.h"
 
 @interface OrderDetailTableView : UITableView
+
+@property (nonatomic, strong) OrderModel *orderModel;
+
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style orderModel:(OrderModel *)orderModel;
 
 @end

@@ -16,7 +16,7 @@
 @implementation UIView (SnailUse)
 
 + (id)paymentChannelView{
-    PaymentChannelView *view = [[PaymentChannelView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
+    PaymentChannelView *view = [[PaymentChannelView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 380)];
     
     return view;
 }

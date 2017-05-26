@@ -48,7 +48,7 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 2) {
-        return 11;
+        return _fmCommentModelArray.count + 1;
     }
     return 1;
 }
@@ -73,13 +73,14 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
         if (indexPath.row == 0) {
             FMCommentHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.commentCount = 10;
+            cell.commentCount = _fmCommentModelArray.count;
             
             return cell;
         }
         FMCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:commentIdentifier];
-        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]init];
-        cell.layoutFrame = layoutFrame;
+        CommentModel *commentModel = _fmCommentModelArray[indexPath.row - 1];
+        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]initWithCommentModel:commentModel];
+        cell.dataCommentLayoutFrame = layoutFrame;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         return cell;
@@ -98,7 +99,9 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
         if (indexPath.row == 0) {
             return 35;
         }
-        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]init];
+        
+        CommentModel *commentModel = _fmCommentModelArray[indexPath.row - 1];
+        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]initWithCommentModel:commentModel];
         return layoutFrame.cellHeight;
     }
 }
@@ -125,5 +128,10 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
     [self reloadData];
 }
 
+- (void)setFmCommentModelArray:(NSArray *)fmCommentModelArray{
+    _fmCommentModelArray = fmCommentModelArray;
+    
+    [self reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+}
 
 @end

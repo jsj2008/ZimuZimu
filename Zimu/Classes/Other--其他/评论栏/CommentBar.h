@@ -14,7 +14,7 @@
 /*分享*/
 - (void)commentBarShare;
 /*收藏*/
-- (void)commentBarSelect;
+- (void)commentBarSelect:(UIButton *)button;
 /*点击评论按钮*/
 - (void)commentBarComment;
 /*发表评论*/
@@ -25,6 +25,8 @@
 @interface CommentBar : UIView
 
 @property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, assign) BOOL hasCollected;        //是否已收藏
+@property (nonatomic, assign) BOOL collectButtonHide;   //是否需要收藏
 
 - (instancetype)initWithFrame:(CGRect)frame containNaviHeight:(BOOL)containNaviHeight;
 

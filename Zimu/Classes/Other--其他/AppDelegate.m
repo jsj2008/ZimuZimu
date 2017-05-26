@@ -28,6 +28,8 @@
 
 #import "ZM_CallingHandleCategory.h"
 
+#import "Pingpp.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong)ZMPushManager *pushMgr;
@@ -38,8 +40,11 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://120.27.221.31/zimu_portal/";//@"http://192.168.3.10:8082/portal/";//@"http://192.168.10.183:8080/portal/"
-
+    config.baseUrl = @"http://116.62.200.235:8080/zimu_portal/";
+    //正式：@"http://120.27.221.31/zimu_portal/"
+    //亚欧的：@"http://192.168.10.183:8082/portal/";
+    //猪的:@"http://192.168.3.10:8082/portal/";
+    //线上测试服务器：@"http://116.62.200.235:8080/zimu_portal/";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -368,6 +373,22 @@
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#warning \
+为了能正确获得结果回调请在工程 AppDelegate 文件中调用 ｀[Pingpp handleOpenURL:url withCompletion:nil]`。\
+如果该方法的第二个参数传 nil，请在在 `createPayment` 方法的 `Completion` 中处理回调结果。否则，在这里处理结果。\
+如果你使用了微信分享、登录等一些看起来在这里“冲突”的模块，你可以先判断 url 的 host 来决定调用哪一方的方法。\
+也可以先调用 Ping++ 的方法，如果 return 的值为 false，表示这个 url 不是支付相关的，你再调用模块的方法。
+// iOS 8 及以下请用这个
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [Pingpp handleOpenURL:url withCompletion:nil];
+}
+
+// iOS 9 以上请用这个
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
+    return [Pingpp handleOpenURL:url withCompletion:nil];
 }
 
 

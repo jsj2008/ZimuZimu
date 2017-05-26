@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VideoCommentModel.h"
+#import "CommentModel.h"
 
 @interface FMCommentCellLayoutFrame : NSObject
 
@@ -16,8 +16,8 @@
 //@property (nonatomic, strong) UserCommentModel *userCommentModel;
 
 /* 视频：用户评论 */
-- (instancetype)initWithVideoCommentModel:(VideoCommentModel *)videoCommentModel;
-@property (nonatomic, strong) VideoCommentModel *videoCommentModel;
+- (instancetype)initWithCommentModel:(CommentModel *)videoCommentModel;
+@property (nonatomic, strong) CommentModel *videoCommentModel;
 
 
 @property (nonatomic, assign) CGRect headImageViewFrame;

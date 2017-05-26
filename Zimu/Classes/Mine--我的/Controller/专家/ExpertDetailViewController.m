@@ -8,7 +8,7 @@
 
 #import "ExpertDetailViewController.h"
 #import "SubscribeLecturerDetailTableView.h"
-#import "SLDBarView.h"
+#import "EXpertInfoBarView.h"
 #import "SLDTextCellLayoutFrame.h"
 #import "PaymentChannelView.h"
 #import "UIView+SnailUse.h"
@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) UIView *headerView;       //头部视图(头部图片+标题栏的底部view)
 @property (nonatomic, strong) UIImageView *headImageview;  //头部图片view
-@property (nonatomic, strong) SLDBarView *detailBarView;        //点击展开详情
+@property (nonatomic, strong) EXpertInfoBarView *infoBarView;        //标题栏
 
 @property (nonatomic, strong) SubscribeLecturerDetailTableView *SLDTableView;
 
@@ -68,7 +68,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 /**
@@ -123,10 +123,10 @@
         [_headerView addSubview:self.headImageview];
         
         //导师姓名栏,点击展开导师详情
-        _detailBarView = [[SLDBarView alloc]initWithFrame:CGRectMake(15, _headerView.height - 85, kScreenWidth - 30, 85)];
-        _detailBarView.backgroundColor = themeWhite;
-        [_detailBarView LSDBarTransformWithSLDBarState:SLDBarStateShadow];
-        [_headerView addSubview:_detailBarView];
+        _infoBarView = [[EXpertInfoBarView alloc]initWithFrame:CGRectMake(15, _headerView.height - 85, kScreenWidth - 30, 85)];
+        _infoBarView.backgroundColor = themeWhite;
+//        [_infoBarView LSDBarTransformWithSLDBarState:SLDBarStateShadow];
+        [_headerView addSubview:_infoBarView];
     }
     
     return _headerView;
@@ -196,7 +196,7 @@
     //订阅按钮
     UIButton *subscribeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     subscribeButton.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
-    [subscribeButton setTitle:@"咨询" forState:UIControlStateNormal];
+    [subscribeButton setTitle:@"预约咨询" forState:UIControlStateNormal];
     [subscribeButton setBackgroundColor:themeYellow];
     [subscribeButton setTitleColor:themeWhite forState:UIControlStateNormal];
     subscribeButton.titleLabel.font = [UIFont systemFontOfSize:15];

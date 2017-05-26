@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityCourseModel.h"
 
 @interface ActivityProgressCell : UITableViewCell
+
+@property (nonatomic, strong) ActivityCourseModel *activityCourseModel;
 
 @end

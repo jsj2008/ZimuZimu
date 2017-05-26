@@ -65,8 +65,12 @@ static NSString *identifier = @"ActivityListCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ActivityDetailViewController *activityDetailTableView = [[ActivityDetailViewController alloc]init];
-    [self.viewController.navigationController pushViewController:activityDetailTableView animated:YES];
+    ActivityDetailViewController *activityDetailTableVC = [[ActivityDetailViewController alloc]init];
+    ActivityListModel *model = _activityListModelArray[indexPath.row];
+    activityDetailTableVC.categoryId = model.categoryId;
+    activityDetailTableVC.coursePrice = model.coursePrice;
+    activityDetailTableVC.titleString = model.categoryName;
+    [self.viewController.navigationController pushViewController:activityDetailTableVC animated:YES];
 }
 
 

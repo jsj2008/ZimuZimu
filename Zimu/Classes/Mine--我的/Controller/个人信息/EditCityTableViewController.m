@@ -98,12 +98,14 @@ static NSString *identifier = @"cityCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         NSLog(@"dataDic : %@",dataDic);
         CityDataModel *cityDataModel = [CityDataModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = cityDataModel.isTrue;
         if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return;
         }
         NSArray *cityDataArray = cityDataModel.items;

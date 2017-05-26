@@ -35,6 +35,7 @@
     // Configure the view for the selected state
 }
 
+//联系客服
 - (IBAction)contactButtonAction:(UIButton *)sender {
     CallPhoneView *view = [UIView callPhoneView];
 //    view.phoneString = @"10086";
@@ -50,6 +51,16 @@
 //CallPhoneViewDelegate
 - (void)callPhoneViewDidClickClose{
     [_popups dismissAnimated:YES completion:nil];
+}
+
+- (void)setStatus:(NSInteger)status{
+    if (status == 0) {
+        //待付款
+        _stateLabel.text = @"待付款";
+    }else if (status == 1){
+        //订单完成
+        _stateLabel.text = @"交易完成";
+    }
 }
 
 @end

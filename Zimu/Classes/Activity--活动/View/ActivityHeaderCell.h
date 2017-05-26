@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityCategoryInfoModel.h"
 
 @interface ActivityHeaderCell : UITableViewCell
+
+@property (nonatomic, strong) ActivityCategoryInfoModel *activityCategoryInfoModel;
+@property (nonatomic, copy) NSString *coursePrice;
 
 @end

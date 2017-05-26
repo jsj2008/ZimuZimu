@@ -114,8 +114,8 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
             return cell;
         }
         FMCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:commentIdentifier];
-        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]initWithVideoCommentModel:_videoCommentModelArray[indexPath.row - 1]];
-        cell.videoCommentLayoutFrame = layoutFrame;
+        FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]initWithCommentModel:_videoCommentModelArray[indexPath.row - 1]];
+        cell.dataCommentLayoutFrame = layoutFrame;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -136,7 +136,7 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
         if (indexPath.row == 0) {
             return 35;
         }
-        FMCommentCellLayoutFrame *videoLayoutFrame = [[FMCommentCellLayoutFrame alloc]initWithVideoCommentModel:_videoCommentModelArray[indexPath.row - 1]];
+        FMCommentCellLayoutFrame *videoLayoutFrame = [[FMCommentCellLayoutFrame alloc]initWithCommentModel:_videoCommentModelArray[indexPath.row - 1]];
         return videoLayoutFrame.cellHeight;
     }
 }
@@ -169,7 +169,7 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
 - (void)setVideoCommentModelArray:(NSArray *)videoCommentModelArray{
     _videoCommentModelArray = videoCommentModelArray;
     
-    [self reloadData];
+    [self reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 

@@ -15,23 +15,32 @@
 #import "ConfuseExpertAnswerCell.h"
 #import "ExpertAnswerLayoutFrame.h"
 #import "HeaderTitleCell.h"
+
+#import "FMCommentHeaderCell.h"
+#import "FMCommentTableViewCell.h"
+#import "FMCommentCellLayoutFrame.h"
+#import "CommentModel.h"
+
 #import "FMDetailCommentHeaderCell.h"
 #import "FMDeatilCommentCell.h"
 #import "FMDetailCommentLayoutFrame.h"
+#import "QuestionUserCommentModel.h"
+
 #import "NoAnswerCell.h"
 #import "UIView+ViewController.h"
 #import "InsertCommentTableViewController.h"
 
 #import "QuestionExpertAnswerModel.h"
-#import "QuestionUserCommentModel.h"
 
 
 static NSString *confuseTagIdentifier = @"ConfuseTagCell";
 static NSString *confuseContentCellIdentifier = @"ConfuseContentCell";
 static NSString *expertAnswerCellIdentifier = @"ConfuseExpertAnswerCell";
 static NSString *headerTitleCellIdentifier = @"headerTitleCell";
-static NSString *commentHeaderIdentifier = @"FMDetailCommentHeaderCell";
-static NSString *commentIdentifier = @"FMDetailCommentCell";
+//static NSString *commentHeaderIdentifier = @"FMDetailCommentHeaderCell";
+//static NSString *commentIdentifier = @"FMDetailCommentCell";
+static NSString *commentHeaderIdentifier = @"FMCommentHeaderCell";
+static NSString *commentIdentifier = @"FMCommentTableViewCell";
 static NSString *noAnswerIdentifier = @"NoAnswerCell";
 @interface ConfuseAnswerDetailTableView ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -52,8 +61,8 @@ static NSString *noAnswerIdentifier = @"NoAnswerCell";
         [self registerNib:[UINib nibWithNibName:@"ConfuseContentCell" bundle:nil] forCellReuseIdentifier:confuseContentCellIdentifier];
         [self registerNib:[UINib nibWithNibName:@"ConfuseExpertAnswerCell" bundle:nil] forCellReuseIdentifier:expertAnswerCellIdentifier];
         [self registerNib:[UINib nibWithNibName:@"HeaderTitleCell" bundle:nil] forCellReuseIdentifier:headerTitleCellIdentifier];
-        [self registerNib:[UINib nibWithNibName:@"FMDetailCommentHeaderCell" bundle:nil] forCellReuseIdentifier:commentHeaderIdentifier];
-        [self registerNib:[UINib nibWithNibName:@"FMDeatilCommentCell" bundle:nil] forCellReuseIdentifier:commentIdentifier];
+        [self registerClass:[FMCommentHeaderCell class] forCellReuseIdentifier:commentHeaderIdentifier];
+        [self registerClass:[FMCommentTableViewCell class] forCellReuseIdentifier:commentIdentifier];
         [self registerNib:[UINib nibWithNibName:@"NoAnswerCell" bundle:nil] forCellReuseIdentifier:noAnswerIdentifier];
     }
     return self;
@@ -117,29 +126,21 @@ static NSString *noAnswerIdentifier = @"NoAnswerCell";
             return cell;
         }
     }else{
+
         if (indexPath.row == 0) {
-            FMDetailCommentHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:commentHeaderIdentifier];
+            FMCommentHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:commentHeaderIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width - 0.5, 0, 0);
+            cell.commentCount = _userCommentModelArray.count;
             
             return cell;
         }else{
-            if (_userCommentModelArray.count == 0 || _userCommentModelArray == nil) {
-                NoAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:noAnswerIdentifier];
-                cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width, 0, 0);
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.placeholderText = @"暂时还没有用户评论\n快去评论吧";
-                
-                return cell;
-            }else{
-                FMDeatilCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:commentIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                UserCommentModel *model = _userCommentModelArray[indexPath.row - 1];
-                FMDetailCommentLayoutFrame *layoutFrame = [[FMDetailCommentLayoutFrame alloc]initWithUserCommentModel:model];
-                cell.userCommentLayoutFrame = layoutFrame;
-                
-                return cell;
-            }
+            FMCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:commentIdentifier];
+            CommentModel *commentModel = _userCommentModelArray[indexPath.row - 1];
+            FMCommentCellLayoutFrame *layoutFrame = [[FMCommentCellLayoutFrame alloc]initWithCommentModel:commentModel];
+            cell.dataCommentLayoutFrame = layoutFrame;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
         }
     }
 

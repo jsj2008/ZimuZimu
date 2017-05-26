@@ -22,10 +22,10 @@
     [super awakeFromNib];
     // Initialization code
     
-    _selectButton.layer.cornerRadius = 10;
-    _selectButton.layer.masksToBounds = YES;
-    _selectButton.layer.borderColor = themeGray.CGColor;
-    _selectButton.layer.borderWidth = 1;
+//    _selectButton.layer.cornerRadius = 10;
+//    _selectButton.layer.masksToBounds = YES;
+//    _selectButton.layer.borderColor = themeGray.CGColor;
+//    _selectButton.layer.borderWidth = 1;
     
 }
 

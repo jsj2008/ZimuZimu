@@ -14,6 +14,7 @@
 #import "FindViewController.h"
 #import "ActivityViewController.h"
 #import "QuestionViewController.h"
+#import "SubmitQuestionViewController.h"
 #import "MineViewController.h"
 #import "SettingView.h"
 #import "LovelyFaceViewController.h"
@@ -182,19 +183,19 @@
     [expertButton addTarget:self action:@selector(expertButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar addSubview:expertButton];
     
-    //设置
-    UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    setButton.frame = CGRectMake(kScreenWidth - 10 - 35, (_toolBar.height - 35)/2.0, 35, 35);
-    setButton.backgroundColor = themeYellow;
-    setButton.layer.cornerRadius = setButton.height / 2.0;
-    setButton.layer.masksToBounds = YES;
-    [setButton setImage:[UIImage imageNamed:@"home_shezhi"] forState:UIControlStateNormal];
-    [setButton addTarget:self action:@selector(setButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    [_toolBar addSubview:setButton];
+//    //设置
+//    UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    setButton.frame = CGRectMake(kScreenWidth - 10 - 35, (_toolBar.height - 35)/2.0, 35, 35);
+//    setButton.backgroundColor = themeYellow;
+//    setButton.layer.cornerRadius = setButton.height / 2.0;
+//    setButton.layer.masksToBounds = YES;
+//    [setButton setImage:[UIImage imageNamed:@"home_shezhi"] forState:UIControlStateNormal];
+//    [setButton addTarget:self action:@selector(setButtonAction) forControlEvents:UIControlEventTouchUpInside];
+//    [_toolBar addSubview:setButton];
     
     //我的
     UIButton *mineButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    mineButton.frame = CGRectMake(CGRectGetMinX(setButton.frame) - 15 - 35, (_toolBar.height - 35)/2.0, 35, 35);
+    mineButton.frame = CGRectMake(kScreenWidth - 10 - 35, (_toolBar.height - 35)/2.0, 35, 35);
     mineButton.backgroundColor = themeYellow;
     mineButton.layer.cornerRadius = mineButton.height / 2.0;
     mineButton.layer.masksToBounds = YES;
@@ -210,14 +211,16 @@
 }
 
 - (void)expertButtonAction{
-    QuestionViewController *questionVC = [[QuestionViewController alloc]init];
-    [self.navigationController pushViewController:questionVC animated:YES];
+    SubmitQuestionViewController *submitQuestionVC = [[SubmitQuestionViewController alloc]init];
+    [self.navigationController pushViewController:submitQuestionVC animated:YES];
+//    QuestionViewController *questionVC = [[QuestionViewController alloc]init];
+//    [self.navigationController pushViewController:questionVC animated:YES];
 }
 
 /*我的*/
 - (void)mineButtonAction{
     //判断是否已登录
-    if ([userToken isEqualToString:@"logout"]) {
+    if ([userToken isEqualToString:@"logout"] || userToken == nil) {
         //未登录，跳转至登录页
         NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
         [self presentViewController:newLoginVC animated:YES completion:nil];
@@ -228,10 +231,10 @@
     [self.navigationController pushViewController:mineVC animated:YES];
 }
 
-/*设置*/
-- (void)setButtonAction{
-    [SettingView showToView:self.view];
-}
+///*设置*/
+//- (void)setButtonAction{
+//    [SettingView showToView:self.view];
+//}
 
 
 #pragma mark - 获取数据

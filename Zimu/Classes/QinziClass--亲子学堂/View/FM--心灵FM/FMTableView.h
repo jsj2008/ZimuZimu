@@ -14,5 +14,6 @@
 
 @property (nonatomic, strong) FMDetailModel *fmDetailModel;
 @property (nonatomic, strong) ExpertDetailModel *expertDetailModel;
+@property (nonatomic, strong) NSArray *fmCommentModelArray;
 
 @end

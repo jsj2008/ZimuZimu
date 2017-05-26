@@ -80,7 +80,6 @@
     _wordCountLabel.text = [NSString stringWithFormat:@"%li",_maxWordCount];
     _wordCountLabel.textAlignment = NSTextAlignmentRight;
     [wordCountView addSubview:_wordCountLabel];
-
 }
 
 //UITextViewDelegate

@@ -9,17 +9,15 @@
 #import "ActivityDetailTableView.h"
 #import "ActivityHeaderCell.h"
 #import "ActivityProgressCell.h"
-#import "ActivityIntroCell.h"
-#import "ActivityIntroCellLayoutFrame.h"
-#import "ActivityNoteCell.h"
+#import "ActivityChooseCell.h"
+#import "UIView+ViewController.h"
 
 static NSString *headerIdentifier = @"ActivityHeaderCell";
 static NSString *progressIdentifier = @"ActivityProgressCell";
-static NSString *introIdentifier = @"ActivityIntroCell";
-static NSString *noteIdentifier = @"ActivityNoteCell";
-@interface ActivityDetailTableView()<UITableViewDelegate, UITableViewDataSource, ActivityIntroCellDelegate>{
-    BOOL _introCellIsOpening;
-}
+static NSString *chooseIdentifier = @"ActivityChooseCell";
+static NSString *webHeaderIdentifier = @"webNormalCell";
+
+@interface ActivityDetailTableView()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -35,71 +33,100 @@ static NSString *noteIdentifier = @"ActivityNoteCell";
         
         [self registerClass:[ActivityHeaderCell class] forCellReuseIdentifier:headerIdentifier];
         [self registerClass:[ActivityProgressCell class] forCellReuseIdentifier:progressIdentifier];
-        [self registerClass:[ActivityIntroCell class] forCellReuseIdentifier:introIdentifier];
-        [self registerClass:[ActivityNoteCell class] forCellReuseIdentifier:noteIdentifier];
-
+        [self registerClass:[ActivityChooseCell class] forCellReuseIdentifier:chooseIdentifier];
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:webHeaderIdentifier];
+        
+        _isSelectAddress = NO;
     }
     return self;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (_isSelectAddress) {
+        return 4;
+    }
     return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 2;
-    }
+
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            ActivityHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            return cell;
-        }else{
-            ActivityProgressCell*cell = [tableView dequeueReusableCellWithIdentifier:progressIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            return cell;
-        }
-    }else if(indexPath.section == 1){
-        ActivityIntroCell *cell = [tableView dequeueReusableCellWithIdentifier:introIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.delegate = self;
-        ActivityIntroCellLayoutFrame *layoutFrame = [[ActivityIntroCellLayoutFrame alloc]init];
-        layoutFrame.isOpening = _introCellIsOpening;
-        cell.isOpening = _introCellIsOpening;
-        cell.layoutFrame = layoutFrame;
-
-        return cell;
-    }else{
-        ActivityNoteCell*cell = [tableView dequeueReusableCellWithIdentifier:noteIdentifier];
+        ActivityHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
+    }else{
+        if (_isSelectAddress) {
+            if(indexPath.section == 1){
+                ActivityProgressCell*cell = [tableView dequeueReusableCellWithIdentifier:progressIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                return cell;
+            }else if(indexPath.section == 2){
+                ActivityChooseCell *cell = [tableView dequeueReusableCellWithIdentifier:chooseIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.titleLabel.text = @"请选择课程";
+                cell.contentLabel.text = _addressString;
+                
+                return cell;
+            }else{
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:webHeaderIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.text = @"课程详情";
+                cell.textLabel.font = [UIFont systemFontOfSize:15];
+                cell.textLabel.textColor = [UIColor colorWithHexString:@"333333"];
+                
+                return cell;
+            }
+        }else{
+            if (indexPath.section == 1) {
+                ActivityChooseCell *cell = [tableView dequeueReusableCellWithIdentifier:chooseIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.titleLabel.text = @"请选择课程";
+                cell.contentLabel.text = @"未选择";
+                
+                return cell;
+            }else{
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:webHeaderIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.text = @"课程详情";
+                cell.textLabel.font = [UIFont systemFontOfSize:15];
+                cell.textLabel.textColor = [UIColor colorWithHexString:@"333333"];
+                
+                return cell;
+            }
+        }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            return 345 * kScreenWidth/375.0 + 75;
-        }else{
-            return CGFLOAT_MIN;
-        }
-    }else if(indexPath.section == 1){
-//        return 130;
-        ActivityIntroCellLayoutFrame *layoutFrame = [[ActivityIntroCellLayoutFrame alloc]init];
-        layoutFrame.isOpening = _introCellIsOpening;
-        return layoutFrame.cellHeight;
+        return 345 * kScreenWidth/375.0 + 75;
     }else{
-        return 130;
+        if (_isSelectAddress) {
+            if(indexPath.section == 1){
+                return 130;
+            }else{
+                return 40;
+            }
+        }else{
+            return 40;
+        }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (_isSelectAddress) {
+        if (section == 3) {
+            return CGFLOAT_MIN;
+        }
+    }else{
+        if (section == 2) {
+            return CGFLOAT_MIN;
+        }
+    }
     return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -108,17 +135,53 @@ static NSString *noteIdentifier = @"ActivityNoteCell";
     return view;
 }
 
-
-#pragma mark - ActivityIntroCellDelegate
-- (void)openIntroCellLayout{
-    _introCellIsOpening = YES;
-    [self reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (_isSelectAddress) {     //已选择过地址
+        if (indexPath.section == 2) {
+            [self.detailDelegate activityDetailTableViewDidSelect];
+        }
+    }else{
+        if (indexPath.section == 1) {
+            [self.detailDelegate activityDetailTableViewDidSelect];
+        }
+    }
 }
 
 
 
+- (void)setIsSelectAddress:(BOOL)isSelectAddress{
+    if ((_isSelectAddress != isSelectAddress)) {
+        _isSelectAddress = isSelectAddress;
+        [self reloadData];
+    }
+}
 
+- (void)setAddressString:(NSString *)addressString{
+    if (_addressString != addressString) {
+        _addressString = addressString;
+        ActivityChooseCell *cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+        cell.contentLabel.text = addressString;
+    }
+}
 
+- (void)setActivityCategoryInfoModel:(ActivityCategoryInfoModel *)activityCategoryInfoModel{
+    if (_activityCategoryInfoModel != activityCategoryInfoModel) {
+        _activityCategoryInfoModel = activityCategoryInfoModel;
+        
+        ActivityHeaderCell *cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        cell.activityCategoryInfoModel = activityCategoryInfoModel;
+    }
+}
+
+- (void)setActivityCourseModel:(ActivityCourseModel *)activityCourseModel{
+    ActivityProgressCell *cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    cell.activityCourseModel = activityCourseModel;
+}
+
+- (void)setCoursePrice:(NSString *)coursePrice{
+    ActivityHeaderCell *cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.coursePrice = coursePrice;
+}
 
 
 @end

@@ -10,4 +10,9 @@
 
 @interface ActivityDetailViewController : UIViewController
 
+@property (nonatomic, copy) NSString *categoryId;
+@property (nonatomic, copy) NSString *coursePrice;      //价格
+
+@property (nonatomic, copy) NSString *titleString;      
+
 @end

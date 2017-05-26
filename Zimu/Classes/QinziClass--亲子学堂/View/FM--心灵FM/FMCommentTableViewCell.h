@@ -12,6 +12,6 @@
 @interface FMCommentTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) FMCommentCellLayoutFrame *layoutFrame;
-@property (nonatomic, strong) FMCommentCellLayoutFrame *videoCommentLayoutFrame;
+@property (nonatomic, strong) FMCommentCellLayoutFrame *dataCommentLayoutFrame;
 
 @end

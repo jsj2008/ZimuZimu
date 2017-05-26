@@ -76,16 +76,9 @@ static NSString *identifier = @"QuestionResultCell";
     
     SearchQuestionResultModel *model = _resultArray[indexPath.row];
     
-    if (cell.model.commentNum == nil && [cell.model.isExpAnswer isEqualToString:@"0"]) {
-        //专家未解答，没有用户评论
-        AnswerViewController *answerVC = [[AnswerViewController alloc]init];
-        answerVC.questionID = model.questionId;
-        [self.viewController.navigationController pushViewController:answerVC animated:YES];
-    }else{
-        AnswerDetailViewController *answerDetailVC = [[AnswerDetailViewController alloc]init];
-        answerDetailVC.questionId = model.questionId;
-        [self.viewController.navigationController pushViewController:answerDetailVC animated:YES];
-    }
+    AnswerViewController *answerVC = [[AnswerViewController alloc]init];
+    answerVC.questionID = model.questionId;
+    [self.viewController.navigationController pushViewController:answerVC animated:YES];
     
 }
 
