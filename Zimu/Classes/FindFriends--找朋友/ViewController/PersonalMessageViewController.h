@@ -13,4 +13,6 @@
 //外界传入所必须的用户ID
 @property (nonatomic, copy) NSString *userId;
 
+@property (nonatomic, assign) BOOL isFriend;
+
 @end

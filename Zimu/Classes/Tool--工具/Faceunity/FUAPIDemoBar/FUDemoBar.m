@@ -166,9 +166,12 @@
 
 - (void)setSelectedItem:(NSString *)selectedItem
 {
-    _selectedItem = selectedItem;
-    
-    self.itemsView.selectedItem = [self.itemsView.itemsDataSource indexOfObject:_selectedItem];
+    if (selectedItem) {
+        
+        _selectedItem = selectedItem;
+        
+        self.itemsView.selectedItem = [self.itemsView.itemsDataSource indexOfObject:_selectedItem];
+    }
 }
 
 - (void)setItemsDataSource:(NSArray<NSString *> *)itemsDataSource

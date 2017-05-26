@@ -24,6 +24,7 @@
 #import "YTKNetworkAgent.h"
 #import "YTKNetworkConfig.h"
 #import "YTKNetworkPrivate.h"
+#import "MBProgressHUD.h"
 #import <pthread/pthread.h>
 
 #if __has_include(<AFNetworking/AFNetworking.h>)
@@ -47,6 +48,58 @@
     dispatch_queue_t _processingQueue;
     pthread_mutex_t _lock;
     NSIndexSet *_allStatusCodes;
+    
+    MBProgressHUD *_hud; //网络请求的弹出框
+}
+
+- (void)showHUD{
+    UIView *view = [YTKNetworkAgent curTopViewController].view;
+    if (view == nil) view = [[UIApplication sharedApplication] keyWindow];
+    
+    // 快速显示一个提示信息
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.label.text = @"";
+    // 隐藏时候从父控件中移除
+    hud.removeFromSuperViewOnHide = YES;
+    _hud = hud;
+}
+- (MBProgressHUD *)showMessage:(NSString *)message{
+     UIView *view = [YTKNetworkAgent curTopViewController].view;
+    //    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    //在StatusBarHud 显示期间，由于lastObject的Frame的缘故将导致
+    if (view == nil) view = [[UIApplication sharedApplication] keyWindow];
+    
+    // 快速显示一个提示信息
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.label.text = message;
+    // 隐藏时候从父控件中移除
+    hud.removeFromSuperViewOnHide = YES;
+    // YES代表需要蒙版效果
+    //    hud.dimBackground = YES;
+    [hud hideAnimated:YES afterDelay:1.5];
+    return hud;
+}
+//获取当前显示的VC
++ (UIViewController*)curTopViewController
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    return [self topViewControllerWithRootViewController:window.rootViewController];
+}
+
++ (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController
+{
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController1 = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController1.visibleViewController];
+    } else if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
+    } else {
+        return rootViewController;
+    }
 }
 
 + (YTKNetworkAgent *)sharedAgent {
@@ -131,7 +184,7 @@
     if (baseUrl.length > 0 && ![baseUrl hasSuffix:@"/"]) {
         url = [url URLByAppendingPathComponent:@""];
     }
-
+    [self showHUD];
     return [NSURL URLWithString:detailUrl relativeToURL:url].absoluteString;
 }
 
@@ -355,7 +408,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [request toggleAccessoriesWillStopCallBack];
         [request requestCompleteFilter];
-
+        
+        [_hud removeFromSuperViewOnHide];
+        [_hud hideAnimated:YES];
+        
         if (request.delegate != nil) {
             [request.delegate requestFinished:request];
         }
@@ -371,6 +427,7 @@
     YTKLog(@"Request %@ failed, status code = %ld, error = %@",
            NSStringFromClass([request class]), (long)request.responseStatusCode, error.localizedDescription);
 
+    
     // Save incomplete download data.
     NSData *incompleteDownloadData = error.userInfo[NSURLSessionDownloadTaskResumeData];
     if (incompleteDownloadData) {
@@ -396,6 +453,8 @@
         [request toggleAccessoriesWillStopCallBack];
         [request requestFailedFilter];
 
+        [self showMessage:@"网络异常，请检查网络全局的"];
+        
         if (request.delegate != nil) {
             [request.delegate requestFailed:request];
         }

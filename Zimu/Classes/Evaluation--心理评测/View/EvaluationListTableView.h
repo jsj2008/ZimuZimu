@@ -10,4 +10,6 @@
 
 @interface EvaluationListTableView : UITableView
 
+@property (nonatomic, strong) NSMutableArray *testListData;
+
 @end

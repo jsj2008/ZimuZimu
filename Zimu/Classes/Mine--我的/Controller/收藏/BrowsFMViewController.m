@@ -8,11 +8,17 @@
 
 #import "BrowsFMViewController.h"
 #import "SubscribeFreeFMCell.h"
+#import "MBProgressHUD+MJ.h"
+#import <MJRefresh.h>
+#import "MyCollectionCell.h"
+#import "FindListCell.h"
+#import "GetMyFavouriteFmListApi.h"
 
-static NSString *fmCell = @"SubscribeFreeFMCellrecent";
+static NSString *fmCell = @"MyCollectionCell";
 @interface BrowsFMViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong)UITableView *fmTableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -21,7 +27,7 @@ static NSString *fmCell = @"SubscribeFreeFMCellrecent";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = themeWhite;
-    
+    _dataArray = [NSMutableArray array];
     [self createTableView];
     // Do any additional setup after loading the view.
 }
@@ -35,11 +41,14 @@ static NSString *fmCell = @"SubscribeFreeFMCellrecent";
         _fmTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, kScreenWidth, kScreenHeight - 101) style:UITableViewStylePlain];
         _fmTableView.backgroundColor = themeGray;
         
-        UINib *nib = [UINib nibWithNibName:@"SubscribeFreeFMCell" bundle:[NSBundle mainBundle]];
-        [_fmTableView registerNib:nib forCellReuseIdentifier:fmCell];
+        [_fmTableView  registerClass:[MyCollectionCell class] forCellReuseIdentifier:fmCell];
         
         _fmTableView.dataSource = self;
         _fmTableView.delegate = self;
+        
+        _fmTableView.mj_footer  = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMore)];
+        _fmTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reFresh)];
+        [_fmTableView.mj_header beginRefreshing];
         
         [self.view addSubview:_fmTableView];
     }
@@ -47,15 +56,60 @@ static NSString *fmCell = @"SubscribeFreeFMCellrecent";
 
 #pragma mark - 数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return _dataArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SubscribeFreeFMCell *cell = [tableView dequeueReusableCellWithIdentifier:fmCell forIndexPath:indexPath];
-    
+    MyCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:fmCell forIndexPath:indexPath];
+    cell.separatorInset = UIEdgeInsetsZero;
+    NSDictionary *dic = _dataArray[indexPath.row];
+//    MyCollectionArticleModel *model = [MyCollectionArticleModel yy_modelWithJSON:dic];
+//    cell.titleString = model.articleTitle;
+//    cell.bgImageString = model.articleImg;
+//    cell.countString = [NSString stringWithFormat:@"%li", model.readNum];
+    cell.collectionType = CollectionTypeFM;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return (kScreenWidth - 20) * 0.16 + 20;
+    return 180 * kScreenWidth / 375.0;
 }
+#pragma mark - 网络请求
+- (void)getMore{
+    double nowTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    [self getData:iTime];
+}
+- (void)reFresh{
+    double nowTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    _dataArray = [NSMutableArray array];
+    [self getData:iTime];
+}
+- (void)getData:(NSInteger)endTime{
+    GetMyFavouriteFmListApi *artApi = [[GetMyFavouriteFmListApi alloc] initWithEndTime:endTime];
+    [artApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSString *jsonData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", jsonData);
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            return ;
+        }else{
+            NSArray *nowData = dataDic[@"items"];
+            [_dataArray addObjectsFromArray:dataDic[@"items"]];
+            [_fmTableView.mj_footer endRefreshing];
+            [_fmTableView.mj_header endRefreshing];
+            if (nowData.count < 10) {
+                [_fmTableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
+
 @end

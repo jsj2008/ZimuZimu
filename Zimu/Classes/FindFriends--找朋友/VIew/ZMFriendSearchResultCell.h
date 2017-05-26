@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString *nameString;
 @property (nonatomic, copy) NSString *idString;
+@property (nonatomic, copy) NSString *headImgUrl;
 
 @end

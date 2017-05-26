@@ -24,7 +24,7 @@
 #import "YTKBaseRequest.h"
 #import "YTKNetworkAgent.h"
 #import "YTKNetworkPrivate.h"
-
+#import <MBProgressHUD.h>
 #if __has_include(<AFNetworking/AFNetworking.h>)
 #import <AFNetworking/AFNetworking.h>
 #else
@@ -45,7 +45,6 @@ NSString *const YTKRequestValidationErrorDomain = @"com.yuantiku.request.validat
 @end
 
 @implementation YTKBaseRequest
-
 #pragma mark - Request and Response Information
 
 - (NSHTTPURLResponse *)response {
@@ -107,6 +106,7 @@ NSString *const YTKRequestValidationErrorDomain = @"com.yuantiku.request.validat
 
 - (void)start {
     [self toggleAccessoriesWillStartCallBack];
+//    [self showHUD];
     [[YTKNetworkAgent sharedAgent] addRequest:self];
 }
 

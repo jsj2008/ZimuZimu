@@ -7,6 +7,7 @@
 //
 
 #import "ZM_FriendCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ZM_FriendCell ()
 //用户头像
@@ -28,18 +29,19 @@
 }
 
 - (void)setImgUrlString:(NSString *)imgUrlString{
+    _imgUrlString = [imagePrefixURL stringByAppendingString:imgUrlString];
     
+    [_headImgView sd_setImageWithURL:[NSURL URLWithString:_imgUrlString] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
 }
 
 - (void)setNameString:(NSString *)nameString{
     _nameLabel.text = nameString;
 }
 
-- (void)setIsChooseMembers:(BOOL)isChooseMembers{
-    
-}
 - (void)setState:(friendViewState)state{
-    switch (state) {
+    _state = state;
+    
+    switch (_state) {
         case friendViewStateNormal:
             _selectedImg.hidden = YES;
             _canVansView.hidden = YES;
@@ -57,6 +59,5 @@
             _canVansView.hidden = NO;
             break;
     }
-    _state = state;
 }
 @end

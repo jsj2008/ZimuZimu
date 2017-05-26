@@ -68,7 +68,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-L4-mcy">
-                                <rect key="frame" x="239" y="619.5" width="56.5" height="30"/>
+                                <rect key="frame" x="239" y="620.5" width="56.5" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="随机"/>
                                 <connections>
                                     <action selector="randomAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dll-oe-lEK"/>

@@ -8,11 +8,18 @@
 
 #import "BrowsArticleViewController.h"
 #import "BrowsArticleCell.h"
+#import "MyCollectionCell.h"
+#import "GetMyFavouriteArticleApi.h"
+#import "MBProgressHUD+MJ.h"
+#import "MyCollectionArticleModel.h"
+#import <MJRefresh.h>
 
-static NSString *artCell = @"BrowsArticleCell";
+static NSString *artCell = @"MyCollectionCell";
 @interface BrowsArticleViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *articleTableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 
 @end
 
@@ -22,6 +29,7 @@ static NSString *artCell = @"BrowsArticleCell";
     [super viewDidLoad];
     self.view.backgroundColor = themeWhite;
     [self createTableView];
+    _dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
 
@@ -35,29 +43,80 @@ static NSString *artCell = @"BrowsArticleCell";
         _articleTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, kScreenWidth, kScreenHeight - 101) style:UITableViewStylePlain];
         _articleTableView.backgroundColor = themeGray;
         
-        UINib *nib = [UINib nibWithNibName:artCell bundle:[NSBundle mainBundle]];
-        [_articleTableView registerNib:nib forCellReuseIdentifier:artCell];
+        
+        [_articleTableView registerClass:[MyCollectionCell class] forCellReuseIdentifier:artCell];
         
         _articleTableView.delegate = self;
         _articleTableView.dataSource = self;
         
+        _articleTableView.mj_footer  = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMore)];
+        _articleTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reFresh)];
+        [_articleTableView.mj_header beginRefreshing];
+        
+        _articleTableView.tableFooterView = [[UIView alloc] init];
         [self.view addSubview:_articleTableView];
     }
 }
 
 #pragma mark - 表视图代理和数据源
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 16;
+    return _dataArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    BrowsArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:artCell forIndexPath:indexPath];
+    MyCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:artCell forIndexPath:indexPath];
     cell.separatorInset = UIEdgeInsetsZero;
+    NSDictionary *dic = _dataArray[indexPath.row];
+    MyCollectionArticleModel *model = [MyCollectionArticleModel yy_modelWithJSON:dic];
+    cell.titleString = model.articleTitle;
+    cell.bgImageString = model.articleImg;
+    cell.countString = [NSString stringWithFormat:@"%li", model.readNum];
+    cell.collectionType = CollectionTypeArticle;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 0.4*kScreenWidth + 73;
+    return 180 * kScreenWidth / 375.0;
+}
+
+#pragma mark - 网络请求
+- (void)getMore{
+    double nowTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    [self getData:iTime];
+}
+- (void)reFresh{
+    double nowTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    _dataArray = [NSMutableArray array];
+    [self getData:iTime];
+}
+- (void)getData:(NSInteger)endTime{
+    GetMyFavouriteArticleApi *artApi = [[GetMyFavouriteArticleApi alloc] initWithEndTime:endTime];
+    [artApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSString *jsonData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", jsonData);
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            return ;
+        }else{
+            NSArray *nowData = dataDic[@"items"];
+            [_dataArray addObjectsFromArray:dataDic[@"items"]];
+            [_articleTableView.mj_footer endRefreshing];
+            [_articleTableView.mj_header endRefreshing];
+            if (nowData.count < 10) {
+                [_articleTableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            [_articleTableView reloadData];
+
+        }
+
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
 }
 @end

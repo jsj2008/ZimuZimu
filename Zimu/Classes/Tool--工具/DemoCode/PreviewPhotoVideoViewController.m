@@ -78,7 +78,7 @@
         [self startPlay];
     }
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(55, self.view.height - 89 - 80, 80, 80);
+    backBtn.frame = CGRectMake(35, self.view.height - 89 - 80, 80, 80);
     [backBtn setImage:[UIImage imageNamed:@"previewBack"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
@@ -125,7 +125,7 @@
 - (UIButton *)saveBtn{
     if (!_saveBtn) {
         _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _saveBtn.frame = CGRectMake(self.view.width - 55 - 80, self.view.height - 89 - 80, 80, 80);
+        _saveBtn.frame = CGRectMake(self.view.width - 35 - 80, self.view.height - 89 - 80, 80, 80);
         [self.view addSubview:_saveBtn];
         [_saveBtn setImage:[UIImage imageNamed:@"previewShare"] forState:UIControlStateNormal];
 //        [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {

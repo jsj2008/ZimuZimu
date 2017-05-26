@@ -23,6 +23,7 @@
 
 #import "YTKNetworkConfig.h"
 #import "YTKRequest.h"
+
 #import "YTKNetworkPrivate.h"
 
 #ifndef NSFoundationVersionNumber_iOS_8_0
@@ -101,8 +102,8 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
 @end
 
 @implementation YTKRequest
-
 - (void)start {
+//    [self showHUD];
     if (self.ignoreCache) {
         [self startWithoutCache];
         return;
@@ -128,6 +129,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
         [strongSelf.delegate requestFinished:strongSelf];
         if (strongSelf.successCompletionBlock) {
             strongSelf.successCompletionBlock(strongSelf);
+//            [_hud hideAnimated:YES];
         }
         [strongSelf clearCompletionBlock];
     });

@@ -18,5 +18,7 @@ typedef NS_ENUM(NSInteger, PLMediaUserPKType) {
 
 @property (nonatomic, assign) PLMediaUserPKType userType;
 @property (nonatomic, strong) NSString *roomName;
+@property (nonatomic, copy) NSString *roomToken;
+//@property (nonatomic, copy) NSString *roomName;
 
 @end

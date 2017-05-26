@@ -72,8 +72,10 @@
     NSLog(@"接受");
     [self dismissViewControllerAnimated:NO completion:nil];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        ZM_CallingHandleCategory *handleJump = [[ZM_CallingHandleCategory alloc] initWithRole:ZMChatRoleGroupChief];
-        [handleJump jumpToChatRoom];
+        ZM_CallingHandleCategory *handleJump = [ZM_CallingHandleCategory shareInstance];
+        handleJump.role = ZMChatRoleGroupViewers;
+        [handleJump startChat];
+//        [handleJump jumpToChatRoom];
     });
     
 }

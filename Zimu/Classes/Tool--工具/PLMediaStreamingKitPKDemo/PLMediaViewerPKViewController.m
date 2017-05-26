@@ -62,7 +62,6 @@ const static NSString *playerStatusNames[] = {
 
 @property (nonatomic, strong) NSMutableDictionary *userViewDictionary;
 @property (nonatomic, strong) NSString *    userID;
-@property (nonatomic, strong) NSString *    roomToken;
 
 @property (nonatomic, assign) NSInteger reconnectCount;
 
@@ -83,7 +82,7 @@ const static NSString *playerStatusNames[] = {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = themeBlack;
     
     [self.navigationController setNavigationBarHidden:YES];
     self.userViewDictionary = [[NSMutableDictionary alloc] initWithCapacity:3];
@@ -96,7 +95,7 @@ const static NSString *playerStatusNames[] = {
     
     [self setupUI];
     [self initStreamingSession];
-    [self initPlayer];
+//    [self initPlayer];
     [self startConnect];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -105,24 +104,29 @@ const static NSString *playerStatusNames[] = {
                                                object:nil];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    UITouch *touch = [touches allObjects].firstObject;
-    if (touch.view != self.view) {
-        return;
-    }
-    [UIView animateWithDuration:0.5 animations:^{
-        self.demoBar.transform = CGAffineTransformIdentity;
-        self.demoBar.alpha = 0;
-    } completion:^(BOOL finished) {
-        self.barBtn.hidden = NO;
-    }];
+//    UITouch *touch = [touches allObjects].firstObject;
+//    if (touch.view != self.view) {
+//        return;
+//    }
+//    [UIView animateWithDuration:0.5 animations:^{
+//        self.demoBar.transform = CGAffineTransformIdentity;
+//        self.demoBar.alpha = 0;
+//    } completion:^(BOOL finished) {
+//        self.barBtn.hidden = NO;
+//    }];
 }
 - (void)setupUI
 {
-    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 44, 44)];
-    [self.backButton setTitle:@"返回" forState:UIControlStateNormal];
+    CGFloat width = self.view.width;
+    CGFloat height = self.view.height;
+    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(width / 2 - 30, height - 65, 60, 60)];
+    //    [self.backButton setTitle:@"返回" forState:UIControlStateNormal];
+    [self.backButton setImage:[UIImage imageNamed:@"phone_confuse"] forState:UIControlStateNormal];
+    self.backButton.backgroundColor = [UIColor redColor];
+    self.backButton.layer.cornerRadius = 30;
+    self.backButton.layer.masksToBounds = YES;
     [self.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
-    
     
 //    self.conferenceButton = [[UIButton alloc] initWithFrame:CGRectMake(196, 90, 66, 66)];
 //    [self.conferenceButton setTitle:@"连麦" forState:UIControlStateNormal];
@@ -141,7 +145,7 @@ const static NSString *playerStatusNames[] = {
 //    [self.view addSubview:self.changeCameraStateButton];
     [self.view addSubview:self.addCustomerBtn];
     [self.view addSubview:self.demoBar];
-    [self.view addSubview:self.barBtn];
+//    [self.view addSubview:self.barBtn];
 }
 - (UIButton *)addCustomerBtn{
     if (!_addCustomerBtn) {
@@ -156,8 +160,8 @@ const static NSString *playerStatusNames[] = {
 }
 - (FUAPIDemoBar *)demoBar{
     if (!_demoBar) {
-        _demoBar = [[FUAPIDemoBar alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 128)];
-        _demoBar.itemsDataSource = @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn", @"heart"];
+        _demoBar = [[FUAPIDemoBar alloc] initWithFrame:CGRectMake(0, kScreenHeight - 198, kScreenWidth, 128)];
+        _demoBar.itemsDataSource = FaceUnityItems;// @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn", @"tiantianquan", @"mao", @"xiong", @"yuhangyuan", @"zhnagyu", @"memeda", @"milu", @"pangxie", @"tuzi", @"xihuanxiong", @"bxgz", @"hunsha", @"wangzi"];
         _demoBar.selectedItem = _demoBar.itemsDataSource[1];
         
         _demoBar.filtersDataSource = @[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
@@ -212,7 +216,7 @@ const static NSString *playerStatusNames[] = {
     //屏幕尺寸
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat width = screenSize.width / 2 - 1;
-    CGFloat height = screenSize.height / 2 - 1;
+    CGFloat height = screenSize.height / 2 - 100;
     // 此处初始化一个 PLPixelBufferProcessor 对象用于对回调的视频进行裁剪
     PLVideoCompositionDescription *desc1 = [[PLVideoCompositionDescription alloc] initWithSourceRect:CGRectMake(0, 0, width, height) destRect:CGRectMake(0, 0, width, height ) zOrder:0 aspectMode:PLPixelAspectModeFit];
     
@@ -259,8 +263,8 @@ const static NSString *playerStatusNames[] = {
     //1  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:1C9e_uWj9rXxVSJFHA0pRLnW3bA=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjEiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjU3MH0=
     //2  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:bVZM8cikBvmwb-4BI7YYSzSI3Uo=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjIiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjU5OH0=
     //3  uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:6DTLOq02RDmc8BP6V_r3FW89ork=:eyJyb29tX25hbWUiOiJ0ZXN0IiwidXNlcl9pZCI6IjMiLCJwZXJtIjoidXNlciIsImV4cGlyZV9hdCI6MTQ5MzA5MjYyNH0=
-    self.userID = @"124";
-    self.roomToken = @"uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:3xxmsfXLLq72DOAkBvF8Q4g-pl8=:eyJyb29tX25hbWUiOiJ0ZXN0Nzc4IiwidXNlcl9pZCI6IjEyNCIsInBlcm0iOiJ1c2VyIiwiZXhwaXJlX2F0IjoxNDk0MzIwNDE2fQ==";
+    self.userID = userToken;
+//    self.roomToken = @"uJq2oL4ZqkQrZQgbXelBC_yaVRoRzjoovh_7ubsm:3xxmsfXLLq72DOAkBvF8Q4g-pl8=:eyJyb29tX25hbWUiOiJ0ZXN0Nzc4IiwidXNlcl9pZCI6IjEyNCIsInBlcm0iOiJ1c2VyIiwiZXhwaXJlX2F0IjoxNDk0MzIwNDE2fQ==";
 }
 #pragma  mark - 播放器
 - (void)initPlayer
@@ -457,7 +461,7 @@ const static NSString *playerStatusNames[] = {
     NSInteger section = (self.viewSpaceMask) / 2;
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat width = screenSize.width / 2 - 1;
-    CGFloat height = screenSize.height / 2 - 1;
+    CGFloat height = screenSize.height / 2 - 100;
     
     remoteView.frame = CGRectMake(row * width, section * height, width, height);
     remoteView.clipsToBounds = YES;
@@ -529,9 +533,9 @@ const static NSString *playerStatusNames[] = {
     }
     
     //加载爱心道具
-    if (items[2] == 0) {
-        [self loadHeart];
-    }
+//    if (items[2] == 0) {
+//        [self loadHeart];
+//    }
     
     //设置美颜效果（滤镜、磨皮、美白、瘦脸、大眼....）
     fuItemSetParamd(items[1], "cheek_thinning", self.demoBar.thinningLevel); //瘦脸
@@ -601,6 +605,9 @@ const static NSString *playerStatusNames[] = {
     
     // load selected
     void *data = [self mmap_bundle:[_demoBar.selectedItem stringByAppendingString:@".bundle"] psize:&size];
+    if (!data) {
+        data = [self mmap_bundle:[_demoBar.selectedItem stringByAppendingString:@".mp3"] psize:&size];
+    }
     items[0] = fuCreateItemFromPackage(data, size);
     
     NSLog(@"faceunity: load item");

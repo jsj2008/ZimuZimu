@@ -8,6 +8,8 @@
 
 #import "ZMPushManager.h"
 #import <AdSupport/AdSupport.h>
+#import "FriendsMsgViewController.h"
+#import "ZM_CallingHandleCategory.h"
 
 @interface ZMPushManager ()<UNUserNotificationCenterDelegate, JPUSHRegisterDelegate>
 
@@ -36,16 +38,16 @@
     // Optional
     // 获取IDFA
     // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
-//    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
-    // Required
-    // init Push
-    // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
-    // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
-//    [JPUSHService setupWithOption:launchOptions appKey:@"80986c5285f33ec53970d4d6"
-//                          channel:@"App Store"
-//                 apsForProduction:0
-//            advertisingIdentifier:advertisingId];
+//     Required
+//     init Push
+//     notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
+//     如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
+    [JPUSHService setupWithOption:launchOptions appKey:@"80986c5285f33ec53970d4d6"
+                          channel:@"App Store"
+                 apsForProduction:0
+            advertisingIdentifier:advertisingId];
     
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
@@ -138,8 +140,19 @@
 //        [UMessage setAutoAlert:NO];
         //必须加这句代码
 //        [UMessage didReceiveRemoteNotification:userInfo];
-        
+        NSLog(@"%@", userInfo);
          NSLog(@"收到推送33");
+        if ([userInfo[@"type"] isEqualToString:@"addFriend"]) { //如果是添加好友
+            FriendsMsgViewController *msgVC = [[FriendsMsgViewController alloc] init];
+            UIViewController *curVC = [ZM_CallingHandleCategory curTopViewController];
+//            [curVC presentViewController:msgVC animated:YES completion:nil];
+            [curVC.navigationController pushViewController:msgVC animated:YES];
+        }
+        if ([userInfo[@"type"] isEqualToString:@"videoChat"]) { //如果是视频通话请求
+            ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+            call.roomName = userInfo[@"roomName"];
+            [ZM_CallingHandleCategory jumpToWaitVC];
+        }
     }else{//本地推送，前台
         //本地通知
          NSLog(@"收到推送44");
@@ -159,7 +172,17 @@
         //必须加这句代码
 //        [UMessage didReceiveRemoteNotification:userInfo];
         NSLog(@"收到推送11");
-        
+        if ([userInfo[@"type"] isEqualToString:@"addFriend"]) { //如果是添加好友
+            FriendsMsgViewController *msgVC = [[FriendsMsgViewController alloc] init];
+            UIViewController *curVC = [ZM_CallingHandleCategory curTopViewController];
+            [curVC presentViewController:msgVC animated:YES completion:nil];
+        }
+        if ([userInfo[@"type"] isEqualToString:@"videoChat"]) { //如果是视频通话请求
+            ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+            call.roomName = userInfo[@"roomName"];
+            [ZM_CallingHandleCategory jumpToWaitVC];
+        }
+         NSLog(@"%@", userInfo);
     }else{  //本地推送点击
          NSLog(@"收到推送22");
     }

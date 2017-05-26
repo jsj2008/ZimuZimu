@@ -30,6 +30,8 @@
 
 /*用户userToken*/
 #define userToken [[NSUserDefaults standardUserDefaults] objectForKey:@"userToken"]
+#define USERID [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"]
+#define ZMUSERMSG [[NSUserDefaults standardUserDefaults] objectForKey:@"userMsg"]
 
 #define imagePrefixURL @"http://on9fin031.bkt.clouddn.com/"     //图片前缀
 
@@ -39,5 +41,7 @@
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+#define FaceUnityItems @[@"noitem", @"tiara", @"item0208", @"YellowEar", @"PrincessCrown", @"Mood" , @"Deer" , @"BeagleDog", @"item0501", @"item0210",  @"HappyRabbi", @"item0204", @"hartshorn", @"tiantianquan", @"mao", @"xiong", @"yuhangyuan", @"zhnagyu", @"memeda", @"milu", @"pangxie", @"tuzi", @"xihuanxiong", @"bxgz", @"hunsha", @"wangzi",@"changjinglu", @"xiongxiong", @"yan4",@"zy"]
 
 #endif /* Common_h */

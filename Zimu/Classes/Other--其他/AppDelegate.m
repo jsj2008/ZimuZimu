@@ -38,7 +38,7 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://120.27.221.31/zimu_portal/";//@"http://192.168.3.10:8082/portal/";//@"http://192.168.10.183:8080/portal/"
+    config.baseUrl = @"http://116.62.200.235:8080/zimu_portal/";//@"http://120.27.221.31/zimu_portal/";//@"http://192.168.3.10:8082/portal/";//@"http://192.168.10.183:8080/portal/"
 
 }
 
@@ -354,12 +354,12 @@
 {
     [JPUSHService registerDeviceToken:deviceToken];
     
-    NSString *tag = @"asdf";
-    NSSet *tags = [NSSet setWithObjects:tag, nil];
-    NSString  *alias = @"yf";
-    [JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
-         NSLog(@"rescode: %d\n tags: %@\nalias:%@", iResCode, iTags, iAlias);
-     }];
+//    NSString *tag = @"asdfr";
+//    NSSet *tags = [NSSet setWithObjects:tag, nil];
+//    NSString  *alias = @"iphones";
+//    [JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+//         NSLog(@"rescode: %d\n tags: %@\nalias:%@", iResCode, iTags, iAlias);
+//     }];
     
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

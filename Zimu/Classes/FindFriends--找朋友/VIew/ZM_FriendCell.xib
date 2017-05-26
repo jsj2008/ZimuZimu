@@ -28,9 +28,9 @@
                             <constraint firstAttribute="width" secondItem="kY8-gq-SwK" secondAttribute="height" id="0Lf-eG-t3m"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-hl-hQR">
-                        <rect key="frame" x="65" y="164.5" width="39.5" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-hl-hQR">
+                        <rect key="frame" x="22.5" y="164.5" width="124" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,8 +40,12 @@
                             <constraint firstAttribute="width" secondItem="7O2-8q-Cyf" secondAttribute="height" id="giD-oA-jw8"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="choose" translatesAutoresizingMaskIntoConstraints="NO" id="bqx-cO-NjS">
-                        <rect key="frame" x="115.5" y="28.5" width="21" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friend_select" translatesAutoresizingMaskIntoConstraints="NO" id="bqx-cO-NjS">
+                        <rect key="frame" x="137" y="0.0" width="32" height="29.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="bqx-cO-NjS" secondAttribute="height" multiplier="64:59" id="VVC-Ss-UqC"/>
+                            <constraint firstAttribute="width" constant="32" id="nuJ-AM-dd5"/>
+                        </constraints>
                     </imageView>
                     <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ili-cY-rpj">
                         <rect key="frame" x="22.5" y="18.5" width="124" height="124"/>
@@ -55,17 +59,19 @@
                 <constraint firstItem="fZn-hl-hQR" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6e4-gI-fZG"/>
                 <constraint firstItem="fZn-hl-hQR" firstAttribute="top" secondItem="kY8-gq-SwK" secondAttribute="bottom" constant="22" id="C4W-h7-zGg"/>
                 <constraint firstItem="8fB-I5-kvL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FAj-kn-ogL"/>
+                <constraint firstItem="fZn-hl-hQR" firstAttribute="trailing" secondItem="Ili-cY-rpj" secondAttribute="trailing" id="Ge6-Hm-eIj"/>
                 <constraint firstItem="7O2-8q-Cyf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18.5" id="KLc-65-Dhr"/>
                 <constraint firstItem="Ili-cY-rpj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="22.5" id="Kaz-hT-TZH"/>
                 <constraint firstAttribute="trailing" secondItem="Ili-cY-rpj" secondAttribute="trailing" constant="22.5" id="L13-Ai-JxO"/>
                 <constraint firstItem="kY8-gq-SwK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18.5" id="LyD-VO-IPk"/>
                 <constraint firstAttribute="trailing" secondItem="kY8-gq-SwK" secondAttribute="trailing" constant="22.5" id="No1-Re-9Q0"/>
-                <constraint firstAttribute="trailing" secondItem="bqx-cO-NjS" secondAttribute="trailing" constant="32.5" id="Si9-4v-tEJ"/>
-                <constraint firstItem="bqx-cO-NjS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="28.5" id="VX7-LF-EoR"/>
+                <constraint firstAttribute="trailing" secondItem="bqx-cO-NjS" secondAttribute="trailing" id="Si9-4v-tEJ"/>
+                <constraint firstItem="bqx-cO-NjS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VX7-LF-EoR"/>
                 <constraint firstAttribute="trailing" secondItem="8fB-I5-kvL" secondAttribute="trailing" id="ZGr-K0-foG"/>
                 <constraint firstItem="7O2-8q-Cyf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="22.5" id="adm-zg-ImN"/>
                 <constraint firstItem="8fB-I5-kvL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ehR-io-HlJ"/>
                 <constraint firstAttribute="trailing" secondItem="7O2-8q-Cyf" secondAttribute="trailing" constant="22.5" id="fUO-0h-Fjx"/>
+                <constraint firstItem="fZn-hl-hQR" firstAttribute="leading" secondItem="Ili-cY-rpj" secondAttribute="leading" id="gLZ-4C-sVY"/>
                 <constraint firstItem="fZn-hl-hQR" firstAttribute="top" secondItem="Ili-cY-rpj" secondAttribute="bottom" constant="22" id="hX0-ZB-Ewu"/>
                 <constraint firstItem="kY8-gq-SwK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="22.5" id="jbh-e8-rqg"/>
                 <constraint firstAttribute="bottom" secondItem="8fB-I5-kvL" secondAttribute="bottom" id="ufY-Yh-Ld6"/>
@@ -81,9 +87,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="choose" width="21" height="21"/>
         <image name="cycle_head" width="50" height="50"/>
         <image name="friendListCellBg" width="110" height="140"/>
+        <image name="friend_select" width="64" height="59"/>
         <image name="mine_head_placeholder" width="75" height="75"/>
     </resources>
 </document>
