@@ -12,6 +12,7 @@
 #import "LoginApi.h"
 #import "MBProgressHUD+MJ.h"
 #import "UserModel.h"
+#import "JPUSHService.h"
 
 @interface NewLoginViewController ()<LoginViewDelegate>{
     NSInteger _timeCount;            //倒计时计数
@@ -83,8 +84,20 @@
         if (isTure) {
             [MBProgressHUD showMessage_WithoutImage:@"登录成功" toView:self.view];
             UserModel *userModel = [UserModel yy_modelWithDictionary:dic[@"object"]];
+            //存储用户的信息
+//            [[NSUserDefaults standardUserDefaults] setObject:dic[@"object"] forKey:@"userMsg"];
             //存储用户userToken
             [[NSUserDefaults standardUserDefaults] setObject:userModel.token forKey:@"userToken"];
+            //存储用户的userId
+            [[NSUserDefaults standardUserDefaults] setObject:[userModel.userId stringByReplacingOccurrencesOfString:@"-" withString:@""] forKey:@"userId"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            //设置别名
+            NSString *tag = @"asdfr";
+            NSSet *tags = [NSSet setWithObjects:tag, nil];
+            NSString  *alias = userToken;
+            [JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                NSLog(@"rescode: %d\n tags: %@\nalias:%@", iResCode, iTags, iAlias);
+            }];
             
             if ([self.delegate respondsToSelector:@selector(loginSuccess)]) {
                 [self.delegate loginSuccess];

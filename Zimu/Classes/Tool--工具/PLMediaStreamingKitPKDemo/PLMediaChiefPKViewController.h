@@ -11,5 +11,6 @@
 @interface PLMediaChiefPKViewController : UIViewController
 
 @property (nonatomic, strong) NSString *roomName;
-
+@property (nonatomic, copy) NSString *roomToken;
+//@property (nonatomic, copy) NSString *roomName;
 @end

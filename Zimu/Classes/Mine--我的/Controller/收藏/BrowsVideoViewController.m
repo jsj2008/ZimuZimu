@@ -8,12 +8,20 @@
 
 #import "BrowsVideoViewController.h"
 #import "BrowsVideoCell.h"
+#import "MyCollectionCell.h"
+#import "GetMyFavouriteArticleApi.h"
+#import "GetMyFavouriteVideoListApi.h"
+#import "MBProgressHUD+MJ.h"
+#import "MyCollectionArticleModel.h"
+#import <MJRefresh.h>
+#import "MyCollectionVideoModel.h"
 
-static NSString *videoCellId = @"BrowsVideoCell";
+static NSString *artCell = @"MyCollectionCell";
 
-@interface BrowsVideoViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BrowsVideoViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UITableView *articleTableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -22,7 +30,7 @@ static NSString *videoCellId = @"BrowsVideoCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = themeWhite;
-  
+    _dataArray = [NSMutableArray array];
     [self createCollectionView];
     // Do any additional setup after loading the view.
 }
@@ -33,39 +41,84 @@ static NSString *videoCellId = @"BrowsVideoCell";
 }
 
 -(void)createCollectionView{
-    if (!_collectionView) {
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.minimumLineSpacing = 0;
-        flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 1, kScreenWidth, kScreenHeight - 101) collectionViewLayout:flowLayout];
-        _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-        UINib *nib = [UINib nibWithNibName:videoCellId bundle:[NSBundle mainBundle]];
-        [_collectionView registerNib:nib forCellWithReuseIdentifier:videoCellId];
-        _collectionView.backgroundColor = themeGray;
-        [self.view addSubview:_collectionView];
-    }
-}
+    if (!_articleTableView) {
+        _articleTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, kScreenWidth, kScreenHeight - 101) style:UITableViewStylePlain];
+        _articleTableView.backgroundColor = themeGray;
+        
+        
+        [_articleTableView registerClass:[MyCollectionCell class] forCellReuseIdentifier:artCell];
+        
+        _articleTableView.delegate = self;
+        _articleTableView.dataSource = self;
+        
+        _articleTableView.mj_footer  = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMore)];
+        _articleTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reFresh)];
+        [_articleTableView.mj_header beginRefreshing];
+        
+        _articleTableView.tableFooterView = [[UIView alloc] init];
+        [self.view addSubview:_articleTableView];
+    }}
 
 #pragma mark - colectionView代理、数据源
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _dataArray.count;
+}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 3;
+    return 1;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    BrowsVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:videoCellId forIndexPath:indexPath];
-    cell.backgroundColor = themeWhite;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MyCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:artCell forIndexPath:indexPath];
+    cell.separatorInset = UIEdgeInsetsZero;
+    NSDictionary *dic = _dataArray[indexPath.row];
+    MyCollectionVideoModel *model = [MyCollectionVideoModel yy_modelWithJSON:dic];
+    cell.titleString = model.videoTitle;
+    cell.bgImageString = model.videoImg;
+    cell.countString = [NSString stringWithFormat:@"%li", model.readNum];
+    cell.collectionType = CollectionTypeVideo;
     return cell;
 }
-#pragma mark - delegateFlowLayout
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 180 * kScreenWidth / 375.0;
 }
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return CGSizeMake(kScreenWidth * 0.5, (kScreenWidth * 0.5 - 17.5) * 0.6 + 37);
+#pragma mark - 网络请求
+- (void)getMore{
+    double nowTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    [self getData:iTime];
 }
+- (void)reFresh{
+    double nowTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    _dataArray = [NSMutableArray array];
+    [self getData:iTime];
+}
+- (void)getData:(NSInteger)endTime{
+    GetMyFavouriteVideoListApi *artApi = [[GetMyFavouriteVideoListApi alloc] initWithEndTime:endTime];
+    [artApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSString *jsonData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", jsonData);
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            return ;
+        }else{
+            NSArray *nowData = dataDic[@"items"];
+            [_dataArray addObjectsFromArray:dataDic[@"items"]];
+            [_articleTableView.mj_footer endRefreshing];
+            [_articleTableView.mj_header endRefreshing];
+            if (nowData.count < 10) {
+                [_articleTableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            [_articleTableView reloadData];
+            
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ZMFriendSearchResultCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ZMFriendSearchResultCell ()
 
@@ -48,7 +49,15 @@
 - (void)setIdString:(NSString *)idString{
     if (idString) {
         _idString = idString;
-        _idLabel.text = [NSString stringWithFormat:@"ID: %@", idString];
+        _idLabel.text = [NSString stringWithFormat:@"%@", idString];
+    }
+}
+
+- (void)setHeadImgUrl:(NSString *)headImgUrl{
+    if (headImgUrl) {
+        _headImgUrl = [imagePrefixURL stringByAppendingString:headImgUrl];
+        [_headImgView sd_setImageWithURL:[NSURL URLWithString:_headImgUrl] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
+
     }
 }
 @end

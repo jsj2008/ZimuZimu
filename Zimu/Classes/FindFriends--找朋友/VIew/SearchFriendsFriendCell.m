@@ -7,6 +7,9 @@
 //
 
 #import "SearchFriendsFriendCell.h"
+#import "AddFriendApi.h"
+#import "MBProgressHUD+MJ.h"
+#import "UIView+ViewController.h"
 
 @interface SearchFriendsFriendCell ()
 
@@ -57,7 +60,33 @@
 }
 
 - (IBAction)addFriendBtnAction:(id)sender {
-    
+    AddFriendApi *addFriendApi = [[AddFriendApi alloc] initWithUserId:_idStr];
+    [addFriendApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
+            return ;
+        }else{
+            NSLog(@"添加好友结果%@", dataDic);
+            if ([dataDic[@"isTrue"] integerValue] == 1) {
+                [MBProgressHUD showMessage_WithoutImage:@"好友添加请求已发送" toView:self.viewController.view];
+            }else{
+                [MBProgressHUD showMessage_WithoutImage:@"好友添加请求发送失败" toView:self.viewController.view];
+            }
+//            NSArray *dataArray = dataDic[@"items"];
+//            if (dataArray.count == 0) {
+//                
+//            }else{
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                 
+//                });
+//            }
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
+    }];
 }
 
 @end

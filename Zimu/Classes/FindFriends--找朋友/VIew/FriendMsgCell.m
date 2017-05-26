@@ -49,39 +49,34 @@
 
 
 - (void)setIsFriend:(BOOL)isFriend{
-    if (isFriend != _isFriend) {
-        _isFriend = isFriend;
-        if (_isFriend == YES) {
-            _detailLabel.text = @"你的好友请求已通过";
-            
-            _sureBtn.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
-            [_sureBtn setTitle:@"已通过" forState:UIControlStateNormal];
-            _sureBtn.layer.cornerRadius = 0;
-            _sureBtn.layer.masksToBounds = NO;
-            [_sureBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
-            _sureBtn.userInteractionEnabled = NO;
-        }else{
-            _detailLabel.text = @"请求添加你为好友!";
-            
-            _sureBtn.backgroundColor = [UIColor colorWithHexString:@"F5CE13"];
-            [_sureBtn setTitle:@"同意" forState:UIControlStateNormal];
-            [_sureBtn setTitleColor:themeBlack forState:UIControlStateNormal];
-            _sureBtn.layer.cornerRadius = 5;
-            _sureBtn.layer.masksToBounds = YES;
-            _sureBtn.userInteractionEnabled = YES;
-        }
+//    if (isFriend != _isFriend) {
+    _isFriend = isFriend;
+    if (_isFriend == YES) {
+        _detailLabel.text = @"你的好友请求已通过";
         
+        _sureBtn.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
+        [_sureBtn setTitle:@"已通过" forState:UIControlStateNormal];
+        _sureBtn.layer.cornerRadius = 0;
+        _sureBtn.layer.masksToBounds = NO;
+        [_sureBtn setTitleColor:[UIColor colorWithHexString:@"999999"] forState:UIControlStateNormal];
+        _sureBtn.userInteractionEnabled = NO;
+    }else{
+        _detailLabel.text = @"请求添加你为好友!";
+        
+        _sureBtn.backgroundColor = [UIColor colorWithHexString:@"F5CE13"];
+        [_sureBtn setTitle:@"同意" forState:UIControlStateNormal];
+        [_sureBtn setTitleColor:themeBlack forState:UIControlStateNormal];
+        _sureBtn.layer.cornerRadius = 5;
+        _sureBtn.layer.masksToBounds = YES;
+        _sureBtn.userInteractionEnabled = YES;
     }
+        
+//    }
 }
 
 
 - (IBAction)acceptBtnActio:(id)sender {
-    NSLog(@"同意");
     [self.clickBtnDelegate didClickAccceptBtn:self];
-    
-    if (_isFriend == NO) {
-        self.isFriend = YES;
-    }
 }
 
 

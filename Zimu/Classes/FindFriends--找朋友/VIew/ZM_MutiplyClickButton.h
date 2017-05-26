@@ -6,6 +6,9 @@
 //  Copyright © 2017年 Zimu. All rights reserved.
 //
 
+
+//用于同一个按钮每次点击后进入不同状态做不同处理的btn，尚不完善
+
 #import <UIKit/UIKit.h>
 
 @protocol ZM_MutiplyClickButtonDelegate <NSObject>
@@ -17,7 +20,7 @@
 
 @interface ZM_MutiplyClickButton : UIButton
 
-//当前的状态位置，不能修改，不然容易报错
+//当前的状态位置，不能修改，不然报错
 @property (nonatomic, assign) NSInteger curIndex;
 @property (nonatomic, weak) id<ZM_MutiplyClickButtonDelegate> delegate;
 

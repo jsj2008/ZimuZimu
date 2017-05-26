@@ -14,15 +14,20 @@
 #import "PersonalMessageViewController.h"
 #import "FriendsMsgViewController.h"
 #import "SearchFriendsViewController.h"
+#import "SearchFriendDetailViewController.h"
+#import "GetFriendsListApi.h"
+#import "FriendListModel.h"
 
 #import "ZM_FriendsListView.h"
 #import "ZM_MutiplyClickButton.h"
 
+#import "MBProgressHUD+MJ.h"
 #import "UIBarButtonItem+ZMExtension.h"
 #import "UIImage+ZMExtension.h"
 #import "SnailQuickMaskPopups.h"
 #import "UIView+SnailUse.h"
 #import "ZM_SelectSexView.h"
+#import "ZM_CallingHandleCategory.h"
 
 @interface FindFriendsViewController ()<ZM_MutiplyClickButtonDelegate, ZMFriendDelagate, FriendsMsgDelegate>
 
@@ -33,8 +38,12 @@
 //列表视图
 @property (nonatomic, strong) ZM_FriendsListView *listView;
 //选择好友按钮
-@property (nonatomic, strong) ZM_MutiplyClickButton *chooseBtn;
+@property (nonatomic, strong) UIButton *chooseBtn;
 
+//用户列表信息
+@property (nonatomic, strong) NSArray *friendListData;
+
+@property (nonatomic, copy) NSString *selectedUsers;  //选中的用户id的拼接，逗号隔开
 @end
 
 @implementation FindFriendsViewController
@@ -48,8 +57,13 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.view.backgroundColor = themeWhite;
+    
+    [self getFriendsList];
     [self setUI];
     
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 - (void)viewDidAppear:(BOOL)animated{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -101,27 +115,33 @@
     searchBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
     searchBtn.backgroundColor = themeWhite;
     [searchBg addSubview:searchBtn];
-    
+
+    [self rightNavBtns];
+}
+- (void)setListWithData:(NSArray *)dataArray{
     //好友列表
     if (!_listView) {
         _listView = [[ZM_FriendsListView alloc] initWithFrame:CGRectMake(0, 45, kScreenWidth, kScreenHeight - 45) collectionViewLayout:[UICollectionViewFlowLayout new]];
         _listView.backgroundColor = [UIColor colorWithHexString:@"f2f3f7"];
-        NSArray *array = @[@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }];
-        _listView.dataArray = array;
+        //        NSArray *array = @[@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }];
+        _listView.dataArray = dataArray;
+        _friendListData = dataArray;
         _listView.showsVerticalScrollIndicator = NO;
         _listView.selectMoreDelegate = self;
         [self.view addSubview:_listView];
     }
+    
     //选择好友按钮
     if (!_chooseBtn) {
         NSArray *btnAry = @[@"选择多个好友", @"开始聊天"];
         
-        _chooseBtn = [[ZM_MutiplyClickButton alloc] initWithDataSource:btnAry];
+        _chooseBtn = [UIButton buttonWithType:UIButtonTypeCustom];//[[ZM_MutiplyClickButton alloc] initWithDataSource:btnAry];
         _chooseBtn.frame = CGRectMake(kScreenWidth / 2 - 100, kScreenHeight - 35 - 40 - 55, 200, 40);
-        
-        _chooseBtn.delegate = self;
+        [_chooseBtn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        _chooseBtn.delegate = self;
+         [_chooseBtn setTitle:@"选择多个好友" forState:UIControlStateNormal];
         _chooseBtn.backgroundColor = [UIColor colorWithHexString:@"f5cd13"];
-//        [_chooseBtn addTarget:self action:@selector(startViewAction) forControlEvents:UIControlEventTouchUpInside];
+        //        [_chooseBtn addTarget:self action:@selector(startViewAction) forControlEvents:UIControlEventTouchUpInside];
         _chooseBtn.titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
         _chooseBtn.titleLabel.font = [UIFont systemFontOfSize:16];
         _chooseBtn.layer.shadowOffset =  CGSizeMake(1, 1);
@@ -130,13 +150,12 @@
         _chooseBtn.layer.cornerRadius = 20;
         [self.view addSubview:_chooseBtn];
     }
-    [self rightNavBtns];
 }
-
 //搜索点击事件
 - (void)searchAction{
     FriendSearchViewController *searchVC = [[FriendSearchViewController alloc] init];
-    [self presentViewController:searchVC animated:YES completion:nil];
+//    [self presentViewController:searchVC animated:YES completion:nil];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 - (void)rightNavBtns{
@@ -153,8 +172,10 @@
 }
 - (void)addFriends{
     NSLog(@"添加好友");
-    SearchFriendsViewController *searchVC = [[SearchFriendsViewController alloc] init];
-    [self.navigationController pushViewController:searchVC animated:YES];
+//    SearchFriendsViewController *searchVC = [[SearchFriendsViewController alloc] init];
+//    [self.navigationController pushViewController:searchVC animated:YES];
+    SearchFriendDetailViewController *searchDeVC = [[SearchFriendDetailViewController alloc] initWithStyle:searchFriendStyleId];
+    [self.navigationController pushViewController:searchDeVC animated:YES];
     
 }
 - (void)noneAction{
@@ -162,18 +183,40 @@
 }
 
 #pragma mark - 按钮点击后的代理，用于在每个状态下的事件处理
-- (void)didClickBtnWithIndex:(NSInteger)index{
-    if (index == 0) {
+- (void)didClickBtn:(UIButton *)btn{
+    if ([btn.titleLabel.text isEqualToString:@"选择多个好友"]) {
+        
         NSLog(@"选择朋友");
+        [btn setTitle:@"开始聊天" forState:UIControlStateNormal];
         _listView.state = chooseStateChoosing;
-    }else if (index == 1){
+    }else if ([btn.titleLabel.text isEqualToString:@"开始聊天"]){
         NSLog(@"开始聊天");
+        _listView.state = chooseStateNormal;
+        _selectedUsers = @"";
+        
+        [btn setTitle:@"选择多个好友" forState:UIControlStateNormal];
+        ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+        call.role = ZMChatRoleGroupChief;
+        call.users = _selectedUsers;
+        [call startChat];
+        
     }
 }
 
 #pragma mark - 选择朋友代理
 - (void)didSelectItems:(NSDictionary *)items{
-    NSLog(@"%@", items);
+    _selectedUsers = @"";
+    NSArray *keyAry = [items allKeys];
+    for (int i = 0; i < keyAry.count; i ++) {
+        NSDictionary *dic = items[keyAry[i]];
+        FriendListModel *model = [FriendListModel yy_modelWithJSON:dic];
+        if ([_selectedUsers isEqualToString:@""]) {
+            _selectedUsers = model.userId;
+        }else{
+            _selectedUsers = [_selectedUsers stringByAppendingString:[NSString stringWithFormat:@",%@", model.userId]];
+        }
+    }
+    NSLog(@"%@", _selectedUsers);
 }
 
 - (void)watchFriendDetailWithIndex:(NSInteger)index{
@@ -183,8 +226,39 @@
 
 - (void)seeFriendDetail:(NSInteger)index{
     PersonalMessageViewController *detailVC = [[PersonalMessageViewController alloc] init];
-    detailVC.title = [NSString stringWithFormat:@"%zd", index];
+//    detailVC.title = [NSString stringWithFormat:@"%zd", index];
+    FriendListModel *model = [FriendListModel yy_modelWithJSON:_friendListData[index]];
+    detailVC.title = model.userName;
+    detailVC.userId = model.userId;
+    detailVC.isFriend = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+#pragma mark - 获取好友列表
+- (void)getFriendsList{
+    GetFriendsListApi *friendApi = [[GetFriendsListApi alloc] init];
+//    friendApi.delegate = self;
+    [friendApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+//        NSString *jsonData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@", jsonData);
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            return ;
+        }else{
+            NSArray *dataArray = dataDic[@"items"];
+                if (dataArray.count == 0) {
+                    
+                }else{
+//                    dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self setListWithData:dataArray];
+//                    });
+                }
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+    }];
+}
 @end

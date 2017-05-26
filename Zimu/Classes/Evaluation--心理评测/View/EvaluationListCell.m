@@ -7,6 +7,7 @@
 //
 
 #import "EvaluationListCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EvaluationListCell ()
 
@@ -44,7 +45,8 @@
 - (void)setBgImageString:(NSString *)bgImageString{
     if (_bgImageString != bgImageString) {
         _bgImageString = bgImageString;
-        _bgImageView.image = [UIImage imageNamed:bgImageString];
+//        _bgImageView.image = [UIImage imageNamed:bgImageString];
+        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:_bgImageString]];
     }
 }
 

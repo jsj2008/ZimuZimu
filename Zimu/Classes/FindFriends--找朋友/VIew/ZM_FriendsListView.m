@@ -8,6 +8,7 @@
 
 #import "ZM_FriendsListView.h"
 #import "ZM_FriendCell.h"
+#import "FriendListModel.h"
 
 static NSString *friendCellId = @"ZM_FriendCell";
 static NSString *nullCell = @"friendNullCell";
@@ -49,6 +50,7 @@ static NSString *nullCell = @"friendNullCell";
 
 - (void)setState:(chooseState)state{
     _state = state;
+    _selectItems = [NSMutableDictionary dictionary];
     [self reloadData];
 }
 #pragma mark - delegate datasource
@@ -78,8 +80,10 @@ static NSString *nullCell = @"friendNullCell";
     }
     
     //在这里设置cell的内容
-    NSDictionary *dataDic = _dataArray[indexPath.row];
-    cell.nameString = dataDic[@"name"];
+    FriendListModel *model = [FriendListModel yy_modelWithJSON:_dataArray[indexPath.row]];
+    
+    cell.nameString = model.userName;
+    cell.imgUrlString = model.userImg;
     
     return cell;
 }

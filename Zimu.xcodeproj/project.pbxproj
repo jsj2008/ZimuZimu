@@ -93,6 +93,12 @@
 		1E1763001EC1560200292DAC /* SearchFriendsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1762FF1EC1560200292DAC /* SearchFriendsListView.m */; };
 		1E1763041EC1562800292DAC /* SearchFriendsFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1763021EC1562800292DAC /* SearchFriendsFriendCell.m */; };
 		1E1763051EC1562800292DAC /* SearchFriendsFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1763031EC1562800292DAC /* SearchFriendsFriendCell.xib */; };
+		1E6B81C91ED815D5001DB05F /* GetMyFavouriteVideoListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6B81C81ED815D5001DB05F /* GetMyFavouriteVideoListApi.m */; };
+		1E6B81CC1ED815EC001DB05F /* GetMyFavouriteArticleApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6B81CB1ED815EC001DB05F /* GetMyFavouriteArticleApi.m */; };
+		1E6B81CF1ED81601001DB05F /* GetMyFavouriteFmListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6B81CE1ED81601001DB05F /* GetMyFavouriteFmListApi.m */; };
+		1E6B81D41ED831FF001DB05F /* MyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6B81D31ED831FF001DB05F /* MyCollectionCell.m */; };
+		1E6B81D71ED83856001DB05F /* MyCollectionArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6B81D61ED83856001DB05F /* MyCollectionArticleModel.m */; };
+		1E6B81DA1ED84E95001DB05F /* MyCollectionVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6B81D91ED84E95001DB05F /* MyCollectionVideoModel.m */; };
 		1E71B0291EC1975800DDEDDB /* SearchFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B0281EC1975800DDEDDB /* SearchFriendDetailViewController.m */; };
 		1E71B02C1EC19F7D00DDEDDB /* SearchFriendResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B02B1EC19F7D00DDEDDB /* SearchFriendResultViewController.m */; };
 		1E71B0391EC2E41100DDEDDB /* AgeRangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B0381EC2E41100DDEDDB /* AgeRangeView.m */; };
@@ -155,6 +161,26 @@
 		1E71B1361ECC08EE00DDEDDB /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E71B1021ECC08EE00DDEDDB /* UMSocialSDKResources.bundle */; };
 		1E71B1371ECC08EE00DDEDDB /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E71B1031ECC08EE00DDEDDB /* UShareUI.framework */; };
 		1E71B13A1ECC27EE00DDEDDB /* ZMShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1391ECC27EE00DDEDDB /* ZMShareManager.m */; };
+		1E71B1431ECD865D00DDEDDB /* CreateChatRoomApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1421ECD865D00DDEDDB /* CreateChatRoomApi.m */; };
+		1E71B1461ECD877300DDEDDB /* GetRoomTokenApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1451ECD877300DDEDDB /* GetRoomTokenApi.m */; };
+		1E71B14A1ECD979000DDEDDB /* CreateChatRoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1491ECD979000DDEDDB /* CreateChatRoomModel.m */; };
+		1E71B1571ECED93700DDEDDB /* SearchFriendByPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1561ECED93700DDEDDB /* SearchFriendByPhone.m */; };
+		1E71B15A1ECEE2D500DDEDDB /* FriendMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1591ECEE2D500DDEDDB /* FriendMsgModel.m */; };
+		1E71B15D1ED2B0B100DDEDDB /* GetFriendsListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B15C1ED2B0B100DDEDDB /* GetFriendsListApi.m */; };
+		1E71B1601ED2C28500DDEDDB /* AddFriendApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B15F1ED2C28500DDEDDB /* AddFriendApi.m */; };
+		1E71B1631ED2D79600DDEDDB /* GetMyMsgApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1621ED2D79600DDEDDB /* GetMyMsgApi.m */; };
+		1E71B1661ED2E16000DDEDDB /* MyMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1651ED2E16000DDEDDB /* MyMsgModel.m */; };
+		1E71B1691ED2EDA900DDEDDB /* AcceptFriendApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1681ED2EDA900DDEDDB /* AcceptFriendApi.m */; };
+		1E71B16C1ED3D79200DDEDDB /* FriendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B16B1ED3D79200DDEDDB /* FriendListModel.m */; };
+		1E71B16F1ED3E86000DDEDDB /* GetFriendMsgApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B16E1ED3E86000DDEDDB /* GetFriendMsgApi.m */; };
+		1E71B1721ED43F8500DDEDDB /* CominRoomApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1711ED43F8500DDEDDB /* CominRoomApi.m */; };
+		1E71B1781ED4404800DDEDDB /* PushNotiToUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1771ED4404800DDEDDB /* PushNotiToUsersApi.m */; };
+		1E71B17B1ED513CD00DDEDDB /* LeaveRoomApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B17A1ED513CD00DDEDDB /* LeaveRoomApi.m */; };
+		1E71B17F1ED584B700DDEDDB /* GetPsyTestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B17E1ED584B700DDEDDB /* GetPsyTestApi.m */; };
+		1E71B1831ED586AD00DDEDDB /* PsyTestListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1821ED586AD00DDEDDB /* PsyTestListModel.m */; };
+		1E71B1861ED58A6000DDEDDB /* PsyTestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1851ED58A6000DDEDDB /* PsyTestDetailViewController.m */; };
+		1E71B1891ED59BB100DDEDDB /* MyPsyTestListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B1881ED59BB100DDEDDB /* MyPsyTestListApi.m */; };
+		1E71B18C1ED6D46E00DDEDDB /* GetMyFriendListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71B18B1ED6D46E00DDEDDB /* GetMyFriendListApi.m */; };
 		1EA87B461EA9A1690064C2B2 /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA87B2C1EA9A1690064C2B2 /* CircleProgressView.m */; };
 		1EA87B481EA9A1690064C2B2 /* FUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA87B2F1EA9A1690064C2B2 /* FUCamera.m */; };
 		1EA87B491EA9A1690064C2B2 /* FURecordEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA87B311EA9A1690064C2B2 /* FURecordEncoder.m */; };
@@ -494,6 +520,7 @@
 		5FE6BCC71ECC78B800A2852F /* GetFmCommentListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCC61ECC78B800A2852F /* GetFmCommentListApi.m */; };
 		5FE6BCCB1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCCA1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m */; };
 		5FE6BCCE1ECD38E300A2852F /* ActivityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCCD1ECD38E300A2852F /* ActivityListModel.m */; };
+<<<<<<< HEAD
 		5FE6BD041ECD7DE200A2852F /* ActivityChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BD031ECD7DE200A2852F /* ActivityChooseCell.m */; };
 		5FE6BD071ECD93A600A2852F /* GetOfflineCourseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BD061ECD93A600A2852F /* GetOfflineCourseApi.m */; };
 		5FE6BD0A1ECD946300A2852F /* ActivityTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BD091ECD946300A2852F /* ActivityTimeTableViewController.m */; };
@@ -549,6 +576,8 @@
 		5FE6BDB61ED7F7F400A2852F /* ZimuRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDB51ED7F7F400A2852F /* ZimuRefreshGifHeader.m */; };
 		5FE6BDB91ED8032100A2852F /* QuestionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */; };
 		5FE6BDBC1ED84DCA00A2852F /* QueryMyQuestionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDBB1ED84DCA00A2852F /* QueryMyQuestionApi.m */; };
+=======
+>>>>>>> origin/master
 		5FEA2A931E8B496600405F75 /* CityCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA2A921E8B496600405F75 /* CityCourseViewController.m */; };
 		5FEA2A961E8B4A0900405F75 /* CityCourseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA2A951E8B4A0900405F75 /* CityCourseTableView.m */; };
 		5FEA2A9A1E8B4B8300405F75 /* CityCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA2A981E8B4B8300405F75 /* CityCourseCell.m */; };
@@ -769,6 +798,18 @@
 		1E1763011EC1562800292DAC /* SearchFriendsFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendsFriendCell.h; sourceTree = "<group>"; };
 		1E1763021EC1562800292DAC /* SearchFriendsFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendsFriendCell.m; sourceTree = "<group>"; };
 		1E1763031EC1562800292DAC /* SearchFriendsFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFriendsFriendCell.xib; sourceTree = "<group>"; };
+		1E6B81C71ED815D5001DB05F /* GetMyFavouriteVideoListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyFavouriteVideoListApi.h; sourceTree = "<group>"; };
+		1E6B81C81ED815D5001DB05F /* GetMyFavouriteVideoListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyFavouriteVideoListApi.m; sourceTree = "<group>"; };
+		1E6B81CA1ED815EC001DB05F /* GetMyFavouriteArticleApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyFavouriteArticleApi.h; sourceTree = "<group>"; };
+		1E6B81CB1ED815EC001DB05F /* GetMyFavouriteArticleApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyFavouriteArticleApi.m; sourceTree = "<group>"; };
+		1E6B81CD1ED81601001DB05F /* GetMyFavouriteFmListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyFavouriteFmListApi.h; sourceTree = "<group>"; };
+		1E6B81CE1ED81601001DB05F /* GetMyFavouriteFmListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyFavouriteFmListApi.m; sourceTree = "<group>"; };
+		1E6B81D21ED831FF001DB05F /* MyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionCell.h; sourceTree = "<group>"; };
+		1E6B81D31ED831FF001DB05F /* MyCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionCell.m; sourceTree = "<group>"; };
+		1E6B81D51ED83856001DB05F /* MyCollectionArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionArticleModel.h; sourceTree = "<group>"; };
+		1E6B81D61ED83856001DB05F /* MyCollectionArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionArticleModel.m; sourceTree = "<group>"; };
+		1E6B81D81ED84E95001DB05F /* MyCollectionVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionVideoModel.h; sourceTree = "<group>"; };
+		1E6B81D91ED84E95001DB05F /* MyCollectionVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionVideoModel.m; sourceTree = "<group>"; };
 		1E71B0271EC1975800DDEDDB /* SearchFriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendDetailViewController.h; sourceTree = "<group>"; };
 		1E71B0281EC1975800DDEDDB /* SearchFriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendDetailViewController.m; sourceTree = "<group>"; };
 		1E71B02A1EC19F7D00DDEDDB /* SearchFriendResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendResultViewController.h; sourceTree = "<group>"; };
@@ -931,6 +972,46 @@
 		1E71B1031ECC08EE00DDEDDB /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
 		1E71B1381ECC27EE00DDEDDB /* ZMShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMShareManager.h; sourceTree = "<group>"; };
 		1E71B1391ECC27EE00DDEDDB /* ZMShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMShareManager.m; sourceTree = "<group>"; };
+		1E71B1411ECD865D00DDEDDB /* CreateChatRoomApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateChatRoomApi.h; sourceTree = "<group>"; };
+		1E71B1421ECD865D00DDEDDB /* CreateChatRoomApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateChatRoomApi.m; sourceTree = "<group>"; };
+		1E71B1441ECD877300DDEDDB /* GetRoomTokenApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRoomTokenApi.h; sourceTree = "<group>"; };
+		1E71B1451ECD877300DDEDDB /* GetRoomTokenApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetRoomTokenApi.m; sourceTree = "<group>"; };
+		1E71B1481ECD979000DDEDDB /* CreateChatRoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateChatRoomModel.h; sourceTree = "<group>"; };
+		1E71B1491ECD979000DDEDDB /* CreateChatRoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateChatRoomModel.m; sourceTree = "<group>"; };
+		1E71B1551ECED93700DDEDDB /* SearchFriendByPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendByPhone.h; sourceTree = "<group>"; };
+		1E71B1561ECED93700DDEDDB /* SearchFriendByPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendByPhone.m; sourceTree = "<group>"; };
+		1E71B1581ECEE2D500DDEDDB /* FriendMsgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendMsgModel.h; sourceTree = "<group>"; };
+		1E71B1591ECEE2D500DDEDDB /* FriendMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendMsgModel.m; sourceTree = "<group>"; };
+		1E71B15B1ED2B0B100DDEDDB /* GetFriendsListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFriendsListApi.h; sourceTree = "<group>"; };
+		1E71B15C1ED2B0B100DDEDDB /* GetFriendsListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFriendsListApi.m; sourceTree = "<group>"; };
+		1E71B15E1ED2C28500DDEDDB /* AddFriendApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendApi.h; sourceTree = "<group>"; };
+		1E71B15F1ED2C28500DDEDDB /* AddFriendApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendApi.m; sourceTree = "<group>"; };
+		1E71B1611ED2D79600DDEDDB /* GetMyMsgApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyMsgApi.h; sourceTree = "<group>"; };
+		1E71B1621ED2D79600DDEDDB /* GetMyMsgApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyMsgApi.m; sourceTree = "<group>"; };
+		1E71B1641ED2E16000DDEDDB /* MyMsgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMsgModel.h; sourceTree = "<group>"; };
+		1E71B1651ED2E16000DDEDDB /* MyMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMsgModel.m; sourceTree = "<group>"; };
+		1E71B1671ED2EDA900DDEDDB /* AcceptFriendApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptFriendApi.h; sourceTree = "<group>"; };
+		1E71B1681ED2EDA900DDEDDB /* AcceptFriendApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptFriendApi.m; sourceTree = "<group>"; };
+		1E71B16A1ED3D79200DDEDDB /* FriendListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListModel.h; sourceTree = "<group>"; };
+		1E71B16B1ED3D79200DDEDDB /* FriendListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListModel.m; sourceTree = "<group>"; };
+		1E71B16D1ED3E86000DDEDDB /* GetFriendMsgApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFriendMsgApi.h; sourceTree = "<group>"; };
+		1E71B16E1ED3E86000DDEDDB /* GetFriendMsgApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFriendMsgApi.m; sourceTree = "<group>"; };
+		1E71B1701ED43F8500DDEDDB /* CominRoomApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CominRoomApi.h; sourceTree = "<group>"; };
+		1E71B1711ED43F8500DDEDDB /* CominRoomApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CominRoomApi.m; sourceTree = "<group>"; };
+		1E71B1761ED4404800DDEDDB /* PushNotiToUsersApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotiToUsersApi.h; sourceTree = "<group>"; };
+		1E71B1771ED4404800DDEDDB /* PushNotiToUsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotiToUsersApi.m; sourceTree = "<group>"; };
+		1E71B1791ED513CD00DDEDDB /* LeaveRoomApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaveRoomApi.h; sourceTree = "<group>"; };
+		1E71B17A1ED513CD00DDEDDB /* LeaveRoomApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaveRoomApi.m; sourceTree = "<group>"; };
+		1E71B17D1ED584B700DDEDDB /* GetPsyTestApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPsyTestApi.h; sourceTree = "<group>"; };
+		1E71B17E1ED584B700DDEDDB /* GetPsyTestApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPsyTestApi.m; sourceTree = "<group>"; };
+		1E71B1811ED586AD00DDEDDB /* PsyTestListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PsyTestListModel.h; sourceTree = "<group>"; };
+		1E71B1821ED586AD00DDEDDB /* PsyTestListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PsyTestListModel.m; sourceTree = "<group>"; };
+		1E71B1841ED58A6000DDEDDB /* PsyTestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PsyTestDetailViewController.h; sourceTree = "<group>"; };
+		1E71B1851ED58A6000DDEDDB /* PsyTestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PsyTestDetailViewController.m; sourceTree = "<group>"; };
+		1E71B1871ED59BB100DDEDDB /* MyPsyTestListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPsyTestListApi.h; sourceTree = "<group>"; };
+		1E71B1881ED59BB100DDEDDB /* MyPsyTestListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPsyTestListApi.m; sourceTree = "<group>"; };
+		1E71B18A1ED6D46E00DDEDDB /* GetMyFriendListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyFriendListApi.h; sourceTree = "<group>"; };
+		1E71B18B1ED6D46E00DDEDDB /* GetMyFriendListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyFriendListApi.m; sourceTree = "<group>"; };
 		1EA87B2B1EA9A1690064C2B2 /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
 		1EA87B2C1EA9A1690064C2B2 /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 		1EA87B2E1EA9A1690064C2B2 /* FUCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUCamera.h; sourceTree = "<group>"; };
@@ -1550,6 +1631,7 @@
 		5FE6BCCA1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAppOfflineCourseListApi.m; sourceTree = "<group>"; };
 		5FE6BCCC1ECD38E300A2852F /* ActivityListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListModel.h; sourceTree = "<group>"; };
 		5FE6BCCD1ECD38E300A2852F /* ActivityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListModel.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		5FE6BD021ECD7DE200A2852F /* ActivityChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityChooseCell.h; sourceTree = "<group>"; };
 		5FE6BD031ECD7DE200A2852F /* ActivityChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityChooseCell.m; sourceTree = "<group>"; };
 		5FE6BD051ECD93A600A2852F /* GetOfflineCourseApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOfflineCourseApi.h; sourceTree = "<group>"; };
@@ -1649,6 +1731,8 @@
 		5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleView.m; sourceTree = "<group>"; };
 		5FE6BDBA1ED84DCA00A2852F /* QueryMyQuestionApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryMyQuestionApi.h; sourceTree = "<group>"; };
 		5FE6BDBB1ED84DCA00A2852F /* QueryMyQuestionApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryMyQuestionApi.m; sourceTree = "<group>"; };
+=======
+>>>>>>> origin/master
 		5FEA2A911E8B496600405F75 /* CityCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCourseViewController.h; sourceTree = "<group>"; };
 		5FEA2A921E8B496600405F75 /* CityCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCourseViewController.m; sourceTree = "<group>"; };
 		5FEA2A941E8B4A0900405F75 /* CityCourseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCourseTableView.h; sourceTree = "<group>"; };
@@ -2010,6 +2094,7 @@
 		1E0FF3E91EAE0461000156B5 /* FindFriends--找朋友 */ = {
 			isa = PBXGroup;
 			children = (
+				1E71B1471ECD974F00DDEDDB /* Model */,
 				1E0FF3EB1EAE0461000156B5 /* ViewController */,
 				1E0FF3EA1EAE0461000156B5 /* VIew */,
 			);
@@ -2121,6 +2206,19 @@
 				1E71B04A1EC5BD5B00DDEDDB /* SearchFriendMyMsgCell.xib */,
 			);
 			name = "添加好友";
+			sourceTree = "<group>";
+		};
+		1E6B81C61ED815B2001DB05F /* MyColection */ = {
+			isa = PBXGroup;
+			children = (
+				1E6B81C71ED815D5001DB05F /* GetMyFavouriteVideoListApi.h */,
+				1E6B81C81ED815D5001DB05F /* GetMyFavouriteVideoListApi.m */,
+				1E6B81CA1ED815EC001DB05F /* GetMyFavouriteArticleApi.h */,
+				1E6B81CB1ED815EC001DB05F /* GetMyFavouriteArticleApi.m */,
+				1E6B81CD1ED81601001DB05F /* GetMyFavouriteFmListApi.h */,
+				1E6B81CE1ED81601001DB05F /* GetMyFavouriteFmListApi.m */,
+			);
+			name = MyColection;
 			sourceTree = "<group>";
 		};
 		1E71B0261EC1973100DDEDDB /* 添加好友 */ = {
@@ -2557,6 +2655,72 @@
 			path = UMSocialUI;
 			sourceTree = "<group>";
 		};
+		1E71B1401ECD864E00DDEDDB /* 找朋友Api */ = {
+			isa = PBXGroup;
+			children = (
+				1E71B1411ECD865D00DDEDDB /* CreateChatRoomApi.h */,
+				1E71B1421ECD865D00DDEDDB /* CreateChatRoomApi.m */,
+				1E71B1441ECD877300DDEDDB /* GetRoomTokenApi.h */,
+				1E71B1451ECD877300DDEDDB /* GetRoomTokenApi.m */,
+				1E71B1551ECED93700DDEDDB /* SearchFriendByPhone.h */,
+				1E71B1561ECED93700DDEDDB /* SearchFriendByPhone.m */,
+				1E71B15B1ED2B0B100DDEDDB /* GetFriendsListApi.h */,
+				1E71B15C1ED2B0B100DDEDDB /* GetFriendsListApi.m */,
+				1E71B15E1ED2C28500DDEDDB /* AddFriendApi.h */,
+				1E71B15F1ED2C28500DDEDDB /* AddFriendApi.m */,
+				1E71B1611ED2D79600DDEDDB /* GetMyMsgApi.h */,
+				1E71B1621ED2D79600DDEDDB /* GetMyMsgApi.m */,
+				1E71B1671ED2EDA900DDEDDB /* AcceptFriendApi.h */,
+				1E71B1681ED2EDA900DDEDDB /* AcceptFriendApi.m */,
+				1E71B16D1ED3E86000DDEDDB /* GetFriendMsgApi.h */,
+				1E71B16E1ED3E86000DDEDDB /* GetFriendMsgApi.m */,
+				1E71B1701ED43F8500DDEDDB /* CominRoomApi.h */,
+				1E71B1711ED43F8500DDEDDB /* CominRoomApi.m */,
+				1E71B1761ED4404800DDEDDB /* PushNotiToUsersApi.h */,
+				1E71B1771ED4404800DDEDDB /* PushNotiToUsersApi.m */,
+				1E71B1791ED513CD00DDEDDB /* LeaveRoomApi.h */,
+				1E71B17A1ED513CD00DDEDDB /* LeaveRoomApi.m */,
+				1E71B18A1ED6D46E00DDEDDB /* GetMyFriendListApi.h */,
+				1E71B18B1ED6D46E00DDEDDB /* GetMyFriendListApi.m */,
+			);
+			path = "找朋友Api";
+			sourceTree = "<group>";
+		};
+		1E71B1471ECD974F00DDEDDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E71B1481ECD979000DDEDDB /* CreateChatRoomModel.h */,
+				1E71B1491ECD979000DDEDDB /* CreateChatRoomModel.m */,
+				1E71B1581ECEE2D500DDEDDB /* FriendMsgModel.h */,
+				1E71B1591ECEE2D500DDEDDB /* FriendMsgModel.m */,
+				1E71B1641ED2E16000DDEDDB /* MyMsgModel.h */,
+				1E71B1651ED2E16000DDEDDB /* MyMsgModel.m */,
+				1E71B16A1ED3D79200DDEDDB /* FriendListModel.h */,
+				1E71B16B1ED3D79200DDEDDB /* FriendListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E71B17C1ED5848600DDEDDB /* 心理测试 */ = {
+			isa = PBXGroup;
+			children = (
+				1E71B17D1ED584B700DDEDDB /* GetPsyTestApi.h */,
+				1E71B17E1ED584B700DDEDDB /* GetPsyTestApi.m */,
+				1E71B1871ED59BB100DDEDDB /* MyPsyTestListApi.h */,
+				1E71B1881ED59BB100DDEDDB /* MyPsyTestListApi.m */,
+			);
+			name = "心理测试";
+			sourceTree = "<group>";
+		};
+		1E71B1801ED5869A00DDEDDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E71B1811ED586AD00DDEDDB /* PsyTestListModel.h */,
+				1E71B1821ED586AD00DDEDDB /* PsyTestListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1EA87B2A1EA9A1690064C2B2 /* DemoCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -2813,6 +2977,8 @@
 				5F574D4C1EADE810007648D0 /* SubscribeFreeFMCell.h */,
 				5F574D4D1EADE810007648D0 /* SubscribeFreeFMCell.m */,
 				5F574D4E1EADE810007648D0 /* SubscribeFreeFMCell.xib */,
+				1E6B81D21ED831FF001DB05F /* MyCollectionCell.h */,
+				1E6B81D31ED831FF001DB05F /* MyCollectionCell.m */,
 			);
 			path = "收藏";
 			sourceTree = "<group>";
@@ -3182,9 +3348,17 @@
 				5F574D9D1EAF894E007648D0 /* GetHomeSixImageApi.m */,
 				5FF4F2E81EB087A100977045 /* GetParentSchoolListApi.h */,
 				5FF4F2E91EB087A100977045 /* GetParentSchoolListApi.m */,
+				1E6B81C61ED815B2001DB05F /* MyColection */,
+				1E71B17C1ED5848600DDEDDB /* 心理测试 */,
 				5FE6BCC81ECD369400A2852F /* Activity */,
 				5FE6BCC41ECC789600A2852F /* FMApi */,
+<<<<<<< HEAD
 				5FE6BD271ECEEFFB00A2852F /* ArticleApi */,
+=======
+				1E71B1401ECD864E00DDEDDB /* 找朋友Api */,
+				5FBB268C1EC4439400C01EC8 /* GetArticleByPrimaryKeyApi.h */,
+				5FBB268D1EC4439400C01EC8 /* GetArticleByPrimaryKeyApi.m */,
+>>>>>>> origin/master
 				5F2CB4621ECBE32700A66B39 /* VideoApi */,
 				5F4833891EB3360400481407 /* InsertQuestionApi.h */,
 				5F48338A1EB3360400481407 /* InsertQuestionApi.m */,
@@ -3955,6 +4129,7 @@
 			name = Activity;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		5FE6BD231ECEE32800A2852F /* Article--文章 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4081,6 +4256,8 @@
 			name = "下拉刷新";
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> origin/master
 		5FEA2A8F1E8B494500405F75 /* CityCourse--一城一课 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4139,8 +4316,15 @@
 				5F0A9B7C1EBC745B0066F7BE /* ProvinceModel.m */,
 				5F0A9B7E1EBC74BE0066F7BE /* CityModel.h */,
 				5F0A9B7F1EBC74BE0066F7BE /* CityModel.m */,
+<<<<<<< HEAD
 				5FE6BD981ED6828200A2852F /* OrderModel.h */,
 				5FE6BD991ED6828200A2852F /* OrderModel.m */,
+=======
+				1E6B81D51ED83856001DB05F /* MyCollectionArticleModel.h */,
+				1E6B81D61ED83856001DB05F /* MyCollectionArticleModel.m */,
+				1E6B81D81ED84E95001DB05F /* MyCollectionVideoModel.h */,
+				1E6B81D91ED84E95001DB05F /* MyCollectionVideoModel.m */,
+>>>>>>> origin/master
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4172,7 +4356,7 @@
 			isa = PBXGroup;
 			children = (
 				5FF4F3171EB0C6BD00977045 /* Controller */,
-				5FF4F3181EB0C6BD00977045 /* Model */,
+				1E71B1801ED5869A00DDEDDB /* Model */,
 				5FF4F3191EB0C6BD00977045 /* View */,
 			);
 			path = "Evaluation--心理评测";
@@ -4183,15 +4367,10 @@
 			children = (
 				5FF4F31A1EB0C6DB00977045 /* EvaluationViewController.h */,
 				5FF4F31B1EB0C6DB00977045 /* EvaluationViewController.m */,
+				1E71B1841ED58A6000DDEDDB /* PsyTestDetailViewController.h */,
+				1E71B1851ED58A6000DDEDDB /* PsyTestDetailViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		5FF4F3181EB0C6BD00977045 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		5FF4F3191EB0C6BD00977045 /* View */ = {
@@ -4546,9 +4725,11 @@
 				1E71B03C1EC2F82600DDEDDB /* FriendProvinceTableViewController.m in Sources */,
 				5FE6BDB61ED7F7F400A2852F /* ZimuRefreshGifHeader.m in Sources */,
 				1EF3F9A11EB3146C0002D7EE /* LoginViewController.m in Sources */,
+				1E71B1601ED2C28500DDEDDB /* AddFriendApi.m in Sources */,
 				1EF3F9A21EB3146C0002D7EE /* ZMTabBar.m in Sources */,
 				1EF3F9A31EB3146C0002D7EE /* HomeFMModel.m in Sources */,
 				1EF3F9A41EB3146C0002D7EE /* MineViewController.m in Sources */,
+				1E71B1691ED2EDA900DDEDDB /* AcceptFriendApi.m in Sources */,
 				1EF3F99F1EB314620002D7EE /* NewLoginViewController.m in Sources */,
 				5FBB26851EC43E2800C01EC8 /* FMDetailModel.m in Sources */,
 				5F8CB5961EC190CF00541A57 /* ActivityIntroCell.m in Sources */,
@@ -4573,11 +4754,13 @@
 				5F574D6F1EADE83F007648D0 /* BrowsFMViewController.m in Sources */,
 				5F9CE2DB1E84EFB700424352 /* SearchHeaderCell.m in Sources */,
 				18AC3B8C1E729CD2007EE823 /* TADotView.h in Sources */,
+				1E6B81D71ED83856001DB05F /* MyCollectionArticleModel.m in Sources */,
 				18AC3B8D1E729CD2007EE823 /* TAPageControl.h in Sources */,
 				5FBB26821EC4386100C01EC8 /* ArticleDetailModel.m in Sources */,
 				5F574D5C1EADE810007648D0 /* SubscribeFreeFMCell.m in Sources */,
 				5F7EFA941EBB203800EB2F68 /* EditSignatrueApi.m in Sources */,
 				5F4833A91EB85E4000481407 /* EditNickNameTableViewController.m in Sources */,
+				1E71B1461ECD877300DDEDDB /* GetRoomTokenApi.m in Sources */,
 				5F4833711EB189C000481407 /* OrderDetailTableView.m in Sources */,
 				5F5665C81E9E93610050AD29 /* CityCourseDetailInfoCellLayoutFrame.m in Sources */,
 				1E1762F81EC0432500292DAC /* PersonalFunctionView.m in Sources */,
@@ -4614,17 +4797,21 @@
 				1E0FF3D91EA9F28B000156B5 /* PLMediaViewerPKViewController.m in Sources */,
 				5FE6BD301ECF1E2C00A2852F /* InsertFmCommentApi.m in Sources */,
 				5FBB26A41EC47E1800C01EC8 /* SLDTextCellLayoutFrame.m in Sources */,
+				1E71B17F1ED584B700DDEDDB /* GetPsyTestApi.m in Sources */,
 				5FF4F2F51EB08DEF00977045 /* ParentSchoolListModel.m in Sources */,
 				5F8CB5871EC0698E00541A57 /* ActivityDetailTableView.m in Sources */,
 				5FCFF1D81EAD9BB2003788A0 /* CourseHotListView.m in Sources */,
 				18AC3B931E729CD3007EE823 /* RegexKitLite.h in Sources */,
 				5F4833C81EB8912200481407 /* EditSexTableViewController.m in Sources */,
+				1E71B1571ECED93700DDEDDB /* SearchFriendByPhone.m in Sources */,
 				5F4833671EB1897400481407 /* ProductInfoCell.m in Sources */,
 				18AC3B941E729CD3007EE823 /* Common.h in Sources */,
 				1E1762E91EBC4F1C00292DAC /* FriendsMsgViewController.m in Sources */,
 				18AC3B951E729CD3007EE823 /* ZimuPrefixHeader.pch in Sources */,
+				1E71B16C1ED3D79200DDEDDB /* FriendListModel.m in Sources */,
 				18AC3B961E729CD3007EE823 /* NetWorkStatuesManager.h in Sources */,
 				5F2CB46B1ECBE41A00A66B39 /* InsertVideoCommentApi.m in Sources */,
+				1E6B81C91ED815D5001DB05F /* GetMyFavouriteVideoListApi.m in Sources */,
 				5F48337A1EB2D7DD00481407 /* ExpertListViewController.m in Sources */,
 				5F574D9E1EAF894E007648D0 /* GetHomeSixImageApi.m in Sources */,
 				5F5EB66E1E9CB0B700503455 /* YXSlideBarItem.m in Sources */,
@@ -4665,9 +4852,14 @@
 				5FCFF1F61EADA07D003788A0 /* AnswerDetailViewController.m in Sources */,
 				5FCFF0D81EA89AB0003788A0 /* QuestionViewController.m in Sources */,
 				5F8CB5741EC0155300541A57 /* InsertCommentTableViewController.m in Sources */,
+				1E71B15D1ED2B0B100DDEDDB /* GetFriendsListApi.m in Sources */,
 				5F9C3CDF1E62CBA0009659E4 /* UIView+ViewController.m in Sources */,
 				5F4833B31EB85F9400481407 /* EditNickNameCell.m in Sources */,
+<<<<<<< HEAD
 				5FE6BD421ED2875C00A2852F /* InsertArticleCollectionApi.m in Sources */,
+=======
+				1E71B1661ED2E16000DDEDDB /* MyMsgModel.m in Sources */,
+>>>>>>> origin/master
 				5F8CB5711EC008A600541A57 /* GetMyInfoAPI.m in Sources */,
 				5F9C3CFF1E63C0CB009659E4 /* TAAbstractDotView.m in Sources */,
 				5F4833591EB182DC00481407 /* OrderDetailViewController.m in Sources */,
@@ -4677,6 +4869,7 @@
 				5F9C3CAF1E5EB9FA009659E4 /* BaseViewController.m in Sources */,
 				5FCFF11C1EA9B7A6003788A0 /* TagCollectionView.m in Sources */,
 				5F4833E91EB9B25200481407 /* QuestionUserCommentModel.m in Sources */,
+				1E71B15A1ECEE2D500DDEDDB /* FriendMsgModel.m in Sources */,
 				5F2D62451E77D47400B038A5 /* ExamFreeVideoCell.m in Sources */,
 				5FCFF1D61EAD9BB2003788A0 /* CourseHotListCell.m in Sources */,
 				5FF4F2F81EB0985800977045 /* OrderViewController.m in Sources */,
@@ -4704,6 +4897,7 @@
 				5F0A9B711EBC710B0066F7BE /* EditProvinceTableViewController.m in Sources */,
 				5FE6BD941ED6783B00A2852F /* QueryOffLineCourseOrderDetailApi.m in Sources */,
 				5F9F40001ECAB0F4004D13F7 /* FMIntroCell.m in Sources */,
+				1E6B81DA1ED84E95001DB05F /* MyCollectionVideoModel.m in Sources */,
 				5F574D7E1EADFFE5007648D0 /* MineCollectionViewCell.m in Sources */,
 				5FABE6111E89776000FE8A33 /* HomeBannerModel.m in Sources */,
 				5F8EDD261E6D4F64000FC3E0 /* ExpertTableViewCell.m in Sources */,
@@ -4723,6 +4917,7 @@
 				5F5665C41E9E8ED30050AD29 /* CityCourseDetailInfoCell.m in Sources */,
 				5F4833CB1EB96AA900481407 /* EditAgeTableViewController.m in Sources */,
 				5F9C3C9C1E5EB6A4009659E4 /* UIImage+ZMExtension.m in Sources */,
+				1E6B81CC1ED815EC001DB05F /* GetMyFavouriteArticleApi.m in Sources */,
 				5FCFF0BF1EA7406F003788A0 /* DeviceMessageModel.m in Sources */,
 				1EF3F9A91EB839630002D7EE /* ZM_ChatRoomAlertViewController.m in Sources */,
 				5FEA2A961E8B4A0900405F75 /* CityCourseTableView.m in Sources */,
@@ -4766,6 +4961,7 @@
 				18AC3B511E6FA075007EE823 /* ASValueTrackingSlider.m in Sources */,
 				18AC3B5B1E6FA075007EE823 /* ZFPlayerModel.m in Sources */,
 				5F574D931EAEEE07007648D0 /* LoginView.m in Sources */,
+				1E71B1781ED4404800DDEDDB /* PushNotiToUsersApi.m in Sources */,
 				5F9C3D041E63C0CB009659E4 /* SDCycleScrollView.m in Sources */,
 				5F4833F21EBB1FA600481407 /* EditAgeApi.m in Sources */,
 				1E1762DD1EBAF0A900292DAC /* ZMChatAlertViewController.m in Sources */,
@@ -4793,6 +4989,7 @@
 				5FDCB44E1E7A77DF003914D1 /* QANiceQuestionCell.m in Sources */,
 				5FE6BD0A1ECD946300A2852F /* ActivityTimeTableViewController.m in Sources */,
 				5FCFF0DB1EA8A705003788A0 /* QuestionResultTableView.m in Sources */,
+				1E71B1631ED2D79600DDEDDB /* GetMyMsgApi.m in Sources */,
 				5F2D62521E77DFDA00B038A5 /* ExamFreeFMCell.m in Sources */,
 				5FCFF05F1EA707E8003788A0 /* ActivityViewController.m in Sources */,
 				5F574D971EAF5763007648D0 /* MySecretCell.m in Sources */,
@@ -4812,12 +5009,14 @@
 				5F48335D1EB1891F00481407 /* OrderTypeCell.m in Sources */,
 				18AC3B501E6FA075007EE823 /* ASValuePopUpView.m in Sources */,
 				5FCFF1271EA9ECEC003788A0 /* ConfuseTagCell.m in Sources */,
+				1E71B1721ED43F8500DDEDDB /* CominRoomApi.m in Sources */,
 				1E71B03F1EC2F83700DDEDDB /* FriendCityTableViewController.m in Sources */,
 				18AC3B531E6FA075007EE823 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				5F48338B1EB3360400481407 /* InsertQuestionApi.m in Sources */,
 				5FF4F2FB1EB09A6D00977045 /* AllOrderTableViewController.m in Sources */,
 				5FCFEF051EA47777003788A0 /* SecondViewController.m in Sources */,
 				5FE6BCA31ECC318900A2852F /* ItemsView.m in Sources */,
+				1E6B81D41ED831FF001DB05F /* MyCollectionCell.m in Sources */,
 				18AC3B571E6FA075007EE823 /* MMMaterialDesignSpinner.m in Sources */,
 				5FE6BD861ED52A0B00A2852F /* AddFeedbackApi.m in Sources */,
 				5FCFF1131EA9A360003788A0 /* ConfuseDetailView.m in Sources */,
@@ -4834,6 +5033,7 @@
 				5FE200821E66D0100021DD27 /* BooksSearchTableViewController.m in Sources */,
 				5F574D581EADE810007648D0 /* BrowsArticleCell.m in Sources */,
 				1E1763041EC1562800292DAC /* SearchFriendsFriendCell.m in Sources */,
+				1E71B1431ECD865D00DDEDDB /* CreateChatRoomApi.m in Sources */,
 				5FF4F3141EB0BB7400977045 /* NotPayOrderCell.m in Sources */,
 				5F8CB57B1EC047F200541A57 /* ActivityDetailViewController.m in Sources */,
 				5F8EDD301E6E7EED000FC3E0 /* WXLabel.m in Sources */,
@@ -4858,6 +5058,7 @@
 				5F8EDD331E6E8078000FC3E0 /* RegexKitLite.m in Sources */,
 				5FF4F31F1EB0C7DF00977045 /* EvaluationListTableView.m in Sources */,
 				5FCFF0CB1EA85C40003788A0 /* VideoCourseCollectionViewCell.m in Sources */,
+				1E71B1831ED586AD00DDEDDB /* PsyTestListModel.m in Sources */,
 				5FE2008B1E66D06A0021DD27 /* EvaluationSearchTableViewController.m in Sources */,
 				5FBB26781EC332D600C01EC8 /* CareQuestionApi.m in Sources */,
 				5FEA2AB71E8CA3F000405F75 /* FreeCertificateTableView.m in Sources */,
@@ -4866,6 +5067,7 @@
 				5FE6BD4B1ED2E1AA00A2852F /* UsingHelpViewController.m in Sources */,
 				1E1762D41EB9D67D00292DAC /* FriendSearchViewController.m in Sources */,
 				5F9C3CEB1E62D17C009659E4 /* UIView+ZMExtension.m in Sources */,
+				1E71B14A1ECD979000DDEDDB /* CreateChatRoomModel.m in Sources */,
 				18AC3B561E6FA075007EE823 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				18AC3B6D1E71279A007EE823 /* NetWorkStatuesManager.m in Sources */,
 				1E0FF40D1EB2E026000156B5 /* ZM_SelectSexView.m in Sources */,
@@ -4879,6 +5081,7 @@
 				5F8CB58A1EC0789C00541A57 /* ActivityProgressCell.m in Sources */,
 				5FF4F31C1EB0C6DB00977045 /* EvaluationViewController.m in Sources */,
 				1E1444451EA7105C00FCDE02 /* LovelyFaceViewController.m in Sources */,
+				1E71B16F1ED3E86000DDEDDB /* GetFriendMsgApi.m in Sources */,
 				5FDCB43F1E7A6A37003914D1 /* QuestionAnswerViewController.m in Sources */,
 				5FCFEF0B1EA47787003788A0 /* HomeCollectionView.m in Sources */,
 				5F56654E1E9E235C0050AD29 /* CityCourseCellLayoutFrame.m in Sources */,
@@ -4904,10 +5107,16 @@
 				18AC3B5A1E6FA075007EE823 /* ZFPlayerControlView.m in Sources */,
 				18AC3B5C1E6FA075007EE823 /* ZFPlayerView.m in Sources */,
 				5FCFF1B51EAD9BB2003788A0 /* FindDailySelectionViewController.m in Sources */,
+				1E71B1861ED58A6000DDEDDB /* PsyTestDetailViewController.m in Sources */,
+				1E71B17B1ED513CD00DDEDDB /* LeaveRoomApi.m in Sources */,
 				5F8EDD4E1E6EA5B2000FC3E0 /* FMTableViewCell.m in Sources */,
 				5FE6BCA51ECC318900A2852F /* UIImage+demobar.m in Sources */,
 				5FE6BCCB1ECD36AE00A2852F /* GetAppOfflineCourseListApi.m in Sources */,
+<<<<<<< HEAD
 				5FE6BD9D1ED6DC5000A2852F /* DeleteOffLineCourseOrderDetailApi.m in Sources */,
+=======
+				1E6B81CF1ED81601001DB05F /* GetMyFavouriteFmListApi.m in Sources */,
+>>>>>>> origin/master
 				5FABE5FF1E890E0900FE8A33 /* GetHomeCourseIsNotFreeApi.m in Sources */,
 				5FBB26911EC443B200C01EC8 /* AppQueryVideoApi.m in Sources */,
 				5F8EDD411E6E9A41000FC3E0 /* EvaluationTableViewCell.m in Sources */,
@@ -4927,7 +5136,9 @@
 				1EA87B481EA9A1690064C2B2 /* FUCamera.m in Sources */,
 				5F5665BC1E9E8A990050AD29 /* CityCourseDetailThemeCell.m in Sources */,
 				5FCFF1101EA9A1D1003788A0 /* MBProgressHUD+MJ.m in Sources */,
+				1E71B18C1ED6D46E00DDEDDB /* GetMyFriendListApi.m in Sources */,
 				5F4833811EB2DB8100481407 /* MyExpertTableViewCell.m in Sources */,
+				1E71B1891ED59BB100DDEDDB /* MyPsyTestListApi.m in Sources */,
 				5FCFF1D51EAD9BB2003788A0 /* ZimuAudioPlayer.m in Sources */,
 				5FE6BDB91ED8032100A2852F /* QuestionTitleView.m in Sources */,
 				5F48336C1EB1898D00481407 /* OrderInfoCell.m in Sources */,

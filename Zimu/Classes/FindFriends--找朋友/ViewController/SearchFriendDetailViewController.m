@@ -10,6 +10,8 @@
 #import "UIImage+ZMExtension.h"
 #import "SearchFriendResultViewController.h"
 #import "FriendProvinceTableViewController.h"
+#import "SearchFriendByPhone.h"
+#import "MBProgressHUD+MJ.h"
 
 #import "SnailQuickMaskPopups.h"
 #import "AgeRangeView.h"
@@ -96,15 +98,13 @@
 #pragma mark -----UISearchBarDelegate
 //点击键盘上得search按钮 开始调用此方法
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    //更新UI
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SearchFriendResultViewController *resultVC = [[SearchFriendResultViewController alloc] init];
-        [self.navigationController pushViewController:resultVC animated:YES];
-    });
+
     //让键盘失去第一响应者
     [searchBar resignFirstResponder];
     UIButton *cancelBtn = [searchBar valueForKey:@"cancelButton"]; //首先取出cancelBtn
     cancelBtn.enabled = YES; //把enabled设置为yes
+    NSString * getStr = searchBar.text;
+    [self searchFriend:getStr];
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
@@ -246,5 +246,31 @@
     [_agePlaceList reloadData];
     
     NSLog(@"%@", userInfo);
+}
+
+#pragma mark - 网络请求
+- (void)searchFriend:(NSString *)friendPhone{
+    SearchFriendByPhone *getHomeSixImageApi = [[SearchFriendByPhone alloc]initWithPhone:friendPhone];
+    [getHomeSixImageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            return ;
+        }else{
+            NSLog(@"搜索好友结果%@", dataDic);
+            //更新UI
+            dispatch_async(dispatch_get_main_queue(), ^{
+                SearchFriendResultViewController *resultVC = [[SearchFriendResultViewController alloc] init];
+                resultVC.dataDic = dataDic[@"object"];
+                [self.navigationController pushViewController:resultVC animated:YES];
+            });
+        }
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+    }];
 }
 @end

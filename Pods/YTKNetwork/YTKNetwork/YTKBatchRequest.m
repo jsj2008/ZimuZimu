@@ -24,6 +24,7 @@
 #import "YTKBatchRequest.h"
 #import "YTKNetworkPrivate.h"
 #import "YTKBatchRequestAgent.h"
+
 #import "YTKRequest.h"
 
 @interface YTKBatchRequest() <YTKRequestDelegate>
@@ -106,7 +107,6 @@
 }
 
 #pragma mark - Network Request Delegate
-
 - (void)requestFinished:(YTKRequest *)request {
     _finishedCount++;
     if (_finishedCount == _requestArray.count) {

@@ -24,7 +24,9 @@
 #define GetHomeFm @"appHome/getHomeFm.do"                                   //获取首页FM
 #define GetHomeRecommendArticle @"appHome/getHomeRecommendArticle.do"       //获取首页美文推荐
 
-
+//============================================== #心理测试# ====================================================
+#define GetHeartTestList        @"appHeartTest/getHeartTestList.do"           //获取心理测试列表
+#define GetMyHeartTestList      @"appUser/check/queryMyHeartTest.do"                //获取我的心理测试列表 参数 userToken
 
 //============================================== #new# ====================================================
 #define GetHomeSixImageURL @"appImgs/getHomeSixImage.do"                //获取首页图片
@@ -64,6 +66,10 @@
 #define QueryMyQuestionURL @"appQuestion/check/queryMyQuestion.do"        //我的心事列表 (参数:userToken、endTime)
 
 
+//=========================================== #我的收藏# ================================================
+#define GetMyFavouriteVideoListURL      @"appVideo/check/queryMyFavoriteVideo.do"         //获取我收藏的视频 ?endTime=1494068216&userToken=d0eb993ffa2e876c60b99b745d93f9fa
+#define GetMyFavouriteArticleListURL    @"appArticle/check/queryMyFavoriteArticle.do"           //获取我收藏的文章 ?endTime=1494068216&userToken=9d3744dc1d940aa14e078b17ded7ee5c
+#define GetMyFavouriteFMListURL         @"appFm/check/queryMyFavoriteFm.do"               //获取我收藏的FM  ?endTime=1495445276&userToken=d0eb993ffa2e876c60b99b745d93f9fa
 
 //=========================================== #亲子学堂# ================================================
 #define GetParentSchoolListURL @"appFind/getFindMoreList.do"                //获取亲子学堂页数据 endTime : 时间戳
@@ -94,6 +100,22 @@
 #define AddFeedbackURL @"feedback/addFeedback.do"      //意见反馈(参数:phone、feedbackVal、systemName、systemVersion、deviceModel、appVersion)
 
 
+
+//=========================================# 找朋友 # ============================================
+//聊天先创建房间  再推送 进入房间 开始推拉流连麦 离开房间
+#define CreateChatRoomURL       @"appLive/check/createRoom.do"                            //创建聊天房间  (参数：?userId=&num=(加入视频的人数))
+#define GenerateToomTokenURL    @"appLive/check/generateToomToken.do"               //用户获取房间token  (参数：?userId=&roomName=&role=（user/admin）)
+#define ComeinRoomURL           @"appLive/check/comeInRoom.do"                      //用户进入房间  参数：userToken roomId
+#define LeaveChatRoomURL        @"appLive/check/leaveRoom.do"                       //用户离开房间，（参数：roomId userToken）
+#define PushNotiToUsersURL      @"appJpush/check/toUserListVideoChat.do"            //给要通话的用户发送推送  参数：userToken=&type=videoChat&users=&roomName=
+
+#define SearchFriendByPhoneURL  @"appUser/check/searchFriendByCondition.do"         //根据手机号搜搜陌生人 （userToken userPhone(被搜索人的手机号)）
+#define GetFriendsListURL       @"appUser/check/getMyFriendList.do"                 //获取好友列表 userToken=d0eb993ffa2e876c60b99b745d93f9fa
+#define AddFriendURL            @"appJpush/check/toUser.do"                         //添加好友  userId= type=addFriend
+#define GetMyMsgURL             @"appUserMessage/check/getUserNoticeMessage.do"     //获取我的消息接口 endTime=2494399605&userToken=e1d7c24bb5cbef626e6e3a30bc618dd3
+#define AcceptFriendURL         @"appUser/check/agreeFriendRequest.do"              //同意好友请求 fromUser=
+#define GetFriendMsgURL         @"appUser/check/queryFriendInfo.do"                 //根据用户id获取用户信息
+#define SearchMyFriendListURL   @"appUser/check/searchFriendByMyself.do"                  //在好友列表搜索好友 userToken=d0eb993ffa2e876c60b99b745d93f9fa&userName=
 
 #endif /* Api_h */
 

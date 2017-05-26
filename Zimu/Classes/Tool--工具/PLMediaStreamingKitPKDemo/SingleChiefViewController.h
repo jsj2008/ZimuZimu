@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) NSString *roomName;
 @property (nonatomic, assign) BOOL audioOnly;
+@property (nonatomic, copy) NSString *roomToken;
+//@property (nonatomic, copy) NSString *roomName;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SearchFriendResultViewController.h"
 #import "SearchFriendsFriendCell.h"
+#import "FriendMsgModel.h"
 
 static NSString *cellId = @"SearchFriendsFriendCellde";
 @interface SearchFriendResultViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -52,11 +53,13 @@ static NSString *cellId = @"SearchFriendsFriendCellde";
 
 #pragma mark - datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return _dataDic == [NSNull null] ? 0 : 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSDictionary *userDic = _dataArray[indexPath.row];
+    FriendMsgModel *fmm = [FriendMsgModel yy_modelWithJSON:_dataDic];
     SearchFriendsFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    [cell setName:@"我啊124" idStr:@"29385124 7" age:8 imgUrlString:@"asdfij"];
+    [cell setName:fmm.userName idStr:fmm.userId age:8 imgUrlString:@"asdfij"];
     cell.separatorInset = UIEdgeInsetsMake(0, kScreenWidth, 0, 0);
     cell.addFriendBtn.hidden = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
