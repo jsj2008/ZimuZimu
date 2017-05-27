@@ -9,6 +9,7 @@
 #import "SingleViewerViewController.h"
 #import "PLPlayerKit.h"
 #import "PLMediaStreamingKit.h"
+#import "ZM_CallingHandleCategory.h"
 
 #import <GLKit/GLKit.h>
 #import "FUAPIDemoBar.h"
@@ -369,6 +370,14 @@ const static NSString *playerStatusNames[] = {
 
 - (void)dealloc
 {
+    self.session.delegate = nil;
+    [self.session destroy];
+    self.session = nil;
+    
+    fuDestroyAllItems();
+    
+    ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+    [call leaveChatRoome];
     NSLog(@"PLMediaViewerViewController dealloc");
 }
 

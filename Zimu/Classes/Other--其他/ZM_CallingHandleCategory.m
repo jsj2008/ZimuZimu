@@ -5,8 +5,13 @@
 //  Created by 飞飞飞 on 2017/5/3.
 //  Copyright © 2017年 Zimu. All rights reserved.
 //
+
+//20170520版本
 //通话过程 房主--> 创建房间 -->                     获取房间信息 --> 进入房间 -->发推送 --> 离开房间
 //      其他人--> 通过网络请求或者推送获取到通话请求--> 获取房间信息 --> 进入房间          --> 离开房间
+
+//在20170527版本中，通话流程为调推送接口---》获取roomToken进入房间
+
 #import "ZM_CallingHandleCategory.h"
 #import "PLMediaChiefPKViewController.h"
 #import "PLMediaViewerPKViewController.h"
@@ -19,6 +24,7 @@
 #import "CreateChatRoomApi.h"
 #import "CominRoomApi.h"
 #import "GetRoomTokenApi.h"
+#import "GetMyVideoChatRequestApi.h"
 #import "LeaveRoomApi.h"
 #import "PushNotiToUsersApi.h"
 
@@ -50,6 +56,10 @@
         _role = role;
     }
     return self;
+}
+
+- (void)leaveChatRoome{
+    [self leaveRoom];
 }
 
 - (void)jumpToChatRoom{
@@ -105,12 +115,23 @@
         if ([[ZM_CallingHandleCategory curTopViewController] isKindOfClass:[ZMChatAlertViewController class]]) {
             [[ZM_CallingHandleCategory curTopViewController] dismissViewControllerAnimated:NO completion:^{
                 ZMChatAlertViewController *chatAlertVC = [[ZMChatAlertViewController alloc] init];
+                chatAlertVC.roomName = [ZM_CallingHandleCategory shareInstance].roomName;
+                if ([ZM_CallingHandleCategory shareInstance].role == ZMChatRoleGroupViewers) {
+                    chatAlertVC.isGroup = YES;
+                }else{
+                    chatAlertVC.isGroup = NO;
+                }
                 [[ZM_CallingHandleCategory curTopViewController] presentViewController:chatAlertVC animated:YES completion:nil];
             }];
             
         }else{
             ZMChatAlertViewController *chatAlertVC = [[ZMChatAlertViewController alloc] init];
-            
+            chatAlertVC.roomName = [ZM_CallingHandleCategory shareInstance].roomName;
+            if ([ZM_CallingHandleCategory shareInstance].role == ZMChatRoleGroupViewers) {
+                chatAlertVC.isGroup = YES;
+            }else{
+                chatAlertVC.isGroup = NO;
+            }
             [[ZM_CallingHandleCategory curTopViewController] presentViewController:chatAlertVC animated:YES completion:nil];
         }
     });
@@ -118,7 +139,7 @@
 #pragma mark - 统一管理通话
 - (void)startChat{
     if (_role == ZMChatRoleGroupChief || _role == ZMChatRoleSingleChief) {
-        [self createRoom];
+        [self pushNoti];
     }
     if (_role == ZMChatRoleGroupViewers || _role == ZMChatRoleSingleViewer) {
         [self getRoomToken];
@@ -135,7 +156,7 @@
         //        NSLog(@"%@", jsonData);
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络创建房间" toView:self.viewController.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
             return ;
         }else{
             if ([dataDic[@"message"] isEqualToString:@"success"]) {
@@ -145,7 +166,7 @@
         }
 
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络创建房间1" toView:self.viewController.view];
+        
     }];
 }
 - (void)getRoomToken{
@@ -157,17 +178,18 @@
         //        NSLog(@"%@", jsonData);
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络roomToken" toView:self.viewController.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
             return ;
         }else{
             if ([dataDic[@"message"] isEqualToString:@"success"]) {
                 _roomToken = dataDic[@"object"];
-                [self cominRoom];
+                
+                [self jumpToChatRoom];
             }
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络roomToken1" toView:self.viewController.view];
+        
     }];
 
 }
@@ -180,7 +202,7 @@
         //        NSLog(@"%@", jsonData);
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络进入房间" toView:self.viewController.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
             return ;
         }else{
             if ([dataDic[@"message"] isEqualToString:@"success"]) {
@@ -188,20 +210,19 @@
                 if (_role == ZMChatRoleGroupChief || _role == ZMChatRoleSingleChief) {
                     [self pushNoti];
                     
-                }else{
-                    [self jumpToChatRoom];
+                }else{ [self jumpToChatRoom];
                 }
             }
 
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络进入房间1" toView:self.viewController.view];
+
     }];
 
 }
 - (void)leaveRoom{
-    LeaveRoomApi *getRoomTokenApi = [[LeaveRoomApi alloc] initWithRoomId:_roomId];
+    LeaveRoomApi *getRoomTokenApi = [[LeaveRoomApi alloc] initWithRoomId:_roomName];
     [getRoomTokenApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
@@ -219,8 +240,13 @@
         
     }];
 }
+
 - (void)pushNoti{
-    PushNotiToUsersApi *getRoomTokenApi = [[PushNotiToUsersApi alloc] initWithType:@"videoChat" users:_users roomName:_roomName];
+    NSInteger num = (_role == ZMChatRoleSingleChief)?2:4;
+    if (!_roomName) {
+        _roomName = @"";
+    }
+    PushNotiToUsersApi *getRoomTokenApi = [[PushNotiToUsersApi alloc] initWithType:@"2" users:_users roomName:_roomName num:[NSString stringWithFormat:@"%li", num]];
     [getRoomTokenApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
@@ -228,16 +254,48 @@
         //        NSLog(@"%@", jsonData);
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络推送" toView:self.viewController.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
             return ;
-        }else{
-            [self jumpToChatRoom];
+        }else{if ([dataDic[@"message"] isEqualToString:@"success"]) {
+            _roomName = dataDic[@"object"];
+            [self getRoomToken];
+        }
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络推送1" toView:self.viewController.view];
+        
     }];
 }
+
+- (void)checkChat{
+    GetMyVideoChatRequestApi *getRoomTokenApi = [[GetMyVideoChatRequestApi alloc] init];
+    [getRoomTokenApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        //        NSString *jsonData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //        NSLog(@"%@", jsonData);
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.viewController.view];
+            return ;
+        }else{
+            if ([dataDic[@"message"] isEqualToString:@"有视频请求！"]) {
+                _roomName = dataDic[@"object"][@"roomName"];
+                NSInteger num = [dataDic[@"object"][@"num"] integerValue];
+                if (num == 2) {
+                    _role = ZMChatRoleSingleViewer;
+                }else{
+                    _role = ZMChatRoleGroupViewers;
+                }
+                [ZM_CallingHandleCategory jumpToWaitVC];
+            }
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
+
 //获取当前显示的VC
 + (UIViewController*)curTopViewController
 {

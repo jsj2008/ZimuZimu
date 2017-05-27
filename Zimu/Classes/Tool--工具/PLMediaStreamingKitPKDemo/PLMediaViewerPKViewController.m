@@ -10,6 +10,7 @@
 #import "PLMediaStreamingKit.h"
 #import "PLPlayerKit.h"
 #import "PLPixelBufferProcessor.h"
+#import "ZM_CallingHandleCategory.h"
 
 #import <GLKit/GLKit.h>
 #import "FUAPIDemoBar.h"
@@ -376,6 +377,9 @@ const static NSString *playerStatusNames[] = {
     self.player = nil;
     
     fuDestroyAllItems();
+    
+    ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+    [call leaveChatRoome];
     NSLog(@"PLMediaViewerViewController dealloc");
 }
 #pragma mark - 开始播放、连麦等事件

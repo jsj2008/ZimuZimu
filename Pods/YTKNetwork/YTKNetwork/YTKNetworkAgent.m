@@ -452,8 +452,11 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [request toggleAccessoriesWillStopCallBack];
         [request requestFailedFilter];
-
-        [self showMessage:@"网络异常，请检查网络全局的"];
+        
+        [_hud removeFromSuperViewOnHide];
+        [_hud hideAnimated:NO];
+        
+        [self showMessage:@"服务器开小差了，请稍后重试"];
         
         if (request.delegate != nil) {
             [request.delegate requestFailed:request];

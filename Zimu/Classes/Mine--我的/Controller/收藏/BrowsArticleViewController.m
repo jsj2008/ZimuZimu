@@ -82,8 +82,10 @@ static NSString *artCell = @"MyCollectionCell";
 
 #pragma mark - 网络请求
 - (void)getMore{
-    double nowTime = [[NSDate date] timeIntervalSince1970];
-    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    NSDictionary *dic = [_dataArray lastObject];
+    MyCollectionArticleModel *model = [MyCollectionArticleModel yy_modelWithJSON:dic];
+    CGFloat lastTime = [model.favoriteTime floatValue] / 1000;
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", lastTime] integerValue];
     [self getData:iTime];
 }
 - (void)reFresh{

@@ -1,6 +1,7 @@
 #import "SingleChiefViewController.h"
 #import "PLMediaStreamingKit.h"
 #import "PLPlayerKit.h"
+#import "ZM_CallingHandleCategory.h"
 
 #import <GLKit/GLKit.h>
 #import "FUAPIDemoBar.h"
@@ -380,7 +381,9 @@ const static char *rtcStateNames[] = {
     self.session = nil;
     
     fuDestroyAllItems();
-
+    
+    ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+    [call leaveChatRoome];
     NSLog(@"PLMediaChiefViewController dealloc");
 }
 

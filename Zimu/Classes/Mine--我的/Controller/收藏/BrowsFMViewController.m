@@ -12,6 +12,7 @@
 #import <MJRefresh.h>
 #import "MyCollectionCell.h"
 #import "FindListCell.h"
+#import "MyCollectionFMModel.h"
 #import "GetMyFavouriteFmListApi.h"
 
 static NSString *fmCell = @"MyCollectionCell";
@@ -50,6 +51,7 @@ static NSString *fmCell = @"MyCollectionCell";
         _fmTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reFresh)];
         [_fmTableView.mj_header beginRefreshing];
         
+        _fmTableView.tableFooterView = [[UIView alloc] init];
         [self.view addSubview:_fmTableView];
     }
 }
@@ -62,10 +64,10 @@ static NSString *fmCell = @"MyCollectionCell";
     MyCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:fmCell forIndexPath:indexPath];
     cell.separatorInset = UIEdgeInsetsZero;
     NSDictionary *dic = _dataArray[indexPath.row];
-//    MyCollectionArticleModel *model = [MyCollectionArticleModel yy_modelWithJSON:dic];
-//    cell.titleString = model.articleTitle;
-//    cell.bgImageString = model.articleImg;
-//    cell.countString = [NSString stringWithFormat:@"%li", model.readNum];
+    MyCollectionFMModel *model = [MyCollectionFMModel yy_modelWithJSON:dic];
+    cell.titleString = model.fmTitle;
+    cell.bgImageString = model.fmImg;
+    cell.countString = [NSString stringWithFormat:@"%li", model.readNum];
     cell.collectionType = CollectionTypeFM;
     return cell;
 }
@@ -75,8 +77,10 @@ static NSString *fmCell = @"MyCollectionCell";
 }
 #pragma mark - 网络请求
 - (void)getMore{
-    double nowTime = [[NSDate date] timeIntervalSince1970];
-    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", nowTime] integerValue];
+    NSDictionary *dic = [_dataArray lastObject];
+    MyCollectionFMModel *model = [MyCollectionFMModel yy_modelWithJSON:dic];
+    CGFloat lastTime = [model.favoriteTime floatValue] / 1000;
+    NSInteger iTime = [[NSString stringWithFormat:@"%.0f", lastTime] integerValue];
     [self getData:iTime];
 }
 - (void)reFresh{
@@ -104,7 +108,7 @@ static NSString *fmCell = @"MyCollectionCell";
             if (nowData.count < 10) {
                 [_fmTableView.mj_footer endRefreshingWithNoMoreData];
             }
-            
+            [_fmTableView reloadData];
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

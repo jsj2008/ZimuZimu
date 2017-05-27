@@ -12,12 +12,14 @@
     NSString *_type;
     NSString *_users;
     NSString *_roomName;
+    NSString *_num;
 }
-- (instancetype)initWithType:(NSString *)type users:(NSString *)users roomName:(NSString *)roomName{
+- (instancetype)initWithType:(NSString *)type users:(NSString *)users roomName:(NSString *)roomName num:(NSString *)num{
     self = [super init];
     if (self) {
         _type = type;
         _users = users;
+        _num = num;
         _roomName = roomName;
     }
     return self;
@@ -29,8 +31,10 @@
 - (id)requestArgument{
     return @{@"userToken":userToken,
              @"users":_users,
-             @"roomName":_roomName,
-             @"type":_type};
+             @"num":_num,
+             @"type":_type,     //1是加好友   2是发送聊天
+             @"roomName":_roomName
+             };
 }
 - (YTKRequestMethod)requestMethod{
     return YTKRequestMethodPOST;

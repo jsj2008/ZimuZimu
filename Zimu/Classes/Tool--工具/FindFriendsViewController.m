@@ -28,6 +28,7 @@
 #import "UIView+SnailUse.h"
 #import "ZM_SelectSexView.h"
 #import "ZM_CallingHandleCategory.h"
+#import "ZMBlankView.h"
 
 @interface FindFriendsViewController ()<ZM_MutiplyClickButtonDelegate, ZMFriendDelagate, FriendsMsgDelegate>
 
@@ -151,6 +152,14 @@
         [self.view addSubview:_chooseBtn];
     }
 }
+
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoFriend afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        NSLog(@"我不在");
+        [self addFriends];
+    }];
+    [self.view addSubview:blankview];
+}
 //搜索点击事件
 - (void)searchAction{
     FriendSearchViewController *searchVC = [[FriendSearchViewController alloc] init];
@@ -192,7 +201,6 @@
     }else if ([btn.titleLabel.text isEqualToString:@"开始聊天"]){
         NSLog(@"开始聊天");
         _listView.state = chooseStateNormal;
-        _selectedUsers = @"";
         
         [btn setTitle:@"选择多个好友" forState:UIControlStateNormal];
         ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
@@ -200,6 +208,7 @@
         call.users = _selectedUsers;
         [call startChat];
         
+        _selectedUsers = @"";
     }
 }
 
@@ -250,7 +259,7 @@
         }else{
             NSArray *dataArray = dataDic[@"items"];
                 if (dataArray.count == 0) {
-                    
+                    [self noData];
                 }else{
 //                    dispatch_sync(dispatch_get_main_queue(), ^{
                     [self setListWithData:dataArray];

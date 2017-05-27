@@ -103,10 +103,11 @@
 
 //=========================================# 找朋友 # ============================================
 //聊天先创建房间  再推送 进入房间 开始推拉流连麦 离开房间
-#define CreateChatRoomURL       @"appLive/check/createRoom.do"                            //创建聊天房间  (参数：?userId=&num=(加入视频的人数))
+#define GetVideoChatRequestURL  @"appLive/check/getVideoChatRequest.do"             //获取是否有该用户的视频请求
+#define CreateChatRoomURL       @"appLive/check/createRoom.do"                      //创建聊天房间  (参数：?userId=&num=(加入视频的人数))
 #define GenerateToomTokenURL    @"appLive/check/generateToomToken.do"               //用户获取房间token  (参数：?userId=&roomName=&role=（user/admin）)
 #define ComeinRoomURL           @"appLive/check/comeInRoom.do"                      //用户进入房间  参数：userToken roomId
-#define LeaveChatRoomURL        @"appLive/check/leaveRoom.do"                       //用户离开房间，（参数：roomId userToken）
+#define LeaveChatRoomURL        @"appLive/check/leaveRoom.do"                       //用户离开房间，（参数：roomId userToken）  这个roomId就是roomName
 #define PushNotiToUsersURL      @"appJpush/check/toUserListVideoChat.do"            //给要通话的用户发送推送  参数：userToken=&type=videoChat&users=&roomName=
 
 #define SearchFriendByPhoneURL  @"appUser/check/searchFriendByCondition.do"         //根据手机号搜搜陌生人 （userToken userPhone(被搜索人的手机号)）

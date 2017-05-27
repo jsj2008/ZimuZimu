@@ -106,6 +106,7 @@
 //
 ////iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     NSDictionary * userInfo = notification.request.content.userInfo;
     //前台收到推送，远程
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -142,15 +143,16 @@
 //        [UMessage didReceiveRemoteNotification:userInfo];
         NSLog(@"%@", userInfo);
          NSLog(@"收到推送33");
-        if ([userInfo[@"type"] isEqualToString:@"addFriend"]) { //如果是添加好友
+        if ([userInfo[@"type"] integerValue] == 1) { //如果是添加好友
             FriendsMsgViewController *msgVC = [[FriendsMsgViewController alloc] init];
             UIViewController *curVC = [ZM_CallingHandleCategory curTopViewController];
 //            [curVC presentViewController:msgVC animated:YES completion:nil];
             [curVC.navigationController pushViewController:msgVC animated:YES];
         }
-        if ([userInfo[@"type"] isEqualToString:@"videoChat"]) { //如果是视频通话请求
+        if ([userInfo[@"type"] integerValue] == 2) { //如果是视频通话请求
             ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
             call.roomName = userInfo[@"roomName"];
+            call.role = ([userInfo[@"num"] integerValue] == 2) ? ZMChatRoleSingleViewer:ZMChatRoleGroupViewers;
             [ZM_CallingHandleCategory jumpToWaitVC];
         }
     }else{//本地推送，前台
@@ -165,6 +167,7 @@
 
 //iOS10新增：处理后台点击通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     //远程推送，点击
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -172,14 +175,15 @@
         //必须加这句代码
 //        [UMessage didReceiveRemoteNotification:userInfo];
         NSLog(@"收到推送11");
-        if ([userInfo[@"type"] isEqualToString:@"addFriend"]) { //如果是添加好友
+        if ([userInfo[@"type"] integerValue] == 1) { //如果是添加好友
             FriendsMsgViewController *msgVC = [[FriendsMsgViewController alloc] init];
             UIViewController *curVC = [ZM_CallingHandleCategory curTopViewController];
             [curVC presentViewController:msgVC animated:YES completion:nil];
         }
-        if ([userInfo[@"type"] isEqualToString:@"videoChat"]) { //如果是视频通话请求
+        if ([userInfo[@"type"] integerValue] == 2) { //如果是视频通话请求
             ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
             call.roomName = userInfo[@"roomName"];
+            call.role = ([userInfo[@"num"] integerValue] == 2) ? ZMChatRoleSingleViewer:ZMChatRoleGroupViewers;
             [ZM_CallingHandleCategory jumpToWaitVC];
         }
          NSLog(@"%@", userInfo);

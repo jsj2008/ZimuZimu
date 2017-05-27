@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/PLMediaStreamingKitPKDemo/PLMediaChiefPKViewController.m"
-            timestampString = "517386771.077016"
+            timestampString = "517544770.775019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "-mediaStreamingSession:rtcStateDidChange:"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,11 +190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/PLMediaStreamingKitPKDemo/SingleViewerViewController.m"
-            timestampString = "517383990.213698"
+            timestampString = "517544770.775019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "616"
-            endingLineNumber = "616"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
             landmarkName = "-mediaStreamingSession:cameraSourceDidGetPixelBuffer:"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,11 +206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/PLMediaStreamingKitPKDemo/SingleViewerViewController.m"
-            timestampString = "517383990.213698"
+            timestampString = "517544770.775019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "657"
-            endingLineNumber = "657"
+            startingLineNumber = "666"
+            endingLineNumber = "666"
             landmarkName = "-reloadItem"
             landmarkType = "7">
          </BreakpointContent>
@@ -349,28 +349,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZM_CallingHandleCategory.m"
-            timestampString = "517455711.842476"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-cominRoom"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/PLMediaStreamingKitPKDemo/PLMediaChiefPKViewController.m"
-            timestampString = "517386771.077016"
+            timestampString = "517544770.775019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-initStreamingSession"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,28 +366,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/PLMediaStreamingKitPKDemo/PLMediaChiefPKViewController.m"
-            timestampString = "517386771.077016"
+            timestampString = "517544770.775019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "516"
-            endingLineNumber = "516"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "-mediaStreamingSession:rtcDidFailWithError:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZM_CallingHandleCategory.m"
-            timestampString = "517455711.842476"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "-pushNoti"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -462,27 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/FindFriendsViewController.m"
-            timestampString = "517471586.142308"
+            timestampString = "517574656.832326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "-getFriendsList"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/FindFriendsViewController.m"
-            timestampString = "517471586.142308"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-getFriendsList"
             landmarkType = "7">
             <Locations>
@@ -517,22 +469,6 @@
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/FindFriendsViewController.m"
-            timestampString = "517471586.142308"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "-getFriendsList"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -727,13 +663,141 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Mine--&#x6211;&#x7684;/Controller/&#x6536;&#x85cf;/BrowsFMViewController.m"
-            timestampString = "517492024.75734"
+            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZMPushManager.m"
+            timestampString = "517543950.5628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-getData:"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-userNotificationCenter:willPresentNotification:withCompletionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZMPushManager.m"
+            timestampString = "517556450.741538"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZM_CallingHandleCategory.m"
+            timestampString = "517561600.238037"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "-leaveRoom"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZM_CallingHandleCategory.m"
+            timestampString = "517561600.238037"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "-checkChat"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/ZM_CallingHandleCategory.m"
+            timestampString = "517561600.238037"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "-checkChat"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZM_CallingHandleCategory checkChat]"
+                  moduleName = "Zimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/ZimuZimu123/Zimu/Classes/Other--%E5%85%B6%E4%BB%96/ZM_CallingHandleCategory.m"
+                  timestampString = "517557392.966896"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[ZM_CallingHandleCategory checkChat]_block_invoke"
+                  moduleName = "Zimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/ZimuZimu123/Zimu/Classes/Other--%E5%85%B6%E4%BB%96/ZM_CallingHandleCategory.m"
+                  timestampString = "517557392.971309"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Other--&#x5176;&#x4ed6;/&#x7a7a;&#x767d;&#x9875;/ZMBlankView.m"
+            timestampString = "517570926.655241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-initWithFrame:Type:afterClickDestory:btnClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/FindFriendsViewController.m"
+            timestampString = "517573484.043867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-setListWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
