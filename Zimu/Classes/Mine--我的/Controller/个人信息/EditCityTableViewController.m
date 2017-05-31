@@ -12,6 +12,7 @@
 #import "CityModel.h"
 #import "MBProgressHUD+MJ.h"
 #import "EditAddressApi.h"
+#import "NewLoginViewController.h"
 
 static NSString *identifier = @"cityCell";
 @interface EditCityTableViewController ()
@@ -130,12 +131,26 @@ static NSString *identifier = @"cityCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self login];
+            return;
         }
         NSLog(@"dataDic : %@",dataDic);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"数据上传失败，请稍后再试" toView:self.view];
     }];
 }
+
+#pragma mark - login
+- (void)login{
+    NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
+}
+
 
 @end

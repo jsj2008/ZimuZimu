@@ -18,6 +18,11 @@
 #import "HomeViewController.h"
 #import "GetMyInfoAPI.h"
 #import "MyInfoModel.h"
+#import "CreateTokenApi.h"
+#import "QiniuSDK.h"
+#import "EditHeadImageApi.h"
+#import <UIImageView+WebCache.h>
+#import "UIBarButtonItem+ZMExtension.h"
 
 static NSString *textIdentifier = @"MyInfoTextCell";
 static NSString *noEditTextIdentifier = @"MyInfoNoEditTextCell";
@@ -27,6 +32,10 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (nonatomic, strong) UIButton *logoutButton;       //退出登录按钮
+@property (nonatomic, copy) NSString *qiniuToken;
+@property (nonatomic, strong) UIImage *image;       //选择的头像图片
+
+@property (nonatomic, assign) BOOL hasChangeInfo;   //是否修改信息
 
 @end
 
@@ -37,13 +46,17 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
     
     self.title = @"个人信息";
     self.view.backgroundColor = themeGray;
+    _hasChangeInfo = NO;
     
     [self.tableView registerClass:[MyInfoTextCell class] forCellReuseIdentifier:textIdentifier];
     [self.tableView registerClass:[MyInfoNoEditTextCell class] forCellReuseIdentifier:noEditTextIdentifier];
     [self.tableView registerClass:[MyInfoPhotoCell class] forCellReuseIdentifier:photoIdentifier];
     [self hideExtraLine];
-    
+
     [self setupLogoutButton];
+    
+    //获取七牛token
+    [self getQiniuToken];
     
     //监听通知，获取省、市
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedAddress:) name:@"ProvinceCityNotification" object:nil];
@@ -53,16 +66,22 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ProvinceCityNotification" object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //修改过我的信息
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HasChangedMyInfo" object:nil userInfo:nil];
+    
+}
+
+
 - (void)selectedAddress:(NSNotification *)notification{
     NSDictionary *userInfo = notification.userInfo;
     MyInfoTextCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
     cell.detailLabel.text = userInfo[@"address"];
+    _hasChangeInfo = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
@@ -83,6 +102,8 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.separatorInset = UIEdgeInsetsMake(cell.height - 0.5, 10, 0, 0);
         cell.titleLabel.text = @"头像";
+        NSString *headImageString = _myInfoModel.userImg;
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[imagePrefixURL stringByAppendingString:headImageString]] placeholderImage:[UIImage imageNamed:@"wode_touxiang"]];
         
         return cell;
     }else if (indexPath.row == 3){
@@ -93,7 +114,7 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.separatorInset = UIEdgeInsetsMake(cell.height - 0.5, 10, 0, 0);
         cell.titleLabel.text = @"手机号";
-        cell.detailLabel.text = @"15757164712";
+        cell.detailLabel.text = _myInfoModel.userPhone;
         
         return cell;
     }else{
@@ -144,6 +165,7 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
         editNickNameVC.nickNameBlock = ^(NSString *nickName) {
             NSLog(@"昵称 : %@",nickName);
             cell.detailLabel.text = nickName;
+            _hasChangeInfo = YES;
         };
         editNickNameVC.nickName = cell.detailLabel.text;
         [self.navigationController pushViewController:editNickNameVC animated:YES];
@@ -154,6 +176,7 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
         editAgeVC.ageBlock = ^(NSString *age) {
             NSLog(@"年龄 : %@岁",age);
             cell.detailLabel.text = [NSString stringWithFormat:@"%@岁",age];
+            _hasChangeInfo = YES;
         };
         NSString *text = cell.detailLabel.text;
         editAgeVC.ageString = [text substringWithRange:NSMakeRange(0, text.length - 1)];
@@ -164,6 +187,7 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
         EditSexTableViewController *editSexVC = [[EditSexTableViewController alloc]init];
         editSexVC.sexBlock = ^(NSString *sex) {
             cell.detailLabel.text = sex;
+            _hasChangeInfo = YES;
         };
         editSexVC.sex = cell.detailLabel.text;
         [self.navigationController pushViewController:editSexVC animated:YES];
@@ -242,14 +266,129 @@ static NSString *photoIdentifier = @"MyInfoPhotoCell";
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
     
+    //1.拿到图片后更换头像
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    self.image = image;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     MyInfoPhotoCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     cell.headImageView.image = image;
-    NSData *data = UIImageJPEGRepresentation(image, 0.1f);
-    //    NSString *dtr = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSLog(@"length : %li", (unsigned long)encodedImageStr.length);
+
+    //2.上传图片名字到服务器
+    [self editMyHeadImage];
+    
+}
+
+
+#pragma mark - 获取七牛token，上传图片
+//上传图片名字到服务器
+- (void)editMyHeadImage{
+    NSString *imageName = [self getImageName];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    EditHeadImageApi *editHeadImageApi = [[EditHeadImageApi alloc]initWithUserImg:imageName];
+    [editHeadImageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+           [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            
+            return;
+        }
+        
+        //3.上传图片到七牛
+        NSString *filePath = [self getImagePath:self.image];
+        [self uploadImageToQiniu:filePath imageName:imageName];
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+- (NSString *)getImageName{
+    NSString *imageName = @"image/";
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    imageName = [imageName stringByAppendingString:dateString];
+    int num = (arc4random() % 100) + 900;
+    imageName = [NSString stringWithFormat:@"%@%i",imageName, num];
+    
+    return imageName;
+}
+//获取七牛token
+- (void)getQiniuToken{
+    CreateTokenApi *creatTokenApi = [[CreateTokenApi alloc]init];
+    [creatTokenApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            
+            return;
+        }
+        _qiniuToken = dataDic[@"object"];
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
+
+//上传图片到七牛
+- (void)uploadImageToQiniu:(NSString *)filePath imageName:(NSString *)imageName{
+    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+    QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil
+                                                        progressHandler:^(NSString *key, float percent) {
+                                                            NSLog(@"percent == %.2f", percent);
+                                                            
+                                                        }
+                                                                 params:nil
+                                                               checkCrc:NO
+                                                     cancellationSignal:nil];
+    [upManager putFile:filePath key:imageName token:_qiniuToken complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        NSLog(@"info ===== %@", info);
+        NSLog(@"resp ===== %@", resp);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
+                option:uploadOption];
+}
+
+//照片获取本地路径转换
+- (NSString *)getImagePath:(UIImage *)Image {
+    NSString *filePath = nil;
+    NSData *data = nil;
+    if (UIImagePNGRepresentation(Image) == nil) {
+        data = UIImageJPEGRepresentation(Image, 0.3);
+    } else {
+        data = UIImagePNGRepresentation(Image);
+    }
+    
+    //图片保存的路径
+    //这里将图片放在沙盒的documents文件夹中
+    NSString *DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    //文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //把刚刚图片转换的data对象拷贝至沙盒中
+    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString *ImagePath = [[NSString alloc] initWithFormat:@"/myHeadImage.png"];
+    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:ImagePath] contents:data attributes:nil];
+    
+    //得到选择后沙盒中图片的完整路径
+    filePath = [[NSString alloc] initWithFormat:@"%@%@", DocumentsPath, ImagePath];
+    return filePath;
 }
 
 

@@ -57,6 +57,8 @@
 #define EditMyInfoURL @"appUser/check/editMyInfo.do"              //修改个人信息，带参数 userToken 和要修改的 某个参数
 #define GetProvinceURL @"appAddress/getProvince.do"         //获取所有省份
 #define GetCityURL @"appAddress/getCitysByPrevId.do"        //根据省份ID获取城市 (prevId : 省份ID 例：ff19987b-484f-4645-9835-08c2daf344ce)
+#define CreateTokenURL  @"qiniu/check/createToken.do"          //获取七牛token (参数:userToken)
+
 /*订单*/
 #define QueryAppUserOrderListURL @"appOrder/check/queryAppUserOrderList.do";  //获取所有订单 (参数：endTime、userToken)
 #define QueryAppUserOrderCompleteListURL @"appOrder/check/queryAppUserOrderCompleteList.do" //查询已完成、待付款订单(参数:endTime、status(0:待付款；1:已完成)、userToken)

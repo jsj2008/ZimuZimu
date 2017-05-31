@@ -41,7 +41,8 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
 }
 
 - (void)normalPayWithViewController:(UIViewController *)viewController charge:(NSString *)charge{
-    
+
+    ZimuPayManager *__weak weakSelf = self;
     [Pingpp createPayment:charge
            viewController:viewController
              appURLScheme:kUrlScheme
@@ -52,6 +53,11 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
                } else {
                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
                }
+               
+               if ([self.delegate respondsToSelector:@selector(zimuPayManager:finishPay:)]) {
+                   [self.delegate zimuPayManager:weakSelf finishPay:result];
+               }
+               
                if ([result isEqualToString:@"fail"]) {
                    result = @"支付失败";
                }else if ([result isEqualToString:@"success"]){
@@ -60,7 +66,9 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
                    result = @"取消支付";
                }
                [MBProgressHUD showSuccess:result toView:viewController.view];
+               
            }];
+
 }
 
 
@@ -117,7 +125,8 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
                }];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络错误，请稍后再试" toView:nil];
+        [weakSelf hideAlert];
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
     }];
 }
 

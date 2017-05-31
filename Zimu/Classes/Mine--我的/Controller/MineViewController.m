@@ -50,6 +50,12 @@
     
     //获取个人信息数据
     [self getMyInfoNetWork];
+    
+    //修改了个人信息通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyInfoNetWork) name:@"HasChangedMyInfo" object:nil];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"HasChangedMyInfo" object:nil];
 }
 
 

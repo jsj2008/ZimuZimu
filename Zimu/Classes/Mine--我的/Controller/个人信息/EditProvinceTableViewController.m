@@ -11,6 +11,7 @@
 #import "EditProvinceApi.h"
 #import "ProvinceModel.h"
 #import "MBProgressHUD+MJ.h"
+#import "NewLoginViewController.h"
 
 static NSString *identifier = @"provinceCell";
 @interface EditProvinceTableViewController ()
@@ -80,12 +81,15 @@ static NSString *identifier = @"provinceCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         NSLog(@"dataDic : %@",dataDic);
         ProvinceDataModel *provinceDataModel = [ProvinceDataModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = provinceDataModel.isTrue;
         if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self login];
             return;
         }
         NSArray *provinceDataArray = provinceDataModel.items;
@@ -98,9 +102,16 @@ static NSString *identifier = @"provinceCell";
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:nil];
+        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
 }
+
+#pragma mark - login
+- (void)login{
+    NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
+}
+
 
 
 @end

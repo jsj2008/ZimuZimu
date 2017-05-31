@@ -59,21 +59,23 @@
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.label.text = @"";
+
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
     _hud = hud;
 }
 - (MBProgressHUD *)showMessage:(NSString *)message{
-     UIView *view = [YTKNetworkAgent curTopViewController].view;
+//     UIView *view = [YTKNetworkAgent curTopViewController].view;
     //    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     //在StatusBarHud 显示期间，由于lastObject的Frame的缘故将导致
-    if (view == nil) view = [[UIApplication sharedApplication] keyWindow];
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     
     // 快速显示一个提示信息
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
     hud.label.text = message;
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
+    hud.mode = MBProgressHUDModeText;
     // YES代表需要蒙版效果
     //    hud.dimBackground = YES;
     [hud hideAnimated:YES afterDelay:1.5];
@@ -410,8 +412,16 @@
         [request requestCompleteFilter];
         
         [_hud removeFromSuperViewOnHide];
-        [_hud hideAnimated:YES];
-        
+        [_hud hideAnimated:NO];
+        [_hud removeFromSuperview];
+        _hud = nil;
+        for (UIView *view in [YTKNetworkAgent curTopViewController].view.subviews) {
+            if ([view isKindOfClass:[MBProgressHUD class]]) {
+                MBProgressHUD *hud = (MBProgressHUD *)view;
+                [hud  removeFromSuperViewOnHide];
+                [hud hideAnimated:YES];
+            }
+        }
         if (request.delegate != nil) {
             [request.delegate requestFinished:request];
         }
@@ -452,8 +462,18 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [request toggleAccessoriesWillStopCallBack];
         [request requestFailedFilter];
-
-        [self showMessage:@"网络异常，请检查网络全局的"];
+        [_hud removeFromSuperViewOnHide];
+        [_hud hideAnimated:YES];
+        [_hud removeFromSuperview];
+        _hud = nil;
+        for (UIView *view in [YTKNetworkAgent curTopViewController].view.subviews) {
+            if ([view isKindOfClass:[MBProgressHUD class]]) {
+                MBProgressHUD *hud = (MBProgressHUD *)view;
+                [hud  removeFromSuperViewOnHide];
+                [hud hideAnimated:YES];
+            }
+        }
+        [self showMessage:@"服务器开小差了，请稍后再试"];
         
         if (request.delegate != nil) {
             [request.delegate requestFailed:request];

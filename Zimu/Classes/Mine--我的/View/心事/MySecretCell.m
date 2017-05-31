@@ -45,28 +45,55 @@
         
         //标题
         _titleLabel.frame = layoutFrame.titleLabelFrame;
+        _titleLabel.text = layoutFrame.secretModel.questionTitle;
         
         //时间
         _timeLabel.frame = layoutFrame.timeLabelFrame;
+        NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
+        NSInteger creatTime = [layoutFrame.secretModel.createTime floatValue];
+        creatTime /= 1000;
+        CGFloat diffTime = timestamp - creatTime;
+        //计算天数
+        NSInteger day = diffTime / (24 * 60 * 60);
+        NSString *timeString = [NSString stringWithFormat:@"%li天前",day];
+        if (day == 0) {
+            NSInteger hour = diffTime / (60 * 60);
+            timeString = [NSString stringWithFormat:@"%li小时前",hour];
+            if (hour == 0) {
+                NSInteger minute = diffTime / 60;
+                timeString = [NSString stringWithFormat:@"%li分前",minute];
+                if (minute == 0) {
+                    timeString = @"刚刚";
+                }
+            }
+        }
+        _timeLabel.text = timeString;
         
         //分割线
         _seperateLine.frame = layoutFrame.seperateLineFrame;
         
         //内容
         _contentLabel.frame = layoutFrame.contentLabelFrame;
+        _contentLabel.text = layoutFrame.secretModel.questionVal;
         
         //点赞
         _likeButton.frame = layoutFrame.likeButtonFrame;
+        [_likeButton setTitle:[NSString stringWithFormat:@" %@",layoutFrame.secretModel.careNum] forState:UIControlStateNormal];
         
         //评论
         _commentButton.frame = layoutFrame.commentButtonFrame;
+        [_commentButton setTitle:[NSString stringWithFormat:@" %@",layoutFrame.secretModel.count] forState:UIControlStateNormal];
         
         //更多
         _moreImageView.frame = layoutFrame.moreImageViewFrame;
         
         //专家已解答
         _answerStateButton.frame = layoutFrame.answerStateButtonFrame;
-        
+        NSString *stateString = @"专家已解答";
+        NSInteger isExpAnswer = [layoutFrame.secretModel.isExpAnswer integerValue];
+        if (!isExpAnswer) {
+            stateString = @"专家未解答";
+        }
     }
 }
 
@@ -77,5 +104,7 @@
 - (IBAction)commentButtonAction:(UIButton *)sender {
     NSLog(@"评论");
 }
+
+
 
 @end

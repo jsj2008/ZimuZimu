@@ -64,6 +64,7 @@
 @property (nonatomic , copy) NSString              * payTime;           //支付时间
 @property (nonatomic , copy) NSString              * createTime;        //订单创建时间
 @property (nonatomic , copy) NSString              * referee;           //推荐人
+@property (nonatomic , copy) NSString              * charge;            //订单charge
 @property (nonatomic , copy) NSString              * areaId;
 @property (nonatomic , copy) NSString              * pingppId;
 @property (nonatomic , copy) NSString              * isDel;

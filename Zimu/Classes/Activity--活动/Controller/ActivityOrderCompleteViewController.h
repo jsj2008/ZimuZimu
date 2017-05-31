@@ -21,5 +21,6 @@
 
 @property (nonatomic, strong) NSString *result;     //支付结果 (success、fail、cancel)
 @property (nonatomic, strong) NSString *courseId;   //报名的活动ID
+@property (nonatomic, strong) NSString *orderId;
 
 @end

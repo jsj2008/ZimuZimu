@@ -10,6 +10,7 @@
 #import "MySecretTableView.h"
 #import "MBProgressHUD+MJ.h"
 #import "QueryMyQuestionApi.h"
+#import "SecretModel.h"
 
 @interface MySecretViewController ()
 
@@ -55,6 +56,17 @@
             [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
             return;
         }
+        NSArray *dataArray = dataDic[@"items"];
+        if (dataArray && dataArray.count != 0) {
+            NSMutableArray *modelArray = [NSMutableArray arrayWithCapacity:dataArray.count];
+            
+            for (NSDictionary *dic in dataArray) {
+                SecretModel *secretModel = [SecretModel yy_modelWithDictionary:dic];
+                [modelArray addObject:secretModel];
+            }
+            _tableView.modelArray = modelArray;
+        }
+        
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

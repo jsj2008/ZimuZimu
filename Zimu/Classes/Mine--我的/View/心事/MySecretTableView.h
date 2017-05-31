@@ -10,4 +10,6 @@
 
 @interface MySecretTableView : UITableView
 
+@property (nonatomic, strong) NSArray *modelArray;
+
 @end

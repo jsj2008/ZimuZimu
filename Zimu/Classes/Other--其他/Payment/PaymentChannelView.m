@@ -112,7 +112,15 @@
     
     ZimuPayManager *manager = [[ZimuPayManager alloc]init];
     manager.delegate = self;
-    [manager normalPayWithViewController:self.viewController PaymentInfoModel:_paymentInfoModel channel:_channel];
+    if (_chargePay) {
+        if (_charge.length == 0) {
+            [MBProgressHUD showMessage_WithoutImage:@"订单失效，请重新下单" toView:nil];
+            return;
+        }
+        [manager normalPayWithViewController:self.viewController charge:_charge];
+    }else{
+        [manager normalPayWithViewController:self.viewController PaymentInfoModel:_paymentInfoModel channel:_channel];
+    }
     
 //    WXOfflineCourseApi *wxOfflineCourseApi = [[WXOfflineCourseApi alloc]initWithOfflineCourseId:_paymentInfoModel.courseId offCoursePrice:_paymentInfoModel.price channel:_channel];
 //    [wxOfflineCourseApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {

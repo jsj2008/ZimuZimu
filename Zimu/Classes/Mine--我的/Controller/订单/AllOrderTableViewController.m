@@ -25,7 +25,7 @@
 static NSString *notPayIdentifier = @"NotPayOrderCell";
 static NSString *completeIdentifier = @"CompleteOrderCell";
 
-@interface AllOrderTableViewController ()<NotPayOrderCellDelegate, PaymentChannelViewDelegate>
+@interface AllOrderTableViewController ()<NotPayOrderCellDelegate, CompleteOrderCellDelegate, PaymentChannelViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *orderModelArray;
 @property (nonatomic, strong) PaymentChannelView *paymentChannelView;
@@ -84,6 +84,7 @@ static NSString *completeIdentifier = @"CompleteOrderCell";
         CompleteOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:completeIdentifier forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.orderModel = orderModel;
+        cell.delegate = self;
         
         return cell;
         
@@ -223,8 +224,11 @@ static NSString *completeIdentifier = @"CompleteOrderCell";
                                @"price":orderModel.orderPrice,
                                @"time":[self handleDateWithTimeStamp:timestamp],
                                @"address":[NSString stringWithFormat:@"%@ %@",orderModel.provinceName, orderCourseModel.address]};
+    
     PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
     _paymentChannelView = [UIView paymentChannelView];
+    _paymentChannelView.charge = orderModel.charge;
+    _paymentChannelView.chargePay = YES;
     _paymentChannelView.delegate = self;
     _paymentChannelView.paymentInfoModel = paymentInfoModel;
     _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
@@ -251,6 +255,24 @@ static NSString *completeIdentifier = @"CompleteOrderCell";
     
 }
 
+#pragma mark - CompleteOrderCellDelete
+- (void)completeOrderCellDeleteOrder:(CompleteOrderCell *)cell{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    OrderModel *orderModel = _orderModelArray[indexPath.section];
+    
+    //UIAlertController
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除订单吗？" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:cancelAction];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self deleteOrderNetWork:orderModel.offCourseOrderId];
+    }];
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
 #pragma mark - 删除订单
 - (void)deleteOrderNetWork:(NSString *)orderId{
     DeleteOffLineCourseOrderDetailApi *deleteOrderApi = [[DeleteOffLineCourseOrderDetailApi alloc]initWithOffCourseOrderId:orderId];
@@ -269,6 +291,8 @@ static NSString *completeIdentifier = @"CompleteOrderCell";
             
             return;
         }
+        //刷新数据
+        [self getAllOrderListData];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
@@ -289,6 +313,9 @@ static NSString *completeIdentifier = @"CompleteOrderCell";
         [self login];
     }];
 }
+
+
+
 
 - (NSString *)handleDateWithTimeStamp:(NSInteger)timeStamp{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

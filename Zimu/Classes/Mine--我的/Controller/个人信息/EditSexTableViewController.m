@@ -9,6 +9,7 @@
 #import "EditSexTableViewController.h"
 #import "EditSexApi.h"
 #import "MBProgressHUD+MJ.h"
+#import "NewLoginViewController.h"
 
 static NSString *identifier = @"sexCell";
 @interface EditSexTableViewController (){
@@ -114,12 +115,14 @@ static NSString *identifier = @"sexCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         NSLog(@"dataDic : %@",dataDic);
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self login];
             return;
         }
         if (_sexIndex == 0) {
@@ -133,8 +136,15 @@ static NSString *identifier = @"sexCell";
         [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
 }
+
+#pragma mark - login
+- (void)login{
+    NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
+}
+
 
 @end

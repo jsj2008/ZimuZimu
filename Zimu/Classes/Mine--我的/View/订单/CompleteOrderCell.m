@@ -47,7 +47,9 @@
 
 //删除订单
 - (IBAction)cancelButtonAction:(UIButton *)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(completeOrderCellDeleteOrder:)]) {
+        [self.delegate completeOrderCellDeleteOrder:self];
+    }
 }
 
 - (void)setOrderModel:(OrderModel *)orderModel{

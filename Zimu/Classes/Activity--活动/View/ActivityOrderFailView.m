@@ -74,7 +74,7 @@
     [_payButton setBackgroundColor:[UIColor colorWithHexString:@"f5cd13"]];
     _payButton.layer.masksToBounds = YES;
     _payButton.layer.cornerRadius = _payButton.height / 2.0;
-    [_payButton setTitle:@"重新支付" forState:UIControlStateNormal];
+    [_payButton setTitle:@"查看订单" forState:UIControlStateNormal];
     [_payButton setTitleColor:themeWhite forState:UIControlStateNormal];
     _payButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [_payButton addTarget:self action:@selector(payButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -88,7 +88,7 @@
     }
 }
 
-//重新支付
+//查看订单
 - (void)payButtonAction{
     if ([self.delegate respondsToSelector:@selector(activityOrderFailViewPayAgain)]) {
         [self.delegate activityOrderFailViewPayAgain];

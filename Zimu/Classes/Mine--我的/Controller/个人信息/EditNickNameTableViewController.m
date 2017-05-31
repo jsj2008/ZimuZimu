@@ -11,6 +11,7 @@
 #import "UIBarButtonItem+ZMExtension.h"
 #import "EditNickNameApi.h"
 #import "MBProgressHUD+MJ.h"
+#import "NewLoginViewController.h"
 
 static NSString *identifier = @"EditNickNameCell";
 @interface EditNickNameTableViewController ()
@@ -105,12 +106,14 @@ static NSString *identifier = @"EditNickNameCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         NSLog(@"dataDic : %@",dataDic);
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+            [self login];
             return;
         }
         if (self.nickNameBlock) {
@@ -119,8 +122,14 @@ static NSString *identifier = @"EditNickNameCell";
         [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
+}
+
+#pragma mark - login
+- (void)login{
+    NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 

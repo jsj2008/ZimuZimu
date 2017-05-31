@@ -84,40 +84,40 @@
 //立即报名
 - (void)applyActivity{
     
-    ActivityOrderCompleteViewController *orderCompleteVC = [[ActivityOrderCompleteViewController alloc]init];
-    orderCompleteVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    orderCompleteVC.orderCompleteDelegate = self;
-    orderCompleteVC.result = @"success";
-    orderCompleteVC.courseId = _courseId;
-    [self presentViewController:orderCompleteVC animated:YES completion:nil];
+//    ActivityOrderCompleteViewController *orderCompleteVC = [[ActivityOrderCompleteViewController alloc]init];
+//    orderCompleteVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    orderCompleteVC.orderCompleteDelegate = self;
+//    orderCompleteVC.result = @"success";
+//    orderCompleteVC.courseId = _courseId;
+//    [self presentViewController:orderCompleteVC animated:YES completion:nil];
     
-//    if (_hasSelectAddress) {
-//        //判断是否已登录
-//        if ([userToken isEqualToString:@"logout"] || userToken == nil) {
-//            //去登录
-//            NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
-//            [self presentViewController:newLoginVC animated:YES completion:nil];
-//        }else{
-//            NSArray *textArray = [_addressString componentsSeparatedByString:@" "];
-//            NSDictionary *modelDic = @{@"title":_titleString,
-//                                       @"courseId":_courseId,
-//                                       @"price":_coursePrice,
-//                                       @"time":textArray[2],
-//                                       @"address":textArray[0]};
-//            PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
-//            _paymentChannelView = [UIView paymentChannelView];
-//            _paymentChannelView.delegate = self;
-//            _paymentChannelView.paymentInfoModel = paymentInfoModel;
-//            _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
-//            _popup.isAllowPopupsDrag = YES;
-//            _popup.dampingRatio = 0.9;
-//            _popup.presentationStyle = PresentationStyleBottom;
-//            [_popup presentAnimated:YES completion:nil];
-//        }
-//    }else{
-//        [_activityDetailTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//        [MBProgressHUD showMessage_WithoutImage:@"请先选择课程" toView:nil];
-//    }
+    if (_hasSelectAddress) {
+        //判断是否已登录
+        if ([userToken isEqualToString:@"logout"] || userToken == nil) {
+            //去登录
+            NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+            [self presentViewController:newLoginVC animated:YES completion:nil];
+        }else{
+            NSArray *textArray = [_addressString componentsSeparatedByString:@" "];
+            NSDictionary *modelDic = @{@"title":_titleString,
+                                       @"courseId":_courseId,
+                                       @"price":_coursePrice,
+                                       @"time":textArray[2],
+                                       @"address":textArray[0]};
+            PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
+            _paymentChannelView = [UIView paymentChannelView];
+            _paymentChannelView.delegate = self;
+            _paymentChannelView.paymentInfoModel = paymentInfoModel;
+            _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
+            _popup.isAllowPopupsDrag = YES;
+            _popup.dampingRatio = 0.9;
+            _popup.presentationStyle = PresentationStyleBottom;
+            [_popup presentAnimated:YES completion:nil];
+        }
+    }else{
+        [_activityDetailTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [MBProgressHUD showMessage_WithoutImage:@"请先选择课程" toView:nil];
+    }
 }
 
 #pragma mark - 创建activityDetailTableView
@@ -254,6 +254,7 @@
         orderCompleteVC.orderCompleteDelegate = self;
         orderCompleteVC.result = result;
         orderCompleteVC.courseId = _courseId;
+        
         [self presentViewController:orderCompleteVC animated:YES completion:nil];
     }];
 }

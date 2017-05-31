@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PaymentInfoModel.h"
 
+
+
 @protocol PaymentChannelViewDelegate <NSObject>
 
 - (void)paymentViewFinishPayWithResult:(NSString *)result;
@@ -22,6 +24,9 @@
 @property (nonatomic, copy) NSString *price;
 
 @property (nonatomic, strong) PaymentInfoModel *paymentInfoModel;
+
+@property (nonatomic, assign) BOOL chargePay;       //是否通过charge支付
+@property (nonatomic, copy) NSString *charge;
 
 @property (nonatomic, weak) id<PaymentChannelViewDelegate> delegate;
 

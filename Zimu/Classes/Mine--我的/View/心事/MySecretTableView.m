@@ -12,6 +12,7 @@
 #import "AnswerViewController.h"
 #import "AnswerDetailViewController.h"
 #import "UIView+ViewController.h"
+#import "SecretModel.h"
 
 static NSString *identifier = @"MySecretCell";
 
@@ -39,7 +40,7 @@ static NSString *identifier = @"MySecretCell";
 
 #pragma mark - tableView代理和数据源
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return _modelArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -47,14 +48,16 @@ static NSString *identifier = @"MySecretCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MySecretCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    MySecretCellLayoutFrame *layoutFrame = [[MySecretCellLayoutFrame alloc]init];
+    SecretModel *secretModel = _modelArray[indexPath.section];
+    MySecretCellLayoutFrame *layoutFrame = [[MySecretCellLayoutFrame alloc]initWithSecretModel:secretModel];
     cell.layoutFrame = layoutFrame;
     
     return cell;
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MySecretCellLayoutFrame *layoutFrame = [[MySecretCellLayoutFrame alloc]init];
+    SecretModel *secretModel = _modelArray[indexPath.section];
+    MySecretCellLayoutFrame *layoutFrame = [[MySecretCellLayoutFrame alloc]initWithSecretModel:secretModel];
     return layoutFrame.cellHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -70,13 +73,16 @@ static NSString *identifier = @"MySecretCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row % 2 == 0) {
-        AnswerViewController *vc = [[AnswerViewController alloc]init];
-        [self.viewController.navigationController pushViewController:vc animated:YES];
-    }else{
-        AnswerDetailViewController *vc = [[AnswerDetailViewController alloc]init];
-        [self.viewController.navigationController pushViewController:vc animated:YES];
-    }
+    SecretModel *secretModel = _modelArray[indexPath.section];
+    AnswerViewController *vc = [[AnswerViewController alloc]init];
+    vc.questionID = secretModel.questionId;
+    vc.previousVC = NSStringFromClass([self.viewController class]);
+    [self.viewController.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)setModelArray:(NSArray *)modelArray{
+    _modelArray = modelArray;
+    [self reloadData];
 }
 
 @end

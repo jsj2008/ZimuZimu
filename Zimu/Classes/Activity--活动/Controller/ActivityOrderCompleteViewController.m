@@ -12,6 +12,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "GetOfflineCourseByIdApi.h"
 #import "OfflineCourseModel.h"
+#import "OrderViewController.h"
 
 @interface ActivityOrderCompleteViewController ()<ActivityOrderSuccessViewDelegate, ActivityOrderFailViewDelegate>
 
@@ -68,6 +69,8 @@
 
 - (void)activityOrderSuccessViewCheckOrder{
     NSLog(@"查看订单");
+    OrderViewController *orderVC = [[OrderViewController alloc]init];
+    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 
@@ -88,10 +91,12 @@
 
 //重新支付
 - (void)activityOrderFailViewPayAgain{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    if ([self.orderCompleteDelegate respondsToSelector:@selector(payAgain)]) {
-        [self.orderCompleteDelegate payAgain];
-    }
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    if ([self.orderCompleteDelegate respondsToSelector:@selector(payAgain)]) {
+//        [self.orderCompleteDelegate payAgain];
+//    }
+    OrderViewController *orderVC = [[OrderViewController alloc]init];
+    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 

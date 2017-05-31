@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SecretModel.h"
 
 @interface MySecretCellLayoutFrame : NSObject
+
+- (instancetype)initWithSecretModel:(SecretModel *)secretModel;
+@property (nonatomic, strong) SecretModel *secretModel;
 
 @property (nonatomic, assign) CGRect titleLabelFrame;
 @property (nonatomic, assign) CGRect timeLabelFrame;
