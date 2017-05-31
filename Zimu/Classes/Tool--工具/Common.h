@@ -42,10 +42,7 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-<<<<<<< HEAD
 #define FaceUnityItems @[@"bxgz", @"caomei", @"changjinglu", @"hunsha", @"mao", @"memeda" , @"milu" , @"pangxie", @"pikaqiu", @"qibite",  @"tuzi", @"wangzi", @"xihuanxiong", @"xiong", @"xiongxiong", @"yang", @"yuhangyuan", @"zhnagyu"]
-=======
-#define FaceUnityItems @[@"bxgz", @"caomei", @"changjinglu", @"hunsha", @"mao", @"memeda" , @"milu" , @"pangxie", @"pikaqiu", @"qiubite",  @"tuzi", @"wangzi", @"xihuanxiong", @"xiong", @"xiongxiong", @"yang", @"yuhangyuan", @"zhnagyu"]
->>>>>>> origin/master
+
 
 #endif /* Common_h */

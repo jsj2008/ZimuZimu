@@ -596,25 +596,6 @@
 		5FE6BDB61ED7F7F400A2852F /* ZimuRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDB51ED7F7F400A2852F /* ZimuRefreshGifHeader.m */; };
 		5FE6BDB91ED8032100A2852F /* QuestionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */; };
 		5FE6BDBC1ED84DCA00A2852F /* QueryMyQuestionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDBB1ED84DCA00A2852F /* QueryMyQuestionApi.m */; };
-		5FE6BDBE1ED85F3200A2852F /* libPLMediaStreamingKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE6BDBD1ED85F3200A2852F /* libPLMediaStreamingKit.a */; };
-		5FE6BDD21ED85F8500A2852F /* bxgz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC01ED85F8500A2852F /* bxgz.mp3 */; };
-		5FE6BDD31ED85F8500A2852F /* caomei.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC11ED85F8500A2852F /* caomei.mp3 */; };
-		5FE6BDD41ED85F8500A2852F /* changjinglu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC21ED85F8500A2852F /* changjinglu.mp3 */; };
-		5FE6BDD51ED85F8500A2852F /* hunsha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC31ED85F8500A2852F /* hunsha.mp3 */; };
-		5FE6BDD61ED85F8500A2852F /* mao.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC41ED85F8500A2852F /* mao.mp3 */; };
-		5FE6BDD71ED85F8500A2852F /* memeda.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC51ED85F8500A2852F /* memeda.mp3 */; };
-		5FE6BDD81ED85F8500A2852F /* milu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC61ED85F8500A2852F /* milu.mp3 */; };
-		5FE6BDD91ED85F8500A2852F /* pangxie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC71ED85F8500A2852F /* pangxie.mp3 */; };
-		5FE6BDDA1ED85F8500A2852F /* pikaqiu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC81ED85F8500A2852F /* pikaqiu.mp3 */; };
-		5FE6BDDB1ED85F8500A2852F /* qiubite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDC91ED85F8500A2852F /* qiubite.mp3 */; };
-		5FE6BDDC1ED85F8500A2852F /* tuzi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDCA1ED85F8500A2852F /* tuzi.mp3 */; };
-		5FE6BDDD1ED85F8500A2852F /* wangzi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDCB1ED85F8500A2852F /* wangzi.mp3 */; };
-		5FE6BDDE1ED85F8500A2852F /* xihuanxiong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDCC1ED85F8500A2852F /* xihuanxiong.mp3 */; };
-		5FE6BDDF1ED85F8500A2852F /* xiong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDCD1ED85F8500A2852F /* xiong.mp3 */; };
-		5FE6BDE01ED85F8500A2852F /* xiongxiong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDCE1ED85F8500A2852F /* xiongxiong.mp3 */; };
-		5FE6BDE11ED85F8500A2852F /* yang.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDCF1ED85F8500A2852F /* yang.mp3 */; };
-		5FE6BDE21ED85F8500A2852F /* yuhangyuan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDD01ED85F8500A2852F /* yuhangyuan.mp3 */; };
-		5FE6BDE31ED85F8500A2852F /* zhnagyu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BDD11ED85F8500A2852F /* zhnagyu.mp3 */; };
 		5FE6BDE61ED9106800A2852F /* SecretModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDE51ED9106800A2852F /* SecretModel.m */; };
 		5FE6BDE91ED9464D00A2852F /* CreateTokenApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDE81ED9464D00A2852F /* CreateTokenApi.m */; };
 		5FE6BE1D1ED94D7400A2852F /* QN_GTM_Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BDED1ED94D7400A2852F /* QN_GTM_Base64.m */; };
@@ -1814,25 +1795,6 @@
 		5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleView.m; sourceTree = "<group>"; };
 		5FE6BDBA1ED84DCA00A2852F /* QueryMyQuestionApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryMyQuestionApi.h; sourceTree = "<group>"; };
 		5FE6BDBB1ED84DCA00A2852F /* QueryMyQuestionApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryMyQuestionApi.m; sourceTree = "<group>"; };
-		5FE6BDBD1ED85F3200A2852F /* libPLMediaStreamingKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPLMediaStreamingKit.a; sourceTree = "<group>"; };
-		5FE6BDC01ED85F8500A2852F /* bxgz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bxgz.mp3; sourceTree = "<group>"; };
-		5FE6BDC11ED85F8500A2852F /* caomei.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = caomei.mp3; sourceTree = "<group>"; };
-		5FE6BDC21ED85F8500A2852F /* changjinglu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = changjinglu.mp3; sourceTree = "<group>"; };
-		5FE6BDC31ED85F8500A2852F /* hunsha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hunsha.mp3; sourceTree = "<group>"; };
-		5FE6BDC41ED85F8500A2852F /* mao.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mao.mp3; sourceTree = "<group>"; };
-		5FE6BDC51ED85F8500A2852F /* memeda.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = memeda.mp3; sourceTree = "<group>"; };
-		5FE6BDC61ED85F8500A2852F /* milu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = milu.mp3; sourceTree = "<group>"; };
-		5FE6BDC71ED85F8500A2852F /* pangxie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pangxie.mp3; sourceTree = "<group>"; };
-		5FE6BDC81ED85F8500A2852F /* pikaqiu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pikaqiu.mp3; sourceTree = "<group>"; };
-		5FE6BDC91ED85F8500A2852F /* qiubite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = qiubite.mp3; sourceTree = "<group>"; };
-		5FE6BDCA1ED85F8500A2852F /* tuzi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tuzi.mp3; sourceTree = "<group>"; };
-		5FE6BDCB1ED85F8500A2852F /* wangzi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wangzi.mp3; sourceTree = "<group>"; };
-		5FE6BDCC1ED85F8500A2852F /* xihuanxiong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xihuanxiong.mp3; sourceTree = "<group>"; };
-		5FE6BDCD1ED85F8500A2852F /* xiong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xiong.mp3; sourceTree = "<group>"; };
-		5FE6BDCE1ED85F8500A2852F /* xiongxiong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xiongxiong.mp3; sourceTree = "<group>"; };
-		5FE6BDCF1ED85F8500A2852F /* yang.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yang.mp3; sourceTree = "<group>"; };
-		5FE6BDD01ED85F8500A2852F /* yuhangyuan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yuhangyuan.mp3; sourceTree = "<group>"; };
-		5FE6BDD11ED85F8500A2852F /* zhnagyu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zhnagyu.mp3; sourceTree = "<group>"; };
 		5FE6BDE41ED9106800A2852F /* SecretModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecretModel.h; sourceTree = "<group>"; };
 		5FE6BDE51ED9106800A2852F /* SecretModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecretModel.m; sourceTree = "<group>"; };
 		5FE6BDE71ED9464D00A2852F /* CreateTokenApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenApi.h; sourceTree = "<group>"; };
@@ -2003,7 +1965,6 @@
 				5FE6BD6A1ED3E61100A2852F /* libpingpp+one.a in Frameworks */,
 				1E71B11D1ECC08EE00DDEDDB /* libSocialPocket.a in Frameworks */,
 				1E71B1201ECC08EE00DDEDDB /* libSocialSina.a in Frameworks */,
-				5FE6BDBE1ED85F3200A2852F /* libPLMediaStreamingKit.a in Frameworks */,
 				1E71B1291ECC08EE00DDEDDB /* libSocialVKontakte.a in Frameworks */,
 				1E71B12C1ECC08EE00DDEDDB /* libSocialWeChat.a in Frameworks */,
 				1E71B10B1ECC08EE00DDEDDB /* libSocialEverNote.a in Frameworks */,
@@ -2147,7 +2108,6 @@
 		1E0FF2761EA9A848000156B5 /* PLMediaStreamingKit */ = {
 			isa = PBXGroup;
 			children = (
-				5FE6BDBD1ED85F3200A2852F /* libPLMediaStreamingKit.a */,
 				1E0FF2771EA9A848000156B5 /* include */,
 				1E0FF2971EA9A848000156B5 /* libcrypto.a */,
 				1E0FF2991EA9A848000156B5 /* libssl.a */,
@@ -4225,11 +4185,7 @@
 		5FE6BC671ECC318800A2852F /* Faceunity */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				5FE6BDBF1ED85F8500A2852F /* 更新版 */,
-=======
 				1E6B81DB1ED85F6D001DB05F /* 更新版 */,
->>>>>>> origin/master
 				5FE6BC681ECC318800A2852F /* FUAPIDemoBar */,
 			);
 			path = Faceunity;
@@ -4451,31 +4407,6 @@
 			name = "下拉刷新";
 			sourceTree = "<group>";
 		};
-		5FE6BDBF1ED85F8500A2852F /* 更新版 */ = {
-			isa = PBXGroup;
-			children = (
-				5FE6BDC01ED85F8500A2852F /* bxgz.mp3 */,
-				5FE6BDC11ED85F8500A2852F /* caomei.mp3 */,
-				5FE6BDC21ED85F8500A2852F /* changjinglu.mp3 */,
-				5FE6BDC31ED85F8500A2852F /* hunsha.mp3 */,
-				5FE6BDC41ED85F8500A2852F /* mao.mp3 */,
-				5FE6BDC51ED85F8500A2852F /* memeda.mp3 */,
-				5FE6BDC61ED85F8500A2852F /* milu.mp3 */,
-				5FE6BDC71ED85F8500A2852F /* pangxie.mp3 */,
-				5FE6BDC81ED85F8500A2852F /* pikaqiu.mp3 */,
-				5FE6BDC91ED85F8500A2852F /* qiubite.mp3 */,
-				5FE6BDCA1ED85F8500A2852F /* tuzi.mp3 */,
-				5FE6BDCB1ED85F8500A2852F /* wangzi.mp3 */,
-				5FE6BDCC1ED85F8500A2852F /* xihuanxiong.mp3 */,
-				5FE6BDCD1ED85F8500A2852F /* xiong.mp3 */,
-				5FE6BDCE1ED85F8500A2852F /* xiongxiong.mp3 */,
-				5FE6BDCF1ED85F8500A2852F /* yang.mp3 */,
-				5FE6BDD01ED85F8500A2852F /* yuhangyuan.mp3 */,
-				5FE6BDD11ED85F8500A2852F /* zhnagyu.mp3 */,
-			);
-			path = "更新版";
-			sourceTree = "<group>";
-		};
 		5FE6BDEA1ED94D7400A2852F /* QiniuSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -4625,13 +4556,10 @@
 				1E6B81D61ED83856001DB05F /* MyCollectionArticleModel.m */,
 				1E6B81D81ED84E95001DB05F /* MyCollectionVideoModel.h */,
 				1E6B81D91ED84E95001DB05F /* MyCollectionVideoModel.m */,
-<<<<<<< HEAD
 				5FE6BDE41ED9106800A2852F /* SecretModel.h */,
 				5FE6BDE51ED9106800A2852F /* SecretModel.m */,
-=======
 				1E6B82051ED95FB7001DB05F /* MyCollectionFMModel.h */,
 				1E6B82061ED95FB7001DB05F /* MyCollectionFMModel.m */,
->>>>>>> origin/master
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4864,16 +4792,10 @@
 			files = (
 				5FE6BC9B1ECC318900A2852F /* blurCell.xib in Resources */,
 				5F574D5D1EADE810007648D0 /* SubscribeFreeFMCell.xib in Resources */,
-<<<<<<< HEAD
-				5FE6BDE21ED85F8500A2852F /* yuhangyuan.mp3 in Resources */,
-				5FE6BDD41ED85F8500A2852F /* changjinglu.mp3 in Resources */,
-=======
 				1E6B821C1ED984EC001DB05F /* changjinglu.mp3 in Resources */,
 				1E6B821E1ED984EC001DB05F /* memeda.mp3 in Resources */,
 				1E6B82301ED98620001DB05F /* yang.mp3 in Resources */,
->>>>>>> origin/master
 				5FE6BCA01ECC318900A2852F /* FUDemoBar.xib in Resources */,
-				5FE6BDDF1ED85F8500A2852F /* xiong.mp3 in Resources */,
 				1E1762EE1EBC4F3500292DAC /* FriendMsgCell.xib in Resources */,
 				5FEA2AA01E8B4C4300405F75 /* CityCourseHeaderCell.xib in Resources */,
 				5FBB26A31EC47E1800C01EC8 /* SLDTextCell.xib in Resources */,
@@ -4886,11 +4808,7 @@
 				5F574D381EADC996007648D0 /* ConfuseExpertAnswerCell.xib in Resources */,
 				5FE6BC9C1ECC318900A2852F /* filterCell.xib in Resources */,
 				1E14444C1EA723D800FCDE02 /* LovelyFace.storyboard in Resources */,
-<<<<<<< HEAD
-				5FE6BDD51ED85F8500A2852F /* hunsha.mp3 in Resources */,
-=======
 				1E6B821D1ED984EC001DB05F /* hunsha.mp3 in Resources */,
->>>>>>> origin/master
 				5FBB3EC21EC5916400C01EC8 /* FMDetailIntroCell.xib in Resources */,
 				1E6B82231ED984EC001DB05F /* wangzi.mp3 in Resources */,
 				1E6B822E1ED98618001DB05F /* xiong.mp3 in Resources */,
@@ -4898,7 +4816,6 @@
 				1E1763051EC1562800292DAC /* SearchFriendsFriendCell.xib in Resources */,
 				1E71B1361ECC08EE00DDEDDB /* UMSocialSDKResources.bundle in Resources */,
 				5F2D62371E77C36500B038A5 /* EntranceCell.xib in Resources */,
-				5FE6BDD91ED85F8500A2852F /* pangxie.mp3 in Resources */,
 				5F4833821EB2DB8100481407 /* MyExpertTableViewCell.xib in Resources */,
 				18AC3B591E6FA075007EE823 /* ZFPlayer.bundle in Resources */,
 				5FE6BCA21ECC318900A2852F /* Info.plist in Resources */,
@@ -4912,7 +4829,6 @@
 				1E6B822A1ED985F1001DB05F /* mao.mp3 in Resources */,
 				1E6B82211ED984EC001DB05F /* qiubite.mp3 in Resources */,
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
-				5FE6BDDA1ED85F8500A2852F /* pikaqiu.mp3 in Resources */,
 				5FCFEF0D1EA47787003788A0 /* HomeCollectionViewCell.xib in Resources */,
 				5FAED5491E94D88900E295AC /* PaymentChannelCell.xib in Resources */,
 				5F574D7F1EADFFE5007648D0 /* MineCollectionViewCell.xib in Resources */,
@@ -4937,35 +4853,27 @@
 				1E71B12B1ECC08EE00DDEDDB /* VKSdkResources.bundle in Resources */,
 				5FE6BD641ED3E61000A2852F /* AlipaySDK.bundle in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
-				5FE6BDDB1ED85F8500A2852F /* qiubite.mp3 in Resources */,
 				1E1444071EA70B3300FCDE02 /* 12718.caf in Resources */,
 				5FBB3EBB1EC5912B00C01EC8 /* FMDetailAuthorCell.xib in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
 				5FCFF0C41EA855D0003788A0 /* HeaderTitleCell.xib in Resources */,
 				5FCFF0E01EA8A8B3003788A0 /* QuestionResultCell.xib in Resources */,
-				5FE6BDD71ED85F8500A2852F /* memeda.mp3 in Resources */,
 				1E1444071EA70B3300FCDE02 /* 12718.caf in Resources */,
 				5F4833BF1EB8847500481407 /* zh_CN.json in Resources */,
 				5FE6BCBD1ECC318900A2852F /* v3.bundle in Resources */,
 				1E71B0511ECAC6AE00DDEDDB /* ShareImgViewController.xib in Resources */,
 				5FEB30371E78DDA600B34CC7 /* ListenHeartTutorCell.xib in Resources */,
-				5FE6BDD81ED85F8500A2852F /* milu.mp3 in Resources */,
 				1E1762D91EBAC06D00292DAC /* ZMFriendSearchResultCell.xib in Resources */,
 				5FBB269C1EC47E0D00C01EC8 /* SLDTitleCell.xib in Resources */,
 				1E6B822C1ED98604001DB05F /* pikaqiu.mp3 in Resources */,
 				5FE6BCA11ECC318900A2852F /* FUItemCell.xib in Resources */,
-<<<<<<< HEAD
-				5FE6BDDE1ED85F8500A2852F /* xihuanxiong.mp3 in Resources */,
-=======
 				1E6B82261ED984EC001DB05F /* yuhangyuan.mp3 in Resources */,
->>>>>>> origin/master
 				1E0FF4041EB17F72000156B5 /* ZM_FriendCell.xib in Resources */,
 				5F5665CD1E9F0D000050AD29 /* CityCourseDetailHeaderCell.xib in Resources */,
 				1E0FF3D81EA9F28B000156B5 /* PLMediaSettingPKViewController.xib in Resources */,
 				5FE6BCBC1ECC318900A2852F /* face_beautification.bundle in Resources */,
 				5FE6BCA41ECC318900A2852F /* Media.xcassets in Resources */,
 				5FE6BD6B1ED3E61100A2852F /* Pingpp.bundle in Resources */,
-				5FE6BDD21ED85F8500A2852F /* bxgz.mp3 in Resources */,
 				1E71B04C1EC5BD5B00DDEDDB /* SearchFriendMyMsgCell.xib in Resources */,
 				5F8EDD4F1E6EA5B2000FC3E0 /* FMTableViewCell.xib in Resources */,
 				5FBB3EB21EC5849F00C01EC8 /* FMDeatilCommentCell.xib in Resources */,
@@ -4976,11 +4884,7 @@
 				5F5665BD1E9E8A990050AD29 /* CityCourseDetailThemeCell.xib in Resources */,
 				5FCFF13A1EA9F940003788A0 /* NoAnswerCell.xib in Resources */,
 				18AC3B631E6FA8BD007EE823 /* TrySeeEndView.xib in Resources */,
-<<<<<<< HEAD
-				5FE6BDD61ED85F8500A2852F /* mao.mp3 in Resources */,
-=======
 				1E6B82201ED984EC001DB05F /* pangxie.mp3 in Resources */,
->>>>>>> origin/master
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
 				5FCFF1BD1EAD9BB2003788A0 /* FindListCell.xib in Resources */,
 				5FCFF11E1EA9B7A6003788A0 /* TagCollectionViewCell.xib in Resources */,
@@ -4988,22 +4892,13 @@
 				1E6B82251ED984EC001DB05F /* xiongxiong.mp3 in Resources */,
 				5F574D5B1EADE810007648D0 /* BrowsVideoCell.xib in Resources */,
 				5FAED5361E948ACF00E295AC /* ListenHeartDynamicCell.xib in Resources */,
-				5FE6BDDD1ED85F8500A2852F /* wangzi.mp3 in Resources */,
-				5FE6BDDC1ED85F8500A2852F /* tuzi.mp3 in Resources */,
 				5FF4F3241EB0C90300977045 /* EvaluationListCell.xib in Resources */,
-				5FE6BDE11ED85F8500A2852F /* yang.mp3 in Resources */,
 				1E71B1331ECC08EE00DDEDDB /* UMSocialSDKPromptResources.bundle in Resources */,
-<<<<<<< HEAD
-				5FE6BDD31ED85F8500A2852F /* caomei.mp3 in Resources */,
-=======
 				1E6B821B1ED984EC001DB05F /* caomei.mp3 in Resources */,
->>>>>>> origin/master
 				5F2D62411E77D12700B038A5 /* ExamAnswerCell.xib in Resources */,
 				1E6B82221ED984EC001DB05F /* tuzi.mp3 in Resources */,
 				1E6B82321ED98629001DB05F /* zhnagyu.mp3 in Resources */,
 				5F574D591EADE810007648D0 /* BrowsArticleCell.xib in Resources */,
-				5FE6BDE31ED85F8500A2852F /* zhnagyu.mp3 in Resources */,
-				5FE6BDE01ED85F8500A2852F /* xiongxiong.mp3 in Resources */,
 				5F4833631EB1895200481407 /* CustomerInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
