@@ -312,6 +312,10 @@
 
     //设置应用角标为0
     application.applicationIconBadgeNumber = 0;
+    if (userToken) {
+        ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];
+        [call checkChat];
+    }
 
 }
 
@@ -351,7 +355,7 @@
 //}
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     [_pushMgr didReceiveRemoteNotificationbefore10:userInfo];
-    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     NSLog(@"%@", userInfo);
 
 }

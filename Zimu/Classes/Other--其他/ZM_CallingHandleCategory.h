@@ -31,8 +31,11 @@ typedef NS_ENUM(NSInteger, ZMChatRole) {
 //跳转到聊天页面
 - (void)jumpToChatRoom;
 
-+ (void)jumpToWaitVC;
+- (void)leaveChatRoome;
 
+- (void)checkChat;
+
++ (void)jumpToWaitVC;
 //获取当前window最上层的VC
 + (UIViewController*)curTopViewController;
 

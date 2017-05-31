@@ -9,5 +9,5 @@
 #import <YTKNetwork/YTKNetwork.h>
 
 @interface PushNotiToUsersApi : YTKRequest
-- (instancetype)initWithType:(NSString *)type users:(NSString *)users roomName:(NSString *)roomName;
+- (instancetype)initWithType:(NSString *)type users:(NSString *)users roomName:(NSString *)roomName  num:(NSString *)num;
 @end

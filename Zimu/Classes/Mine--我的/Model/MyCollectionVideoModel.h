@@ -22,6 +22,7 @@
 @property (nonatomic , copy) NSString              * videoLength;
 @property (nonatomic , copy) NSString              * videoProfile;
 @property (nonatomic , copy) NSString              * isOnline;
+@property (nonatomic , copy) NSString              * favoriteTime;
 @property (nonatomic , copy) NSString              * createTime;
 @property (nonatomic , copy) NSString              * userName;
 @property (nonatomic , copy) NSString              * directoryId;

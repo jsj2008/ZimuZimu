@@ -10,4 +10,7 @@
 
 @interface ZMChatAlertViewController : UIViewController
 
+@property (nonatomic, copy) NSString *roomName;
+@property (nonatomic, assign) BOOL isGroup;
+
 @end

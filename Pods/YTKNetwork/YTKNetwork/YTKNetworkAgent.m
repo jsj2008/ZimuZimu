@@ -462,6 +462,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [request toggleAccessoriesWillStopCallBack];
         [request requestFailedFilter];
+<<<<<<< HEAD
         [_hud removeFromSuperViewOnHide];
         [_hud hideAnimated:YES];
         [_hud removeFromSuperview];
@@ -474,6 +475,13 @@
             }
         }
         [self showMessage:@"服务器开小差了，请稍后再试"];
+=======
+        
+        [_hud removeFromSuperViewOnHide];
+        [_hud hideAnimated:NO];
+        
+        [self showMessage:@"服务器开小差了，请稍后重试"];
+>>>>>>> origin/master
         
         if (request.delegate != nil) {
             [request.delegate requestFailed:request];

@@ -393,14 +393,12 @@
 }
 - (void)saveVideo:(NSString *)videoPath{
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         PreviewPhotoVideoViewController *videoVC = [[PreviewPhotoVideoViewController  alloc] initWithVideoPath:videoPath];
         [self presentViewController:videoVC animated:YES completion:nil];
     });
 }
 - (void)savePhoto:(UIImage *)saveImage{
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         PreviewPhotoVideoViewController *videoVC = [[PreviewPhotoVideoViewController  alloc] initWithPhoto:saveImage];
         videoVC.previewDelegate = self;
         [self presentViewController:videoVC animated:YES completion:nil];

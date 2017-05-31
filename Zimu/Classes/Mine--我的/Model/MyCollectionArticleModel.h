@@ -18,6 +18,7 @@
 @property (nonatomic , copy) NSString              * keyWord;
 @property (nonatomic , copy) NSString              * articleAbs;
 @property (nonatomic , copy) NSString              * createTime;
+@property (nonatomic , copy) NSString              * favoriteTime;
 @property (nonatomic , copy) NSString              * userName;
 @property (nonatomic , copy) NSString              * createExp;
 @property (nonatomic , copy) NSString              * articleContent;
