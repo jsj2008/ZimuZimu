@@ -74,7 +74,7 @@
 @property (nonatomic , strong) OrderOfflineCourseModel              * offlineCourse;
 @property (nonatomic , copy) NSString              * offCourseId;
 @property (nonatomic , copy) NSString              * provinceName;
-@property (nonatomic , copy) NSString              * payPlafrom;
+@property (nonatomic , copy) NSString              * payPlafrom;        //支付方式
 @property (nonatomic , copy) NSString              * imgUrl;            //图片
 @property (nonatomic , copy) NSString              * successTime;
 @property (nonatomic , copy) NSString              * cityName;

@@ -29,7 +29,7 @@
     self.view.backgroundColor = themeGray;
     self.title = @"意见反馈";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
     
     [self setupTextView];
@@ -38,6 +38,15 @@
     //提交按钮
     UIBarButtonItem *rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"" title:@"提交" target:self action:@selector(submitFeedBack)];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 //提交反馈

@@ -10,6 +10,7 @@
 
 @protocol LoginViewControllerDelegate <NSObject>
 
+@optional
 /*登录成功*/
 - (void)loginSuccess;
 

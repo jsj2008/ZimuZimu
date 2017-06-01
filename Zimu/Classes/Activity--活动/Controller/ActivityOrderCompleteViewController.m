@@ -73,33 +73,6 @@
     [self.navigationController pushViewController:orderVC animated:YES];
 }
 
-
-/**
- *  支付失败页
- */
-- (void)setupFialedView{
-    _failedView = [[ActivityOrderFailView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    _failedView.backgroundColor = themeWhite;
-    _failedView.delegate = self;
-    [self.view addSubview:_failedView];
-}
-
-#pragma mark - ActivityOrderFailViewDelegate
-- (void)activityOrderFailViewQuit{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-//重新支付
-- (void)activityOrderFailViewPayAgain{
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    if ([self.orderCompleteDelegate respondsToSelector:@selector(payAgain)]) {
-//        [self.orderCompleteDelegate payAgain];
-//    }
-    OrderViewController *orderVC = [[OrderViewController alloc]init];
-    [self.navigationController pushViewController:orderVC animated:YES];
-}
-
-
 #pragma mark - 报名成功获取活动数据
 - (void)getActivityData{
     GetOfflineCourseByIdApi *getOfflineCourseByIdApi = [[GetOfflineCourseByIdApi alloc]initWithCourseId:_courseId];
@@ -123,6 +96,33 @@
     }];
     
 }
+
+
+
+/**
+ *  支付失败页
+ */
+- (void)setupFialedView{
+    _failedView = [[ActivityOrderFailView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _failedView.backgroundColor = themeWhite;
+    _failedView.delegate = self;
+    [self.view addSubview:_failedView];
+}
+
+#pragma mark - ActivityOrderFailViewDelegate
+- (void)activityOrderFailViewQuit{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//重新支付
+- (void)activityOrderFailViewPayAgain{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.orderCompleteDelegate respondsToSelector:@selector(payAgainWithPayOrderModel:)]) {
+        [self.orderCompleteDelegate payAgainWithPayOrderModel:self.payOrderModel];
+    }
+}
+
+
 
 
 

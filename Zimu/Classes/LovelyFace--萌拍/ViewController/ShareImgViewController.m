@@ -29,9 +29,9 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     UIBarButtonItem *msgBtn = [UIBarButtonItem barButtonItemWithImageName:@"backHome" title:@"" target:self action:@selector(backToHome)];
 

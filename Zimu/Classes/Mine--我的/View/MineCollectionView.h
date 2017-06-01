@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MineCollectionViewDelegate <NSObject>
+
+//显示settingView
+- (void)settingViewShow;
+
+//关闭settingView
+- (void)settingViewHidden;
+
+@end
+
 @interface MineCollectionView : UICollectionView
+
+@property (nonatomic, weak) id<MineCollectionViewDelegate> mineDelegate;
 
 @end

@@ -27,6 +27,7 @@
 
 + (instancetype)showToView:(UIView *)view{
     SettingView *settingView = [[self alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+    
     [view addSubview:settingView];
     [settingView animation];
     
@@ -76,6 +77,7 @@
     [self addSubview:button];
 }
 - (void)back{
+    [self.delegate settingViewDidHidden];
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 0;
         self.transform = CGAffineTransformScale(self.transform, 0.6, 0.6);

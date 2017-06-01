@@ -31,6 +31,15 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 //创建bottomView
 - (void)_createBottomView{
     _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, 1, kScreenWidth, kScreenWidth)];

@@ -218,7 +218,7 @@
 - (void)setFmDetailModel:(FMDetailModel *)fmDetailModel{
     if (_fmDetailModel != fmDetailModel) {
         _fmDetailModel = fmDetailModel;
-        _fmURL = [@"http://on9fin031.bkt.clouddn.com/" stringByAppendingString:_fmDetailModel.audioUrl];
+        _fmURL = [imagePrefixURL stringByAppendingString:_fmDetailModel.audioUrl];
         [self initAudioPlayer];
         
         //刷新数据

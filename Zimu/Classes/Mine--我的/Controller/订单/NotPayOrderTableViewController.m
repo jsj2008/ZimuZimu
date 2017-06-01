@@ -143,7 +143,10 @@ static NSString *identifier = @"NotPayOrderCell";
     NSMutableArray *nowDataArray = [NSMutableArray arrayWithArray:_orderModelArray];
     OrderOfflineCourseModel *model = nowDataArray.lastObject;
     NSString *lastTimeStamp = model.createTime;
-    
+    if (nowDataArray.count == 0) {
+        NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+        lastTimeStamp = [NSString stringWithFormat:@"%.0f",timeInterval];
+    }
     QueryAppUserOrderCompleteListApi *queryAppUserOrderListApi = [[QueryAppUserOrderCompleteListApi alloc]initWithEndTime:lastTimeStamp status:@"0"];
     [queryAppUserOrderListApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
@@ -199,11 +202,15 @@ static NSString *identifier = @"NotPayOrderCell";
                                @"price":orderModel.orderPrice,
                                @"time":[self handleDateWithTimeStamp:timestamp],
                                @"address":[NSString stringWithFormat:@"%@ %@",orderModel.provinceName, orderCourseModel.address]};
+    NSDictionary *payOrderModelDic = @{@"offlineCourseOrderId":orderModel.offCourseOrderId,
+                                       @"channel":orderModel.payPlafrom,
+                                       @"charge":orderModel.charge};
     
     PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
+    PayOrderModel *payOrderModel = [PayOrderModel yy_modelWithDictionary:payOrderModelDic];
     _paymentChannelView = [UIView paymentChannelView];
-    _paymentChannelView.charge = orderModel.charge;
     _paymentChannelView.chargePay = YES;
+    _paymentChannelView.payOrderModel = payOrderModel;
     _paymentChannelView.delegate = self;
     _paymentChannelView.paymentInfoModel = paymentInfoModel;
     _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
@@ -261,7 +268,7 @@ static NSString *identifier = @"NotPayOrderCell";
 
 
 #pragma mark - PaymentChannelViewDelegate
-- (void)paymentViewFinishPayWithResult:(NSString *)result{
+- (void)paymentViewFinishPayWithResult:(NSString *)result payOrderModel:(PayOrderModel *)payOrderModel{
     [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
         [self getWaitPayOrderListData];
     }];

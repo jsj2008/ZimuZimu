@@ -33,7 +33,7 @@
 #define USERID [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"]
 #define ZMUSERMSG [[NSUserDefaults standardUserDefaults] objectForKey:@"userMsg"]
 
-#define imagePrefixURL @"http://on9fin031.bkt.clouddn.com/"     //图片前缀
+#define imagePrefixURL @"http://on59kdhax.bkt.clouddn.com/"     //@"http://on9fin031.bkt.clouddn.com/"     //图片前缀
 
 /*判断系统版本*/
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
@@ -42,7 +42,8 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-#define FaceUnityItems @[@"bxgz", @"caomei", @"changjinglu", @"hunsha", @"mao", @"memeda" , @"milu" , @"pangxie", @"pikaqiu", @"qibite",  @"tuzi", @"wangzi", @"xihuanxiong", @"xiong", @"xiongxiong", @"yang", @"yuhangyuan", @"zhnagyu"]
+#define FaceUnityItems @[@"aixinniao",@"etmaozi_zh_fu",@"ettuzi_zh_fu",@"etxigua_zh_fu",@"etye_zh_fu",@"fu_zh_zbaixin",@"fu_zh_zbtang",@"fu_ztt_lihua",@"hana",@"hongyu",@"huanxing_ztt_fu",@"hutou",@"item0207",@"maoyu",@"miaomi_ztt_fu",@"mogu",@"newy1",@"nianshou",@"qingwa_lm_fu",@"sanye",@"xiaoxueshen_ztt_fu"]
+//@[@"bxgz", @"caomei", @"changjinglu", @"hunsha", @"mao", @"memeda" , @"milu" , @"pangxie", @"pikaqiu", @"qibite",  @"tuzi", @"wangzi", @"xihuanxiong", @"xiong", @"xiongxiong", @"yang", @"yuhangyuan", @"zhnagyu"]
 
 
 #endif /* Common_h */

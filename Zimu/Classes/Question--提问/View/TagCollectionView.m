@@ -9,6 +9,7 @@
 #import "TagCollectionView.h"
 #import "TagCollectionViewCell.h"
 #import "MBProgressHUD+MJ.h"
+#import "QuestionTagModel.h"
 
 static NSString *tagCellIdentifier = @"TagCollectionViewCell";
 @interface TagCollectionView ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -79,7 +80,9 @@ static NSString *tagCellIdentifier = @"TagCollectionViewCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGSize tagSize = [_tagArray[indexPath.row] sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+//    QuestionTagModel *tagModel = _tagArray[indexPath.row];
+    NSString *tagString = _tagArray[indexPath.row];
+    CGSize tagSize = [tagString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     return CGSizeMake(tagSize.width + 20, 25);
 }
 

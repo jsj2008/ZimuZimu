@@ -338,7 +338,7 @@
         [MBProgressHUD showMessage_WithoutImage:@"发表成功" toView:self.view];
         _commentBar.textField.text = @"";
         [_commentBar.textField resignFirstResponder];
-        [self getUserCommentData];
+        [self searchQuestionDetail];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];

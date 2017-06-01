@@ -81,7 +81,7 @@ static NSString *listIdentifier = @"FindListCell";
             ArticleViewController *articleVC = [[ArticleViewController alloc]init];
             articleVC.articleID = itemModel.qinziid;
             articleVC.articleTitle = itemModel.title;
-//            [articleVC loadWebURLSring:@"http://mp.weixin.qq.com/s/WFlfD_GgedmXzlGvx3maxw"];
+//            [articleVC loadWebURLSring:itemModel.qinziid];
             [self.viewController.navigationController pushViewController:articleVC animated:YES];
         }
             break;

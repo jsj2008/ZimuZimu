@@ -73,13 +73,13 @@
     
     //添加button
     NSArray *childVCs = self.childViewControllers;
-    CGFloat width = 60;
+    CGFloat width = kScreenWidth/3.0;
     CGFloat height = 25;
     CGFloat y = ((_navigationView.height - 11) - height)/2.0 + 5;
     for (int index = 0; index < childVCs.count; index++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         //        CGFloat x = index ? CGRectGetWidth(_navigationView.frame)/3.0 : CGRectGetWidth(_navigationView.frame)/3.0 - width;
-        button.frame = CGRectMake(index * (width) + CGRectGetWidth(_navigationView.frame)/2.0 - 90, y, width, height);
+        button.frame = CGRectMake(index * width, y, width, height);
         button.tag = 20 + index;
         [_navigationView addSubview:button];
         

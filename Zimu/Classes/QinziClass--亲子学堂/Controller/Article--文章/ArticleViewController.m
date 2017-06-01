@@ -57,7 +57,22 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //获取文章数据
-    [self getArticleDetailData];
+//    [self getArticleDetailData];
+    [self loadWebURLSring:_articleID];
+    
+    //加载web页面
+    [self startLoadWebView];
+    
+    //添加到主控制器上
+    [self.view addSubview:self.wkWebView];
+    
+    [self setupArticleTableView];
+    [self setupCommentBar];
+    //添加进度条
+    [self.view addSubview:self.progressView];
+    
+    //获取评论数据
+    [self getArticleCommentData];
     
     //判断是否登录
     NSString *token = userToken;
@@ -137,21 +152,21 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
             [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
             return;
         }
-        [self loadWebURLSring:articleDetailModel.object];
-        
-        //加载web页面
-        [self startLoadWebView];
-        
-        //添加到主控制器上
-        [self.view addSubview:self.wkWebView];
-        
-        [self setupArticleTableView];
-        [self setupCommentBar];
-        //添加进度条
-        [self.view addSubview:self.progressView];
-        
-        //获取评论数据
-        [self getArticleCommentData];
+//        [self loadWebURLSring:_articleID];
+//        
+//        //加载web页面
+//        [self startLoadWebView];
+//        
+//        //添加到主控制器上
+//        [self.view addSubview:self.wkWebView];
+//        
+//        [self setupArticleTableView];
+//        [self setupCommentBar];
+//        //添加进度条
+//        [self.view addSubview:self.progressView];
+//        
+//        //获取评论数据
+//        [self getArticleCommentData];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
@@ -254,8 +269,8 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 
 
 - (void)loadWebURLSring:(NSString *)string{
-//    self.URLString = [@"https://" stringByAppendingString:string];
-    self.URLString = @"https://music.163.com";
+    self.URLString = [@"http://www.zimu365.com/zimu_portal_demo/html/share/shareArticle.html?articleId=" stringByAppendingString:string];
+//    self.URLString = @"https://music.163.com";
 }
 
 

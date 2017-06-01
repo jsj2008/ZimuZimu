@@ -238,7 +238,7 @@
     [self getFMCommentData];
 }
 
-#pragma mark - 查询是否已收藏文章
+#pragma mark - 查询是否已收藏FM
 - (void)checkWhetherSelectFM{
     GetWhetherFavoriteFmApi *getWhetherFavoriteFmApi = [[GetWhetherFavoriteFmApi alloc]initWithFMId:_fmId];
     [getWhetherFavoriteFmApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -264,7 +264,7 @@
     }];
 }
 
-#pragma mark - 收藏文章
+#pragma mark - 收藏FM
 - (void)collectFM{
     BOOL hasCollected = _commentBar.hasCollected;
     InsertFmCollectionApi *insertFMCollectionApi = [[InsertFmCollectionApi alloc]initWithFMId:_fmId];

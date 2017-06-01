@@ -250,7 +250,7 @@
         [self getVideoExpertData:videoDetailModel.expertId];
         
         //播放视频
-        NSString *urlString = [NSString stringWithFormat:@"http://on9fin031.bkt.clouddn.com/%@",videoDetailModel.videoUrl];
+        NSString *urlString = [NSString stringWithFormat:@"%@%@",imagePrefixURL ,videoDetailModel.videoUrl];
         [self setPlayerModelWithTitle:videoDetailModel.videoTitle videoStr:urlString];
         [_player playerControlView:_playerFatherView  playerModel:_playerModel];
         [self.player autoPlayTheVideo];

@@ -159,7 +159,11 @@
     [NSURLCache setSharedURLCache:sharedCache];
     
     _webView.delegate = self;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.163.com"]]];
+    NSString *prefixURL = @"http://www.zimu365.com/zimu_portal_demo/html/happiness_onferenct/new_happy.html";
+    if ([_titleString isEqualToString:@"亲子共学团"]) {
+        prefixURL = @"http://www.zimu365.com/zimu_portal_demo/html/one_city_lesson/group.html";
+    }
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:prefixURL]]];
     
     self.activityDetailTableView.tableFooterView = _webView;
     
@@ -239,7 +243,7 @@
 
 
 #pragma mark - PaymentChannelViewDelegate
-- (void)paymentViewFinishPayWithResult:(NSString *)result{
+- (void)paymentViewFinishPayWithResult:(NSString *)result payOrderModel:(PayOrderModel *)payOrderModel{
 //    if ([result isEqualToString:@"fail"]) {
 //        result = @"支付失败";
 //    }else if ([result isEqualToString:@"success"]){
@@ -254,6 +258,7 @@
         orderCompleteVC.orderCompleteDelegate = self;
         orderCompleteVC.result = result;
         orderCompleteVC.courseId = _courseId;
+        orderCompleteVC.payOrderModel = payOrderModel;
         
         [self presentViewController:orderCompleteVC animated:YES completion:nil];
     }];
@@ -271,8 +276,41 @@
 }
 
 #pragma mark - ActivityOrderCompleteViewControllerDelegate 重新支付
-- (void)payAgain{
-    [self performSelector:@selector(applyActivity) withObject:nil afterDelay:0.3];
+- (void)payAgainWithPayOrderModel:(PayOrderModel *)payOrderModel{
+    [self applyActivityWithPayOrderModel:payOrderModel];
+}
+
+//重新报名
+- (void)applyActivityWithPayOrderModel:(PayOrderModel *)payOrderModel{
+
+    if (_hasSelectAddress) {
+        //判断是否已登录
+        if ([userToken isEqualToString:@"logout"] || userToken == nil) {
+            //去登录
+            NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+            [self presentViewController:newLoginVC animated:YES completion:nil];
+        }else{
+            NSArray *textArray = [_addressString componentsSeparatedByString:@" "];
+            NSDictionary *modelDic = @{@"title":_titleString,
+                                       @"courseId":_courseId,
+                                       @"price":_coursePrice,
+                                       @"time":textArray[2],
+                                       @"address":textArray[0]};
+            PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
+            _paymentChannelView = [UIView paymentChannelView];
+            _paymentChannelView.delegate = self;
+            _paymentChannelView.paymentInfoModel = paymentInfoModel;
+            _paymentChannelView.payOrderModel = payOrderModel;              //区别在于这里，重新提交才会有
+            _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
+            _popup.isAllowPopupsDrag = YES;
+            _popup.dampingRatio = 0.9;
+            _popup.presentationStyle = PresentationStyleBottom;
+            [_popup presentAnimated:YES completion:nil];
+        }
+    }else{
+        [_activityDetailTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [MBProgressHUD showMessage_WithoutImage:@"请先选择课程" toView:nil];
+    }
 }
 
 

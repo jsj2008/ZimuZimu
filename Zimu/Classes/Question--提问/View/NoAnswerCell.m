@@ -20,7 +20,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    _titleLabel.text = @"暂时还没有专家回答，您可以一对一咨询\n更快速的解决您的问题";
+    _titleLabel.text = @"暂时还没有专家回答";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -12,6 +12,8 @@
 #import "PaymentInfoModel.h"
 #import "MBProgressHUD+MJ.h"
 #import "NewLoginViewController.h"
+#import "PayOrderModel.h"
+#import "ModifyAppOfflineCourseApi.h"
 
 #define kWaiting          @"正在获取支付凭据,请稍后..."
 #define kNote             @"提示"
@@ -36,11 +38,12 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
 
 @implementation ZimuPayManager
 
-- (void)submitOrder{
+//- (void)submitOrder{
+//
+//}
 
-}
-
-- (void)normalPayWithViewController:(UIViewController *)viewController charge:(NSString *)charge{
+//原有支付方式重新支付
+- (void)normalPayWithViewController:(UIViewController *)viewController charge:(NSString *)charge payOrderModel:(PayOrderModel *)payOrderModel{
 
     ZimuPayManager *__weak weakSelf = self;
     [Pingpp createPayment:charge
@@ -54,8 +57,8 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
                    NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
                }
                
-               if ([self.delegate respondsToSelector:@selector(zimuPayManager:finishPay:)]) {
-                   [self.delegate zimuPayManager:weakSelf finishPay:result];
+               if ([self.delegate respondsToSelector:@selector(zimuPayManager:finishPay:payOrderModel:)]) {
+                   [self.delegate zimuPayManager:weakSelf finishPay:result payOrderModel:payOrderModel];
                }
                
                if ([result isEqualToString:@"fail"]) {
@@ -71,7 +74,66 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
 
 }
 
+//修改订单支付方式后重新支付
+- (void)normalPayWithViewController:(UIViewController *)viewController PaymentInfoModel:(PaymentInfoModel *)paymentInfoModel channel:(NSString *)channel offCourseOrderId:(NSString *)offCourseOrderId{
+    ZimuPayManager *__weak weakSelf = self;
+    //修改订单
+    ModifyAppOfflineCourseApi *modifyAppOfflineCourseApi = [[ModifyAppOfflineCourseApi alloc]initWithOffCourseOrderId:offCourseOrderId channel:channel offlineCourseName:paymentInfoModel.title];
+    [weakSelf showAlertWait];
+    [modifyAppOfflineCourseApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [weakSelf hideAlert];
+        NSData *data = request.responseData;
+        NSError *error = nil;
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error) {
+            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:viewController.view];
+            return ;
+        }
+        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+        if (!isTrue) {
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:viewController.view];
+            if ([self.delegate respondsToSelector:@selector(loginFailed)]) {
+                [self.delegate loginFailed];
+            }
+            return;
+        }
+        PayOrderModel *payOrderModel = [PayOrderModel yy_modelWithDictionary:dataDic[@"object"]];
+        NSString *charge = payOrderModel.charge;
+        [Pingpp createPayment:charge
+               viewController:viewController
+                 appURLScheme:kUrlScheme
+               withCompletion:^(NSString *result, PingppError *error) {
+                   NSLog(@"completion block: %@", result);
+                   if (error == nil) {
+                       NSLog(@"PingppError is nil");
+                   } else {
+                       NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+                   }
+                   
+                   if ([self.delegate respondsToSelector:@selector(zimuPayManager:finishPay:payOrderModel:)]) {
+                       [self.delegate zimuPayManager:weakSelf finishPay:result payOrderModel:payOrderModel];
+                   }
+                   
+                   if ([result isEqualToString:@"fail"]) {
+                       result = @"支付失败";
+                   }else if ([result isEqualToString:@"success"]){
+                       result = @"支付成功";
+                   }else if ([result isEqualToString:@"cancel"]){
+                       result = @"取消支付";
+                   }
+                   [MBProgressHUD showSuccess:result toView:viewController.view];
+                   
+               }];
 
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [weakSelf hideAlert];
+    }];
+}
+
+
+//提交订单支付
 - (void)normalPayWithViewController:(UIViewController *)viewController PaymentInfoModel:(PaymentInfoModel *)paymentInfoModel channel:(NSString *)channel{
     ZimuPayManager *__weak weakSelf = self;
     WXOfflineCourseApi *wxOfflineCourseApi = [[WXOfflineCourseApi alloc]initWithOfflineCourseId:paymentInfoModel.courseId offlineCourseName:paymentInfoModel.title offCoursePrice:@"0.01" channel:channel];//paymentInfoModel.price
@@ -95,8 +157,8 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
             
             return;
         }
-//        [MBProgressHUD showSuccess:@"订单提交成功" toView:nil];
-        NSString *charge = dataDic[@"object"];
+        PayOrderModel *payOrderModel = [PayOrderModel yy_modelWithDictionary:dataDic[@"object"]];
+        NSString *charge = payOrderModel.charge;
         [Pingpp createPayment:charge
                viewController:viewController
                  appURLScheme:kUrlScheme
@@ -108,8 +170,8 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
                        NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
                    }
                    
-                   if ([self.delegate respondsToSelector:@selector(zimuPayManager:finishPay:)]) {
-                       [self.delegate zimuPayManager:weakSelf finishPay:result];
+                   if ([self.delegate respondsToSelector:@selector(zimuPayManager:finishPay:payOrderModel:)]) {
+                       [self.delegate zimuPayManager:weakSelf finishPay:result payOrderModel:payOrderModel];
                    }
                    
                    if ([result isEqualToString:@"fail"]) {
@@ -119,14 +181,12 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
                    }else if ([result isEqualToString:@"cancel"]){
                        result = @"取消支付";
                    }
-//                   [weakSelf showAlertMessage:result];
                    [MBProgressHUD showSuccess:result toView:viewController.view];
                    
                }];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [weakSelf hideAlert];
-//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
     }];
 }
 

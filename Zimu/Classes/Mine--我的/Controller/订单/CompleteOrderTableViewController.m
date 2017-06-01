@@ -140,7 +140,10 @@ static NSString *identifier = @"CompleteOrderCell";
     NSMutableArray *nowDataArray = [NSMutableArray arrayWithArray:_orderModelArray];
     OrderOfflineCourseModel *model = nowDataArray.lastObject;
     NSString *lastTimeStamp = model.createTime;
-    
+    if (nowDataArray.count == 0) {
+        NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+        lastTimeStamp = [NSString stringWithFormat:@"%.0f",timeInterval];
+    }
     QueryAppUserOrderCompleteListApi *queryAppUserOrderListApi = [[QueryAppUserOrderCompleteListApi alloc]initWithEndTime:lastTimeStamp status:@"1"];
     [queryAppUserOrderListApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;

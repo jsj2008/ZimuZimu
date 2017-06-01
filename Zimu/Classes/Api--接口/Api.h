@@ -36,7 +36,8 @@
 #define GetOfflineCourseURL @"offlineCourse/getOfflineCourse.do"                //获取具体活动时间地点(参数:categoryId)
 #define GetAppOfflineCourseByIdURL @"appCourse/getAppOfflineCourseById.do"      //获取该类别活动详情数据(参数:categoryId)
 #define GetAppOfflineCourseByCourseIdURL @"appCourse/getAppOfflineCourseByCourseId.do" //获取具体活动详情(参数:courseId)
-#define WXOfflineCourseURL @"pPay/check/wxOfflineCourse.do"//线下活动报名(参数:offlineCourseId、offCoursePrice、channel、offlineCourseName)
+#define WXOfflineCourseURL @"pPay/check/addAppOfflineCourse.do"//线下活动报名，提交订单(参数:offlineCourseId、offCoursePrice、channel、offlineCourseName)
+#define ModifyAppOfflineCourseURL @"pPay/check/modifyAppOfflineCourse.do"   //重新提交订单 (参数:userToken、offCourseOrderId、channel、offlineCourseName)
 #define GetOfflineCourseByIdURL @"offlineCourse/getOfflineCourseById.do"    //获取所报名的活动的详情(参数:offCourseId)
 
 
@@ -49,6 +50,7 @@
 #define InsertCommentURL @"appExpSolve/check/insertComment.do"            //提交评论 （评论内容 commentVal  问题id questionId）
 #define CareQuestionURL @"appExpSolve/check/careQuestion.do"               //关注问题 （传userToken，问题id）
 #define QueryWhetherCareURL @"appExpSolve/check/queryWhetherCare.do"       //是否已关注该问题（传userToken，问题id）
+#define GetQuestionLabelURL @"appQuestion/getQuestionLabel.do"             //获取提问标签
 
 
 //=========================================== #我的# =======================================================

@@ -20,7 +20,7 @@
 
 static NSString *identifier = @"MineCollectionViewCell";
 
-@interface MineCollectionView ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface MineCollectionView ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SettingViewDelegate>
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) NSArray *titleArray;
@@ -125,9 +125,27 @@ static NSString *identifier = @"MineCollectionViewCell";
         MyCollectViewController *myCollectVC = [[MyCollectViewController alloc]init];
         [self.viewController.navigationController pushViewController:myCollectVC animated:YES];
     }else if(indexPath.row == 5){
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        [SettingView showToView:window];
+//        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        
+        if ([self.mineDelegate respondsToSelector:@selector(settingViewShow)]) {
+            [self.mineDelegate settingViewShow];
+        }
+        
+        SettingView *settingView = [[SettingView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+        settingView.delegate = self;
+        [settingView animation];
+        [self.viewController.view addSubview:settingView];
+
     }
 }
+
+#pragma mark - SettingViewDelegate
+- (void)settingViewDidHidden{
+    if ([self.mineDelegate respondsToSelector:@selector(settingViewHidden)]) {
+        [self.mineDelegate settingViewHidden];
+    }
+}
+
+
 
 @end

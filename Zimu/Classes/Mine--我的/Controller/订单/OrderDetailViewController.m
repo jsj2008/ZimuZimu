@@ -62,10 +62,17 @@
                                @"price":_orderModel.orderPrice,
                                @"time":[self handleDateWithTimeStamp:timestamp],
                                @"address":[NSString stringWithFormat:@"%@ %@",_orderModel.provinceName, orderCourseModel.address]};
+    NSDictionary *payOrderModelDic = @{@"offlineCourseOrderId":_orderModel.offCourseOrderId,
+                                       @"channel":_orderModel.payPlafrom,
+                                       @"charge":_orderModel.charge};
+    
     PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
+    PayOrderModel *payOrderModel = [PayOrderModel yy_modelWithDictionary:payOrderModelDic];
     _paymentChannelView = [UIView paymentChannelView];
     _paymentChannelView.delegate = self;
     _paymentChannelView.paymentInfoModel = paymentInfoModel;
+    _paymentChannelView.chargePay = YES;
+    _paymentChannelView.payOrderModel = payOrderModel;
     _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
     _popup.isAllowPopupsDrag = YES;
     _popup.dampingRatio = 0.9;
@@ -112,7 +119,7 @@
 }
 
 #pragma mark - PaymentChannelViewDelegate
-- (void)paymentViewFinishPayWithResult:(NSString *)result{
+- (void)paymentViewFinishPayWithResult:(NSString *)result payOrderModel:(PayOrderModel *)payOrderModel{
     [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
         [self getOrderDetailData];
     }];

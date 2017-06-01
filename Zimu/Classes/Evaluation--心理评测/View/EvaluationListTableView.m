@@ -57,7 +57,7 @@ static NSString *identifier = @"EvaluationListCell";
     PsyTestDetailViewController *vc = [[PsyTestDetailViewController alloc] init];
     PsyTestListModel *model = [PsyTestListModel yy_modelWithJSON:_testListData[indexPath.row]];
     vc.title = model.testTitle;
-    vc.testUrl = model.testUrl;
+    vc.testUrl = model.testId;
     [self.viewController.navigationController pushViewController:vc animated:YES];
 }
 

@@ -105,7 +105,7 @@ static NSString *noAnswerIdentifier = @"NoAnswerCell";
                 NoAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:noAnswerIdentifier];
                 cell.separatorInset = UIEdgeInsetsMake(self.height - 1, cell.width, 0, 0);
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.placeholderText = @"暂时还没有专家回答，您可以一对一咨询\n更快速的解决您的问题";
+                cell.placeholderText = @"暂时还没有专家回答";
                 
                 return cell;
             }

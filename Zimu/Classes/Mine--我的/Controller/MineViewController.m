@@ -17,7 +17,7 @@
 #import <UIButton+WebCache.h>
 
 
-@interface MineViewController ()
+@interface MineViewController ()<MineCollectionViewDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *bannerImageView;
@@ -44,7 +44,12 @@
     self.title = @"我的";
     self.view.backgroundColor = themeWhite;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _loginExpired = YES;
+    NSString *userTokenString = userToken;
+    if (userTokenString == nil || [userTokenString isEqualToString:@"logout"]) {
+        _loginExpired = NO;
+    }else{
+        _loginExpired = YES;
+    }
     
     [self makeUI];
     
@@ -66,8 +71,8 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeYellow size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 
@@ -155,8 +160,19 @@
     CGFloat width = kScreenWidth - 50;
     CGFloat height = (width - 20)/3.0 * 2 + 15;
     _mineCollectionView = [[MineCollectionView alloc]initWithFrame:CGRectMake(25, CGRectGetMaxY(_nameLabel.frame) + 35, kScreenWidth - 50, height) collectionViewLayout:[UICollectionViewFlowLayout new]];
+    _mineCollectionView.mineDelegate = self;
     [_contentView addSubview:_mineCollectionView];
 }
+
+#pragma mark - MineCollectionViewDelegate
+- (void)settingViewShow{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+- (void)settingViewHidden{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+
 
 //我的个人信息
 - (void)myInfo{
@@ -171,9 +187,16 @@
 
 - (void)login{
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
     [self presentViewController:newLoginVC animated:YES completion:nil];
 
 }
+#pragma mark - LoginViewControllerDelegate
+- (void)loginSuccess{
+    _loginExpired = YES;
+    [self getMyInfoNetWork];
+}
+
 
 #pragma mark - 获取我的信息数据
 - (void)getMyInfoNetWork{

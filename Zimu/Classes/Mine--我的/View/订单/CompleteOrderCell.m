@@ -60,7 +60,11 @@
     _stateLabel.text = @"订单完成";
     
     //图片
-    NSString *imgURL = [imagePrefixURL stringByAppendingString:orderModel.imgUrl];
+    NSString *imageURL = @"";
+    if (orderModel.imgUrl != nil) {
+        imageURL = orderModel.imgUrl;
+    }
+    NSString *imgURL = [imagePrefixURL stringByAppendingString:imageURL];
     [_productImageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:[UIImage imageNamed:@""]];
     
     //标题

@@ -106,21 +106,41 @@
     [_payButton setAttributedTitle:titleAttributedString forState:UIControlStateNormal];
 }
 
+- (void)setPayOrderModel:(PayOrderModel *)payOrderModel{
+    _payOrderModel = payOrderModel;
+}
 
 #pragma mark - 提交订单
 - (void)submitOrder{
     
     ZimuPayManager *manager = [[ZimuPayManager alloc]init];
     manager.delegate = self;
-    if (_chargePay) {
-        if (_charge.length == 0) {
-            [MBProgressHUD showMessage_WithoutImage:@"订单失效，请重新下单" toView:nil];
-            return;
-        }
-        [manager normalPayWithViewController:self.viewController charge:_charge];
-    }else{
+    NSString *charge = self.payOrderModel.charge;
+    NSString *channel = self.payOrderModel.channel;
+    //如果是第一次支付，即payOrderModel=nil时，直接重新提交订单
+    if (_payOrderModel == nil) {
         [manager normalPayWithViewController:self.viewController PaymentInfoModel:_paymentInfoModel channel:_channel];
+    }else{
+        //这里是取消支付后重新支付
+        //判断支付方式是否改变
+        if ([_channel isEqualToString:channel]) {
+            //未改变支付方式，用已有的token支付
+            [manager normalPayWithViewController:self.viewController charge:charge payOrderModel:self.payOrderModel];
+        }else{
+            //改变了支付方式，修改已有订单支付方式
+            [manager normalPayWithViewController:self.viewController PaymentInfoModel:_paymentInfoModel channel:_channel offCourseOrderId:self.payOrderModel.offlineCourseOrderId];
+        }
     }
+    
+    
+//    if (_chargePay) {
+//        if (charge.length == 0) {
+//            [MBProgressHUD showMessage_WithoutImage:@"订单失效，请重新下单" toView:nil];
+//            return;
+//        }
+//        [manager normalPayWithViewController:self.viewController charge:charge];
+//    }else{
+//    }
     
 //    WXOfflineCourseApi *wxOfflineCourseApi = [[WXOfflineCourseApi alloc]initWithOfflineCourseId:_paymentInfoModel.courseId offCoursePrice:_paymentInfoModel.price channel:_channel];
 //    [wxOfflineCourseApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -143,12 +163,12 @@
 }
 
 #pragma mark - ZimuPayManagerDelegate
-- (void)zimuPayManager:(ZimuPayManager *)manager finishPay:(NSString *)result{
+- (void)zimuPayManager:(ZimuPayManager *)manager finishPay:(NSString *)result payOrderModel:(PayOrderModel *)payOrderModel{
 //    [MBProgressHUD showSuccess:result toView:self];
     NSLog(@"result : %@",result);
     
-    if ([self.delegate respondsToSelector:@selector(paymentViewFinishPayWithResult:)]) {
-        [self.delegate paymentViewFinishPayWithResult:result];
+    if ([self.delegate respondsToSelector:@selector(paymentViewFinishPayWithResult:payOrderModel:)]) {
+        [self.delegate paymentViewFinishPayWithResult:result payOrderModel:payOrderModel];
     }
     
 }
