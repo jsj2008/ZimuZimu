@@ -150,7 +150,7 @@ NSString *const YTKRequestValidationErrorDomain = @"com.yuantiku.request.validat
 }
 
 - (NSTimeInterval)requestTimeoutInterval {
-    return 60;
+    return 20;
 }
 
 - (id)requestArgument {

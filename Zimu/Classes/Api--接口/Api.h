@@ -120,7 +120,7 @@
 #define GetMyMsgURL             @"appUserMessage/check/getUserNoticeMessage.do"     //获取我的消息接口 endTime=2494399605&userToken=e1d7c24bb5cbef626e6e3a30bc618dd3
 #define AcceptFriendURL         @"appUser/check/agreeFriendRequest.do"              //同意好友请求 fromUser=
 #define GetFriendMsgURL         @"appUser/check/queryFriendInfo.do"                 //根据用户id获取用户信息
-#define SearchMyFriendListURL   @"appUser/check/searchFriendByMyself.do"                  //在好友列表搜索好友 userToken=d0eb993ffa2e876c60b99b745d93f9fa&userName=
+#define SearchMyFriendListURL   @"appUser/check/searchFriendByMyself.do"            //在好友列表搜索好友 userToken=d0eb993ffa2e876c60b99b745d93f9fa&userName=
 
 #endif /* Api_h */
 

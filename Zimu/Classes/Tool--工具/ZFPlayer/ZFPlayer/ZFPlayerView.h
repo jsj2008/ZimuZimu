@@ -121,6 +121,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
  */
 - (void)pause;
 
+- (void)destory;
 
 #pragma mark - 试看方法
 /**

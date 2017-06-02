@@ -34,7 +34,10 @@
     [self setupScrollView];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
 /**
  *  添加子控制器
  */

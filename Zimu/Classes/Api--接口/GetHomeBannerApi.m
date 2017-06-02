@@ -13,5 +13,4 @@
 - (NSString *)requestUrl{
     return GetHomeBanner;
 }
-
 @end

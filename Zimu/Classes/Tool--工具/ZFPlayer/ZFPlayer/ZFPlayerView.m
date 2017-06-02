@@ -1451,7 +1451,22 @@ typedef NS_ENUM(NSInteger, PanDirection){
         }
     }
 }
+- (void)destory{
+    [self pause];
+    self.playerItem = nil;
+    self.tableView  = nil;
+    ZFPlayerShared.isLockScreen = NO;
+    [self.controlView zf_playerCancelAutoFadeOutControlView];
+    // 移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+    // 移除time观察者
+    if (self.timeObserve) {
+        [self.player removeTimeObserver:self.timeObserve];
+        self.timeObserve = nil;
+    }
 
+}
 - (void)zf_controlView:(UIView *)controlView closeAction:(UIButton *)sender
 {
     [self resetPlayer];

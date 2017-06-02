@@ -42,7 +42,7 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-#define FaceUnityItems @[@"aixinniao",@"etmaozi_zh_fu",@"ettuzi_zh_fu",@"etxigua_zh_fu",@"etye_zh_fu",@"fu_zh_zbaixin",@"fu_zh_zbtang",@"fu_ztt_lihua",@"hana",@"hongyu",@"huanxing_ztt_fu",@"hutou",@"item0207",@"maoyu",@"miaomi_ztt_fu",@"mogu",@"newy1",@"nianshou",@"qingwa_lm_fu",@"sanye",@"xiaoxueshen_ztt_fu"]
+#define FaceUnityItems @[@"aixinniao",@"etmaozi_zh_fu",@"ettuzi_zh_fu",@"etxigua_zh_fu",@"etye_zh_fu",@"fu_zh_zbaixin",@"fu_zh_zbtang",@"fu_ztt_lihua",@"hana",@"hongyu",@"huanxing_ztt_fu",@"hutou",@"item0207",@"maoyu",@"miaomi_ztt_fu",@"mogu",@"newy1",@"nianshou",@"qingwa_lm_fu",@"sanye",@"xiaoxueshen_ztt_fu",@"xiongxiong",@"pikaqiu",@"changjinglu", @"hunsha", @"mao",  @"pangxie", @"tuzi", @"wangzi", @"xihuanxiong",@"yang", @"yuhangyuan"]
 //@[@"bxgz", @"caomei", @"changjinglu", @"hunsha", @"mao", @"memeda" , @"milu" , @"pangxie", @"pikaqiu", @"qibite",  @"tuzi", @"wangzi", @"xihuanxiong", @"xiong", @"xiongxiong", @"yang", @"yuhangyuan", @"zhnagyu"]
 
 

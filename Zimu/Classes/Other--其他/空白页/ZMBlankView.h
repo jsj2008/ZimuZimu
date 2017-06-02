@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, ZMBlankType) {
-    ZMBlankTypeDefault = 0,   //默认状态
-    ZMBlankTypeNoData = 1, //么有数据
-    ZMBlankTypeNoNet = 2,  //没有网络
-    ZMBlankTypeNoFriend = 3  //没有好友
+    ZMBlankTypeDefault = 0,         //默认状态
+    ZMBlankTypeNoData = 1,          //么有数据
+    ZMBlankTypeNoNet = 2,           //没有网络
+    ZMBlankTypeNoFriend = 3,        //没有好友
+    ZMBlankTypeTimeOut = 4,         //请求超时
+    ZMBlankTypeLostSever = 5        //服务器异常
 };
 
 

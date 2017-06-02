@@ -12,11 +12,13 @@
 #import "FriendProvinceTableViewController.h"
 #import "SearchFriendByPhone.h"
 #import "MBProgressHUD+MJ.h"
+#import "ShareMyMsgViewController.h"
 
 #import "SnailQuickMaskPopups.h"
 #import "AgeRangeView.h"
 #import "UIView+SnailUse.h"
 #import "ZM_SelectSexView.h"
+#import "UIBarButtonItem+ZMExtension.h"
 
 @interface SearchFriendDetailViewController ()<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -50,7 +52,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = themeGray;
     if (_style == searchFriendStyleId) {
-        self.title = @"查找好友";
+        self.title = @"添加好友";
     }else{
         self.title = @"按条件查找陌生人";
     }
@@ -58,7 +60,7 @@
     _ageRange = @"5-10";
     
     [self makeUI];
-    
+    [self setRightNav];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressDidchange:) name:@"ProvinceCityFriendNotification" object:nil];
 }
 
@@ -66,6 +68,17 @@
     if (_style == searchFriendStyleId) {
         [_searchBar resignFirstResponder];
     }
+}
+- (void)setRightNav{
+    UIBarButtonItem *msgBtn = [UIBarButtonItem barButtonItemWithImageName:@"share" title:@"" target:self action:@selector(share:)];
+
+    self.navigationItem.rightBarButtonItems = @[msgBtn];
+}
+- (void)share:(UIButton *)btn{
+    ShareMyMsgViewController *faceVC =[[ShareMyMsgViewController alloc] initWithNibName:@"ShareMyMsgViewController" bundle:[NSBundle mainBundle]];
+    //跳转事件
+    [self.navigationController pushViewController:faceVC animated:NO];
+
 }
 #pragma mark - UI
 - (void)makeUI{

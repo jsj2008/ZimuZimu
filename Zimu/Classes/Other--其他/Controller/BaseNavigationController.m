@@ -57,7 +57,7 @@
     _screenShotArray = [NSMutableArray array];
     
     //禁用手势的控制器
-    self.forbiddenVCArray = @[@"HomeVideoDetailViewController",@"SubmitQuestionViewController"];
+    self.forbiddenVCArray = @[@"SubmitQuestionViewController"];
 //    _panGestureRec.enabled = YES;
 }
 

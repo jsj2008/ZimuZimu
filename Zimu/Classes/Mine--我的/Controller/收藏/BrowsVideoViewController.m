@@ -15,6 +15,8 @@
 #import "MyCollectionArticleModel.h"
 #import <MJRefresh.h>
 #import "MyCollectionVideoModel.h"
+#import "HomeVideoDetailViewController.h"
+#import "ZMBlankView.h"
 
 static NSString *artCell = @"MyCollectionCell";
 
@@ -81,7 +83,28 @@ static NSString *artCell = @"MyCollectionCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 180 * kScreenWidth / 375.0;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HomeVideoDetailViewController *videoDetailVC = [[HomeVideoDetailViewController alloc]init];
+    NSDictionary *dic = _dataArray[indexPath.row];
+    MyCollectionVideoModel *itemModel = [MyCollectionVideoModel yy_modelWithJSON:dic];
+    videoDetailVC.videoId = itemModel.videoId;
+    [self.navigationController pushViewController:videoDetailVC animated:YES];
+}
 #pragma mark - 网络请求
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self reFresh];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self reFresh];
+    }];
+    [self.view addSubview:blankview];
+}
+
 - (void)getMore{
     NSDictionary *dic = [_dataArray lastObject];
     MyCollectionVideoModel *model = [MyCollectionVideoModel yy_modelWithJSON:dic];
@@ -105,21 +128,27 @@ static NSString *artCell = @"MyCollectionCell";
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            [self noNet];
             return ;
         }else{
             NSArray *nowData = dataDic[@"items"];
             [_dataArray addObjectsFromArray:dataDic[@"items"]];
-            [_articleTableView.mj_footer endRefreshing];
-            [_articleTableView.mj_header endRefreshing];
-            if (nowData.count < 10) {
-                [_articleTableView.mj_footer endRefreshingWithNoMoreData];
+            if (_dataArray.count == 0) {
+                [self noData];
+            }else{
+                
+                [_articleTableView.mj_footer endRefreshing];
+                [_articleTableView.mj_header endRefreshing];
+                if (nowData.count < 10) {
+                    [_articleTableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                [_articleTableView reloadData];
             }
-            [_articleTableView reloadData];
             
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
+        [self noNet];
     }];
 }
 

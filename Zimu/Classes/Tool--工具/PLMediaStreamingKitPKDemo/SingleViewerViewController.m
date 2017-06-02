@@ -627,7 +627,7 @@ const static NSString *playerStatusNames[] = {
     fuItemSetParamd(items[1], "color_level", self.demoBar.beautyLevel); //美白
     fuItemSetParams(items[1], "filter_name", (char *)[_demoBar.selectedFilter UTF8String]); //滤镜
     fuItemSetParamd(items[1], "blur_level", self.demoBar.selectedBlur); //磨皮
-    CVPixelBufferRef returnBuffer = [[FURenderer shareRenderer] renderPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:3];
+    CVPixelBufferRef returnBuffer = [[FURenderer shareRenderer] renderPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:3 flipx:YES];
     frameID += 1;
     
     return returnBuffer;

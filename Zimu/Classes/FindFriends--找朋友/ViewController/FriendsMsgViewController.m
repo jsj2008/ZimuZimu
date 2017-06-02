@@ -10,6 +10,7 @@
 #import "FriendMsgCell.h"
 #import "GetMyMsgApi.h"
 #import "AcceptFriendApi.h"
+#import "ZMBlankView.h"
 #import "MBProgressHUD+MJ.h"
 #import <MJRefresh.h>
 #import "MyMsgModel.h"
@@ -98,6 +99,18 @@ static NSString *cellId = @"FriendMsgCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getMsgNow];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getMsgNow];
+    }];
+    [self.view addSubview:blankview];
+}
 #pragma mark - 点击同意
 - (void)didClickAccceptBtn:(FriendMsgCell *)cell{
     NSIndexPath *index = [_listView indexPathForCell:cell];
@@ -120,20 +133,26 @@ static NSString *cellId = @"FriendMsgCell";
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
             [_listView.mj_footer endRefreshing];
             [_listView.mj_header endRefreshing];
+            [self noData];
             return ;
         }else{
             NSArray *nowData = dataDic[@"items"];
             [_msgData addObjectsFromArray:nowData];
-            [_listView reloadData];
-            [_listView.mj_footer endRefreshing];
-            [_listView.mj_header endRefreshing];
-            if (nowData.count < 10) {
-                [_listView.mj_footer endRefreshingWithNoMoreData];
+            if (_msgData.count == 0) {
+                [self noData];
+            }else{
+                [_listView reloadData];
+                [_listView.mj_footer endRefreshing];
+                [_listView.mj_header endRefreshing];
+                if (nowData.count < 10) {
+                    [_listView.mj_footer endRefreshingWithNoMoreData];
+                }
             }
         }
 
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self noNet];
          [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
     }];
 }

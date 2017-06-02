@@ -23,6 +23,7 @@
 #import "NewLoginViewController.h"
 #import "ActivityOrderCompleteViewController.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
 @interface ActivityDetailViewController ()<UIWebViewDelegate, ActivityDetailTableViewDelegate, ActivityTimeTableViewControllerDelegate, PaymentChannelViewDelegate, ActivityOrderCompleteViewControllerDelegate>
 
@@ -192,6 +193,19 @@
 
 
 #pragma mark - 获取该类别活动数据详情
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCategoryActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCategoryActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
 - (void)getCategoryActivityData{
     GetAppOfflineCourseByIdApi *getAppOfflineCourseByIdApi = [[GetAppOfflineCourseByIdApi alloc]initWithCategoryId:_categoryId];
     [getAppOfflineCourseByIdApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -226,18 +240,24 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+            [self noData];
             return;
         }
         ActivityCourseModel *model = [ActivityCourseModel yy_modelWithDictionary:dataDic[@"object"]];
         _activityDetailTableView.activityCourseModel = model;
+        if (!model) {
+            [self noData];
+        }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"获取该活动数据失败" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"获取该活动数据失败" toView:self.view];
+        [self noNet];
     }];
 }
 

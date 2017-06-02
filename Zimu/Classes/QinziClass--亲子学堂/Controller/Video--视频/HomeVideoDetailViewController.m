@@ -49,20 +49,24 @@
 
 @end
 
-@implementation HomeVideoDetailViewController
+@implementation HomeVideoDetailViewController{
+    NSInteger _viewControllersCount;
+}
 
 - (void)dealloc{
-    [self.player removeFromSuperview];
-    self.player = nil;
+//    [self.player removeFromSuperview];
+//    self.player = nil;
+     [_player destory];
+    NSLog(@"视频走了");
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
+    
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
     
     [self getVideoDetailData];      //获取视频信息
     [self getHotVideoData];         //获取推荐视频
@@ -80,6 +84,7 @@
         //登录
         [self checkWhetherSelectVideo];
     }
+    _viewControllersCount = self.navigationController.viewControllers.count;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,25 +92,23 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 //    // pop回来时候是否自动播放
-//    if (self.navigationController.viewControllers.count == 2 && self.player && self.isPlaying) {
-//        self.isPlaying = NO;
-//        [self.player play];
-//        
-//    }
+    if (self.navigationController.viewControllers.count == _viewControllersCount && self.player && self.isPlaying) {
+        self.isPlaying = NO;
+        [self.player play];
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 //    [self.navigationController setNavigationBarHidden:NO animated:NO];
     // push出下一级页面时候暂停
-    if (self.navigationController.viewControllers.count == 3 && self.player && !self.player.isPauseByUser){
+    if (self.navigationController.viewControllers.count == _viewControllersCount && self.player && !self.player.isPauseByUser){
         self.isPlaying = YES;
         [self.player pause];
     }
 }
 - (void)viewDidDisappear:(BOOL)animated{
-    [self.player removeFromSuperview];
-    self.player = nil;
+   
 }
 #pragma mark - 创建播放器
 - (void)makePlayer{
@@ -215,8 +218,9 @@
 }
 #pragma mark - ZFdelegate
 - (void)zf_playerBackAction {
-    [self.player removeFromSuperview];
-    self.player = nil;
+//    [self.player removeFromSuperview];
+//    self.player = nil;
+//    [_player destory];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)zf_playerDownload:(NSString *)url {

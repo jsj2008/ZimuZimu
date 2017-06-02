@@ -134,7 +134,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         
         [self.topImageView addSubview:self.downLoadBtn];
         [self addSubview:self.lockBtn];
-        [self.topImageView addSubview:self.backBtn];
+        [self addSubview:self.backBtn];
         [self addSubview:self.activity];
         [self addSubview:self.repeatBtn];
         [self addSubview:self.playeBtn];
@@ -196,7 +196,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.topImageView.mas_leading).offset(10);
         make.top.equalTo(self.topImageView.mas_top).offset(7);
-        make.width.height.mas_equalTo(30);
+        make.width.mas_equalTo(50);
+        make.height.mas_equalTo(30);
     }];
 
     [self.downLoadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -587,6 +588,9 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     }
     self.shrink                   = NO;
     self.bottomProgressView.alpha = 0;
+    if (_fullScreen) {
+        _backBtn.hidden = NO;
+    }
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
@@ -600,7 +604,13 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     // 隐藏resolutionView
     self.resolutionBtn.selected = YES;
     [self resolutionBtnClick:self.resolutionBtn];
-    if (self.isFullScreen && !self.playeEnd) { [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade]; }
+    if (_fullScreen) {
+        _backBtn.hidden = YES;
+    }
+    if (self.isFullScreen && !self.playeEnd) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        
+    }
 }
 
 /**

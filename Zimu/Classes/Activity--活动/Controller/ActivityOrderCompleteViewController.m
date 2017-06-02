@@ -13,6 +13,7 @@
 #import "GetOfflineCourseByIdApi.h"
 #import "OfflineCourseModel.h"
 #import "OrderViewController.h"
+#import "ZMBlankView.h"
 
 @interface ActivityOrderCompleteViewController ()<ActivityOrderSuccessViewDelegate, ActivityOrderFailViewDelegate>
 
@@ -74,6 +75,19 @@
 }
 
 #pragma mark - 报名成功获取活动数据
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
 - (void)getActivityData{
     GetOfflineCourseByIdApi *getOfflineCourseByIdApi = [[GetOfflineCourseByIdApi alloc]initWithCourseId:_courseId];
     [getOfflineCourseByIdApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -82,16 +96,30 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [self noData];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"暂无活动数据" toView:self.view];
+            [self noData];
             return;
         }
-        OfflineCourseModel *offlineCourseModel = [OfflineCourseModel yy_modelWithDictionary:dataDic[@"object"]];
-        _succesView.offlineCourseModel = offlineCourseModel;
+        if (!dataDic[@"object"]) {
+            [self noData];
+        }else{
+            OfflineCourseModel *offlineCourseModel = [OfflineCourseModel yy_modelWithDictionary:dataDic[@"object"]];
+            _succesView.offlineCourseModel = offlineCourseModel;
+        }
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        //-1009 没网络 -1011请求超时  其他代码服务器错误
+        if (request.error.code == -1009) {
+            
+        }else if (request.error.code == -1011){
+            
+        }else{
+            
+        }
         [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
     

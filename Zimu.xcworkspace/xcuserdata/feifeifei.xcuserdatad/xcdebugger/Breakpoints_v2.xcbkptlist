@@ -222,11 +222,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/FindFriends--&#x627e;&#x670b;&#x53cb;/ViewController/SearchFriendDetailViewController.m"
-            timestampString = "516875161.391932"
+            timestampString = "517994216.820215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-searchFriend:"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/FindFriends--&#x627e;&#x670b;&#x53cb;/ViewController/SearchFriendDetailViewController.m"
-            timestampString = "517123464.896548"
+            timestampString = "517994216.820215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-searchFriend:"
             landmarkType = "7">
             <Locations>
@@ -302,11 +302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/FindFriends--&#x627e;&#x670b;&#x53cb;/ViewController/SearchFriendDetailViewController.m"
-            timestampString = "517132512.691858"
+            timestampString = "517994216.820215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "-searchFriend:"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,11 +318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/FindFriends--&#x627e;&#x670b;&#x53cb;/ViewController/FriendsMsgViewController.m"
-            timestampString = "517137650.893641"
+            timestampString = "517974944.787956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-getMsgNow"
             landmarkType = "7">
          </BreakpointContent>
@@ -429,54 +429,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/FindFriendsViewController.m"
-            timestampString = "517574656.832326"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-getFriendsList"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FindFriendsViewController getFriendsList]"
-                  moduleName = "Zimu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/ZimuZimu123/Zimu/Classes/Tool--%E5%B7%A5%E5%85%B7/FindFriendsViewController.m"
-                  timestampString = "517374636.40917"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "210"
-                  endingLineNumber = "210"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__43-[FindFriendsViewController getFriendsList]_block_invoke"
-                  moduleName = "Zimu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/ZimuZimu123/Zimu/Classes/Tool--%E5%B7%A5%E5%85%B7/FindFriendsViewController.m"
-                  timestampString = "517374636.413521"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/Api--&#x63a5;&#x53e3;/&#x627e;&#x670b;&#x53cb;Api/AcceptFriendApi.m"
             timestampString = "517390041.558908"
             startingColumnNumber = "9223372036854775807"
@@ -494,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/FindFriends--&#x627e;&#x670b;&#x53cb;/ViewController/FriendsMsgViewController.m"
-            timestampString = "517390564.060588"
+            timestampString = "517974944.787956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-getMsg:"
             landmarkType = "7">
             <Locations>
@@ -782,22 +734,6 @@
             startingLineNumber = "28"
             endingLineNumber = "28"
             landmarkName = "-initWithFrame:Type:afterClickDestory:btnClick:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Tool--&#x5de5;&#x5177;/FindFriendsViewController.m"
-            timestampString = "517573484.043867"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-setListWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

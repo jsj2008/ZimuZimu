@@ -137,6 +137,20 @@
             btnTitle = @"添加好友";
         }
             break;
+        case ZMBlankTypeTimeOut:
+        {
+            imgString = @"blank_lostSever";
+            textString = @"请求超时\n点击重试";
+            btnTitle = @"重新加载";
+        }
+            break;
+        case ZMBlankTypeLostSever:
+        {
+            imgString = @"blank_lostSever";
+            textString = @"服务器去哪了？\n点击刷新";
+            btnTitle = @"重新加载";
+        }
+            break;
         default:
             break;
     }

@@ -155,8 +155,14 @@
 
 - (void)noData{
     ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoFriend afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
-        NSLog(@"我不在");
         [self addFriends];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendsList];
     }];
     [self.view addSubview:blankview];
 }
@@ -255,6 +261,7 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            [self noNet];
             return ;
         }else{
             NSArray *dataArray = dataDic[@"items"];

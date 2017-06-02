@@ -73,6 +73,23 @@
 		1E1444071EA70B3300FCDE02 /* 12718.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1444061EA70B3300FCDE02 /* 12718.caf */; };
 		1E1444451EA7105C00FCDE02 /* LovelyFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1444441EA7105C00FCDE02 /* LovelyFaceViewController.m */; };
 		1E14444C1EA723D800FCDE02 /* LovelyFace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E14444B1EA723D800FCDE02 /* LovelyFace.storyboard */; };
+		1E14984B1EDFDDFB00351761 /* ShareMyMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1498491EDFDDFB00351761 /* ShareMyMsgViewController.m */; };
+		1E14984C1EDFDDFB00351761 /* ShareMyMsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E14984A1EDFDDFB00351761 /* ShareMyMsgViewController.xib */; };
+		1E1498591EE0209900351761 /* xiongxiong.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498581EE0209900351761 /* xiongxiong.bundle */; };
+		1E1498651EE0247400351761 /* hunsha.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E14985B1EE0247400351761 /* hunsha.bundle */; };
+		1E1498661EE0247400351761 /* mao.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E14985C1EE0247400351761 /* mao.bundle */; };
+		1E1498681EE0247400351761 /* pikaqiu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E14985E1EE0247400351761 /* pikaqiu.bundle */; };
+		1E1498691EE0247400351761 /* tuzi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E14985F1EE0247400351761 /* tuzi.bundle */; };
+		1E14986A1EE0247400351761 /* wangzi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498601EE0247400351761 /* wangzi.bundle */; };
+		1E14986C1EE0247400351761 /* yang.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498621EE0247400351761 /* yang.bundle */; };
+		1E14986D1EE0247400351761 /* yuhangyuan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498631EE0247400351761 /* yuhangyuan.bundle */; };
+		1E14987B1EE1024E00351761 /* libnama.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1498761EE1024E00351761 /* libnama.a */; };
+		1E14987C1EE1024E00351761 /* release_note.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498771EE1024E00351761 /* release_note.txt */; };
+		1E14987D1EE1024E00351761 /* face_beautification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498791EE1024E00351761 /* face_beautification.bundle */; };
+		1E14987E1EE1024E00351761 /* v3.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E14987A1EE1024E00351761 /* v3.bundle */; };
+		1E1498831EE10A3500351761 /* xihuanxiong.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498821EE10A3500351761 /* xihuanxiong.bundle */; };
+		1E1498851EE10B5600351761 /* pangxie.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E1498841EE10B5600351761 /* pangxie.bundle */; };
+		1E14988B1EE113F200351761 /* changjinglu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E14988A1EE113F200351761 /* changjinglu.bundle */; };
 		1E1762BD1EB9783500292DAC /* ZM_CallingHandleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1762BC1EB9783500292DAC /* ZM_CallingHandleCategory.m */; };
 		1E1762CE1EB9A8B500292DAC /* SingleChiefViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1762CD1EB9A8B500292DAC /* SingleChiefViewController.m */; };
 		1E1762D11EB9A8C600292DAC /* SingleViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1762D01EB9A8C600292DAC /* SingleViewerViewController.m */; };
@@ -539,9 +556,6 @@
 		5FE6BCA31ECC318900A2852F /* ItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BC771ECC318800A2852F /* ItemsView.m */; };
 		5FE6BCA41ECC318900A2852F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BC781ECC318800A2852F /* Media.xcassets */; };
 		5FE6BCA51ECC318900A2852F /* UIImage+demobar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BC7A1ECC318800A2852F /* UIImage+demobar.m */; };
-		5FE6BCBB1ECC318900A2852F /* libnama.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE6BC961ECC318900A2852F /* libnama.a */; };
-		5FE6BCBC1ECC318900A2852F /* face_beautification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BC981ECC318900A2852F /* face_beautification.bundle */; };
-		5FE6BCBD1ECC318900A2852F /* v3.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FE6BC991ECC318900A2852F /* v3.bundle */; };
 		5FE6BCC01ECC462400A2852F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCBF1ECC462400A2852F /* UserModel.m */; };
 		5FE6BCC31ECC5B9D00A2852F /* GetWhetherFavoriteVideoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCC21ECC5B9D00A2852F /* GetWhetherFavoriteVideoApi.m */; };
 		5FE6BCC71ECC78B800A2852F /* GetFmCommentListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6BCC61ECC78B800A2852F /* GetFmCommentListApi.m */; };
@@ -817,6 +831,27 @@
 		1E1444431EA7105C00FCDE02 /* LovelyFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LovelyFaceViewController.h; sourceTree = "<group>"; };
 		1E1444441EA7105C00FCDE02 /* LovelyFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LovelyFaceViewController.m; sourceTree = "<group>"; };
 		1E14444B1EA723D800FCDE02 /* LovelyFace.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LovelyFace.storyboard; sourceTree = "<group>"; };
+		1E1498481EDFDDFB00351761 /* ShareMyMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareMyMsgViewController.h; sourceTree = "<group>"; };
+		1E1498491EDFDDFB00351761 /* ShareMyMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareMyMsgViewController.m; sourceTree = "<group>"; };
+		1E14984A1EDFDDFB00351761 /* ShareMyMsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareMyMsgViewController.xib; sourceTree = "<group>"; };
+		1E1498581EE0209900351761 /* xiongxiong.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = xiongxiong.bundle; sourceTree = "<group>"; };
+		1E14985B1EE0247400351761 /* hunsha.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = hunsha.bundle; sourceTree = "<group>"; };
+		1E14985C1EE0247400351761 /* mao.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = mao.bundle; sourceTree = "<group>"; };
+		1E14985E1EE0247400351761 /* pikaqiu.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = pikaqiu.bundle; sourceTree = "<group>"; };
+		1E14985F1EE0247400351761 /* tuzi.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = tuzi.bundle; sourceTree = "<group>"; };
+		1E1498601EE0247400351761 /* wangzi.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = wangzi.bundle; sourceTree = "<group>"; };
+		1E1498621EE0247400351761 /* yang.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = yang.bundle; sourceTree = "<group>"; };
+		1E1498631EE0247400351761 /* yuhangyuan.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = yuhangyuan.bundle; sourceTree = "<group>"; };
+		1E1498741EE1024E00351761 /* funama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = funama.h; sourceTree = "<group>"; };
+		1E1498751EE1024E00351761 /* FURenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FURenderer.h; sourceTree = "<group>"; };
+		1E1498761EE1024E00351761 /* libnama.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnama.a; sourceTree = "<group>"; };
+		1E1498771EE1024E00351761 /* release_note.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_note.txt; sourceTree = "<group>"; };
+		1E1498791EE1024E00351761 /* face_beautification.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_beautification.bundle; sourceTree = "<group>"; };
+		1E14987A1EE1024E00351761 /* v3.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = v3.bundle; sourceTree = "<group>"; };
+		1E14987F1EE102BD00351761 /* authpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = authpack.h; sourceTree = "<group>"; };
+		1E1498821EE10A3500351761 /* xihuanxiong.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = xihuanxiong.bundle; sourceTree = "<group>"; };
+		1E1498841EE10B5600351761 /* pangxie.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = pangxie.bundle; sourceTree = "<group>"; };
+		1E14988A1EE113F200351761 /* changjinglu.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = changjinglu.bundle; sourceTree = "<group>"; };
 		1E1762BB1EB9783500292DAC /* ZM_CallingHandleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZM_CallingHandleCategory.h; sourceTree = "<group>"; };
 		1E1762BC1EB9783500292DAC /* ZM_CallingHandleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZM_CallingHandleCategory.m; sourceTree = "<group>"; };
 		1E1762CC1EB9A8B500292DAC /* SingleChiefViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleChiefViewController.h; sourceTree = "<group>"; };
@@ -1702,12 +1737,6 @@
 		5FE6BC781ECC318800A2852F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5FE6BC791ECC318800A2852F /* UIImage+demobar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+demobar.h"; sourceTree = "<group>"; };
 		5FE6BC7A1ECC318800A2852F /* UIImage+demobar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+demobar.m"; sourceTree = "<group>"; };
-		5FE6BC931ECC318900A2852F /* authpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = authpack.h; sourceTree = "<group>"; };
-		5FE6BC941ECC318900A2852F /* funama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = funama.h; sourceTree = "<group>"; };
-		5FE6BC951ECC318900A2852F /* FURenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FURenderer.h; sourceTree = "<group>"; };
-		5FE6BC961ECC318900A2852F /* libnama.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnama.a; sourceTree = "<group>"; };
-		5FE6BC981ECC318900A2852F /* face_beautification.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_beautification.bundle; sourceTree = "<group>"; };
-		5FE6BC991ECC318900A2852F /* v3.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = v3.bundle; sourceTree = "<group>"; };
 		5FE6BCBE1ECC462400A2852F /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		5FE6BCBF1ECC462400A2852F /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		5FE6BCC11ECC5B9D00A2852F /* GetWhetherFavoriteVideoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetWhetherFavoriteVideoApi.h; sourceTree = "<group>"; };
@@ -1993,7 +2022,6 @@
 				1E71B1311ECC08EE00DDEDDB /* UMSocialCore.framework in Frameworks */,
 				1E71B10A1ECC08EE00DDEDDB /* libSocialEmail.a in Frameworks */,
 				18AC3B861E729B33007EE823 /* Security.framework in Frameworks */,
-				5FE6BCBB1ECC318900A2852F /* libnama.a in Frameworks */,
 				1E71B1141ECC08EE00DDEDDB /* libSocialInstagram.a in Frameworks */,
 				1E0FF29A1EA9A848000156B5 /* libcrypto.a in Frameworks */,
 				18AC3B841E729B2C007EE823 /* QuartzCore.framework in Frameworks */,
@@ -2009,6 +2037,7 @@
 				1E71B1061ECC08EE00DDEDDB /* DTShareKit.framework in Frameworks */,
 				18AC3B801E729B1E007EE823 /* ImageIO.framework in Frameworks */,
 				1E71B1261ECC08EE00DDEDDB /* TwitterCore.framework in Frameworks */,
+				1E14987B1EE1024E00351761 /* libnama.a in Frameworks */,
 				1E71B1051ECC08EE00DDEDDB /* libSocialAlipayShare.a in Frameworks */,
 				18AC3B7E1E729B16007EE823 /* Foundation.framework in Frameworks */,
 				1E71B1251ECC08EE00DDEDDB /* libSocialTwitter.a in Frameworks */,
@@ -2317,6 +2346,36 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		1E1498721EE1024E00351761 /* FaceUnity-SDK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1E1498731EE1024E00351761 /* Headers */,
+				1E1498761EE1024E00351761 /* libnama.a */,
+				1E1498771EE1024E00351761 /* release_note.txt */,
+				1E1498781EE1024E00351761 /* Resources */,
+			);
+			path = "FaceUnity-SDK-iOS";
+			sourceTree = "<group>";
+		};
+		1E1498731EE1024E00351761 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				1E14987F1EE102BD00351761 /* authpack.h */,
+				1E1498741EE1024E00351761 /* funama.h */,
+				1E1498751EE1024E00351761 /* FURenderer.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		1E1498781EE1024E00351761 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1E1498791EE1024E00351761 /* face_beautification.bundle */,
+				1E14987A1EE1024E00351761 /* v3.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1E1762BE1EB9787400292DAC /* 接到视频通话请求 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2395,6 +2454,9 @@
 				1E71B03B1EC2F82600DDEDDB /* FriendProvinceTableViewController.m */,
 				1E71B03D1EC2F83600DDEDDB /* FriendCityTableViewController.h */,
 				1E71B03E1EC2F83600DDEDDB /* FriendCityTableViewController.m */,
+				1E1498481EDFDDFB00351761 /* ShareMyMsgViewController.h */,
+				1E1498491EDFDDFB00351761 /* ShareMyMsgViewController.m */,
+				1E14984A1EDFDDFB00351761 /* ShareMyMsgViewController.xib */,
 			);
 			name = "添加好友";
 			sourceTree = "<group>";
@@ -3415,10 +3477,10 @@
 		5F9C3CE01E62CC6C009659E4 /* Tool--工具 */ = {
 			isa = PBXGroup;
 			children = (
+				1E1498721EE1024E00351761 /* FaceUnity-SDK-iOS */,
 				5FE6BDEA1ED94D7400A2852F /* QiniuSDK */,
 				5FE6BD521ED3E61000A2852F /* lib */,
 				5FE6BC671ECC318800A2852F /* Faceunity */,
-				5FE6BC911ECC318900A2852F /* FaceUnity-SDK-iOS */,
 				1E71B0521ECC08ED00DDEDDB /* UMSocial */,
 				1E0FF3CB1EA9F28B000156B5 /* PLMediaStreamingKitPKDemo */,
 				1E0FF2761EA9A848000156B5 /* PLMediaStreamingKit */,
@@ -4137,6 +4199,17 @@
 		5FD5085E1EDEC84B00872CF6 /* bundle */ = {
 			isa = PBXGroup;
 			children = (
+				1E14988A1EE113F200351761 /* changjinglu.bundle */,
+				1E1498841EE10B5600351761 /* pangxie.bundle */,
+				1E1498821EE10A3500351761 /* xihuanxiong.bundle */,
+				1E14985B1EE0247400351761 /* hunsha.bundle */,
+				1E14985C1EE0247400351761 /* mao.bundle */,
+				1E14985E1EE0247400351761 /* pikaqiu.bundle */,
+				1E14985F1EE0247400351761 /* tuzi.bundle */,
+				1E1498601EE0247400351761 /* wangzi.bundle */,
+				1E1498621EE0247400351761 /* yang.bundle */,
+				1E1498631EE0247400351761 /* yuhangyuan.bundle */,
+				1E1498581EE0209900351761 /* xiongxiong.bundle */,
 				5FD5085F1EDEC84B00872CF6 /* aixinniao.bundle */,
 				5FD508601EDEC84B00872CF6 /* etmaozi_zh_fu.bundle */,
 				5FD508611EDEC84B00872CF6 /* ettuzi_zh_fu.bundle */,
@@ -4274,35 +4347,6 @@
 				5FE6BC7A1ECC318800A2852F /* UIImage+demobar.m */,
 			);
 			path = FUAPIDemoBar;
-			sourceTree = "<group>";
-		};
-		5FE6BC911ECC318900A2852F /* FaceUnity-SDK-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				5FE6BC921ECC318900A2852F /* Headers */,
-				5FE6BC961ECC318900A2852F /* libnama.a */,
-				5FE6BC971ECC318900A2852F /* Resources */,
-			);
-			path = "FaceUnity-SDK-iOS";
-			sourceTree = "<group>";
-		};
-		5FE6BC921ECC318900A2852F /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				5FE6BC931ECC318900A2852F /* authpack.h */,
-				5FE6BC941ECC318900A2852F /* funama.h */,
-				5FE6BC951ECC318900A2852F /* FURenderer.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		5FE6BC971ECC318900A2852F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5FE6BC981ECC318900A2852F /* face_beautification.bundle */,
-				5FE6BC991ECC318900A2852F /* v3.bundle */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		5FE6BCC41ECC789600A2852F /* FMApi */ = {
@@ -4869,8 +4913,11 @@
 				5FD5087E1EDEC84B00872CF6 /* huanxing_ztt_fu.bundle in Resources */,
 				5F574D5D1EADE810007648D0 /* SubscribeFreeFMCell.xib in Resources */,
 				5FE6BCA01ECC318900A2852F /* FUDemoBar.xib in Resources */,
+				1E1498851EE10B5600351761 /* pangxie.bundle in Resources */,
 				1E1762EE1EBC4F3500292DAC /* FriendMsgCell.xib in Resources */,
+				1E1498661EE0247400351761 /* mao.bundle in Resources */,
 				5FEA2AA01E8B4C4300405F75 /* CityCourseHeaderCell.xib in Resources */,
+				1E14987C1EE1024E00351761 /* release_note.txt in Resources */,
 				5FBB26A31EC47E1800C01EC8 /* SLDTextCell.xib in Resources */,
 				1E1762DE1EBAF0A900292DAC /* ZMChatAlertViewController.xib in Resources */,
 				1E1762E61EBAF77700292DAC /* ChatRoomMemberCell.xib in Resources */,
@@ -4879,11 +4926,13 @@
 				5F574D981EAF5763007648D0 /* MySecretCell.xib in Resources */,
 				5FCFF0D11EA86971003788A0 /* VideoCourseBigCell.xib in Resources */,
 				5F574D381EADC996007648D0 /* ConfuseExpertAnswerCell.xib in Resources */,
+				1E1498691EE0247400351761 /* tuzi.bundle in Resources */,
 				5FE6BC9C1ECC318900A2852F /* filterCell.xib in Resources */,
 				1E14444C1EA723D800FCDE02 /* LovelyFace.storyboard in Resources */,
 				5FBB3EC21EC5916400C01EC8 /* FMDetailIntroCell.xib in Resources */,
 				5F2D62681E77FD7800B038A5 /* DynamicTextCell.xib in Resources */,
 				1E1763051EC1562800292DAC /* SearchFriendsFriendCell.xib in Resources */,
+				1E1498831EE10A3500351761 /* xihuanxiong.bundle in Resources */,
 				5FD508871EDEC84B00872CF6 /* sanye.bundle in Resources */,
 				1E71B1361ECC08EE00DDEDDB /* UMSocialSDKResources.bundle in Resources */,
 				5F2D62371E77C36500B038A5 /* EntranceCell.xib in Resources */,
@@ -4893,15 +4942,18 @@
 				5FCFEFAA1EA5B66F003788A0 /* OpenCourseVideoCell.xib in Resources */,
 				5F4833681EB1897400481407 /* ProductInfoCell.xib in Resources */,
 				5FD508861EDEC84B00872CF6 /* qingwa_lm_fu.bundle in Resources */,
+				1E14984C1EDFDDFB00351761 /* ShareMyMsgViewController.xib in Resources */,
 				5FF4F30B1EB0B86F00977045 /* CompleteOrderCell.xib in Resources */,
 				5FF4F3151EB0BB7400977045 /* NotPayOrderCell.xib in Resources */,
 				5FDCB44A1E7A6C5D003914D1 /* QAPreviousQACell.xib in Resources */,
 				5FD508841EDEC84B00872CF6 /* newy1.bundle in Resources */,
+				1E14986A1EE0247400351761 /* wangzi.bundle in Resources */,
 				5FD5087A1EDEC84B00872CF6 /* fu_zh_zbtang.bundle in Resources */,
 				5FD508771EDEC84B00872CF6 /* etxigua_zh_fu.bundle in Resources */,
 				5F2D62461E77D47400B038A5 /* ExamFreeVideoCell.xib in Resources */,
 				5F2D623C1E77CBB300B038A5 /* ExamSectionHeaderCell.xib in Resources */,
 				5FCFEF0D1EA47787003788A0 /* HomeCollectionViewCell.xib in Resources */,
+				1E1498591EE0209900351761 /* xiongxiong.bundle in Resources */,
 				5FD508801EDEC84B00872CF6 /* item0207.bundle in Resources */,
 				5FAED5491E94D88900E295AC /* PaymentChannelCell.xib in Resources */,
 				5FD508791EDEC84B00872CF6 /* fu_zh_zbaixin.bundle in Resources */,
@@ -4920,6 +4972,7 @@
 				5F5665C51E9E8ED30050AD29 /* CityCourseDetailInfoCell.xib in Resources */,
 				5F2D624E1E77D4C400B038A5 /* ExamFreeVideoCollectionViewCell.xib in Resources */,
 				5FCFF12D1EA9EEFF003788A0 /* ConfuseContentCell.xib in Resources */,
+				1E14987D1EE1024E00351761 /* face_beautification.bundle in Resources */,
 				5FD508811EDEC84B00872CF6 /* maoyu.bundle in Resources */,
 				5FCFF0671EA70F0C003788A0 /* ActivityListCell.xib in Resources */,
 				5FEA2A9B1E8B4B8300405F75 /* CityCourseCell.xib in Resources */,
@@ -4934,21 +4987,22 @@
 				5FD508851EDEC84B00872CF6 /* nianshou.bundle in Resources */,
 				5FDCB44F1E7A77DF003914D1 /* QANiceQuestionCell.xib in Resources */,
 				5FCFF0C41EA855D0003788A0 /* HeaderTitleCell.xib in Resources */,
+				1E1498651EE0247400351761 /* hunsha.bundle in Resources */,
 				5FCFF0E01EA8A8B3003788A0 /* QuestionResultCell.xib in Resources */,
 				1E1444071EA70B3300FCDE02 /* 12718.caf in Resources */,
 				5F4833BF1EB8847500481407 /* zh_CN.json in Resources */,
-				5FE6BCBD1ECC318900A2852F /* v3.bundle in Resources */,
 				5FD508741EDEC84B00872CF6 /* aixinniao.bundle in Resources */,
 				1E71B0511ECAC6AE00DDEDDB /* ShareImgViewController.xib in Resources */,
 				5FEB30371E78DDA600B34CC7 /* ListenHeartTutorCell.xib in Resources */,
 				1E1762D91EBAC06D00292DAC /* ZMFriendSearchResultCell.xib in Resources */,
+				1E14986C1EE0247400351761 /* yang.bundle in Resources */,
 				5FBB269C1EC47E0D00C01EC8 /* SLDTitleCell.xib in Resources */,
 				5FE6BCA11ECC318900A2852F /* FUItemCell.xib in Resources */,
 				1E0FF4041EB17F72000156B5 /* ZM_FriendCell.xib in Resources */,
 				5F5665CD1E9F0D000050AD29 /* CityCourseDetailHeaderCell.xib in Resources */,
+				1E14987E1EE1024E00351761 /* v3.bundle in Resources */,
 				5FD508831EDEC84B00872CF6 /* mogu.bundle in Resources */,
 				1E0FF3D81EA9F28B000156B5 /* PLMediaSettingPKViewController.xib in Resources */,
-				5FE6BCBC1ECC318900A2852F /* face_beautification.bundle in Resources */,
 				5FE6BCA41ECC318900A2852F /* Media.xcassets in Resources */,
 				5FE6BD6B1ED3E61100A2852F /* Pingpp.bundle in Resources */,
 				5FD508751EDEC84B00872CF6 /* etmaozi_zh_fu.bundle in Resources */,
@@ -4963,6 +5017,7 @@
 				5FCFF0CC1EA85C40003788A0 /* VideoCourseCollectionViewCell.xib in Resources */,
 				5F5665BD1E9E8A990050AD29 /* CityCourseDetailThemeCell.xib in Resources */,
 				5FD508761EDEC84B00872CF6 /* ettuzi_zh_fu.bundle in Resources */,
+				1E14988B1EE113F200351761 /* changjinglu.bundle in Resources */,
 				5FCFF13A1EA9F940003788A0 /* NoAnswerCell.xib in Resources */,
 				18AC3B631E6FA8BD007EE823 /* TrySeeEndView.xib in Resources */,
 				5F9C3C8F1E5E80AC009659E4 /* Assets.xcassets in Resources */,
@@ -4973,8 +5028,10 @@
 				5F8EDD541E6EA8FE000FC3E0 /* BooksTableViewCell.xib in Resources */,
 				5F574D5B1EADE810007648D0 /* BrowsVideoCell.xib in Resources */,
 				5FAED5361E948ACF00E295AC /* ListenHeartDynamicCell.xib in Resources */,
+				1E1498681EE0247400351761 /* pikaqiu.bundle in Resources */,
 				5FF4F3241EB0C90300977045 /* EvaluationListCell.xib in Resources */,
 				1E71B1331ECC08EE00DDEDDB /* UMSocialSDKPromptResources.bundle in Resources */,
+				1E14986D1EE0247400351761 /* yuhangyuan.bundle in Resources */,
 				5F2D62411E77D12700B038A5 /* ExamAnswerCell.xib in Resources */,
 				5F574D591EADE810007648D0 /* BrowsArticleCell.xib in Resources */,
 				5F4833631EB1895200481407 /* CustomerInfoCell.xib in Resources */,
@@ -5118,6 +5175,7 @@
 				5FCFF0CA1EA85C40003788A0 /* VideoCourseCollectionView.m in Sources */,
 				5FBB3EC61EC5A4F200C01EC8 /* FMTableView.m in Sources */,
 				5F4833D41EB9A49500481407 /* SearchQuestionApi.m in Sources */,
+				1E14984B1EDFDDFB00351761 /* ShareMyMsgViewController.m in Sources */,
 				5F9F2B231EC5B75F004D13F7 /* FMCommentCellLayoutFrame.m in Sources */,
 				5FBB26A71EC47E5000C01EC8 /* EXpertInfoBarView.m in Sources */,
 				5F9F2B1D1EC5B0D5004D13F7 /* FMCommentHeaderCell.m in Sources */,
