@@ -22,6 +22,8 @@
 #import "NewConfuseTextView.h"
 #import "SubmitCompleteViewController.h"
 
+#import "ZMBlankView.h"
+
 @interface SubmitQuestionViewController ()<NewConfuseTextViewDelegate, NewQuestionTitleViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -84,6 +86,7 @@
     QuestionViewController *questionVC = [[QuestionViewController alloc]init];
     [self.navigationController pushViewController:questionVC animated:YES];
 }
+
 
 #pragma mark - 提交数据
 - (void)submitDataToSever{
@@ -248,12 +251,14 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [self noData];
+//            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [self noData];
+//            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return;
         }
         NSArray *dataArray = dataDic[@"items"];
@@ -264,15 +269,45 @@
                 [modelArray addObject:tagModel];
             }
             _tagsView.tagModelArray = modelArray;
+        }else{
+            [self noData];
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            
+            
+        }
+        //其他原因
+        else {
+            
+            
+        }
     }];
 }
 
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getTagsData];
+    }];
+    [self.view addSubview:blankview];
+}
 
-
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getTagsData];
+    }];
+    [self.view addSubview:blankview];
+}
 
 
 

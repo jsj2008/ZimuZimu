@@ -155,7 +155,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 
 
 - (void)loadWebURLSring:(NSString *)string{
-    self.URLString = [@"http://www.zimu365.com/zimu_portal_demo/html/heartTest/test_details.html?testId=" stringByAppendingString:string];
+    self.URLString = [NSString stringWithFormat:@"http://www.zimu365.com/zimu_portal_demo/html/heartTest/test_details.html?testId=%@&userToken=%@",string, userToken];
 }
 
 

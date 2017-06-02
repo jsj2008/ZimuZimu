@@ -14,6 +14,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "SearchQuestionApi.h"
 #import "SearchQuestionModel.h"
+#import "ZMBlankView.h"
 
 @interface QuestionViewController ()<UITextFieldDelegate, QuestionResultTableViewDelegate>
 
@@ -142,12 +143,44 @@
         _questionResultTableView.resultArray = resultModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            
+        }
     }];
 }
 
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self searchQuestionWithTitle:_textField.text];
+    }];
+    [self.view addSubview:blankview];
+}
 
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self searchQuestionWithTitle:_textField.text];
+    }];
+    [self.view addSubview:blankview];
+}
 
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self searchQuestionWithTitle:_textField.text];
+    }];
+    [self.view addSubview:blankview];
+}
 
 
 

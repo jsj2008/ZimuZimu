@@ -30,8 +30,9 @@
 #import "UIView+SnailUse.h"
 
 #import "MBProgressHUD+MJ.h"
+#import "ZMBlankView.h"
 
-@interface AnswerViewController ()<UINavigationControllerDelegate, CommentBarDelegate>
+@interface AnswerViewController ()<UINavigationControllerDelegate, CommentBarDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) AnswerTableView *answerTableView;     //未解答
 @property (nonatomic, strong) ConfuseAnswerDetailTableView *answerDetailTableView;  //已解答
@@ -48,7 +49,7 @@
     self.title = @"问答详情";
     self.view.backgroundColor = themeWhite;
     
-    UIBarButtonItem *leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"navigationButtonReturn" title:@"" target:self action:@selector(return)];
+    UIBarButtonItem *leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"navigationButtonReturn" title:@"" target:self action:@selector(returnBack)];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
 //    [self searchQuestionDetail];
@@ -68,7 +69,7 @@
     [self searchQuestionDetail];
 }
 
-- (void)return{
+- (void)returnBack{
     
     if ([_previousVC isEqualToString:@"SubmitQuestionViewController"]) {
         NSArray *vcs = self.navigationController.viewControllers;
@@ -151,16 +152,20 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [self noData];
             return ;
         }
         QuestionDetailModel *questionDeatilModel = [QuestionDetailModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = questionDeatilModel.isTrue;
         if (!isTrue) {
+            [self noData];
+            return;
+        }
+        if (questionDeatilModel.object == nil) {
+            [self noData];
             return;
         }
         
-        NSLog(@"questionDeatilModel : %@",questionDeatilModel);
         QuestionModel *questionModel = questionDeatilModel.object;
         NSInteger commentCount = [questionModel.count integerValue];
         if (!commentCount) {
@@ -179,7 +184,7 @@
             [self getUserCommentData];
         }
         if ([userToken isEqualToString:@"logout"] || userToken == nil) {
-            [self login];
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
         }else{
             //查询用户是否已关注该问题
             [self checkWeatherCareQuestion];
@@ -188,7 +193,23 @@
         [self setupCommentBar];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            
+            
+        }
+        //其他原因
+        else {
+            
+            
+        }
     }];
 }
 
@@ -349,9 +370,28 @@
 - (void)login{
     //未登录，跳转至登录页
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
     [self presentViewController:newLoginVC animated:YES completion:nil];
 }
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self searchQuestionDetail];
+}
 
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self searchQuestionDetail];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self searchQuestionDetail];
+    }];
+    [self.view addSubview:blankview];
+}
 
 
 
