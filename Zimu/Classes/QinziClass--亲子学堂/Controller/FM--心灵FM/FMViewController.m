@@ -22,6 +22,7 @@
 #import "GetWhetherFavoriteFmApi.h"
 #import "InsertFmCollectionApi.h"
 #import "InsertCollectionModel.h"
+#import "ZMBlankView.h"
 #import "NewLoginViewController.h"
 
 @interface FMViewController ()<UITextFieldDelegate, CommentBarDelegate>
@@ -123,6 +124,33 @@
 
 
 #pragma mark - 获取fm详情数据
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+
 - (void)getFMDetailData{
     GetFmByPrimaryKeyApi *getFmByPrimaryKeyApi = [[GetFmByPrimaryKeyApi alloc]initWithFMId:_fmId];
     [getFmByPrimaryKeyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -130,12 +158,18 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self lostSever];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
+            return;
+        }
+        if (!dataDic[@"object"]) {
+            [self noData];
             return;
         }
         FMDetailModel *fmDetailModel = [FMDetailModel yy_modelWithDictionary:dataDic[@"object"]];
@@ -144,7 +178,14 @@
         [self getFMExpertData:fmDetailModel.createExp];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 
@@ -168,7 +209,7 @@
         _tableView.expertDetailModel = expertDetailModel;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
     }];
 }
 
@@ -203,7 +244,7 @@
         _tableView.fmCommentModelArray = _fmCommentModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
     }];
 }
 
@@ -260,7 +301,7 @@
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"查询收藏状态失败" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"查询收藏状态失败" toView:self.view];
     }];
 }
 
@@ -298,7 +339,7 @@
         }
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         _commentBar.hasCollected = hasCollected;        //不改变收藏状态
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
     }];
 }
 

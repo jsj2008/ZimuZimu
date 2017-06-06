@@ -88,6 +88,18 @@
     }];
     [self.view addSubview:blankview];
 }
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
 - (void)getActivityData{
     GetOfflineCourseByIdApi *getOfflineCourseByIdApi = [[GetOfflineCourseByIdApi alloc]initWithCourseId:_courseId];
     [getOfflineCourseByIdApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -96,7 +108,7 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
-            [self noData];
+            [self lostSever];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -114,13 +126,13 @@
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         //-1009 没网络 -1011请求超时  其他代码服务器错误
         if (request.error.code == -1009) {
-            
+            [self noNet];
         }else if (request.error.code == -1011){
-            
+            [self timeOut];
         }else{
-            
+            [self lostSever];
         }
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
     
 }

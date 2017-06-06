@@ -16,6 +16,7 @@
 #import "SearchFriendsViewController.h"
 #import "SearchFriendDetailViewController.h"
 #import "GetFriendsListApi.h"
+#import "NewLoginViewController.h"
 #import "FriendListModel.h"
 
 #import "ZM_FriendsListView.h"
@@ -30,7 +31,7 @@
 #import "ZM_CallingHandleCategory.h"
 #import "ZMBlankView.h"
 
-@interface FindFriendsViewController ()<ZM_MutiplyClickButtonDelegate, ZMFriendDelagate, FriendsMsgDelegate>
+@interface FindFriendsViewController ()<ZMFriendDelagate, FriendsMsgDelegate, LoginViewControllerDelegate>
 
 //第一次进入弹出的界面
 @property (nonatomic, strong) SnailQuickMaskPopups *popups;
@@ -166,6 +167,19 @@
     }];
     [self.view addSubview:blankview];
 }
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendsList];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendsList];
+    }];
+    [self.view addSubview:blankview];
+}
+
 //搜索点击事件
 - (void)searchAction{
     FriendSearchViewController *searchVC = [[FriendSearchViewController alloc] init];
@@ -253,6 +267,7 @@
 - (void)getFriendsList{
     GetFriendsListApi *friendApi = [[GetFriendsListApi alloc] init];
 //    friendApi.delegate = self;
+    
     [friendApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
@@ -261,9 +276,14 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
-            [self noNet];
+            [self lostSever];
             return ;
         }else{
+            BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+            if (!isTrue) {
+                [self login];
+                return;
+            }
             NSArray *dataArray = dataDic[@"items"];
                 if (dataArray.count == 0) {
                     [self noData];
@@ -274,7 +294,27 @@
                 }
         }
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
+
+#pragma mark - 重新登录
+- (void)login{
+    //未登录，跳转至登录页
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
+    [self presentViewController:newLoginVC animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self getFriendsList];
+}
+
 @end

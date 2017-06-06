@@ -31,6 +31,7 @@
 #import "ExpertDetailModel.h"
 #import "InsertVideoCollectionApi.h"
 #import "InsertCollectionModel.h"
+#import "ZMBlankView.h"
 
 @interface HomeVideoDetailViewController ()<ZFPlayerDelegate, CommentBarDelegate>
 /*播放器*/
@@ -102,7 +103,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 //    [self.navigationController setNavigationBarHidden:NO animated:NO];
     // push出下一级页面时候暂停
-    if (self.navigationController.viewControllers.count == _viewControllersCount && self.player && !self.player.isPauseByUser){
+    if (self.navigationController.viewControllers.count != _viewControllersCount && self.player && !self.player.isPauseByUser){
         self.isPlaying = YES;
         [self.player pause];
     }
@@ -129,7 +130,7 @@
         _player.delegate = self;
         
         // 打开下载功能（默认没有这个功能）
-        _player.hasDownload    = YES;
+        _player.hasDownload    = NO;
         //设置试看时间，如果没有试看则设置试看时间为0 isTrySee设为NO
 //        _player.trySeeTime = 10;
         _player.isTrysee = NO;
@@ -233,6 +234,40 @@
 
 
 #pragma mark - 获取视频详情
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getVideoDetailData];      //获取视频信息
+        [self getHotVideoData];         //获取推荐视频
+        [self getVideoCommentData];     //获取视频评论
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getVideoDetailData];      //获取视频信息
+        [self getHotVideoData];         //获取推荐视频
+        [self getVideoCommentData];     //获取视频评论
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getVideoDetailData];      //获取视频信息
+        [self getHotVideoData];         //获取推荐视频
+        [self getVideoCommentData];     //获取视频评论
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getVideoDetailData];      //获取视频信息
+        [self getHotVideoData];         //获取推荐视频
+        [self getVideoCommentData];     //获取视频评论
+    }];
+    [self.view addSubview:blankview];
+}
+
 - (void)getVideoDetailData{
     AppQueryVideoApi *appQueryVideoApi = [[AppQueryVideoApi alloc]initWithVideoId:_videoId];
     [appQueryVideoApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -240,12 +275,18 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self lostSever];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
+            return;
+        }
+        if (!dataDic[@"object"]) {
+            [self noData];
             return;
         }
         VideoDetailModel *videoDetailModel = [VideoDetailModel yy_modelWithDictionary:dataDic[@"object"]];
@@ -260,7 +301,14 @@
         [self.player autoPlayTheVideo];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 
@@ -272,12 +320,14 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self lostSever];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];'
+            [self noData];
             return;
         }
         if (_hotVideoModelArray) {
@@ -295,7 +345,14 @@
         _detailView.hotVideoModelArray = _hotVideoModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 

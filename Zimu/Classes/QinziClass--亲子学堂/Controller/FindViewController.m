@@ -14,6 +14,7 @@
 #import "ParentSchoolListModel.h"
 #import "MBProgressHUD+MJ.h"
 #import "ZimuRefreshGifHeader.h"
+#import "ZMBlankView.h"
 
 @interface FindViewController ()
 
@@ -75,7 +76,31 @@
 
 
 #pragma mark - 获取数据
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
 
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
 //刷新数据
 - (void)getDataNetWork{
     //获取当前时间戳
@@ -89,12 +114,14 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [_findTableView.mj_header endRefreshing];
+            [self lostSever];
             return ;
         }
         ParentSchoolModel *parentScoolModel = [ParentSchoolModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = parentScoolModel.isTrue;
         if (!isTrue) {
             [_findTableView.mj_header endRefreshing];
+            [self noData];
             return;
         }
         NSArray *items = parentScoolModel.items;
@@ -110,6 +137,13 @@
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_header endRefreshing];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 //上拉加载
@@ -127,7 +161,7 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
-
+            [self lostSever];
             return ;
         }
         
@@ -135,6 +169,7 @@
         BOOL isTrue = parentScoolModel.isTrue;
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+            [self noData];
             return;
         }
         NSArray *items = parentScoolModel.items;
@@ -153,7 +188,14 @@
         [_findTableView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_footer endRefreshing];
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
 
     }];
 }

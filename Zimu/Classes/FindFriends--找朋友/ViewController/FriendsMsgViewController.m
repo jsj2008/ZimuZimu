@@ -14,9 +14,10 @@
 #import "MBProgressHUD+MJ.h"
 #import <MJRefresh.h>
 #import "MyMsgModel.h"
+#import "NewLoginViewController.h"
 
 static NSString *cellId = @"FriendMsgCell";
-@interface FriendsMsgViewController ()<UITableViewDelegate, UITableViewDataSource, FriendAcceptDelegate>
+@interface FriendsMsgViewController ()<UITableViewDelegate, UITableViewDataSource, FriendAcceptDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *listView;
 
@@ -111,6 +112,18 @@ static NSString *cellId = @"FriendMsgCell";
     }];
     [self.view addSubview:blankview];
 }
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getMsgNow];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getMsgNow];
+    }];
+    [self.view addSubview:blankview];
+}
 #pragma mark - 点击同意
 - (void)didClickAccceptBtn:(FriendMsgCell *)cell{
     NSIndexPath *index = [_listView indexPathForCell:cell];
@@ -136,6 +149,11 @@ static NSString *cellId = @"FriendMsgCell";
             [self noData];
             return ;
         }else{
+            BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+            if (!isTrue) {
+                [self login];
+                return;
+            }
             NSArray *nowData = dataDic[@"items"];
             [_msgData addObjectsFromArray:nowData];
             if (_msgData.count == 0) {
@@ -152,8 +170,13 @@ static NSString *cellId = @"FriendMsgCell";
 
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self noNet];
-         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 
@@ -187,5 +210,16 @@ static NSString *cellId = @"FriendMsgCell";
     }];
 
 }
-
+#pragma mark - 重新登录
+- (void)login{
+    //未登录，跳转至登录页
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
+    [self presentViewController:newLoginVC animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self getMsg:[[NSDate date] timeIntervalSince1970]];
+}
 @end

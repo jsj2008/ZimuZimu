@@ -63,7 +63,18 @@
     }];
     [self.view addSubview:blankview];
 }
-
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityListData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityListData];
+    }];
+    [self.view addSubview:blankview];
+}
 - (void)getActivityListData{
     GetAppOfflineCourseListApi *getAppOfflineCourseListApi = [[GetAppOfflineCourseListApi alloc]init];
     [getAppOfflineCourseListApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -78,7 +89,7 @@
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
-            [self noData];
+            [self lostSever];
             return;
         }
         NSArray *dataArray = dataDic[@"items"];
@@ -100,7 +111,13 @@
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
 //        [MBProgressHUD showMessage_WithoutImage:@"获取活动数据失败" toView:self.view];
-        [self noNet];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 
