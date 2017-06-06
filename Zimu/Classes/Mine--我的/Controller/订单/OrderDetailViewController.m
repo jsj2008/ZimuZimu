@@ -15,8 +15,9 @@
 #import "MBProgressHUD+MJ.h"
 #import "OrderModel.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
-@interface OrderDetailViewController ()<PaymentChannelViewDelegate>
+@interface OrderDetailViewController ()<PaymentChannelViewDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) OrderDetailTableView *orderDetailTableView;
 @property (nonatomic, strong) UIButton *payButton;
@@ -90,7 +91,7 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -105,17 +106,39 @@
         _orderDetailTableView = [[OrderDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain orderModel:_orderModel];
         [self.view addSubview:_orderDetailTableView];
         
-        [self setupPayButton];
+        NSInteger status = [_orderModel.status integerValue];
+        if (status == 0) {
+            //未付款
+            [self setupPayButton];
+        }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+        }
+        //其他原因
+        else {
+            [self netLostServer];
+        }
     }];
 }
 
 #pragma mark - 重新登录
 - (void)login{
     NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    loginVC.delegate = self;
     [self presentViewController:loginVC animated:YES completion:nil];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self getOrderDetailData];
 }
 
 #pragma mark - PaymentChannelViewDelegate
@@ -140,6 +163,34 @@
     return dateString;
 }
 
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
 
 
 @end

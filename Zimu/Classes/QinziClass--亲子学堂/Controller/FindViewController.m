@@ -14,6 +14,7 @@
 #import "ParentSchoolListModel.h"
 #import "MBProgressHUD+MJ.h"
 #import "ZimuRefreshGifHeader.h"
+#import "ZMBlankView.h"
 
 @interface FindViewController ()
 
@@ -29,9 +30,7 @@
     self.view.backgroundColor = themeWhite;
     self.title = @"亲子学堂";
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     //创建findTableView
     [self setupFindTableView];
@@ -41,7 +40,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     
@@ -55,10 +53,6 @@
     _findTableView = [[FindTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
     //下拉刷新
     [self setupRefreshingHeader];
-//    _findTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getDataNetWork)];
-//    [_findTableView.mj_header beginRefreshing];
-    //上拉加载
-//    _findTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
     [self.view addSubview:_findTableView];
 }
@@ -89,27 +83,51 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [_findTableView.mj_header endRefreshing];
+            [self noData];
             return ;
         }
         ParentSchoolModel *parentScoolModel = [ParentSchoolModel yy_modelWithDictionary:dataDic];
         BOOL isTrue = parentScoolModel.isTrue;
         if (!isTrue) {
             [_findTableView.mj_header endRefreshing];
+            [self noData];
             return;
         }
         NSArray *items = parentScoolModel.items;
-        NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:items.count];
-        for (NSDictionary *dic in items) {
-            ParentSchoolItem *item = [ParentSchoolItem yy_modelWithDictionary:dic];
-            [itemArray addObject:item];
+        if (items.count) {
+            NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:items.count];
+            for (NSDictionary *dic in items) {
+                ParentSchoolItem *item = [ParentSchoolItem yy_modelWithDictionary:dic];
+                [itemArray addObject:item];
+            }
+            _findTableView.modelArray = itemArray;
+            
+            [_findTableView.mj_header endRefreshing];
+            _findTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        }else{
+            [self noData];
         }
-        _findTableView.modelArray = itemArray;
-        
-        [_findTableView.mj_header endRefreshing];
-        _findTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_header endRefreshing];
+        
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 //上拉加载
@@ -127,7 +145,7 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
-
+            
             return ;
         }
         
@@ -153,9 +171,56 @@
         [_findTableView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_footer endRefreshing];
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+        
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
 
     }];
+}
+
+
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
 }
 
 

@@ -22,10 +22,11 @@
 #import "GetWhetherFavoriteArticleApi.h"
 #import "InsertCollectionModel.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
 static void *WkwebBrowserContext = &WkwebBrowserContext;
 
-@interface ArticleViewController ()<WKUIDelegate, WKNavigationDelegate, CommentBarDelegate>
+@interface ArticleViewController ()<WKUIDelegate, WKNavigationDelegate, CommentBarDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) WKWebView *wkWebView;
 /*加载进度条*/
@@ -56,8 +57,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
     self.view.backgroundColor = themeWhite;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //获取文章数据
-//    [self getArticleDetailData];
+    //文章URL地址
     [self loadWebURLSring:_articleID];
     
     //加载web页面
@@ -80,7 +80,6 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         //登录
         [self checkWhetherSelectArticle];
     }
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -136,42 +135,27 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
     [self.view addSubview:_articleTableView];
 }
 
-#pragma mark - 获取文章数据
-- (void)getArticleDetailData{
-    GetArticleByPrimaryKeyApi *getArticleByPrimaryKeyApi = [[GetArticleByPrimaryKeyApi alloc]initWithArticleId:_articleID];
-    [getArticleByPrimaryKeyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSData *data = request.responseData;
-        NSError *error = nil;
-        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
-            return ;
-        }
-        ArticleDetailModel *articleDetailModel = [ArticleDetailModel yy_modelWithDictionary:dataDic];
-        if (!articleDetailModel.isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
-            return;
-        }
-//        [self loadWebURLSring:_articleID];
+//#pragma mark - 获取文章数据
+//- (void)getArticleDetailData{
+//    GetArticleByPrimaryKeyApi *getArticleByPrimaryKeyApi = [[GetArticleByPrimaryKeyApi alloc]initWithArticleId:_articleID];
+//    [getArticleByPrimaryKeyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSData *data = request.responseData;
+//        NSError *error = nil;
+//        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+//        if (error) {
+//            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//            return ;
+//        }
+//        ArticleDetailModel *articleDetailModel = [ArticleDetailModel yy_modelWithDictionary:dataDic];
+//        if (!articleDetailModel.isTrue) {
+//            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//            return;
+//        }
 //        
-//        //加载web页面
-//        [self startLoadWebView];
-//        
-//        //添加到主控制器上
-//        [self.view addSubview:self.wkWebView];
-//        
-//        [self setupArticleTableView];
-//        [self setupCommentBar];
-//        //添加进度条
-//        [self.view addSubview:self.progressView];
-//        
-//        //获取评论数据
-//        [self getArticleCommentData];
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
-    }];
-}
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//    }];
+//}
 
 
 
@@ -270,7 +254,6 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 
 - (void)loadWebURLSring:(NSString *)string{
     self.URLString = [@"http://www.zimu365.com/zimu_portal_demo/html/share/shareArticle.html?articleId=" stringByAppendingString:string];
-//    self.URLString = @"https://music.163.com";
 }
 
 
@@ -282,12 +265,12 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"暂无评论数据" toView:self.view];
             return;
         }
         NSArray *dataArray = dataDic[@"items"];
@@ -306,7 +289,23 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"暂无评论数据" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -330,7 +329,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         [MBProgressHUD showMessage_WithoutImage:@"发表成功" toView:self.view];
         _commentBar.textField.text = @"";
         [_commentBar.textField resignFirstResponder];
-        [self refreshData];
+        [self refreshCommentData];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"评论失败" toView:self.view];
     }];
@@ -338,7 +337,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 }
 
 //刷新数据
-- (void)refreshData{
+- (void)refreshCommentData{
     [self getArticleCommentData];
 }
 
@@ -351,7 +350,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -365,7 +364,23 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"查询收藏状态失败" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -380,7 +395,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             _commentBar.hasCollected = hasCollected;        //不改变收藏状态
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -404,7 +419,23 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
         }
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         _commentBar.hasCollected = hasCollected;        //不改变收藏状态
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -412,9 +443,41 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 #pragma mark - 去登陆
 - (void)gotoLogin{
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
     [self presentViewController:newLoginVC animated:YES completion:nil];
 }
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self checkWhetherSelectArticle];
+}
 
+#pragma mark - 空白页
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getArticleCommentData];
+        [self checkWhetherSelectArticle];
+        [self startLoadWebView];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getArticleCommentData];
+        [self checkWhetherSelectArticle];
+        [self startLoadWebView];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getArticleCommentData];
+        [self checkWhetherSelectArticle];
+        [self startLoadWebView];
+    }];
+    [self.view addSubview:blankview];
+}
 
 
 @end

@@ -12,8 +12,10 @@
 #import "MBProgressHUD+MJ.h"
 #import "GetOfflineCourseByIdApi.h"
 #import "OfflineCourseModel.h"
-#import "OrderViewController.h"
+#import "ActivityOrderViewController.h"
 #import "ZMBlankView.h"
+#import "ActivityDetailViewController.h"
+#import "ZM_CallingHandleCategory.h"
 
 @interface ActivityOrderCompleteViewController ()<ActivityOrderSuccessViewDelegate, ActivityOrderFailViewDelegate>
 
@@ -70,8 +72,14 @@
 
 - (void)activityOrderSuccessViewCheckOrder{
     NSLog(@"查看订单");
-    OrderViewController *orderVC = [[OrderViewController alloc]init];
-    [self.navigationController pushViewController:orderVC animated:YES];
+    ActivityOrderViewController *orderVC = [[ActivityOrderViewController alloc]init];
+    orderVC.orderId = self.payOrderModel.offlineCourseOrderId;
+    [self dismissViewControllerAnimated:YES completion:^{
+        ActivityDetailViewController *activityDetailVC = (ActivityDetailViewController *)[ZM_CallingHandleCategory curTopViewController];
+        [activityDetailVC.navigationController pushViewController:orderVC animated:YES];
+        
+    }];
+
 }
 
 #pragma mark - 报名成功获取活动数据

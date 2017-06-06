@@ -283,12 +283,12 @@
         }
         //请求超时
         else if (errorCode == -1001) {
-            
+            [self netTimeOut];
             
         }
         //其他原因
         else {
-            
+            [self netLostServer];
             
         }
     }];
@@ -309,6 +309,19 @@
     [self.view addSubview:blankview];
 }
 
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getTagsData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getTagsData];
+    }];
+    [self.view addSubview:blankview];
+}
 
 
 @end

@@ -23,8 +23,9 @@
 #import "InsertFmCollectionApi.h"
 #import "InsertCollectionModel.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
-@interface FMViewController ()<UITextFieldDelegate, CommentBarDelegate>
+@interface FMViewController ()<UITextFieldDelegate, CommentBarDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) FMPlayView *FMPlayView;
 @property (nonatomic, strong) FMTableView *tableView;
@@ -52,9 +53,9 @@
     
     //判断是否登录
     NSString *token = userToken;
-    if (token.length != 0) {
+    if (![token isEqualToString:@"logout"] && token != nil) {
         //登录
-        [self checkWhetherSelectFM];
+        [self checkWhetherCollectFM];
     }
     
 }
@@ -95,7 +96,7 @@
 //收藏
 - (void)commentBarSelect:(UIButton *)button{
     //判断是否登录
-    if ([userToken isEqualToString:@"logout"]) {
+    if ([userToken isEqualToString:@"logout"] || userToken == nil) {
         //去登录
         [self gotoLogin];
     }else{
@@ -111,7 +112,7 @@
 //发表评论
 - (void)commentBarSubmit:(NSString *)text{
     //判断是否登录
-    if ([userToken isEqualToString:@"logout"]) {
+    if ([userToken isEqualToString:@"logout"] || userToken == nil) {
         //去登录
         [self gotoLogin];
     }else{
@@ -130,21 +131,38 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
             return;
         }
+        
         FMDetailModel *fmDetailModel = [FMDetailModel yy_modelWithDictionary:dataDic[@"object"]];
         _FMPlayView.fmDetailModel = fmDetailModel;
         _tableView.fmDetailModel = fmDetailModel;
         [self getFMExpertData:fmDetailModel.createExp];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -156,19 +174,35 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常" toView:self.view];
             return;
         }
         ExpertDetailModel *expertDetailModel = [ExpertDetailModel yy_modelWithDictionary:dataDic[@"object"]];
         _tableView.expertDetailModel = expertDetailModel;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -180,12 +214,12 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return;
         }
         if (_fmCommentModelArray) {
@@ -203,7 +237,7 @@
         _tableView.fmCommentModelArray = _fmCommentModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
     }];
 }
 
@@ -239,14 +273,14 @@
 }
 
 #pragma mark - 查询是否已收藏FM
-- (void)checkWhetherSelectFM{
+- (void)checkWhetherCollectFM{
     GetWhetherFavoriteFmApi *getWhetherFavoriteFmApi = [[GetWhetherFavoriteFmApi alloc]initWithFMId:_fmId];
     [getWhetherFavoriteFmApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -274,7 +308,7 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             _commentBar.hasCollected = hasCollected;        //不改变收藏状态
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -306,7 +340,64 @@
 #pragma mark - 去登陆
 - (void)gotoLogin{
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
     [self presentViewController:newLoginVC animated:YES completion:nil];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self checkWhetherCollectFM];
+}
+
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+        [self getFMCommentData];
+        NSString *token = userToken;
+        if (![token isEqualToString:@"logout"] && token != nil) {
+            //登录
+            [self checkWhetherCollectFM];
+        }
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+        [self getFMCommentData];
+        NSString *token = userToken;
+        if (![token isEqualToString:@"logout"] && token != nil) {
+            //登录
+            [self checkWhetherCollectFM];
+        }
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+        [self getFMCommentData];
+        NSString *token = userToken;
+        if (![token isEqualToString:@"logout"] && token != nil) {
+            //登录
+            [self checkWhetherCollectFM];
+        }
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFMDetailData];
+        [self getFMCommentData];
+        NSString *token = userToken;
+        if (![token isEqualToString:@"logout"] && token != nil) {
+            //登录
+            [self checkWhetherCollectFM];
+        }
+    }];
+    [self.view addSubview:blankview];
 }
 
 

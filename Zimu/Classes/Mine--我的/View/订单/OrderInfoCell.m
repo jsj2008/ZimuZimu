@@ -37,15 +37,25 @@
     _orderNumLabel.text = [NSString stringWithFormat:@"订单编号：%@",orderModel.orderId];
     
     //创建时间
-    _creatTimeLabel.text = [NSString stringWithFormat:@"创建时间：%@",orderModel.createTime];
+    NSInteger createTimestamp = [orderModel.createTime integerValue];
+    _creatTimeLabel.text = [NSString stringWithFormat:@"创建时间：%@",[self handleDateWithTimeStamp:createTimestamp]];
     
     //付款时间
     NSInteger status  =[_orderModel.status integerValue];
     if (status == 1) {
-        _payTimeLabel.text = [NSString stringWithFormat:@"付款时间：%@",orderModel.payTime];
+        NSInteger payTimestamp = [orderModel.payTime integerValue];
+        _payTimeLabel.text = [NSString stringWithFormat:@"付款时间：%@",[self handleDateWithTimeStamp:payTimestamp]];
     }else if (status == 0){
         _payTimeLabel.text = [NSString stringWithFormat:@"付款时间：未付款"];
     }
+}
+
+- (NSString *)handleDateWithTimeStamp:(NSInteger)timeStamp{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp/1000.0];
+    NSString *dateString = [formatter stringFromDate:date];
+    return dateString;
 }
 
 

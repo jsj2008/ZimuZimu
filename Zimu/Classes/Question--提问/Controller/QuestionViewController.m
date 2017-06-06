@@ -156,11 +156,13 @@
         }
         //其他原因
         else {
-            
+            [self netLostServer];
         }
     }];
 }
 
+
+#pragma mark - 空白页
 - (void)noNet{
     ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
         [self searchQuestionWithTitle:_textField.text];

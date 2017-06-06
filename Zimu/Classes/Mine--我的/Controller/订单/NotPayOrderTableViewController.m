@@ -18,9 +18,10 @@
 #import "PaymentChannelView.h"
 #import "SnailQuickMaskPopups.h"
 #import "DeleteOffLineCourseOrderDetailApi.h"
+#import "ZMBlankView.h"
 
 static NSString *identifier = @"NotPayOrderCell";
-@interface NotPayOrderTableViewController ()<NotPayOrderCellDelegate, PaymentChannelViewDelegate>
+@interface NotPayOrderTableViewController ()<NotPayOrderCellDelegate, PaymentChannelViewDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *orderModelArray;
 @property (nonatomic, strong) PaymentChannelView *paymentChannelView;
@@ -39,8 +40,10 @@ static NSString *identifier = @"NotPayOrderCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //下拉刷新
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getWaitPayOrderListData)];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     [self.tableView.mj_header beginRefreshing];
+    //上拉加载
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getMore)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,19 +96,32 @@ static NSString *identifier = @"NotPayOrderCell";
     [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 
-
 #pragma mark - 获取数据
-- (void)getWaitPayOrderListData{
-    //获取当前时间戳
-    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
-    NSString *time = [NSString stringWithFormat:@"%.0f",timeInterval];
-    QueryAppUserOrderCompleteListApi *queryAppUserOrderCompleteListApi = [[QueryAppUserOrderCompleteListApi alloc]initWithEndTime:time status:@"0"];
+//下拉刷新
+- (void)refresh{
+    if (_orderModelArray) {
+        [_orderModelArray removeAllObjects];
+        _orderModelArray = nil;
+    }
+    _orderModelArray = [NSMutableArray array];
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];    //获取当前时间戳
+    [self getData:timeInterval];
+}
+//上拉加载
+- (void)getMore{
+    OrderOfflineCourseModel *model = _orderModelArray.lastObject;
+    NSInteger lastTimestamp = [model.createTime integerValue];
+    [self getData:lastTimestamp/1000];
+}
+- (void)getData:(NSInteger)timestamp{
+    NSString *timeInterval = [NSString stringWithFormat:@"%li",timestamp];
+    QueryAppUserOrderCompleteListApi *queryAppUserOrderCompleteListApi = [[QueryAppUserOrderCompleteListApi alloc]initWithEndTime:timeInterval status:@"0"];
     [queryAppUserOrderCompleteListApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -114,79 +130,57 @@ static NSString *identifier = @"NotPayOrderCell";
             [self performSelector:@selector(login) withObject:nil afterDelay:1.0];
             return;
         }
-        if (_orderModelArray) {
-            [_orderModelArray removeAllObjects];
-            _orderModelArray = nil;
-        }
+        
         NSArray *dataArray = dataDic[@"items"];
         if (dataArray.count != 0 && dataArray != nil) {
-            _orderModelArray = [NSMutableArray arrayWithCapacity:dataArray.count];
             for (NSDictionary *dic in dataArray) {
                 OrderModel *orderModel = [OrderModel yy_modelWithDictionary:dic];
                 [_orderModelArray addObject:orderModel];
             }
+            
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+            if (dataArray.count < 10) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+            [self.tableView reloadData];
+            
         }
-        [self.tableView reloadData];
-        
-        [self.tableView.mj_header endRefreshing];
-        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        if (_orderModelArray.count == 0) {
+            [self noData];
+        }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self.tableView.mj_header endRefreshing];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+        }
+        //其他原因
+        else {
+            [self netLostServer];
+        }
         
     }];
 }
 
-//上拉加载
-- (void)loadMoreData{
-    //拿到当前tableView数据数组，取出最后一条数据的时间戳，用这个时间戳去请求更多数据
-    NSMutableArray *nowDataArray = [NSMutableArray arrayWithArray:_orderModelArray];
-    OrderOfflineCourseModel *model = nowDataArray.lastObject;
-    NSString *lastTimeStamp = model.createTime;
-    if (nowDataArray.count == 0) {
-        NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
-        lastTimeStamp = [NSString stringWithFormat:@"%.0f",timeInterval];
-    }
-    QueryAppUserOrderCompleteListApi *queryAppUserOrderListApi = [[QueryAppUserOrderCompleteListApi alloc]initWithEndTime:lastTimeStamp status:@"0"];
-    [queryAppUserOrderListApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSData *data = request.responseData;
-        NSError *error = nil;
-        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错，请稍后再试" toView:nil];
-            return ;
-        }
-        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
-        if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
-            [self performSelector:@selector(login) withObject:nil afterDelay:1.0];
-            return;
-        }
-        
-        NSArray *dataArray = dataDic[@"items"];
-        if (!dataArray.count) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            return;
-        }else if (dataArray.count < 10){
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        for (NSDictionary *dic in dataArray) {
-            OrderModel *orderModel = [OrderModel yy_modelWithDictionary:dic];
-            [nowDataArray addObject:orderModel];
-        }
-        _orderModelArray = nowDataArray;
-        [self.tableView reloadData];
-        
-        [self.tableView.mj_footer endRefreshing];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self.tableView.mj_footer endRefreshing];
-    }];
-}
 
 #pragma mark - 重新登录
 - (void)login{
     NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    loginVC.delegate = self;
     [self presentViewController:loginVC animated:YES completion:nil];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self refresh];
 }
 
 
@@ -247,7 +241,7 @@ static NSString *identifier = @"NotPayOrderCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -258,10 +252,26 @@ static NSString *identifier = @"NotPayOrderCell";
             return;
         }
         //刷新数据
-        [self getWaitPayOrderListData];
+        [self refresh];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netLostServer];
+            
+        }
     }];
 }
 
@@ -270,7 +280,7 @@ static NSString *identifier = @"NotPayOrderCell";
 #pragma mark - PaymentChannelViewDelegate
 - (void)paymentViewFinishPayWithResult:(NSString *)result payOrderModel:(PayOrderModel *)payOrderModel{
     [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
-        [self getWaitPayOrderListData];
+        [self refresh];
     }];
 }
 
@@ -290,4 +300,35 @@ static NSString *identifier = @"NotPayOrderCell";
     NSString *dateString = [formatter stringFromDate:date];
     return dateString;
 }
+
+
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self refresh];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self refresh];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self refresh];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self refresh];
+    }];
+    [self.view addSubview:blankview];
+}
+
 @end

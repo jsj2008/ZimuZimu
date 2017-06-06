@@ -8,23 +8,20 @@
 
 #import "ActivityOrderViewController.h"
 #import "OrderDetailTableView.h"
-#import "UIView+SnailUse.h"
-#import "PaymentChannelView.h"
-#import "SnailQuickMaskPopups.h"
 #import "QueryOffLineCourseOrderDetailApi.h"
 #import "MBProgressHUD+MJ.h"
 #import "OrderModel.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
+#import "UIBarButtonItem+ZMExtension.h"
 
-@interface ActivityOrderViewController ()<PaymentChannelViewDelegate>
+@interface ActivityOrderViewController ()<LoginViewControllerDelegate>
 
 @property (nonatomic, strong) OrderDetailTableView *orderDetailTableView;
 @property (nonatomic, strong) UIButton *payButton;
 
 @property (nonatomic, strong) OrderModel *orderModel;
 
-@property (nonatomic, strong) SnailQuickMaskPopups *popup;
-@property (nonatomic, strong) PaymentChannelView *paymentChannelView;
 
 @end
 
@@ -37,43 +34,27 @@
     self.view.backgroundColor = themeGray;
     
     [self getOrderDetailData];
-}
-
-/**
- *  payButton
- */
-- (void)setupPayButton{
-    _payButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _payButton.frame = CGRectMake(0, CGRectGetMaxY(_orderDetailTableView.frame), kScreenWidth, 49);
-    [_payButton setBackgroundColor:themeYellow];
-    [_payButton setTitle:@"去付款" forState:UIControlStateNormal];
-    [_payButton setTitleColor:themeWhite forState:UIControlStateNormal];
-    _payButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    [_payButton addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_payButton];
+    
+    UIBarButtonItem *leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"navigationButtonReturn" title:@"" target:self action:@selector(returnBack)];
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    
     
 }
 
-- (void)pay{
-    OrderOfflineCourseModel *orderCourseModel = _orderModel.offlineCourse;
-    NSInteger timestamp = [orderCourseModel.startTime integerValue];
-    NSDictionary *modelDic = @{@"title":orderCourseModel.courseName,
-                               @"courseId":_orderModel.offCourseId,
-                               @"price":_orderModel.orderPrice,
-                               @"time":[self handleDateWithTimeStamp:timestamp],
-                               @"address":[NSString stringWithFormat:@"%@ %@",_orderModel.provinceName, orderCourseModel.address]};
-    PaymentInfoModel *paymentInfoModel = [PaymentInfoModel yy_modelWithDictionary:modelDic];
-    _paymentChannelView = [UIView paymentChannelView];
-    _paymentChannelView.delegate = self;
-    _paymentChannelView.paymentInfoModel = paymentInfoModel;
-    _popup = [SnailQuickMaskPopups popupsWithMaskStyle:MaskStyleBlackTranslucent aView:_paymentChannelView];
-    _popup.isAllowPopupsDrag = YES;
-    _popup.dampingRatio = 0.9;
-    _popup.presentationStyle = PresentationStyleBottom;
-    [_popup presentAnimated:YES completion:nil];
+- (void)returnBack{
+    NSArray *vcs = self.navigationController.viewControllers;
     
-}
+    NSInteger index = 1;
+    for (UIViewController *viewController in vcs) {
+        if([viewController isKindOfClass:NSClassFromString(@"HomeViewController")]){
+            index = [vcs indexOfObject:viewController];
+            break;
+        }
+    }
+    
+    [self.navigationController popToViewController:vcs[index] animated:YES];
 
+}
 
 #pragma mark - 获取订单详情
 - (void)getOrderDetailData{
@@ -83,7 +64,7 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self noData];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -98,30 +79,36 @@
         _orderDetailTableView = [[OrderDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain orderModel:_orderModel];
         [self.view addSubview:_orderDetailTableView];
         
-        [self setupPayButton];
-        
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netLostServer];
+            
+        }
     }];
 }
 
 #pragma mark - 重新登录
 - (void)login{
     NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
+    loginVC.delegate = self;
     [self presentViewController:loginVC animated:YES completion:nil];
 }
-
-#pragma mark - PaymentChannelViewDelegate
-- (void)paymentViewFinishPayWithResult:(NSString *)result{
-    [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
-        [self getOrderDetailData];
-    }];
-}
-
-- (void)loginFailed{
-    [_popup dismissAnimated:YES completion:^(SnailQuickMaskPopups * _Nonnull popups) {
-        [self login];
-    }];
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self getOrderDetailData];
 }
 
 
@@ -133,5 +120,33 @@
     return dateString;
 }
 
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getOrderDetailData];
+    }];
+    [self.view addSubview:blankview];
+}
 
 @end

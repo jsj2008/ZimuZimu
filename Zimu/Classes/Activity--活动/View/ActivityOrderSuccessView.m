@@ -125,7 +125,8 @@
     _timeMarkLabel.textColor = [UIColor colorWithHexString:@"333333"];
     _timeMarkLabel.text = markString;
     [_contentView addSubview:_timeMarkLabel];
-    NSString *timeString = @"2017年06月03日 13:00";
+    NSInteger timestamp = [_offlineCourseModel.startTime integerValue];
+    NSString *timeString = [self handleDateWithTimeStamp:timestamp];//@"2017年06月03日 13:00";
     CGFloat timeHeight = [WXLabel getTextHeight:14 width:contentWidth - markSize.width text:timeString linespace:1.5];
     if (_timeLabel) {
         [_timeLabel removeFromSuperview];
@@ -163,6 +164,14 @@
     [_contentView addSubview:_addressLabel];
     
     _contentView.height = CGRectGetMaxY(_addressLabel.frame) + 20;
+}
+
+- (NSString *)handleDateWithTimeStamp:(NSInteger)timeStamp{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp/1000.0];
+    NSString *dateString = [formatter stringFromDate:date];
+    return dateString;
 }
 
 //返回

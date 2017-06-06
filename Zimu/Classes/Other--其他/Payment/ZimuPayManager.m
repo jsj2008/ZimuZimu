@@ -145,7 +145,7 @@ URL Schemes 需要在 Xcode 的 Info 标签页的 URL Types 中添加，\
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错，请稍后再试" toView:nil];
+            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:nil];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];

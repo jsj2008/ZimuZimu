@@ -60,7 +60,7 @@
     [self setupCoverImageView];
     [self setupToolView];
     
-    [self getDataNetWork];
+//    [self getDataNetWork];
 }
 
 #pragma mark - bgImageView
