@@ -10,6 +10,7 @@
 #import "GetOfflineCourseApi.h"
 #import "MBProgressHUD+MJ.h"
 #import "ActivityAddressListModel.h"
+#import "ZMBlankView.h"
 
 static NSString *identifier = @"activityAdderssTimeCell";
 @interface ActivityTimeTableViewController ()
@@ -72,6 +73,32 @@ static NSString *identifier = @"activityAdderssTimeCell";
 
 
 #pragma mark - 获取数据
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityAddressListData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityAddressListData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityAddressListData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getActivityAddressListData];
+    }];
+    [self.view addSubview:blankview];
+}
+
 - (void)getActivityAddressListData{
     GetOfflineCourseApi *getOfflineCourseApi = [[GetOfflineCourseApi alloc]initWithCategoryId:_categoryId];
     [getOfflineCourseApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -79,16 +106,22 @@ static NSString *identifier = @"activityAdderssTimeCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+<<<<<<< HEAD
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+=======
+            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self lostSever];
+>>>>>>> origin/master
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+            [self noData];
             return;
         }
         NSArray *listArray = dataDic[@"items"];
-        if (listArray.count) {
+        if (listArray.count != 0) {
             if (_modelArray) {
                 [_modelArray removeAllObjects];
                 _modelArray = nil;
@@ -98,11 +131,19 @@ static NSString *identifier = @"activityAdderssTimeCell";
                 ActivityAddressListModel *model = [ActivityAddressListModel yy_modelWithDictionary:dic];
                 [_modelArray addObject:model];
             }
+        }else{
+            [self noData];
         }
         [self.tableView reloadData];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
     
 }

@@ -53,13 +53,14 @@ static NSString *cellId = @"SearchFriendsFriendCellde";
 
 #pragma mark - datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _dataDic == [NSNull null] ? 0 : 1;
+    return [_dataDic isEqual:[NSNull null]] ? 0 : 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSDictionary *userDic = _dataArray[indexPath.row];
     FriendMsgModel *fmm = [FriendMsgModel yy_modelWithJSON:_dataDic];
     SearchFriendsFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    [cell setName:fmm.userName idStr:fmm.userId age:8 imgUrlString:@"asdfij"];
+    NSString *userImg = [imagePrefixURL stringByAppendingString:fmm.userImg];
+    [cell setName:fmm.userName idStr:fmm.userId age:fmm.age imgUrlString:@"asdfij" sex:fmm.userSex];
     cell.separatorInset = UIEdgeInsetsMake(0, kScreenWidth, 0, 0);
     cell.addFriendBtn.hidden = NO;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

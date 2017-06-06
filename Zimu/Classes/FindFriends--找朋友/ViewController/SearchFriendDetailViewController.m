@@ -19,8 +19,9 @@
 #import "UIView+SnailUse.h"
 #import "ZM_SelectSexView.h"
 #import "UIBarButtonItem+ZMExtension.h"
+#import "NewLoginViewController.h"
 
-@interface SearchFriendDetailViewController ()<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SearchFriendDetailViewController ()<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, LoginViewControllerDelegate>
 
 @property (nonatomic, assign)searchFriendStyle style;
 //弹出的选择年龄
@@ -101,6 +102,7 @@
     [_searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"f1f1f1"] size:_searchBar.size]];
     [_searchBar setSearchFieldBackgroundImage:[UIImage imageWithColor:themeWhite size:_searchBar.size] forState:UIControlStateNormal];
     _searchBar.delegate = self;
+    _searchBar.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     _searchBar.tintColor = themeBlack;
     
     [bgView addSubview:_searchBar];
@@ -273,17 +275,32 @@
             return ;
         }else{
             NSLog(@"搜索好友结果%@", dataDic);
+            BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+            if (!isTrue) {
+                [self login];
+                [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
+                return;
+            }
             //更新UI
-            dispatch_async(dispatch_get_main_queue(), ^{
-                SearchFriendResultViewController *resultVC = [[SearchFriendResultViewController alloc] init];
-                resultVC.dataDic = dataDic[@"object"];
-                [self.navigationController pushViewController:resultVC animated:YES];
-            });
+            SearchFriendResultViewController *resultVC = [[SearchFriendResultViewController alloc] init];
+            resultVC.dataDic = dataDic[@"object"];
+            [self.navigationController pushViewController:resultVC animated:YES];
         }
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
     }];
+}
+- (void)login{
+    //未登录，跳转至登录页
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
+    [self presentViewController:newLoginVC animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+//    [self getFriendsList];
 }
 @end

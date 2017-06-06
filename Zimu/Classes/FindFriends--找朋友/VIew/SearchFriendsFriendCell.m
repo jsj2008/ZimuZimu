@@ -10,6 +10,7 @@
 #import "AddFriendApi.h"
 #import "MBProgressHUD+MJ.h"
 #import "UIView+ViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SearchFriendsFriendCell ()
 
@@ -38,7 +39,7 @@
     _ageLabel.layer.borderColor = [UIColor colorWithHexString:@"f5ce13"].CGColor;
     _ageLabel.layer.borderWidth = 0.5;
     _ageLabel.layer.masksToBounds = YES;
-    
+    [_imgView sd_setImageWithURL:[NSURL URLWithString:_imgUrl] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
     _nameLabel.text = _nameStr;
     if (_sex == 0) {
         _ageLabel.backgroundColor = [UIColor colorWithHexString:@"fd809d"];
@@ -48,11 +49,12 @@
         _ageLabel.text = [NSString stringWithFormat:@" 男 %zd岁 ", _age];
     }
 }
-- (void)setName:(NSString *)name idStr:(NSString *)idString age:(NSInteger)age imgUrlString:(NSString *)urlStr{
+- (void)setName:(NSString *)name idStr:(NSString *)idString age:(NSInteger)age imgUrlString:(NSString *)urlStr sex:(NSInteger)sex{
     _idStr = idString;
     _nameStr = name;
     _imgUrl = urlStr;
     _age = age;
+    _sex = sex;
 }
 - (void)setSex:(NSInteger)sex{
     _sex = sex;

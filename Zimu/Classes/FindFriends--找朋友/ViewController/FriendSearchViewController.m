@@ -15,15 +15,18 @@
 #import "GetMyFriendListApi.h"
 #import "FriendListModel.h"
 #import "PersonalMessageViewController.h"
+#import "NewLoginViewController.h"
 
 static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
 
-@interface FriendSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FriendSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, LoginViewControllerDelegate>
 {
     UITableView * _tableView;
     NSMutableArray * _dataArray;
     NSMutableArray * _subDataArray;
     UISearchBar * _searchBar;
+    
+    NSString *_friendPhone;
 }
 
 @end
@@ -121,6 +124,7 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
     cancelBtn.enabled = YES; //把enabled设置为yes
     
     //开始搜索
+    _friendPhone = getStr;
     [self searchFriend:getStr];
 }
 
@@ -191,6 +195,11 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
             return ;
         }else{
             NSLog(@"所搜好友结果%@", dataDic);
+            BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+            if (!isTrue) {
+                [self login];
+                return;
+            }
             if ([dataDic[@"isTrue"] integerValue] == 0) {
                 [MBProgressHUD showMessage_WithoutImage:@"未查询到相关用户信息" toView:self.view];
             }else{
@@ -205,5 +214,16 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
         [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
     }];
 }
-
+#pragma mark - 重新登录
+- (void)login{
+    [self.navigationController popViewControllerAnimated:YES];
+    //未登录，跳转至登录页
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
+    [self presentViewController:newLoginVC animated:YES completion:nil];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self searchFriend:_friendPhone];
+}
 @end

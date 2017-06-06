@@ -69,7 +69,31 @@
 
 
 #pragma mark - 获取数据
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
 
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getDataNetWork];
+    }];
+    [self.view addSubview:blankview];
+}
 //刷新数据
 - (void)getDataNetWork{
     //获取当前时间戳
@@ -83,7 +107,11 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [_findTableView.mj_header endRefreshing];
+<<<<<<< HEAD
             [self noData];
+=======
+            [self lostSever];
+>>>>>>> origin/master
             return ;
         }
         ParentSchoolModel *parentScoolModel = [ParentSchoolModel yy_modelWithDictionary:dataDic];
@@ -110,6 +138,7 @@
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_header endRefreshing];
+<<<<<<< HEAD
         
         NSError *error = request.error;
         NSInteger errorCode = error.code;
@@ -127,6 +156,14 @@
         else {
             [self netTimeOut];
             
+=======
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+>>>>>>> origin/master
         }
     }];
 }
@@ -145,7 +182,11 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+<<<<<<< HEAD
             
+=======
+            [self lostSever];
+>>>>>>> origin/master
             return ;
         }
         
@@ -153,6 +194,7 @@
         BOOL isTrue = parentScoolModel.isTrue;
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+            [self noData];
             return;
         }
         NSArray *items = parentScoolModel.items;
@@ -171,6 +213,7 @@
         [_findTableView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [_findTableView.mj_footer endRefreshing];
+<<<<<<< HEAD
         
         NSError *error = request.error;
         NSInteger errorCode = error.code;
@@ -215,6 +258,16 @@
     }];
     [self.view addSubview:blankview];
 }
+=======
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:nil];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
+>>>>>>> origin/master
 
 - (void)netLostServer{
     ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {

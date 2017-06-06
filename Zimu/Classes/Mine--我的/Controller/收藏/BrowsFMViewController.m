@@ -16,9 +16,10 @@
 #import "GetMyFavouriteFmListApi.h"
 #import "FMViewController.h"
 #import "ZMBlankView.h"
+#import "NewLoginViewController.h"
 
 static NSString *fmCell = @"MyCollectionCell";
-@interface BrowsFMViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface BrowsFMViewController ()<UITableViewDataSource, UITableViewDelegate, LoginViewControllerDelegate>
 
 @property (nonatomic, strong)UITableView *fmTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -99,6 +100,18 @@ static NSString *fmCell = @"MyCollectionCell";
     }];
     [self.view addSubview:blankview];
 }
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self reFresh];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self reFresh];
+    }];
+    [self.view addSubview:blankview];
+}
 
 - (void)getMore{
     NSDictionary *dic = [_dataArray lastObject];
@@ -123,9 +136,14 @@ static NSString *fmCell = @"MyCollectionCell";
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
-            [self noNet];
+            [self noData];
             return ;
         }else{
+            BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+            if (!isTrue) {
+                [self login];
+                return;
+            }
             NSArray *nowData = dataDic[@"items"];
             [_dataArray addObjectsFromArray:dataDic[@"items"]];
             if (_dataArray.count == 0) {
@@ -141,8 +159,25 @@ static NSString *fmCell = @"MyCollectionCell";
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [self noNet];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
+}
+#pragma mark - 重新登录
+- (void)login{
+    //未登录，跳转至登录页
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
+    [self presentViewController:newLoginVC animated:YES completion:nil];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self reFresh];
 }
 
 @end

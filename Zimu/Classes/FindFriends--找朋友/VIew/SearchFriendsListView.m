@@ -91,7 +91,7 @@ static NSString *myMsgCell = @"SearchFriendMyMsgCell";
         }
     }else{
         SearchFriendsFriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-        [cell setName:@"我啊124" idStr:@"29385124 7" age:8 imgUrlString:@"asdfij"];
+//        [cell setName:@"我啊124" idStr:@"29385124 7" age:8 imgUrlString:@"asdfij" s];
         [cell setSex: indexPath.row % 2? 1:0];
 //        cell.separatorInset = UIEdgeInsetsMake(0, 0, 10, 0);
 //        cell.separatorInset = UIEdgeInsetsZero;

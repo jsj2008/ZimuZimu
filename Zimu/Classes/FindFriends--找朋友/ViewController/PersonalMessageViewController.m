@@ -16,8 +16,10 @@
 #import "MBProgressHUD+MJ.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
+#import "ZMBlankView.h"
+#import "NewLoginViewController.h"
 
-@interface PersonalMessageViewController ()
+@interface PersonalMessageViewController ()<LoginViewControllerDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *bannerImageView;
@@ -167,6 +169,33 @@
 }
 
 #pragma mark - 网络请求
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendMsg];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendMsg];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendMsg];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getFriendMsg];
+    }];
+    [self.view addSubview:blankview];
+}
+
+
 - (void)getFriendMsg{
     GetFriendMsgApi *getHomeSixImageApi = [[GetFriendMsgApi alloc]initWithUserId:_userId];
     [getHomeSixImageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -174,38 +203,65 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+//            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+            [self lostSever];
             return ;
         }else{
             //设置头像
-            [self setupContentView];
             NSString *imgUrlStr = dataDic[@"object"][@"userImg"];
-            imgUrlStr = [imagePrefixURL stringByAppendingString:imgUrlStr];
-            [_headButton sd_setImageWithURL:[NSURL URLWithString:imgUrlStr] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
-//
-            _nameLabel.text =  dataDic[@"object"][@"userName"];
-//
-            self.title = dataDic[@"object"][@"userName"];
-            if ([dataDic[@"object"][@"userSex"] integerValue] == 0) {
-                [_sexButton setImage:[UIImage imageNamed:@"mine_women"] forState:UIControlStateNormal];
-                [_sexButton setBackgroundImage:[UIImage imageNamed:@"mine_nianling"] forState:UIControlStateNormal];
+            if (![imgUrlStr isEqualToString:@""] ||!imgUrlStr) {
+                [self noData];
             }else{
-                [_sexButton setImage:[UIImage imageNamed:@"mine_man"] forState:UIControlStateNormal];
-                [_sexButton setBackgroundImage:[UIImage imageNamed:@"mine_nianling"] forState:UIControlStateNormal];
+                BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+                if (!isTrue) {
+                    [self login];
+                    return;
+                }
+                [self setupContentView];
+                imgUrlStr = [imagePrefixURL stringByAppendingString:imgUrlStr];
+                [_headButton sd_setImageWithURL:[NSURL URLWithString:imgUrlStr] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
+                //
+                _nameLabel.text =  dataDic[@"object"][@"userName"];
+                //
+                self.title = dataDic[@"object"][@"userName"];
+                if ([dataDic[@"object"][@"userSex"] integerValue] == 0) {
+                    [_sexButton setImage:[UIImage imageNamed:@"mine_women"] forState:UIControlStateNormal];
+                    [_sexButton setBackgroundImage:[UIImage imageNamed:@"mine_nianling"] forState:UIControlStateNormal];
+                }else{
+                    [_sexButton setImage:[UIImage imageNamed:@"mine_man"] forState:UIControlStateNormal];
+                    [_sexButton setBackgroundImage:[UIImage imageNamed:@"mine_nianling"] forState:UIControlStateNormal];
+                }
+                NSString *age = [NSString stringWithFormat:@"  %li岁", [dataDic[@"object"][@"age"] integerValue] ];
+                [_sexButton setTitle:age forState:UIControlStateNormal];
             }
-            NSString *age = [NSString stringWithFormat:@"  %li岁", [dataDic[@"object"][@"age"] integerValue] ];
-            [_sexButton setTitle:age forState:UIControlStateNormal];
             
         }
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
     
 
 }
-
+#pragma mark - 重新登录
+- (void)login{
+    //未登录，跳转至登录页
+    NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
+    newLoginVC.delegate = self;
+    [self presentViewController:newLoginVC animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//LoginViewControllerDelegate
+- (void)loginSuccess{
+    [self getFriendMsg];
+}
 - (void)createSingleChatRoom{
 
     ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];

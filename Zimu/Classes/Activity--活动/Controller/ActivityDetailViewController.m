@@ -206,6 +206,18 @@
     }];
     [self.view addSubview:blankview];
 }
+- (void)timeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCategoryActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
+- (void)lostSever{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCategoryActivityData];
+    }];
+    [self.view addSubview:blankview];
+}
 - (void)getCategoryActivityData{
     GetAppOfflineCourseByIdApi *getAppOfflineCourseByIdApi = [[GetAppOfflineCourseByIdApi alloc]initWithCategoryId:_categoryId];
     [getAppOfflineCourseByIdApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -213,20 +225,38 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
+<<<<<<< HEAD
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+=======
+//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
+            [self lostSever];
+>>>>>>> origin/master
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
             [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+            [self noData];
             return;
         }
         ActivityCategoryInfoModel *activityCategoryInfoModel = [ActivityCategoryInfoModel yy_modelWithDictionary:dataDic[@"object"]];
         _activityDetailTableView.activityCategoryInfoModel = activityCategoryInfoModel;
-        _activityDetailTableView.coursePrice = _coursePrice;
+        if (!activityCategoryInfoModel.courseName) {
+            [self noData];
+        }else{
+            
+            _activityDetailTableView.coursePrice = _coursePrice;
+        }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"暂无数据" toView:self.view];
+        if (request.error.code == -1009) {
+            [self noNet];
+        }else if (request.error.code == -1011){
+            [self timeOut];
+        }else{
+            [self lostSever];
+        }
     }];
 }
 
@@ -256,8 +286,8 @@
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        [MBProgressHUD showMessage_WithoutImage:@"获取该活动数据失败" toView:self.view];
-        [self noNet];
+        [MBProgressHUD showMessage_WithoutImage:@"获取该活动数据失败" toView:self.view];
+//        [self noNet];
     }];
 }
 
