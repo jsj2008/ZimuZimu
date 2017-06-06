@@ -40,7 +40,7 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://116.62.200.235:8080/zimu_portal/";
+    config.baseUrl = @"http://www.zimu365.com/zimu_portal_demo/";
     //正式：@"http://120.27.221.31/zimu_portal/"
     //亚欧的：@"http://192.168.10.183:8082/portal/";
     //猪的:@"http://192.168.3.10:8082/portal/";

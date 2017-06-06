@@ -106,12 +106,7 @@ static NSString *identifier = @"activityAdderssTimeCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-<<<<<<< HEAD
-            [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
-=======
-            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
             [self lostSever];
->>>>>>> origin/master
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
@@ -137,12 +132,22 @@ static NSString *identifier = @"activityAdderssTimeCell";
         [self.tableView reloadData];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        if (request.error.code == -1009) {
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
             [self noNet];
-        }else if (request.error.code == -1011){
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
             [self timeOut];
-        }else{
+            
+        }
+        //其他原因
+        else {
             [self lostSever];
+            
         }
     }];
     

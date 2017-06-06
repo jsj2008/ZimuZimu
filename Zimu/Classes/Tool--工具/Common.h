@@ -33,11 +33,8 @@
 #define USERID [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"]
 #define ZMUSERMSG [[NSUserDefaults standardUserDefaults] objectForKey:@"userMsg"]
 
-<<<<<<< HEAD
 #define imagePrefixURL @"http://av.www.zimu365.com/"//@"http://on59kdhax.bkt.clouddn.com/"     //@"http://on9fin031.bkt.clouddn.com/"     //图片前缀
-=======
-#define imagePrefixURL @"http://av.www.zimu365.com/" //@"http://on59kdhax.bkt.clouddn.com/"     //@"http://on9fin031.bkt.clouddn.com/"     //图片前缀
->>>>>>> origin/master
+
 
 /*判断系统版本*/
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

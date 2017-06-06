@@ -13,10 +13,7 @@
 #import "OrderModel.h"
 #import "NewLoginViewController.h"
 #import "ZMBlankView.h"
-<<<<<<< HEAD
 #import "UIBarButtonItem+ZMExtension.h"
-=======
->>>>>>> origin/master
 
 @interface ActivityOrderViewController ()<LoginViewControllerDelegate>
 
@@ -59,33 +56,6 @@
 
 }
 
-#pragma mark - 获取订单详情
-- (void)noData{
-    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
-        [self getOrderDetailData];
-    }];
-    [self.view addSubview:blankview];
-}
-
-- (void)noNet{
-    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
-        [self getOrderDetailData];
-    }];
-    [self.view addSubview:blankview];
-}
-- (void)timeOut{
-    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
-        [self getOrderDetailData];
-    }];
-    [self.view addSubview:blankview];
-}
-- (void)lostSever{
-    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
-        [self getOrderDetailData];
-    }];
-    [self.view addSubview:blankview];
-}
-
 - (void)getOrderDetailData{
     QueryOffLineCourseOrderDetailApi *queryOffLineCourseOrderDetailApi = [[QueryOffLineCourseOrderDetailApi alloc]initWithOffCourseOrderId:_orderId];
     [queryOffLineCourseOrderDetailApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -93,29 +63,21 @@
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-<<<<<<< HEAD
             [self noData];
-=======
-//            [MBProgressHUD showMessage_WithoutImage:@"数据出错" toView:self.view];
-            [self lostSever];
->>>>>>> origin/master
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
-//            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:self.view];
-            [self noData];
+            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
             [self performSelector:@selector(login) withObject:nil afterDelay:1.0];
             return;
         }
         
         _orderModel = [OrderModel yy_modelWithDictionary:dataDic[@"object"]];
-<<<<<<< HEAD
-        
         _orderDetailTableView = [[OrderDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain orderModel:_orderModel];
         [self.view addSubview:_orderDetailTableView];
         
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+    }failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSError *error = request.error;
         NSInteger errorCode = error.code;
         NSLog(@"errorcode : %li",errorCode);
@@ -130,26 +92,8 @@
         }
         //其他原因
         else {
-            [self netLostServer];
+            [self netTimeOut];
             
-=======
-        if (!_orderModel.orderId) {
-            [self noData];
-        }else{
-            _orderDetailTableView = [[OrderDetailTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain orderModel:_orderModel];
-            [self.view addSubview:_orderDetailTableView];
-            
-            [self setupPayButton];
-        }
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        if (request.error.code == -1009) {
-            [self noNet];
-        }else if (request.error.code == -1011){
-            [self timeOut];
-        }else{
-            [self lostSever];
->>>>>>> origin/master
         }
     }];
 }
