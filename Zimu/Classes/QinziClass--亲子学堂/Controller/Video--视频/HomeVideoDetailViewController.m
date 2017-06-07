@@ -32,8 +32,9 @@
 #import "InsertVideoCollectionApi.h"
 #import "InsertCollectionModel.h"
 #import "ZMBlankView.h"
+#import "NetWorkStatuesManager.h"
 
-@interface HomeVideoDetailViewController ()<ZFPlayerDelegate, CommentBarDelegate, LoginViewControllerDelegate>
+@interface HomeVideoDetailViewController ()<ZFPlayerDelegate, CommentBarDelegate, LoginViewControllerDelegate, ZFPlayerControlViewDelagate>
 /*播放器*/
 @property (nonatomic, strong) ZFPlayerView *player;
 @property (nonatomic, strong) UIView *playerFatherView;
@@ -73,6 +74,7 @@
     
     [self setupCommentBar];
     
+//    [self obseverNetState];
     //判断是否登录
     NSString *token = userToken;
     if (![token isEqualToString:@"logout"] && token != nil) {
@@ -81,6 +83,57 @@
     _viewControllersCount = self.navigationController.viewControllers.count;
 }
 
+#pragma mark - 网络状态的切换
+//- (void)obseverNetState{
+//    NetWorkStatuesManager *netMgr = [NetWorkStatuesManager shareInstance];
+//    if (netMgr.netState == ZMNetStateWIFI) {
+//        [self wifi];
+//    }else if (netMgr.netState == ZMNetStateWan){
+//        [self mobileData];
+//    }else{
+//        [self lostNet];
+//    }
+//}
+
+- (void)wifi{
+    [super wifi];
+    if (self.player && !self.player.isPauseByUser) {
+        [_player resetPlayer];
+        [_player play];
+    }
+    if (!self.player) {
+        [self makePlayer];
+    }
+}
+- (void)lostNet{
+    [super lostNet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您的网络已断开" message:@"请检查网络" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [_player play];
+    }];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+- (void)mobileData{
+    [super mobileData];
+    if (self.player && self.isPlaying) {
+        [_player pause];
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您正在使用3G/4G网络观看视频" message:@"是否继续观看" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    
+    }];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.player play];
+        
+    }];
+
+    [alertController addAction:action];
+    [alertController addAction:continueAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+#pragma mark - 页面进入退出
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
@@ -104,15 +157,18 @@
 #pragma mark - 创建播放器
 - (void)makePlayer{
     //player的父视图
-    _playerFatherView  = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 0.56 * kScreenWidth)];
-    _playerFatherView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:_playerFatherView];
+    if (!_playerFatherView) {
+        _playerFatherView  = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 0.56 * kScreenWidth)];
+        _playerFatherView.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:_playerFatherView];
+    }
     
     //播放器
     if (!_player) {
         _player = [[ZFPlayerView alloc] init];
         ZFPlayerControlView *controllerView = [[ZFPlayerControlView alloc] init];
 //        controllerView.trySeePrice = 321;
+        
         [self setPlayerModelWithTitle:@"塑料袋看风景" videoStr:@""];
         [_player playerControlView:controllerView playerModel:_playerModel];
         
@@ -126,11 +182,13 @@
         _player.isTrysee = NO;
         // 打开预览图
         self.player.hasPreviewView = YES;
+//        [self.player zf_playerResolutionArray:@[@"超清", @"高清", @"流畅"]];
         //    ZFPlayerControlView
         //自动播放
-        [self.player autoPlayTheVideo];
+//        [self.player autoPlayTheVideo];
     }
 }
+
 
 - (void)makeTableView{
     if (!_detailView) {
@@ -181,26 +239,15 @@
     }
 }
 
-
-
-- (ZFPlayerModel *)playerModel {
-    if (!_playerModel) {
-        _playerModel                  = [[ZFPlayerModel alloc] init];
-        _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-//        _playerModel.videoURL         = [NSURL URLWithString:@"http://on9fin031.bkt.clouddn.com/video/20170517150000012312"];
-        _playerModel.fatherView       = _playerFatherView;
-        
-    }
-    return _playerModel;
-}
 - (void)setPlayerModelWithTitle:(NSString *)title videoStr:(NSString *)videoStr{
 //    if (!_playerModel) {
-        _playerModel                  = [[ZFPlayerModel alloc] init];
-        _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-        _playerModel.videoURL         = [NSURL URLWithString:videoStr];
-        _playerModel.title = title;
-        _playerModel.fatherView       = _playerFatherView;
-        
+    _playerModel                  = [[ZFPlayerModel alloc] init];
+    _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+    _playerModel.videoURL         = [NSURL URLWithString:videoStr];
+    _playerModel.title            = title;
+    _playerModel.fatherView       = _playerFatherView;
+//    _playerModel.resolutionDic    = 
+    
 //    }
 }
 // 视频详情页不支持系统转屏
@@ -252,7 +299,7 @@
         NSString *urlString = [NSString stringWithFormat:@"%@%@",imagePrefixURL ,videoDetailModel.videoUrl];
         [self setPlayerModelWithTitle:videoDetailModel.videoTitle videoStr:urlString];
         [_player playerControlView:_playerFatherView  playerModel:_playerModel];
-        [self.player autoPlayTheVideo];
+//        [self.player autoPlayTheVideo];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSError *error = request.error;

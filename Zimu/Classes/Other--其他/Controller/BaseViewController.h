@@ -16,6 +16,6 @@
 //使用移动数据
 - (void)mobileData;
 //没有网络
-- (void)noNet;
+- (void)lostNet;
 
 @end

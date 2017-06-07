@@ -32,4 +32,5 @@ typedef void(^SliderTapBlock)(CGFloat value);
 
 @property (nonatomic, assign)CGFloat trySeePrice;
 
+- (void)zm_showController;
 @end

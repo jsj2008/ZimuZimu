@@ -317,10 +317,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
  */
 - (void)play
 {
+    [self configZFPlayer];
     [self.controlView zf_playerPlayBtnState:YES];
     if (self.state == ZFPlayerStatePause) { self.state = ZFPlayerStatePlaying; }
     self.isPauseByUser = NO;
     [_player play];
+    self.canUserAct = YES;
     if (!self.isBottomVideo) {
         // 显示控制层
         [self.controlView zf_playerCancelAutoFadeOutControlView];
@@ -336,6 +338,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [self.controlView zf_playerPlayBtnState:NO];
     if (self.state == ZFPlayerStatePlaying) { self.state = ZFPlayerStatePause;}
     self.isPauseByUser = YES;
+    self.canUserAct = YES;
     [_player pause];
 }
 

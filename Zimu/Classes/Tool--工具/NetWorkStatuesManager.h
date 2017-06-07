@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-
+//每个cell的不同状态
+typedef NS_ENUM(NSInteger, ZMNetState) {
+     ZMNetStateWIFI = 0,              // wifi
+    ZMNetStateWan = 1,                // 移动蜂窝网络
+    ZMNetStateLost = 2                //失去连接
+    
+};
 @protocol AppRechabilityDelegate <NSObject>
 
 /** 连接到wifi **/
@@ -22,8 +28,11 @@
 
 @interface NetWorkStatuesManager : NSObject
 
+@property (nonatomic, assign) ZMNetState netState;
+
 @property (nonatomic, weak) id<AppRechabilityDelegate> appRechabilituDelegate;
 //单例
 + (NetWorkStatuesManager *)shareInstance;
+
 
 @end

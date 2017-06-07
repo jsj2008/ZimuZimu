@@ -321,8 +321,7 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-
-    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 #pragma mark - 接收到推送，iOS 10以下
 //userInfo的数据格式

@@ -11,6 +11,8 @@
 
 @interface BaseViewController ()<AppRechabilityDelegate>
 
+@property (nonatomic, strong)NetWorkStatuesManager *netManager;
+
 @end
 
 @implementation BaseViewController
@@ -21,15 +23,20 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void)obseverNet{
-    NetWorkStatuesManager *netManager = [[NetWorkStatuesManager alloc] init];
-    netManager.appRechabilituDelegate = self;
+    if (!_netManager){
+        _netManager = [[NetWorkStatuesManager alloc] init];
+        _netManager.appRechabilituDelegate = self;
+    }
 }
+#pragma mark - AppRechabilityDelegate
 - (void)connectToWIFI{
     [self wifi];
 }
@@ -37,15 +44,17 @@
     [self mobileData];
 }
 - (void)lostConnect{
-    [self noNet];
+    [self lostNet];
 }
+
+//外部实现的网络切换方法
 - (void)wifi{
     
 }
 - (void)mobileData{
     
 }
-- (void)noNet{
+- (void)lostNet{
     
 }
 

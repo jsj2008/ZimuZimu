@@ -116,6 +116,9 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 
 @implementation ZFPlayerControlView
 
+- (void)zm_showController{
+    [self showControlView];
+}
 - (instancetype)init
 {
     self = [super init];
@@ -123,6 +126,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (self) {
         
         [self addSubview:self.placeholderImageView];
+        self.placeholderImageView.userInteractionEnabled = YES;
         [self addSubview:self.topImageView];
         [self addSubview:self.bottomImageView];
         [self.bottomImageView addSubview:self.startBtn];
@@ -928,6 +932,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     if (!_placeholderImageView) {
         _placeholderImageView = [[UIImageView alloc] init];
         _placeholderImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zm_showController)];
+        [_placeholderImageView addGestureRecognizer:sliderTap];
     }
     return _placeholderImageView;
 }

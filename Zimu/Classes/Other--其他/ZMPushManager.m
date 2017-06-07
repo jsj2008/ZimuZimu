@@ -155,14 +155,14 @@
             call.role = ([userInfo[@"num"] integerValue] == 2) ? ZMChatRoleSingleViewer:ZMChatRoleGroupViewers;
             [ZM_CallingHandleCategory jumpToWaitVC];
         }
+        completionHandler(UNNotificationPresentationOptionAlert);
     }else{//本地推送，前台
         //本地通知
          NSLog(@"收到推送44");
         //应用处于前台时的本地推送接受
-        
+        completionHandler(UNNotificationPresentationOptionAlert);
     }
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
-    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
 }
 
 //iOS10新增：处理后台点击通知的代理方法
