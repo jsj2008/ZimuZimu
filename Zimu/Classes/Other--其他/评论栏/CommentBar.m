@@ -209,7 +209,7 @@
         //键盘收回
         _commentButton.hidden = NO;
         _likeButton.hidden = _collectButtonHide;
-        _shareButton.hidden = NO;
+        _shareButton.hidden = _shareButtonHidde;
         [UIView animateWithDuration:duration animations:^{
             _commentButton.alpha = 1;
             _likeButton.alpha = 1;
@@ -230,6 +230,18 @@
         //隐藏收藏按钮
         _likeButton.hidden = _collectButtonHide;
         _commentButton.frame = _likeButton.frame;
+        _textBGView.frame = CGRectMake(10, (self.height - 35)/2.0, CGRectGetMinX(_commentButton.frame) - 10, 35);
+        _textField.frame = CGRectMake(_textBGView.height/2.0, 0, _textBGView.width - _textBGView.height, _textBGView.height);
+    }
+}
+
+- (void)setShareButtonHidde:(BOOL)shareButtonHidde{
+    _shareButtonHidde = shareButtonHidde;
+    if (_shareButtonHidde) {
+        //隐藏分享按钮
+        _shareButton.hidden = YES;
+        _commentButton.frame = _shareButton.frame;
+        _commentButton.x = _shareButton.frame.origin.x - 10;
         _textBGView.frame = CGRectMake(10, (self.height - 35)/2.0, CGRectGetMinX(_commentButton.frame) - 10, 35);
         _textField.frame = CGRectMake(_textBGView.height/2.0, 0, _textBGView.width - _textBGView.height, _textBGView.height);
     }

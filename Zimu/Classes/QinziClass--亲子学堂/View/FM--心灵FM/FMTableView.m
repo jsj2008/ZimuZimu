@@ -67,7 +67,6 @@ static NSString *commentIdentifier = @"FMCommentTableViewCell";
         cell.dataLayoutFrame = layoutFrame;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        
         return cell;
     }else{
         if (indexPath.row == 0) {

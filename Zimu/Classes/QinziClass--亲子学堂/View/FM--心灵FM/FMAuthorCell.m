@@ -86,9 +86,9 @@
     _timeLabel.frame = layoutFrame.timeLabelFrame;
     
     _headImageview.image = [UIImage imageNamed:@"fm_head"];
-    _nameLabel.text = @"子慕吴东辉";
-    _playCountLabel.text = @"2.6万次播放";
-    _timeLabel.text = @"05-13";
+    _nameLabel.text = @"";
+    _playCountLabel.text = @"";
+    _timeLabel.text = @"";
 }
 
 - (void)setDataLayoutFrame:(FMAuthorCellLayoutFrame *)dataLayoutFrame{
@@ -97,9 +97,13 @@
     _nameLabel.frame = dataLayoutFrame.nameLabelFrame;
     _introLabel.frame = dataLayoutFrame.introLabelFrame;
     
-//    NSString *imgURLString = [imagePrefixURL stringByAppendingString:dataLayoutFrame.expertDetailModel.userImg];
-//    [_headImageview sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"fm_head"]];
-    _headImageview.image = [UIImage imageNamed:@"fm_head"];
+    NSString *imgURLString = dataLayoutFrame.expertDetailModel.userImg;
+    if (imgURLString == nil) {
+        imgURLString = @"";
+    }
+    imgURLString = [imagePrefixURL stringByAppendingString:imgURLString];
+    [_headImageview sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"fm_head"]];
+//    _headImageview.image = [UIImage imageNamed:@"fm_head"];
     _nameLabel.text = dataLayoutFrame.expertDetailModel.userName;
     _introLabel.text = dataLayoutFrame.expertDetailModel.expert.profile;
 }

@@ -61,11 +61,13 @@ static NSString *tagCellIdentifier = @"TagCollectionViewCell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _tagArray.count;
+    return _tagModelArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:tagCellIdentifier forIndexPath:indexPath];
-    cell.tagString = _tagArray[indexPath.row];
+    QuestionTagModel *tagModel = _tagModelArray[indexPath.row];
+    cell.tagString = tagModel.categoryName;
+//    cell.tagString = _tagArray[indexPath.row];
     //遍历数组，检查是否已选择
     cell.bgImageView.hidden = YES;
     if (_selectArray.count) {
@@ -80,8 +82,9 @@ static NSString *tagCellIdentifier = @"TagCollectionViewCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    QuestionTagModel *tagModel = _tagArray[indexPath.row];
-    NSString *tagString = _tagArray[indexPath.row];
+    QuestionTagModel *tagModel = _tagModelArray[indexPath.row];
+    NSString *tagString = tagModel.categoryName;
+//    NSString *tagString = _tagArray[indexPath.row];
     CGSize tagSize = [tagString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     return CGSizeMake(tagSize.width + 20, 25);
 }
@@ -90,14 +93,45 @@ static NSString *tagCellIdentifier = @"TagCollectionViewCell";
     return UIEdgeInsetsMake(5, 10, 5, 10);
 }
 
-- (void)setTagArray:(NSArray *)tagArray{
-    if (_tagArray != tagArray) {
-        _tagArray = tagArray;
+//- (void)setTagArray:(NSArray *)tagArray{
+//    if (_tagArray != tagArray) {
+//        _tagArray = tagArray;
+//        [self reloadData];
+//    }
+//}
+
+- (void)setTagModelArray:(NSArray *)tagModelArray{
+    if (_tagModelArray != tagModelArray) {
+        _tagModelArray = tagModelArray;
         [self reloadData];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    //遍历数组，检查是否已存在
+//    if (_selectArray.count == 0) {
+//        [_selectArray addObject:indexPath];
+//    } else {
+//        BOOL exist = NO;
+//        
+//        for (NSIndexPath *indexP in _selectArray) {
+//            if (indexPath == indexP) {
+//                [_selectArray removeObject:indexP];
+//                exist = YES;
+//                break;      //遍历时操作数组，操作完必须break，否则会die
+//            }else{
+//                exist = NO;
+//            }
+//        }
+//        if (!exist) {
+//            if (_selectArray.count >= 3) {
+//                [MBProgressHUD showMessage_WithoutImage:@"已选择3个" toView:nil];
+//            }else if (_selectArray.count > 0){
+//                //不存在，添加
+//                [_selectArray addObject:indexPath];
+//            }
+//        }
+//    }
     //遍历数组，检查是否已存在
     if (_selectArray.count == 0) {
         [_selectArray addObject:indexPath];
@@ -114,15 +148,18 @@ static NSString *tagCellIdentifier = @"TagCollectionViewCell";
             }
         }
         if (!exist) {
-            if (_selectArray.count >= 3) {
-                [MBProgressHUD showMessage_WithoutImage:@"已选择3个" toView:nil];
-            }else if (_selectArray.count > 0){
-                //不存在，添加
-                [_selectArray addObject:indexPath];
+            if (_selectArray.count >= 1) {
+                //移除掉原有的
+                [_selectArray removeObjectAtIndex:0];
             }
+            [_selectArray addObject:indexPath];
         }
     }
-    [self getTags];
+    
+    //获取已选择的tagID
+    QuestionTagModel *tagModel = _tagModelArray[indexPath.row];
+    _selectTagId = tagModel.preCateId;
+//    [self getTags];
     [collectionView reloadData];
     NSLog(@"selectArray %@",_selectArray);
 }

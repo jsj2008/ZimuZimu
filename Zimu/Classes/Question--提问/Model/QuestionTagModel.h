@@ -14,7 +14,7 @@
 @property (nonatomic , copy) NSString              * imgUrl;
 @property (nonatomic , copy) NSString              * categoryName;      //标签名
 @property (nonatomic , copy) NSString              * categoryId;
-@property (nonatomic , copy) NSString              * preCateId;
+@property (nonatomic , copy) NSString              * preCateId;         //标签ID
 @property (nonatomic , copy) NSString              * isDel;
 @property (nonatomic , copy) NSString              * createTime;
 @property (nonatomic , copy) NSString              * categoryList;

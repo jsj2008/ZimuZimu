@@ -7,7 +7,7 @@
 //
 
 #import "ConfuseContentCell.h"
-#import "AlignmentLabel.h"
+//#import "WXLabel.h"
 #import "InsertCommentTableViewController.h"
 #import "UIView+ViewController.h"
 #import "CareQuestionApi.h"
@@ -18,7 +18,7 @@
 @interface ConfuseContentCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet AlignmentLabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIView *seperateLine;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
@@ -35,6 +35,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    _seperateLine.hidden = YES;
+    _likeButton.hidden = YES;
+    _commentButton.hidden = YES;
+    _shareButton.hidden = YES;
 
 }
 
@@ -44,28 +49,28 @@
     // Configure the view for the selected state
 }
 
-- (void)setLayoutFrameNormal:(ConfuseContentCellLayoutFrame *)layoutFrameNormal{
-    if (_layoutFrameNormal != layoutFrameNormal) {
-        _layoutFrameNormal = layoutFrameNormal;
-        //标题
-        _titleLabel.frame = layoutFrameNormal.titleLabelFrame;
-        
-        //内容
-        _contentLabel.frame = layoutFrameNormal.contentLabelFrame;
-        
-        //分割线
-        _seperateLine.frame = layoutFrameNormal.seperateLineFrame;
-        
-        //点赞
-        _likeButton.frame = layoutFrameNormal.likeButtonFrame;
-        
-        //评论
-        _commentButton.frame = layoutFrameNormal.commentButtonFrame;
-        
-        //分享
-        _shareButton.frame = layoutFrameNormal.shareButtonFrame;
-    }
-}
+//- (void)setLayoutFrameNormal:(ConfuseContentCellLayoutFrame *)layoutFrameNormal{
+//    if (_layoutFrameNormal != layoutFrameNormal) {
+//        _layoutFrameNormal = layoutFrameNormal;
+//        //标题
+//        _titleLabel.frame = layoutFrameNormal.titleLabelFrame;
+//        
+//        //内容
+//        _contentLabel.frame = layoutFrameNormal.contentLabelFrame;
+//        
+//        //分割线
+//        _seperateLine.frame = layoutFrameNormal.seperateLineFrame;
+//        
+//        //点赞
+//        _likeButton.frame = layoutFrameNormal.likeButtonFrame;
+//        
+//        //评论
+//        _commentButton.frame = layoutFrameNormal.commentButtonFrame;
+//        
+//        //分享
+//        _shareButton.frame = layoutFrameNormal.shareButtonFrame;
+//    }
+//}
 
 - (void)setLayoutFrame:(ConfuseContentCellLayoutFrame *)layoutFrame {
     if (_layoutFrame != layoutFrame) {

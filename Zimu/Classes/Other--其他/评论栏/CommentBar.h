@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, assign) BOOL hasCollected;        //是否已收藏
 @property (nonatomic, assign) BOOL collectButtonHide;   //是否需要收藏
+@property (nonatomic, assign) BOOL shareButtonHidde;    //是否需要分享
 
 - (instancetype)initWithFrame:(CGRect)frame containNaviHeight:(BOOL)containNaviHeight;
 

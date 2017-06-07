@@ -40,8 +40,8 @@
 
 - (void)setupRequestFilters{
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://www.zimu365.com/zimu_portal_demo/";
-    //正式：@"http://120.27.221.31/zimu_portal/"
+    config.baseUrl = @"http://192.168.10.183:8082/portal/";
+    //正式：@"http://www.zimu365.com/zimu_portal_demo/";
     //亚欧的：@"http://192.168.10.183:8082/portal/";
     //猪的:@"http://192.168.3.10:8082/portal/";
     //线上测试服务器：@"http://116.62.200.235:8080/zimu_portal/";
@@ -58,11 +58,14 @@
     //设置BaseTabBarController为根控制器
     self.window = [[UIWindow alloc]init];
     self.window.backgroundColor = themeWhite;
-//    RootTabBarController *rootTabBarController = [[RootTabBarController alloc]init];
-//    [self.window setRootViewController:rootTabBarController];
     HomeViewController *viewController = [[HomeViewController alloc]init];
     [self.window setRootViewController:[[BaseNavigationController alloc]initWithRootViewController:viewController]];
     [self.window makeKeyAndVisible];
+    
+    //第一次进入APP，初始化userToken
+    if (userToken == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"logout" forKey:@"userToken"];
+    }
 
     //友盟消息推送
     _pushMgr  = [ZMPushManager shareInstance];
@@ -71,7 +74,6 @@
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
 
     [self getCapture];
-//    [ZM_CallingHandleCategory jumpToWaitVC];
     
     [self configUMSocial];
     return YES;

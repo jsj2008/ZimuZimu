@@ -12,6 +12,7 @@
 #import "EditAgeApi.h"
 #import "MBProgressHUD+MJ.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
 static NSString *identifier = @"EditAgeCell";
 @interface EditAgeTableViewController ()
@@ -34,21 +35,11 @@ static NSString *identifier = @"EditAgeCell";
     
 }
 
-#pragma mark - 上传昵称
-- (void)saveNickName{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.navigationController popViewControllerAnimated:YES];
-    });
-}
-
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     EditNickNameCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [cell.textField resignFirstResponder];
-    if (self.ageBlock) {
-        self.ageBlock(cell.textField.text);
-    }
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -121,7 +112,23 @@ static NSString *identifier = @"EditAgeCell";
         [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -131,5 +138,26 @@ static NSString *identifier = @"EditAgeCell";
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
+#pragma mark - 空白页
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self updateAgeNetWorkApply];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self updateAgeNetWorkApply];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self updateAgeNetWorkApply];
+    }];
+    [self.view addSubview:blankview];
+}
 
 @end

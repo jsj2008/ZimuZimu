@@ -122,7 +122,7 @@
     [_scrollView addSubview:_headButton];
     
     //姓名
-    NSString *name = @"蘇三的歌";
+    NSString *name = @"  ";
     UIFont *font = [UIFont boldSystemFontOfSize:18];
     CGSize nameSize = [name sizeWithAttributes:@{NSFontAttributeName:font}];
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, _headButton.height/2.0 + 10, nameSize.width, nameSize.height)];

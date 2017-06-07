@@ -13,6 +13,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "EditAddressApi.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
 static NSString *identifier = @"cityCell";
 @interface EditCityTableViewController ()
@@ -67,17 +68,6 @@ static NSString *identifier = @"cityCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *vcs = self.navigationController.viewControllers;
-    
-    NSInteger index = 1;
-    for (UIViewController *viewController in vcs) {
-        if([viewController isKindOfClass:[MyInfoSetTableViewController class]]){
-            index = [vcs indexOfObject:viewController];
-            break;
-        }
-    }
-    
-    [self.navigationController popToViewController:vcs[index] animated:YES];
     
     CityModel *cityModel = _cityModelArray[indexPath.row];
     _cityId = [NSString stringWithFormat:@"%@",cityModel.cityId];
@@ -117,7 +107,6 @@ static NSString *identifier = @"cityCell";
         }
         [self.tableView reloadData];
         
-        
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
     }];
@@ -141,8 +130,36 @@ static NSString *identifier = @"cityCell";
             return;
         }
         NSLog(@"dataDic : %@",dataDic);
+        
+        NSArray *vcs = self.navigationController.viewControllers;
+        
+        NSInteger index = 1;
+        for (UIViewController *viewController in vcs) {
+            if([viewController isKindOfClass:[MyInfoSetTableViewController class]]){
+                index = [vcs indexOfObject:viewController];
+                break;
+            }
+        }
+        
+        [self.navigationController popToViewController:vcs[index] animated:YES];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据上传失败，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -150,6 +167,35 @@ static NSString *identifier = @"cityCell";
 - (void)login{
     NewLoginViewController *loginVC = [[NewLoginViewController alloc]init];
     [self presentViewController:loginVC animated:YES completion:nil];
+}
+
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getCityData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCityData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCityData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getCityData];
+    }];
+    [self.view addSubview:blankview];
 }
 
 

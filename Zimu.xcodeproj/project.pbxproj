@@ -459,7 +459,6 @@
 		5FCFF0E61EA8B800003788A0 /* SubmitQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF0E51EA8B800003788A0 /* SubmitQuestionViewController.m */; };
 		5FCFF1101EA9A1D1003788A0 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF10F1EA9A1D1003788A0 /* MBProgressHUD+MJ.m */; };
 		5FCFF1131EA9A360003788A0 /* ConfuseDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF1121EA9A360003788A0 /* ConfuseDetailView.m */; };
-		5FCFF1161EA9B4F3003788A0 /* TagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF1151EA9B4F3003788A0 /* TagView.m */; };
 		5FCFF11C1EA9B7A6003788A0 /* TagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF1181EA9B7A6003788A0 /* TagCollectionView.m */; };
 		5FCFF11D1EA9B7A6003788A0 /* TagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFF11A1EA9B7A6003788A0 /* TagCollectionViewCell.m */; };
 		5FCFF11E1EA9B7A6003788A0 /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCFF11B1EA9B7A6003788A0 /* TagCollectionViewCell.xib */; };
@@ -663,6 +662,7 @@
 		5FEBF0D71EE14BB100B9ED68 /* xiongxiong.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEBF0CB1EE14BB100B9ED68 /* xiongxiong.bundle */; };
 		5FEBF0D81EE14BB100B9ED68 /* yang.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEBF0CC1EE14BB100B9ED68 /* yang.bundle */; };
 		5FEBF0D91EE14BB100B9ED68 /* yuhangyuan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEBF0CD1EE14BB100B9ED68 /* yuhangyuan.bundle */; };
+		5FEBF0E21EE7E09000B9ED68 /* NSString+ZMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBF0E11EE7E09000B9ED68 /* NSString+ZMExtension.m */; };
 		5FF4F2E71EB0357200977045 /* HomeImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4F2E61EB0357200977045 /* HomeImageModel.m */; };
 		5FF4F2EA1EB087A100977045 /* GetParentSchoolListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4F2E91EB087A100977045 /* GetParentSchoolListApi.m */; };
 		5FF4F2F51EB08DEF00977045 /* ParentSchoolListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4F2F41EB08DEF00977045 /* ParentSchoolListModel.m */; };
@@ -1592,8 +1592,6 @@
 		5FCFF10F1EA9A1D1003788A0 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		5FCFF1111EA9A360003788A0 /* ConfuseDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfuseDetailView.h; sourceTree = "<group>"; };
 		5FCFF1121EA9A360003788A0 /* ConfuseDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfuseDetailView.m; sourceTree = "<group>"; };
-		5FCFF1141EA9B4F3003788A0 /* TagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagView.h; sourceTree = "<group>"; };
-		5FCFF1151EA9B4F3003788A0 /* TagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagView.m; sourceTree = "<group>"; };
 		5FCFF1171EA9B7A6003788A0 /* TagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionView.h; sourceTree = "<group>"; };
 		5FCFF1181EA9B7A6003788A0 /* TagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionView.m; sourceTree = "<group>"; };
 		5FCFF1191EA9B7A6003788A0 /* TagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1943,6 +1941,8 @@
 		5FEBF0CB1EE14BB100B9ED68 /* xiongxiong.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = xiongxiong.bundle; sourceTree = "<group>"; };
 		5FEBF0CC1EE14BB100B9ED68 /* yang.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = yang.bundle; sourceTree = "<group>"; };
 		5FEBF0CD1EE14BB100B9ED68 /* yuhangyuan.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = yuhangyuan.bundle; sourceTree = "<group>"; };
+		5FEBF0E01EE7E09000B9ED68 /* NSString+ZMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZMExtension.h"; sourceTree = "<group>"; };
+		5FEBF0E11EE7E09000B9ED68 /* NSString+ZMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZMExtension.m"; sourceTree = "<group>"; };
 		5FF4F2E51EB0357200977045 /* HomeImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeImageModel.h; sourceTree = "<group>"; };
 		5FF4F2E61EB0357200977045 /* HomeImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeImageModel.m; sourceTree = "<group>"; };
 		5FF4F2E81EB087A100977045 /* GetParentSchoolListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetParentSchoolListApi.h; sourceTree = "<group>"; };
@@ -3438,6 +3438,8 @@
 				5F9C3CEA1E62D17C009659E4 /* UIView+ZMExtension.m */,
 				5FAED54A1E94E48300E295AC /* UIView+SnailUse.h */,
 				5FAED54B1E94E48300E295AC /* UIView+SnailUse.m */,
+				5FEBF0E01EE7E09000B9ED68 /* NSString+ZMExtension.h */,
+				5FEBF0E11EE7E09000B9ED68 /* NSString+ZMExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -4013,8 +4015,6 @@
 				5FE6BDB81ED8032100A2852F /* QuestionTitleView.m */,
 				5FCFF1111EA9A360003788A0 /* ConfuseDetailView.h */,
 				5FCFF1121EA9A360003788A0 /* ConfuseDetailView.m */,
-				5FCFF1141EA9B4F3003788A0 /* TagView.h */,
-				5FCFF1151EA9B4F3003788A0 /* TagView.m */,
 				5FCFF1171EA9B7A6003788A0 /* TagCollectionView.h */,
 				5FCFF1181EA9B7A6003788A0 /* TagCollectionView.m */,
 				5FCFF1191EA9B7A6003788A0 /* TagCollectionViewCell.h */,
@@ -5121,6 +5121,7 @@
 				5FE6BD2D1ECEF0EC00A2852F /* InsertArticleCommentApi.m in Sources */,
 				1EF3F9A01EB3146C0002D7EE /* GetSMsApi.m in Sources */,
 				1E71B03C1EC2F82600DDEDDB /* FriendProvinceTableViewController.m in Sources */,
+				5FEBF0E21EE7E09000B9ED68 /* NSString+ZMExtension.m in Sources */,
 				5FE6BDB61ED7F7F400A2852F /* ZimuRefreshGifHeader.m in Sources */,
 				1EF3F9A11EB3146C0002D7EE /* LoginViewController.m in Sources */,
 				1E71B1601ED2C28500DDEDDB /* AddFriendApi.m in Sources */,
@@ -5245,7 +5246,6 @@
 				5FEB30361E78DDA600B34CC7 /* ListenHeartTutorCell.m in Sources */,
 				5FE6BD131ECDB69E00A2852F /* ActivityAddressListModel.m in Sources */,
 				1E1762E51EBAF77700292DAC /* ChatRoomMemberCell.m in Sources */,
-				5FCFF1161EA9B4F3003788A0 /* TagView.m in Sources */,
 				18AC3B581E6FA075007EE823 /* ZFBrightnessView.m in Sources */,
 				1EA87B461EA9A1690064C2B2 /* CircleProgressView.m in Sources */,
 				5FE6BCC01ECC462400A2852F /* UserModel.m in Sources */,

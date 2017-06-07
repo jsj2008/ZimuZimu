@@ -10,6 +10,7 @@
 
 @interface ConfuseTagCell : UITableViewCell
 
-@property (nonatomic, strong) NSArray *tagArray;
+@property (nonatomic, copy) NSString *tagText;
+
 
 @end

@@ -12,6 +12,7 @@
 #import "ProvinceModel.h"
 #import "MBProgressHUD+MJ.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
 static NSString *identifier = @"provinceCell";
 @interface EditProvinceTableViewController ()
@@ -81,7 +82,7 @@ static NSString *identifier = @"provinceCell";
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [self noData];
             return ;
         }
         NSLog(@"dataDic : %@",dataDic);
@@ -102,7 +103,23 @@ static NSString *identifier = @"provinceCell";
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -112,6 +129,33 @@ static NSString *identifier = @"provinceCell";
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
+#pragma mark - 空白页
+- (void)noData{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoData afterClickDestory:NO btnClick:^(ZMBlankView *blView) {
+        [self getProvinceData];
+    }];
+    [self.view addSubview:blankview];
+}
 
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getProvinceData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getProvinceData];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self getProvinceData];
+    }];
+    [self.view addSubview:blankview];
+}
 
 @end

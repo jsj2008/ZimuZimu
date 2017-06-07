@@ -10,6 +10,7 @@
 #import "EditSexApi.h"
 #import "MBProgressHUD+MJ.h"
 #import "NewLoginViewController.h"
+#import "ZMBlankView.h"
 
 static NSString *identifier = @"sexCell";
 @interface EditSexTableViewController (){
@@ -136,7 +137,23 @@ static NSString *identifier = @"sexCell";
         [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netTimeOut];
+            
+        }
     }];
 }
 
@@ -146,5 +163,26 @@ static NSString *identifier = @"sexCell";
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
+#pragma mark - 空白页
+- (void)noNet{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeNoNet afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self updateAgeNetWorkApply];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netTimeOut{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeTimeOut afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self updateAgeNetWorkApply];
+    }];
+    [self.view addSubview:blankview];
+}
+
+- (void)netLostServer{
+    ZMBlankView *blankview = [[ZMBlankView alloc] initWithFrame:self.view.bounds Type:ZMBlankTypeLostSever afterClickDestory:YES btnClick:^(ZMBlankView *blView) {
+        [self updateAgeNetWorkApply];
+    }];
+    [self.view addSubview:blankview];
+}
 
 @end

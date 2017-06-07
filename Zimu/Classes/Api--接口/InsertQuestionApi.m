@@ -10,15 +10,15 @@
 
 @implementation InsertQuestionApi{
     NSString *_questionTitle;
-    NSString *_keyWord;
+    NSString *_categoryId;
     NSString *_questioVal;
 }
 
-- (instancetype)initWithQuestionTitle:(NSString *)questionTitle keyWord:(NSString *)keyWord questionVal:(NSString *)questionVal{
+- (instancetype)initWithQuestionTitle:(NSString *)questionTitle categoryId:(NSString *)categoryId questionVal:(NSString *)questionVal{
     if (self = [super init]) {
         
         _questionTitle = questionTitle;
-        _keyWord = keyWord;
+        _categoryId = categoryId;
         _questioVal = questionVal;
     }
     return self;
@@ -31,7 +31,7 @@
 - (id)requestArgument{
     return @{
              @"questionTitle":_questionTitle,
-             @"keyWord":_keyWord,
+             @"categoryId":_categoryId,
              @"questionVal":_questioVal,
              @"userToken":userToken};
 }

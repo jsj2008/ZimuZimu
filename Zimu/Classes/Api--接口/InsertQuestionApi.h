@@ -10,7 +10,7 @@
 
 @interface InsertQuestionApi : YTKRequest
 
-- (instancetype)initWithQuestionTitle:(NSString *)questionTitle keyWord:(NSString *)keyWord questionVal:(NSString *)questionVal;
+- (instancetype)initWithQuestionTitle:(NSString *)questionTitle categoryId:(NSString *)categoryId questionVal:(NSString *)questionVal;
 
 @end
 

@@ -36,7 +36,7 @@
     _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 30, self.width - 80, 20)];
     _titleLabel.font = [UIFont systemFontOfSize:13];
     _titleLabel.textColor = [UIColor colorWithHexString:@"222222"];
-    _titleLabel.text = @"标签选择(最多选3个)";
+    _titleLabel.text = @"标签选择";
     [self addSubview:_titleLabel];
 }
 
@@ -67,12 +67,17 @@
 
 - (void)setTagModelArray:(NSArray *)tagModelArray{
     _tagModelArray = tagModelArray;
-    NSMutableArray *tagStringArray = [NSMutableArray array];
-    for (int index = 0; index < tagModelArray.count; index++) {
-        QuestionTagModel *tagModel = tagModelArray[index];
-        [tagStringArray addObject:tagModel.categoryName];
-    }
-    _tagCollectionView.tagArray = tagStringArray;
+    _tagCollectionView.tagModelArray = tagModelArray;
+//    NSMutableArray *tagStringArray = [NSMutableArray array];
+//    for (int index = 0; index < tagModelArray.count; index++) {
+//        QuestionTagModel *tagModel = tagModelArray[index];
+//        [tagStringArray addObject:tagModel.categoryName];
+//    }
+//    _tagCollectionView.tagArray = tagStringArray;
+}
+
+- (NSString *)tagId{
+    return _tagCollectionView.selectTagId;
 }
 
 

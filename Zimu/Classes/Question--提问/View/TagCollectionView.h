@@ -13,4 +13,10 @@
 @property (nonatomic, strong) NSArray *tagArray;
 @property (nonatomic, strong) NSMutableArray *selectTagArray;
 
+
+@property (nonatomic, copy) NSString *selectTagId;      //选择的tag的ID
+@property (nonatomic, strong) NSArray *tagModelArray;
+@property (nonatomic, strong) NSMutableArray *selectModelArray;
+
+
 @end

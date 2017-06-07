@@ -52,8 +52,6 @@
     UIBarButtonItem *leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"navigationButtonReturn" title:@"" target:self action:@selector(returnBack)];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
-//    [self searchQuestionDetail];
-    
     //关闭左划返回手势
     if ([_previousVC isEqualToString:@"SubmitQuestionViewController"]) {
         if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
@@ -114,13 +112,13 @@
     _commentBar = [UIView commentBar];
     _commentBar.delegate = self;
     _commentBar.collectButtonHide = YES;
+    _commentBar.shareButtonHidde = YES;
     [self.view addSubview:_commentBar];
 }
 
 #pragma mark - CommentBarDelegate
 //分享
 - (void)commentBarShare{
-    
 }
 //收藏
 - (void)commentBarSelect:(UIButton *)button{
@@ -183,12 +181,12 @@
             //获取用户评论数据
             [self getUserCommentData];
         }
-        if ([userToken isEqualToString:@"logout"] || userToken == nil) {
-            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
-        }else{
-            //查询用户是否已关注该问题
-            [self checkWeatherCareQuestion];
-        }
+//        if ([userToken isEqualToString:@"logout"] || userToken == nil) {
+//            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
+//        }else{
+//            //查询用户是否已关注该问题
+//            [self checkWeatherCareQuestion];
+//        }
         //评论栏
         [self setupCommentBar];
         
@@ -213,32 +211,32 @@
     }];
 }
 
-//检查用户是否已关注该问题
-- (void)checkWeatherCareQuestion{
-    QueryWhetherCareApi *queryWhetherCareApi = [[QueryWhetherCareApi alloc]initWithQuestionId:_questionID];
-    [queryWhetherCareApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSData *data = request.responseData;
-        NSError *error = nil;
-        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
-            return ;
-        }
-        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
-        if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
-            return;
-        }
-        CareStateModel *careStateModel = [CareStateModel yy_modelWithDictionary:dataDic[@"object"]];
-        NSInteger careState = [careStateModel.status integerValue];
-        _answerDetailTableView.careState = careState;
-        _answerTableView.careState = careState;
-        
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
-    }];
-}
+////检查用户是否已关注该问题
+//- (void)checkWeatherCareQuestion{
+//    QueryWhetherCareApi *queryWhetherCareApi = [[QueryWhetherCareApi alloc]initWithQuestionId:_questionID];
+//    [queryWhetherCareApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSData *data = request.responseData;
+//        NSError *error = nil;
+//        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+//        if (error) {
+//            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+//            return ;
+//        }
+//        BOOL isTrue = [dataDic[@"isTrue"] boolValue];
+//        if (!isTrue) {
+//            [MBProgressHUD showMessage_WithoutImage:dataDic[@"message"] toView:nil];
+//            return;
+//        }
+//        CareStateModel *careStateModel = [CareStateModel yy_modelWithDictionary:dataDic[@"object"]];
+//        NSInteger careState = [careStateModel.status integerValue];
+//        _answerDetailTableView.careState = careState;
+//        _answerTableView.careState = careState;
+//        
+//        
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+//    }];
+//}
 
 
 
@@ -375,7 +373,6 @@
 }
 //LoginViewControllerDelegate
 - (void)loginSuccess{
-    [self searchQuestionDetail];
 }
 
 #pragma mark - 空白页

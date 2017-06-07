@@ -33,10 +33,9 @@
 }
 
 
-- (void)setTagArray:(NSArray *)tagArray{
-    if (_tagArray != tagArray) {
-        _tagArray = tagArray;
-        _tagcollectionView.tagArray = tagArray;
+- (void)setTagText:(NSString *)tagText{
+    if (_tagText != tagText) {
+        _tagcollectionView.tagArray = @[tagText];
         [_tagcollectionView reloadData];
     }
 }

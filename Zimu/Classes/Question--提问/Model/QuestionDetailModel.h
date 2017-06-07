@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface QuestionModel :NSObject <NSCoding,NSCopying>
-@property (nonatomic , copy) NSString              * keyWord;               //问题关键字、标签
+@property (nonatomic , copy) NSString              * keyWord;
 @property (nonatomic , copy) NSString              * questionTitle;         //问题标题
 @property (nonatomic , copy) NSString              * questionVal;           //问题内容
 @property (nonatomic , copy) NSString              * userId;                //专家ID
 @property (nonatomic , copy) NSString              * count;                 //评论数量
 @property (nonatomic , copy) NSString              * categoryId;
+@property (nonatomic , copy) NSString              * categoryName;          //标签
 @property (nonatomic , copy) NSString              * careNum;              //关注数
 @property (nonatomic , copy) NSString              * questionId;            //问题ID
 @property (nonatomic , copy) NSString              * isDel;                //是否专家已解答

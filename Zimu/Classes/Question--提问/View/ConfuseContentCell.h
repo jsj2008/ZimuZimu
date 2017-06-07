@@ -12,7 +12,7 @@
 @interface ConfuseContentCell : UITableViewCell
 
 @property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrame;
-@property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrameNormal;
+//@property (nonatomic, strong) ConfuseContentCellLayoutFrame *layoutFrameNormal;
 
 @property (nonatomic, assign) NSInteger careState;
 

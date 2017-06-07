@@ -16,8 +16,8 @@
 //@property (nonatomic, strong) UserCommentModel *userCommentModel;
 
 /* 视频：用户评论 */
-- (instancetype)initWithCommentModel:(CommentModel *)videoCommentModel;
-@property (nonatomic, strong) CommentModel *videoCommentModel;
+- (instancetype)initWithCommentModel:(CommentModel *)commentModel;
+@property (nonatomic, strong) CommentModel *commentModel;
 
 
 @property (nonatomic, assign) CGRect headImageViewFrame;

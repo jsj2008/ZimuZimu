@@ -64,17 +64,17 @@
     
 }
 
-- (void)setLayoutFrame:(FMCommentCellLayoutFrame *)layoutFrame{
-    
-    _headImageView.frame = layoutFrame.headImageViewFrame;
-    _coverImageView.frame = layoutFrame.coverImageViewFrame;
-    _nameLabel.frame = layoutFrame.nameLabelFrame;
-    _commentLabel.frame = layoutFrame.commentLabelFrame;
-    
-    _headImageView.image = [UIImage imageNamed:@"mine_head_placeholder"];
-    _nameLabel.text = @"你是我的梦";
-    _commentLabel.text = @"音乐，让我在悲伤时感到一丝快乐，让我感动时潸然泪下。";
-}
+//- (void)setLayoutFrame:(FMCommentCellLayoutFrame *)layoutFrame{
+//    
+//    _headImageView.frame = layoutFrame.headImageViewFrame;
+//    _coverImageView.frame = layoutFrame.coverImageViewFrame;
+//    _nameLabel.frame = layoutFrame.nameLabelFrame;
+//    _commentLabel.frame = layoutFrame.commentLabelFrame;
+//    
+//    _headImageView.image = [UIImage imageNamed:@"mine_head_placeholder"];
+//    _nameLabel.text = @"你是我的梦";
+//    _commentLabel.text = @"音乐，让我在悲伤时感到一丝快乐，让我感动时潸然泪下。";
+//}
 
 - (void)setDataCommentLayoutFrame:(FMCommentCellLayoutFrame *)dataCommentLayoutFrame{
     
@@ -83,11 +83,16 @@
     _nameLabel.frame = dataCommentLayoutFrame.nameLabelFrame;
     _commentLabel.frame = dataCommentLayoutFrame.commentLabelFrame;
     
-//    NSString *imgURLString = [imagePrefixURL stringByAppendingString:videoCommentLayoutFrame.videoCommentModel.userImg];
-//    [_headImageView sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
-    _headImageView.image = [UIImage imageNamed:@"mine_head_placeholder"];
-    _nameLabel.text = dataCommentLayoutFrame.videoCommentModel.userName;
-    _commentLabel.text = dataCommentLayoutFrame.videoCommentModel.commentVal;
+//    NSString *imgURLString = [imagePrefixURL stringByAppendingString:dataCommentLayoutFrame.videoCommentModel.userImg];
+    NSString *imgURLString = dataCommentLayoutFrame.commentModel.userImg;
+    if (imgURLString == nil) {
+        imgURLString = @"";
+    }
+    imgURLString = [imagePrefixURL stringByAppendingString:imgURLString];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:imgURLString] placeholderImage:[UIImage imageNamed:@"mine_head_placeholder"]];
+//    _headImageView.image = [UIImage imageNamed:@"mine_head_placeholder"];
+    _nameLabel.text = dataCommentLayoutFrame.commentModel.userName;
+    _commentLabel.text = dataCommentLayoutFrame.commentModel.commentVal;
 }
 
 @end

@@ -90,8 +90,7 @@
 
 #pragma mark - 提交数据
 - (void)submitDataToSever{
-    InsertQuestionApi *insertQuestionApi = [[InsertQuestionApi alloc]initWithQuestionTitle:_titleView.textField.text keyWord:_tagsView.tagText questionVal:_confuseDetailView.confuseString];
-//    NSLog(@"title : %@ keyWord : %@ confuseString : %@", _questionTitle, _tagsView.tagText, _confuseDetailView.confuseString);
+    InsertQuestionApi *insertQuestionApi = [[InsertQuestionApi alloc]initWithQuestionTitle:_titleView.textField.text categoryId:_tagsView.tagId questionVal:_confuseDetailView.confuseString];
     [insertQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
@@ -113,7 +112,23 @@
         [self performSelector:@selector(jumpToAnswerVC) withObject:nil afterDelay:0.5];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+        NSError *error = request.error;
+        NSInteger errorCode = error.code;
+        NSLog(@"errorcode : %li",errorCode);
+        if (errorCode == -1009) {
+            [self noNet];
+            
+        }
+        //请求超时
+        else if (errorCode == -1001) {
+            [self netTimeOut];
+            
+        }
+        //其他原因
+        else {
+            [self netLostServer];
+            
+        }
     }];
 }
 
@@ -149,7 +164,7 @@
         [MBProgressHUD showMessage_WithoutImage:@"请填写您的困扰" toView:self.view];
         return;
     }
-    if (!_tagsView.tagText.length) {
+    if (!_tagsView.tagId.length) {
         [MBProgressHUD showMessage_WithoutImage:@"请选择标签" toView:self.view];
         return;
     }
@@ -252,13 +267,11 @@
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [self noData];
-//            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return ;
         }
         BOOL isTrue = [dataDic[@"isTrue"] boolValue];
         if (!isTrue) {
             [self noData];
-//            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
             return;
         }
         NSArray *dataArray = dataDic[@"items"];

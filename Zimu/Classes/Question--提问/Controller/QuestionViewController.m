@@ -31,9 +31,9 @@
     
     self.title = @"提问";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:naviColor size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    UIColor *naviColor = [UIColor colorWithHexString:@"f5ce13"];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:themeWhite size:CGSizeMake(kScreenWidth, 64)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:themeGray size:CGSizeMake(kScreenWidth, self.navigationController.navigationBar.shadowImage.size.height)]];
     
 //    UIBarButtonItem *rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"" title:@"搜索" target:self action:@selector(searchQuestion)];
 //    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
