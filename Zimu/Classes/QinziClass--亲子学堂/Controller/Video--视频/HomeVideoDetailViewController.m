@@ -92,12 +92,19 @@
 //        
 //    }
     if (self.player && !self.player.isPauseByUser) {
-        [_player autoPlayTheVideo];
-        [_player play];
+        if (!self.isPlaying) {
+            if (_player.isAutoPlay == YES) {
+                [_player play];
+            }else{
+                [_player autoPlayTheVideo];
+            }
+            self.isPlaying = YES;
+        }
     }
     if (!self.player) {
         [self makePlayer];
         [_player autoPlayTheVideo];
+        self.isPlaying = YES;
     }
 }
 - (void)lostNet{
@@ -111,17 +118,20 @@
 }
 - (void)mobileData{
     [super mobileData];
-    if (self.player && self.isPlaying) {
-        [_player pause];
-    }
+    [_player pause];
+    self.isPlaying = NO;
+
 //    if (self.netChangeState == ZMNetChangeStateDefault || self.netChangeState == ZMNetChangeStateLostToWan || self.netChangeState == ZMNetChangeStateWIFIToWan) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您正在使用3G/4G网络观看视频" message:@"是否继续观看" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
         }];
         UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [_player autoPlayTheVideo];
-            [self.player play];
+            if (_player.isAutoPlay == YES) {
+                [_player play];
+            }else{
+                [_player autoPlayTheVideo];
+            }
         }];
         
         [alertController addAction:action];
@@ -182,6 +192,7 @@
         //    ZFPlayerControlView
         //自动播放
 //        [self.player autoPlayTheVideo];
+        self.isPlaying = NO;
     }
 }
 

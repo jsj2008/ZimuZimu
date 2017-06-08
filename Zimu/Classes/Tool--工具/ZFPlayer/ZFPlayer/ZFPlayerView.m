@@ -75,8 +75,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, assign) BOOL                   playDidEnd;
 /** 进入后台*/
 @property (nonatomic, assign) BOOL                   didEnterBackground;
-/** 是否自动播放 */
-@property (nonatomic, assign) BOOL                   isAutoPlay;
 /** 单击 */
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 /** 双击 */
@@ -407,10 +405,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
  */
 - (void)configZFPlayer
 {
+//    [self destory];
+//    [self.player pause];
     self.urlAsset = [AVURLAsset assetWithURL:self.videoURL];
     // 初始化playerItem
     self.playerItem = [AVPlayerItem playerItemWithAsset:self.urlAsset];
     // 每次都重新创建Player，替换replaceCurrentItemWithPlayerItem:，该方法阻塞线程
+    
     self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
     
     // 初始化playerLayer

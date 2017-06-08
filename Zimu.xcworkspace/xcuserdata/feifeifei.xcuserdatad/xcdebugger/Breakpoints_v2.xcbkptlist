@@ -664,12 +664,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zimu/Classes/QinziClass--&#x4eb2;&#x5b50;&#x5b66;&#x5802;/Controller/Video--&#x89c6;&#x9891;/HomeVideoDetailViewController.m"
-            timestampString = "518585868.789268"
+            timestampString = "518597162.328451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-setPlayerModelWithTitle:videoStr:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/QinziClass--&#x4eb2;&#x5b50;&#x5b66;&#x5802;/Controller/Video--&#x89c6;&#x9891;/HomeVideoDetailViewController.m"
+            timestampString = "518599277.947478"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-mobileData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/QinziClass--&#x4eb2;&#x5b50;&#x5b66;&#x5802;/Controller/Video--&#x89c6;&#x9891;/HomeVideoDetailViewController.m"
+            timestampString = "518599286.738498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-wifi"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zimu/Classes/QinziClass--&#x4eb2;&#x5b50;&#x5b66;&#x5802;/Controller/Video--&#x89c6;&#x9891;/HomeVideoDetailViewController.m"
+            timestampString = "518599376.796713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-mobileData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

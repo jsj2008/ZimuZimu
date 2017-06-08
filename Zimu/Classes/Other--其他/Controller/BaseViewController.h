@@ -14,7 +14,10 @@ typedef NS_ENUM(NSInteger, ZMNetChangeState) {
     ZMNetChangeStateLost = 2,                //失去连接
     ZMNetChangeStateLostToWiFi = 3,         //重连至wifi
     ZMNetChangeStateLostToWan = 4,           //重连至4G
-    ZMNetChangeStateDefault = 6
+    ZMNetChangeStateDefault = 6,            //默认状态
+    ZMNetChangeStateWanToWan = 7,           //4G to 4G
+    ZMNetChangeStateWiFiToWiFi = 8,         //WiFi到WiFi
+    ZMNetChangeStateLostToLost = 9          //失去连接到失去连接
     
 };
 

@@ -47,6 +47,7 @@
             case ZMNetStateWan:
             {
                 _netChangeState = ZMNetChangeStateWanToWIFI;
+                [self wifi];
             }
                 break;
             case ZMNetStateLost:
@@ -54,13 +55,17 @@
                 _netChangeState = ZMNetChangeStateLostToWiFi;
             }
                 break;
-
+            case ZMNetStateWIFI:
+            {
+                _netChangeState = ZMNetChangeStateWiFiToWiFi;
+            }
+                break;
             default:
                 break;
         }
     }
     _netState = ZMNetStateWIFI;
-    [self wifi];
+    
 }
 - (void)connectToWan{
     if (_netState == ZMNetStateDefault) {
@@ -69,7 +74,8 @@
         switch (_netState) {
             case ZMNetStateWIFI:
             {
-                _netChangeState = ZMNetChangeStateWanToWIFI;
+                _netChangeState = ZMNetChangeStateWIFIToWan;
+                [self mobileData];
             }
                 break;
             case ZMNetStateLost:
@@ -77,18 +83,25 @@
                 _netChangeState = ZMNetChangeStateLostToWan;
             }
                 break;
-                
+            case ZMNetStateWan:
+            {
+                _netChangeState = ZMNetChangeStateWanToWan;
+            }
+                break;
             default:
                 break;
         }
     }
     _netState = ZMNetStateWan;
-    [self mobileData];
+    
 }
 - (void)lostConnect{
     if (_netState == ZMNetStateDefault) {
         _netChangeState = ZMNetChangeStateDefault;
-    }else{
+    }else if (_netChangeState == ZMNetStateLost){
+        
+    }
+    else{
         _netChangeState = ZMNetChangeStateLost;
     }
     _netState = ZMNetStateLost;

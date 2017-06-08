@@ -73,6 +73,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 @property (nonatomic, assign, readonly) ZFPlayerState state;
 /** 静音（默认为NO）*/
 @property (nonatomic, assign) BOOL                    mute;
+/** 是否自动播放 */
+@property (nonatomic, assign) BOOL                   isAutoPlay;
 /** 当cell划出屏幕的时候停止播放（默认为NO） */
 @property (nonatomic, assign) BOOL                    stopPlayWhileCellNotVisable;
 /** 当cell播放视频由全屏变为小屏时候，是否回到中间位置(默认YES) */
