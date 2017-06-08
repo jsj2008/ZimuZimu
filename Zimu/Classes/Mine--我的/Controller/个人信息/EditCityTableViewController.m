@@ -108,7 +108,7 @@ static NSString *identifier = @"cityCell";
         [self.tableView reloadData];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:self.view];
     }];
 }
 

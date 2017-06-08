@@ -76,7 +76,7 @@
         //检查用户是否已关注该问题
         [self checkWeatherCareQuestion];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
     }];
 }
 
@@ -101,7 +101,7 @@
         _answerDetailTableView.careState = careState;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
+//        [MBProgressHUD showMessage_WithoutImage:@"网络出错，请稍后再试" toView:nil];
 
     }];
 }
@@ -131,7 +131,7 @@
         _answerDetailTableView.expertAnswerModelArray = expertAnswerModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
     }];
 }
 
@@ -160,7 +160,7 @@
         _answerDetailTableView.userCommentModelArray = userCommentModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
     }];
 }
 

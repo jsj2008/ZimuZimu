@@ -158,7 +158,7 @@
         [self performSelector:@selector(back) withObject:nil afterDelay:0.5];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络错误，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"网络错误，请稍后再试" toView:self.view];
     }];
 }
 

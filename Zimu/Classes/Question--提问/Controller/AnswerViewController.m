@@ -270,7 +270,7 @@
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
 }
 
@@ -301,7 +301,7 @@
         _answerDetailTableView.expertAnswerModelArray = expertAnswerModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
 }
 
@@ -332,7 +332,7 @@
         _answerDetailTableView.userCommentModelArray = userCommentModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
     }];
 }
 
@@ -360,7 +360,7 @@
         [self searchQuestionDetail];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"提交失败，请稍后再试" toView:self.view];
     }];
 }
 

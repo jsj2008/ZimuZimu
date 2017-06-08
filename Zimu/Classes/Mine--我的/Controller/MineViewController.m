@@ -223,7 +223,7 @@
         [self refreshMyInfo];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:nil];
+//        [MBProgressHUD showMessage_WithoutImage:@"网络出错" toView:nil];
     }];
 }
 
