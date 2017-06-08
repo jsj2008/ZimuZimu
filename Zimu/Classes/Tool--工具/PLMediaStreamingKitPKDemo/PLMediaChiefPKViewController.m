@@ -154,6 +154,7 @@ const static char *rtcStateNames[] = {
 //    self.conferenceButton.hidden = YES;
     
     [self.view addSubview:self.addCustomerBtn];
+    _addCustomerBtn.hidden = YES;
     [self.view addSubview:self.demoBar];
 //    [self.view addSubview:self.barBtn];
 //    self.changeCameraStateButton = [[UIButton alloc] initWithFrame:CGRectMake(180, 20, 120, 44)];
@@ -526,6 +527,7 @@ const static char *rtcStateNames[] = {
     }];
 }
 #pragma mark - 连麦观众界面设置
+//新用户加入
 - (void)mediaStreamingSession:(PLMediaStreamingSession *)session userID:(NSString *)userID didAttachRemoteView:(UIView *)remoteView {
     //只允许三个连麦观众
     //加上主播一共四个
@@ -548,8 +550,8 @@ const static char *rtcStateNames[] = {
     remoteView.frame = CGRectMake(row * width, section * height, width, height);
     remoteView.clipsToBounds = YES;
     [self.view addSubview:remoteView];
+    _addCustomerBtn.hidden = YES;
     if (self.viewSpaceMask < 3) {
-        _addCustomerBtn.hidden = NO;
         _addCustomerBtn.frame = CGRectMake((self.viewSpaceMask + 1) % 2 * width, (self.viewSpaceMask + 1) / 2 * height, width, height);
     }else{
         _addCustomerBtn.hidden = YES;
@@ -565,7 +567,7 @@ const static char *rtcStateNames[] = {
     
     //设置添加用户按钮的
 }
-
+//用户离开
 - (void)mediaStreamingSession:(PLMediaStreamingSession *)session userID:(NSString *)userID didDetachRemoteView:(UIView *)remoteView {
     if (![self.userViewDictionary objectForKey:userID]) {
         return;
@@ -579,8 +581,8 @@ const static char *rtcStateNames[] = {
     CGFloat width = screenSize.width / 2 - 1;
     CGFloat height = screenSize.height / 2 - 1;
     
+    _addCustomerBtn.hidden = YES;
     if (self.viewSpaceMask < 3) {
-        _addCustomerBtn.hidden = NO;
         _addCustomerBtn.frame = CGRectMake((self.viewSpaceMask + 1) % 2 * width, (self.viewSpaceMask + 1) / 2 * height, width, height);
     }else{
         _addCustomerBtn.hidden = YES;

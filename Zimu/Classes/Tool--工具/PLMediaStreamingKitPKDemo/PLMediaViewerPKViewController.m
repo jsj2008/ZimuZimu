@@ -145,6 +145,7 @@ const static NSString *playerStatusNames[] = {
 //    self.changeCameraStateButton.hidden = YES;
 //    [self.view addSubview:self.changeCameraStateButton];
     [self.view addSubview:self.addCustomerBtn];
+    _addCustomerBtn.hidden = YES;
     [self.view addSubview:self.demoBar];
 //    [self.view addSubview:self.barBtn];
 }
@@ -470,8 +471,8 @@ const static NSString *playerStatusNames[] = {
     remoteView.frame = CGRectMake(row * width, section * height, width, height);
     remoteView.clipsToBounds = YES;
     [self.view addSubview:remoteView];
+    _addCustomerBtn.hidden = YES;
     if (self.viewSpaceMask < 3) {
-        _addCustomerBtn.hidden = NO;
         _addCustomerBtn.frame = CGRectMake((self.viewSpaceMask + 1) % 2 * width, (self.viewSpaceMask + 1) / 2 * height, width, height);
     }else{
         _addCustomerBtn.hidden = YES;
@@ -494,8 +495,8 @@ const static NSString *playerStatusNames[] = {
     [self.userViewDictionary removeObjectForKey:userID];
     self.viewSpaceMask --;
     
+    _addCustomerBtn.hidden = YES;
     if (self.viewSpaceMask < 3) {
-        _addCustomerBtn.hidden = NO;
         _addCustomerBtn.frame = CGRectMake((self.viewSpaceMask + 1) % 2 * width, (self.viewSpaceMask + 1) / 2 * height, width, height);
     }else{
         _addCustomerBtn.hidden = YES;
