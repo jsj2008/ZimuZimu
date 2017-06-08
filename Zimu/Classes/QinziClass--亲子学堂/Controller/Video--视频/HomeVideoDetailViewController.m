@@ -389,7 +389,7 @@
         _detailView.videoCommentModelArray = _commentModelArray;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
     }];
 }
 
@@ -413,7 +413,7 @@
         _detailView.expertDetailModel = expertDetailModel;
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请稍后再试" toView:self.view];
     }];
 }
 
@@ -488,7 +488,7 @@
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"查询收藏状态失败" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"查询收藏状态失败" toView:self.view];
     }];
 }
 
