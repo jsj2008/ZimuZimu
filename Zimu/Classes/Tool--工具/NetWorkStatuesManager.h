@@ -12,8 +12,8 @@
 typedef NS_ENUM(NSInteger, ZMNetState) {
      ZMNetStateWIFI = 0,              // wifi
     ZMNetStateWan = 1,                // 移动蜂窝网络
-    ZMNetStateLost = 2                //失去连接
-    
+    ZMNetStateLost = 2,                //失去连接
+    ZMNetStateDefault = 3               //初始状态
 };
 @protocol AppRechabilityDelegate <NSObject>
 

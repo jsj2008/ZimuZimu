@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, ZMNetChangeState) {
+    ZMNetChangeStateWIFIToWan = 0,           // wifi转到4G
+    ZMNetChangeStateWanToWIFI = 1,          // 移动蜂窝网络转到WiFi
+    ZMNetChangeStateLost = 2,                //失去连接
+    ZMNetChangeStateLostToWiFi = 3,         //重连至wifi
+    ZMNetChangeStateLostToWan = 4,           //重连至4G
+    ZMNetChangeStateDefault = 6
+    
+};
+
 @interface BaseViewController : UIViewController
+
+@property (nonatomic, assign)ZMNetChangeState netChangeState;
 
 /*网络状态变化处理*/
 //使用wifi

@@ -211,7 +211,7 @@ static NSString *searchResultCellId = @"ZMFriendSearchResultCell";
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
+//        [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
     }];
 }
 #pragma mark - 重新登录

@@ -125,7 +125,6 @@
     if (!_listView) {
         _listView = [[ZM_FriendsListView alloc] initWithFrame:CGRectMake(0, 45, kScreenWidth, kScreenHeight - 45) collectionViewLayout:[UICollectionViewFlowLayout new]];
         _listView.backgroundColor = [UIColor colorWithHexString:@"f2f3f7"];
-        //        NSArray *array = @[@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4" },@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"},@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  },@{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4"  }, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷",@"heasdimg":@"find_topic_4"}, @{@"name":@"李曼婷", @"heasdimg":@"find_topic_4" }];
         _listView.dataArray = dataArray;
         _friendListData = dataArray;
         _listView.showsVerticalScrollIndicator = NO;
@@ -271,8 +270,6 @@
     [friendApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
-//        NSString *jsonData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"%@", jsonData);
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
             [MBProgressHUD showMessage_WithoutImage:@"数据异常，请检查网络" toView:self.view];
@@ -288,9 +285,7 @@
                 if (dataArray.count == 0) {
                     [self noData];
                 }else{
-//                    dispatch_sync(dispatch_get_main_queue(), ^{
                     [self setListWithData:dataArray];
-//                    });
                 }
         }
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

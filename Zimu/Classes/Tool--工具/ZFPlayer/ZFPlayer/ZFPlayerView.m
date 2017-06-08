@@ -317,17 +317,52 @@ typedef NS_ENUM(NSInteger, PanDirection){
  */
 - (void)play
 {
-    [self configZFPlayer];
+//    self.urlAsset = [AVURLAsset assetWithURL:self.videoURL];
+//    // 初始化playerItem
+//    self.playerItem = [AVPlayerItem playerItemWithAsset:self.urlAsset];
+////    // 每次都重新创建Player，替换replaceCurrentItemWithPlayerItem:，该方法阻塞线程
+////    self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+//    
+//    // 初始化playerLayer
+//    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+//    
+//    self.backgroundColor = [UIColor blackColor];
+//    // 此处为默认视频填充模式
+//    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+//    
+//    // 自动播放
+//    self.isAutoPlay = YES;
+//    
+//    // 添加播放进度计时器
+//    [self createTimer];
+//    
+//    // 获取系统音量
+//    [self configureVolume];
+//    
+//    //用户可以操作
+//    self.canUserAct = YES;
+//    // 本地文件不设置ZFPlayerStateBuffering状态
+//    if ([self.videoURL.scheme isEqualToString:@"file"]) {
+//        self.state = ZFPlayerStatePlaying;
+//        self.isLocalVideo = YES;
+//        [self.controlView zf_playerDownloadBtnState:NO];
+//    } else {
+//        self.state = ZFPlayerStateBuffering;
+//        self.isLocalVideo = NO;
+//        [self.controlView zf_playerDownloadBtnState:YES];
+//    }
+//    self.isPauseByUser = NO;
+    
     [self.controlView zf_playerPlayBtnState:YES];
     if (self.state == ZFPlayerStatePause) { self.state = ZFPlayerStatePlaying; }
     self.isPauseByUser = NO;
-    [_player play];
     self.canUserAct = YES;
     if (!self.isBottomVideo) {
         // 显示控制层
         [self.controlView zf_playerCancelAutoFadeOutControlView];
         [self.controlView zf_playerShowControlView];
     }
+    [_player play];
 }
 
 /**
