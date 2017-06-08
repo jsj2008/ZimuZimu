@@ -301,13 +301,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zimu/Classes/Question--&#x63d0;&#x95ee;/View/AnswerTableView.m"
-            timestampString = "518523905.048916"
+            filePath = "Zimu/Classes/QinziClass--&#x4eb2;&#x5b50;&#x5b66;&#x5802;/Controller/Article--&#x6587;&#x7ae0;/ArticleViewController.m"
+            timestampString = "518583435.62779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

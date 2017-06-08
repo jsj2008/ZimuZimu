@@ -253,7 +253,8 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 
 
 - (void)loadWebURLSring:(NSString *)string{
-    self.URLString = [@"http://www.zimu365.com/zimu_portal_demo/html/share/shareArticle.html?articleId=" stringByAppendingString:string];
+    self.URLString = [NSString stringWithFormat:@"http://116.62.200.235:8080/zimu_portal/html/share/shareArticle.html?articleId=%@",string];//[@"http://www.zimu365.com/zimu_portal_demo/html/share/shareArticle.html?articleId=" stringByAppendingString:string];
+//    self.URLString = @"https://music.163.com";
 }
 
 

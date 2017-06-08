@@ -663,6 +663,7 @@
 		5FEBF0D81EE14BB100B9ED68 /* yang.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEBF0CC1EE14BB100B9ED68 /* yang.bundle */; };
 		5FEBF0D91EE14BB100B9ED68 /* yuhangyuan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEBF0CD1EE14BB100B9ED68 /* yuhangyuan.bundle */; };
 		5FEBF0E21EE7E09000B9ED68 /* NSString+ZMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBF0E11EE7E09000B9ED68 /* NSString+ZMExtension.m */; };
+		5FEBF0E71EE9044900B9ED68 /* SingleTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBF0E61EE9044900B9ED68 /* SingleTagCell.m */; };
 		5FF4F2E71EB0357200977045 /* HomeImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4F2E61EB0357200977045 /* HomeImageModel.m */; };
 		5FF4F2EA1EB087A100977045 /* GetParentSchoolListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4F2E91EB087A100977045 /* GetParentSchoolListApi.m */; };
 		5FF4F2F51EB08DEF00977045 /* ParentSchoolListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4F2F41EB08DEF00977045 /* ParentSchoolListModel.m */; };
@@ -1943,6 +1944,8 @@
 		5FEBF0CD1EE14BB100B9ED68 /* yuhangyuan.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = yuhangyuan.bundle; sourceTree = "<group>"; };
 		5FEBF0E01EE7E09000B9ED68 /* NSString+ZMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZMExtension.h"; sourceTree = "<group>"; };
 		5FEBF0E11EE7E09000B9ED68 /* NSString+ZMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZMExtension.m"; sourceTree = "<group>"; };
+		5FEBF0E51EE9044900B9ED68 /* SingleTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTagCell.h; sourceTree = "<group>"; };
+		5FEBF0E61EE9044900B9ED68 /* SingleTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTagCell.m; sourceTree = "<group>"; };
 		5FF4F2E51EB0357200977045 /* HomeImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeImageModel.h; sourceTree = "<group>"; };
 		5FF4F2E61EB0357200977045 /* HomeImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeImageModel.m; sourceTree = "<group>"; };
 		5FF4F2E81EB087A100977045 /* GetParentSchoolListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetParentSchoolListApi.h; sourceTree = "<group>"; };
@@ -4031,6 +4034,8 @@
 				5FCFF1221EA9E58D003788A0 /* AnswerTableView.m */,
 				5F574D311EADC33B007648D0 /* ConfuseAnswerDetailTableView.h */,
 				5F574D321EADC33B007648D0 /* ConfuseAnswerDetailTableView.m */,
+				5FEBF0E51EE9044900B9ED68 /* SingleTagCell.h */,
+				5FEBF0E61EE9044900B9ED68 /* SingleTagCell.m */,
 				5FCFF1241EA9ECEC003788A0 /* ConfuseTagCell.h */,
 				5FCFF1251EA9ECEC003788A0 /* ConfuseTagCell.m */,
 				5FCFF1261EA9ECEC003788A0 /* ConfuseTagCell.xib */,
@@ -5585,6 +5590,7 @@
 				5FE6BC9D1ECC318900A2852F /* FilterView.m in Sources */,
 				5FBB26941EC47C3E00C01EC8 /* ExpertDetailViewController.m in Sources */,
 				5F2D62401E77D12700B038A5 /* ExamAnswerCell.m in Sources */,
+				5FEBF0E71EE9044900B9ED68 /* SingleTagCell.m in Sources */,
 				5F9C3D051E63C0CB009659E4 /* UIView+SDExtension.m in Sources */,
 				5F8CB6B51EC2B9C500541A57 /* MyInfoModel.m in Sources */,
 				5F4833B81EB85FAF00481407 /* EditSignatureCell.m in Sources */,

@@ -61,7 +61,7 @@ static NSString *resultIdentifier = @"QuestionResultCell";
             cell.separatorInset = UIEdgeInsetsMake(0, cell.width, 0, 0);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.tagText = _questionModel.categoryName;
-
+            
 //            cell.tagArray = [_questionModel.keyWord componentsSeparatedByString:@","];
             
             return cell;
