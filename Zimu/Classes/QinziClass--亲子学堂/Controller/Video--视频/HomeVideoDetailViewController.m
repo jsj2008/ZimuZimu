@@ -48,6 +48,7 @@
 
 @property (nonatomic, strong) NSMutableArray *hotVideoModelArray;       //推荐视频数组
 @property (nonatomic, strong) NSMutableArray *commentModelArray;        //评论数据数组
+@property (nonatomic, assign) ZMNetState *netState;                     //网络状态
 
 @end
 
@@ -56,6 +57,7 @@
 }
 
 - (void)dealloc{
+    [_player pause];
      [_player destory];
     NSLog(@"视频走了");
 }
@@ -74,7 +76,6 @@
     
     [self setupCommentBar];
     
-//    [self obseverNetState];
     //判断是否登录
     NSString *token = userToken;
     if (![token isEqualToString:@"logout"] && token != nil) {
@@ -84,32 +85,26 @@
 }
 
 #pragma mark - 网络状态的切换
-//- (void)obseverNetState{
-//    NetWorkStatuesManager *netMgr = [NetWorkStatuesManager shareInstance];
-//    if (netMgr.netState == ZMNetStateWIFI) {
-//        [self wifi];
-//    }else if (netMgr.netState == ZMNetStateWan){
-//        [self mobileData];
-//    }else{
-//        [self lostNet];
-//    }
-//}
 
 - (void)wifi{
     [super wifi];
+//    if (self.netChangeState != ZMNetChangeStateDefault) {
+//        
+//    }
     if (self.player && !self.player.isPauseByUser) {
-        [_player resetPlayer];
+        [_player autoPlayTheVideo];
         [_player play];
     }
     if (!self.player) {
         [self makePlayer];
+        [_player autoPlayTheVideo];
     }
 }
 - (void)lostNet{
     [super lostNet];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您的网络已断开" message:@"请检查网络" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [_player play];
+//        [_player play];
     }];
     [alertController addAction:action];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -119,19 +114,20 @@
     if (self.player && self.isPlaying) {
         [_player pause];
     }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您正在使用3G/4G网络观看视频" message:@"是否继续观看" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    
-    }];
-    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.player play];
+//    if (self.netChangeState == ZMNetChangeStateDefault || self.netChangeState == ZMNetChangeStateLostToWan || self.netChangeState == ZMNetChangeStateWIFIToWan) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您正在使用3G/4G网络观看视频" message:@"是否继续观看" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [_player autoPlayTheVideo];
+            [self.player play];
+        }];
         
-    }];
-
-    [alertController addAction:action];
-    [alertController addAction:continueAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+        [alertController addAction:action];
+        [alertController addAction:continueAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+//    }
 }
 #pragma mark - 页面进入退出
 - (void)viewWillAppear:(BOOL)animated {

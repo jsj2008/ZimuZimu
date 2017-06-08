@@ -9,7 +9,6 @@
 #import "NetWorkStatuesManager.h"
 #import "Reachability.h"
 
-static NetWorkStatuesManager *_instance = nil;
 
 @interface NetWorkStatuesManager ()
 
@@ -29,12 +28,13 @@ static NetWorkStatuesManager *_instance = nil;
 }
 //单利获取对象，便于在其他地方使用，也不会重复创建观察者
 + (NetWorkStatuesManager *)shareInstance{
-    
+    static NetWorkStatuesManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [self init];
+        instance = [[NetWorkStatuesManager alloc]init];
+        
     });
-    return _instance;
+    return instance;
 }
 //监听网络
 - (void)obeseverNet{
