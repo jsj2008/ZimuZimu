@@ -254,14 +254,12 @@
 - (void)login{
     //未登录，跳转至登录页
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
-    newLoginVC.delegate = self;
+//    newLoginVC.delegate = self;
     [self presentViewController:newLoginVC animated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 //LoginViewControllerDelegate
-- (void)loginSuccess{
-    [self getFriendMsg];
-}
+
 - (void)createSingleChatRoom{
 
     ZM_CallingHandleCategory *call = [ZM_CallingHandleCategory shareInstance];

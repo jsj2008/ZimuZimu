@@ -31,7 +31,7 @@
 #import "ZM_CallingHandleCategory.h"
 #import "ZMBlankView.h"
 
-@interface FindFriendsViewController ()<ZMFriendDelagate, FriendsMsgDelegate, LoginViewControllerDelegate>
+@interface FindFriendsViewController ()<ZMFriendDelagate, FriendsMsgDelegate>
 
 //第一次进入弹出的界面
 @property (nonatomic, strong) SnailQuickMaskPopups *popups;
@@ -303,13 +303,13 @@
 - (void)login{
     //未登录，跳转至登录页
     NewLoginViewController *newLoginVC = [[NewLoginViewController alloc]init];
-    newLoginVC.delegate = self;
+//    newLoginVC.delegate = self;
     [self presentViewController:newLoginVC animated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 //LoginViewControllerDelegate
-- (void)loginSuccess{
-    [self getFriendsList];
-}
+//- (void)loginSuccess{
+//    [self getFriendsList];
+//}
 
 @end
