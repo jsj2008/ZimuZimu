@@ -473,7 +473,17 @@
                 [hud hideAnimated:YES];
             }
         }
-        [self showMessage:@"服务器开小差了，请稍后再试"];
+        if (request.error.code == -1009) {
+//            [self noNet];
+            [self showMessage:@"网络好像有问题，请检查网络"];
+        }else if (request.error.code == -1011){
+//            [self netTimeOut];
+            [self showMessage:@"网络好像有问题，请检查网络"];
+        }else{
+//            [self netLostServer];
+            [self showMessage:@"当前网络不稳定，请检查网络"];
+        }
+//        [self showMessage:@"服务器开小差了，请稍后再试"];
         [_hud removeFromSuperViewOnHide];
         [_hud hideAnimated:NO];
                 
