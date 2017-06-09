@@ -51,7 +51,7 @@
 #define CareQuestionURL @"appExpSolve/check/careQuestion.do"               //关注问题 （传userToken，问题id）
 #define QueryWhetherCareURL @"appExpSolve/check/queryWhetherCare.do"       //是否已关注该问题（传userToken，问题id）
 #define GetQuestionLabelURL @"appQuestion/getQuestionLabel.do"             //获取提问标签
-
+#define AppRecommendQuestionURL @"appQuestion/appRecommendQuestion.do"     //根据标签获取类似问题 (categoryId，questionId)
 
 //=========================================== #我的# =======================================================
 /*个人信息*/

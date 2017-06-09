@@ -30,6 +30,7 @@
     [super awakeFromNib];
     // Initialization code
     _seperateLine.backgroundColor = themeGray;
+    _likeButton.hidden = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -76,9 +77,9 @@
         _contentLabel.frame = layoutFrame.contentLabelFrame;
         _contentLabel.text = layoutFrame.secretModel.questionVal;
         
-        //点赞
-        _likeButton.frame = layoutFrame.likeButtonFrame;
-        [_likeButton setTitle:[NSString stringWithFormat:@" %@",layoutFrame.secretModel.careNum] forState:UIControlStateNormal];
+//        //点赞
+//        _likeButton.frame = layoutFrame.likeButtonFrame;
+//        [_likeButton setTitle:[NSString stringWithFormat:@" %@",layoutFrame.secretModel.careNum] forState:UIControlStateNormal];
         
         //评论
         _commentButton.frame = layoutFrame.commentButtonFrame;

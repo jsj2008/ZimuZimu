@@ -10,4 +10,7 @@
 
 @interface SingleTagCell : UITableViewCell
 
+@property (nonatomic, copy) NSString *tagText;
+
+
 @end

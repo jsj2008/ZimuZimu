@@ -17,6 +17,8 @@
 
 #import "SearchQuestionApi.h"
 #import "SearchQuestionModel.h"
+#import "AppRecommendQuestionApi.h" //获取类似问题
+#import "RecommendQuestionModel.h"
 #import "QuestionDetailApi.h"       //问题详情：标签、标题、问题内容、关注数、评论数
 #import "QuestionDetailModel.h"
 #import "QuestionExpertAnswerApi.h"
@@ -32,7 +34,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "ZMBlankView.h"
 
-@interface AnswerViewController ()<UINavigationControllerDelegate, CommentBarDelegate, LoginViewControllerDelegate>
+@interface AnswerViewController ()<UINavigationControllerDelegate, CommentBarDelegate, LoginViewControllerDelegate, AnswerTableViewDelegate>
 
 @property (nonatomic, strong) AnswerTableView *answerTableView;     //未解答
 @property (nonatomic, strong) ConfuseAnswerDetailTableView *answerDetailTableView;  //已解答
@@ -94,7 +96,13 @@
  */
 - (void)setupAnswerTableView{
     _answerTableView = [[AnswerTableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64 - 49) style:UITableViewStylePlain];
+    _answerTableView.answerDelegate = self;
     [self.view addSubview:_answerTableView];
+}
+//AnswerTableViewDelegate
+- (void)answerTableViewDidSelectCell:(RecommendQuestionModel *)recommendQuestionModel{
+    _questionID = recommendQuestionModel.questionId;
+    [self searchQuestionDetail];
 }
 
 /**
@@ -109,11 +117,13 @@
  *  评论栏
  */
 - (void)setupCommentBar{
-    _commentBar = [UIView commentBar];
-    _commentBar.delegate = self;
-    _commentBar.collectButtonHide = YES;
-    _commentBar.shareButtonHidde = YES;
-    [self.view addSubview:_commentBar];
+    if (!_commentBar) {
+        _commentBar = [UIView commentBar];
+        _commentBar.delegate = self;
+        _commentBar.collectButtonHide = YES;
+        _commentBar.shareButtonHidde = YES;
+        [self.view addSubview:_commentBar];
+    }
 }
 
 #pragma mark - CommentBarDelegate
@@ -171,7 +181,11 @@
             [self setupAnswerTableView];
             _answerTableView.questionModel = questionModel;
             //获取类似问题
-            [self searchQuestionWithTitle:questionModel.questionTitle];
+            NSString *categoryId = questionModel.categoryId;
+            if (categoryId == nil) {
+                categoryId = @"";
+            }
+            [self searchQuestionWithCategoryId:categoryId questionId:questionModel.questionId];
         }else{
             //评论过
             [self setupAnswerDetailTableView];
@@ -238,31 +252,28 @@
 //    }];
 //}
 
-
-
 //获取类似问题
-- (void)searchQuestionWithTitle:(NSString *)questionTitle{
-    SearchQuestionApi *searchQuestionApi = [[SearchQuestionApi alloc]initWithQuestionTitle:questionTitle];
-    [searchQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+- (void)searchQuestionWithCategoryId:(NSString *)categoryId questionId:(NSString *)questionId{
+    AppRecommendQuestionApi *appRecommendQuestionApi = [[AppRecommendQuestionApi alloc]initWithCategoryId:categoryId questionId:questionId];
+    [appRecommendQuestionApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"网络繁忙，请稍后再试" toView:self.view];
             return ;
         }
-        SearchQuestionModel *searchQuestionModel = [SearchQuestionModel yy_modelWithDictionary:dataDic];
-        BOOL isTrue = searchQuestionModel.isTrue;
+        BOOL isTrue = dataDic[@"isTrue"];
         if (!isTrue) {
-            [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+            [MBProgressHUD showMessage_WithoutImage:@"网络繁忙，请稍后再试" toView:self.view];
             return;
         }
-        NSArray *dataArray = searchQuestionModel.items;
+        NSArray *dataArray = dataDic[@"items"];
         if (dataArray.count != 0 && dataArray != nil) {
             NSMutableArray *resultModelArray = [NSMutableArray arrayWithCapacity:dataArray.count];
             for (int i = 0; i < dataArray.count; i++) {
                 NSDictionary *modelDic = dataArray[i];
-                SearchQuestionResultModel *resultModel = [SearchQuestionResultModel yy_modelWithDictionary:modelDic];
+                RecommendQuestionModel *resultModel = [RecommendQuestionModel yy_modelWithDictionary:modelDic];
                 [resultModelArray addObject:resultModel];
             }
             _answerTableView.resultArray = resultModelArray;
@@ -270,9 +281,10 @@
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        [MBProgressHUD showMessage_WithoutImage:@"服务器开小差了，请稍后再试" toView:self.view];
+        
     }];
 }
+
 
 //获取专家评论
 - (void)getExpertAnswerData{

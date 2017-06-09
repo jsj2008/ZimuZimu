@@ -73,7 +73,7 @@
     //评论
     NSString *commentString = [NSString stringWithFormat:@" %@",_secretModel.count];
     CGSize commentSize = [commentString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
-    _commentButtonFrame = CGRectMake(CGRectGetMaxX(_likeButtonFrame) + 15, CGRectGetMinY(_likeButtonFrame), commentSize.width + 20, commentSize.height);
+    _commentButtonFrame = CGRectMake(CGRectGetMinX(_contentLabelFrame), CGRectGetMinY(_likeButtonFrame), commentSize.width + 20, commentSize.height);
     
     //更多
     _moreImageViewFrame = CGRectMake(kScreenWidth - 10 - 10, CGRectGetMinY(_commentButtonFrame), 8, 12);
@@ -87,7 +87,6 @@
     CGSize stateSize = [stateString sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     _answerStateButtonFrame = CGRectMake(CGRectGetMinX(_moreImageViewFrame) - stateSize.width - 2, CGRectGetMinY(_moreImageViewFrame), stateSize.width, stateSize.height);
     _moreImageViewFrame.origin.y = _answerStateButtonFrame.origin.y + (stateSize.height - _moreImageViewFrame.size.height)/2.0;
-    
     
     _cellHeight = CGRectGetMaxY(_answerStateButtonFrame) + 10;
 }

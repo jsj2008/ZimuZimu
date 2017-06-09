@@ -15,11 +15,15 @@
 #import "HeaderTitleCell.h"
 #import "QuestionResultCell.h"
 #import "SearchQuestionModel.h"
+#import "SingleTagCell.h"
 
-static NSString *confuseTagIdentifier = @"ConfuseTagCell";
+#import "RecommendQuestionCell.h"
+#import "RecommendQuestionLayoutFrame.h"
+
+static NSString *singleTagIdentifier = @"SingleTagCell";
 static NSString *confuseContentCellIdentifier = @"ConfuseContentCell";
 static NSString *headerTitleCellIdentifier = @"headerTitleCell";
-static NSString *resultIdentifier = @"QuestionResultCell";
+static NSString *recommendQuestionIdentifier = @"RecommendQuestionCell";
 
 @interface AnswerTableView ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -36,10 +40,10 @@ static NSString *resultIdentifier = @"QuestionResultCell";
         self.backgroundColor = themeGray;
         self.separatorColor = themeGray;
         
-        [self registerNib:[UINib nibWithNibName:@"ConfuseTagCell" bundle:nil] forCellReuseIdentifier:confuseTagIdentifier];
+        [self registerClass:[SingleTagCell class] forCellReuseIdentifier:singleTagIdentifier];
         [self registerNib:[UINib nibWithNibName:@"ConfuseContentCell" bundle:nil] forCellReuseIdentifier:confuseContentCellIdentifier];
         [self registerNib:[UINib nibWithNibName:@"HeaderTitleCell" bundle:nil] forCellReuseIdentifier:headerTitleCellIdentifier];
-        [self registerNib:[UINib nibWithNibName:@"QuestionResultCell" bundle:nil] forCellReuseIdentifier:resultIdentifier];
+        [self registerClass:[RecommendQuestionCell class] forCellReuseIdentifier:recommendQuestionIdentifier];
         
     }
     return self;
@@ -57,12 +61,10 @@ static NSString *resultIdentifier = @"QuestionResultCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            ConfuseTagCell *cell = [tableView dequeueReusableCellWithIdentifier:confuseTagIdentifier];
+            SingleTagCell *cell = [tableView dequeueReusableCellWithIdentifier:singleTagIdentifier];
             cell.separatorInset = UIEdgeInsetsMake(0, cell.width, 0, 0);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.tagText = _questionModel.categoryName;
-            
-//            cell.tagArray = [_questionModel.keyWord componentsSeparatedByString:@","];
             
             return cell;
         }
@@ -82,11 +84,12 @@ static NSString *resultIdentifier = @"QuestionResultCell";
             
             return cell;
         }
-        QuestionResultCell *cell = [tableView dequeueReusableCellWithIdentifier:resultIdentifier];
+        RecommendQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:recommendQuestionIdentifier];
         cell.separatorInset = UIEdgeInsetsMake(self.height - 1, 10, 0, 0);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        SearchQuestionResultModel *resultModel = _resultArray[indexPath.row - 1];
-        cell.model = resultModel;
+        RecommendQuestionModel *resultModel = _resultArray[indexPath.row - 1];
+        RecommendQuestionLayoutFrame *layoutFrame = [[RecommendQuestionLayoutFrame alloc]initWithModel:resultModel];
+        cell.layoutFrame = layoutFrame;
         
         return cell;
     }
@@ -94,7 +97,7 @@ static NSString *resultIdentifier = @"QuestionResultCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            return 45;
+            return 40;
         }
         ConfuseContentCellLayoutFrame *layoutFrame = [[ConfuseContentCellLayoutFrame alloc]initWithModel:_questionModel];
         return layoutFrame.cellHeight;
@@ -103,7 +106,9 @@ static NSString *resultIdentifier = @"QuestionResultCell";
         if (indexPath.row == 0) {
             return 45;
         }
-        return 70;
+        RecommendQuestionModel *resultModel = _resultArray[indexPath.row - 1];
+        RecommendQuestionLayoutFrame *layoutFrame = [[RecommendQuestionLayoutFrame alloc]initWithModel:resultModel];
+        return layoutFrame.cellHeight;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -116,6 +121,13 @@ static NSString *resultIdentifier = @"QuestionResultCell";
     UIView *view = [[UIView alloc]init];
     view.backgroundColor = [UIColor clearColor];
     return view;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    RecommendQuestionModel *resultModel = _resultArray[indexPath.row - 1];
+    if ([self.answerDelegate respondsToSelector:@selector(answerTableViewDidSelectCell:)]) {
+        [self.answerDelegate answerTableViewDidSelectCell:resultModel];
+    }
 }
 
 
