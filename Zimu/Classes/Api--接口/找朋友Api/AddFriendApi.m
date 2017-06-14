@@ -27,7 +27,7 @@
     NSLog(@"%@", userToken);
     return @{@"userToken":userToken,
              @"userId":_userId,
-             @"type":@"addFriend"};
+             @"type":@"1"};
 }
 - (YTKRequestMethod)requestMethod{
     return YTKRequestMethodPOST;

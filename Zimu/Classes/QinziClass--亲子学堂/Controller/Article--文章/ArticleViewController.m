@@ -23,6 +23,8 @@
 #import "InsertCollectionModel.h"
 #import "NewLoginViewController.h"
 #import "ZMBlankView.h"
+#import "ZMShareManager.h"
+#import <UShareUI/UShareUI.h>
 
 static void *WkwebBrowserContext = &WkwebBrowserContext;
 
@@ -97,7 +99,14 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 #pragma mark - CommentBarDelegate
 //分享
 - (void)commentBarShare{
-    
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession)]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        // 根据获取的platformType确定所选平台进行下一步操作
+        NSLog(@"%zd --- %@", platformType, userInfo);
+        ZMShareManager *shreMgr = [[ZMShareManager alloc] init];
+        [shreMgr shareWebPageToPlatformType:platformType thumbImg:[UIImage imageNamed:@"AppIcon"] webLink:self.URLString title:_articleTitle descr:@"子慕亲子--中国专业的亲子心理教育平台"];
+    }];
+
 }
 //收藏
 - (void)commentBarSelect:(UIButton *)button{
@@ -253,8 +262,9 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 
 
 - (void)loadWebURLSring:(NSString *)string{
-    self.URLString = [NSString stringWithFormat:@"http://116.62.200.235:8080/zimu_portal/html/share/shareArticle.html?articleId=%@",string];//[@"http://www.zimu365.com/zimu_portal_demo/html/share/shareArticle.html?articleId=" stringByAppendingString:string];
-//    self.URLString = @"https://music.163.com";
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+
+    self.URLString = [NSString stringWithFormat:@"%@zimu_portal/html/share/shareArticle.html?articleId=%@", config.baseUrl,string];
 }
 
 

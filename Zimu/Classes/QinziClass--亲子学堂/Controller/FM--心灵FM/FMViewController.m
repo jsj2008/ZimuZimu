@@ -25,6 +25,8 @@
 #import "ZMBlankView.h"
 #import "NewLoginViewController.h"
 #import "ZMBlankView.h"
+#import "ZMShareManager.h"
+#import <UShareUI/UShareUI.h>
 
 @interface FMViewController ()<UITextFieldDelegate, CommentBarDelegate, LoginViewControllerDelegate>
 
@@ -92,7 +94,13 @@
 #pragma mark - CommentBarDelegate
 //分享
 - (void)commentBarShare{
-    
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession)]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        // 根据获取的platformType确定所选平台进行下一步操作
+        NSLog(@"%zd --- %@", platformType, userInfo);
+        ZMShareManager *shreMgr = [[ZMShareManager alloc] init];
+        [shreMgr shareWebPageToPlatformType:platformType thumbImg:[UIImage imageNamed:@"AppIcon"] webLink:_FMPlayView.fmDetailModel.audioUrl title:_FMPlayView.fmDetailModel.fmTitle descr:@"子慕亲子--中国专业的亲子心理教育平台"];
+    }];
 }
 //收藏
 - (void)commentBarSelect:(UIButton *)button{

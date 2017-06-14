@@ -70,28 +70,34 @@
 - (void)connectToWan{
     if (_netState == ZMNetStateDefault) {
         _netChangeState = ZMNetChangeStateDefault;
-    }else{
-        switch (_netState) {
-            case ZMNetStateWIFI:
-            {
-                _netChangeState = ZMNetChangeStateWIFIToWan;
-                [self mobileData];
-            }
-                break;
-            case ZMNetStateLost:
-            {
-                _netChangeState = ZMNetChangeStateLostToWan;
-            }
-                break;
-            case ZMNetStateWan:
-            {
-                _netChangeState = ZMNetChangeStateWanToWan;
-            }
-                break;
-            default:
-                break;
-        }
     }
+    switch (_netState) {
+        case ZMNetStateWIFI:
+        {
+            _netChangeState = ZMNetChangeStateWIFIToWan;
+            [self mobileData];
+        }
+            break;
+        case ZMNetStateLost:
+        {
+            _netChangeState = ZMNetChangeStateLostToWan;
+        }
+            break;
+        case ZMNetStateWan:
+        {
+            _netChangeState = ZMNetChangeStateWanToWan;
+        }
+            break;
+        case ZMNetStateDefault:
+        {
+            _netChangeState = ZMNetChangeStateLostToWan;
+            [self mobileData];
+        }
+            break;
+        default:
+            break;
+    }
+    
     _netState = ZMNetStateWan;
     
 }

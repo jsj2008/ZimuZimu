@@ -116,7 +116,7 @@
 
 #define SearchFriendByPhoneURL  @"appUser/check/searchFriendByCondition.do"         //根据手机号搜搜陌生人 （userToken userPhone(被搜索人的手机号)）
 #define GetFriendsListURL       @"appUser/check/getMyFriendList.do"                 //获取好友列表 userToken=d0eb993ffa2e876c60b99b745d93f9fa
-#define AddFriendURL            @"appJpush/check/toUser.do"                         //添加好友  userId= type=addFriend
+#define AddFriendURL            @"appJpush/check/toUser.do"                         //添加好友  userId= type=addFriend    type = 0是defaault   type = 1 是好友 2是视频请求
 #define GetMyMsgURL             @"appUserMessage/check/getUserNoticeMessage.do"     //获取我的消息接口 endTime=2494399605&userToken=e1d7c24bb5cbef626e6e3a30bc618dd3
 #define AcceptFriendURL         @"appUser/check/agreeFriendRequest.do"              //同意好友请求 fromUser=
 #define GetFriendMsgURL         @"appUser/check/queryFriendInfo.do"                 //根据用户id获取用户信息

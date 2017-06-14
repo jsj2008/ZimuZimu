@@ -21,10 +21,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    
-    
-    
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -35,7 +32,7 @@
 
 
 - (void)setTitleString:(NSString *)titleString{
-    if (_titleString != titleString) {
+    if (titleString) {
         _titleString = titleString;
         _titleLabel.text = _titleString;
     }
@@ -43,7 +40,7 @@
 
 
 - (void)setBgImageString:(NSString *)bgImageString{
-    if (_bgImageString != bgImageString) {
+    if (bgImageString) {
         _bgImageString = bgImageString;
 //        _bgImageView.image = [UIImage imageNamed:bgImageString];
         [_bgImageView sd_setImageWithURL:[NSURL URLWithString:_bgImageString]];

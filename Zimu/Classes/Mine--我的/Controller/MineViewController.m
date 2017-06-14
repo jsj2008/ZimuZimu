@@ -202,7 +202,7 @@
 #pragma mark - 获取我的信息数据
 - (void)getMyInfoNetWork{
     GetMyInfoAPI *getMyInfoApi = [[GetMyInfoAPI alloc]init];
-    NSLog(@"userToken : %@",userToken);
+//    NSLog(@"userToken : %@",userToken);
     [getMyInfoApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSData *data = request.responseData;
         NSError *error = nil;
